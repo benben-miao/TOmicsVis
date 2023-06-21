@@ -1,30 +1,20 @@
 ---
-output: github_document
+title: "GetStart"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{GetStart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-"
+  comment = "#>"
 )
 ```
 
-# TOmicsVis
-## 1. Introduction
-**TOmicsVis**: TranscriptOmics Visualization.
-
-**Github**: [https://github.com/benben-miao/TOmicsVis/](https://github.com/benben-miao/TOmicsVis/)
-
-**Website**: [https://benben-miao.github.io/TOmicsVis/](https://benben-miao.github.io/TOmicsVis/)
-
-**Author**: [benben-miao github](https://github.com/benben-miao)
-
-**BioSciTools**: [Biology Science Tools](https://github.com/BioSciTools/BioSciTools.github.io)
-
-## 2. Install package
+## 1. Install package
 ```{r}
 # 1. TOmicsVis
 # install.packages("devtools")
@@ -36,8 +26,8 @@ library(TOmicsVis)
 library(ggplot2)
 ```
 
-## 3. Usage cases
-### 3.1 corr_heatmap
+## 2. Usage cases
+### 2.1 corr_heatmap
 Correlation Heatmap for samples/groups based on Pearson algorithm.
 ```{r corr_heatmap}
 # 1. Load gene_exp example dataset
@@ -65,7 +55,7 @@ Get help using command `?TOmicsVis::corr_heatmap` or reference page [https://ben
 # ?TOmicsVis::corr_heatmap
 ```
 
-### 3.2 pca_plot
+### 2.2 pca_plot
 PCA dimensional reduction visualization for RNA-Seq.
 ```{r pca_plot}
 # 1. Load pca_sample_gene and pca_group_sample example datasets

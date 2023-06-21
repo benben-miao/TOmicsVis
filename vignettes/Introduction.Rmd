@@ -14,6 +14,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+# TOmicsVis
+## 1. Introduction
+**TOmicsVis**: TranscriptOmics Visualization.
+
+**Github**: [https://github.com/benben-miao/TOmicsVis/](https://github.com/benben-miao/TOmicsVis/)
+
+**Website**: [https://benben-miao.github.io/TOmicsVis/](https://benben-miao.github.io/TOmicsVis/)
+
+**Author**: [benben-miao github](https://github.com/benben-miao)
+
+**BioSciTools**: [Biology Science Tools](https://github.com/BioSciTools/BioSciTools.github.io)
+
+## 2. Install package
+```{r}
+# 1. TOmicsVis
+# install.packages("devtools")
+# devtools::install_github("benben-miao/TOmicsVis")
 library(TOmicsVis)
+
+# 2. Extra package
+# install.packages("ggplot2")
+library(ggplot2)
 ```

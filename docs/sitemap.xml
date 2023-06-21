@@ -10,6 +10,9 @@
     <loc>https://github.com/benben-miao/articles/Introduction.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/articles/SampleGroup.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/articles/tutorial.html</loc>
   </url>
   <url>
@@ -35,5 +38,14 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/pca_group_sample.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/pca_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/pca_sample_gene.html</loc>
   </url>
 </urlset>

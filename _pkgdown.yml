@@ -31,6 +31,8 @@ navbar:
         - text: Tutorial
         - text: Introduction
           href: articles/Introduction.html
+        - text: SampleGroup
+          href: articles/SampleGroup.html
         - text: -------
         - text: Blog
     news:
@@ -55,9 +57,12 @@ reference:
     Plot types in TOmicsVis.
   contents:
   - corr_heatmap
+  - pca_plot
 
 - title: Example datasets in TOmicsVis
   desc: >
     Example datasets in TOmicsVis.
   contents:
   - gene_exp
+  - pca_sample_gene
+  - pca_group_sample
