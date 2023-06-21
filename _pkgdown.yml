@@ -5,7 +5,7 @@ template:
   bootswatch: sketchy
   theme: breeze-light
   bslib:
-    code-bg: "#333333"
+    code-bg: "#008888"
     code_font: {google: "JetBrains Mono"}
 
 development:

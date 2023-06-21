@@ -104,7 +104,56 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 1. Library TOmicsVis package</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/benben-miao/TOmicsVis/">TOmicsVis</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># 2. Load example dataset gene_exp</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># 3. View gene_exp</span></span></span>
+<span class="r-in"><span><span class="va">gene_exp</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   M1       M2       M3       M4       M5       M6        M7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RGL4        8.454808 8.019389 8.990836 9.718631 7.908075 4.147051  4.985084</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MPP7        8.690520 8.630346 7.080873 9.838476 8.271824 5.179200  5.200868</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> UGCG        8.648366 8.600555 9.431046 7.923021 8.309214 4.902510  5.750804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CYSTM1      8.628884 9.238677 8.487243 8.958537 7.357109 4.541605  6.370533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANXA2       4.983769 6.748022 6.220791 4.719403 3.284346 8.089850 10.637472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ENDOD1      5.551640 5.406465 4.663785 3.550765 4.103507 8.393991  9.538503</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ARHGAP24    6.890079 8.883941 9.560651 8.285674 9.043752 3.544010  4.919183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CST7        7.883061 8.546585 8.364553 9.540110 8.697473 3.557674  4.453887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HIST1H2BM   6.186908 4.448803 5.428771 6.747681 2.577579 7.828233  6.517819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> EREG        8.598145 4.920184 9.227645 5.222157 4.689850 8.703617  8.657714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> EMP1        4.837475 5.999576 6.115168 5.056323 4.808930 6.713164 12.189307</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NFAM1       8.656290 9.957289 7.319900 8.073514 9.016658 4.517623  4.722710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SLC40A1     9.520822 4.630086 5.116486 9.346003 9.813192 6.101416  4.186182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CD52        4.230927 5.932496 5.011898 5.101308 4.398327 6.380094  8.984663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HIST1H2BH   5.805177 4.343197 6.139380 5.817530 2.513284 8.188458  7.126536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PFKFB3      7.424257 9.676785 8.935156 8.045833 8.890690 4.273864  6.238450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SNORD116-20 8.377058 5.359553 8.694841 8.044567 2.953568 7.268419  6.682021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STX11       8.338488 8.565954 8.767868 9.403257 7.892702 4.205835  6.565666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SYNE2       9.110726 9.678361 8.405612 6.946242 8.156073 5.791007  6.837267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCN1        8.193179 8.907285 8.713848 8.980928 7.627558 4.626609  7.354055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    M8       M9      M10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RGL4         4.576711 4.930349 4.293700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MPP7         3.266993 5.565226 4.300309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> UGCG         4.492856 4.659987 3.306275</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CYSTM1       4.246651 4.745769 3.449627</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANXA2        7.214912 9.002710 5.123359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ENDOD1       9.069923 8.639664 7.106392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ARHGAP24     4.664794 4.410468 5.822083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CST7         4.203405 5.065082 5.712803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HIST1H2BM   10.206868 9.345190 6.736780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> EREG         7.820688 2.943618 5.241017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> EMP1         6.310853 8.391137 5.602700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NFAM1        3.961951 4.440520 5.358180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SLC40A1      4.198639 7.193108 5.918700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CD52        10.234718 9.800305 5.949899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HIST1H2BH   10.404286 8.873458 6.813328</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PFKFB3       4.099111 4.189284 4.251206</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SNORD116-20  8.318052 7.830180 2.496375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STX11        3.931024 5.050443 3.303397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SYNE2        3.722294 3.640646 3.736406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TCN1         3.265292 5.108398 3.247483</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

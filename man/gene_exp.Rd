@@ -14,7 +14,14 @@ data(gene_exp)
 Gene Expression dataframe of RNA-Seq.
 }
 \examples{
+# 1. Library TOmicsVis package
+library(TOmicsVis)
+
+# 2. Load example dataset gene_exp
 data(gene_exp)
+
+# 3. View gene_exp
+gene_exp
 
 }
 \references{

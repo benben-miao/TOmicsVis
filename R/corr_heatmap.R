@@ -20,8 +20,20 @@
 #' @export
 #'
 #' @examples
+#' # 1. Library TOmicsVis package
+#' library(TOmicsVis)
+#'
+#' # 2. Use example dataset gene_exp
 #' data(gene_exp)
+#'
+#' # 3. Default parameters
 #' corr_heatmap(gene_exp)
+#'
+#' # 4. Set color_low = "#008800"
+#' corr_heatmap(gene_exp, color_low = "#008800")
+#'
+#' # 5. Set cell_shape = "circle"
+#' corr_heatmap(gene_exp, cell_shape = "circle")
 #'
 corr_heatmap <- function(data,
 												 corr_method = "pearson",
@@ -107,9 +119,7 @@ corr_heatmap <- function(data,
 												 mid = color_mid,
 												 high = color_high,
 												 limits = c(min(corr), max(corr))
-												 ) +
-		theme(text = element_text(family = "Times")
-					)
+												 )
 
 	return(p)
 }

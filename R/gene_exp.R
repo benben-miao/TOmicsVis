@@ -11,7 +11,14 @@
 #' @references https://github.com/BioSciTools/BioSciToolsDatasets/tree/main/CorPlot/
 #'
 #' @examples
+#' # 1. Library TOmicsVis package
+#' library(TOmicsVis)
+#'
+#' # 2. Load example dataset gene_exp
 #' data(gene_exp)
+#'
+#' # 3. View gene_exp
+#' gene_exp
 #'
 "gene_exp"
 
