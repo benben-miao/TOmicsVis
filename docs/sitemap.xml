@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://github.com/benben-miao/404.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://github.com/benben-miao/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/tutorial.html</loc>
+    <loc>https://github.com/benben-miao/articles/Introduction.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://github.com/benben-miao/articles/tutorial.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://github.com/benben-miao/authors.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://github.com/benben-miao/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://github.com/benben-miao/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/reference/corr_heatmap.html</loc>
+    <loc>https://github.com/benben-miao/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/reference/gene_exp.html</loc>
+    <loc>https://github.com/benben-miao/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://github.com/benben-miao/reference/corr_heatmap.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/gene_exp.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/index.html</loc>
   </url>
 </urlset>

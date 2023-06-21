@@ -1,4 +1,63 @@
-url: ~
+# https://pkgdown.r-lib.org/articles/customise.html
+url: https://github.com/benben-miao/
 template:
   bootstrap: 5
+  bootswatch: sketchy
+  theme: breeze-light
+  bslib:
+    code-bg: "#333333"
+    code_font: {google: "JetBrains Mono"}
 
+development:
+  mode: auto
+
+navbar:
+  structure:
+    left: [home, reference, articles, news, bioscitools]
+    right: [search, github]
+  components:
+    home:
+      text: Home
+      icon: fa-home
+      href: index.html
+    reference:
+      text: Reference
+      icon: fa-file-code
+      href: reference/index.html
+    articles:
+      text: Articles
+      icon: fa-book
+      menu:
+        - text: Tutorial
+        - text: Introduction
+          href: articles/Introduction.html
+        - text: -------
+        - text: Blog
+    news:
+      text: Versions
+      icon: fa-code-branch
+      href: news/index.html
+    bioscitools:
+      text: BioSciTools
+      icon: fa-desktop
+      href: https://github.com/bioscitools/
+
+home:
+  links:
+  - text: BioSciTools
+    href: https://github.com/bioscitools/bioscitools.github.io
+  - text: BioSciTools website
+    href: https://bioscitools.podia.com
+
+reference:
+- title: Plot types in TOmicsVis
+  desc: >
+    Plot types in TOmicsVis.
+  contents:
+  - corr_heatmap
+
+- title: Example datasets in TOmicsVis
+  desc: >
+    Example datasets in TOmicsVis.
+  contents:
+  - gene_exp
