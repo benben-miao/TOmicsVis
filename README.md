@@ -112,3 +112,90 @@ Get help using command `?TOmicsVis::pca_plot` or reference page
 # Get help with command in R console.
 # ?TOmicsVis::pca_plot
 ```
+
+### 3.3 box_plot
+
+Box plot support two levels and multiple groups with P value.
+
+``` r
+# 1. Load box_data example datasets
+data(box_data)
+
+# 2. Run box_plot plot function
+box_plot(
+  box_data,
+  test_method = "wilcox.test",
+  test_label = "p.format",
+  notch = TRUE,
+  group_level = "Three_Column",
+  add_element = "dotplot",
+  my_shape = "fill_circle",
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.5,
+  sci_color_alpha = 1,
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+#> Bin width defaults to 1/30 of the range of the data. Pick better value with
+#> `binwidth`.
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+#> Notch went outside hinges
+#> ℹ Do you want `notch = FALSE`?
+```
+
+![](man/figures/README-box_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::box_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/box_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::box_plot
+```
+
+### 3.4 violin_plot
+
+Violin plot support two levels and multiple groups with P value.
+
+``` r
+# 1. Load box_data example datasets
+data(box_data)
+
+# 2. Run violin_plot plot function
+violin_plot(
+  box_data,
+  test_method = "wilcox.test",
+  test_label = "p.format",
+  group_level = "Three_Column",
+  violin_orientation = "vertical",
+  add_element = "boxplot",
+  element_alpha = 0.5,
+  my_shape = "plus_times",
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.5,
+  sci_color_alpha = 1,
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+```
+
+![](man/figures/README-violin_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::violin_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::violin_plot
+```

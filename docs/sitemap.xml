@@ -31,6 +31,12 @@
     <loc>https://github.com/benben-miao/news/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/reference/box_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/box_plot.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/reference/corr_heatmap.html</loc>
   </url>
   <url>
@@ -47,5 +53,8 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/pca_sample_gene.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/violin_plot.html</loc>
   </url>
 </urlset>

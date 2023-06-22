@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -203,6 +203,81 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::pca_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_33-box_plot">3.3 box_plot<a class="anchor" aria-label="anchor" href="#id_33-box_plot"></a>
+</h3>
+<p>Box plot support two levels and multiple groups with P value.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run box_plot plot function</span></span>
+<span><span class="fu"><a href="reference/box_plot.html">box_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">box_data</span>,</span>
+<span>  test_method <span class="op">=</span> <span class="st">"wilcox.test"</span>,</span>
+<span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
+<span>  notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
+<span>  add_element <span class="op">=</span> <span class="st">"dotplot"</span>,</span>
+<span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  sci_color_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Bin width defaults to 1/30 of the range of the data. Pick better value with</span></span>
+<span><span class="co">#&gt; `binwidth`.</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
+<span><span class="co">#&gt; Notch went outside hinges</span></span>
+<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span></code></pre></div>
+<p><img src="reference/figures/README-box_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/box_plot.html">?TOmicsVis::box_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::box_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_34-violin_plot">3.4 violin_plot<a class="anchor" aria-label="anchor" href="#id_34-violin_plot"></a>
+</h3>
+<p>Violin plot support two levels and multiple groups with P value.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run violin_plot plot function</span></span>
+<span><span class="fu"><a href="reference/violin_plot.html">violin_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">box_data</span>,</span>
+<span>  test_method <span class="op">=</span> <span class="st">"wilcox.test"</span>,</span>
+<span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
+<span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
+<span>  violin_orientation <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>  add_element <span class="op">=</span> <span class="st">"boxplot"</span>,</span>
+<span>  element_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  my_shape <span class="op">=</span> <span class="st">"plus_times"</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  sci_color_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-violin_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/violin_plot.html">?TOmicsVis::violin_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html</a>.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::violin_plot</span></span></code></pre></div>
 </div>
 </div>
 </div>

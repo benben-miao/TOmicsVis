@@ -1,4 +1,23 @@
+## TOmicsVis 1.0.3
+
+**Date**: 2023-06-22
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::box_data` example datasets.
+2. New `?TOmicsVis::box_plot` plot function.
+3. New `?TOmicsVis::violin_plot` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed `_pkgdown.yml` theme configure.
+
+---
+
 ## TOmicsVis 1.0.2
+
+**Date**: 2023-06-21
+
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
 1. New `?TOmicsVis::pca_sample_gene` and `?TOmicsVis::pca_group_sample` example datasets.
@@ -11,6 +30,9 @@
 ---
 
 ## TOmicsVis 1.0.1
+
+**Date**: 2023-06-20
+
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
 1. Open source code of TOmicsVis to github: [https://github.com/benben-miao/TOmicsVis/](https://github.com/benben-miao/TOmicsVis/).
@@ -24,6 +46,9 @@
 ---
 
 ## TOmicsVis 1.0.0
+
+**Date**: 2023-06-20
+
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
 1. Create TOmicsVis package and complete the `DESCRIPTION` file.

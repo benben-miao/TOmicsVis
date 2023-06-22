@@ -2,7 +2,7 @@
 url: https://github.com/benben-miao/
 template:
   bootstrap: 5
-  bootswatch: sketchy
+  # bootswatch: sketchy
   theme: breeze-light
   bslib:
     code-bg: "#008888"
@@ -58,6 +58,8 @@ reference:
   contents:
   - corr_heatmap
   - pca_plot
+  - box_plot
+  - violin_plot
 
 - title: Example datasets in TOmicsVis
   desc: >
@@ -66,3 +68,4 @@ reference:
   - gene_exp
   - pca_sample_gene
   - pca_group_sample
+  - box_data
