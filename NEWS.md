@@ -1,3 +1,18 @@
+## TOmicsVis 1.0.4
+
+**Date**: 2023-06-23
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::quantile_data` example dataset.
+2. New `?TOmicsVis::quantile_plot` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.0.3
 
 **Date**: 2023-06-22

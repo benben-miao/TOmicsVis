@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   Introduction: Introduction.html
   SampleGroup: SampleGroup.html
-last_built: 2023-06-22T14:25Z
+last_built: 2023-06-23T14:31Z
 urls:
   reference: https://github.com/benben-miao/reference
   article: https://github.com/benben-miao/articles

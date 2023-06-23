@@ -60,6 +60,7 @@ reference:
   - pca_plot
   - box_plot
   - violin_plot
+  - quantile_plot
 
 - title: Example datasets in TOmicsVis
   desc: >
@@ -69,3 +70,4 @@ reference:
   - pca_sample_gene
   - pca_group_sample
   - box_data
+  - quantile_data

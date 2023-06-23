@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -278,6 +278,34 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::violin_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_35-quantile_plot">3.5 quantile_plot<a class="anchor" aria-label="anchor" href="#id_35-quantile_plot"></a>
+</h3>
+<p>Quantile plot for visualizing data distribution.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run quantile_plot plot function</span></span>
+<span><span class="fu"><a href="reference/quantile_plot.html">quantile_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">quantile_data</span>,</span>
+<span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>  conf_int <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  conf_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  split_panel <span class="op">=</span> <span class="st">"One_Panel"</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.75</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-quantile_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/quantile_plot.html">?TOmicsVis::quantile_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html</a>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::quantile_plot</span></span></code></pre></div>
 </div>
 </div>
 </div>

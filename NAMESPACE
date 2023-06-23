@@ -3,6 +3,7 @@
 export(box_plot)
 export(corr_heatmap)
 export(pca_plot)
+export(quantile_plot)
 export(violin_plot)
 import(ggcorrplot)
 import(ggforce)
