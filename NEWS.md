@@ -6,6 +6,8 @@
 
 1. New `?TOmicsVis::quantile_data` example dataset.
 2. New `?TOmicsVis::quantile_plot` plot function.
+3. New `?TOmicsVis::venn_data` example dataset.
+4. New `?TOmicsVis::venn_plot` plot function.
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 

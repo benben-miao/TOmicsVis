@@ -61,6 +61,7 @@ reference:
   - box_plot
   - violin_plot
   - quantile_plot
+  - venn_plot
 
 - title: Example datasets in TOmicsVis
   desc: >
@@ -71,3 +72,4 @@ reference:
   - pca_group_sample
   - box_data
   - quantile_data
+  - venn_data

@@ -233,3 +233,31 @@ Get help using command `?TOmicsVis::quantile_plot` or reference page
 # Get help with command in R console.
 # ?TOmicsVis::quantile_plot
 ```
+
+### 3.6 venn_plot
+
+Venn plot for stat common and unique gene among multiple sets.
+
+``` r
+# 1. Load venn_data example datasets
+data(venn_data)
+
+# 2. Run venn_plot plot function
+venn_plot(
+  venn_data,
+  line_type = "blank",
+  ellipse_shape = "circle",
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.65
+)
+```
+
+![](man/figures/README-venn_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::venn_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::venn_plot
+```

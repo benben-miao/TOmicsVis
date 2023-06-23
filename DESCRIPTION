@@ -14,7 +14,7 @@ RoxygenNote: 7.2.1
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5)
-Imports: stats, utils, ggplot2, ggsci, ggpubr, ggcorrplot, ggforce, vegan
+Imports: stats, utils, ggplot2, ggsci, ggpubr, ggcorrplot, ggforce, vegan, venn
 Suggests: 
     knitr,
     rmarkdown
