@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -328,6 +328,161 @@
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::venn_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_37-chord_plot">3.7 chord_plot<a class="anchor" aria-label="anchor" href="#id_37-chord_plot"></a>
+</h3>
+<p>Chord plot for visualizing the relationships of pathways and genes.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load chord_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chord_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run chord_plot plot function</span></span>
+<span><span class="fu"><a href="reference/chord_plot.html">chord_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">chord_data</span>,</span>
+<span>  multi_colors <span class="op">=</span> <span class="st">"RainbowColors"</span>,</span>
+<span>  color_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  link_visible <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  link_dir <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  link_type <span class="op">=</span> <span class="st">"diffHeight"</span>,</span>
+<span>  sector_scale <span class="op">=</span> <span class="st">"Origin"</span>,</span>
+<span>  width_circle <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  dist_name <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  label_dir <span class="op">=</span> <span class="st">"Vertical"</span>,</span>
+<span>  dist_label <span class="op">=</span> <span class="fl">0.3</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-chord_plot-1.png"><!-- --></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#&gt;      rn         cn value1 value2 o1 o2 x1  x2       col</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">#&gt; 1    S1 Samples.E1      4      4  5 20 61 161 #FF00007F</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; 2    S2 Samples.E1      7      7  5 19 45 157 #FF3D007F</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; 3    S3 Samples.E1      9      9  5 18 55 150 #FF7A007F</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; 4    S4 Samples.E1     14     14  5 17 55 141 #FFB8007F</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; 5    S5 Samples.E1      1      1  5 16 22 127 #FFF5007F</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; 6    S6 Samples.E1     10     10  5 15 59 126 #CCFF007F</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; 7    S7 Samples.E1      3      3  5 14 31 116 #8FFF007F</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; 8    S8 Samples.E1     15     15  5 13 52 113 #52FF007F</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; 9    S9 Samples.E1      5      5  5 12 37  98 #14FF007F</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; 10  S10 Samples.E1      7      7  5 11 27  93 #00FF297F</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; 11  S11 Samples.E1      6      6  5 10 35  86 #00FF667F</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; 12  S12 Samples.E1     11     11  5  9 49  80 #00FFA37F</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; 13  S13 Samples.E1     18     18  5  8 69  69 #00FFE07F</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; 14  S14 Samples.E1      1      1  5  7 22  51 #00E0FF7F</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt; 15  S15 Samples.E1      5      5  5  6 58  50 #00A3FF7F</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt; 16  S16 Samples.E1     12     12  5  5 48  45 #0066FF7F</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; 17  S17 Samples.E1      9      9  5  4 23  33 #0029FF7F</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; 18  S18 Samples.E1      5      5  5  3 50  24 #1400FF7F</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 19  S19 Samples.E1      4      4  5  2 40  19 #5200FF7F</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; 20  S20 Samples.E1     15     15  5  1 58  15 #8F00FF7F</span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt; 21   S1         E2     16     16  4 20 57 166 #FF00007F</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt; 22   S2         E2     11     11  4 19 38 150 #FF3D007F</span></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt; 23   S3         E2      2      2  4 18 46 139 #FF7A007F</span></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co">#&gt; 24   S4         E2      9      9  4 17 41 137 #FFB8007F</span></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co">#&gt; 25   S5         E2      1      1  4 16 21 128 #FFF5007F</span></span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co">#&gt; 26   S6         E2     18     18  4 15 49 127 #CCFF007F</span></span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co">#&gt; 27   S7         E2      8      8  4 14 28 109 #8FFF007F</span></span>
+<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="co">#&gt; 28   S8         E2      4      4  4 13 37 101 #52FF007F</span></span>
+<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="co">#&gt; 29   S9         E2      4      4  4 12 32  97 #14FF007F</span></span>
+<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co">#&gt; 30  S10         E2      9      9  4 11 20  93 #00FF297F</span></span>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="co">#&gt; 31  S11         E2      7      7  4 10 29  84 #00FF667F</span></span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a><span class="co">#&gt; 32  S12         E2      2      2  4  9 38  77 #00FFA37F</span></span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co">#&gt; 33  S13         E2     13     13  4  8 51  75 #00FFE07F</span></span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co">#&gt; 34  S14         E2      2      2  4  7 21  62 #00E0FF7F</span></span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a><span class="co">#&gt; 35  S15         E2     13     13  4  6 53  60 #00A3FF7F</span></span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="co">#&gt; 36  S16         E2      7      7  4  5 36  47 #0066FF7F</span></span>
+<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a><span class="co">#&gt; 37  S17         E2      2      2  4  4 14  40 #0029FF7F</span></span>
+<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a><span class="co">#&gt; 38  S18         E2     13     13  4  3 45  38 #1400FF7F</span></span>
+<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a><span class="co">#&gt; 39  S19         E2     12     12  4  2 36  25 #5200FF7F</span></span>
+<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a><span class="co">#&gt; 40  S20         E2     13     13  4  1 43  13 #8F00FF7F</span></span>
+<span id="cb15-42"><a href="#cb15-42" tabindex="-1"></a><span class="co">#&gt; 41   S1         E3     12     12  3 20 41 150 #FF00007F</span></span>
+<span id="cb15-43"><a href="#cb15-43" tabindex="-1"></a><span class="co">#&gt; 42   S2         E3      2      2  3 19 27 138 #FF3D007F</span></span>
+<span id="cb15-44"><a href="#cb15-44" tabindex="-1"></a><span class="co">#&gt; 43   S3         E3     17     17  3 18 44 136 #FF7A007F</span></span>
+<span id="cb15-45"><a href="#cb15-45" tabindex="-1"></a><span class="co">#&gt; 44   S4         E3     12     12  3 17 32 119 #FFB8007F</span></span>
+<span id="cb15-46"><a href="#cb15-46" tabindex="-1"></a><span class="co">#&gt; 45   S5         E3      7      7  3 16 20 107 #FFF5007F</span></span>
+<span id="cb15-47"><a href="#cb15-47" tabindex="-1"></a><span class="co">#&gt; 46   S6         E3      9      9  3 15 31 100 #CCFF007F</span></span>
+<span id="cb15-48"><a href="#cb15-48" tabindex="-1"></a><span class="co">#&gt; 47   S7         E3      4      4  3 14 20  91 #8FFF007F</span></span>
+<span id="cb15-49"><a href="#cb15-49" tabindex="-1"></a><span class="co">#&gt; 48   S8         E3      9      9  3 13 33  87 #52FF007F</span></span>
+<span id="cb15-50"><a href="#cb15-50" tabindex="-1"></a><span class="co">#&gt; 49   S9         E3      7      7  3 12 28  78 #14FF007F</span></span>
+<span id="cb15-51"><a href="#cb15-51" tabindex="-1"></a><span class="co">#&gt; 50  S10         E3      1      1  3 11 11  71 #00FF297F</span></span>
+<span id="cb15-52"><a href="#cb15-52" tabindex="-1"></a><span class="co">#&gt; 51  S11         E3      5      5  3 10 22  70 #00FF667F</span></span>
+<span id="cb15-53"><a href="#cb15-53" tabindex="-1"></a><span class="co">#&gt; 52  S12         E3      2      2  3  9 36  65 #00FFA37F</span></span>
+<span id="cb15-54"><a href="#cb15-54" tabindex="-1"></a><span class="co">#&gt; 53  S13         E3      8      8  3  8 38  63 #00FFE07F</span></span>
+<span id="cb15-55"><a href="#cb15-55" tabindex="-1"></a><span class="co">#&gt; 54  S14         E3      2      2  3  7 19  55 #00E0FF7F</span></span>
+<span id="cb15-56"><a href="#cb15-56" tabindex="-1"></a><span class="co">#&gt; 55  S15         E3      6      6  3  6 40  53 #00A3FF7F</span></span>
+<span id="cb15-57"><a href="#cb15-57" tabindex="-1"></a><span class="co">#&gt; 56  S16         E3     15     15  3  5 29  47 #0066FF7F</span></span>
+<span id="cb15-58"><a href="#cb15-58" tabindex="-1"></a><span class="co">#&gt; 57  S17         E3      1      1  3  4 12  32 #0029FF7F</span></span>
+<span id="cb15-59"><a href="#cb15-59" tabindex="-1"></a><span class="co">#&gt; 58  S18         E3     13     13  3  3 32  31 #1400FF7F</span></span>
+<span id="cb15-60"><a href="#cb15-60" tabindex="-1"></a><span class="co">#&gt; 59  S19         E3      4      4  3  2 24  18 #5200FF7F</span></span>
+<span id="cb15-61"><a href="#cb15-61" tabindex="-1"></a><span class="co">#&gt; 60  S20         E3     14     14  3  1 30  14 #8F00FF7F</span></span>
+<span id="cb15-62"><a href="#cb15-62" tabindex="-1"></a><span class="co">#&gt; 61   S1         E4     18     18  2 20 29 227 #FF00007F</span></span>
+<span id="cb15-63"><a href="#cb15-63" tabindex="-1"></a><span class="co">#&gt; 62   S2         E4     15     15  2 19 25 209 #FF3D007F</span></span>
+<span id="cb15-64"><a href="#cb15-64" tabindex="-1"></a><span class="co">#&gt; 63   S3         E4     16     16  2 18 27 194 #FF7A007F</span></span>
+<span id="cb15-65"><a href="#cb15-65" tabindex="-1"></a><span class="co">#&gt; 64   S4         E4      3      3  2 17 20 178 #FFB8007F</span></span>
+<span id="cb15-66"><a href="#cb15-66" tabindex="-1"></a><span class="co">#&gt; 65   S5         E4      1      1  2 16 13 175 #FFF5007F</span></span>
+<span id="cb15-67"><a href="#cb15-67" tabindex="-1"></a><span class="co">#&gt; 66   S6         E4     13     13  2 15 22 174 #CCFF007F</span></span>
+<span id="cb15-68"><a href="#cb15-68" tabindex="-1"></a><span class="co">#&gt; 67   S7         E4     15     15  2 14 16 161 #8FFF007F</span></span>
+<span id="cb15-69"><a href="#cb15-69" tabindex="-1"></a><span class="co">#&gt; 68   S8         E4     13     13  2 13 24 146 #52FF007F</span></span>
+<span id="cb15-70"><a href="#cb15-70" tabindex="-1"></a><span class="co">#&gt; 69   S9         E4      3      3  2 12 21 133 #14FF007F</span></span>
+<span id="cb15-71"><a href="#cb15-71" tabindex="-1"></a><span class="co">#&gt; 70  S10         E4      4      4  2 11 10 130 #00FF297F</span></span>
+<span id="cb15-72"><a href="#cb15-72" tabindex="-1"></a><span class="co">#&gt; 71  S11         E4      8      8  2 10 17 126 #00FF667F</span></span>
+<span id="cb15-73"><a href="#cb15-73" tabindex="-1"></a><span class="co">#&gt; 72  S12         E4     16     16  2  9 34 118 #00FFA37F</span></span>
+<span id="cb15-74"><a href="#cb15-74" tabindex="-1"></a><span class="co">#&gt; 73  S13         E4     14     14  2  8 30 102 #00FFE07F</span></span>
+<span id="cb15-75"><a href="#cb15-75" tabindex="-1"></a><span class="co">#&gt; 74  S14         E4     14     14  2  7 17  88 #00E0FF7F</span></span>
+<span id="cb15-76"><a href="#cb15-76" tabindex="-1"></a><span class="co">#&gt; 75  S15         E4     16     16  2  6 34  74 #00A3FF7F</span></span>
+<span id="cb15-77"><a href="#cb15-77" tabindex="-1"></a><span class="co">#&gt; 76  S16         E4     12     12  2  5 14  58 #0066FF7F</span></span>
+<span id="cb15-78"><a href="#cb15-78" tabindex="-1"></a><span class="co">#&gt; 77  S17         E4     10     10  2  4 11  46 #0029FF7F</span></span>
+<span id="cb15-79"><a href="#cb15-79" tabindex="-1"></a><span class="co">#&gt; 78  S18         E4     11     11  2  3 19  36 #1400FF7F</span></span>
+<span id="cb15-80"><a href="#cb15-80" tabindex="-1"></a><span class="co">#&gt; 79  S19         E4     14     14  2  2 20  25 #5200FF7F</span></span>
+<span id="cb15-81"><a href="#cb15-81" tabindex="-1"></a><span class="co">#&gt; 80  S20         E4     11     11  2  1 16  11 #8F00FF7F</span></span>
+<span id="cb15-82"><a href="#cb15-82" tabindex="-1"></a><span class="co">#&gt; 81   S1         E5     11     11  1 20 11 192 #FF00007F</span></span>
+<span id="cb15-83"><a href="#cb15-83" tabindex="-1"></a><span class="co">#&gt; 82   S2         E5     10     10  1 19 10 181 #FF3D007F</span></span>
+<span id="cb15-84"><a href="#cb15-84" tabindex="-1"></a><span class="co">#&gt; 83   S3         E5     11     11  1 18 11 171 #FF7A007F</span></span>
+<span id="cb15-85"><a href="#cb15-85" tabindex="-1"></a><span class="co">#&gt; 84   S4         E5     17     17  1 17 17 160 #FFB8007F</span></span>
+<span id="cb15-86"><a href="#cb15-86" tabindex="-1"></a><span class="co">#&gt; 85   S5         E5     12     12  1 16 12 143 #FFF5007F</span></span>
+<span id="cb15-87"><a href="#cb15-87" tabindex="-1"></a><span class="co">#&gt; 86   S6         E5      9      9  1 15  9 131 #CCFF007F</span></span>
+<span id="cb15-88"><a href="#cb15-88" tabindex="-1"></a><span class="co">#&gt; 87   S7         E5      1      1  1 14  1 122 #8FFF007F</span></span>
+<span id="cb15-89"><a href="#cb15-89" tabindex="-1"></a><span class="co">#&gt; 88   S8         E5     11     11  1 13 11 121 #52FF007F</span></span>
+<span id="cb15-90"><a href="#cb15-90" tabindex="-1"></a><span class="co">#&gt; 89   S9         E5     18     18  1 12 18 110 #14FF007F</span></span>
+<span id="cb15-91"><a href="#cb15-91" tabindex="-1"></a><span class="co">#&gt; 90  S10         E5      6      6  1 11  6  92 #00FF297F</span></span>
+<span id="cb15-92"><a href="#cb15-92" tabindex="-1"></a><span class="co">#&gt; 91  S11         E5      9      9  1 10  9  86 #00FF667F</span></span>
+<span id="cb15-93"><a href="#cb15-93" tabindex="-1"></a><span class="co">#&gt; 92  S12         E5     18     18  1  9 18  77 #00FFA37F</span></span>
+<span id="cb15-94"><a href="#cb15-94" tabindex="-1"></a><span class="co">#&gt; 93  S13         E5     16     16  1  8 16  59 #00FFE07F</span></span>
+<span id="cb15-95"><a href="#cb15-95" tabindex="-1"></a><span class="co">#&gt; 94  S14         E5      3      3  1  7  3  43 #00E0FF7F</span></span>
+<span id="cb15-96"><a href="#cb15-96" tabindex="-1"></a><span class="co">#&gt; 95  S15         E5     18     18  1  6 18  40 #00A3FF7F</span></span>
+<span id="cb15-97"><a href="#cb15-97" tabindex="-1"></a><span class="co">#&gt; 96  S16         E5      2      2  1  5  2  22 #0066FF7F</span></span>
+<span id="cb15-98"><a href="#cb15-98" tabindex="-1"></a><span class="co">#&gt; 97  S17         E5      1      1  1  4  1  20 #0029FF7F</span></span>
+<span id="cb15-99"><a href="#cb15-99" tabindex="-1"></a><span class="co">#&gt; 98  S18         E5      8      8  1  3  8  19 #1400FF7F</span></span>
+<span id="cb15-100"><a href="#cb15-100" tabindex="-1"></a><span class="co">#&gt; 99  S19         E5      6      6  1  2  6  11 #5200FF7F</span></span>
+<span id="cb15-101"><a href="#cb15-101" tabindex="-1"></a><span class="co">#&gt; 100 S20         E5      5      5  1  1  5   5 #8F00FF7F</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::chord_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_38-circos_heatmap">3.8 circos_heatmap<a class="anchor" aria-label="anchor" href="#id_38-circos_heatmap"></a>
+</h3>
+<p>Circos heatmap plot for visualizing gene expressing in multiple samples.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load circos_heatmap_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">circos_heatmap_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run circos_heatmap plot function</span></span>
+<span><span class="fu"><a href="reference/circos_heatmap.html">circos_heatmap</a></span><span class="op">(</span></span>
+<span>  <span class="va">circos_heatmap_data</span>,</span>
+<span>  low_color <span class="op">=</span> <span class="st">"#0000ff"</span>,</span>
+<span>  mid_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
+<span>  high_color <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
+<span>  gap_size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  cluster_method <span class="op">=</span> <span class="st">"complete"</span>,</span>
+<span>  distance_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
+<span>  dend_height <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  rowname_size <span class="op">=</span> <span class="fl">0.8</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-circos_heatmap-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/circos_heatmap.html">?TOmicsVis::circos_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::circos_heatmap</span></span></code></pre></div>
 </div>
 </div>
 </div>

@@ -62,6 +62,8 @@ reference:
   - violin_plot
   - quantile_plot
   - venn_plot
+  - chord_plot
+  - circos_heatmap
 
 - title: Example datasets in TOmicsVis
   desc: >
@@ -73,3 +75,5 @@ reference:
   - box_data
   - quantile_data
   - venn_data
+  - chord_data
+  - circos_heatmap_data

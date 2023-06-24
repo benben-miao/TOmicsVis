@@ -1,3 +1,20 @@
+## TOmicsVis 1.0.5
+
+**Date**: 2023-06-24
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::chord_data` example dataset.
+2. New `?TOmicsVis::chord_plot` plot function.
+3. New `?TOmicsVis::circos_heatmap_data` example dataset.
+4. New `?TOmicsVis::circos_heatmap` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Set function invisible().
+
+---
+
 ## TOmicsVis 1.0.4
 
 **Date**: 2023-06-23

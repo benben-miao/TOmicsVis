@@ -201,3 +201,57 @@ Get help using command `?TOmicsVis::venn_plot` or reference page [https://benben
 # Get help with command in R console.
 # ?TOmicsVis::venn_plot
 ```
+
+### 3.7 chord_plot
+Chord plot for visualizing the relationships of pathways and genes.
+```{r chord_plot, warning=FALSE}
+# 1. Load chord_data example datasets
+data(chord_data)
+
+# 2. Run chord_plot plot function
+chord_plot(
+  chord_data,
+  multi_colors = "RainbowColors",
+  color_alpha = 0.5,
+  link_visible = TRUE,
+  link_dir = -1,
+  link_type = "diffHeight",
+  sector_scale = "Origin",
+  width_circle = 3,
+  dist_name = 3,
+  label_dir = "Vertical",
+  dist_label = 0.3
+)
+```
+
+Get help using command `?TOmicsVis::chord_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html](https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::chord_plot
+```
+
+### 3.8 circos_heatmap
+Circos heatmap plot for visualizing gene expressing in multiple samples.
+```{r circos_heatmap, warning=FALSE}
+# 1. Load circos_heatmap_data example datasets
+data(circos_heatmap_data)
+
+# 2. Run circos_heatmap plot function
+circos_heatmap(
+  circos_heatmap_data,
+  low_color = "#0000ff",
+  mid_color = "#ffffff",
+  high_color = "#ff0000",
+  gap_size = 10,
+  cluster_method = "complete",
+  distance_method = "euclidean",
+  dend_height = 0.2,
+  rowname_size = 0.8
+)
+```
+
+Get help using command `?TOmicsVis::circos_heatmap` or reference page [https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html](https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::circos_heatmap
+```
