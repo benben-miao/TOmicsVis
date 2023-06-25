@@ -429,3 +429,80 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page
 # Get help with command in R console.
 # ?TOmicsVis::circos_heatmap
 ```
+
+### 3.9 volcano_plot
+
+Volcano plot for visualizing differentailly expressed genes.
+
+``` r
+# 1. Load deg_data example datasets
+data(deg_data)
+
+# 2. Run volcano_plot plot function
+volcano_plot(
+  deg_data,
+  log2fc_cutoff = 1,
+  pq_value = "pvalue",
+  pq_cutoff = 0.005,
+  cutoff_line = "longdash",
+  point_shape = "large_circle",
+  point_size = 1,
+  point_alpha = 0.5,
+  color_normal = "#888888",
+  color_log2fc = "#008000",
+  color_pvalue = "#0088ee",
+  color_Log2fc_p = "#ff0000",
+  label_size = 3,
+  boxed_labels = FALSE,
+  draw_connectors = FALSE,
+  legend_pos = "right"
+)
+```
+
+![](man/figures/README-volcano_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::volcano_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::volcano_plot
+```
+
+### 3.10 ma_plot
+
+MversusA plot for visualizing differentially expressed genes.
+
+``` r
+# 1. Load deg_data example datasets
+data(deg_data2)
+
+# 2. Run volcano_plot plot function
+ma_plot(
+  deg_data2,
+  foldchange = 2,
+  fdr_value = 0.05,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
+  top_method = "fc",
+  top_num = 20,
+  label_size = 8,
+  label_box = TRUE,
+  title = "Group1 -versus- Group2",
+  xlab = "Log2 mean expression",
+  ylab = "Log2 fold change",
+  ggTheme = "theme_minimal"
+)
+```
+
+![](man/figures/README-ma_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::ma_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::ma_plot
+```

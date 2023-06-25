@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -483,6 +483,71 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::circos_heatmap</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_39-volcano_plot">3.9 volcano_plot<a class="anchor" aria-label="anchor" href="#id_39-volcano_plot"></a>
+</h3>
+<p>Volcano plot for visualizing differentailly expressed genes.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load deg_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run volcano_plot plot function</span></span>
+<span><span class="fu"><a href="reference/volcano_plot.html">volcano_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">deg_data</span>,</span>
+<span>  log2fc_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  pq_value <span class="op">=</span> <span class="st">"pvalue"</span>,</span>
+<span>  pq_cutoff <span class="op">=</span> <span class="fl">0.005</span>,</span>
+<span>  cutoff_line <span class="op">=</span> <span class="st">"longdash"</span>,</span>
+<span>  point_shape <span class="op">=</span> <span class="st">"large_circle"</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  point_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  color_normal <span class="op">=</span> <span class="st">"#888888"</span>,</span>
+<span>  color_log2fc <span class="op">=</span> <span class="st">"#008000"</span>,</span>
+<span>  color_pvalue <span class="op">=</span> <span class="st">"#0088ee"</span>,</span>
+<span>  color_Log2fc_p <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  boxed_labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  draw_connectors <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-volcano_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/volcano_plot.html">?TOmicsVis::volcano_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::volcano_plot</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_310-ma_plot">3.10 ma_plot<a class="anchor" aria-label="anchor" href="#id_310-ma_plot"></a>
+</h3>
+<p>MversusA plot for visualizing differentially expressed genes.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load deg_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run volcano_plot plot function</span></span>
+<span><span class="fu"><a href="reference/ma_plot.html">ma_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">deg_data2</span>,</span>
+<span>  foldchange <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  fdr_value <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  color_up <span class="op">=</span> <span class="st">"#FF0000"</span>,</span>
+<span>  color_down <span class="op">=</span> <span class="st">"#008800"</span>,</span>
+<span>  color_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  top_method <span class="op">=</span> <span class="st">"fc"</span>,</span>
+<span>  top_num <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">8</span>,</span>
+<span>  label_box <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Group1 -versus- Group2"</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Log2 mean expression"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Log2 fold change"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_minimal"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-ma_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/ma_plot.html">?TOmicsVis::ma_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::ma_plot</span></span></code></pre></div>
 </div>
 </div>
 </div>

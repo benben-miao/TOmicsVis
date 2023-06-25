@@ -64,6 +64,8 @@ reference:
   - venn_plot
   - chord_plot
   - circos_heatmap
+  - volcano_plot
+  - ma_plot
 
 - title: Example datasets in TOmicsVis
   desc: >
@@ -77,3 +79,5 @@ reference:
   - venn_data
   - chord_data
   - circos_heatmap_data
+  - deg_data
+  - deg_data2

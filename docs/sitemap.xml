@@ -52,10 +52,19 @@
     <loc>https://github.com/benben-miao/reference/corr_heatmap.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/reference/deg_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/deg_data2.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/reference/gene_exp.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/ma_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/pca_group_sample.html</loc>
@@ -80,5 +89,8 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/violin_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/volcano_plot.html</loc>
   </url>
 </urlset>
