@@ -52,24 +52,44 @@ home:
     href: https://bioscitools.podia.com
 
 reference:
-- title: Plot types in TOmicsVis
-  desc: >
-    Plot types in TOmicsVis.
+- title: ①Samples Statistics
+  desc: Statistical sample outliers, correlation among samples, distance among samples, etc.
   contents:
+  - quantile_plot
   - corr_heatmap
   - pca_plot
+
+- title: ②Traits Analysis
+  desc: Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.
+  contents:
   - box_plot
   - violin_plot
-  - quantile_plot
+
+- title: ③Differential Expression Analyais
+  desc: Analysis and visualization based on gene expression data and differentially expressed genes.
+  contents:
   - venn_plot
-  - chord_plot
   - circos_heatmap
   - volcano_plot
   - ma_plot
 
+- title: ④Advanced Analysis
+  desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
+  contents:
+  - trend_plot
+
+- title: ⑤GO and KEGG Enrichment
+  desc: GO and KEGG enrichment analysis and visualization.
+  contents:
+  - chord_plot
+
+- title: ⑥Tables Operations
+  desc: Quickly manipulate specific Transcriptome data structures.
+  contents:
+  - table_split
+
 - title: Example datasets in TOmicsVis
-  desc: >
-    Example datasets in TOmicsVis.
+  desc: Example datasets in TOmicsVis.
   contents:
   - gene_exp
   - pca_sample_gene
@@ -81,3 +101,5 @@ reference:
   - circos_heatmap_data
   - deg_data
   - deg_data2
+  - trend_data
+  - table_split_data

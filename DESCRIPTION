@@ -14,7 +14,7 @@ RoxygenNote: 7.2.1
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5)
-Imports: stats, utils, grid, graphics, grDevices, ggplot2, ggsci, ggpubr, ggcorrplot, ggforce, vegan, venn, circlize, randomcoloR, ComplexHeatmap, EnhancedVolcano
+Imports: stats, utils, grid, graphics, grDevices, ggplot2, ggsci, ggpubr, ggcorrplot, ggforce, vegan, venn, circlize, randomcoloR, ComplexHeatmap, EnhancedVolcano, GGally, reshape2
 Suggests: 
     knitr,
     rmarkdown

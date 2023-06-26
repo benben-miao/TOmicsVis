@@ -1,3 +1,20 @@
+## TOmicsVis 1.0.7
+
+**Date**: 2023-06-26
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::trend_data` example dataset.
+2. New `?TOmicsVis::trend_plot` plot function.
+3. New `?TOmicsVis::table_split_data` example dataset.
+4. New `?TOmicsVis::table_split` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.0.6
 
 **Date**: 2023-06-25

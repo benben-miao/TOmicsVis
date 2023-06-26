@@ -37,7 +37,36 @@ library(ggplot2)
 ```
 
 ## 3. Usage cases
-### 3.1 corr_heatmap
+### 3.1 Samples Statistics
+#### 3.1.1 quantile_plot
+Quantile plot for visualizing data distribution.
+```{r quantile_plot, warning=FALSE}
+# 1. Load box_data example datasets
+data(quantile_data)
+
+# 2. Run quantile_plot plot function
+quantile_plot(
+  quantile_data,
+  my_shape = "fill_circle",
+  point_size = 1.5,
+  conf_int = TRUE,
+  conf_level = 0.95,
+  split_panel = "One_Panel",
+  legend_pos = "right",
+  legend_dir = "vertical",
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.75,
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::quantile_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html](https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::quantile_plot
+```
+
+#### 3.1.2 corr_heatmap
 Correlation Heatmap for samples/groups based on Pearson algorithm.
 ```{r corr_heatmap}
 # 1. Load gene_exp example dataset
@@ -65,7 +94,7 @@ Get help using command `?TOmicsVis::corr_heatmap` or reference page [https://ben
 # ?TOmicsVis::corr_heatmap
 ```
 
-### 3.2 pca_plot
+#### 3.1.3 pca_plot
 PCA dimensional reduction visualization for RNA-Seq.
 ```{r pca_plot}
 # 1. Load pca_sample_gene and pca_group_sample example datasets
@@ -91,7 +120,8 @@ Get help using command `?TOmicsVis::pca_plot` or reference page [https://benben-
 # ?TOmicsVis::pca_plot
 ```
 
-### 3.3 box_plot
+### 3.2 Traits Analysis
+#### 3.2.1 box_plot
 Box plot support two levels and multiple groups with P value.
 ```{r box_plot, warning=FALSE}
 # 1. Load box_data example datasets
@@ -121,7 +151,7 @@ Get help using command `?TOmicsVis::box_plot` or reference page [https://benben-
 # ?TOmicsVis::box_plot
 ```
 
-### 3.4 violin_plot
+#### 3.2.2 violin_plot
 Violin plot support two levels and multiple groups with P value.
 ```{r violin_plot, warning=FALSE}
 # 1. Load box_data example datasets
@@ -152,35 +182,8 @@ Get help using command `?TOmicsVis::violin_plot` or reference page [https://benb
 # ?TOmicsVis::violin_plot
 ```
 
-### 3.5 quantile_plot
-Quantile plot for visualizing data distribution.
-```{r quantile_plot, warning=FALSE}
-# 1. Load box_data example datasets
-data(quantile_data)
-
-# 2. Run quantile_plot plot function
-quantile_plot(
-  quantile_data,
-  my_shape = "fill_circle",
-  point_size = 1.5,
-  conf_int = TRUE,
-  conf_level = 0.95,
-  split_panel = "One_Panel",
-  legend_pos = "right",
-  legend_dir = "vertical",
-  sci_fill_color = "Sci_AAAS",
-  sci_color_alpha = 0.75,
-  ggTheme = "theme_light"
-)
-```
-
-Get help using command `?TOmicsVis::quantile_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html](https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html).
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::quantile_plot
-```
-
-### 3.6 venn_plot
+### 3.3 Differential Expression Analyais
+#### 3.3.1 venn_plot
 Venn plot for stat common and unique gene among multiple sets.
 ```{r venn_plot, warning=FALSE}
 # 1. Load venn_data example datasets
@@ -202,35 +205,7 @@ Get help using command `?TOmicsVis::venn_plot` or reference page [https://benben
 # ?TOmicsVis::venn_plot
 ```
 
-### 3.7 chord_plot
-Chord plot for visualizing the relationships of pathways and genes.
-```{r chord_plot, warning=FALSE}
-# 1. Load chord_data example datasets
-data(chord_data)
-
-# 2. Run chord_plot plot function
-chord_plot(
-  chord_data,
-  multi_colors = "RainbowColors",
-  color_alpha = 0.5,
-  link_visible = TRUE,
-  link_dir = -1,
-  link_type = "diffHeight",
-  sector_scale = "Origin",
-  width_circle = 3,
-  dist_name = 3,
-  label_dir = "Vertical",
-  dist_label = 0.3
-)
-```
-
-Get help using command `?TOmicsVis::chord_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html](https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html).
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::chord_plot
-```
-
-### 3.8 circos_heatmap
+#### 3.3.2 circos_heatmap
 Circos heatmap plot for visualizing gene expressing in multiple samples.
 ```{r circos_heatmap, warning=FALSE}
 # 1. Load circos_heatmap_data example datasets
@@ -256,7 +231,7 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page [https://b
 # ?TOmicsVis::circos_heatmap
 ```
 
-### 3.9 volcano_plot
+#### 3.3.3 volcano_plot
 Volcano plot for visualizing differentailly expressed genes.
 ```{r volcano_plot, warning=FALSE}
 # 1. Load deg_data example datasets
@@ -289,7 +264,7 @@ Get help using command `?TOmicsVis::volcano_plot` or reference page [https://ben
 # ?TOmicsVis::volcano_plot
 ```
 
-### 3.10 ma_plot
+#### 3.3.4 ma_plot
 MversusA plot for visualizing differentially expressed genes.
 ```{r ma_plot, warning=FALSE}
 # 1. Load deg_data example datasets
@@ -319,4 +294,88 @@ Get help using command `?TOmicsVis::ma_plot` or reference page [https://benben-m
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::ma_plot
+```
+
+### 3.4 Advanced Analysis
+#### 3.4.1 trend_plot
+Trend plot for visualizing gene expression trend profile in multiple traits.
+```{r trend_plot, warning=FALSE}
+# 1. Load chord_data example datasets
+data(trend_data)
+
+# 2. Run trend_plot plot function
+trend_plot(
+  trend_data,
+  scale_method = "globalminmax",
+  miss_value = "exclude",
+  line_alpha = 0.5,
+  show_points = TRUE,
+  show_boxplot = TRUE,
+  num_column = 2,
+  xlab = "Traits",
+  ylab = "Genes Expression",
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  sci_color_alpha = 0.8,
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::trend_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html](https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::trend_plot
+```
+
+### 3.5 GO and KEGG Enrichment
+#### 3.5.1 chord_plot
+Chord plot for visualizing the relationships of pathways and genes.
+```{r chord_plot, warning=FALSE, echo=FALSE}
+# 1. Load chord_data example datasets
+data(chord_data)
+
+# 2. Run chord_plot plot function
+chord_plot(
+  chord_data,
+  multi_colors = "RainbowColors",
+  color_alpha = 0.5,
+  link_visible = TRUE,
+  link_dir = -1,
+  link_type = "diffHeight",
+  sector_scale = "Origin",
+  width_circle = 3,
+  dist_name = 3,
+  label_dir = "Vertical",
+  dist_label = 0.3
+)
+```
+
+Get help using command `?TOmicsVis::chord_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html](https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::chord_plot
+```
+
+### 3.6 Tables Operations
+#### 3.6.1 table_split
+Table split used for splitting a grouped column to multiple columns.
+```{r table_split, warning=FALSE}
+# 1. Load table_split_data example datasets
+data(table_split_data)
+head(table_split_data)
+
+# 2. Run table_split plot function
+res <- table_split(table_split_data, 
+                  grouped_var = "variable", 
+                  miss_drop = TRUE
+                  )
+head(res)
+```
+
+Get help using command `?TOmicsVis::table_split` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_split.html](https://benben-miao.github.io/TOmicsVis/reference/table_split.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::table_split
 ```

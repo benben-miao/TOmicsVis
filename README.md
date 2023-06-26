@@ -23,6 +23,9 @@ Tools](https://github.com/BioSciTools/BioSciTools.github.io)
 # install.packages("devtools")
 # devtools::install_github("benben-miao/TOmicsVis")
 library(TOmicsVis)
+#> Registered S3 method overwritten by 'GGally':
+#>   method from   
+#>   +.gg   ggplot2
 
 # 2. Extra package
 # install.packages("ggplot2")
@@ -31,7 +34,43 @@ library(ggplot2)
 
 ## 3. Usage cases
 
-### 3.1 corr_heatmap
+### 3.1 Samples Statistics
+
+#### 3.1.1 quantile_plot
+
+Quantile plot for visualizing data distribution.
+
+``` r
+# 1. Load box_data example datasets
+data(quantile_data)
+
+# 2. Run quantile_plot plot function
+quantile_plot(
+  quantile_data,
+  my_shape = "fill_circle",
+  point_size = 1.5,
+  conf_int = TRUE,
+  conf_level = 0.95,
+  split_panel = "One_Panel",
+  legend_pos = "right",
+  legend_dir = "vertical",
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.75,
+  ggTheme = "theme_light"
+)
+```
+
+![](man/figures/README-quantile_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::quantile_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::quantile_plot
+```
+
+#### 3.1.2 corr_heatmap
 
 Correlation Heatmap for samples/groups based on Pearson algorithm.
 
@@ -81,7 +120,7 @@ Get help using command `?TOmicsVis::corr_heatmap` or reference page
 # ?TOmicsVis::corr_heatmap
 ```
 
-### 3.2 pca_plot
+#### 3.1.3 pca_plot
 
 PCA dimensional reduction visualization for RNA-Seq.
 
@@ -113,7 +152,9 @@ Get help using command `?TOmicsVis::pca_plot` or reference page
 # ?TOmicsVis::pca_plot
 ```
 
-### 3.3 box_plot
+### 3.2 Traits Analysis
+
+#### 3.2.1 box_plot
 
 Box plot support two levels and multiple groups with P value.
 
@@ -163,7 +204,7 @@ Get help using command `?TOmicsVis::box_plot` or reference page
 # ?TOmicsVis::box_plot
 ```
 
-### 3.4 violin_plot
+#### 3.2.2 violin_plot
 
 Violin plot support two levels and multiple groups with P value.
 
@@ -200,41 +241,9 @@ Get help using command `?TOmicsVis::violin_plot` or reference page
 # ?TOmicsVis::violin_plot
 ```
 
-### 3.5 quantile_plot
+### 3.3 Differential Expression Analyais
 
-Quantile plot for visualizing data distribution.
-
-``` r
-# 1. Load box_data example datasets
-data(quantile_data)
-
-# 2. Run quantile_plot plot function
-quantile_plot(
-  quantile_data,
-  my_shape = "fill_circle",
-  point_size = 1.5,
-  conf_int = TRUE,
-  conf_level = 0.95,
-  split_panel = "One_Panel",
-  legend_pos = "right",
-  legend_dir = "vertical",
-  sci_fill_color = "Sci_AAAS",
-  sci_color_alpha = 0.75,
-  ggTheme = "theme_light"
-)
-```
-
-![](man/figures/README-quantile_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::quantile_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::quantile_plot
-```
-
-### 3.6 venn_plot
+#### 3.3.1 venn_plot
 
 Venn plot for stat common and unique gene among multiple sets.
 
@@ -262,30 +271,161 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 # ?TOmicsVis::venn_plot
 ```
 
-### 3.7 chord_plot
+#### 3.3.2 circos_heatmap
 
-Chord plot for visualizing the relationships of pathways and genes.
+Circos heatmap plot for visualizing gene expressing in multiple samples.
 
 ``` r
-# 1. Load chord_data example datasets
-data(chord_data)
+# 1. Load circos_heatmap_data example datasets
+data(circos_heatmap_data)
 
-# 2. Run chord_plot plot function
-chord_plot(
-  chord_data,
-  multi_colors = "RainbowColors",
-  color_alpha = 0.5,
-  link_visible = TRUE,
-  link_dir = -1,
-  link_type = "diffHeight",
-  sector_scale = "Origin",
-  width_circle = 3,
-  dist_name = 3,
-  label_dir = "Vertical",
-  dist_label = 0.3
+# 2. Run circos_heatmap plot function
+circos_heatmap(
+  circos_heatmap_data,
+  low_color = "#0000ff",
+  mid_color = "#ffffff",
+  high_color = "#ff0000",
+  gap_size = 10,
+  cluster_method = "complete",
+  distance_method = "euclidean",
+  dend_height = 0.2,
+  rowname_size = 0.8
 )
 ```
 
+![](man/figures/README-circos_heatmap-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::circos_heatmap` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::circos_heatmap
+```
+
+#### 3.3.3 volcano_plot
+
+Volcano plot for visualizing differentailly expressed genes.
+
+``` r
+# 1. Load deg_data example datasets
+data(deg_data)
+
+# 2. Run volcano_plot plot function
+volcano_plot(
+  deg_data,
+  log2fc_cutoff = 1,
+  pq_value = "pvalue",
+  pq_cutoff = 0.005,
+  cutoff_line = "longdash",
+  point_shape = "large_circle",
+  point_size = 1,
+  point_alpha = 0.5,
+  color_normal = "#888888",
+  color_log2fc = "#008000",
+  color_pvalue = "#0088ee",
+  color_Log2fc_p = "#ff0000",
+  label_size = 3,
+  boxed_labels = FALSE,
+  draw_connectors = FALSE,
+  legend_pos = "right"
+)
+```
+
+![](man/figures/README-volcano_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::volcano_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::volcano_plot
+```
+
+#### 3.3.4 ma_plot
+
+MversusA plot for visualizing differentially expressed genes.
+
+``` r
+# 1. Load deg_data example datasets
+data(deg_data2)
+
+# 2. Run volcano_plot plot function
+ma_plot(
+  deg_data2,
+  foldchange = 2,
+  fdr_value = 0.05,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
+  top_method = "fc",
+  top_num = 20,
+  label_size = 8,
+  label_box = TRUE,
+  title = "Group1 -versus- Group2",
+  xlab = "Log2 mean expression",
+  ylab = "Log2 fold change",
+  ggTheme = "theme_minimal"
+)
+```
+
+![](man/figures/README-ma_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::ma_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::ma_plot
+```
+
+### 3.4 Advanced Analysis
+
+#### 3.4.1 trend_plot
+
+Trend plot for visualizing gene expression trend profile in multiple
+traits.
+
+``` r
+# 1. Load chord_data example datasets
+data(trend_data)
+
+# 2. Run trend_plot plot function
+trend_plot(
+  trend_data,
+  scale_method = "globalminmax",
+  miss_value = "exclude",
+  line_alpha = 0.5,
+  show_points = TRUE,
+  show_boxplot = TRUE,
+  num_column = 2,
+  xlab = "Traits",
+  ylab = "Genes Expression",
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  sci_color_alpha = 0.8,
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+```
+
+![](man/figures/README-trend_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::trend_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::trend_plot
+```
+
+### 3.5 GO and KEGG Enrichment
+
+#### 3.5.1 chord_plot
+
+Chord plot for visualizing the relationships of pathways and genes.
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn         cn value1 value2 o1 o2 x1  x2       col
@@ -398,111 +538,43 @@ Get help using command `?TOmicsVis::chord_plot` or reference page
 # ?TOmicsVis::chord_plot
 ```
 
-### 3.8 circos_heatmap
+### 3.6 Tables Operations
 
-Circos heatmap plot for visualizing gene expressing in multiple samples.
+#### 3.6.1 table_split
+
+Table split used for splitting a grouped column to multiple columns.
 
 ``` r
-# 1. Load circos_heatmap_data example datasets
-data(circos_heatmap_data)
+# 1. Load table_split_data example datasets
+data(table_split_data)
+head(table_split_data)
+#>   month day variable value
+#> 1     5   1    ozone    41
+#> 2     5   2    ozone    36
+#> 3     5   3    ozone    12
+#> 4     5   4    ozone    18
+#> 5     5   5    ozone    NA
+#> 6     5   6    ozone    28
 
-# 2. Run circos_heatmap plot function
-circos_heatmap(
-  circos_heatmap_data,
-  low_color = "#0000ff",
-  mid_color = "#ffffff",
-  high_color = "#ff0000",
-  gap_size = 10,
-  cluster_method = "complete",
-  distance_method = "euclidean",
-  dend_height = 0.2,
-  rowname_size = 0.8
-)
+# 2. Run table_split plot function
+res <- table_split(table_split_data, 
+                  grouped_var = "variable", 
+                  miss_drop = TRUE
+                  )
+head(res)
+#>   month day ozone solar.r temp wind
+#> 1     5   1    41     190   67  7.4
+#> 2     5   2    36     118   72  8.0
+#> 3     5   3    12     149   74 12.6
+#> 4     5   4    18     313   62 11.5
+#> 5     5   5    NA      NA   56 14.3
+#> 6     5   6    28      NA   66 14.9
 ```
 
-![](man/figures/README-circos_heatmap-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::circos_heatmap` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
+Get help using command `?TOmicsVis::table_split` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/table_split.html>.
 
 ``` r
 # Get help with command in R console.
-# ?TOmicsVis::circos_heatmap
-```
-
-### 3.9 volcano_plot
-
-Volcano plot for visualizing differentailly expressed genes.
-
-``` r
-# 1. Load deg_data example datasets
-data(deg_data)
-
-# 2. Run volcano_plot plot function
-volcano_plot(
-  deg_data,
-  log2fc_cutoff = 1,
-  pq_value = "pvalue",
-  pq_cutoff = 0.005,
-  cutoff_line = "longdash",
-  point_shape = "large_circle",
-  point_size = 1,
-  point_alpha = 0.5,
-  color_normal = "#888888",
-  color_log2fc = "#008000",
-  color_pvalue = "#0088ee",
-  color_Log2fc_p = "#ff0000",
-  label_size = 3,
-  boxed_labels = FALSE,
-  draw_connectors = FALSE,
-  legend_pos = "right"
-)
-```
-
-![](man/figures/README-volcano_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::volcano_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::volcano_plot
-```
-
-### 3.10 ma_plot
-
-MversusA plot for visualizing differentially expressed genes.
-
-``` r
-# 1. Load deg_data example datasets
-data(deg_data2)
-
-# 2. Run volcano_plot plot function
-ma_plot(
-  deg_data2,
-  foldchange = 2,
-  fdr_value = 0.05,
-  point_size = 0.5,
-  color_up = "#FF0000",
-  color_down = "#008800",
-  color_alpha = 0.5,
-  top_method = "fc",
-  top_num = 20,
-  label_size = 8,
-  label_box = TRUE,
-  title = "Group1 -versus- Group2",
-  xlab = "Log2 mean expression",
-  ylab = "Log2 fold change",
-  ggTheme = "theme_minimal"
-)
-```
-
-![](man/figures/README-ma_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::ma_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::ma_plot
+# ?TOmicsVis::table_split
 ```
