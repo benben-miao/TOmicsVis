@@ -1,3 +1,20 @@
+## TOmicsVis 1.0.8
+
+**Date**: 2023-06-26
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::survival_data` example dataset.
+2. New `?TOmicsVis::survival_plot` plot function.
+3. New `?TOmicsVis::tsne_data` example dataset.
+4. New `?TOmicsVis::tsne_plot` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.0.7
 
 **Date**: 2023-06-26
@@ -11,7 +28,7 @@
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 
-1. None.
+1. Fixed `_pkgdown.yml` categories and functions.
 
 ---
 

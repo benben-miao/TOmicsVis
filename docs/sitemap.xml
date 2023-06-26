@@ -82,6 +82,12 @@
     <loc>https://github.com/benben-miao/reference/quantile_plot.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/reference/survival_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/survival_plot.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/reference/table_split.html</loc>
   </url>
   <url>
@@ -92,6 +98,12 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/trend_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/tsne_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/tsne_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/venn_data.html</loc>

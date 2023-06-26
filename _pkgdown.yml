@@ -64,6 +64,8 @@ reference:
   contents:
   - box_plot
   - violin_plot
+  - survival_plot
+  - tsne_plot
 
 - title: ③Differential Expression Analyais
   desc: Analysis and visualization based on gene expression data and differentially expressed genes.
@@ -103,3 +105,5 @@ reference:
   - deg_data2
   - trend_data
   - table_split_data
+  - survival_data
+  - tsne_data
