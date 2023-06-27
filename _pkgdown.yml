@@ -89,6 +89,8 @@ reference:
   desc: Quickly manipulate specific Transcriptome data structures.
   contents:
   - table_split
+  - table_merge
+  - table_filter
 
 - title: Example datasets in TOmicsVis
   desc: Example datasets in TOmicsVis.
@@ -107,3 +109,5 @@ reference:
   - table_split_data
   - survival_data
   - tsne_data
+  - table_merge_data
+  - table_filter_data

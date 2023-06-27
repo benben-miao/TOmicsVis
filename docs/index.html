@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,6 +129,8 @@
 <span><span class="co">#&gt; Registered S3 method overwritten by 'GGally':</span></span>
 <span><span class="co">#&gt;   method from   </span></span>
 <span><span class="co">#&gt;   +.gg   ggplot2</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span></span>
+<span><span class="co">#&gt; loading 'TOmicsVis'</span></span>
 <span></span>
 <span><span class="co"># 2. Extra package</span></span>
 <span><span class="co"># install.packages("ggplot2")</span></span>
@@ -680,6 +682,86 @@
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_split</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_362-table_merge">3.6.2 table_merge<a class="anchor" aria-label="anchor" href="#id_362-table_merge"></a>
+</h4>
+<p>Table merge used to merge multiple variables to on variable.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span></span>
+<span><span class="co">#&gt; 1    41     190  7.4   67     5   1</span></span>
+<span><span class="co">#&gt; 2    36     118  8.0   72     5   2</span></span>
+<span><span class="co">#&gt; 3    12     149 12.6   74     5   3</span></span>
+<span><span class="co">#&gt; 4    18     313 11.5   62     5   4</span></span>
+<span><span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span></span>
+<span><span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></span>
+<span></span>
+<span><span class="co"># 2. Run function</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/table_merge.html">table_merge</a></span><span class="op">(</span></span>
+<span>  <span class="va">table_merge_data</span>,</span>
+<span>  merge_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span><span class="op">)</span>,</span>
+<span>  new_var <span class="op">=</span> <span class="st">"Variable"</span>,</span>
+<span>  new_value <span class="op">=</span> <span class="st">"Value"</span>,</span>
+<span>  na_remove <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Month Day Variable Value</span></span>
+<span><span class="co">#&gt; 1     5   1    Ozone    41</span></span>
+<span><span class="co">#&gt; 2     5   2    Ozone    36</span></span>
+<span><span class="co">#&gt; 3     5   3    Ozone    12</span></span>
+<span><span class="co">#&gt; 4     5   4    Ozone    18</span></span>
+<span><span class="co">#&gt; 5     5   5    Ozone    NA</span></span>
+<span><span class="co">#&gt; 6     5   6    Ozone    28</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/table_merge.html">?TOmicsVis::table_merge</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::table_merge</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_363-table_filter">3.6.3 table_filter<a class="anchor" aria-label="anchor" href="#id_363-table_filter"></a>
+</h4>
+<p>Table filter used to filter row by column condition.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 14</span></span>
+<span><span class="co">#&gt;   name         height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Luke Skywal…    172    77 blond   fair    blue       19   male  mascu… Tatooi…</span></span>
+<span><span class="co">#&gt; 2 C-3PO           167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…</span></span>
+<span><span class="co">#&gt; 3 R2-D2            96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  </span></span>
+<span><span class="co">#&gt; 4 Darth Vader     202   136 none    white   yellow     41.9 male  mascu… Tatooi…</span></span>
+<span><span class="co">#&gt; 5 Leia Organa     150    49 brown   light   brown      19   fema… femin… Aldera…</span></span>
+<span><span class="co">#&gt; 6 Owen Lars       178   120 brown,… light   blue       52   male  mascu… Tatooi…</span></span>
+<span><span class="co">#&gt; # … with 4 more variables: species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   starships &lt;list&gt;, and abbreviated variable names ¹​hair_color, ²​skin_color,</span></span>
+<span><span class="co">#&gt; #   ³​eye_color, ⁴​birth_year, ⁵​homeworld</span></span>
+<span></span>
+<span><span class="co"># 2. Run function</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/table_filter.html">table_filter</a></span><span class="op">(</span><span class="va">table_filter_data</span>, </span>
+<span>                    <span class="va">height</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">&amp;</span> <span class="va">eye_color</span> <span class="op">==</span> <span class="st">"black"</span></span>
+<span>                    <span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 14</span></span>
+<span><span class="co">#&gt;   name      height  mass hair_color skin_…¹ eye_c…² birth…³ sex   gender homew…⁴</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Greedo       173    74 &lt;NA&gt;       green   black        44 male  mascu… Rodia  </span></span>
+<span><span class="co">#&gt; 2 Nien Nunb    160    68 none       grey    black        NA male  mascu… Sullust</span></span>
+<span><span class="co">#&gt; 3 Gasgano      122    NA none       white,… black        NA male  mascu… Troiken</span></span>
+<span><span class="co">#&gt; 4 Kit Fisto    196    87 none       green   black        NA male  mascu… Glee A…</span></span>
+<span><span class="co">#&gt; 5 Plo Koon     188    80 none       orange  black        22 male  mascu… Dorin  </span></span>
+<span><span class="co">#&gt; 6 Lama Su      229    88 none       grey    black        NA male  mascu… Kamino </span></span>
+<span><span class="co">#&gt; # … with 4 more variables: species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   starships &lt;list&gt;, and abbreviated variable names ¹​skin_color, ²​eye_color,</span></span>
+<span><span class="co">#&gt; #   ³​birth_year, ⁴​homeworld</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/table_filter.html">?TOmicsVis::table_filter</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::table_filter</span></span></code></pre></div>
 </div>
 </div>
 </div>

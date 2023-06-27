@@ -26,6 +26,8 @@ library(TOmicsVis)
 #> Registered S3 method overwritten by 'GGally':
 #>   method from   
 #>   +.gg   ggplot2
+#> Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when
+#> loading 'TOmicsVis'
 
 # 2. Extra package
 # install.packages("ggplot2")
@@ -648,4 +650,94 @@ Get help using command `?TOmicsVis::table_split` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::table_split
+```
+
+#### 3.6.2 table_merge
+
+Table merge used to merge multiple variables to on variable.
+
+``` r
+# 1. Load example datasets
+data(table_merge_data)
+head(table_merge_data)
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    41     190  7.4   67     5   1
+#> 2    36     118  8.0   72     5   2
+#> 3    12     149 12.6   74     5   3
+#> 4    18     313 11.5   62     5   4
+#> 5    NA      NA 14.3   56     5   5
+#> 6    28      NA 14.9   66     5   6
+
+# 2. Run function
+res <- table_merge(
+  table_merge_data,
+  merge_vars = c("Ozone", "Solar.R", "Wind", "Temp"),
+  new_var = "Variable",
+  new_value = "Value",
+  na_remove = FALSE
+)
+head(res)
+#>   Month Day Variable Value
+#> 1     5   1    Ozone    41
+#> 2     5   2    Ozone    36
+#> 3     5   3    Ozone    12
+#> 4     5   4    Ozone    18
+#> 5     5   5    Ozone    NA
+#> 6     5   6    Ozone    28
+```
+
+Get help using command `?TOmicsVis::table_merge` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/table_merge.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::table_merge
+```
+
+#### 3.6.3 table_filter
+
+Table filter used to filter row by column condition.
+
+``` r
+# 1. Load example datasets
+data(table_filter_data)
+head(table_filter_data)
+#> # A tibble: 6 × 14
+#>   name         height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+#>   <chr>         <int> <dbl> <chr>   <chr>   <chr>     <dbl> <chr> <chr>  <chr>  
+#> 1 Luke Skywal…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
+#> 2 C-3PO           167    75 <NA>    gold    yellow    112   none  mascu… Tatooi…
+#> 3 R2-D2            96    32 <NA>    white,… red        33   none  mascu… Naboo  
+#> 4 Darth Vader     202   136 none    white   yellow     41.9 male  mascu… Tatooi…
+#> 5 Leia Organa     150    49 brown   light   brown      19   fema… femin… Aldera…
+#> 6 Owen Lars       178   120 brown,… light   blue       52   male  mascu… Tatooi…
+#> # … with 4 more variables: species <chr>, films <list>, vehicles <list>,
+#> #   starships <list>, and abbreviated variable names ¹​hair_color, ²​skin_color,
+#> #   ³​eye_color, ⁴​birth_year, ⁵​homeworld
+
+# 2. Run function
+res <- table_filter(table_filter_data, 
+                    height > 100 & eye_color == "black"
+                    )
+head(res)
+#> # A tibble: 6 × 14
+#>   name      height  mass hair_color skin_…¹ eye_c…² birth…³ sex   gender homew…⁴
+#>   <chr>      <int> <dbl> <chr>      <chr>   <chr>     <dbl> <chr> <chr>  <chr>  
+#> 1 Greedo       173    74 <NA>       green   black        44 male  mascu… Rodia  
+#> 2 Nien Nunb    160    68 none       grey    black        NA male  mascu… Sullust
+#> 3 Gasgano      122    NA none       white,… black        NA male  mascu… Troiken
+#> 4 Kit Fisto    196    87 none       green   black        NA male  mascu… Glee A…
+#> 5 Plo Koon     188    80 none       orange  black        22 male  mascu… Dorin  
+#> 6 Lama Su      229    88 none       grey    black        NA male  mascu… Kamino 
+#> # … with 4 more variables: species <chr>, films <list>, vehicles <list>,
+#> #   starships <list>, and abbreviated variable names ¹​skin_color, ²​eye_color,
+#> #   ³​birth_year, ⁴​homeworld
+```
+
+Get help using command `?TOmicsVis::table_filter` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/table_filter.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::table_filter
 ```

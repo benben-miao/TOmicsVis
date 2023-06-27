@@ -1,3 +1,20 @@
+## TOmicsVis 1.0.9
+
+**Date**: 2023-06-27
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::table_merge_data` example dataset.
+2. New `?TOmicsVis::table_merge` plot function.
+3. New `?TOmicsVis::table_filter_data` example dataset.
+4. New `?TOmicsVis::table_filter` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.0.8
 
 **Date**: 2023-06-26

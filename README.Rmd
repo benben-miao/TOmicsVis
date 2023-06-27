@@ -438,3 +438,47 @@ Get help using command `?TOmicsVis::table_split` or reference page [https://benb
 # Get help with command in R console.
 # ?TOmicsVis::table_split
 ```
+
+#### 3.6.2 table_merge
+Table merge used to merge multiple variables to on variable.
+```{r table_merge, warning=FALSE}
+# 1. Load example datasets
+data(table_merge_data)
+head(table_merge_data)
+
+# 2. Run function
+res <- table_merge(
+  table_merge_data,
+  merge_vars = c("Ozone", "Solar.R", "Wind", "Temp"),
+  new_var = "Variable",
+  new_value = "Value",
+  na_remove = FALSE
+)
+head(res)
+```
+
+Get help using command `?TOmicsVis::table_merge` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_merge.html](https://benben-miao.github.io/TOmicsVis/reference/table_merge.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::table_merge
+```
+
+#### 3.6.3 table_filter
+Table filter used to filter row by column condition.
+```{r table_filter, warning=FALSE}
+# 1. Load example datasets
+data(table_filter_data)
+head(table_filter_data)
+
+# 2. Run function
+res <- table_filter(table_filter_data, 
+                    height > 100 & eye_color == "black"
+                    )
+head(res)
+```
+
+Get help using command `?TOmicsVis::table_filter` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_filter.html](https://benben-miao.github.io/TOmicsVis/reference/table_filter.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::table_filter
+```
