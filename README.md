@@ -508,6 +508,27 @@ Get help using command `?TOmicsVis::trend_plot` or reference page
 #### 3.5.1 chord_plot
 
 Chord plot for visualizing the relationships of pathways and genes.
+
+``` r
+# 1. Load chord_data example datasets
+data(chord_data)
+
+# 2. Run chord_plot plot function
+chord_plot(
+  chord_data,
+  multi_colors = "RainbowColors",
+  color_alpha = 0.5,
+  link_visible = TRUE,
+  link_dir = -1,
+  link_type = "diffHeight",
+  sector_scale = "Origin",
+  width_circle = 3,
+  dist_name = 3,
+  label_dir = "Vertical",
+  dist_label = 0.3
+)
+```
+
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn         cn value1 value2 o1 o2 x1  x2       col
@@ -625,62 +646,80 @@ Get help using command `?TOmicsVis::chord_plot` or reference page
 GO enrichment analysis based on GO annotation results (None/Exist
 Reference Genome).
 
-    #>       id
-    #> 1 gene_1
-    #> 2 gene_2
-    #> 3 gene_3
-    #> 4 gene_4
-    #> 5 gene_5
-    #> 6 gene_6
-    #>                                                                                                 biological_process
-    #> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
-    #> 2                                                                                                             <NA>
-    #> 3                                                                                                             <NA>
-    #> 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
-    #> 5                                                                                GO:0006956(complement activation)
-    #> 6                                                                                                             <NA>
-    #>                    cellular_component
-    #> 1    GO:0005576(extracellular region)
-    #> 2     GO:0005615(extracellular space)
-    #> 3                                <NA>
-    #> 4    GO:0005576(extracellular region)
-    #> 5 GO:0005579(membrane attack complex)
-    #> 6                                <NA>
-    #>                             molecular_function
-    #> 1                                         <NA>
-    #> 2 GO:0004866(endopeptidase inhibitor activity)
-    #> 3                                         <NA>
-    #> 4                                         <NA>
-    #> 5                                         <NA>
-    #> 6                                         <NA>
-    #>        id log2FC
-    #> 1  gene_5  -1.20
-    #> 2 gene_12  -1.25
-    #> 3 gene_15  -1.30
-    #> 4 gene_22  -1.35
-    #> 5 gene_28  -1.40
-    #> 6 gene_33  -1.45
-    #>           ID           ontology                                    Description
-    #> 1 GO:0000015 cellular component              phosphopyruvate hydratase complex
-    #> 2 GO:0000027 biological process               ribosomal large subunit assembly
-    #> 3 GO:0000028 biological process               ribosomal small subunit assembly
-    #> 4 GO:0000280 biological process                               nuclear division
-    #> 5 GO:0000287 molecular function                          magnesium ion binding
-    #> 6 GO:0000334 molecular function 3-hydroxyanthranilate 3,4-dioxygenase activity
-    #>   GeneRatio BgRatio      pvalue   p.adjust     qvalue
-    #> 1      1/49   1/431 0.113689095 0.21992317 0.21992317
-    #> 2      1/49   1/431 0.113689095 0.21992317 0.21992317
-    #> 3      2/49   5/431 0.101279745 0.21992317 0.21992317
-    #> 4      5/49   9/431 0.001384956 0.08171238 0.08171238
-    #> 5      1/49   1/431 0.113689095 0.21992317 0.21992317
-    #> 6      1/49   1/431 0.113689095 0.21992317 0.21992317
-    #>                                     geneID Count
-    #> 1                                  gene_89     1
-    #> 2                                 gene_276     1
-    #> 3                         gene_12/gene_557     2
-    #> 4 gene_35/gene_58/gene_73/gene_91/gene_158     5
-    #> 5                                  gene_89     1
-    #> 6                                 gene_459     1
+``` r
+# 1. Load example datasets
+data(go_anno)
+head(go_anno)
+#>       id
+#> 1 gene_1
+#> 2 gene_2
+#> 3 gene_3
+#> 4 gene_4
+#> 5 gene_5
+#> 6 gene_6
+#>                                                                                                 biological_process
+#> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
+#> 2                                                                                                             <NA>
+#> 3                                                                                                             <NA>
+#> 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
+#> 5                                                                                GO:0006956(complement activation)
+#> 6                                                                                                             <NA>
+#>                    cellular_component
+#> 1    GO:0005576(extracellular region)
+#> 2     GO:0005615(extracellular space)
+#> 3                                <NA>
+#> 4    GO:0005576(extracellular region)
+#> 5 GO:0005579(membrane attack complex)
+#> 6                                <NA>
+#>                             molecular_function
+#> 1                                         <NA>
+#> 2 GO:0004866(endopeptidase inhibitor activity)
+#> 3                                         <NA>
+#> 4                                         <NA>
+#> 5                                         <NA>
+#> 6                                         <NA>
+
+data(go_deg_fc)
+head(go_deg_fc)
+#>        id log2FC
+#> 1  gene_5  -1.20
+#> 2 gene_12  -1.25
+#> 3 gene_15  -1.30
+#> 4 gene_22  -1.35
+#> 5 gene_28  -1.40
+#> 6 gene_33  -1.45
+
+# 2. Run go_enrich analysis function
+res <- go_enrich(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5
+)
+head(res)
+#>           ID           ontology                                    Description
+#> 1 GO:0000015 cellular component              phosphopyruvate hydratase complex
+#> 2 GO:0000027 biological process               ribosomal large subunit assembly
+#> 3 GO:0000028 biological process               ribosomal small subunit assembly
+#> 4 GO:0000280 biological process                               nuclear division
+#> 5 GO:0000287 molecular function                          magnesium ion binding
+#> 6 GO:0000334 molecular function 3-hydroxyanthranilate 3,4-dioxygenase activity
+#>   GeneRatio BgRatio      pvalue   p.adjust     qvalue
+#> 1      1/49   1/431 0.113689095 0.21992317 0.21992317
+#> 2      1/49   1/431 0.113689095 0.21992317 0.21992317
+#> 3      2/49   5/431 0.101279745 0.21992317 0.21992317
+#> 4      5/49   9/431 0.001384956 0.08171238 0.08171238
+#> 5      1/49   1/431 0.113689095 0.21992317 0.21992317
+#> 6      1/49   1/431 0.113689095 0.21992317 0.21992317
+#>                                     geneID Count
+#> 1                                  gene_89     1
+#> 2                                 gene_276     1
+#> 3                         gene_12/gene_557     2
+#> 4 gene_35/gene_58/gene_73/gene_91/gene_158     5
+#> 5                                  gene_89     1
+#> 6                                 gene_459     1
+```
 
 Get help using command `?TOmicsVis::go_enrich` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
@@ -694,6 +733,31 @@ Get help using command `?TOmicsVis::go_enrich` or reference page
 
 GO enrichment analysis and stat plot based on GO annotation results
 (None/Exist Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_stat analysis function
+go_enrich_stat(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  max_go_item = 15,
+  strip_fill = "#CDCDCD",
+  xtext_angle = 45,
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  ggTheme = "theme_light"
+)
+```
+
 ![](man/figures/README-go_enrich_stat-1.png)<!-- -->
 
 Get help using command `?TOmicsVis::go_enrich_stat` or reference page
@@ -709,8 +773,31 @@ Get help using command `?TOmicsVis::go_enrich_stat` or reference page
 GO enrichment analysis and bar plot based on GO annotation results
 (None/Exist Reference Genome).
 
-    #> Scale for fill is already present.
-    #> Adding another scale for fill, which will replace the existing scale.
+``` r
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_bar analysis function
+go_enrich_bar(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+#> Scale for fill is already present.
+#> Adding another scale for fill, which will replace the existing scale.
+```
 
 ![](man/figures/README-go_enrich_bar-1.png)<!-- -->
 
@@ -727,8 +814,31 @@ Get help using command `?TOmicsVis::go_enrich_bar` or reference page
 GO enrichment analysis and dot plot based on GO annotation results
 (None/Exist Reference Genome).
 
-    #> Scale for colour is already present.
-    #> Adding another scale for colour, which will replace the existing scale.
+``` r
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_dot analysis function
+go_enrich_dot(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
 
 ![](man/figures/README-go_enrich_dot-1.png)<!-- -->
 
@@ -745,8 +855,32 @@ Get help using command `?TOmicsVis::go_enrich_dot` or reference page
 GO enrichment analysis and tree plot based on GO annotation results
 (None/Exist Reference Genome).
 
-    #> Scale for colour is already present.
-    #> Adding another scale for colour, which will replace the existing scale.
+``` r
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_tree analysis function
+go_enrich_tree(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 20,
+  font_size = 4,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  hclust_method = "complete",
+  ggTheme = "theme_light"
+)
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
 
 ![](man/figures/README-go_enrich_tree-1.png)<!-- -->
 
@@ -763,10 +897,32 @@ Get help using command `?TOmicsVis::go_enrich_tree` or reference page
 GO enrichment analysis and net plot based on GO annotation results
 (None/Exist Reference Genome).
 
-    #> Scale for size is already present.
-    #> Adding another scale for size, which will replace the existing scale.
-    #> Scale for colour is already present.
-    #> Adding another scale for colour, which will replace the existing scale.
+``` r
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_net analysis function
+go_enrich_net(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  category_num = 20,
+  net_layout = "circle",
+  net_circular = TRUE,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa"
+)
+#> Scale for size is already present.
+#> Adding another scale for size, which will replace the existing scale.
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
 
 ![](man/figures/README-go_enrich_net-1.png)<!-- -->
 
@@ -776,6 +932,253 @@ Get help using command `?TOmicsVis::go_enrich_net` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_net
+```
+
+#### 3.5.8 kegg_enrich
+
+KEGG enrichment analysis based on KEGG annotation results (None/Exist
+Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(kegg_anno)
+head(kegg_anno)
+#>       id
+#> 1 gene_1
+#> 2 gene_2
+#> 3 gene_3
+#> 4 gene_4
+#> 5 gene_5
+#> 6 gene_6
+#>                                                                                                                              kegg_pathway
+#> 1 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
+#> 2                                                                                            ko04610(Complement and coagulation cascades)
+#> 3 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
+#> 4 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
+#> 5                                                                                            ko04610(Complement and coagulation cascades)
+#> 6                                                                                                                       ko04142(Lysosome)
+
+data(kegg_deg_fc)
+head(kegg_deg_fc)
+#>        id log2FC
+#> 1  gene_5  -1.20
+#> 2 gene_12  -1.25
+#> 3 gene_15  -1.30
+#> 4 gene_22  -1.35
+#> 5 gene_28  -1.40
+#> 6 gene_33  -1.45
+
+# 2. Run go_enrich analysis function
+res <- kegg_enrich(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1
+)
+head(res)
+#>              ID                    Description GeneRatio BgRatio     pvalue
+#> ko00240 ko00240          Pyrimidine metabolism      3/38  10/504 0.03283089
+#> ko04016 ko04016 MAPK signaling pathway - plant      2/38   6/504 0.06848785
+#> ko00052 ko00052           Galactose metabolism      1/38   1/504 0.07539683
+#> ko04066 ko04066        HIF-1 signaling pathway      2/38   7/504 0.09139001
+#> ko03010 ko03010                       Ribosome     10/38  87/504 0.09838857
+#> ko01200 ko01200              Carbon metabolism      3/38  17/504 0.12885914
+#>          p.adjust    qvalue
+#> ko00240 0.6627232 0.6627232
+#> ko04016 0.6627232 0.6627232
+#> ko00052 0.6627232 0.6627232
+#> ko04066 0.6627232 0.6627232
+#> ko03010 0.6627232 0.6627232
+#> ko01200 0.6627232 0.6627232
+#>                                                                                          geneID
+#> ko00240                                                                gene_56/gene_58/gene_112
+#> ko04016                                                                         gene_56/gene_58
+#> ko00052                                                                                 gene_22
+#> ko04066                                                                         gene_15/gene_89
+#> ko03010 gene_33/gene_72/gene_275/gene_276/gene_285/gene_286/gene_303/gene_383/gene_460/gene_557
+#> ko01200                                                               gene_89/gene_113/gene_240
+#>         Count
+#> ko00240     3
+#> ko04016     2
+#> ko00052     1
+#> ko04066     2
+#> ko03010    10
+#> ko01200     3
+```
+
+Get help using command `?TOmicsVis::kegg_enrich` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich
+```
+
+#### 3.5.9 kegg_enrich_bar
+
+KEGG enrichment analysis and bar plot based on KEGG annotation results
+(None/Exist Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_bar analysis function
+kegg_enrich_bar(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+#> Scale for fill is already present.
+#> Adding another scale for fill, which will replace the existing scale.
+```
+
+![](man/figures/README-kegg_enrich_bar-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_bar
+```
+
+#### 3.5.10 kegg_enrich_dot
+
+KEGG enrichment analysis and dot plot based on KEGG annotation results
+(None/Exist Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_dot analysis function
+kegg_enrich_dot(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
+
+![](man/figures/README-kegg_enrich_dot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_dot
+```
+
+#### 3.5.11 kegg_enrich_tree
+
+KEGG enrichment analysis and tree plot based on KEGG annotation results
+(None/Exist Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_tree analysis function
+kegg_enrich_tree(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 20,
+  font_size = 4,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  hclust_method = "complete",
+  ggTheme = "theme_light"
+)
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
+
+![](man/figures/README-kegg_enrich_tree-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_tree
+```
+
+#### 3.5.12 kegg_enrich_net
+
+KEGG enrichment analysis and net plot based on KEGG annotation results
+(None/Exist Reference Genome).
+
+``` r
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_net analysis function
+kegg_enrich_net(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  category_num = 20,
+  net_layout = "circle",
+  net_circular = TRUE,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa"
+)
+#> Scale for size is already present.
+#> Adding another scale for size, which will replace the existing scale.
+#> Scale for colour is already present.
+#> Adding another scale for colour, which will replace the existing scale.
+```
+
+![](man/figures/README-kegg_enrich_net-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::kegg_enrich_net` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_net
 ```
 
 ### 3.6 Tables Operations

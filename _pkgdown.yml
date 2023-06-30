@@ -90,6 +90,11 @@ reference:
   - go_enrich_dot
   - go_enrich_tree
   - go_enrich_net
+  - kegg_enrich
+  - kegg_enrich_bar
+  - kegg_enrich_dot
+  - kegg_enrich_tree
+  - kegg_enrich_net
 
 - title: ⑥Tables Operations
   desc: Quickly manipulate specific Transcriptome data structures.
@@ -122,3 +127,5 @@ reference:
   - table_cross_data2
   - go_anno
   - go_deg_fc
+  - kegg_anno
+  - kegg_deg_fc

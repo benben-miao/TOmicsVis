@@ -45,7 +45,7 @@ go_enrich_tree(
 \item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
-Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
+Table: GO enrichment analysis and tree plot (None/Exist Reference Genome).
 }
 \description{
 GO enrichment analysis and tree plot (None/Exist Reference Genome).

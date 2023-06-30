@@ -88,6 +88,27 @@
     <loc>https://github.com/benben-miao/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/reference/kegg_anno.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_deg_fc.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_enrich.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_enrich_bar.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_enrich_dot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_enrich_net.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/kegg_enrich_tree.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/reference/ma_plot.html</loc>
   </url>
   <url>

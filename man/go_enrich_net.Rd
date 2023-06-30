@@ -39,7 +39,7 @@ go_enrich_net(
 \item{high_color}{Character: high value (p-value or q-value) color (color name or hex value).}
 }
 \value{
-Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
+PLot: GO enrichment analysis and net plot (None/Exist Reference Genome).
 }
 \description{
 GO enrichment analysis and net plot (None/Exist Reference Genome).

@@ -391,7 +391,7 @@ Get help using command `?TOmicsVis::trend_plot` or reference page [https://benbe
 ### 3.5 GO and KEGG Enrichment
 #### 3.5.1 chord_plot
 Chord plot for visualizing the relationships of pathways and genes.
-```{r chord_plot, warning=FALSE, echo=FALSE}
+```{r chord_plot, warning=FALSE}
 # 1. Load chord_data example datasets
 data(chord_data)
 
@@ -419,7 +419,7 @@ Get help using command `?TOmicsVis::chord_plot` or reference page [https://benbe
 
 #### 3.5.2 go_enrich
 GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich, warning=FALSE, echo=FALSE}
+```{r go_enrich, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 head(go_anno)
@@ -446,7 +446,7 @@ Get help using command `?TOmicsVis::go_enrich` or reference page [https://benben
 
 #### 3.5.3 go_enrich_stat
 GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich_stat, warning=FALSE, echo=FALSE}
+```{r go_enrich_stat, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -478,7 +478,7 @@ Get help using command `?TOmicsVis::go_enrich_stat` or reference page [https://b
 
 #### 3.5.4 go_enrich_bar
 GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich_bar, warning=FALSE, echo=FALSE}
+```{r go_enrich_bar, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -510,7 +510,7 @@ Get help using command `?TOmicsVis::go_enrich_bar` or reference page [https://be
 
 #### 3.5.5 go_enrich_dot
 GO enrichment analysis and dot plot based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich_dot, warning=FALSE, echo=FALSE}
+```{r go_enrich_dot, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -542,7 +542,7 @@ Get help using command `?TOmicsVis::go_enrich_dot` or reference page [https://be
 
 #### 3.5.6 go_enrich_tree
 GO enrichment analysis and tree plot based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich_tree, warning=FALSE, echo=FALSE}
+```{r go_enrich_tree, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -575,7 +575,7 @@ Get help using command `?TOmicsVis::go_enrich_tree` or reference page [https://b
 
 #### 3.5.7 go_enrich_net
 GO enrichment analysis and net plot based on GO annotation results (None/Exist Reference Genome).
-```{r go_enrich_net, warning=FALSE, echo=FALSE}
+```{r go_enrich_net, warning=FALSE}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -602,6 +602,161 @@ Get help using command `?TOmicsVis::go_enrich_net` or reference page [https://be
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_net
+```
+
+#### 3.5.8 kegg_enrich
+KEGG enrichment analysis based on KEGG annotation results (None/Exist Reference Genome).
+```{r kegg_enrich, warning=FALSE}
+# 1. Load example datasets
+data(kegg_anno)
+head(kegg_anno)
+
+data(kegg_deg_fc)
+head(kegg_deg_fc)
+
+# 2. Run go_enrich analysis function
+res <- kegg_enrich(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1
+)
+head(res)
+```
+
+Get help using command `?TOmicsVis::kegg_enrich` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich
+```
+
+#### 3.5.9 kegg_enrich_bar
+KEGG enrichment analysis and bar plot based on KEGG annotation results (None/Exist Reference Genome).
+```{r kegg_enrich_bar, warning=FALSE}
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_bar analysis function
+kegg_enrich_bar(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_bar
+```
+
+#### 3.5.10 kegg_enrich_dot
+KEGG enrichment analysis and dot plot based on KEGG annotation results (None/Exist Reference Genome).
+```{r kegg_enrich_dot, warning=FALSE}
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_dot analysis function
+kegg_enrich_dot(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_dot
+```
+
+#### 3.5.11 kegg_enrich_tree
+KEGG enrichment analysis and tree plot based on KEGG annotation results (None/Exist Reference Genome).
+```{r kegg_enrich_tree, warning=FALSE}
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_tree analysis function
+kegg_enrich_tree(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  sign_by = "p.adjust",
+  category_num = 20,
+  font_size = 4,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  hclust_method = "complete",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_tree
+```
+
+#### 3.5.12 kegg_enrich_net
+KEGG enrichment analysis and net plot based on KEGG annotation results (None/Exist Reference Genome).
+```{r kegg_enrich_net, warning=FALSE}
+# 1. Load example datasets
+data(kegg_anno)
+# head(kegg_anno)
+
+data(kegg_deg_fc)
+# head(kegg_deg_fc)
+
+# 2. Run kegg_enrich_net analysis function
+kegg_enrich_net(
+  kegg_anno,
+  kegg_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 1,
+  qvalue_cutoff = 1,
+  category_num = 20,
+  net_layout = "circle",
+  net_circular = TRUE,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa"
+)
+```
+
+Get help using command `?TOmicsVis::kegg_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::kegg_enrich_net
 ```
 
 ### 3.6 Tables Operations

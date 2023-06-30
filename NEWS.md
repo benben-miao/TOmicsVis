@@ -1,3 +1,21 @@
+## TOmicsVis 1.1.3
+
+**Date**: 2023-06-31
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::kegg_enrich` plot function.
+2. New `?TOmicsVis::kegg_enrich_bar` plot function.
+3. New `?TOmicsVis::kegg_enrich_dot` plot function.
+4. New `?TOmicsVis::kegg_enrich_tree` plot function.
+5. New `?TOmicsVis::kegg_enrich_net` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.1.2
 
 **Date**: 2023-06-30

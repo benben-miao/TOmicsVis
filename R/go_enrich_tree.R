@@ -2,7 +2,7 @@
 #' @description GO enrichment analysis and tree plot (None/Exist Reference Genome).
 #' @author benben-miao
 #'
-#' @return Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
+#' @return Table: GO enrichment analysis and tree plot (None/Exist Reference Genome).
 #' @param go_anno Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.
 #' @param go_deg_fc Dataframe: include columns (id, log2FC).
 #' @param padjust_method Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
