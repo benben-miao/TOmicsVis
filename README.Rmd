@@ -444,6 +444,70 @@ Get help using command `?TOmicsVis::go_enrich` or reference page [https://benben
 # ?TOmicsVis::go_enrich
 ```
 
+#### 3.5.3 go_enrich_stat
+GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich_stat, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_stat analysis function
+go_enrich_stat(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  max_go_item = 15,
+  strip_fill = "#CDCDCD",
+  xtext_angle = 45,
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::go_enrich_stat` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_stat
+```
+
+#### 3.5.4 go_enrich_bar
+GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich_bar, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_bar analysis function
+go_enrich_bar(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#0000ffaa",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::go_enrich_bar` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_bar
+```
+
 ### 3.6 Tables Operations
 #### 3.6.1 table_split
 Table split used for splitting a grouped column to multiple columns.

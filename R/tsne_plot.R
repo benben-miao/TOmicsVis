@@ -234,8 +234,8 @@ tsne_plot <- function(data,
 		geom_text(size = text_size,
 							alpha = text_alpha,
 							show.legend = FALSE) +
-		# xlab(percentage[1]) +
-		# ylab(percentage[2]) +
+		# xlab("tSNE1") +
+		# ylab("tSNE2") +
 		stat_ellipse(aes(x = tSNE1,
 										 y = tSNE2,
 										 fill = groups),

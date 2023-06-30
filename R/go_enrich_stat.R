@@ -1,5 +1,5 @@
-#' @title GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
-#' @description GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
+#' @title GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
+#' @description GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
 #' @author benben-miao
 #'
 #' @return Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
@@ -8,6 +8,12 @@
 #' @param padjust_method Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 #' @param pvalue_cutoff Numeric: P-value cutoff. Recommend: small than 0.05.
 #' @param qvalue_cutoff Numeric: Q-value cutoff. Recommend: small than 0.05.
+#' @param max_go_item Numeric: max BP/CC/MF terms. Default: 15, min: 1, max: NULL.
+#' @param strip_fill Character: strip fill color (color name or hex value). Default: "#CDCDCD".
+#' @param xtext_angle Numeric: x axis texts angle. Default: 45, min: 0, max: 360.
+#' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
+#' @param sci_fill_alpha Numeric: ggsci fill color alpha. Default: 0.80, min: 0.00, max: 1.00.
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import stats
 #' @import ggplot2
@@ -31,25 +37,34 @@
 #' head(go_deg_fc)
 #'
 #' # 3. Default parameters
-#' res <- go_enrich(go_anno, go_deg_fc)
-#' head(res)
+#' go_enrich_stat(go_anno, go_deg_fc)
 #'
 #' # 4. Set padjust_method = "BH"
-#' res <- go_enrich(go_anno, go_deg_fc, padjust_method = "BH")
-#' head(res)
+#' go_enrich_stat(go_anno, go_deg_fc, padjust_method = "BH")
 #'
-#' # 5. Set pvalue_cutoff = 0.10
-#' res <- go_enrich(go_anno, go_deg_fc, pvalue_cutoff = 0.10)
-#' head(res)
+#' # 5. Set max_go_item = 10
+#' go_enrich_stat(go_anno, go_deg_fc, max_go_item = 10)
 #'
-go_enrich <- function(go_anno,
+#' # 6. Set strip_fill = "#008888"
+#' go_enrich_stat(go_anno, go_deg_fc, strip_fill = "#008888")
+#'
+#' # 7. Set sci_fill_color = "Sci_JAMA"
+#' go_enrich_stat(go_anno, go_deg_fc, sci_fill_color = "Sci_JAMA")
+#'
+go_enrich_stat <- function(go_anno,
 										 go_deg_fc,
 										 padjust_method = "fdr",
 										 pvalue_cutoff = 0.50,
-										 qvalue_cutoff = 0.50
+										 qvalue_cutoff = 0.50,
+										 max_go_item = 15,
+										 strip_fill = "#CDCDCD",
+										 xtext_angle = 45,
+										 sci_fill_color = "Sci_AAAS",
+										 sci_fill_alpha = 0.80,
+										 ggTheme = "theme_light"
 										){
 	# -> 2. Data Parameters
-	maxItem <- 15
+	# max_item <- 15
 	# Slider: 15, 0, 1, 20
 
 	# padjust_method <- "fdr"
@@ -123,6 +138,153 @@ go_enrich <- function(go_anno,
 	)
 	colnames(enrich_table)[1] <- "ID"
 
-	return(enrich_table)
+	GetTop <- function(df, item){
+		if (nrow(df) > item) {
+			return(df[1:item,])
+		}else{
+			return(df[1:nrow(df),])
+		}
+	}
+
+	GetGoTopEnrich <- function(df, max_item = max_go_item){
+		go_MF <- GetTop(df[df$ontology == "molecular function",], max_item)
+		go_CC <- GetTop(df[df$ontology == "cellular component",][1:max_item,],max_item)
+		go_BP <- GetTop(df[df$ontology == "biological process",][1:max_item,],max_item)
+		enrich_df <- data.frame(ID = c(go_BP$ID, go_CC$ID, go_MF$ID),
+														Ontology = factor(c(rep("Biological Process", nrow(go_BP)), rep("Cellular Component", nrow(go_CC)),rep("Molecular Function",nrow(go_MF))),levels = c("Molecular Function", "Cellular Component", "Biological Process")),
+														Description = c(go_BP$Description, go_CC$Description, go_MF$Description),
+														GeneRatio = c(go_BP$GeneRatio, go_CC$GeneRatio, go_MF$GeneRatio),
+														pvalue = c(go_BP$pvalue, go_CC$pvalue, go_MF$pvalue),
+														p.adjust = c(go_BP$p.adjust, go_CC$p.adjust, go_MF$p.adjust),
+														qvalue = c(go_BP$qvalue, go_CC$qvalue, go_MF$qvalue),
+														Count = c(go_BP$Count, go_CC$Count, go_MF$Count)
+		)
+		return(enrich_df)
+	}
+	enrich_df <- GetGoTopEnrich(enrich_table)
+	# <- 3. Data
+
+	# -> 4. Plot parameters
+	# fonts <- "Times"
+	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+
+	# sci_fill_alpha <- 0.92
+	# sci_fill_color <- "Sci_D3"
+	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
+	if (sci_fill_color == "Default") {
+		sci_fill <- NULL
+	} else if (sci_fill_color == "Sci_AAAS") {
+		sci_fill <- scale_fill_aaas(alpha = sci_fill_alpha)
+		# Science and Science Translational Medicine:
+	} else if (sci_fill_color == "Sci_NPG") {
+		sci_fill <- scale_fill_npg(alpha = sci_fill_alpha)
+	} else if (sci_fill_color == "Sci_Simpsons") {
+		sci_fill <- scale_fill_simpsons(alpha = sci_fill_alpha)
+		# The Simpsons
+	} else if (sci_fill_color == "Sci_JAMA") {
+		sci_fill <- scale_fill_jama(alpha = sci_fill_alpha)
+		# The Journal of the American Medical Association
+	} else if (sci_fill_color == "Sci_Lancet") {
+		sci_fill <- scale_fill_lancet(alpha = sci_fill_alpha)
+		#  Lancet Oncology
+	} else if (sci_fill_color == "Sci_Futurama") {
+		sci_fill <- scale_fill_futurama(alpha = sci_fill_alpha)
+		# Futurama
+	} else if (sci_fill_color == "Sci_JCO") {
+		sci_fill <- scale_fill_jco(alpha = sci_fill_alpha)
+		# Journal of Clinical Oncology:
+	} else if (sci_fill_color == "Sci_NEJM") {
+		sci_fill <- scale_fill_nejm(alpha = sci_fill_alpha)
+		# The New England Journal of Medicine
+	} else if (sci_fill_color == "Sci_IGV") {
+		sci_fill <- scale_fill_igv(alpha = sci_fill_alpha)
+		# Integrative Genomics Viewer (IGV)
+	} else if (sci_fill_color == "Sci_UCSC") {
+		sci_fill <- scale_fill_ucscgb(alpha = sci_fill_alpha)
+		# UCSC Genome Browser chromosome sci_fill
+	} else if (sci_fill_color == "Sci_D3") {
+		sci_fill <- scale_fill_d3(alpha = sci_fill_alpha)
+		# D3.JS
+	} else if (sci_fill_color == "Sci_Material") {
+		sci_fill <- scale_fill_material(alpha = sci_fill_alpha)
+		# The Material Design color palettes
+	}
+
+	# ggTheme <- "theme_light"
+	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+	if (ggTheme == "theme_default") {
+		gg_theme <- theme()
+	} else if (ggTheme == "theme_bw") {
+		gg_theme <- theme_bw()
+	} else if (ggTheme == "theme_gray") {
+		gg_theme <- theme_gray()
+	} else if (ggTheme == "theme_light") {
+		gg_theme <- theme_light()
+	} else if (ggTheme == "theme_linedraw") {
+		gg_theme <- theme_linedraw()
+	} else if (ggTheme == "theme_dark") {
+		gg_theme <- theme_dark()
+	} else if (ggTheme == "theme_minimal") {
+		gg_theme <- theme_minimal()
+	} else if (ggTheme == "theme_classic") {
+		gg_theme <- theme_classic()
+	} else if (ggTheme == "theme_void") {
+		gg_theme <- theme_void()
+	} else if (ggTheme == "theme_test") {
+		gg_theme <- theme_test()
+	}
+
+	stripPos <- "top"
+	# ChoiceBox: "top", "bottom", "right", "left"
+
+	# strip_fill <- "#ff000033"
+	# ColorPicker:
+
+	# xtext_angle <- 45
+	# Slider: 45, 0, 5, 360
+	# <- 4. Plot parameters
+
+	# -> 5. Plot
+	p <- ggplot(data = enrich_df,
+							aes(x = reorder(Description, -Count),
+									y = Count,
+									fill = Ontology)) +
+		geom_bar(stat = 'identity',
+						 position = 'dodge')  +
+		geom_text(aes(label = Count),
+							vjust = -0.3,
+							hjust = 0.5) +
+		facet_wrap(~Ontology,
+							 scales = 'free_x',
+							 strip.position = stripPos) +
+		xlab('GO terms') +
+		ylab('Gene counts') +
+		gg_theme +
+		theme(axis.text.x = element_text(angle = xtext_angle,
+																		 hjust = 1
+		),
+		# text = element_text(family = fonts),
+		axis.text = element_text(colour = "#000000"),
+		strip.text.x = element_text(size = 10,
+																colour = "#333333"),
+		strip.background.x = element_rect(fill = strip_fill,
+																			color = strip_fill),
+		legend.position = "top",
+		legend.direction = "horizontal",
+		legend.title = element_text(
+			size = 12,
+			hjust = 0.5
+		),
+		legend.text = element_text(
+			size = 10
+		),
+		plot.margin = margin(5, 5, 5, 80)
+		) +
+		sci_fill
+
+	# p
+	# <- 5. Plot
+
+	return(p)
 	invisible()
 }

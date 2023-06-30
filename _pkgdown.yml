@@ -85,6 +85,8 @@ reference:
   contents:
   - chord_plot
   - go_enrich
+  - go_enrich_stat
+  - go_enrich_bar
 
 - title: ⑥Tables Operations
   desc: Quickly manipulate specific Transcriptome data structures.

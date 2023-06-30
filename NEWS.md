@@ -7,6 +7,8 @@
 1. New `?TOmicsVis::go_anno` example dataset.
 2. New `?TOmicsVis::go_deg_fc` plot function.
 3. New `?TOmicsVis::go_enrich` plot function.
+4. New `?TOmicsVis::go_enrich_stat` plot function.
+5. New `?TOmicsVis::go_enrich_bar` plot function.
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 

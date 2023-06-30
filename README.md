@@ -690,6 +690,38 @@ Get help using command `?TOmicsVis::go_enrich` or reference page
 # ?TOmicsVis::go_enrich
 ```
 
+#### 3.5.3 go_enrich_stat
+
+GO enrichment analysis and stat plot based on GO annotation results
+(None/Exist Reference Genome).
+![](man/figures/README-go_enrich_stat-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::go_enrich_stat` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_stat
+```
+
+#### 3.5.4 go_enrich_bar
+
+GO enrichment analysis and bar plot based on GO annotation results
+(None/Exist Reference Genome).
+
+    #> Scale for fill is already present.
+    #> Adding another scale for fill, which will replace the existing scale.
+
+![](man/figures/README-go_enrich_bar-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::go_enrich_bar` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_bar
+```
+
 ### 3.6 Tables Operations
 
 #### 3.6.1 table_split
