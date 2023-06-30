@@ -87,6 +87,9 @@ reference:
   - go_enrich
   - go_enrich_stat
   - go_enrich_bar
+  - go_enrich_dot
+  - go_enrich_tree
+  - go_enrich_net
 
 - title: ⑥Tables Operations
   desc: Quickly manipulate specific Transcriptome data structures.

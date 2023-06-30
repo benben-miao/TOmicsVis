@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -722,45 +722,9 @@
 <div class="section level4">
 <h4 id="id_353-go_enrich_stat">3.5.3 go_enrich_stat<a class="anchor" aria-label="anchor" href="#id_353-go_enrich_stat"></a>
 </h4>
-<p>GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co">#&gt;       id</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="co">#&gt; 1 gene_1</span></span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co">#&gt; 2 gene_2</span></span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co">#&gt; 3 gene_3</span></span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="co">#&gt; 4 gene_4</span></span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="co">#&gt; 5 gene_5</span></span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co">#&gt; 6 gene_6</span></span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a><span class="co">#&gt;                                                                                                 biological_process</span></span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co">#&gt; 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="co">#&gt; 2                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a><span class="co">#&gt; 3                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a><span class="co">#&gt; 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span></span>
-<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a><span class="co">#&gt; 5                                                                                GO:0006956(complement activation)</span></span>
-<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a><span class="co">#&gt; 6                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a><span class="co">#&gt;                    cellular_component</span></span>
-<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a><span class="co">#&gt; 1    GO:0005576(extracellular region)</span></span>
-<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a><span class="co">#&gt; 2     GO:0005615(extracellular space)</span></span>
-<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a><span class="co">#&gt; 3                                &lt;NA&gt;</span></span>
-<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a><span class="co">#&gt; 4    GO:0005576(extracellular region)</span></span>
-<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a><span class="co">#&gt; 5 GO:0005579(membrane attack complex)</span></span>
-<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a><span class="co">#&gt; 6                                &lt;NA&gt;</span></span>
-<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a><span class="co">#&gt;                             molecular_function</span></span>
-<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a><span class="co">#&gt; 1                                         &lt;NA&gt;</span></span>
-<span id="cb30-24"><a href="#cb30-24" tabindex="-1"></a><span class="co">#&gt; 2 GO:0004866(endopeptidase inhibitor activity)</span></span>
-<span id="cb30-25"><a href="#cb30-25" tabindex="-1"></a><span class="co">#&gt; 3                                         &lt;NA&gt;</span></span>
-<span id="cb30-26"><a href="#cb30-26" tabindex="-1"></a><span class="co">#&gt; 4                                         &lt;NA&gt;</span></span>
-<span id="cb30-27"><a href="#cb30-27" tabindex="-1"></a><span class="co">#&gt; 5                                         &lt;NA&gt;</span></span>
-<span id="cb30-28"><a href="#cb30-28" tabindex="-1"></a><span class="co">#&gt; 6                                         &lt;NA&gt;</span></span>
-<span id="cb30-29"><a href="#cb30-29" tabindex="-1"></a><span class="co">#&gt;        id log2FC</span></span>
-<span id="cb30-30"><a href="#cb30-30" tabindex="-1"></a><span class="co">#&gt; 1  gene_5  -1.20</span></span>
-<span id="cb30-31"><a href="#cb30-31" tabindex="-1"></a><span class="co">#&gt; 2 gene_12  -1.25</span></span>
-<span id="cb30-32"><a href="#cb30-32" tabindex="-1"></a><span class="co">#&gt; 3 gene_15  -1.30</span></span>
-<span id="cb30-33"><a href="#cb30-33" tabindex="-1"></a><span class="co">#&gt; 4 gene_22  -1.35</span></span>
-<span id="cb30-34"><a href="#cb30-34" tabindex="-1"></a><span class="co">#&gt; 5 gene_28  -1.40</span></span>
-<span id="cb30-35"><a href="#cb30-35" tabindex="-1"></a><span class="co">#&gt; 6 gene_33  -1.45</span></span></code></pre></div>
-<p><img src="reference/figures/README-go_enrich_stat-1.png"><!-- --></p>
+<p>GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome). <img src="reference/figures/README-go_enrich_stat-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_stat.html">?TOmicsVis::go_enrich_stat</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_stat</span></span></code></pre></div>
 </div>
@@ -768,48 +732,51 @@
 <h4 id="id_354-go_enrich_bar">3.5.4 go_enrich_bar<a class="anchor" aria-label="anchor" href="#id_354-go_enrich_bar"></a>
 </h4>
 <p>GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co">#&gt;       id</span></span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="co">#&gt; 1 gene_1</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="co">#&gt; 2 gene_2</span></span>
-<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="co">#&gt; 3 gene_3</span></span>
-<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="co">#&gt; 4 gene_4</span></span>
-<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="co">#&gt; 5 gene_5</span></span>
-<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a><span class="co">#&gt; 6 gene_6</span></span>
-<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a><span class="co">#&gt;                                                                                                 biological_process</span></span>
-<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a><span class="co">#&gt; 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span></span>
-<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a><span class="co">#&gt; 2                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="co">#&gt; 3                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a><span class="co">#&gt; 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span></span>
-<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a><span class="co">#&gt; 5                                                                                GO:0006956(complement activation)</span></span>
-<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a><span class="co">#&gt; 6                                                                                                             &lt;NA&gt;</span></span>
-<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a><span class="co">#&gt;                    cellular_component</span></span>
-<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co">#&gt; 1    GO:0005576(extracellular region)</span></span>
-<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a><span class="co">#&gt; 2     GO:0005615(extracellular space)</span></span>
-<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="co">#&gt; 3                                &lt;NA&gt;</span></span>
-<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co">#&gt; 4    GO:0005576(extracellular region)</span></span>
-<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a><span class="co">#&gt; 5 GO:0005579(membrane attack complex)</span></span>
-<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a><span class="co">#&gt; 6                                &lt;NA&gt;</span></span>
-<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a><span class="co">#&gt;                             molecular_function</span></span>
-<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a><span class="co">#&gt; 1                                         &lt;NA&gt;</span></span>
-<span id="cb32-24"><a href="#cb32-24" tabindex="-1"></a><span class="co">#&gt; 2 GO:0004866(endopeptidase inhibitor activity)</span></span>
-<span id="cb32-25"><a href="#cb32-25" tabindex="-1"></a><span class="co">#&gt; 3                                         &lt;NA&gt;</span></span>
-<span id="cb32-26"><a href="#cb32-26" tabindex="-1"></a><span class="co">#&gt; 4                                         &lt;NA&gt;</span></span>
-<span id="cb32-27"><a href="#cb32-27" tabindex="-1"></a><span class="co">#&gt; 5                                         &lt;NA&gt;</span></span>
-<span id="cb32-28"><a href="#cb32-28" tabindex="-1"></a><span class="co">#&gt; 6                                         &lt;NA&gt;</span></span>
-<span id="cb32-29"><a href="#cb32-29" tabindex="-1"></a><span class="co">#&gt;        id log2FC</span></span>
-<span id="cb32-30"><a href="#cb32-30" tabindex="-1"></a><span class="co">#&gt; 1  gene_5  -1.20</span></span>
-<span id="cb32-31"><a href="#cb32-31" tabindex="-1"></a><span class="co">#&gt; 2 gene_12  -1.25</span></span>
-<span id="cb32-32"><a href="#cb32-32" tabindex="-1"></a><span class="co">#&gt; 3 gene_15  -1.30</span></span>
-<span id="cb32-33"><a href="#cb32-33" tabindex="-1"></a><span class="co">#&gt; 4 gene_22  -1.35</span></span>
-<span id="cb32-34"><a href="#cb32-34" tabindex="-1"></a><span class="co">#&gt; 5 gene_28  -1.40</span></span>
-<span id="cb32-35"><a href="#cb32-35" tabindex="-1"></a><span class="co">#&gt; 6 gene_33  -1.45</span></span>
-<span id="cb32-36"><a href="#cb32-36" tabindex="-1"></a><span class="co">#&gt; Scale for fill is already present.</span></span>
-<span id="cb32-37"><a href="#cb32-37" tabindex="-1"></a><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co">#&gt; Scale for fill is already present.</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_bar-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_bar.html">?TOmicsVis::go_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_bar</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_355-go_enrich_dot">3.5.5 go_enrich_dot<a class="anchor" aria-label="anchor" href="#id_355-go_enrich_dot"></a>
+</h4>
+<p>GO enrichment analysis and dot plot based on GO annotation results (None/Exist Reference Genome).</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co">#&gt; Scale for colour is already present.</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
+<p><img src="reference/figures/README-go_enrich_dot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/go_enrich_dot.html">?TOmicsVis::go_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::go_enrich_dot</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_356-go_enrich_tree">3.5.6 go_enrich_tree<a class="anchor" aria-label="anchor" href="#id_356-go_enrich_tree"></a>
+</h4>
+<p>GO enrichment analysis and tree plot based on GO annotation results (None/Exist Reference Genome).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co">#&gt; Scale for colour is already present.</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
+<p><img src="reference/figures/README-go_enrich_tree-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/go_enrich_tree.html">?TOmicsVis::go_enrich_tree</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html</a>.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::go_enrich_tree</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_357-go_enrich_net">3.5.7 go_enrich_net<a class="anchor" aria-label="anchor" href="#id_357-go_enrich_net"></a>
+</h4>
+<p>GO enrichment analysis and net plot based on GO annotation results (None/Exist Reference Genome).</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co">#&gt; Scale for size is already present.</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="co">#&gt; Adding another scale for size, which will replace the existing scale.</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="co">#&gt; Scale for colour is already present.</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
+<p><img src="reference/figures/README-go_enrich_net-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::go_enrich_net</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -819,7 +786,7 @@
 <h4 id="id_361-table_split">3.6.1 table_split<a class="anchor" aria-label="anchor" href="#id_361-table_split"></a>
 </h4>
 <p>Table split used for splitting a grouped column to multiple columns.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load table_split_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_split_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_split_data</span><span class="op">)</span></span>
@@ -845,7 +812,7 @@
 <span><span class="co">#&gt; 5     5   5    NA      NA   56 14.3</span></span>
 <span><span class="co">#&gt; 6     5   6    28      NA   66 14.9</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_split.html">?TOmicsVis::table_split</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_split</span></span></code></pre></div>
 </div>
@@ -853,7 +820,7 @@
 <h4 id="id_362-table_merge">3.6.2 table_merge<a class="anchor" aria-label="anchor" href="#id_362-table_merge"></a>
 </h4>
 <p>Table merge used to merge multiple variables to on variable.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
@@ -882,7 +849,7 @@
 <span><span class="co">#&gt; 5     5   5    Ozone    NA</span></span>
 <span><span class="co">#&gt; 6     5   6    Ozone    28</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_merge.html">?TOmicsVis::table_merge</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_merge</span></span></code></pre></div>
 </div>
@@ -890,7 +857,7 @@
 <h4 id="id_363-table_filter">3.6.3 table_filter<a class="anchor" aria-label="anchor" href="#id_363-table_filter"></a>
 </h4>
 <p>Table filter used to filter row by column condition.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
@@ -925,7 +892,7 @@
 <span><span class="co">#&gt; #   starships &lt;list&gt;, and abbreviated variable names ¹​skin_color, ²​eye_color,</span></span>
 <span><span class="co">#&gt; #   ³​birth_year, ⁴​homeworld</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_filter.html">?TOmicsVis::table_filter</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_filter</span></span></code></pre></div>
 </div>
@@ -933,7 +900,7 @@
 <h4 id="id_364-table_cross">3.6.4 table_cross<a class="anchor" aria-label="anchor" href="#id_364-table_cross"></a>
 </h4>
 <p>Table cross used to cross search and merge results in two tables.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span>
@@ -963,7 +930,7 @@
 <span><span class="co">#&gt; 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span></span>
 <span><span class="co">#&gt; 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_cross.html">?TOmicsVis::table_cross</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_cross</span></span></code></pre></div>
 </div>

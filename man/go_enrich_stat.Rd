@@ -2,7 +2,7 @@
 % Please edit documentation in R/go_enrich_stat.R
 \name{go_enrich_stat}
 \alias{go_enrich_stat}
-\title{GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).}
+\title{GO enrichment analysis and stat plot (None/Exist Reference Genome).}
 \usage{
 go_enrich_stat(
   go_anno,
@@ -45,7 +45,7 @@ go_enrich_stat(
 Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
 }
 \description{
-GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
+GO enrichment analysis and stat plot (None/Exist Reference Genome).
 }
 \examples{
 # 1. Library TOmicsVis package

@@ -497,7 +497,7 @@ go_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#0000ffaa",
+  high_color = "#008888aa",
   ggTheme = "theme_light"
 )
 ```
@@ -506,6 +506,102 @@ Get help using command `?TOmicsVis::go_enrich_bar` or reference page [https://be
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_bar
+```
+
+#### 3.5.5 go_enrich_dot
+GO enrichment analysis and dot plot based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich_dot, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_dot analysis function
+go_enrich_dot(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 30,
+  font_size = 12,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::go_enrich_dot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_dot
+```
+
+#### 3.5.6 go_enrich_tree
+GO enrichment analysis and tree plot based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich_tree, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_tree analysis function
+go_enrich_tree(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  sign_by = "p.adjust",
+  category_num = 20,
+  font_size = 4,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa",
+  hclust_method = "complete",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::go_enrich_tree` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_tree
+```
+
+#### 3.5.7 go_enrich_net
+GO enrichment analysis and net plot based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich_net, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+# head(go_anno)
+
+data(go_deg_fc)
+# head(go_deg_fc)
+
+# 2. Run go_enrich_net analysis function
+go_enrich_net(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5,
+  category_num = 20,
+  net_layout = "circle",
+  net_circular = TRUE,
+  low_color = "#ff0000aa",
+  high_color = "#008888aa"
+)
+```
+
+Get help using command `?TOmicsVis::go_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_net
 ```
 
 ### 3.6 Tables Operations

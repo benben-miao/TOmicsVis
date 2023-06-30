@@ -1,5 +1,5 @@
-#' @title GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
-#' @description GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
+#' @title GO enrichment analysis and stat plot (None/Exist Reference Genome).
+#' @description GO enrichment analysis and stat plot (None/Exist Reference Genome).
 #' @author benben-miao
 #'
 #' @return Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").

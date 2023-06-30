@@ -2,7 +2,7 @@
 % Please edit documentation in R/go_enrich_bar.R
 \name{go_enrich_bar}
 \alias{go_enrich_bar}
-\title{GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).}
+\title{GO enrichment analysis and bar plot (None/Exist Reference Genome).}
 \usage{
 go_enrich_bar(
   go_anno,
@@ -14,7 +14,7 @@ go_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#0000ffaa",
+  high_color = "#008888aa",
   ggTheme = "theme_light"
 )
 }
@@ -45,7 +45,7 @@ go_enrich_bar(
 Table: include columns ("ID", "ontology", "Description", "GeneRatio", "BgRatio", "pvalue", "p.adjust", "qvalue", "geneID", "Count").
 }
 \description{
-GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).
+GO enrichment analysis and bar plot (None/Exist Reference Genome).
 }
 \examples{
 # 1. Library TOmicsVis package

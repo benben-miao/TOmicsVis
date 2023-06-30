@@ -722,6 +722,62 @@ Get help using command `?TOmicsVis::go_enrich_bar` or reference page
 # ?TOmicsVis::go_enrich_bar
 ```
 
+#### 3.5.5 go_enrich_dot
+
+GO enrichment analysis and dot plot based on GO annotation results
+(None/Exist Reference Genome).
+
+    #> Scale for colour is already present.
+    #> Adding another scale for colour, which will replace the existing scale.
+
+![](man/figures/README-go_enrich_dot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::go_enrich_dot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_dot
+```
+
+#### 3.5.6 go_enrich_tree
+
+GO enrichment analysis and tree plot based on GO annotation results
+(None/Exist Reference Genome).
+
+    #> Scale for colour is already present.
+    #> Adding another scale for colour, which will replace the existing scale.
+
+![](man/figures/README-go_enrich_tree-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::go_enrich_tree` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_tree
+```
+
+#### 3.5.7 go_enrich_net
+
+GO enrichment analysis and net plot based on GO annotation results
+(None/Exist Reference Genome).
+
+    #> Scale for size is already present.
+    #> Adding another scale for size, which will replace the existing scale.
+    #> Scale for colour is already present.
+    #> Adding another scale for colour, which will replace the existing scale.
+
+![](man/figures/README-go_enrich_net-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::go_enrich_net` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich_net
+```
+
 ### 3.6 Tables Operations
 
 #### 3.6.1 table_split
