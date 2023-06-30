@@ -84,6 +84,7 @@ reference:
   desc: GO and KEGG enrichment analysis and visualization.
   contents:
   - chord_plot
+  - go_enrich
 
 - title: ⑥Tables Operations
   desc: Quickly manipulate specific Transcriptome data structures.
@@ -91,6 +92,7 @@ reference:
   - table_split
   - table_merge
   - table_filter
+  - table_cross
 
 - title: Example datasets in TOmicsVis
   desc: Example datasets in TOmicsVis.
@@ -111,3 +113,7 @@ reference:
   - tsne_data
   - table_merge_data
   - table_filter_data
+  - table_cross_data1
+  - table_cross_data2
+  - go_anno
+  - go_deg_fc

@@ -26,6 +26,15 @@ library(TOmicsVis)
 #> Registered S3 method overwritten by 'GGally':
 #>   method from   
 #>   +.gg   ggplot2
+#> 
+#> Warning: replacing previous import 'GGally::ggtable' by 'enrichplot::ggtable'
+#> when loading 'TOmicsVis'
+#> Warning: replacing previous import 'enrichplot::color_palette' by
+#> 'ggpubr::color_palette' when loading 'TOmicsVis'
+#> Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading
+#> 'TOmicsVis'
 #> Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when
 #> loading 'TOmicsVis'
 
@@ -611,6 +620,76 @@ Get help using command `?TOmicsVis::chord_plot` or reference page
 # ?TOmicsVis::chord_plot
 ```
 
+#### 3.5.2 go_enrich
+
+GO enrichment analysis based on GO annotation results (None/Exist
+Reference Genome).
+
+    #>       id
+    #> 1 gene_1
+    #> 2 gene_2
+    #> 3 gene_3
+    #> 4 gene_4
+    #> 5 gene_5
+    #> 6 gene_6
+    #>                                                                                                 biological_process
+    #> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
+    #> 2                                                                                                             <NA>
+    #> 3                                                                                                             <NA>
+    #> 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
+    #> 5                                                                                GO:0006956(complement activation)
+    #> 6                                                                                                             <NA>
+    #>                    cellular_component
+    #> 1    GO:0005576(extracellular region)
+    #> 2     GO:0005615(extracellular space)
+    #> 3                                <NA>
+    #> 4    GO:0005576(extracellular region)
+    #> 5 GO:0005579(membrane attack complex)
+    #> 6                                <NA>
+    #>                             molecular_function
+    #> 1                                         <NA>
+    #> 2 GO:0004866(endopeptidase inhibitor activity)
+    #> 3                                         <NA>
+    #> 4                                         <NA>
+    #> 5                                         <NA>
+    #> 6                                         <NA>
+    #>        id log2FC
+    #> 1  gene_5  -1.20
+    #> 2 gene_12  -1.25
+    #> 3 gene_15  -1.30
+    #> 4 gene_22  -1.35
+    #> 5 gene_28  -1.40
+    #> 6 gene_33  -1.45
+    #>           ID           ontology                                    Description
+    #> 1 GO:0000015 cellular component              phosphopyruvate hydratase complex
+    #> 2 GO:0000027 biological process               ribosomal large subunit assembly
+    #> 3 GO:0000028 biological process               ribosomal small subunit assembly
+    #> 4 GO:0000280 biological process                               nuclear division
+    #> 5 GO:0000287 molecular function                          magnesium ion binding
+    #> 6 GO:0000334 molecular function 3-hydroxyanthranilate 3,4-dioxygenase activity
+    #>   GeneRatio BgRatio      pvalue   p.adjust     qvalue
+    #> 1      1/49   1/431 0.113689095 0.21992317 0.21992317
+    #> 2      1/49   1/431 0.113689095 0.21992317 0.21992317
+    #> 3      2/49   5/431 0.101279745 0.21992317 0.21992317
+    #> 4      5/49   9/431 0.001384956 0.08171238 0.08171238
+    #> 5      1/49   1/431 0.113689095 0.21992317 0.21992317
+    #> 6      1/49   1/431 0.113689095 0.21992317 0.21992317
+    #>                                     geneID Count
+    #> 1                                  gene_89     1
+    #> 2                                 gene_276     1
+    #> 3                         gene_12/gene_557     2
+    #> 4 gene_35/gene_58/gene_73/gene_91/gene_158     5
+    #> 5                                  gene_89     1
+    #> 6                                 gene_459     1
+
+Get help using command `?TOmicsVis::go_enrich` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich
+```
+
 ### 3.6 Tables Operations
 
 #### 3.6.1 table_split
@@ -740,4 +819,47 @@ Get help using command `?TOmicsVis::table_filter` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::table_filter
+```
+
+#### 3.6.4 table_cross
+
+Table cross used to cross search and merge results in two tables.
+
+``` r
+# 1. Load example datasets
+data(table_cross_data1)
+head(table_cross_data1)
+#>      geneID root_exp leave_exp
+#> 1 Unigene01  16.4798    3.3122
+#> 2 Unigene02  44.5027   24.1932
+#> 3 Unigene03  86.9566   43.0663
+
+data(table_cross_data2)
+head(table_cross_data2)
+#>      geneID  KO_id                     ko_definition
+#> 1 Unigene02 K10592 E3 ubiquitin-protein ligase HUWE1
+#> 2 Unigene03 K10592    NADH dehydrogenase I subunit 4
+#> 3 Unigene04 K05579         dehydrogenase I subunit 7
+
+# 2. Run function
+res <- table_cross(
+  table_cross_data1,
+  table_cross_data2,
+  inter_var = "geneID",
+  left_index = TRUE,
+  right_index = FALSE
+)
+head(res)
+#>      geneID root_exp leave_exp  KO_id                     ko_definition
+#> 1 Unigene01  16.4798    3.3122   <NA>                              <NA>
+#> 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1
+#> 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4
+```
+
+Get help using command `?TOmicsVis::table_cross` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/table_cross.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::table_cross
 ```

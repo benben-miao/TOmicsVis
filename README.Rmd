@@ -417,6 +417,33 @@ Get help using command `?TOmicsVis::chord_plot` or reference page [https://benbe
 # ?TOmicsVis::chord_plot
 ```
 
+#### 3.5.2 go_enrich
+GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
+```{r go_enrich, warning=FALSE, echo=FALSE}
+# 1. Load example datasets
+data(go_anno)
+head(go_anno)
+
+data(go_deg_fc)
+head(go_deg_fc)
+
+# 2. Run go_enrich analysis function
+res <- go_enrich(
+  go_anno,
+  go_deg_fc,
+  padjust_method = "fdr",
+  pvalue_cutoff = 0.5,
+  qvalue_cutoff = 0.5
+)
+head(res)
+```
+
+Get help using command `?TOmicsVis::go_enrich` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::go_enrich
+```
+
 ### 3.6 Tables Operations
 #### 3.6.1 table_split
 Table split used for splitting a grouped column to multiple columns.
@@ -481,4 +508,31 @@ Get help using command `?TOmicsVis::table_filter` or reference page [https://ben
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_filter
+```
+
+#### 3.6.4 table_cross
+Table cross used to cross search and merge results in two tables.
+```{r table_cross, warning=FALSE}
+# 1. Load example datasets
+data(table_cross_data1)
+head(table_cross_data1)
+
+data(table_cross_data2)
+head(table_cross_data2)
+
+# 2. Run function
+res <- table_cross(
+  table_cross_data1,
+  table_cross_data2,
+  inter_var = "geneID",
+  left_index = TRUE,
+  right_index = FALSE
+)
+head(res)
+```
+
+Get help using command `?TOmicsVis::table_cross` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_cross.html](https://benben-miao.github.io/TOmicsVis/reference/table_cross.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::table_cross
 ```

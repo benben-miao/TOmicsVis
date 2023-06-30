@@ -1,3 +1,35 @@
+## TOmicsVis 1.1.1
+
+**Date**: 2023-06-30
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::go_anno` example dataset.
+2. New `?TOmicsVis::go_deg_fc` plot function.
+3. New `?TOmicsVis::go_enrich` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
+## TOmicsVis 1.1.0
+
+**Date**: 2023-06-28
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::table_cross_data1` example dataset.
+2. New `?TOmicsVis::table_cross_data2` plot function.
+3. New `?TOmicsVis::table_cross` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.0.9
 
 **Date**: 2023-06-27
