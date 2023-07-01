@@ -112,6 +112,12 @@
     <loc>https://github.com/benben-miao/reference/ma_plot.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/reference/network_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/network_plot.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/reference/pca_group_sample.html</loc>
   </url>
   <url>
@@ -182,5 +188,14 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/reference/volcano_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/wgcna_gene_exp.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/wgcna_pipeline.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/reference/wgcna_sample_group.html</loc>
   </url>
 </urlset>

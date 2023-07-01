@@ -31,10 +31,30 @@ library(TOmicsVis)
 #> when loading 'TOmicsVis'
 #> Warning: replacing previous import 'enrichplot::color_palette' by
 #> 'ggpubr::color_palette' when loading 'TOmicsVis'
+#> Warning: replacing previous import 'dplyr::union' by 'igraph::union' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'dplyr::as_data_frame' by
+#> 'igraph::as_data_frame' when loading 'TOmicsVis'
+#> Warning: replacing previous import 'circlize::degree' by 'igraph::degree' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'dplyr::groups' by 'igraph::groups' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'clusterProfiler::simplify' by
+#> 'igraph::simplify' when loading 'TOmicsVis'
+#> Warning: replacing previous import 'igraph::decompose' by 'stats::decompose'
+#> when loading 'TOmicsVis'
+#> Warning: replacing previous import 'WGCNA::cor' by 'stats::cor' when loading
+#> 'TOmicsVis'
 #> Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when
 #> loading 'TOmicsVis'
 #> Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading
 #> 'TOmicsVis'
+#> Warning: replacing previous import 'igraph::spectrum' by 'stats::spectrum' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'igraph::crossing' by 'tidyr::crossing' when
+#> loading 'TOmicsVis'
+#> Warning: replacing previous import 'igraph::diversity' by 'vegan::diversity'
+#> when loading 'TOmicsVis'
 #> Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when
 #> loading 'TOmicsVis'
 
@@ -501,6 +521,71 @@ Get help using command `?TOmicsVis::trend_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::trend_plot
+```
+
+#### 3.4.2 wgcna_pipeline
+
+WGCNA analysis pipeline for RNA-Seq.
+
+``` r
+# 1. Load wgcna_pipeline example datasets
+data(wgcna_gene_exp)
+data(wgcna_sample_group)
+
+# 2. Run wgcna_pipeline plot function
+# wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
+```
+
+Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::wgcna_pipeline
+```
+
+#### 3.4.3 network_plot
+
+Network plot for analyzing and visualizing relationship of genes.
+
+``` r
+# 1. Load example datasets
+data(network_data)
+head(network_data)
+#>   node1           node2
+#> 1  ABL2  PC-3p-5622_465
+#> 2  ABL2  PC-5p-33384_55
+#> 3  ABL2  chi-miR-107-3p
+#> 4  ABL2  chi-miR-15b-5p
+#> 5 CASP2 PC-3p-10204_250
+#> 6 CASP2    bta-miR-6123
+
+# 2. Run network_plot plot function
+network_plot(
+  network_data,
+  calcBy = "degree",
+  degreeValue = 0.05,
+  nodeColorNormal = "#00888888",
+  nodeBorderColor = "#FFFFFF",
+  nodeColorFrom = "#FF000088",
+  nodeColorTo = "#00880088",
+  nodeShapeNormal = "circle",
+  nodeShapeSpatial = "csquare",
+  nodeSize = 10,
+  labelSize = 0.5,
+  edgeCurved = TRUE,
+  netLayout = "layout_on_sphere"
+)
+```
+
+![](man/figures/README-network_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::network_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/network_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::network_plot
 ```
 
 ### 3.5 GO and KEGG Enrichment

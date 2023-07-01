@@ -79,6 +79,8 @@ reference:
   desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
   contents:
   - trend_plot
+  - network_plot
+  - wgcna_pipeline
 
 - title: ⑤GO and KEGG Enrichment
   desc: GO and KEGG enrichment analysis and visualization.
@@ -129,3 +131,6 @@ reference:
   - go_deg_fc
   - kegg_anno
   - kegg_deg_fc
+  - network_data
+  - wgcna_gene_exp
+  - wgcna_sample_group

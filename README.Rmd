@@ -388,6 +388,54 @@ Get help using command `?TOmicsVis::trend_plot` or reference page [https://benbe
 # ?TOmicsVis::trend_plot
 ```
 
+#### 3.4.2 wgcna_pipeline
+WGCNA analysis pipeline for RNA-Seq.
+```{r wgcna_pipeline, warning=FALSE}
+# 1. Load wgcna_pipeline example datasets
+data(wgcna_gene_exp)
+data(wgcna_sample_group)
+
+# 2. Run wgcna_pipeline plot function
+# wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
+```
+
+Get help using command `?TOmicsVis::wgcna_pipeline` or reference page [https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html](https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::wgcna_pipeline
+```
+
+#### 3.4.3 network_plot
+Network plot for analyzing and visualizing relationship of genes.
+```{r network_plot, warning=FALSE}
+# 1. Load example datasets
+data(network_data)
+head(network_data)
+
+# 2. Run network_plot plot function
+network_plot(
+  network_data,
+  calcBy = "degree",
+  degreeValue = 0.05,
+  nodeColorNormal = "#00888888",
+  nodeBorderColor = "#FFFFFF",
+  nodeColorFrom = "#FF000088",
+  nodeColorTo = "#00880088",
+  nodeShapeNormal = "circle",
+  nodeShapeSpatial = "csquare",
+  nodeSize = 10,
+  labelSize = 0.5,
+  edgeCurved = TRUE,
+  netLayout = "layout_on_sphere"
+)
+```
+
+Get help using command `?TOmicsVis::network_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/network_plot.html](https://benben-miao.github.io/TOmicsVis/reference/network_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::network_plot
+```
+
 ### 3.5 GO and KEGG Enrichment
 #### 3.5.1 chord_plot
 Chord plot for visualizing the relationships of pathways and genes.
