@@ -41,6 +41,8 @@ library(TOmicsVis)
 #> loading 'TOmicsVis'
 #> Warning: replacing previous import 'clusterProfiler::simplify' by
 #> 'igraph::simplify' when loading 'TOmicsVis'
+#> Warning: replacing previous import 'ComplexHeatmap::pheatmap' by
+#> 'pheatmap::pheatmap' when loading 'TOmicsVis'
 #> Warning: replacing previous import 'igraph::decompose' by 'stats::decompose'
 #> when loading 'TOmicsVis'
 #> Warning: replacing previous import 'WGCNA::cor' by 'stats::cor' when loading
@@ -480,6 +482,47 @@ Get help using command `?TOmicsVis::ma_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::ma_plot
+```
+
+#### 3.3.5 heatmap_group
+
+Heatmap group for visualizing grouped gene expression data.
+
+``` r
+# 1. Load example datasets
+data(heatmap_group_data)
+head(heatmap_group_data)
+#>                 V2          V3          V4          V5          V6          V7
+#> Groups     Control     Control     Control       Treat       Treat       Treat
+#> GeneID    Control1    Control2    Control3      Treat1      Treat2      Treat3
+#> Gene1   6.59934411 5.226266025 3.693287538 9.308119032 8.987864851        <NA>
+#> Gene2  5.760380377 4.892783021 5.448923917  8.66208104 8.793319848 8.765914637
+#> Gene3  9.561905115 4.549168157 3.998654922 9.790770004 7.133187551  7.37959102
+#> Gene4  8.396409316  8.71705522  8.03906411 4.417013007 4.725269731 3.542216879
+
+# 2. Run heatmap_group plot function
+heatmap_group(
+  heatmap_group_data,
+  scale_data = "none",
+  clust_method = "complete",
+  border_show = TRUE,
+  value_show = TRUE,
+  low_color = "#00880088",
+  mid_color = "#ffffff",
+  high_color = "#ff000088",
+  na_color = "#ff8800",
+  x_angle = 45
+)
+```
+
+![](man/figures/README-heatmap_group-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::heatmap_group` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::heatmap_group
 ```
 
 ### 3.4 Advanced Analysis

@@ -355,6 +355,34 @@ Get help using command `?TOmicsVis::ma_plot` or reference page [https://benben-m
 # ?TOmicsVis::ma_plot
 ```
 
+#### 3.3.5 heatmap_group
+Heatmap group for visualizing grouped gene expression data.
+```{r heatmap_group, warning=FALSE}
+# 1. Load example datasets
+data(heatmap_group_data)
+head(heatmap_group_data)
+
+# 2. Run heatmap_group plot function
+heatmap_group(
+  heatmap_group_data,
+  scale_data = "none",
+  clust_method = "complete",
+  border_show = TRUE,
+  value_show = TRUE,
+  low_color = "#00880088",
+  mid_color = "#ffffff",
+  high_color = "#ff000088",
+  na_color = "#ff8800",
+  x_angle = 45
+)
+```
+
+Get help using command `?TOmicsVis::heatmap_group` or reference page [https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html](https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::heatmap_group
+```
+
 ### 3.4 Advanced Analysis
 #### 3.4.1 trend_plot
 Trend plot for visualizing gene expression trend profile in multiple traits.

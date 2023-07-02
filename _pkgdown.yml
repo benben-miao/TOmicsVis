@@ -74,6 +74,7 @@ reference:
   - circos_heatmap
   - volcano_plot
   - ma_plot
+  - heatmap_group
 
 - title: ④Advanced Analysis
   desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
@@ -134,3 +135,4 @@ reference:
   - network_data
   - wgcna_gene_exp
   - wgcna_sample_group
+  - heatmap_group_data

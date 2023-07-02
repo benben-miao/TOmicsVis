@@ -1,3 +1,18 @@
+## TOmicsVis 1.1.5
+
+**Date**: 2023-07-02
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::heatmap_group_data` plot function.
+2. New `?TOmicsVis::heatmap_group` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. None.
+
+---
+
 ## TOmicsVis 1.1.4
 
 **Date**: 2023-07-01
