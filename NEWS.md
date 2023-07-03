@@ -9,7 +9,7 @@
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 
-1. None.
+1. Fixed import and importFrom problems.
 
 ---
 
