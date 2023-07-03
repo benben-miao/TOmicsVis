@@ -58,17 +58,8 @@ head(go_deg_fc)
 # 3. Default parameters
 go_enrich_net(go_anno, go_deg_fc)
 
-# 4. Set padjust_method = "BH"
-go_enrich_net(go_anno, go_deg_fc, padjust_method = "BH")
-
-# 5. Set category_num = 10
-go_enrich_net(go_anno, go_deg_fc, category_num = 10)
-
-# 6. Set low_color = "#ff8800ff", high_color = "#008888ff"
+# 4. Set low_color = "#ff8800ff", high_color = "#008888ff"
 go_enrich_net(go_anno, go_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
-
-# 7. Set net_layout = "graphopt"
-go_enrich_net(go_anno, go_deg_fc, net_layout = "graphopt")
 
 }
 \author{

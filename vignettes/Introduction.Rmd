@@ -24,8 +24,6 @@ knitr::opts_chunk$set(
 
 **Author**: [benben-miao github](https://github.com/benben-miao)
 
-**BioSciTools**: [Biology Science Tools](https://github.com/BioSciTools/BioSciTools.github.io)
-
 ## 2. Install package
 ```{r}
 # 1. TOmicsVis

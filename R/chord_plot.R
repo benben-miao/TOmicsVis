@@ -36,15 +36,6 @@
 #' # 4. Set multi_colors = "VividColors"
 #' chord_plot(chord_data, multi_colors = "VividColors")
 #'
-#' # 5. Set link_type = "arrows"
-#' chord_plot(chord_data, link_type = "arrows")
-#'
-#' # 6. Set sector_scale = "Scale"
-#' chord_plot(chord_data, sector_scale = "Scale")
-#'
-#' # 7. Set label_dir = "Horizontal"
-#' chord_plot(chord_data, label_dir = "Horizontal")
-#'
 chord_plot <- function(data,
 											 multi_colors = "RainbowColors",
 											 color_alpha = 0.50,

@@ -5,7 +5,7 @@
 #' @return Plot: box plot support two levels and multiple groups with P value.
 #' @param data Dataframe: two levels and multiple groups
 #' @param test_method Character: test methods of P value. Default: "wilcox.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
-#' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1) => c("****", "***", "**", "*", "ns").
+#' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).
 #' @param notch Logical: Box notch or none. Default: TRUE, options: TRUE, FALSE.
 #' @param group_level Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".
 #' @param add_element Character: add new plot. Default: "dotplot", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".

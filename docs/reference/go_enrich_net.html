@@ -215,49 +215,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
 <span class="r-plt img"><img src="go_enrich_net-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set padjust_method = "BH"</span></span></span>
-<span class="r-in"><span><span class="fu">go_enrich_net</span><span class="op">(</span><span class="va">go_anno</span>, <span class="va">go_deg_fc</span>, padjust_method <span class="op">=</span> <span class="st">"BH"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 33 rows [439, 1170, 1280, 1307, 1416, 1586, 1655, 1656, 1661, 1722, 2040, 2064, 2082, 2083, 2165, 2402, 2684, 2736, 2861, 2902, ...].</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(foldChange = your_value)' instead of 'foldChange'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The foldChange parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(edge = your_value)' instead of 'colorEdge'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The colorEdge parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_node = your_value)' instead of 'cex_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_node = your_value)' instead of 'cex_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_gene parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_label = your_value)' instead of 'cex_label_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_label = your_value)' instead of 'cex_label_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_gene parameter will be removed in the next version.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="go_enrich_net-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set category_num = 10</span></span></span>
-<span class="r-in"><span><span class="fu">go_enrich_net</span><span class="op">(</span><span class="va">go_anno</span>, <span class="va">go_deg_fc</span>, category_num <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 33 rows [439, 1170, 1280, 1307, 1416, 1586, 1655, 1656, 1661, 1722, 2040, 2064, 2082, 2083, 2165, 2402, 2684, 2736, 2861, 2902, ...].</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(foldChange = your_value)' instead of 'foldChange'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The foldChange parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(edge = your_value)' instead of 'colorEdge'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The colorEdge parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_node = your_value)' instead of 'cex_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_node = your_value)' instead of 'cex_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_gene parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_label = your_value)' instead of 'cex_label_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_label = your_value)' instead of 'cex_label_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_gene parameter will be removed in the next version.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="go_enrich_net-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 6. Set low_color = "#ff8800ff", high_color = "#008888ff"</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set low_color = "#ff8800ff", high_color = "#008888ff"</span></span></span>
 <span class="r-in"><span><span class="fu">go_enrich_net</span><span class="op">(</span><span class="va">go_anno</span>, <span class="va">go_deg_fc</span>, low_color <span class="op">=</span> <span class="st">"#ff8800ff"</span>, high_color <span class="op">=</span> <span class="st">"#008888ff"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 33 rows [439, 1170, 1280, 1307, 1416, 1586, 1655, 1656, 1661, 1722, 2040, 2064, 2082, 2083, 2165, 2402, 2684, 2736, 2861, 2902, ...].</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(foldChange = your_value)' instead of 'foldChange'.</span>
@@ -276,28 +234,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="go_enrich_net-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set net_layout = "graphopt"</span></span></span>
-<span class="r-in"><span><span class="fu">go_enrich_net</span><span class="op">(</span><span class="va">go_anno</span>, <span class="va">go_deg_fc</span>, net_layout <span class="op">=</span> <span class="st">"graphopt"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 33 rows [439, 1170, 1280, 1307, 1416, 1586, 1655, 1656, 1661, 1722, 2040, 2064, 2082, 2083, 2165, 2402, 2684, 2736, 2861, 2902, ...].</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(foldChange = your_value)' instead of 'foldChange'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The foldChange parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'color.params = list(edge = your_value)' instead of 'colorEdge'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The colorEdge parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_node = your_value)' instead of 'cex_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_node = your_value)' instead of 'cex_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_gene parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(category_label = your_value)' instead of 'cex_label_category'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_category parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cex.params = list(gene_label = your_value)' instead of 'cex_label_gene'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The cex_label_gene parameter will be removed in the next version.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="go_enrich_net-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="go_enrich_net-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

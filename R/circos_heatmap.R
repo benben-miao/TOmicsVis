@@ -139,6 +139,6 @@ circos_heatmap <- function(data,
 	}
 	# # <- 4. Plot
 
-	return(p)
+	return(p())
 	invisible()
 }

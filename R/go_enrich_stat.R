@@ -244,15 +244,15 @@ go_enrich_stat <- function(go_anno,
 
 	# -> 5. Plot
 	p <- ggplot(data = enrich_df,
-							aes(x = reorder(Description, -Count),
-									y = Count,
-									fill = Ontology)) +
+							aes(x = reorder(enrich_df$Description, -enrich_df$Count),
+									y = enrich_df$Count,
+									fill = enrich_df$Ontology)) +
 		geom_bar(stat = 'identity',
 						 position = 'dodge')  +
-		geom_text(aes(label = Count),
+		geom_text(aes(label = enrich_df$Count),
 							vjust = -0.3,
 							hjust = 0.5) +
-		facet_wrap(~Ontology,
+		facet_wrap(~enrich_df$Ontology,
 							 scales = 'free_x',
 							 strip.position = stripPos) +
 		xlab('GO terms') +

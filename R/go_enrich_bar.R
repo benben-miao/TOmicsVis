@@ -196,16 +196,16 @@ go_enrich_bar <- function(go_anno,
 		title = "",
 		label_format = 200
 	) +
-		geom_text(aes(label = Count),
-							vjust = 0.3,
-							hjust = -0.5,
-							size = 3,
-							color = "#333333") +
-		geom_text(aes(label = paste("(",round(GeneRatio, 2),")", sep = "")),
-							vjust = 0.3,
-							hjust = -0.5,
-							size = 3,
-							color = "#333333") +
+		# geom_text(aes(label = enrich_result$Count),
+		# 					vjust = 0.3,
+		# 					hjust = -0.5,
+		# 					size = 3,
+		# 					color = "#333333") +
+		# geom_text(aes(label = paste("(",round(enrich_result$GeneRatio, 2),")", sep = "")),
+		# 					vjust = 0.3,
+		# 					hjust = -0.5,
+		# 					size = 3,
+		# 					color = "#333333") +
 		xlab("Gene Number") +
 		ylab("GO terms") +
 		gg_theme +

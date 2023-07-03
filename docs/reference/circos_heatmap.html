@@ -152,195 +152,19 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
 <span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">circos_heatmap_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function(){</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 												 c(low_color, mid_color, high_color))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.par(gap.after = c(gap_size))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.heatmap(data,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 split = NULL,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 col = col_fun,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 na.col = "grey",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lty = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lwd = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lty = graphics::par("lty"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lwd = graphics::par("lwd"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cluster = TRUE,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.side = "inside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.track.height = dend_height,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.side = "outside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.cex = rowname_size,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.font = graphics::par("font"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.col = "black",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 track.height = 0.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# circos.track(track.index = get.current.track.index(),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			 panel.fun = function(x, y) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				if (CELL_META$sector.numeric.index == 1) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					cn = colnames(data)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					n = length(cn)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								12 + (1:n)*1.8,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cn,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			}, bg.border = NA)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		grid::grid.draw(legend)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x000002501f5cbb08&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x000002501f5c7a78&gt;</span>
+<span class="r-plt img"><img src="circos_heatmap-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set low_color = "#008800"</span></span></span>
 <span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">circos_heatmap_data</span>, low_color <span class="op">=</span> <span class="st">"#008800"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function(){</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 												 c(low_color, mid_color, high_color))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.par(gap.after = c(gap_size))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.heatmap(data,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 split = NULL,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 col = col_fun,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 na.col = "grey",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lty = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lwd = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lty = graphics::par("lty"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lwd = graphics::par("lwd"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cluster = TRUE,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.side = "inside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.track.height = dend_height,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.side = "outside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.cex = rowname_size,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.font = graphics::par("font"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.col = "black",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 track.height = 0.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# circos.track(track.index = get.current.track.index(),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			 panel.fun = function(x, y) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				if (CELL_META$sector.numeric.index == 1) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					cn = colnames(data)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					n = length(cn)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								12 + (1:n)*1.8,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cn,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			}, bg.border = NA)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		grid::grid.draw(legend)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x000002501f5cbb08&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x000002501f545c80&gt;</span>
+<span class="r-plt img"><img src="circos_heatmap-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set gap_size = 5</span></span></span>
 <span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">circos_heatmap_data</span>, gap_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function(){</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 												 c(low_color, mid_color, high_color))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.par(gap.after = c(gap_size))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.heatmap(data,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 split = NULL,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 col = col_fun,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 na.col = "grey",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lty = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lwd = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lty = graphics::par("lty"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lwd = graphics::par("lwd"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cluster = TRUE,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.side = "inside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.track.height = dend_height,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.side = "outside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.cex = rowname_size,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.font = graphics::par("font"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.col = "black",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 track.height = 0.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# circos.track(track.index = get.current.track.index(),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			 panel.fun = function(x, y) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				if (CELL_META$sector.numeric.index == 1) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					cn = colnames(data)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					n = length(cn)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								12 + (1:n)*1.8,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cn,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			}, bg.border = NA)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		grid::grid.draw(legend)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x000002501f5cbb08&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x000002501f4d78d0&gt;</span>
+<span class="r-plt img"><img src="circos_heatmap-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 6. Set dend_height = 0.40</span></span></span>
 <span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">circos_heatmap_data</span>, dend_height <span class="op">=</span> <span class="fl">0.40</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function(){</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 												 c(low_color, mid_color, high_color))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.par(gap.after = c(gap_size))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circlize::circos.heatmap(data,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 split = NULL,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 col = col_fun,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 na.col = "grey",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lty = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cell.lwd = 1,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.border = NA,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lty = graphics::par("lty"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 bg.lwd = graphics::par("lwd"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 cluster = TRUE,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.side = "inside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 dend.track.height = dend_height,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.side = "outside", # "none", "outside", "inside"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.cex = rowname_size,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.font = graphics::par("font"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 rownames.col = "black",</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 									 track.height = 0.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# circos.track(track.index = get.current.track.index(),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			 panel.fun = function(x, y) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				if (CELL_META$sector.numeric.index == 1) {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					cn = colnames(data)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					n = length(cn)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 					circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								12 + (1:n)*1.8,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cn,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 				}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		# 			}, bg.border = NA)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		grid::grid.draw(legend)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 		circos.clear()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x000002501f5cbb08&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x000002501f473650&gt;</span>
+<span class="r-plt img"><img src="circos_heatmap-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

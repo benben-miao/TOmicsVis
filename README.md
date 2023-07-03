@@ -13,9 +13,6 @@
 
 **Author**: [benben-miao github](https://github.com/benben-miao)
 
-**BioSciTools**: [Biology Science
-Tools](https://github.com/BioSciTools/BioSciTools.github.io)
-
 ## 2. Install package
 
 ``` r
@@ -406,8 +403,8 @@ circos_heatmap(
 #>      grid::grid.draw(legend)
 #>      circos.clear()
 #>  }
-#> <bytecode: 0x000001b656ca93b0>
-#> <environment: 0x000001b656c89010>
+#> <bytecode: 0x000002573f61fa30>
+#> <environment: 0x000002573f5c5c28>
 ```
 
 Get help using command `?TOmicsVis::circos_heatmap` or reference page

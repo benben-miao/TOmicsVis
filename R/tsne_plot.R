@@ -223,8 +223,8 @@ tsne_plot <- function(data,
 
 	# # -> 4. Plot
 	p <- ggplot(tsne_out,
-							aes(x = tSNE1,
-									y = tSNE2,
+							aes(x = tsne_out$tSNE1,
+									y = tsne_out$tSNE2,
 									color = groups,
 									shape = NULL,
 									label = row.names(tsne_data))) +
@@ -235,8 +235,8 @@ tsne_plot <- function(data,
 							show.legend = FALSE) +
 		# xlab("tSNE1") +
 		# ylab("tSNE2") +
-		stat_ellipse(aes(x = tSNE1,
-										 y = tSNE2,
+		stat_ellipse(aes(x = tsne_out$tSNE1,
+										 y = tsne_out$tSNE2,
 										 fill = groups),
 								 geom = "polygon",
 								 alpha = ellipse_alpha,

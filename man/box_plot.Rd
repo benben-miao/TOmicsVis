@@ -25,7 +25,7 @@ box_plot(
 
 \item{test_method}{Character: test methods of P value. Default: "wilcox.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".}
 
-\item{test_label}{Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1) => c("\emph{\emph{\strong{", "}}", "**", "}", "ns").}
+\item{test_label}{Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).}
 
 \item{notch}{Logical: Box notch or none. Default: TRUE, options: TRUE, FALSE.}
 
