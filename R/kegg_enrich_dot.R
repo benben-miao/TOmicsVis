@@ -15,13 +15,12 @@
 #' @param high_color Character: high value (p-value or q-value) color (color name or hex value).
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import reshape2
-#' @import tidyr
-#' @import dplyr
-#' @import clusterProfiler
+#' @importFrom reshape2 melt
+#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom clusterProfiler enricher
+#' @importFrom dplyr distinct
 #' @import enrichplot
 #' @export
 #'

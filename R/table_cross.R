@@ -9,7 +9,6 @@
 #' @param left_index Logical: left table as index. Default: TRUE, options: TRUE, FALSE.
 #' @param right_index Logical: right table as index. Default: FALSE, options: TRUE, FALSE.
 #'
-#' @import stats
 #' @export
 #'
 #' @examples

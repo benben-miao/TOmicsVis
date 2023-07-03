@@ -14,9 +14,8 @@
 #' @param color_high Character: high value color name or hex value. Default: "red".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
-#' @import stats
 #' @import ggplot2
-#' @import ggcorrplot
+#' @importFrom ggcorrplot ggcorrplot
 #' @export
 #'
 #' @examples
@@ -102,7 +101,7 @@ corr_heatmap <- function(data,
 	}
 	# <- 3. Plot parameters
 
-	p <- ggcorrplot(corr,
+	p <- ggcorrplot::ggcorrplot(corr,
 									hc.method = "complete",
 									method = cell_shape,
 									# colors = c(color_low, color_mid, color_high),

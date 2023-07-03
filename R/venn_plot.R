@@ -9,10 +9,10 @@
 #' @param sci_fill_color Character: ggsci color palette. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param sci_fill_alpha Numeric: ggsci fill color alpha. Default: 0.65, min: 0.00, max: 1.00.
 #'
-#' @import stats
 #' @import ggplot2
+#' @import ggpolypath
 #' @import ggsci
-#' @import venn
+#' @importFrom venn venn
 #' @export
 #'
 #' @examples
@@ -20,7 +20,7 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(venn_plot)
+#' data(venn_data)
 #'
 #' # 3. Default parameters
 #' venn_plot(venn_data)
@@ -116,7 +116,7 @@ venn_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# -> 4. Plot
-	p <- venn(x = data_venn,
+	p <- venn::venn(x = data_venn,
 					 ggplot = TRUE, # FALSE
 					 linetype = line_type,
 					 zcolor = colors,

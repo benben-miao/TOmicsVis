@@ -1,12 +1,12 @@
 Package: TOmicsVis
-Title: Transcript Omics Visualization
+Title: Transcriptomics Visualization
 Version: 1.1.5
 Authors@R: c(
     person("Benben", "Miao", , "benben.miao@outlook.com", c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7307-1331"))
 	)
-Description: Transcript Omics Visualization.
-URL: https://github.com/benben-miao/TOmicsVis/
+Description: Transcriptomics Visualization.
+URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
@@ -14,9 +14,40 @@ RoxygenNote: 7.2.1
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5)
-Imports: stats, utils, grid, graphics, grDevices, ggplot2, ggsci, ggpubr, ggcorrplot, ggforce, vegan, venn, circlize, randomcoloR, ComplexHeatmap, EnhancedVolcano, GGally, reshape2, survival, survminer, Rtsne, dplyr, tidyr, clusterProfiler, enrichplot, ggnewscale, igraph, WGCNA, stringr, factoextra, pheatmap, RColorBrewer
+Imports: 
+		stats,
+		utils,
+		grid,
+		graphics,
+		grDevices,
+		ggplot2,
+		ggsci,
+		reshape2,
+		ggpubr,
+    ggcorrplot,
+    ggforce,
+    vegan,
+    venn,
+    circlize,
+    randomcoloR,
+    ComplexHeatmap,
+    EnhancedVolcano,
+    GGally,
+    survival,
+		survminer,
+		Rtsne,
+		dplyr,
+		tidyr,
+		clusterProfiler,
+		enrichplot,
+		ggnewscale,
+		igraph,
+		WGCNA,
+		stringr,
+		pheatmap,
+		RColorBrewer,
+		ggpolypath
 Suggests: 
-    knitr,
+		knitr,
     rmarkdown
 VignetteBuilder: knitr
-News: NEWS.md

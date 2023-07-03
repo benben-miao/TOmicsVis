@@ -16,11 +16,10 @@
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import Rtsne
-#' @import vegan
+#' @importFrom Rtsne Rtsne
+#' @importFrom vegan anosim
 #' @export
 #'
 #' @examples
@@ -65,13 +64,13 @@ tsne_plot <- function(data,
 	tsne_data <- tsne_tb[,2:(ncol(tsne_tb) - 1)]
 	groups <- tsne_tb[,ncol(tsne_tb)]
 
-	tsne_ano <- anosim(x = tsne_data,
+	tsne_ano <- vegan::anosim(x = tsne_data,
 										 grouping = groups)
 	tsne_p <- tsne_ano$signif
 	tsne_r <- round(tsne_ano$statistic,3)
 
 	set.seed(as.numeric(123))
-	tsne_res <- Rtsne(as.matrix(unique(tsne_data)),
+	tsne_res <- Rtsne::Rtsne(as.matrix(unique(tsne_data)),
 										dims = 2,
 										initial_dims = 50,
 										perplexity = 10,

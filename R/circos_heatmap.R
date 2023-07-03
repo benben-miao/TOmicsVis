@@ -13,10 +13,11 @@
 #' @param dend_height Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.
 #' @param rowname_size Numeric: rowname font size. Default: 0.80, min: 0.10, max: 10.00.
 #'
-#' @import stats
-#' @import grid
-#' @import circlize
-#' @import ComplexHeatmap
+#' @importFrom stats reorder
+#' @importFrom grid grid.draw
+#' @importFrom graphics par
+#' @importFrom circlize circos.clear colorRamp2 circos.par circos.heatmap
+#' @importFrom ComplexHeatmap Legend
 #' @export
 #'
 #' @examples
@@ -94,12 +95,12 @@ circos_heatmap <- function(data,
 	# # -> 4. Plot
 
 	p <- function(){
-		circos.clear()
-		col_fun = colorRamp2(c(round(min(data)), 0, round(max(data))),
+		circlize::circos.clear()
+		col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),
 												 c(low_color, mid_color, high_color))
 
-		circos.par(gap.after = c(gap_size))
-		circos.heatmap(data,
+		circlize::circos.par(gap.after = c(gap_size))
+		circlize::circos.heatmap(data,
 									 split = NULL,
 									 col = col_fun,
 									 na.col = "grey",
@@ -107,17 +108,17 @@ circos_heatmap <- function(data,
 									 cell.lty = 1,
 									 cell.lwd = 1,
 									 bg.border = NA,
-									 bg.lty = par("lty"),
-									 bg.lwd = par("lwd"),
+									 bg.lty = graphics::par("lty"),
+									 bg.lwd = graphics::par("lwd"),
 									 cluster = TRUE,
 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
-									 dend.callback = function(dend, m, si) reorder(dend, rowMeans(m)),
+									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),
 									 dend.side = "inside", # "none", "outside", "inside"
 									 dend.track.height = dend_height,
 									 rownames.side = "outside", # "none", "outside", "inside"
 									 rownames.cex = rowname_size,
-									 rownames.font = par("font"),
+									 rownames.font = graphics::par("font"),
 									 rownames.col = "black",
 									 track.height = 0.3
 		)
@@ -132,11 +133,12 @@ circos_heatmap <- function(data,
 		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")
 		# 				}
 		# 			}, bg.border = NA)
-		legend = Legend(title = "ColorBar", col_fun = col_fun)
-		grid.draw(legend)
+		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
+		grid::grid.draw(legend)
 		circos.clear()
 	}
 	# # <- 4. Plot
 
-	return(p())
+	return(p)
+	invisible()
 }

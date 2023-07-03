@@ -17,10 +17,10 @@
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @import reshape2
-#' @import tidyr
-#' @import dplyr
+#' @importFrom reshape2 melt
+#' @importFrom tidyr separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
+#' @importFrom dplyr distinct
 #' @import enrichplot
 #' @export
 #'
@@ -62,6 +62,7 @@ go_enrich_bar <- function(go_anno,
 										 high_color = "#008888aa",
 										 ggTheme = "theme_light"
 										){
+
 	# -> 2. Data Parameters
 	# padjust_method <- "fdr"
 	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"

@@ -7,8 +7,8 @@
 #' @param grouped_var Character: grouped column name. Default: "variables".
 #' @param miss_drop Logical: drop missing values or NA values. Default: TRUE, options: TRUE, FALSE.
 #'
-#' @import stats
-#' @import reshape2
+#' @importFrom reshape2 dcast
+#' @importFrom stats as.formula
 #' @export
 #'
 #' @examples
@@ -31,7 +31,7 @@ table_split <- function(data,
 												grouped_var = "variable",
 												miss_drop = TRUE
 												){
-	res <- dcast(data,
+	res <- reshape2::dcast(data,
 							 as.formula(paste("... ~ ",
 							 								 grouped_var,
 							 								 sep = "")

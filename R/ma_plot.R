@@ -19,10 +19,9 @@
 #' @param ylab Character: y label. Default: "Log2 fold change".
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_minimal", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import ggpubr
+#' @importFrom ggpubr ggmaplot
 #' @export
 #'
 #' @examples
@@ -167,7 +166,7 @@ ma_plot <- function(data,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
-	p <- ggmaplot(data,
+	p <- ggpubr::ggmaplot(data,
 								fdr = fdr_value,
 								fc = foldchange,
 								genenames = as.vector(data[[1]]),

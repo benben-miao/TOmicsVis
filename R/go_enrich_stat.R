@@ -15,14 +15,12 @@
 #' @param sci_fill_alpha Numeric: ggsci fill color alpha. Default: 0.80, min: 0.00, max: 1.00.
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import reshape2
-#' @import tidyr
-#' @import dplyr
-#' @import clusterProfiler
-#' @import enrichplot
+#' @importFrom reshape2 melt
+#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom clusterProfiler enricher
+#' @importFrom dplyr distinct
 #' @export
 #'
 #' @examples
@@ -84,7 +82,7 @@ go_enrich_stat <- function(go_anno,
 	deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
 	deg_list <- with(deg_fc, setNames(log2FC, id))
 
-	gene_go1 <- melt(gene_go,
+	gene_go1 <- reshape2::melt(gene_go,
 									 na.rm = FALSE,
 									 id.vars = c("id"),
 									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
@@ -93,18 +91,18 @@ go_enrich_stat <- function(go_anno,
 									 factorsAsStrings = TRUE
 	)
 
-	gene_go2 <- separate_rows(data = gene_go1,
+	gene_go2 <- tidyr::separate_rows(data = gene_go1,
 														"term",
 														sep = ";"
 	)
 
-	gene_go3 <- separate(gene_go2,
+	gene_go3 <- tidyr::separate(gene_go2,
 											 "term",
 											 c("term", "description"),
 											 "\\("
 	)
 
-	gene_go4 <- drop_na(gene_go3)
+	gene_go4 <- tidyr::drop_na(gene_go3)
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
@@ -114,7 +112,7 @@ go_enrich_stat <- function(go_anno,
 												 gene_go4["description"]
 	)
 
-	enrich_results <- enricher(gene = deg_fc[[1]],
+	enrich_results <- clusterProfiler::enricher(gene = deg_fc[[1]],
 														 TERM2GENE = data.frame(gene_go5[,2],gene_go5[,1]),
 														 TERM2NAME = data.frame(gene_go5[,2],gene_go5[,4]),
 														 pvalueCutoff = pvalue_cutoff,
@@ -129,7 +127,7 @@ go_enrich_stat <- function(go_anno,
 	enrich_result <- enrich_results@result
 
 	gene_go6 <- data.frame(gene_go5["term"], gene_go5["ontology"])
-	gene_go6 <- distinct(gene_go6, .keep_all = TRUE)
+	gene_go6 <- dplyr::distinct(gene_go6, .keep_all = TRUE)
 
 	enrich_table <- merge(gene_go6,
 												enrich_result,

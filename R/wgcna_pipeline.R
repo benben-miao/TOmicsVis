@@ -6,11 +6,12 @@
 #' @param wgcna_sample_group Dataframe: include samples and groups data.
 #'
 #' @import WGCNA
-#' @import dplyr
-#' @import reshape2
 #' @import stringr
 #' @import ggsci
-#' @import factoextra
+#' @importFrom stats mad model.matrix quantile
+#' @importFrom grDevices dev.off jpeg pdf
+#' @importFrom graphics abline barplot legend strheight strwidth text
+#' @importFrom utils write.table
 #' @export
 #'
 #' @examples
@@ -42,7 +43,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 
 	groupData <- wgcna_sample_group
 
-	gsg = goodSamplesGenes(expData, verbose = 3);
+	gsg = WGCNA::goodSamplesGenes(expData, verbose = 3);
 	gsg$allOK
 
 	treeType <- "phylogenic"

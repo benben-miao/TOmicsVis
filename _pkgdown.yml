@@ -1,5 +1,5 @@
 # https://pkgdown.r-lib.org/articles/customise.html
-url: https://github.com/benben-miao/
+url: https://github.com/benben-miao/TOmicsVis/
 template:
   bootstrap: 5
   # bootswatch: sketchy
@@ -13,7 +13,7 @@ development:
 
 navbar:
   structure:
-    left: [home, reference, articles, news, bioscitools]
+    left: [home, reference, articles, news, OmicsSuite]
     right: [search, github]
   components:
     home:
@@ -40,16 +40,16 @@ navbar:
       icon: fa-code-branch
       href: news/index.html
     bioscitools:
-      text: BioSciTools
+      text: OmicsSuite
       icon: fa-desktop
-      href: https://github.com/bioscitools/
+      href: https://github.com/OmicsSuite/
 
 home:
   links:
-  - text: BioSciTools
-    href: https://github.com/bioscitools/bioscitools.github.io
+  - text: OmicsSuite
+    href: https://github.com/OmicsSuite/
   - text: BioSciTools website
-    href: https://bioscitools.podia.com
+    href: https://github.com/OmicsSuite/OmicsSuite.github.io
 
 reference:
 - title: ①Samples Statistics

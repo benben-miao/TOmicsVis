@@ -18,11 +18,10 @@
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import ggpubr
-#' @import utils
+#' @importFrom ggpubr ggviolin
+#' @importFrom utils combn
 #' @export
 #'
 #' @examples
@@ -288,7 +287,7 @@ violin_plot <- function(data,
 	# ChoiceBox: "horizontal", "vertical"
 
 	groups <- unique(data[[2]])
-	my_comparisons <- combn(groups, 2, simplify = FALSE)
+	my_comparisons <- utils::combn(groups, 2, simplify = FALSE)
 	my_comparisons <- lapply(my_comparisons, as.character)
 
 	symnum_args <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
@@ -297,7 +296,7 @@ violin_plot <- function(data,
 
 	# # -> 4. Plot
 	if (group_level == "Two_Column") {
-		p <- ggviolin(data,
+		p <- ggpubr::ggviolin(data,
 									x = colnames(data)[2],
 									y = colnames(data)[1],
 									combine = FALSE,

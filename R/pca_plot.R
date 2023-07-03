@@ -12,10 +12,9 @@
 #' @param legend_dir Character: legend director. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
-#' @import stats
+#' @importFrom stats prcomp
 #' @import ggplot2
-#' @import ggforce
-#' @import vegan
+#' @importFrom ggforce geom_mark_ellipse
 #' @export
 #'
 #' @examples
@@ -51,7 +50,7 @@ pca_plot <- function(pca_sample_gene,
 	pca_sample_gene <- pca_sample_gene[rowSums(pca_sample_gene > 0) > 0, ]
 	groups <- pca_group_sample[,2]
 
-	pca_res <- prcomp(t(pca_sample_gene))
+	pca_res <- stats::prcomp(t(pca_sample_gene))
 	pca_out <- as.data.frame(pca_res$x)
 
 	percentage <- round(pca_res$sdev / sum(pca_res$sdev) * 100, 2)

@@ -16,10 +16,9 @@
 #' @param sci_color_alpha Numeric: ggsci border color alpha. Default: 0.75, min: 0.00, max: 1.00.
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import ggpubr
+#' @importFrom ggpubr ggqqplot
 #' @export
 #'
 #' @examples
@@ -241,7 +240,7 @@ quantile_plot <- function(data,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
-	p <- ggqqplot(data,
+	p <- ggpubr::ggqqplot(data,
 								x = colnames(data)[1],
 								color = colnames(data)[2],
 								combine = FALSE,

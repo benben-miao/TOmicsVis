@@ -15,13 +15,12 @@
 #' @param label_dir Character: label director. Default: "Vertical", options: "Horizontal", "Vertical".
 #' @param dist_label Numeric: the distance of label and circle. Default: 0.3, min: 0.0.
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import circlize
-#' @import randomcoloR
-#' @import grDevices
-#' @import graphics
+#' @importFrom circlize chordDiagram convert_height circos.trackPlotRegion get.cell.meta.data circos.text circos.axis
+#' @importFrom randomcoloR distinctColorPalette
+#' @importFrom grDevices rainbow
+#' @importFrom graphics par
 #' @export
 #'
 #' @examples
@@ -76,9 +75,9 @@ chord_plot <- function(data,
 	# -> 3. Plot parameters
 	# multi_colors <- "RainbowColors"
 	if (multi_colors == "VividColors") {
-		grid_col <- distinctColorPalette(color_num)
+		grid_col <- randomcoloR::distinctColorPalette(color_num)
 	}else if (multi_colors == "RainbowColors") {
-		grid_col <- rainbow(color_num)
+		grid_col <- grDevices::rainbow(color_num)
 	}
 	# ChoiceBox: "VividColors", "RainbowColors"
 
@@ -122,7 +121,7 @@ chord_plot <- function(data,
 
 	# # -> 4. Plot
 	if (label_dir == "Horizontal") {
-		p <- chordDiagram(data,
+		p <- circlize::chordDiagram(data,
 								 grid.col = grid_col,
 								 grid.border = NULL,
 								 transparency = color_alpha,
@@ -132,7 +131,7 @@ chord_plot <- function(data,
 								 order = NULL,
 								 directional = link_dir, # 1, -1, 0, 2
 								 direction.type = link_type, # diffHeight and arrows
-								 diffHeight = convert_height(2, "mm"),
+								 diffHeight = circlize::convert_height(2, "mm"),
 								 reduce = 1e-5,
 								 xmax = NULL,
 								 self.link = 2,
@@ -140,10 +139,10 @@ chord_plot <- function(data,
 								 keep.diagonal = FALSE,
 								 preAllocateTracks = NULL,
 								 annotationTrack = c("name", "grid", "axis"),
-								 annotationTrackHeight = convert_height(c(dist_name, width_circle), "mm"),
+								 annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
 								 link.border = NA,
-								 link.lwd = par("lwd"),
-								 link.lty = par("lty"),
+								 link.lwd = graphics::par("lwd"),
+								 link.lty = graphics::par("lty"),
 								 link.sort = FALSE,
 								 link.decreasing = TRUE,
 								 # link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
@@ -163,7 +162,7 @@ chord_plot <- function(data,
 		)
 		# circos.clear()
 	} else if (label_dir == "Vertical") {
-		p <- chordDiagram(data,
+		p <- circlize::chordDiagram(data,
 								 grid.col = grid_col,
 								 grid.border = NULL,
 								 transparency = color_alpha,
@@ -173,7 +172,7 @@ chord_plot <- function(data,
 								 order = NULL,
 								 directional = link_dir, # 1, -1, 0, 2
 								 direction.type = link_type, # diffHeight and arrows
-								 diffHeight = convert_height(2, "mm"),
+								 diffHeight = circlize::convert_height(2, "mm"),
 								 reduce = 1e-5,
 								 xmax = NULL,
 								 self.link = 2,
@@ -181,10 +180,10 @@ chord_plot <- function(data,
 								 keep.diagonal = FALSE,
 								 preAllocateTracks = 1,
 								 annotationTrack = "grid",
-								 annotationTrackHeight = convert_height(c(dist_name, width_circle), "mm"),
+								 annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
 								 link.border = NA,
-								 link.lwd = par("lwd"),
-								 link.lty = par("lty"),
+								 link.lwd = graphics::par("lwd"),
+								 link.lty = graphics::par("lty"),
 								 link.sort = FALSE,
 								 link.decreasing = TRUE,
 								 # link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
@@ -203,20 +202,20 @@ chord_plot <- function(data,
 								 small.gap = 1
 		)
 		# circos.clear()
-		circos.trackPlotRegion(
+		circlize::circos.trackPlotRegion(
 			track.index = 1,
 			panel.fun = function(x, y) {
-				xlim <- get.cell.meta.data("xlim")
-				ylim <- get.cell.meta.data("ylim")
-				sector.name <- get.cell.meta.data("sector.index")
-				circos.text(mean(xlim),
+				xlim <- circlize::get.cell.meta.data("xlim")
+				ylim <- circlize::get.cell.meta.data("ylim")
+				sector.name <- circlize::get.cell.meta.data("sector.index")
+				circlize::circos.text(mean(xlim),
 										ylim[1] + dist_label,
 										sector.name,
 										facing = "clockwise",
 										niceFacing = TRUE,
 										adj = c(0, 0.5)
 				)
-				circos.axis(
+				circlize::circos.axis(
 					h = "top",
 					labels.cex = 0.5,
 					major.tick.length = 0.2,

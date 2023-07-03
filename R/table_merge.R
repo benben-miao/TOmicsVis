@@ -9,8 +9,7 @@
 #' @param new_value Character: new variable (column) value name. Default: "Value".
 #' @param na_remove Logical: remove NA value. Default: FALSE, options: TRUE, FALSE.
 #'
-#' @import stats
-#' @import reshape2
+#' @importFrom reshape2 melt
 #' @export
 #'
 #' @examples
@@ -35,7 +34,7 @@ table_merge <- function(data,
 												new_value = "Value",
 												na_remove = FALSE
 												){
-	res <- melt(data,
+	res <- reshape2::melt(data,
 							measure.vars = merge_vars,
 							variable.name = new_var,
 							na.rm = na_remove,

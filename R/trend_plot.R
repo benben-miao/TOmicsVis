@@ -19,10 +19,10 @@
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import GGally
+#' @importFrom GGally ggparcoord
+#' @importFrom stats formula
 #' @export
 #'
 #' @examples
@@ -218,7 +218,7 @@ trend_plot <- function(data,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
-	p <- ggparcoord(data,
+	p <- GGally::ggparcoord(data,
 									columns = 2:(ncol(data) - 1),
 									groupColumn = ncol(data),
 									scale = scale_method, # "std", "robust", "uniminmax", "globalminmax", "center", "centerObs"

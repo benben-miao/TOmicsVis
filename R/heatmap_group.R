@@ -14,8 +14,9 @@
 #' @param na_color Character: min value color (color value or hex value with alpha).
 #' @param x_angle Numeric: x axis text angle. Default: 45, min: 0, max: 360.
 #'
-#' @import RColorBrewer
-#' @import pheatmap
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom pheatmap pheatmap
+#' @importFrom grDevices colorRampPalette
 #' @export
 #'
 #' @examples
@@ -90,7 +91,7 @@ heatmap_group <- function(data,
 	rownames(anno_col) <- colnames(data3)
 
 	group <- levels(as.factor(groups))
-	group_color <- brewer.pal(12, "Paired")[1:length(group)]
+	group_color <- RColorBrewer::brewer.pal(12, "Paired")[1:length(group)]
 	names(group_color) <- group
 	group_color
 
@@ -98,7 +99,7 @@ heatmap_group <- function(data,
 		Groups = group_color
 	)
 
-	p <- pheatmap(data3,
+	p <- pheatmap::pheatmap(data3,
 								color = colorRampPalette(c(low_color, mid_color, high_color))(100),
 								scale = "none", # "row", "column", "none"
 								kmeans_k = NA,

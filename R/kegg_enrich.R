@@ -9,14 +9,12 @@
 #' @param pvalue_cutoff Numeric: P-value cutoff. Recommend: small than 0.05.
 #' @param qvalue_cutoff Numeric: Q-value cutoff. Recommend: small than 0.05.
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import reshape2
-#' @import tidyr
-#' @import dplyr
-#' @import clusterProfiler
-#' @import enrichplot
+#' @importFrom reshape2 melt
+#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom clusterProfiler enricher
+#' @importFrom dplyr distinct
 #' @export
 #'
 #' @examples

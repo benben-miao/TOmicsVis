@@ -14,13 +14,12 @@
 #' @param low_color Character: low value (p-value or q-value) color (color name or hex value).
 #' @param high_color Character: high value (p-value or q-value) color (color name or hex value).
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import reshape2
-#' @import tidyr
-#' @import dplyr
-#' @import clusterProfiler
+#' @importFrom reshape2 melt
+#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom clusterProfiler enricher
+#' @importFrom dplyr distinct
 #' @import enrichplot
 #' @import ggnewscale
 #' @export

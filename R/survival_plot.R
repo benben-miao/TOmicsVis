@@ -17,11 +17,10 @@
 #' @param x_break Numeric: x-axis break value. Default: 100, min: 0, max: null.
 #' @param y_break Numeric: y-axis break value. Default: 25, min: 0, max: 100.
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import survival
-#' @import survminer
+#' @importFrom survival survfit Surv
+#' @importFrom survminer ggsurvplot
 #' @export
 #'
 #' @examples
@@ -64,7 +63,7 @@ survival_plot <- function(data,
 	data <- as.data.frame(data)
 	colnames(data) <- c("Time", "Status", "Group")
 
-	fit <- survfit(Surv(Time, Status == 1) ~ Group, data = data)
+	fit <- survival::survfit(survival::Surv(Time, Status == 1) ~ Group, data = data)
 
 	xLimEnd <- max(data$Time)
 	data <- data[data[,1] < xLimEnd,]
@@ -149,7 +148,7 @@ survival_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# # -> 4. Plot
-	p <- ggsurvplot(
+	p <- survminer::ggsurvplot(
 		fit,
 		data = data,
 		fun = curve_function,

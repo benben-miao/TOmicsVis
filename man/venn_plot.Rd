@@ -34,7 +34,7 @@ Venn plot for stat common and unique gene among multiple sets.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(venn_plot)
+data(venn_data)
 
 # 3. Default parameters
 venn_plot(venn_data)

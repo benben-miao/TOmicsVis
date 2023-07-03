@@ -20,10 +20,9 @@
 #' @param draw_connectors Logical: add connector between DEGs and labels. Default: FALSE.
 #' @param legend_pos Character: legend position. Default: "right", options: "right", "left", "top", "bottom".
 #'
-#' @import stats
 #' @import ggplot2
 #' @import ggsci
-#' @import EnhancedVolcano
+#' @importFrom EnhancedVolcano EnhancedVolcano
 #' @export
 #'
 #' @examples
@@ -204,7 +203,7 @@ volcano_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# # -> 4. Plot
-	p <- EnhancedVolcano(
+	p <- EnhancedVolcano::EnhancedVolcano(
 		data,
 		lab = rownames(data),
 		x = "log2FoldChange",
