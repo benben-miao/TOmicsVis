@@ -1,11 +1,11 @@
 Package: TOmicsVis
-Title: Transcriptome Visualization
-Version: 1.1.5
+Title: Analysis and Visualization
+Version: 1.1.6
 Authors@R: c(
-    person("Benben", "Miao", , "benben.miao@outlook.com", c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7307-1331"))
+    person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
+    			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331"))
 	)
-Description: Transcriptome Visualization.
+Description: Analysis and Visualization.
 URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE

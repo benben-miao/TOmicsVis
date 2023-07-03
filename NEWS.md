@@ -1,3 +1,15 @@
+## TOmicsVis 1.1.6
+
+**Date**: 2023-07-03
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed test problems from CRAN team.
+
+---
+
 ## TOmicsVis 1.1.5
 
 **Date**: 2023-07-02

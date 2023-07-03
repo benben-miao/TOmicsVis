@@ -31,13 +31,13 @@
 #' circos_heatmap(circos_heatmap_data)
 #'
 #' # 4. Set low_color = "#008800"
-#' circos_heatmap(circos_heatmap_data, low_color = "#008800")
+#' # circos_heatmap(circos_heatmap_data, low_color = "#008800")
 #'
 #' # 5. Set gap_size = 5
-#' circos_heatmap(circos_heatmap_data, gap_size = 5)
+#' # circos_heatmap(circos_heatmap_data, gap_size = 5)
 #'
 #' # 6. Set dend_height = 0.40
-#' circos_heatmap(circos_heatmap_data, dend_height = 0.40)
+#' # circos_heatmap(circos_heatmap_data, dend_height = 0.40)
 #'
 circos_heatmap <- function(data,
 													 low_color = "#0000ff",

@@ -360,52 +360,9 @@ circos_heatmap(
   dend_height = 0.2,
   rowname_size = 0.8
 )
-#> function(){
-#>      circlize::circos.clear()
-#>      col_fun = circlize::colorRamp2(c(round(min(data)), 0, round(max(data))),
-#>                                               c(low_color, mid_color, high_color))
-#> 
-#>      circlize::circos.par(gap.after = c(gap_size))
-#>      circlize::circos.heatmap(data,
-#>                                   split = NULL,
-#>                                   col = col_fun,
-#>                                   na.col = "grey",
-#>                                   cell.border = NA,
-#>                                   cell.lty = 1,
-#>                                   cell.lwd = 1,
-#>                                   bg.border = NA,
-#>                                   bg.lty = graphics::par("lty"),
-#>                                   bg.lwd = graphics::par("lwd"),
-#>                                   cluster = TRUE,
-#>                                   clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
-#>                                   distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
-#>                                   dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),
-#>                                   dend.side = "inside", # "none", "outside", "inside"
-#>                                   dend.track.height = dend_height,
-#>                                   rownames.side = "outside", # "none", "outside", "inside"
-#>                                   rownames.cex = rowname_size,
-#>                                   rownames.font = graphics::par("font"),
-#>                                   rownames.col = "black",
-#>                                   track.height = 0.3
-#>      )
-#>      # circos.track(track.index = get.current.track.index(),
-#>      #            panel.fun = function(x, y) {
-#>      #               if (CELL_META$sector.numeric.index == 1) {
-#>      #                   cn = colnames(data)
-#>      #                   n = length(cn)
-#>      #                   circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),
-#>      #                               12 + (1:n)*1.8,
-#>      #                               cn,
-#>      #                               cex = 0.5, adj = c(-1, 1), facing = "inside")
-#>      #               }
-#>      #           }, bg.border = NA)
-#>      legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
-#>      grid::grid.draw(legend)
-#>      circos.clear()
-#>  }
-#> <bytecode: 0x000002573f61fa30>
-#> <environment: 0x000002573f5c5c28>
 ```
+
+![](man/figures/README-circos_heatmap-1.png)<!-- -->
 
 Get help using command `?TOmicsVis::circos_heatmap` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
