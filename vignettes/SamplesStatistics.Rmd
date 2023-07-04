@@ -1,0 +1,100 @@
+---
+title: "SamplesStatistics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SamplesStatistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# 1. Samples Statistics
+## 1.1 quantile_plot
+Quantile plot for visualizing data distribution.
+```{r quantile_plot, warning=FALSE}
+library(TOmicsVis)
+
+# 1. Load box_data example datasets
+data(quantile_data)
+
+# 2. Run quantile_plot plot function
+quantile_plot(
+  quantile_data,
+  my_shape = "fill_circle",
+  point_size = 1.5,
+  conf_int = TRUE,
+  conf_level = 0.95,
+  split_panel = "One_Panel",
+  legend_pos = "right",
+  legend_dir = "vertical",
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.75,
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::quantile_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html](https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::quantile_plot
+```
+
+## 1.2 corr_heatmap
+Correlation Heatmap for samples/groups based on Pearson algorithm.
+```{r corr_heatmap}
+# 1. Load gene_exp example dataset
+data(gene_exp)
+head(gene_exp)
+
+# 2. Run corr_heatmap plot function
+corr_heatmap(
+  gene_exp,
+  corr_method = "pearson",
+  cell_shape = "square",
+  fill_type = "full",
+  lable_size = 3,
+  lable_digits = 3,
+  color_low = "blue",
+  color_mid = "white",
+  color_high = "red",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::corr_heatmap` or reference page [https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html](https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::corr_heatmap
+```
+
+## 1.3 pca_plot
+PCA dimensional reduction visualization for RNA-Seq.
+```{r pca_plot}
+# 1. Load pca_sample_gene and pca_group_sample example datasets
+data(pca_sample_gene)
+data(pca_group_sample)
+
+# 2. Run pca_plot plot function
+pca_plot(
+  pca_sample_gene,
+  pca_group_sample,
+  point_size = 5,
+  text_size = 5,
+  ellipse_alpha = 0.3,
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+```
+
+Get help using command `?TOmicsVis::pca_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html](https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html).
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::pca_plot
+```

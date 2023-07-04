@@ -13,7 +13,7 @@ development:
 
 navbar:
   structure:
-    left: [home, reference, articles, news, OmicsSuite]
+    left: [home, reference, articles, news, omicssuite]
     right: [search, github]
   components:
     home:
@@ -31,15 +31,25 @@ navbar:
         - text: Tutorial
         - text: Introduction
           href: articles/Introduction.html
-        - text: SampleGroup
-          href: articles/SampleGroup.html
+        - text: SamplesStatistics
+          href: articles/SamplesStatistics.html
+        - text: TraitsAnalysis
+          href: articles/TraitsAnalysis.html
+        - text: DifferentialExpression
+          href: articles/DifferentialExpression.html
+        - text: AdvancedAnalysis
+          href: articles/AdvancedAnalysis.html
+        - text: GOandKEGG
+          href: articles/GOandKEGG.html
+        - text: TablesOperations
+          href: articles/TablesOperations.html
         - text: -------
         - text: Blog
     news:
       text: Versions
       icon: fa-code-branch
       href: news/index.html
-    bioscitools:
+    omicssuite:
       text: OmicsSuite
       icon: fa-desktop
       href: https://github.com/OmicsSuite/

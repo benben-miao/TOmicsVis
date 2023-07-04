@@ -66,7 +66,12 @@
   <div class="dropdown-menu" aria-labelledby="dropdown--articles">
     <h6 class="dropdown-header" data-toc-skip>Tutorial</h6>
     <a class="dropdown-item" href="../articles/Introduction.html">Introduction</a>
-    <a class="dropdown-item" href="../articles/SampleGroup.html">SampleGroup</a>
+    <a class="dropdown-item" href="../articles/SamplesStatistics.html">SamplesStatistics</a>
+    <a class="dropdown-item" href="../articles/TraitsAnalysis.html">TraitsAnalysis</a>
+    <a class="dropdown-item" href="../articles/DifferentialExpression.html">DifferentialExpression</a>
+    <a class="dropdown-item" href="../articles/AdvancedAnalysis.html">AdvancedAnalysis</a>
+    <a class="dropdown-item" href="../articles/GOandKEGG.html">GOandKEGG</a>
+    <a class="dropdown-item" href="../articles/TablesOperations.html">TablesOperations</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Blog</h6>
   </div>
@@ -76,6 +81,13 @@
     <span class="fa fa-code-branch"></span>
      
     Versions
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/OmicsSuite/">
+    <span class="fa fa-desktop"></span>
+     
+    OmicsSuite
   </a>
 </li>
       </ul>
@@ -138,6 +150,34 @@
 <span><span class="co"># 2. Extra package</span></span>
 <span><span class="co"># install.packages("ggplot2")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="usage-case">3. Usage case<a class="anchor" aria-label="anchor" href="#usage-case"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load deg_data example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run volcano_plot plot function</span></span>
+<span><span class="fu"><a href="../reference/volcano_plot.html">volcano_plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">deg_data</span>,</span>
+<span>  log2fc_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  pq_value <span class="op">=</span> <span class="st">"pvalue"</span>,</span>
+<span>  pq_cutoff <span class="op">=</span> <span class="fl">0.005</span>,</span>
+<span>  cutoff_line <span class="op">=</span> <span class="st">"longdash"</span>,</span>
+<span>  point_shape <span class="op">=</span> <span class="st">"large_circle"</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  point_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  color_normal <span class="op">=</span> <span class="st">"#888888"</span>,</span>
+<span>  color_log2fc <span class="op">=</span> <span class="st">"#008000"</span>,</span>
+<span>  color_pvalue <span class="op">=</span> <span class="st">"#0088ee"</span>,</span>
+<span>  color_Log2fc_p <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  boxed_labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  draw_connectors <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
