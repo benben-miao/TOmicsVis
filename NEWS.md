@@ -1,3 +1,17 @@
+## TOmicsVis 1.1.7
+
+**Date**: 2023-07-05
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::dendro_plot` plot function.
+2. New `?TOmicsVis::gene_rank_plot` plot function.
+3. New vignettes documents.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.1.6
 
 **Date**: 2023-07-03

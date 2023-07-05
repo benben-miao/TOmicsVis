@@ -233,8 +233,8 @@ tsne_plot <- function(data,
 		geom_text(size = text_size,
 							alpha = text_alpha,
 							show.legend = FALSE) +
-		# xlab("tSNE1") +
-		# ylab("tSNE2") +
+		xlab("tSNE1") +
+		ylab("tSNE2") +
 		stat_ellipse(aes(x = tsne_out$tSNE1,
 										 y = tsne_out$tSNE2,
 										 fill = groups),

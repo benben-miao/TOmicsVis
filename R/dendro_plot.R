@@ -20,6 +20,7 @@
 #' @param ylab Character: title of the ylab. Default: "Height".
 #'
 #' @import ggplot2
+#' @importFrom stats dist hclust as.dendrogram
 #' @importFrom factoextra fviz_dend
 #' @export
 #'
@@ -35,7 +36,7 @@
 #' dendro_plot(gene_exp)
 #'
 #' # 4. Set palette = "aaas"
-#' dendro_plot(gene_exp, palette = "aass")
+#' dendro_plot(gene_exp, palette = "aaas")
 #'
 #' # 5. Set k_num = 5
 #' dendro_plot(gene_exp, k_num = 5)
@@ -116,7 +117,7 @@ dendro_plot <- function(data,
 														 xlab = xlab,
 														 ylab = ylab
 														 ) +
-		theme(plot.title=element_text(hjust=0.5))
+		theme(plot.title = element_text(hjust = 0.5))
 
 	return(p)
 }

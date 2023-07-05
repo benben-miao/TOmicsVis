@@ -242,14 +242,16 @@ go_enrich_stat <- function(go_anno,
 	# Slider: 45, 0, 5, 360
 	# <- 4. Plot parameters
 
+	enrich_df["new_x"] <- reorder(enrich_df$Description, -enrich_df$Count)
+
 	# -> 5. Plot
 	p <- ggplot(data = enrich_df,
-							aes(x = reorder(enrich_df$Description, -enrich_df$Count),
-									y = enrich_df$Count,
-									fill = enrich_df$Ontology)) +
+							aes_string(x = "new_x",
+									y = "Count",
+									fill = "Ontology")) +
 		geom_bar(stat = 'identity',
 						 position = 'dodge')  +
-		geom_text(aes(label = enrich_df$Count),
+		geom_text(aes_string(label = "Count"),
 							vjust = -0.3,
 							hjust = 0.5) +
 		facet_wrap(~enrich_df$Ontology,

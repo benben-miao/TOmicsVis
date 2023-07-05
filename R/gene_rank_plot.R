@@ -8,13 +8,15 @@
 #' @param palette Character: color palette used for the point. Default: "spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
 #' @param top_n Numeric: number of top differentailly expressed genes. Default: 10, min: 0.
 #' @param genes_to_label Character: a vector of selected genes. Default: "NULL".
-#' @param lable_size Numeric: gene label size. Default: 5, min: 0.
+#' @param label_size Numeric: gene label size. Default: 5, min: 0.
 #' @param base_size Numeric: base font size. Default: 12, min: 0.
 #' @param title Character: main plot title. Default: "Gene ranking dotplot".
 #' @param xlab Character: title of the xlab. Default: "Ranking of differentially expressed genes".
 #' @param ylab Character: title of the ylab. Default: "Log2FoldChange".
 #'
 #' @import ggplot2
+#' @importFrom stats median
+#' @importFrom utils head tail
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom grDevices colorRampPalette
 #' @importFrom ggrepel geom_text_repel
@@ -91,7 +93,7 @@ gene_rank_plot <- function(data,
 	data$rank <- 1:nrow(data)
 
 	# get the top n up and down gene for labeling
-	if(!is.null(genes_to_label)){
+	if (!is.null(genes_to_label)) {
 		genes_to_label <- genes_to_label
 	}
 	else{
@@ -100,23 +102,25 @@ gene_rank_plot <- function(data,
 		genes_to_label <- c(top_n_up,top_n_down)
 	}
 
+	data["log2FC_abs"] <- abs(data["log2FC"])
+
 	p <- ggplot(data,
-		aes(x = rank, y = log2FC,
-		color = pvalue, size = abs(log2FC))) +
+							aes_string(x = "rank", y = "log2FC",
+		color = "pvalue", size = "log2FC_abs")) +
 		geom_point() +
 		scale_color_gradientn(colours = colors) +
 		geom_hline(yintercept = c(-log2fc, log2fc), linetype = 2, size = 0.3) +
 		geom_hline(yintercept = 0, linetype = 1, size = 0.5) +
 		geom_vline(xintercept = median(data$rank), linetype = 2, size = 0.3) +
-		ggrepel::geom_text_repel(data=data[genes_to_label,],
-					aes(rank, log2FC, label = gene),
+		ggrepel::geom_text_repel(data = data[genes_to_label,],
+														 aes_string(x = "rank", y = "log2FC", label = "gene"),
 					size = label_size, color = "red",
 					max.overlaps = 20) +
 		xlab(xlab) + ylab(ylab) +
 		labs(title = title, color = "Pvalue", size = "Log2FoldChange") +
 		ylim(c(-max(abs(data$log2FC)), max(abs(data$log2FC)))) +
 		theme_bw(base_size = base_size) +
-		theme(plot.title=element_text(hjust = 0.5),
+		theme(plot.title = element_text(hjust = 0.5),
 					panel.grid = element_blank())
 
 	return(p)
