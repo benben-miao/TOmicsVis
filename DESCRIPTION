@@ -3,7 +3,9 @@ Title: Analysis and Visualization
 Version: 1.1.6
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
-    			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331"))
+    			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
+    person(given = 'Wei', family = 'Dong', email = 'dwei1220779@gmail.com', 
+                         role = c("aut", "cre"), comment = c(ORCID = '0000-0003-2201-7164'))
 	)
 Description: Analysis and Visualization.
 URL: https://benben-miao.github.io/TOmicsVis/
