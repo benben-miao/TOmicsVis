@@ -7,6 +7,7 @@
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 
 1. Fixed test problems from CRAN team.
+2. Update README.rmd and README.md.
 
 ---
 

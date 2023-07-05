@@ -46,14 +46,14 @@ data(quantile_data)
 quantile_plot(
   quantile_data,
   my_shape = "fill_circle",
-  point_size = 1.5,
+  point_size = 2.0,
   conf_int = TRUE,
   conf_level = 0.95,
   split_panel = "One_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
-  sci_fill_color = "Sci_AAAS",
-  sci_color_alpha = 0.75,
+  sci_fill_color = "Sci_Simpsons",
+  sci_color_alpha = 0.50,
   ggTheme = "theme_light"
 )
 ```
@@ -99,9 +99,9 @@ corr_heatmap(
   fill_type = "full",
   lable_size = 3,
   lable_digits = 3,
-  color_low = "blue",
+  color_low = "#008800ee",
   color_mid = "white",
-  color_high = "red",
+  color_high = "#ff0000ee",
   ggTheme = "theme_light"
 )
 #> Scale for fill is already present.
@@ -133,7 +133,7 @@ pca_plot(
   pca_group_sample,
   point_size = 5,
   text_size = 5,
-  ellipse_alpha = 0.3,
+  ellipse_alpha = 0.30,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -220,7 +220,7 @@ violin_plot(
   add_element = "boxplot",
   element_alpha = 0.5,
   my_shape = "plus_times",
-  sci_fill_color = "Sci_AAAS",
+  sci_fill_color = "Sci_NPG",
   sci_fill_alpha = 0.5,
   sci_color_alpha = 1,
   legend_pos = "right",
@@ -255,7 +255,7 @@ survival_plot(
   interval_style = "ribbon",
   risk_table = TRUE,
   num_censor = TRUE,
-  sci_palette = "aaas",
+  sci_palette = "npg",
   ggTheme = "theme_light",
   x_start = 0,
   y_start = 0,
@@ -286,14 +286,14 @@ data(tsne_data)
 # 2. Run tsne_plot plot function
 tsne_plot(
   tsne_data,
-  point_size = 3,
-  point_alpha = 0.8,
+  point_size = 4,
+  point_alpha = 0.80,
   text_size = 2,
-  text_alpha = 0.8,
+  text_alpha = 1.00,
   ci_level = 0.95,
-  ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_AAAS",
-  sci_color_alpha = 0.9,
+  ellipse_alpha = 0.10,
+  sci_fill_color = "Sci_NPG",
+  sci_color_alpha = 0.50,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -325,8 +325,8 @@ venn_plot(
   venn_data,
   line_type = "blank",
   ellipse_shape = "circle",
-  sci_fill_color = "Sci_AAAS",
-  sci_fill_alpha = 0.65
+  sci_fill_color = "Sci_D3",
+  sci_fill_alpha = 0.60
 )
 ```
 
@@ -351,14 +351,14 @@ data(circos_heatmap_data)
 # 2. Run circos_heatmap plot function
 circos_heatmap(
   circos_heatmap_data,
-  low_color = "#0000ff",
+  low_color = "#008800aa",
   mid_color = "#ffffff",
-  high_color = "#ff0000",
-  gap_size = 10,
+  high_color = "#ff0000aa",
+  gap_size = 45,
   cluster_method = "complete",
   distance_method = "euclidean",
   dend_height = 0.2,
-  rowname_size = 0.8
+  rowname_size = 0.5
 )
 ```
 
@@ -385,10 +385,10 @@ volcano_plot(
   deg_data,
   log2fc_cutoff = 1,
   pq_value = "pvalue",
-  pq_cutoff = 0.005,
+  pq_cutoff = 0.01,
   cutoff_line = "longdash",
   point_shape = "large_circle",
-  point_size = 1,
+  point_size = 1.5,
   point_alpha = 0.5,
   color_normal = "#888888",
   color_log2fc = "#008000",
@@ -396,7 +396,7 @@ volcano_plot(
   color_Log2fc_p = "#ff0000",
   label_size = 3,
   boxed_labels = FALSE,
-  draw_connectors = FALSE,
+  draw_connectors = TRUE,
   legend_pos = "right"
 )
 ```
@@ -424,10 +424,10 @@ ma_plot(
   deg_data2,
   foldchange = 2,
   fdr_value = 0.05,
-  point_size = 0.5,
-  color_up = "#FF0000",
-  color_down = "#008800",
-  color_alpha = 0.5,
+  point_size = 1.5,
+  color_up = "#FF000088",
+  color_down = "#00880088",
+  color_alpha = 0.20,
   top_method = "fc",
   top_num = 20,
   label_size = 8,
@@ -475,7 +475,7 @@ heatmap_group(
   low_color = "#00880088",
   mid_color = "#ffffff",
   high_color = "#ff000088",
-  na_color = "#ff8800",
+  na_color = "#ffaa00",
   x_angle = 45
 )
 ```
@@ -506,15 +506,15 @@ trend_plot(
   trend_data,
   scale_method = "globalminmax",
   miss_value = "exclude",
-  line_alpha = 0.5,
+  line_alpha = 0.3,
   show_points = TRUE,
   show_boxplot = TRUE,
   num_column = 2,
   xlab = "Traits",
   ylab = "Genes Expression",
-  sci_fill_color = "Sci_AAAS",
-  sci_fill_alpha = 0.8,
-  sci_color_alpha = 0.8,
+  sci_fill_color = "Sci_Futurama",
+  sci_fill_alpha = 0.5,
+  sci_color_alpha = 0.5,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -567,19 +567,20 @@ head(network_data)
 #> 4  ABL2  chi-miR-15b-5p
 #> 5 CASP2 PC-3p-10204_250
 #> 6 CASP2    bta-miR-6123
+network_data <- head(network_data, 150)
 
 # 2. Run network_plot plot function
 network_plot(
   network_data,
   calcBy = "degree",
-  degreeValue = 0.05,
-  nodeColorNormal = "#00888888",
+  degreeValue = 0.1,
+  nodeColorNormal = "#ff880055",
   nodeBorderColor = "#FFFFFF",
-  nodeColorFrom = "#FF000088",
-  nodeColorTo = "#00880088",
+  nodeColorFrom = "#ff000055",
+  nodeColorTo = "#00880055",
   nodeShapeNormal = "circle",
-  nodeShapeSpatial = "csquare",
-  nodeSize = 10,
+  nodeShapeSpatial = "circle",
+  nodeSize = 20,
   labelSize = 0.5,
   edgeCurved = TRUE,
   netLayout = "layout_on_sphere"
@@ -605,16 +606,17 @@ Chord plot for visualizing the relationships of pathways and genes.
 ``` r
 # 1. Load chord_data example datasets
 data(chord_data)
+colnames(chord_data) <- c("G1","G2","G3","G4","G5")
 
 # 2. Run chord_plot plot function
 chord_plot(
   chord_data,
-  multi_colors = "RainbowColors",
+  multi_colors = "VividColors",
   color_alpha = 0.5,
   link_visible = TRUE,
   link_dir = -1,
   link_type = "diffHeight",
-  sector_scale = "Origin",
+  sector_scale = "Scale",
   width_circle = 3,
   dist_name = 3,
   label_dir = "Vertical",
@@ -624,107 +626,107 @@ chord_plot(
 
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
-    #>      rn         cn value1 value2 o1 o2 x1  x2       col
-    #> 1    S1 Samples.E1      4      4  5 20 61 161 #FF00007F
-    #> 2    S2 Samples.E1      7      7  5 19 45 157 #FF3D007F
-    #> 3    S3 Samples.E1      9      9  5 18 55 150 #FF7A007F
-    #> 4    S4 Samples.E1     14     14  5 17 55 141 #FFB8007F
-    #> 5    S5 Samples.E1      1      1  5 16 22 127 #FFF5007F
-    #> 6    S6 Samples.E1     10     10  5 15 59 126 #CCFF007F
-    #> 7    S7 Samples.E1      3      3  5 14 31 116 #8FFF007F
-    #> 8    S8 Samples.E1     15     15  5 13 52 113 #52FF007F
-    #> 9    S9 Samples.E1      5      5  5 12 37  98 #14FF007F
-    #> 10  S10 Samples.E1      7      7  5 11 27  93 #00FF297F
-    #> 11  S11 Samples.E1      6      6  5 10 35  86 #00FF667F
-    #> 12  S12 Samples.E1     11     11  5  9 49  80 #00FFA37F
-    #> 13  S13 Samples.E1     18     18  5  8 69  69 #00FFE07F
-    #> 14  S14 Samples.E1      1      1  5  7 22  51 #00E0FF7F
-    #> 15  S15 Samples.E1      5      5  5  6 58  50 #00A3FF7F
-    #> 16  S16 Samples.E1     12     12  5  5 48  45 #0066FF7F
-    #> 17  S17 Samples.E1      9      9  5  4 23  33 #0029FF7F
-    #> 18  S18 Samples.E1      5      5  5  3 50  24 #1400FF7F
-    #> 19  S19 Samples.E1      4      4  5  2 40  19 #5200FF7F
-    #> 20  S20 Samples.E1     15     15  5  1 58  15 #8F00FF7F
-    #> 21   S1         E2     16     16  4 20 57 166 #FF00007F
-    #> 22   S2         E2     11     11  4 19 38 150 #FF3D007F
-    #> 23   S3         E2      2      2  4 18 46 139 #FF7A007F
-    #> 24   S4         E2      9      9  4 17 41 137 #FFB8007F
-    #> 25   S5         E2      1      1  4 16 21 128 #FFF5007F
-    #> 26   S6         E2     18     18  4 15 49 127 #CCFF007F
-    #> 27   S7         E2      8      8  4 14 28 109 #8FFF007F
-    #> 28   S8         E2      4      4  4 13 37 101 #52FF007F
-    #> 29   S9         E2      4      4  4 12 32  97 #14FF007F
-    #> 30  S10         E2      9      9  4 11 20  93 #00FF297F
-    #> 31  S11         E2      7      7  4 10 29  84 #00FF667F
-    #> 32  S12         E2      2      2  4  9 38  77 #00FFA37F
-    #> 33  S13         E2     13     13  4  8 51  75 #00FFE07F
-    #> 34  S14         E2      2      2  4  7 21  62 #00E0FF7F
-    #> 35  S15         E2     13     13  4  6 53  60 #00A3FF7F
-    #> 36  S16         E2      7      7  4  5 36  47 #0066FF7F
-    #> 37  S17         E2      2      2  4  4 14  40 #0029FF7F
-    #> 38  S18         E2     13     13  4  3 45  38 #1400FF7F
-    #> 39  S19         E2     12     12  4  2 36  25 #5200FF7F
-    #> 40  S20         E2     13     13  4  1 43  13 #8F00FF7F
-    #> 41   S1         E3     12     12  3 20 41 150 #FF00007F
-    #> 42   S2         E3      2      2  3 19 27 138 #FF3D007F
-    #> 43   S3         E3     17     17  3 18 44 136 #FF7A007F
-    #> 44   S4         E3     12     12  3 17 32 119 #FFB8007F
-    #> 45   S5         E3      7      7  3 16 20 107 #FFF5007F
-    #> 46   S6         E3      9      9  3 15 31 100 #CCFF007F
-    #> 47   S7         E3      4      4  3 14 20  91 #8FFF007F
-    #> 48   S8         E3      9      9  3 13 33  87 #52FF007F
-    #> 49   S9         E3      7      7  3 12 28  78 #14FF007F
-    #> 50  S10         E3      1      1  3 11 11  71 #00FF297F
-    #> 51  S11         E3      5      5  3 10 22  70 #00FF667F
-    #> 52  S12         E3      2      2  3  9 36  65 #00FFA37F
-    #> 53  S13         E3      8      8  3  8 38  63 #00FFE07F
-    #> 54  S14         E3      2      2  3  7 19  55 #00E0FF7F
-    #> 55  S15         E3      6      6  3  6 40  53 #00A3FF7F
-    #> 56  S16         E3     15     15  3  5 29  47 #0066FF7F
-    #> 57  S17         E3      1      1  3  4 12  32 #0029FF7F
-    #> 58  S18         E3     13     13  3  3 32  31 #1400FF7F
-    #> 59  S19         E3      4      4  3  2 24  18 #5200FF7F
-    #> 60  S20         E3     14     14  3  1 30  14 #8F00FF7F
-    #> 61   S1         E4     18     18  2 20 29 227 #FF00007F
-    #> 62   S2         E4     15     15  2 19 25 209 #FF3D007F
-    #> 63   S3         E4     16     16  2 18 27 194 #FF7A007F
-    #> 64   S4         E4      3      3  2 17 20 178 #FFB8007F
-    #> 65   S5         E4      1      1  2 16 13 175 #FFF5007F
-    #> 66   S6         E4     13     13  2 15 22 174 #CCFF007F
-    #> 67   S7         E4     15     15  2 14 16 161 #8FFF007F
-    #> 68   S8         E4     13     13  2 13 24 146 #52FF007F
-    #> 69   S9         E4      3      3  2 12 21 133 #14FF007F
-    #> 70  S10         E4      4      4  2 11 10 130 #00FF297F
-    #> 71  S11         E4      8      8  2 10 17 126 #00FF667F
-    #> 72  S12         E4     16     16  2  9 34 118 #00FFA37F
-    #> 73  S13         E4     14     14  2  8 30 102 #00FFE07F
-    #> 74  S14         E4     14     14  2  7 17  88 #00E0FF7F
-    #> 75  S15         E4     16     16  2  6 34  74 #00A3FF7F
-    #> 76  S16         E4     12     12  2  5 14  58 #0066FF7F
-    #> 77  S17         E4     10     10  2  4 11  46 #0029FF7F
-    #> 78  S18         E4     11     11  2  3 19  36 #1400FF7F
-    #> 79  S19         E4     14     14  2  2 20  25 #5200FF7F
-    #> 80  S20         E4     11     11  2  1 16  11 #8F00FF7F
-    #> 81   S1         E5     11     11  1 20 11 192 #FF00007F
-    #> 82   S2         E5     10     10  1 19 10 181 #FF3D007F
-    #> 83   S3         E5     11     11  1 18 11 171 #FF7A007F
-    #> 84   S4         E5     17     17  1 17 17 160 #FFB8007F
-    #> 85   S5         E5     12     12  1 16 12 143 #FFF5007F
-    #> 86   S6         E5      9      9  1 15  9 131 #CCFF007F
-    #> 87   S7         E5      1      1  1 14  1 122 #8FFF007F
-    #> 88   S8         E5     11     11  1 13 11 121 #52FF007F
-    #> 89   S9         E5     18     18  1 12 18 110 #14FF007F
-    #> 90  S10         E5      6      6  1 11  6  92 #00FF297F
-    #> 91  S11         E5      9      9  1 10  9  86 #00FF667F
-    #> 92  S12         E5     18     18  1  9 18  77 #00FFA37F
-    #> 93  S13         E5     16     16  1  8 16  59 #00FFE07F
-    #> 94  S14         E5      3      3  1  7  3  43 #00E0FF7F
-    #> 95  S15         E5     18     18  1  6 18  40 #00A3FF7F
-    #> 96  S16         E5      2      2  1  5  2  22 #0066FF7F
-    #> 97  S17         E5      1      1  1  4  1  20 #0029FF7F
-    #> 98  S18         E5      8      8  1  3  8  19 #1400FF7F
-    #> 99  S19         E5      6      6  1  2  6  11 #5200FF7F
-    #> 100 S20         E5      5      5  1  1  5   5 #8F00FF7F
+    #>      rn cn     value1      value2 o1 o2         x1         x2       col
+    #> 1    S1 G1 0.06557377 0.024844720  5 20 1.00000000 1.00000000 #C5E7E17F
+    #> 2    S2 G1 0.15555556 0.043478261  5 19 1.00000000 0.97515528 #D93FDF7F
+    #> 3    S3 G1 0.16363636 0.055900621  5 18 1.00000000 0.93167702 #D64C6A7F
+    #> 4    S4 G1 0.25454545 0.086956522  5 17 1.00000000 0.87577640 #784DDF7F
+    #> 5    S5 G1 0.04545455 0.006211180  5 16 1.00000000 0.78881988 #E1CE447F
+    #> 6    S6 G1 0.16949153 0.062111801  5 15 1.00000000 0.78260870 #B4EC437F
+    #> 7    S7 G1 0.09677419 0.018633540  5 14 1.00000000 0.72049689 #D467C57F
+    #> 8    S8 G1 0.28846154 0.093167702  5 13 1.00000000 0.70186335 #689B587F
+    #> 9    S9 G1 0.13513514 0.031055901  5 12 1.00000000 0.60869565 #D79FD77F
+    #> 10  S10 G1 0.25925926 0.043478261  5 11 1.00000000 0.57763975 #E692547F
+    #> 11  S11 G1 0.17142857 0.037267081  5 10 1.00000000 0.53416149 #B6E3B47F
+    #> 12  S12 G1 0.22448980 0.068322981  5  9 1.00000000 0.49689441 #63A8A57F
+    #> 13  S13 G1 0.26086957 0.111801242  5  8 1.00000000 0.42857143 #87E7857F
+    #> 14  S14 G1 0.04545455 0.006211180  5  7 1.00000000 0.31677019 #E59BA97F
+    #> 15  S15 G1 0.08620690 0.031055901  5  6 1.00000000 0.31055901 #7CA3DE7F
+    #> 16  S16 G1 0.25000000 0.074534161  5  5 1.00000000 0.27950311 #64E2517F
+    #> 17  S17 G1 0.39130435 0.055900621  5  4 1.00000000 0.20496894 #E4D4B97F
+    #> 18  S18 G1 0.10000000 0.031055901  5  3 1.00000000 0.14906832 #D4CDE47F
+    #> 19  S19 G1 0.10000000 0.024844720  5  2 1.00000000 0.11801242 #6FEAAF7F
+    #> 20  S20 G1 0.25862069 0.093167702  5  1 1.00000000 0.09316770 #6CEADB7F
+    #> 21   S1 G2 0.26229508 0.096385542  4 20 0.93442623 1.00000000 #C5E7E17F
+    #> 22   S2 G2 0.24444444 0.066265060  4 19 0.84444444 0.90361446 #D93FDF7F
+    #> 23   S3 G2 0.03636364 0.012048193  4 18 0.83636364 0.83734940 #D64C6A7F
+    #> 24   S4 G2 0.16363636 0.054216867  4 17 0.74545455 0.82530120 #784DDF7F
+    #> 25   S5 G2 0.04545455 0.006024096  4 16 0.95454545 0.77108434 #E1CE447F
+    #> 26   S6 G2 0.30508475 0.108433735  4 15 0.83050847 0.76506024 #B4EC437F
+    #> 27   S7 G2 0.25806452 0.048192771  4 14 0.90322581 0.65662651 #D467C57F
+    #> 28   S8 G2 0.07692308 0.024096386  4 13 0.71153846 0.60843373 #689B587F
+    #> 29   S9 G2 0.10810811 0.024096386  4 12 0.86486486 0.58433735 #D79FD77F
+    #> 30  S10 G2 0.33333333 0.054216867  4 11 0.74074074 0.56024096 #E692547F
+    #> 31  S11 G2 0.20000000 0.042168675  4 10 0.82857143 0.50602410 #B6E3B47F
+    #> 32  S12 G2 0.04081633 0.012048193  4  9 0.77551020 0.46385542 #63A8A57F
+    #> 33  S13 G2 0.18840580 0.078313253  4  8 0.73913043 0.45180723 #87E7857F
+    #> 34  S14 G2 0.09090909 0.012048193  4  7 0.95454545 0.37349398 #E59BA97F
+    #> 35  S15 G2 0.22413793 0.078313253  4  6 0.91379310 0.36144578 #7CA3DE7F
+    #> 36  S16 G2 0.14583333 0.042168675  4  5 0.75000000 0.28313253 #64E2517F
+    #> 37  S17 G2 0.08695652 0.012048193  4  4 0.60869565 0.24096386 #E4D4B97F
+    #> 38  S18 G2 0.26000000 0.078313253  4  3 0.90000000 0.22891566 #D4CDE47F
+    #> 39  S19 G2 0.30000000 0.072289157  4  2 0.90000000 0.15060241 #6FEAAF7F
+    #> 40  S20 G2 0.22413793 0.078313253  4  1 0.74137931 0.07831325 #6CEADB7F
+    #> 41   S1 G3 0.19672131 0.080000000  3 20 0.67213115 1.00000000 #C5E7E17F
+    #> 42   S2 G3 0.04444444 0.013333333  3 19 0.60000000 0.92000000 #D93FDF7F
+    #> 43   S3 G3 0.30909091 0.113333333  3 18 0.80000000 0.90666667 #D64C6A7F
+    #> 44   S4 G3 0.21818182 0.080000000  3 17 0.58181818 0.79333333 #784DDF7F
+    #> 45   S5 G3 0.31818182 0.046666667  3 16 0.90909091 0.71333333 #E1CE447F
+    #> 46   S6 G3 0.15254237 0.060000000  3 15 0.52542373 0.66666667 #B4EC437F
+    #> 47   S7 G3 0.12903226 0.026666667  3 14 0.64516129 0.60666667 #D467C57F
+    #> 48   S8 G3 0.17307692 0.060000000  3 13 0.63461538 0.58000000 #689B587F
+    #> 49   S9 G3 0.18918919 0.046666667  3 12 0.75675676 0.52000000 #D79FD77F
+    #> 50  S10 G3 0.03703704 0.006666667  3 11 0.40740741 0.47333333 #E692547F
+    #> 51  S11 G3 0.14285714 0.033333333  3 10 0.62857143 0.46666667 #B6E3B47F
+    #> 52  S12 G3 0.04081633 0.013333333  3  9 0.73469388 0.43333333 #63A8A57F
+    #> 53  S13 G3 0.11594203 0.053333333  3  8 0.55072464 0.42000000 #87E7857F
+    #> 54  S14 G3 0.09090909 0.013333333  3  7 0.86363636 0.36666667 #E59BA97F
+    #> 55  S15 G3 0.10344828 0.040000000  3  6 0.68965517 0.35333333 #7CA3DE7F
+    #> 56  S16 G3 0.31250000 0.100000000  3  5 0.60416667 0.31333333 #64E2517F
+    #> 57  S17 G3 0.04347826 0.006666667  3  4 0.52173913 0.21333333 #E4D4B97F
+    #> 58  S18 G3 0.26000000 0.086666667  3  3 0.64000000 0.20666667 #D4CDE47F
+    #> 59  S19 G3 0.10000000 0.026666667  3  2 0.60000000 0.12000000 #6FEAAF7F
+    #> 60  S20 G3 0.24137931 0.093333333  3  1 0.51724138 0.09333333 #6CEADB7F
+    #> 61   S1 G4 0.29508197 0.079295154  2 20 0.47540984 1.00000000 #C5E7E17F
+    #> 62   S2 G4 0.33333333 0.066079295  2 19 0.55555556 0.92070485 #D93FDF7F
+    #> 63   S3 G4 0.29090909 0.070484581  2 18 0.49090909 0.85462555 #D64C6A7F
+    #> 64   S4 G4 0.05454545 0.013215859  2 17 0.36363636 0.78414097 #784DDF7F
+    #> 65   S5 G4 0.04545455 0.004405286  2 16 0.59090909 0.77092511 #E1CE447F
+    #> 66   S6 G4 0.22033898 0.057268722  2 15 0.37288136 0.76651982 #B4EC437F
+    #> 67   S7 G4 0.48387097 0.066079295  2 14 0.51612903 0.70925110 #D467C57F
+    #> 68   S8 G4 0.25000000 0.057268722  2 13 0.46153846 0.64317181 #689B587F
+    #> 69   S9 G4 0.08108108 0.013215859  2 12 0.56756757 0.58590308 #D79FD77F
+    #> 70  S10 G4 0.14814815 0.017621145  2 11 0.37037037 0.57268722 #E692547F
+    #> 71  S11 G4 0.22857143 0.035242291  2 10 0.48571429 0.55506608 #B6E3B47F
+    #> 72  S12 G4 0.32653061 0.070484581  2  9 0.69387755 0.51982379 #63A8A57F
+    #> 73  S13 G4 0.20289855 0.061674009  2  8 0.43478261 0.44933921 #87E7857F
+    #> 74  S14 G4 0.63636364 0.061674009  2  7 0.77272727 0.38766520 #E59BA97F
+    #> 75  S15 G4 0.27586207 0.070484581  2  6 0.58620690 0.32599119 #7CA3DE7F
+    #> 76  S16 G4 0.25000000 0.052863436  2  5 0.29166667 0.25550661 #64E2517F
+    #> 77  S17 G4 0.43478261 0.044052863  2  4 0.47826087 0.20264317 #E4D4B97F
+    #> 78  S18 G4 0.22000000 0.048458150  2  3 0.38000000 0.15859031 #D4CDE47F
+    #> 79  S19 G4 0.35000000 0.061674009  2  2 0.50000000 0.11013216 #6FEAAF7F
+    #> 80  S20 G4 0.18965517 0.048458150  2  1 0.27586207 0.04845815 #6CEADB7F
+    #> 81   S1 G5 0.18032787 0.057291667  1 20 0.18032787 1.00000000 #C5E7E17F
+    #> 82   S2 G5 0.22222222 0.052083333  1 19 0.22222222 0.94270833 #D93FDF7F
+    #> 83   S3 G5 0.20000000 0.057291667  1 18 0.20000000 0.89062500 #D64C6A7F
+    #> 84   S4 G5 0.30909091 0.088541667  1 17 0.30909091 0.83333333 #784DDF7F
+    #> 85   S5 G5 0.54545455 0.062500000  1 16 0.54545455 0.74479167 #E1CE447F
+    #> 86   S6 G5 0.15254237 0.046875000  1 15 0.15254237 0.68229167 #B4EC437F
+    #> 87   S7 G5 0.03225806 0.005208333  1 14 0.03225806 0.63541667 #D467C57F
+    #> 88   S8 G5 0.21153846 0.057291667  1 13 0.21153846 0.63020833 #689B587F
+    #> 89   S9 G5 0.48648649 0.093750000  1 12 0.48648649 0.57291667 #D79FD77F
+    #> 90  S10 G5 0.22222222 0.031250000  1 11 0.22222222 0.47916667 #E692547F
+    #> 91  S11 G5 0.25714286 0.046875000  1 10 0.25714286 0.44791667 #B6E3B47F
+    #> 92  S12 G5 0.36734694 0.093750000  1  9 0.36734694 0.40104167 #63A8A57F
+    #> 93  S13 G5 0.23188406 0.083333333  1  8 0.23188406 0.30729167 #87E7857F
+    #> 94  S14 G5 0.13636364 0.015625000  1  7 0.13636364 0.22395833 #E59BA97F
+    #> 95  S15 G5 0.31034483 0.093750000  1  6 0.31034483 0.20833333 #7CA3DE7F
+    #> 96  S16 G5 0.04166667 0.010416667  1  5 0.04166667 0.11458333 #64E2517F
+    #> 97  S17 G5 0.04347826 0.005208333  1  4 0.04347826 0.10416667 #E4D4B97F
+    #> 98  S18 G5 0.16000000 0.041666667  1  3 0.16000000 0.09895833 #D4CDE47F
+    #> 99  S19 G5 0.15000000 0.031250000  1  2 0.15000000 0.05729167 #6FEAAF7F
+    #> 100 S20 G5 0.08620690 0.026041667  1  1 0.08620690 0.02604167 #6CEADB7F
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
