@@ -45,16 +45,16 @@
 #'
 
 gene_rank_plot <- function(data,
-													 log2fc = 1,
+												 log2fc = 1,
 											   	 palette = "Spectral",
-													 top_n = 10,
-													 genes_to_label = NULL,
+												 top_n = 10,
+												 genes_to_label = NULL,
 											  	 label_size = 5,
-													 base_size = 12,
+												 base_size = 12,
 										  		 title = "Gene ranking dotplot",
 										  		 xlab = "Ranking of differentially expressed genes",
 										  		 ylab = "Log2FoldChange"
-													 ){
+												 ){
 
 	# -> 2. NA and Duplicated
 	data <- as.data.frame(data)
@@ -101,17 +101,17 @@ gene_rank_plot <- function(data,
 	}
 
 	p <- ggplot(data,
-							aes(x = rank, y = log2FC,
-									color = pvalue, size = abs(log2FC))) +
+		aes(x = rank, y = log2FC,
+		color = pvalue, size = abs(log2FC))) +
 		geom_point() +
 		scale_color_gradientn(colours = colors) +
 		geom_hline(yintercept = c(-log2fc, log2fc), linetype = 2, size = 0.3) +
 		geom_hline(yintercept = 0, linetype = 1, size = 0.5) +
 		geom_vline(xintercept = median(data$rank), linetype = 2, size = 0.3) +
 		ggrepel::geom_text_repel(data=data[genes_to_label,],
-														 aes(rank, log2FC, label = gene),
-														 size = label_size, color = "red",
-														 max.overlaps = 20) +
+					aes(rank, log2FC, label = gene),
+					size = label_size, color = "red",
+					max.overlaps = 20) +
 		xlab(xlab) + ylab(ylab) +
 		labs(title = title, color = "Pvalue", size = "Log2FoldChange") +
 		ylim(c(-max(abs(data$log2FC)), max(abs(data$log2FC)))) +
