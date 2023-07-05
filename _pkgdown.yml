@@ -68,6 +68,7 @@ reference:
   - quantile_plot
   - corr_heatmap
   - pca_plot
+  - dendro_plot
 
 - title: ②Traits Analysis
   desc: Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.
@@ -84,6 +85,7 @@ reference:
   - circos_heatmap
   - volcano_plot
   - ma_plot
+  - gene_rank_plot
   - heatmap_group
 
 - title: ④Advanced Analysis
