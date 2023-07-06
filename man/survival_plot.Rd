@@ -63,16 +63,10 @@ data(survival_data)
 # 3. Default parameters
 survival_plot(survival_data)
 
-# 4. Set curve_function = "event"
-survival_plot(survival_data, curve_function = "event")
-
-# 5. Set conf_inter = FALSE
+# 4. Set conf_inter = FALSE
 survival_plot(survival_data, conf_inter = FALSE)
 
-# 6. Set interval_style = "step"
-survival_plot(survival_data, interval_style = "step")
-
-# 7. Set sci_palette = "jco"
+# 5. Set sci_palette = "jco"
 survival_plot(survival_data, sci_palette = "jco")
 
 }

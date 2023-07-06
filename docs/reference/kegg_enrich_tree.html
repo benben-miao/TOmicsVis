@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -244,28 +244,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
 <span class="r-plt img"><img src="kegg_enrich_tree-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set category_num = 10</span></span></span>
-<span class="r-in"><span><span class="fu">kegg_enrich_tree</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, category_num <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'hilight.params = list(hilight = your_value)' instead of 'hilight'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The hilight parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'offset.params = list(tiplab = your_value)' instead of 'offset_tiplab'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The offset_tiplab parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'offset.params = list(extend = your_value)' instead of 'extend'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The extend parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(method = your_value)' instead of 'hclust_method'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The hclust_method parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(n = your_value)' instead of 'nCluster'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The nCluster parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(color = your_value)' instead of 'group_color'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The group_color parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(label_words_n = your_value)' instead of 'nWords'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The nWords parameter will be removed in the next version.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="kegg_enrich_tree-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 6. Set low_color = "#ff8800ff", high_color = "#008888ff"</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set low_color = "#ff8800ff", high_color = "#008888ff"</span></span></span>
 <span class="r-in"><span><span class="fu">kegg_enrich_tree</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, low_color <span class="op">=</span> <span class="st">"#ff8800ff"</span>, high_color <span class="op">=</span> <span class="st">"#008888ff"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'hilight.params = list(hilight = your_value)' instead of 'hilight'.</span>
@@ -284,28 +263,7 @@
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>  The nWords parameter will be removed in the next version.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="kegg_enrich_tree-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set hclust_method = "ward.D"</span></span></span>
-<span class="r-in"><span><span class="fu">kegg_enrich_tree</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, hclust_method <span class="op">=</span> <span class="st">"ward.D"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'hilight.params = list(hilight = your_value)' instead of 'hilight'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The hilight parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'offset.params = list(tiplab = your_value)' instead of 'offset_tiplab'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The offset_tiplab parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'offset.params = list(extend = your_value)' instead of 'extend'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The extend parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(method = your_value)' instead of 'hclust_method'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The hclust_method parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(n = your_value)' instead of 'nCluster'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The nCluster parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(color = your_value)' instead of 'group_color'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The group_color parameter will be removed in the next version.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Use 'cluster.params = list(label_words_n = your_value)' instead of 'nWords'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>  The nWords parameter will be removed in the next version.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="kegg_enrich_tree-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="kegg_enrich_tree-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

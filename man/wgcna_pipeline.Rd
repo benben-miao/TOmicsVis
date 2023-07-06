@@ -11,6 +11,9 @@ wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
 
 \item{wgcna_sample_group}{Dataframe: include samples and groups data.}
 }
+\value{
+WGCNA results in tempdir() directory of current session.
+}
 \description{
 WGCNA analysis pipeline for RNA-Seq.
 }
@@ -20,11 +23,10 @@ library(TOmicsVis)
 
 # 2. Use example dataset
 data(wgcna_gene_exp)
+head(wgcna_gene_exp)
 
 data(wgcna_sample_group)
-
-# 3. Default parameters
-# wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
+head(wgcna_sample_group)
 
 }
 \author{

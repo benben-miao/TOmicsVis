@@ -1,3 +1,20 @@
+## TOmicsVis 1.1.8
+
+**Date**: 2023-07-06
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed DESCRIPTION: Title, Description, Authors.
+2. Fixed `return` and `\value`: wgcna_pipeline.Rd.
+3. Fixed examples are commented out: circos_heatmap.Rd, wgcna_pipeline.Rd.
+4. Fixed dir.create() to tempdir(): wgcna_pipeline.R.
+5. Fixed seed to a specific number: tsne_plot.R.
+6. Fixed Lengthy examples (> 5 sec): 
+
+---
+
 ## TOmicsVis 1.1.7
 
 **Date**: 2023-07-05

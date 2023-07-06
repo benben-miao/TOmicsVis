@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -179,21 +179,13 @@
 <span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gene_rank_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set palette = "RdBu"</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, palette <span class="op">=</span> <span class="st">"RdBu"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set top_n = 5</span></span></span>
+<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, top_n <span class="op">=</span> <span class="fl">5</span>, palette <span class="op">=</span> <span class="st">"PiYG"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gene_rank_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set top_n = 5</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, top_n <span class="op">=</span> <span class="fl">5</span>, palette <span class="op">=</span> <span class="st">"PiYG"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="gene_rank_plot-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 6. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")</span></span></span>
 <span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, genes_to_label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SELL"</span>,<span class="st">"CCR7"</span>,<span class="st">"KLRG1"</span>,<span class="st">"IL7R"</span><span class="op">)</span>, palette <span class="op">=</span> <span class="st">"PuOr"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="gene_rank_plot-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set log2fc = 1.5</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, log2fc <span class="op">=</span> <span class="fl">1.5</span>, palette <span class="op">=</span> <span class="st">"RdYlBu"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="gene_rank_plot-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="gene_rank_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

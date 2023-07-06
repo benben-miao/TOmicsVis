@@ -2,6 +2,7 @@
 #' @description WGCNA analysis pipeline for RNA-Seq.
 #' @author benben-miao
 #'
+#' @return WGCNA results in tempdir() directory of current session.
 #' @param wgcna_gene_exp Dataframe: include gene expression data.
 #' @param wgcna_sample_group Dataframe: include samples and groups data.
 #'
@@ -20,17 +21,17 @@
 #'
 #' # 2. Use example dataset
 #' data(wgcna_gene_exp)
+#' head(wgcna_gene_exp)
 #'
 #' data(wgcna_sample_group)
-#'
-#' # 3. Default parameters
-#' # wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
+#' head(wgcna_sample_group)
 #'
 wgcna_pipeline <- function(wgcna_gene_exp,
 													 wgcna_sample_group
 													){
-	dir.create("WGCNA")
-	tempdir <- "WGCNA"
+	pipeline <- function(){
+
+	results_dir <- tempdir()
 
 	expData <- wgcna_gene_exp
 	# dim(expData)
@@ -68,7 +69,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	# Figure3
 	# sizeGrWindow(9, 5)
 	# par(mfrow = c(1,2))
-	pdf(file = paste(tempdir, "1.SoftPower.pdf", sep = "/"),
+	pdf(file = paste(results_dir, "1.SoftPower.pdf", sep = "/"),
 			width = 10, height = 7,
 			family = "Times"
 	)
@@ -109,7 +110,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	dev.off()
 
 
-	jpeg(filename = paste(tempdir, "1.SoftPower.jpg", sep = "/"),
+	jpeg(filename = paste(results_dir, "1.SoftPower.jpg", sep = "/"),
 			 width = 10,
 			 height = 7,
 			 units = "in",
@@ -168,7 +169,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 													 TOMDenom = "min",
 													 deepSplit = 1,
 													 stabilityCriterion = "Individual fraction",
-													 saveTOMFileBase = paste(tempdir, "TOM.tom", sep = "/"),
+													 saveTOMFileBase = paste(results_dir, "TOM.tom", sep = "/"),
 													 verbose = 5,
 													 randomSeed = 123
 	)
@@ -187,14 +188,14 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 														Genes = table(moduleColors)[names(table(moduleColors))]
 	)
 	write.table(module_gene,
-							file = paste(tempdir, "1.ModuleGene.txt", sep = "/"),
+							file = paste(results_dir, "1.ModuleGene.txt", sep = "/"),
 							sep = "\t",
 							quote = F,
 							row.names = F
 	)
 
 	# Figure4
-	pdf(file = paste(tempdir, "2.SamplesModules.pdf", sep = "/"),
+	pdf(file = paste(results_dir, "2.SamplesModules.pdf", sep = "/"),
 			width = 10, height = 7,
 			family = "Times"
 	)
@@ -208,7 +209,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	)
 	dev.off()
 
-	jpeg(filename = paste(tempdir, "2.SamplesModules.jpg", sep = "/"),
+	jpeg(filename = paste(results_dir, "2.SamplesModules.jpg", sep = "/"),
 			 width = 10,
 			 height = 7,
 			 units = "in",
@@ -229,7 +230,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 														module = moduleColors)
 	gene_module = gene_module[order(gene_module$module),]
 	write.table(gene_module,
-							file = paste(tempdir, "2.GeneModule.txt", sep = "/"),
+							file = paste(results_dir, "2.GeneModule.txt", sep = "/"),
 							sep = "\t",
 							quote = F,
 							row.names = F
@@ -245,14 +246,14 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	MEs_colt = as.data.frame(t(MEs_col))
 	colnames(MEs_colt) = rownames(expData)
 	write.table(MEs_colt,
-							file = paste(tempdir, "3.ModuleEipgengene.txt", sep = "/"),
+							file = paste(results_dir, "3.ModuleEipgengene.txt", sep = "/"),
 							sep = "\t",
 							quote = F,
 							row.names = F
 	)
 
 	# Figure5
-	pdf(file = paste(tempdir, "3.ModulesModules.pdf", sep = "/"),
+	pdf(file = paste(results_dir, "3.ModulesModules.pdf", sep = "/"),
 			width = 10, height = 7,
 			family = "Times"
 	)
@@ -279,7 +280,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	)
 	dev.off()
 
-	jpeg(filename = paste(tempdir, "3.ModulesModules.jpg", sep = "/"),
+	jpeg(filename = paste(results_dir, "3.ModulesModules.jpg", sep = "/"),
 			 width = 10,
 			 height = 7,
 			 units = "in",
@@ -330,7 +331,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	)
 	dim(textMatrix) = dim(moduleTraitCor)
 	# par(mar = c(6, 8.5, 3, 3))
-	pdf(file = paste(tempdir, "4.ModulesTraits.pdf", sep = "/"),
+	pdf(file = paste(results_dir, "4.ModulesTraits.pdf", sep = "/"),
 			width = 10, height = 7,
 			bg = "white",
 			family = "Times"
@@ -362,7 +363,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	)
 	dev.off()
 
-	jpeg(filename = paste(tempdir, "4.ModulesTraits.jpg", sep = "/"),
+	jpeg(filename = paste(results_dir, "4.ModulesTraits.jpg", sep = "/"),
 			 width = 10,
 			 height = 7,
 			 units = "in",
@@ -395,4 +396,8 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 								 main = paste("Module-trait relationships")
 	)
 	dev.off()
+	}
+
+	return(pipeline())
+	invisible()
 }

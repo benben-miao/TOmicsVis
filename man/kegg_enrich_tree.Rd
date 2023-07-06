@@ -67,14 +67,8 @@ kegg_enrich_tree(kegg_anno, kegg_deg_fc)
 # 4. Set padjust_method = "BH"
 kegg_enrich_tree(kegg_anno, kegg_deg_fc, padjust_method = "BH")
 
-# 5. Set category_num = 10
-kegg_enrich_tree(kegg_anno, kegg_deg_fc, category_num = 10)
-
-# 6. Set low_color = "#ff8800ff", high_color = "#008888ff"
+# 5. Set low_color = "#ff8800ff", high_color = "#008888ff"
 kegg_enrich_tree(kegg_anno, kegg_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
-
-# 7. Set hclust_method = "ward.D"
-kegg_enrich_tree(kegg_anno, kegg_deg_fc, hclust_method = "ward.D")
 
 }
 \author{

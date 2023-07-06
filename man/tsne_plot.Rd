@@ -63,14 +63,8 @@ tsne_plot(tsne_data)
 # 4. Set point_alpha = 0.50
 tsne_plot(tsne_data, point_alpha = 0.50)
 
-# 5. Set ellipse_alpha = 0.00
-tsne_plot(tsne_data, ellipse_alpha = 0.00)
-
-# 6. Set sci_fill_color = "Sci_NPG"
+# 5. Set sci_fill_color = "Sci_NPG"
 tsne_plot(tsne_data, sci_fill_color = "Sci_NPG")
-
-# 7. Set sci_color_alpha = 0.50
-tsne_plot(tsne_data, sci_color_alpha = 0.50)
 
 }
 \author{

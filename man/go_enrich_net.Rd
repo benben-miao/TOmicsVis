@@ -55,10 +55,7 @@ head(go_anno)
 data(go_deg_fc)
 head(go_deg_fc)
 
-# 3. Default parameters
-go_enrich_net(go_anno, go_deg_fc)
-
-# 4. Set low_color = "#ff8800ff", high_color = "#008888ff"
+# 3. Set low_color = "#ff8800ff", high_color = "#008888ff"
 go_enrich_net(go_anno, go_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
 
 }

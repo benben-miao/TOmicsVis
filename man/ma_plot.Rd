@@ -75,12 +75,6 @@ ma_plot(deg_data2, color_up = "#FF8800")
 # 5. Set color_alpha = 0.30
 ma_plot(deg_data2, color_alpha = 0.30)
 
-# 6. Set top_num = 10
-ma_plot(deg_data2, top_num = 10)
-
-# 7. Set label_box = FALSE
-data(deg_data2, label_box = FALSE)
-
 }
 \author{
 benben-miao

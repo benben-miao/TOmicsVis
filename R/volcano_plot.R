@@ -35,17 +35,11 @@
 #' # 3. Default parameters
 #' volcano_plot(deg_data)
 #'
-#' # 4. Set point_shape = "fill_square"
-#' volcano_plot(deg_data, point_shape = "fill_square")
-#'
-#' # 5. Set color_Log2fc_p = "#ff8800"
+#' # 4. Set color_Log2fc_p = "#ff8800"
 #' volcano_plot(deg_data, color_Log2fc_p = "#ff8800")
 #'
-#' # 6. Set boxed_labels = TRUE
+#' # 5. Set boxed_labels = TRUE
 #' volcano_plot(deg_data, boxed_labels = TRUE)
-#'
-#' # 7. Set legend_pos = "top"
-#' volcano_plot(deg_data, legend_pos = "top")
 #'
 volcano_plot <- function(data,
 										 log2fc_cutoff = 1.0,

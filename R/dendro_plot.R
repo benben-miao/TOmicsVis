@@ -38,14 +38,8 @@
 #' # 4. Set palette = "aaas"
 #' dendro_plot(gene_exp, palette = "aaas")
 #'
-#' # 5. Set k_num = 5
-#' dendro_plot(gene_exp, k_num = 5)
-#'
-#' # 6. Set tree_type = "circular"
+#' # 5. Set tree_type = "circular"
 #' dendro_plot(gene_exp, tree_type = "circular")
-#'
-#' # 7. Set tree_type = "phylogenic"
-#' dendro_plot(gene_exp, tree_type = "phylogenic")
 #'
 dendro_plot <- function(data,
 												dist_method = "euclidean",

@@ -55,17 +55,11 @@ head(deg_data)
 # 3. Default parameters
 gene_rank_plot(deg_data)
 
-# 4. Set palette = "RdBu"
-gene_rank_plot(deg_data, palette = "RdBu")
-
-# 5. Set top_n = 5
+# 4. Set top_n = 5
 gene_rank_plot(deg_data, top_n = 5, palette = "PiYG")
 
-# 6. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")
+# 5. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")
 gene_rank_plot(deg_data, genes_to_label = c("SELL","CCR7","KLRG1","IL7R"), palette = "PuOr")
-
-# 7. Set log2fc = 1.5
-gene_rank_plot(deg_data, log2fc = 1.5, palette = "RdYlBu")
 
 }
 \author{
