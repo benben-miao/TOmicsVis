@@ -70,8 +70,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	# sizeGrWindow(9, 5)
 	# par(mfrow = c(1,2))
 	pdf(file = paste(results_dir, "1.SoftPower.pdf", sep = "/"),
-			width = 10, height = 7,
-			family = "Times"
+			width = 10, height = 7
 	)
 	plot(sft$fitIndices[,1],
 			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
@@ -115,8 +114,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 			 height = 7,
 			 units = "in",
 			 res = 300,
-			 quality = 100,
-			 family = "Times")
+			 quality = 100)
 	plot(sft$fitIndices[,1],
 			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
 			 xlab = "Soft Threshold (power)",
@@ -196,8 +194,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 
 	# Figure4
 	pdf(file = paste(results_dir, "2.SamplesModules.pdf", sep = "/"),
-			width = 10, height = 7,
-			family = "Times"
+			width = 10, height = 7
 	)
 	plotDendroAndColors(bwnet$dendrograms[[1]],
 											moduleColors[bwnet$blockGenes[[1]]],
@@ -214,8 +211,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 			 height = 7,
 			 units = "in",
 			 res = 300,
-			 quality = 100,
-			 family = "Times")
+			 quality = 100)
 	plotDendroAndColors(bwnet$dendrograms[[1]],
 											moduleColors[bwnet$blockGenes[[1]]],
 											"Module colors",
@@ -254,8 +250,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 
 	# Figure5
 	pdf(file = paste(results_dir, "3.ModulesModules.pdf", sep = "/"),
-			width = 10, height = 7,
-			family = "Times"
+			width = 10, height = 7
 	)
 	plotEigengeneNetworks(MEs_col, "Eigengene adjacency heatmap",
 												marDendro = c(3,3,2,4),
@@ -285,8 +280,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 			 height = 7,
 			 units = "in",
 			 res = 300,
-			 quality = 100,
-			 family = "Times")
+			 quality = 100)
 	plotEigengeneNetworks(MEs_col, "Eigengene adjacency heatmap",
 												marDendro = c(3,3,2,4),
 												marHeatmap = c(3,4,2,2),
@@ -333,8 +327,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	# par(mar = c(6, 8.5, 3, 3))
 	pdf(file = paste(results_dir, "4.ModulesTraits.pdf", sep = "/"),
 			width = 10, height = 7,
-			bg = "white",
-			family = "Times"
+			bg = "white"
 	)
 	labeledHeatmap(Matrix = moduleTraitCor,
 								 xLabels = colnames(design),
@@ -368,8 +361,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 			 height = 7,
 			 units = "in",
 			 res = 300,
-			 quality = 100,
-			 family = "Times")
+			 quality = 100)
 	labeledHeatmap(Matrix = moduleTraitCor,
 								 xLabels = colnames(design),
 								 yLabels = names(MEs),

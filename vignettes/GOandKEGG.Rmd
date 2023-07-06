@@ -212,18 +212,18 @@ data(go_deg_fc)
 # head(go_deg_fc)
 
 # 2. Run go_enrich_net analysis function
-go_enrich_net(
-  go_anno,
-  go_deg_fc,
-  padjust_method = "fdr",
-  pvalue_cutoff = 0.5,
-  qvalue_cutoff = 0.5,
-  category_num = 20,
-  net_layout = "circle",
-  net_circular = TRUE,
-  low_color = "#ff0000aa",
-  high_color = "#008888aa"
-)
+# go_enrich_net(
+#   go_anno,
+#   go_deg_fc,
+#   padjust_method = "fdr",
+#   pvalue_cutoff = 0.5,
+#   qvalue_cutoff = 0.5,
+#   category_num = 20,
+#   net_layout = "circle",
+#   net_circular = TRUE,
+#   low_color = "#ff0000aa",
+#   high_color = "#008888aa"
+# )
 ```
 
 Get help using command `?TOmicsVis::go_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html).
@@ -367,18 +367,18 @@ data(kegg_deg_fc)
 # head(kegg_deg_fc)
 
 # 2. Run kegg_enrich_net analysis function
-kegg_enrich_net(
-  kegg_anno,
-  kegg_deg_fc,
-  padjust_method = "fdr",
-  pvalue_cutoff = 1,
-  qvalue_cutoff = 1,
-  category_num = 20,
-  net_layout = "circle",
-  net_circular = TRUE,
-  low_color = "#ff0000aa",
-  high_color = "#008888aa"
-)
+# kegg_enrich_net(
+#   kegg_anno,
+#   kegg_deg_fc,
+#   padjust_method = "fdr",
+#   pvalue_cutoff = 1,
+#   qvalue_cutoff = 1,
+#   category_num = 20,
+#   net_layout = "circle",
+#   net_circular = TRUE,
+#   low_color = "#ff0000aa",
+#   high_color = "#008888aa"
+# )
 ```
 
 Get help using command `?TOmicsVis::kegg_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html).

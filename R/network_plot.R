@@ -184,7 +184,7 @@ network_plot <- function(data,
 			vertex.frame.color = nodeBorderColor,
 			# vertex.label = NA,
 			vertex.label.color = labelColor,
-			vertex.label.family = "Times",
+			# vertex.label.family = "Times",
 			vertex.label.cex = labelSize,
 			vertex.label.font = 1, # 1 is plain text, 2 is bold face, 3 is italic, 4 is bold and italic and 5 specifies the symbol font.
 			vertex.label.dist = 0,

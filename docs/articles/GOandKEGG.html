@@ -504,23 +504,18 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enr
 <span><span class="co"># head(go_deg_fc)</span></span>
 <span></span>
 <span><span class="co"># 2. Run go_enrich_net analysis function</span></span>
-<span><span class="fu"><a href="../reference/go_enrich_net.html">go_enrich_net</a></span><span class="op">(</span></span>
-<span>  <span class="va">go_anno</span>,</span>
-<span>  <span class="va">go_deg_fc</span>,</span>
-<span>  padjust_method <span class="op">=</span> <span class="st">"fdr"</span>,</span>
-<span>  pvalue_cutoff <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  qvalue_cutoff <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  category_num <span class="op">=</span> <span class="fl">20</span>,</span>
-<span>  net_layout <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  net_circular <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
-<span>  high_color <span class="op">=</span> <span class="st">"#008888aa"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">size</span> is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span></span>
-<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">colour</span> is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
-<p><img src="GOandKEGG_files/figure-html/go_enrich_net-1.png" width="700"></p>
+<span><span class="co"># go_enrich_net(</span></span>
+<span><span class="co">#   go_anno,</span></span>
+<span><span class="co">#   go_deg_fc,</span></span>
+<span><span class="co">#   padjust_method = "fdr",</span></span>
+<span><span class="co">#   pvalue_cutoff = 0.5,</span></span>
+<span><span class="co">#   qvalue_cutoff = 0.5,</span></span>
+<span><span class="co">#   category_num = 20,</span></span>
+<span><span class="co">#   net_layout = "circle",</span></span>
+<span><span class="co">#   net_circular = TRUE,</span></span>
+<span><span class="co">#   low_color = "#ff0000aa",</span></span>
+<span><span class="co">#   high_color = "#008888aa"</span></span>
+<span><span class="co"># )</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or
 reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -727,23 +722,18 @@ results (None/Exist Reference Genome).</p>
 <span><span class="co"># head(kegg_deg_fc)</span></span>
 <span></span>
 <span><span class="co"># 2. Run kegg_enrich_net analysis function</span></span>
-<span><span class="fu"><a href="../reference/kegg_enrich_net.html">kegg_enrich_net</a></span><span class="op">(</span></span>
-<span>  <span class="va">kegg_anno</span>,</span>
-<span>  <span class="va">kegg_deg_fc</span>,</span>
-<span>  padjust_method <span class="op">=</span> <span class="st">"fdr"</span>,</span>
-<span>  pvalue_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  qvalue_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  category_num <span class="op">=</span> <span class="fl">20</span>,</span>
-<span>  net_layout <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  net_circular <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
-<span>  high_color <span class="op">=</span> <span class="st">"#008888aa"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">size</span> is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span></span>
-<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">colour</span> is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
-<p><img src="GOandKEGG_files/figure-html/kegg_enrich_net-1.png" width="700"></p>
+<span><span class="co"># kegg_enrich_net(</span></span>
+<span><span class="co">#   kegg_anno,</span></span>
+<span><span class="co">#   kegg_deg_fc,</span></span>
+<span><span class="co">#   padjust_method = "fdr",</span></span>
+<span><span class="co">#   pvalue_cutoff = 1,</span></span>
+<span><span class="co">#   qvalue_cutoff = 1,</span></span>
+<span><span class="co">#   category_num = 20,</span></span>
+<span><span class="co">#   net_layout = "circle",</span></span>
+<span><span class="co">#   net_circular = TRUE,</span></span>
+<span><span class="co">#   low_color = "#ff0000aa",</span></span>
+<span><span class="co">#   high_color = "#008888aa"</span></span>
+<span><span class="co"># )</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/kegg_enrich_net.html">?TOmicsVis::kegg_enrich_net</a></code> or
 reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
