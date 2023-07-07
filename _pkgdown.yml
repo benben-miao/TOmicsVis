@@ -136,6 +136,7 @@ reference:
   - deg_data
   - deg_data2
   - trend_data
+  - gene_cluster_data
   - table_split_data
   - survival_data
   - tsne_data
