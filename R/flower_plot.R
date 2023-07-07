@@ -8,7 +8,7 @@
 #' @param a Number: set the radii of the ellipses along the x-axes. Default: 0.5.
 #' @param b Number: set the radii of the ellipses along the y-axes. Default: 2.
 #' @param r Number: set the radius of the circle. Default: 1.
-#' @param ellipse_col_pal Character: set the color palette for filling the ellipse. Default: "Spectral", options: 'Spectral', 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'..
+#' @param ellipse_col_pal Character: set the color palette for filling the ellipse. Default: "Spectral", options: 'Spectral', 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'.
 #' @param circle_col Character: set the color for filling the circle. Default: "white".
 #' @param label_text_cex Number: set the label text cex. Default: 1.
 #'
