@@ -37,12 +37,16 @@ knitr::opts_chunk$set(
 ## 2. Install package
 
 ```{r}
-# 1. TOmicsVis
+# 1. Install from CRAN (Stable Version)
+# install.packages("TOmicsVis")
+
+# 2. Install from Github (Laste Version)
 # install.packages("devtools")
 # devtools::install_github("benben-miao/TOmicsVis")
+
 library(TOmicsVis)
 
-# 2. Extra package
+# 3. Recommend package
 # install.packages("ggplot2")
 library(ggplot2)
 ```
@@ -338,7 +342,35 @@ Get help using command `?TOmicsVis::venn_plot` or reference page <https://benben
 # ?TOmicsVis::venn_plot
 ```
 
-#### 3.3.2 circos_heatmap
+#### 3.3.2 flower_plot
+
+flower plot for stat common and unique gene among multiple sets.
+
+```{r flower_plot, warning=FALSE}
+# 1. Load example datasets
+data(venn_data)
+
+# 2. Run flower_plot plot function
+flower_plot(
+  venn_data,
+  angle = 90,
+  a = 0.5,
+  b = 2,
+  r = 1,
+  ellipse_col_pal = "Spectral",
+  circle_col = "white",
+  label_text_cex = 1
+)
+```
+
+Get help using command `?TOmicsVis::flower_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
+
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::flower_plot
+```
+
+#### 3.3.3 circos_heatmap
 
 Circos heatmap plot for visualizing gene expressing in multiple samples.
 
@@ -367,7 +399,7 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page <https://b
 # ?TOmicsVis::circos_heatmap
 ```
 
-#### 3.3.3 volcano_plot
+#### 3.3.4 volcano_plot
 
 Volcano plot for visualizing differentailly expressed genes.
 
@@ -403,7 +435,7 @@ Get help using command `?TOmicsVis::volcano_plot` or reference page <https://ben
 # ?TOmicsVis::volcano_plot
 ```
 
-#### 3.3.4 ma_plot
+#### 3.3.5 ma_plot
 
 MversusA plot for visualizing differentially expressed genes.
 
@@ -438,7 +470,7 @@ Get help using command `?TOmicsVis::ma_plot` or reference page <https://benben-m
 # ?TOmicsVis::ma_plot
 ```
 
-#### 3.3.5 heatmap_group
+#### 3.3.6 heatmap_group
 
 Heatmap group for visualizing grouped gene expression data.
 
@@ -467,36 +499,6 @@ Get help using command `?TOmicsVis::heatmap_group` or reference page <https://be
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::heatmap_group
-```
-
-#### 3.3.6 gene_rank_plot
-
-Gene ranking dotplot for visualizing differentailly expressed genes.
-
-```{r gene_rank_plot, warning=FALSE}
-# 1. Load example datasets
-data(deg_data)
-
-# 2. Run gene_rank_plot plot function
-gene_rank_plot(
-  deg_data,
-  log2fc = 1,
-  palette = "Spectral",
-  top_n = 10,
-  genes_to_label = NULL,
-  label_size = 5,
-  base_size = 12,
-  title = "Gene ranking dotplot",
-  xlab = "Ranking of differentially expressed genes",
-  ylab = "Log2FoldChange"
-)
-```
-
-Get help using command `?TOmicsVis::gene_rank_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::gene_rank_plot
 ```
 
 ### 3.4 Advanced Analysis
@@ -536,7 +538,63 @@ Get help using command `?TOmicsVis::trend_plot` or reference page <https://benbe
 # ?TOmicsVis::trend_plot
 ```
 
-#### 3.4.2 wgcna_pipeline
+#### 3.4.2 gene_cluster_trend
+
+Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.
+
+```{r gene_cluster_trend, warning=FALSE}
+# 1. Load example datasets
+data(gene_cluster_data)
+head(gene_cluster_data)
+
+# 2. Run plot function
+gene_cluster_trend(
+  gene_cluster_data,
+  thres = 0.25,
+  min_std = 0.2,
+  palette = "PiYG",
+  cluster_num = 4
+)
+```
+
+Get help using command `?TOmicsVis::gene_cluster_trend` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
+
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::gene_cluster_trend
+```
+
+#### 3.4.3 gene_rank_plot
+
+Gene ranking dotplot for visualizing differentailly expressed genes.
+
+```{r gene_rank_plot, warning=FALSE}
+# 1. Load example datasets
+data(deg_data)
+
+# 2. Run gene_rank_plot plot function
+gene_rank_plot(
+  deg_data,
+  log2fc = 1,
+  palette = "Spectral",
+  top_n = 10,
+  genes_to_label = NULL,
+  label_size = 5,
+  base_size = 12,
+  title = "Gene ranking dotplot",
+  xlab = "Ranking of differentially expressed genes",
+  ylab = "Log2FoldChange"
+)
+```
+
+Get help using command `?TOmicsVis::gene_rank_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
+
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::gene_rank_plot
+```
+
+#### 3.4.4 wgcna_pipeline
 
 WGCNA analysis pipeline for RNA-Seq.
 
@@ -556,7 +614,7 @@ Get help using command `?TOmicsVis::wgcna_pipeline` or reference page <https://b
 # ?TOmicsVis::wgcna_pipeline
 ```
 
-#### 3.4.3 network_plot
+#### 3.4.5 network_plot
 
 Network plot for analyzing and visualizing relationship of genes.
 
@@ -589,6 +647,36 @@ Get help using command `?TOmicsVis::network_plot` or reference page <https://ben
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::network_plot
+```
+
+#### 3.4.6 heatmap_cluster
+
+Heatmap cluster plot for visualizing clustered gene expression data.
+
+```{r heatmap_cluster, warning=FALSE}
+# 1. Load example datasets
+data(gene_exp)
+
+# 2. Run plot function
+heatmap_cluster(
+  gene_exp,
+  dist_method = "euclidean",
+  hc_method = "average",
+  k_num = 5,
+  palette = "Spectral",
+  cluster_pal = "Set1",
+  gaps_col = NULL,
+  angle_col = 45,
+  label_size = 10,
+  base_size = 12
+)
+```
+
+Get help using command `?TOmicsVis::heatmap_cluster` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
+
+```{r}
+# Get help with command in R console.
+# ?TOmicsVis::heatmap_cluster
 ```
 
 ### 3.5 GO and KEGG Enrichment

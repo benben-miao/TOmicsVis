@@ -87,16 +87,16 @@ reference:
   - volcano_plot
   - ma_plot
   - heatmap_group
-  - gene_rank_plot
 
 - title: ④Advanced Analysis
   desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
   contents:
   - trend_plot
   - gene_cluster_trend
-  - heatmap_cluster
+  - gene_rank_plot
   - network_plot
   - wgcna_pipeline
+  - heatmap_cluster
 
 - title: ⑤GO and KEGG Enrichment
   desc: GO and KEGG enrichment analysis and visualization.

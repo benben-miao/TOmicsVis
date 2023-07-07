@@ -2,8 +2,14 @@ pandoc: 3.1.1
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
+  AdvancedAnalysis: AdvancedAnalysis.html
+  DifferentialExpression: DifferentialExpression.html
+  GOandKEGG: GOandKEGG.html
   Introduction: Introduction.html
-last_built: 2023-07-07T02:52Z
+  SamplesStatistics: SamplesStatistics.html
+  TablesOperations: TablesOperations.html
+  TraitsAnalysis: TraitsAnalysis.html
+last_built: 2023-07-07T09:20Z
 urls:
   reference: https://github.com/benben-miao/TOmicsVis/reference
   article: https://github.com/benben-miao/TOmicsVis/articles

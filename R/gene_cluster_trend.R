@@ -11,6 +11,7 @@
 #'
 #' @importFrom Mfuzz filter.NA filter.std standardise mestimate mfuzz mfuzz.plot
 #' @import RColorBrewer
+#' @import e1071
 #' @export
 #'
 #' @examples
@@ -36,8 +37,6 @@ gene_cluster_trend <- function(data,
                                palette = "PiYG",
                                cluster_num = 4
                                ){
-  # load required packages
-  library(e1071)
 
   # create ExpressionSet object
   eset <- new("ExpressionSet", exprs = as.matrix(data))

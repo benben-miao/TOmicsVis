@@ -1,7 +1,7 @@
 Package: TOmicsVis
 Type: Package
 Title: Transcriptome Visualization Process Scheme
-Version: 1.1.8
+Version: 1.2.0
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
@@ -16,17 +16,19 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.5)
+Depends: 
+    R (>= 3.5),
+    e1071 (>= 1.7-0)
 Imports: 
-		stats,
-		utils,
-		grid,
-		graphics,
-		grDevices,
-		ggplot2,
-		ggsci,
-		reshape2,
-		ggpubr,
+    stats,
+    utils,
+    grid,
+    graphics,
+    grDevices,
+    ggplot2,
+    ggsci,
+    reshape2,
+    ggpubr,
     ggcorrplot,
     ggforce,
     vegan,
@@ -37,26 +39,26 @@ Imports:
     EnhancedVolcano,
     GGally,
     survival,
-		survminer,
-		Rtsne,
-		dplyr,
-		tidyr,
-		clusterProfiler,
-		enrichplot,
-		ggnewscale,
-		igraph,
-		WGCNA,
-		stringr,
-		pheatmap,
-		RColorBrewer,
-		ggpolypath,
-		factoextra,
-		ggrepel,
-		cowplot,
-		ggplotify,
-		plotrix,
-		Mfuzz
+    survminer,
+    Rtsne,
+    dplyr,
+    tidyr,
+    clusterProfiler,
+    enrichplot,
+    ggnewscale,
+    igraph,
+    WGCNA,
+    stringr,
+    pheatmap,
+    RColorBrewer,
+    ggpolypath,
+    factoextra,
+    ggrepel,
+    cowplot,
+    ggplotify,
+    plotrix,
+    Mfuzz
 Suggests: 
-		knitr,
+	knitr,
     rmarkdown
 VignetteBuilder: knitr

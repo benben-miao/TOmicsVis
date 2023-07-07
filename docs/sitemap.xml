@@ -73,6 +73,15 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/dendro_plot.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/flower_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_cluster_data.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_cluster_trend.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_exp.html</loc>
   </url>
   <url>
@@ -101,6 +110,9 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/go_enrich_tree.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/heatmap_cluster.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/heatmap_group.html</loc>

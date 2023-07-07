@@ -1,3 +1,30 @@
+## TOmicsVis 1.2.0
+
+**Date**: 2023-07-07
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Add e1071 to Denps in DESCRIPTION.
+2. Fixed gene_cluster_trend.R, flower_plot.
+
+---
+
+## TOmicsVis 1.1.9
+
+**Date**: 2023-07-07
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. New `?TOmicsVis::gene_cluster_data` plot function.
+2. New `?TOmicsVis::gene_cluster_trend` plot function.
+3. New `?TOmicsVis::flower_plot` plot function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.1.8
 
 **Date**: 2023-07-06
