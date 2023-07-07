@@ -6,8 +6,8 @@
 #' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
 #' @param thres Number: set the threshold for excluding genes. Default: 0.25.
 #' @param min_std Number: set the threshold for minimum standard deviation. Default: 0.2.
-#' @param palette Character: set the color palette to be used for plotting. Default: "Spectral", options: 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
-#' @param cluster_num Number: set the number of clusters. Default: 6.
+#' @param palette Character: set the color palette to be used for plotting. Default: "PiYG", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
+#' @param cluster_num Number: set the number of clusters. Default: 4.
 #'
 #' @import Mfuzz
 #' @import RColorBrewer
