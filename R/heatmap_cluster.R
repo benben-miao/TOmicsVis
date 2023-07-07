@@ -46,7 +46,6 @@
 #' # 7. Set gaps_col = c(3,6)
 #' heatmap_cluster(gene_exp, gaps_col = c(3,6), palette = "RdYlBu")
 #'
-#'
 heatmap_cluster <- function(data,
                             dist_method = "euclidean",
                             hc_method = "average",
