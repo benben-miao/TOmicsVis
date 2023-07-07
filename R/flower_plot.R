@@ -1,8 +1,8 @@
-#' @title flower plot for stat common and unique gene among multiple sets.
-#' @description flower plot for stat common and unique gene among multiple sets.
+#' @title Flower plot for stat common and unique gene among multiple sets.
+#' @description Flower plot for stat common and unique gene among multiple sets.
 #' @author wei dong
 #'
-#' @return Plot: flower plot for stat common and unique gene among multiple sets.
+#' @return Plot: Flower plot for stat common and unique gene among multiple sets.
 #' @param flower_dat Dataframe: multiple gene sets as columns.
 #' @param angle Number: set the angle of rotation in degress. Default: 90.
 #' @param a Number: set the radii of the ellipses along the x-axes. Default: 0.5.
