@@ -1,8 +1,8 @@
-#' @title Heatmap cluster for visualizing clustered gene expression data.
-#' @description Heatmap cluster for visualizing clustered gene expression data.
+#' @title Heatmap cluster plot for visualizing clustered gene expression data.
+#' @description Heatmap cluster plot for visualizing clustered gene expression data.
 #' @author wei dong
 #'
-#' @return Plot: Heatmap cluster for visualizing clustered gene expression data.
+#' @return Plot: Heatmap cluster plot for visualizing clustered gene expression data.
 #' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
 #' @param dist_method Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".
 #' @param hc_method Character: hierarchical clustering method. Default: "average", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).
