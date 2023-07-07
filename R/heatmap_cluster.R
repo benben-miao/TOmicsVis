@@ -16,6 +16,7 @@
 #'
 #' @import ggplot2
 #' @import pheatmap
+#' @importFrom stats sd
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom grDevices colorRampPalette
 #' @importFrom reshape2 melt
@@ -39,12 +40,6 @@
 #'
 #' # 5. Set cluster_pal = "Accent"
 #' heatmap_cluster(gene_exp, cluster_pal = "Accent")
-#' 
-#' # 6. Set k_num = 3
-#' heatmap_cluster(gene_exp, k_num = 3, palette = "PiYG")
-#'
-#' # 7. Set gaps_col = c(3,6)
-#' heatmap_cluster(gene_exp, gaps_col = c(3,6), palette = "RdYlBu")
 #'
 heatmap_cluster <- function(data,
                             dist_method = "euclidean",
@@ -57,45 +52,45 @@ heatmap_cluster <- function(data,
                             label_size = 10,
                             base_size = 12
                             ){
-  
+
   # -> 2. NA and Duplicated
   data <- as.data.frame(data)
-  
-  # Define ZScore function 
+
+  # Define ZScore function
   ZScore <- function(x){
     return((x - mean(x)) / sd(x))
   }
-  
+
   # Row Z-Score normalization
   data <- t(apply(data, 1, ZScore))
   # <- 2. NA and Duplicated
-  
+
   # -> 3. Plot parameters
   # dist_method <- "euclidean"
   # ChoiceBox: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski"
-  
+
   # hc_method <- "average"
   # ChoiceBox: "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
-  
+
   # k_num = 5
   # palette = "Spectral"
   # cluster_pal = "Set1"
   # label_size = 10
   # base_size = 12
   # angle_col = 45
-  
+
   # set the color palettes
   # The diverging palettes are: BrBG PiYG PRGn PuOr RdBu RdGy RdYlBu RdYlGn Spectral
   palettes <- rev(RColorBrewer::brewer.pal(8, palette))
   colors <- grDevices::colorRampPalette(palettes)(100)
   # <- 3. Plot parameters
-  
-  p <- pheatmap::pheatmap(data, cluster_cols = F, 
+
+  p <- pheatmap::pheatmap(data, cluster_cols = F,
                           cutree_rows = k_num,
                           clustering_distance_rows = dist_method,
                           clustering_method = hc_method)
-  
-  row_cluster = stats::cutree(p$tree_row, k=k_num)
+
+  row_cluster = stats::cutree(p$tree_row, k = k_num)
   newOrder = as.data.frame(data[p$tree_row$order,])
   newOrder$Cluster = paste0("C", row_cluster[match(rownames(newOrder), names(row_cluster))])
   row_annot <- data.frame(Cluster = newOrder$Cluster, row.names = rownames(newOrder))
@@ -103,9 +98,9 @@ heatmap_cluster <- function(data,
   cluster_colors <- RColorBrewer::brewer.pal(length(unique(newOrder$Cluster)), cluster_pal)
   names(cluster_colors) <- unique(newOrder$Cluster)
   ann_colors <- list(Cluster = cluster_colors)
-  
+
   # plot heatmap
-  p1 <- pheatmap::pheatmap(data, cluster_cols = F, 
+  p1 <- pheatmap::pheatmap(data, cluster_cols = F,
                            cutree_rows = k_num,
                            gaps_col = gaps_col,
                            fontsize = label_size,
@@ -114,27 +109,27 @@ heatmap_cluster <- function(data,
                            annotation_row = row_annot,
                            color = colors, annotation_colors = ann_colors,
                            angle_col = angle_col, border_color = "white")
-  
+
   newOrder$gene = rownames(newOrder)
   data_new = reshape2::melt(newOrder,variable.name = "Sample", value.name = "Expression")
   data_new$Cluster <- factor(data_new$Cluster, levels = unique(data_new$Cluster))
-  
+
   # plot line trend
-  p2 <- ggplot2::ggplot(data_new,aes(Sample, Expression, group = gene)) + 
-    geom_line(color = "gray90",size = 0.8) + 
+  p2 <- ggplot(data_new,aes_string(x = "Sample", y = "Expression", group = "gene")) +
+    geom_line(color = "gray90",size = 0.8) +
     geom_hline(yintercept = 0,linetype = 2) +
-    stat_summary(aes(group = 1), fun.y = mean, geom = "line", size = 1.2, color = "#c51b7d") + 
+    stat_summary(aes(group = 1), fun.y = mean, geom = "line", size = 1.2, color = "#c51b7d") +
     facet_wrap(Cluster~., ncol = 1) +
-    theme_bw(base_size = base_size) + 
+    theme_bw(base_size = base_size) +
     theme(panel.grid = element_blank(),
           axis.text = element_text(size = label_size),
           axis.text.x = element_text(angle = angle_col, hjust = 1),
           strip.text = element_text(size = label_size, face = "bold"))
-  
+
   p1 <- ggplotify::as.ggplot(p1)
-  p <- cowplot::plot_grid(p1, p2, align = "hv", 
+  p <- cowplot::plot_grid(p1, p2, align = "hv",
                           rel_widths = c(3, 1),
                           labels = "auto")
-  
+
   return(p)
 }

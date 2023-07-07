@@ -1,6 +1,6 @@
 Package: TOmicsVis
 Type: Package
-Title: Transcriptome visualization process scheme
+Title: Transcriptome Visualization Process Scheme
 Version: 1.1.8
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
@@ -8,7 +8,7 @@ Authors@R: c(
     person(given = 'Wei', family = 'Dong', email = 'dwei1220779@gmail.com', 
            role = c("aut"), comment = c(ORCID = '0000-0003-2201-7164'))
 	)
-Description: Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analyais", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.
+Description: Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.
 URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE
@@ -51,7 +51,11 @@ Imports:
 		RColorBrewer,
 		ggpolypath,
 		factoextra,
-		ggrepel
+		ggrepel,
+		cowplot,
+		ggplotify,
+		plotrix,
+		Mfuzz
 Suggests: 
 		knitr,
     rmarkdown
