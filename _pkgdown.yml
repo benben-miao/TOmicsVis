@@ -93,6 +93,7 @@ reference:
   desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
   contents:
   - trend_plot
+  - gene_cluster_trend
   - heatmap_cluster
   - network_plot
   - wgcna_pipeline
