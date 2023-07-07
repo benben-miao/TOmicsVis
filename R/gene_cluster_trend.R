@@ -36,6 +36,8 @@ gene_cluster_trend <- function(data,
                                palette = "PiYG",
                                cluster_num = 4
                                ){
+  # load required packages
+  library(e1071)
 
   # create ExpressionSet object
   eset <- new("ExpressionSet", exprs = as.matrix(data))
