@@ -120,7 +120,7 @@ heatmap_cluster <- function(data,
   data_new$Cluster <- factor(data_new$Cluster, levels = unique(data_new$Cluster))
   
   # plot line trend
-  p2 <- ggplot(data_new,aes(Sample, Expression, group = gene)) + 
+  p2 <- ggplot2::ggplot(data_new,aes(Sample, Expression, group = gene)) + 
     geom_line(color = "gray90",size = 0.8) + 
     geom_hline(yintercept = 0,linetype = 2) +
     stat_summary(aes(group = 1), fun.y = mean, geom = "line", size = 1.2, color = "#c51b7d") + 
