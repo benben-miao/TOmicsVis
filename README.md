@@ -7,36 +7,21 @@
 
 **TOmicsVis**: TranscriptOmics Visualization.
 
-**CRAN**: <https://cran.r-project.org/web/packages/TOmicsVis/index.html>
-
 **Github**: <https://github.com/benben-miao/TOmicsVis/>
 
 **Website**: <https://benben-miao.github.io/TOmicsVis/>
 
-**README**:
-<https://cran.r-project.org/web/packages/TOmicsVis/readme/README.html>
+**Author**: [benben-miao github](https://github.com/benben-miao)
 
-**Manual**:
-<https://cran.r-project.org/web/packages/TOmicsVis/TOmicsVis.pdf>
-
-**Authors@R**:
-
-- [Benben Miao:
-  https://github.com/benben-miao](https://github.com/benben-miao)
-
-- [Wei Dong:
-  https://github.com/dongwei1220](https://github.com/dongwei1220)
+**BioSciTools**: [Biology Science
+Tools](https://github.com/BioSciTools/BioSciTools.github.io)
 
 ## 2. Install package
 
 ``` r
-# 1. Install from CRAN (Stable Version)
-# install.packages("TOmicsVis")
-
-# 2. Install from Github (Laste Version)
+# 1. TOmicsVis
 # install.packages("devtools")
 # devtools::install_github("benben-miao/TOmicsVis")
-
 library(TOmicsVis)
 #> 载入需要的程辑包：e1071
 #> Warning: 程辑包'e1071'是用R版本4.2.3 来建造的
@@ -70,7 +55,7 @@ library(TOmicsVis)
 #> 
 #>     path
 
-# 3. Recommend package
+# 2. Extra package
 # install.packages("ggplot2")
 library(ggplot2)
 ```
@@ -91,14 +76,14 @@ data(quantile_data)
 quantile_plot(
   quantile_data,
   my_shape = "fill_circle",
-  point_size = 2.0,
+  point_size = 1.5,
   conf_int = TRUE,
   conf_level = 0.95,
   split_panel = "One_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
-  sci_fill_color = "Sci_Simpsons",
-  sci_color_alpha = 0.50,
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.75,
   ggTheme = "theme_light"
 )
 ```
@@ -144,9 +129,9 @@ corr_heatmap(
   fill_type = "full",
   lable_size = 3,
   lable_digits = 3,
-  color_low = "#008800ee",
+  color_low = "blue",
   color_mid = "white",
-  color_high = "#ff0000ee",
+  color_high = "red",
   ggTheme = "theme_light"
 )
 #> Scale for fill is already present.
@@ -178,7 +163,7 @@ pca_plot(
   pca_group_sample,
   point_size = 5,
   text_size = 5,
-  ellipse_alpha = 0.30,
+  ellipse_alpha = 0.3,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -193,51 +178,6 @@ Get help using command `?TOmicsVis::pca_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::pca_plot
-```
-
-#### 3.1.4 dendro_plot
-
-Dendrograms for multiple samples/groups clustering.
-
-``` r
-# 1. Load example datasets
-data(gene_exp)
-
-# 2. Run pca_plot plot function
-dendro_plot(
-  gene_exp,
-  dist_method = "euclidean",
-  hc_method = "average",
-  tree_type = "rectangle",
-  k_num = 3,
-  palette = "npg",
-  color_labels_by_k = TRUE,
-  horiz = TRUE,
-  label_size = 0.8,
-  line_width = 0.7,
-  rect = TRUE,
-  rect_fill = TRUE,
-  title = "Cluster Dendrogram",
-  xlab = "",
-  ylab = "Height"
-)
-#> Registered S3 method overwritten by 'dendextend':
-#>   method     from 
-#>   rev.hclust vegan
-#> Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
-#> of ggplot2 3.3.4.
-#> ℹ The deprecated feature was likely used in the factoextra package.
-#>   Please report the issue at <]8;;https://github.com/kassambara/factoextra/issueshttps://github.com/kassambara/factoextra/issues]8;;>.
-```
-
-![](man/figures/README-dendro_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::dendro_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::dendro_plot
 ```
 
 ### 3.2 Traits Analysis
@@ -310,7 +250,7 @@ violin_plot(
   add_element = "boxplot",
   element_alpha = 0.5,
   my_shape = "plus_times",
-  sci_fill_color = "Sci_NPG",
+  sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.5,
   sci_color_alpha = 1,
   legend_pos = "right",
@@ -345,7 +285,7 @@ survival_plot(
   interval_style = "ribbon",
   risk_table = TRUE,
   num_censor = TRUE,
-  sci_palette = "npg",
+  sci_palette = "aaas",
   ggTheme = "theme_light",
   x_start = 0,
   y_start = 0,
@@ -376,14 +316,15 @@ data(tsne_data)
 # 2. Run tsne_plot plot function
 tsne_plot(
   tsne_data,
+  seed = 5,
   point_size = 4,
-  point_alpha = 0.80,
+  point_alpha = 0.8,
   text_size = 2,
-  text_alpha = 1.00,
+  text_alpha = 0.8,
   ci_level = 0.95,
-  ellipse_alpha = 0.10,
-  sci_fill_color = "Sci_NPG",
-  sci_color_alpha = 0.50,
+  ellipse_alpha = 0.3,
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.9,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -415,8 +356,8 @@ venn_plot(
   venn_data,
   line_type = "blank",
   ellipse_shape = "circle",
-  sci_fill_color = "Sci_D3",
-  sci_fill_alpha = 0.60
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.65
 )
 ```
 
@@ -430,38 +371,7 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 # ?TOmicsVis::venn_plot
 ```
 
-#### 3.3.2 flower_plot
-
-flower plot for stat common and unique gene among multiple sets.
-
-``` r
-# 1. Load example datasets
-data(venn_data)
-
-# 2. Run flower_plot plot function
-flower_plot(
-  venn_data,
-  angle = 90,
-  a = 0.5,
-  b = 2,
-  r = 1,
-  ellipse_col_pal = "Spectral",
-  circle_col = "white",
-  label_text_cex = 1
-)
-```
-
-![](man/figures/README-flower_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::flower_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::flower_plot
-```
-
-#### 3.3.3 circos_heatmap
+#### 3.3.2 circos_heatmap
 
 Circos heatmap plot for visualizing gene expressing in multiple samples.
 
@@ -472,14 +382,14 @@ data(circos_heatmap_data)
 # 2. Run circos_heatmap plot function
 circos_heatmap(
   circos_heatmap_data,
-  low_color = "#008800aa",
+  low_color = "#0000ff",
   mid_color = "#ffffff",
-  high_color = "#ff0000aa",
-  gap_size = 45,
+  high_color = "#ff0000",
+  gap_size = 10,
   cluster_method = "complete",
   distance_method = "euclidean",
   dend_height = 0.2,
-  rowname_size = 0.5
+  rowname_size = 0.8
 )
 ```
 
@@ -493,7 +403,7 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page
 # ?TOmicsVis::circos_heatmap
 ```
 
-#### 3.3.4 volcano_plot
+#### 3.3.3 volcano_plot
 
 Volcano plot for visualizing differentailly expressed genes.
 
@@ -506,10 +416,10 @@ volcano_plot(
   deg_data,
   log2fc_cutoff = 1,
   pq_value = "pvalue",
-  pq_cutoff = 0.01,
+  pq_cutoff = 0.005,
   cutoff_line = "longdash",
   point_shape = "large_circle",
-  point_size = 1.5,
+  point_size = 1,
   point_alpha = 0.5,
   color_normal = "#888888",
   color_log2fc = "#008000",
@@ -517,7 +427,7 @@ volcano_plot(
   color_Log2fc_p = "#ff0000",
   label_size = 3,
   boxed_labels = FALSE,
-  draw_connectors = TRUE,
+  draw_connectors = FALSE,
   legend_pos = "right"
 )
 ```
@@ -532,7 +442,7 @@ Get help using command `?TOmicsVis::volcano_plot` or reference page
 # ?TOmicsVis::volcano_plot
 ```
 
-#### 3.3.5 ma_plot
+#### 3.3.4 ma_plot
 
 MversusA plot for visualizing differentially expressed genes.
 
@@ -545,10 +455,10 @@ ma_plot(
   deg_data2,
   foldchange = 2,
   fdr_value = 0.05,
-  point_size = 1.5,
-  color_up = "#FF000088",
-  color_down = "#00880088",
-  color_alpha = 0.20,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
   top_method = "fc",
   top_num = 20,
   label_size = 8,
@@ -570,7 +480,7 @@ Get help using command `?TOmicsVis::ma_plot` or reference page
 # ?TOmicsVis::ma_plot
 ```
 
-#### 3.3.6 heatmap_group
+#### 3.3.5 heatmap_group
 
 Heatmap group for visualizing grouped gene expression data.
 
@@ -587,17 +497,22 @@ head(heatmap_group_data)
 #> Gene4  8.396409316  8.71705522  8.03906411 4.417013007 4.725269731 3.542216879
 
 # 2. Run heatmap_group plot function
-heatmap_group(
-  heatmap_group_data,
-  scale_data = "none",
-  clust_method = "complete",
-  border_show = TRUE,
-  value_show = TRUE,
-  low_color = "#00880088",
-  mid_color = "#ffffff",
-  high_color = "#ff000088",
-  na_color = "#ffaa00",
-  x_angle = 45
+ma_plot(
+  deg_data2,
+  foldchange = 2,
+  fdr_value = 0.05,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
+  top_method = "fc",
+  top_num = 20,
+  label_size = 8,
+  label_box = TRUE,
+  title = "Group1 -versus- Group2",
+  xlab = "Log2 mean expression",
+  ylab = "Log2 fold change",
+  ggTheme = "theme_minimal"
 )
 ```
 
@@ -627,15 +542,15 @@ trend_plot(
   trend_data,
   scale_method = "globalminmax",
   miss_value = "exclude",
-  line_alpha = 0.3,
+  line_alpha = 0.5,
   show_points = TRUE,
   show_boxplot = TRUE,
   num_column = 2,
   xlab = "Traits",
   ylab = "Genes Expression",
-  sci_fill_color = "Sci_Futurama",
-  sci_fill_alpha = 0.5,
-  sci_color_alpha = 0.5,
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  sci_color_alpha = 0.8,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -652,82 +567,7 @@ Get help using command `?TOmicsVis::trend_plot` or reference page
 # ?TOmicsVis::trend_plot
 ```
 
-#### 3.4.2 gene_cluster_trend
-
-Gene cluster trend plot for visualizing gene expression trend profile in
-multiple samples.
-
-``` r
-# 1. Load example datasets
-data(gene_cluster_data)
-head(gene_cluster_data)
-#>            Time1      Time2       Time3
-#> Gene1  0.1774993  1.6563226 -1.15259948
-#> Gene2 -0.5037254 -0.5207024  0.46416071
-#> Gene3  0.1050310  0.6079246  0.72893247
-#> Gene4 -1.1791537  0.4340085  0.41061745
-#> Gene5  0.8368975 -0.7047414 -1.46114720
-#> Gene6  0.2611762  0.1351524 -0.01890809
-
-# 2. Run plot function
-gene_cluster_trend(
-  gene_cluster_data,
-  thres = 0.25,
-  min_std = 0.2,
-  palette = "PiYG",
-  cluster_num = 4
-)
-#> 0 genes excluded.
-#> 12 genes excluded.
-```
-
-![](man/figures/README-gene_cluster_trend-1.png)<!-- -->
-
-    #> NULL
-
-Get help using command `?TOmicsVis::gene_cluster_trend` or reference
-page
-<https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::gene_cluster_trend
-```
-
-#### 3.4.3 gene_rank_plot
-
-Gene ranking dotplot for visualizing differentailly expressed genes.
-
-``` r
-# 1. Load example datasets
-data(deg_data)
-
-# 2. Run gene_rank_plot plot function
-gene_rank_plot(
-  deg_data,
-  log2fc = 1,
-  palette = "Spectral",
-  top_n = 10,
-  genes_to_label = NULL,
-  label_size = 5,
-  base_size = 12,
-  title = "Gene ranking dotplot",
-  xlab = "Ranking of differentially expressed genes",
-  ylab = "Log2FoldChange"
-)
-```
-
-![](man/figures/README-gene_rank_plot-1.png)<!-- -->
-
-Get help using command `?TOmicsVis::gene_rank_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::gene_rank_plot
-```
-
-#### 3.4.4 wgcna_pipeline
+#### 3.4.2 wgcna_pipeline
 
 WGCNA analysis pipeline for RNA-Seq.
 
@@ -748,7 +588,7 @@ Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
 # ?TOmicsVis::wgcna_pipeline
 ```
 
-#### 3.4.5 network_plot
+#### 3.4.3 network_plot
 
 Network plot for analyzing and visualizing relationship of genes.
 
@@ -763,20 +603,19 @@ head(network_data)
 #> 4  ABL2  chi-miR-15b-5p
 #> 5 CASP2 PC-3p-10204_250
 #> 6 CASP2    bta-miR-6123
-network_data <- head(network_data, 150)
 
 # 2. Run network_plot plot function
 network_plot(
   network_data,
   calcBy = "degree",
-  degreeValue = 0.1,
-  nodeColorNormal = "#ff880055",
+  degreeValue = 0.05,
+  nodeColorNormal = "#00888888",
   nodeBorderColor = "#FFFFFF",
-  nodeColorFrom = "#ff000055",
-  nodeColorTo = "#00880055",
+  nodeColorFrom = "#FF000088",
+  nodeColorTo = "#00880088",
   nodeShapeNormal = "circle",
-  nodeShapeSpatial = "circle",
-  nodeSize = 20,
+  nodeShapeSpatial = "csquare",
+  nodeSize = 10,
   labelSize = 0.5,
   edgeCurved = TRUE,
   netLayout = "layout_on_sphere"
@@ -793,43 +632,6 @@ Get help using command `?TOmicsVis::network_plot` or reference page
 # ?TOmicsVis::network_plot
 ```
 
-#### 3.4.6 heatmap_cluster
-
-Heatmap cluster plot for visualizing clustered gene expression data.
-
-``` r
-# 1. Load example datasets
-data(gene_exp)
-
-# 2. Run plot function
-heatmap_cluster(
-  gene_exp,
-  dist_method = "euclidean",
-  hc_method = "average",
-  k_num = 5,
-  palette = "Spectral",
-  cluster_pal = "Set1",
-  gaps_col = NULL,
-  angle_col = 45,
-  label_size = 10,
-  base_size = 12
-)
-```
-
-![](man/figures/README-heatmap_cluster-1.png)<!-- -->
-
-    #> Using Cluster, gene as id variables
-
-![](man/figures/README-heatmap_cluster-2.png)<!-- -->![](man/figures/README-heatmap_cluster-3.png)<!-- -->
-
-Get help using command `?TOmicsVis::heatmap_cluster` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
-
-``` r
-# Get help with command in R console.
-# ?TOmicsVis::heatmap_cluster
-```
-
 ### 3.5 GO and KEGG Enrichment
 
 #### 3.5.1 chord_plot
@@ -839,17 +641,16 @@ Chord plot for visualizing the relationships of pathways and genes.
 ``` r
 # 1. Load chord_data example datasets
 data(chord_data)
-colnames(chord_data) <- c("G1","G2","G3","G4","G5")
 
 # 2. Run chord_plot plot function
 chord_plot(
   chord_data,
-  multi_colors = "VividColors",
+  multi_colors = "RainbowColors",
   color_alpha = 0.5,
   link_visible = TRUE,
   link_dir = -1,
   link_type = "diffHeight",
-  sector_scale = "Scale",
+  sector_scale = "Origin",
   width_circle = 3,
   dist_name = 3,
   label_dir = "Vertical",
@@ -859,107 +660,107 @@ chord_plot(
 
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
-    #>      rn cn     value1      value2 o1 o2         x1         x2       col
-    #> 1    S1 G1 0.06557377 0.024844720  5 20 1.00000000 1.00000000 #DF4A6E7F
-    #> 2    S2 G1 0.15555556 0.043478261  5 19 1.00000000 0.97515528 #D3AFDC7F
-    #> 3    S3 G1 0.16363636 0.055900621  5 18 1.00000000 0.93167702 #73A1E57F
-    #> 4    S4 G1 0.25454545 0.086956522  5 17 1.00000000 0.87577640 #DFCD647F
-    #> 5    S5 G1 0.04545455 0.006211180  5 16 1.00000000 0.78881988 #68E6D67F
-    #> 6    S6 G1 0.16949153 0.062111801  5 15 1.00000000 0.78260870 #67E8987F
-    #> 7    S7 G1 0.09677419 0.018633540  5 14 1.00000000 0.72049689 #7C6ADD7F
-    #> 8    S8 G1 0.28846154 0.093167702  5 13 1.00000000 0.70186335 #BEE4E07F
-    #> 9    S9 G1 0.13513514 0.031055901  5 12 1.00000000 0.60869565 #6FAA787F
-    #> 10  S10 G1 0.25925926 0.043478261  5 11 1.00000000 0.57763975 #E2CFDA7F
-    #> 11  S11 G1 0.17142857 0.037267081  5 10 1.00000000 0.53416149 #D3B5907F
-    #> 12  S12 G1 0.22448980 0.068322981  5  9 1.00000000 0.49689441 #6C54897F
-    #> 13  S13 G1 0.26086957 0.111801242  5  8 1.00000000 0.42857143 #DF53CC7F
-    #> 14  S14 G1 0.04545455 0.006211180  5  7 1.00000000 0.31677019 #ABE8BD7F
-    #> 15  S15 G1 0.08620690 0.031055901  5  6 1.00000000 0.31055901 #A9D9747F
-    #> 16  S16 G1 0.25000000 0.074534161  5  5 1.00000000 0.27950311 #74EC4F7F
-    #> 17  S17 G1 0.39130435 0.055900621  5  4 1.00000000 0.20496894 #78CDE87F
-    #> 18  S18 G1 0.10000000 0.031055901  5  3 1.00000000 0.14906832 #E095427F
-    #> 19  S19 G1 0.10000000 0.024844720  5  2 1.00000000 0.11801242 #D987877F
-    #> 20  S20 G1 0.25862069 0.093167702  5  1 1.00000000 0.09316770 #A83FE67F
-    #> 21   S1 G2 0.26229508 0.096385542  4 20 0.93442623 1.00000000 #DF4A6E7F
-    #> 22   S2 G2 0.24444444 0.066265060  4 19 0.84444444 0.90361446 #D3AFDC7F
-    #> 23   S3 G2 0.03636364 0.012048193  4 18 0.83636364 0.83734940 #73A1E57F
-    #> 24   S4 G2 0.16363636 0.054216867  4 17 0.74545455 0.82530120 #DFCD647F
-    #> 25   S5 G2 0.04545455 0.006024096  4 16 0.95454545 0.77108434 #68E6D67F
-    #> 26   S6 G2 0.30508475 0.108433735  4 15 0.83050847 0.76506024 #67E8987F
-    #> 27   S7 G2 0.25806452 0.048192771  4 14 0.90322581 0.65662651 #7C6ADD7F
-    #> 28   S8 G2 0.07692308 0.024096386  4 13 0.71153846 0.60843373 #BEE4E07F
-    #> 29   S9 G2 0.10810811 0.024096386  4 12 0.86486486 0.58433735 #6FAA787F
-    #> 30  S10 G2 0.33333333 0.054216867  4 11 0.74074074 0.56024096 #E2CFDA7F
-    #> 31  S11 G2 0.20000000 0.042168675  4 10 0.82857143 0.50602410 #D3B5907F
-    #> 32  S12 G2 0.04081633 0.012048193  4  9 0.77551020 0.46385542 #6C54897F
-    #> 33  S13 G2 0.18840580 0.078313253  4  8 0.73913043 0.45180723 #DF53CC7F
-    #> 34  S14 G2 0.09090909 0.012048193  4  7 0.95454545 0.37349398 #ABE8BD7F
-    #> 35  S15 G2 0.22413793 0.078313253  4  6 0.91379310 0.36144578 #A9D9747F
-    #> 36  S16 G2 0.14583333 0.042168675  4  5 0.75000000 0.28313253 #74EC4F7F
-    #> 37  S17 G2 0.08695652 0.012048193  4  4 0.60869565 0.24096386 #78CDE87F
-    #> 38  S18 G2 0.26000000 0.078313253  4  3 0.90000000 0.22891566 #E095427F
-    #> 39  S19 G2 0.30000000 0.072289157  4  2 0.90000000 0.15060241 #D987877F
-    #> 40  S20 G2 0.22413793 0.078313253  4  1 0.74137931 0.07831325 #A83FE67F
-    #> 41   S1 G3 0.19672131 0.080000000  3 20 0.67213115 1.00000000 #DF4A6E7F
-    #> 42   S2 G3 0.04444444 0.013333333  3 19 0.60000000 0.92000000 #D3AFDC7F
-    #> 43   S3 G3 0.30909091 0.113333333  3 18 0.80000000 0.90666667 #73A1E57F
-    #> 44   S4 G3 0.21818182 0.080000000  3 17 0.58181818 0.79333333 #DFCD647F
-    #> 45   S5 G3 0.31818182 0.046666667  3 16 0.90909091 0.71333333 #68E6D67F
-    #> 46   S6 G3 0.15254237 0.060000000  3 15 0.52542373 0.66666667 #67E8987F
-    #> 47   S7 G3 0.12903226 0.026666667  3 14 0.64516129 0.60666667 #7C6ADD7F
-    #> 48   S8 G3 0.17307692 0.060000000  3 13 0.63461538 0.58000000 #BEE4E07F
-    #> 49   S9 G3 0.18918919 0.046666667  3 12 0.75675676 0.52000000 #6FAA787F
-    #> 50  S10 G3 0.03703704 0.006666667  3 11 0.40740741 0.47333333 #E2CFDA7F
-    #> 51  S11 G3 0.14285714 0.033333333  3 10 0.62857143 0.46666667 #D3B5907F
-    #> 52  S12 G3 0.04081633 0.013333333  3  9 0.73469388 0.43333333 #6C54897F
-    #> 53  S13 G3 0.11594203 0.053333333  3  8 0.55072464 0.42000000 #DF53CC7F
-    #> 54  S14 G3 0.09090909 0.013333333  3  7 0.86363636 0.36666667 #ABE8BD7F
-    #> 55  S15 G3 0.10344828 0.040000000  3  6 0.68965517 0.35333333 #A9D9747F
-    #> 56  S16 G3 0.31250000 0.100000000  3  5 0.60416667 0.31333333 #74EC4F7F
-    #> 57  S17 G3 0.04347826 0.006666667  3  4 0.52173913 0.21333333 #78CDE87F
-    #> 58  S18 G3 0.26000000 0.086666667  3  3 0.64000000 0.20666667 #E095427F
-    #> 59  S19 G3 0.10000000 0.026666667  3  2 0.60000000 0.12000000 #D987877F
-    #> 60  S20 G3 0.24137931 0.093333333  3  1 0.51724138 0.09333333 #A83FE67F
-    #> 61   S1 G4 0.29508197 0.079295154  2 20 0.47540984 1.00000000 #DF4A6E7F
-    #> 62   S2 G4 0.33333333 0.066079295  2 19 0.55555556 0.92070485 #D3AFDC7F
-    #> 63   S3 G4 0.29090909 0.070484581  2 18 0.49090909 0.85462555 #73A1E57F
-    #> 64   S4 G4 0.05454545 0.013215859  2 17 0.36363636 0.78414097 #DFCD647F
-    #> 65   S5 G4 0.04545455 0.004405286  2 16 0.59090909 0.77092511 #68E6D67F
-    #> 66   S6 G4 0.22033898 0.057268722  2 15 0.37288136 0.76651982 #67E8987F
-    #> 67   S7 G4 0.48387097 0.066079295  2 14 0.51612903 0.70925110 #7C6ADD7F
-    #> 68   S8 G4 0.25000000 0.057268722  2 13 0.46153846 0.64317181 #BEE4E07F
-    #> 69   S9 G4 0.08108108 0.013215859  2 12 0.56756757 0.58590308 #6FAA787F
-    #> 70  S10 G4 0.14814815 0.017621145  2 11 0.37037037 0.57268722 #E2CFDA7F
-    #> 71  S11 G4 0.22857143 0.035242291  2 10 0.48571429 0.55506608 #D3B5907F
-    #> 72  S12 G4 0.32653061 0.070484581  2  9 0.69387755 0.51982379 #6C54897F
-    #> 73  S13 G4 0.20289855 0.061674009  2  8 0.43478261 0.44933921 #DF53CC7F
-    #> 74  S14 G4 0.63636364 0.061674009  2  7 0.77272727 0.38766520 #ABE8BD7F
-    #> 75  S15 G4 0.27586207 0.070484581  2  6 0.58620690 0.32599119 #A9D9747F
-    #> 76  S16 G4 0.25000000 0.052863436  2  5 0.29166667 0.25550661 #74EC4F7F
-    #> 77  S17 G4 0.43478261 0.044052863  2  4 0.47826087 0.20264317 #78CDE87F
-    #> 78  S18 G4 0.22000000 0.048458150  2  3 0.38000000 0.15859031 #E095427F
-    #> 79  S19 G4 0.35000000 0.061674009  2  2 0.50000000 0.11013216 #D987877F
-    #> 80  S20 G4 0.18965517 0.048458150  2  1 0.27586207 0.04845815 #A83FE67F
-    #> 81   S1 G5 0.18032787 0.057291667  1 20 0.18032787 1.00000000 #DF4A6E7F
-    #> 82   S2 G5 0.22222222 0.052083333  1 19 0.22222222 0.94270833 #D3AFDC7F
-    #> 83   S3 G5 0.20000000 0.057291667  1 18 0.20000000 0.89062500 #73A1E57F
-    #> 84   S4 G5 0.30909091 0.088541667  1 17 0.30909091 0.83333333 #DFCD647F
-    #> 85   S5 G5 0.54545455 0.062500000  1 16 0.54545455 0.74479167 #68E6D67F
-    #> 86   S6 G5 0.15254237 0.046875000  1 15 0.15254237 0.68229167 #67E8987F
-    #> 87   S7 G5 0.03225806 0.005208333  1 14 0.03225806 0.63541667 #7C6ADD7F
-    #> 88   S8 G5 0.21153846 0.057291667  1 13 0.21153846 0.63020833 #BEE4E07F
-    #> 89   S9 G5 0.48648649 0.093750000  1 12 0.48648649 0.57291667 #6FAA787F
-    #> 90  S10 G5 0.22222222 0.031250000  1 11 0.22222222 0.47916667 #E2CFDA7F
-    #> 91  S11 G5 0.25714286 0.046875000  1 10 0.25714286 0.44791667 #D3B5907F
-    #> 92  S12 G5 0.36734694 0.093750000  1  9 0.36734694 0.40104167 #6C54897F
-    #> 93  S13 G5 0.23188406 0.083333333  1  8 0.23188406 0.30729167 #DF53CC7F
-    #> 94  S14 G5 0.13636364 0.015625000  1  7 0.13636364 0.22395833 #ABE8BD7F
-    #> 95  S15 G5 0.31034483 0.093750000  1  6 0.31034483 0.20833333 #A9D9747F
-    #> 96  S16 G5 0.04166667 0.010416667  1  5 0.04166667 0.11458333 #74EC4F7F
-    #> 97  S17 G5 0.04347826 0.005208333  1  4 0.04347826 0.10416667 #78CDE87F
-    #> 98  S18 G5 0.16000000 0.041666667  1  3 0.16000000 0.09895833 #E095427F
-    #> 99  S19 G5 0.15000000 0.031250000  1  2 0.15000000 0.05729167 #D987877F
-    #> 100 S20 G5 0.08620690 0.026041667  1  1 0.08620690 0.02604167 #A83FE67F
+    #>      rn         cn value1 value2 o1 o2 x1  x2       col
+    #> 1    S1 Samples.E1      4      4  5 20 61 161 #FF00007F
+    #> 2    S2 Samples.E1      7      7  5 19 45 157 #FF3D007F
+    #> 3    S3 Samples.E1      9      9  5 18 55 150 #FF7A007F
+    #> 4    S4 Samples.E1     14     14  5 17 55 141 #FFB8007F
+    #> 5    S5 Samples.E1      1      1  5 16 22 127 #FFF5007F
+    #> 6    S6 Samples.E1     10     10  5 15 59 126 #CCFF007F
+    #> 7    S7 Samples.E1      3      3  5 14 31 116 #8FFF007F
+    #> 8    S8 Samples.E1     15     15  5 13 52 113 #52FF007F
+    #> 9    S9 Samples.E1      5      5  5 12 37  98 #14FF007F
+    #> 10  S10 Samples.E1      7      7  5 11 27  93 #00FF297F
+    #> 11  S11 Samples.E1      6      6  5 10 35  86 #00FF667F
+    #> 12  S12 Samples.E1     11     11  5  9 49  80 #00FFA37F
+    #> 13  S13 Samples.E1     18     18  5  8 69  69 #00FFE07F
+    #> 14  S14 Samples.E1      1      1  5  7 22  51 #00E0FF7F
+    #> 15  S15 Samples.E1      5      5  5  6 58  50 #00A3FF7F
+    #> 16  S16 Samples.E1     12     12  5  5 48  45 #0066FF7F
+    #> 17  S17 Samples.E1      9      9  5  4 23  33 #0029FF7F
+    #> 18  S18 Samples.E1      5      5  5  3 50  24 #1400FF7F
+    #> 19  S19 Samples.E1      4      4  5  2 40  19 #5200FF7F
+    #> 20  S20 Samples.E1     15     15  5  1 58  15 #8F00FF7F
+    #> 21   S1         E2     16     16  4 20 57 166 #FF00007F
+    #> 22   S2         E2     11     11  4 19 38 150 #FF3D007F
+    #> 23   S3         E2      2      2  4 18 46 139 #FF7A007F
+    #> 24   S4         E2      9      9  4 17 41 137 #FFB8007F
+    #> 25   S5         E2      1      1  4 16 21 128 #FFF5007F
+    #> 26   S6         E2     18     18  4 15 49 127 #CCFF007F
+    #> 27   S7         E2      8      8  4 14 28 109 #8FFF007F
+    #> 28   S8         E2      4      4  4 13 37 101 #52FF007F
+    #> 29   S9         E2      4      4  4 12 32  97 #14FF007F
+    #> 30  S10         E2      9      9  4 11 20  93 #00FF297F
+    #> 31  S11         E2      7      7  4 10 29  84 #00FF667F
+    #> 32  S12         E2      2      2  4  9 38  77 #00FFA37F
+    #> 33  S13         E2     13     13  4  8 51  75 #00FFE07F
+    #> 34  S14         E2      2      2  4  7 21  62 #00E0FF7F
+    #> 35  S15         E2     13     13  4  6 53  60 #00A3FF7F
+    #> 36  S16         E2      7      7  4  5 36  47 #0066FF7F
+    #> 37  S17         E2      2      2  4  4 14  40 #0029FF7F
+    #> 38  S18         E2     13     13  4  3 45  38 #1400FF7F
+    #> 39  S19         E2     12     12  4  2 36  25 #5200FF7F
+    #> 40  S20         E2     13     13  4  1 43  13 #8F00FF7F
+    #> 41   S1         E3     12     12  3 20 41 150 #FF00007F
+    #> 42   S2         E3      2      2  3 19 27 138 #FF3D007F
+    #> 43   S3         E3     17     17  3 18 44 136 #FF7A007F
+    #> 44   S4         E3     12     12  3 17 32 119 #FFB8007F
+    #> 45   S5         E3      7      7  3 16 20 107 #FFF5007F
+    #> 46   S6         E3      9      9  3 15 31 100 #CCFF007F
+    #> 47   S7         E3      4      4  3 14 20  91 #8FFF007F
+    #> 48   S8         E3      9      9  3 13 33  87 #52FF007F
+    #> 49   S9         E3      7      7  3 12 28  78 #14FF007F
+    #> 50  S10         E3      1      1  3 11 11  71 #00FF297F
+    #> 51  S11         E3      5      5  3 10 22  70 #00FF667F
+    #> 52  S12         E3      2      2  3  9 36  65 #00FFA37F
+    #> 53  S13         E3      8      8  3  8 38  63 #00FFE07F
+    #> 54  S14         E3      2      2  3  7 19  55 #00E0FF7F
+    #> 55  S15         E3      6      6  3  6 40  53 #00A3FF7F
+    #> 56  S16         E3     15     15  3  5 29  47 #0066FF7F
+    #> 57  S17         E3      1      1  3  4 12  32 #0029FF7F
+    #> 58  S18         E3     13     13  3  3 32  31 #1400FF7F
+    #> 59  S19         E3      4      4  3  2 24  18 #5200FF7F
+    #> 60  S20         E3     14     14  3  1 30  14 #8F00FF7F
+    #> 61   S1         E4     18     18  2 20 29 227 #FF00007F
+    #> 62   S2         E4     15     15  2 19 25 209 #FF3D007F
+    #> 63   S3         E4     16     16  2 18 27 194 #FF7A007F
+    #> 64   S4         E4      3      3  2 17 20 178 #FFB8007F
+    #> 65   S5         E4      1      1  2 16 13 175 #FFF5007F
+    #> 66   S6         E4     13     13  2 15 22 174 #CCFF007F
+    #> 67   S7         E4     15     15  2 14 16 161 #8FFF007F
+    #> 68   S8         E4     13     13  2 13 24 146 #52FF007F
+    #> 69   S9         E4      3      3  2 12 21 133 #14FF007F
+    #> 70  S10         E4      4      4  2 11 10 130 #00FF297F
+    #> 71  S11         E4      8      8  2 10 17 126 #00FF667F
+    #> 72  S12         E4     16     16  2  9 34 118 #00FFA37F
+    #> 73  S13         E4     14     14  2  8 30 102 #00FFE07F
+    #> 74  S14         E4     14     14  2  7 17  88 #00E0FF7F
+    #> 75  S15         E4     16     16  2  6 34  74 #00A3FF7F
+    #> 76  S16         E4     12     12  2  5 14  58 #0066FF7F
+    #> 77  S17         E4     10     10  2  4 11  46 #0029FF7F
+    #> 78  S18         E4     11     11  2  3 19  36 #1400FF7F
+    #> 79  S19         E4     14     14  2  2 20  25 #5200FF7F
+    #> 80  S20         E4     11     11  2  1 16  11 #8F00FF7F
+    #> 81   S1         E5     11     11  1 20 11 192 #FF00007F
+    #> 82   S2         E5     10     10  1 19 10 181 #FF3D007F
+    #> 83   S3         E5     11     11  1 18 11 171 #FF7A007F
+    #> 84   S4         E5     17     17  1 17 17 160 #FFB8007F
+    #> 85   S5         E5     12     12  1 16 12 143 #FFF5007F
+    #> 86   S6         E5      9      9  1 15  9 131 #CCFF007F
+    #> 87   S7         E5      1      1  1 14  1 122 #8FFF007F
+    #> 88   S8         E5     11     11  1 13 11 121 #52FF007F
+    #> 89   S9         E5     18     18  1 12 18 110 #14FF007F
+    #> 90  S10         E5      6      6  1 11  6  92 #00FF297F
+    #> 91  S11         E5      9      9  1 10  9  86 #00FF667F
+    #> 92  S12         E5     18     18  1  9 18  77 #00FFA37F
+    #> 93  S13         E5     16     16  1  8 16  59 #00FFE07F
+    #> 94  S14         E5      3      3  1  7  3  43 #00E0FF7F
+    #> 95  S15         E5     18     18  1  6 18  40 #00A3FF7F
+    #> 96  S16         E5      2      2  1  5  2  22 #0066FF7F
+    #> 97  S17         E5      1      1  1  4  1  20 #0029FF7F
+    #> 98  S18         E5      8      8  1  3  8  19 #1400FF7F
+    #> 99  S19         E5      6      6  1  2  6  11 #5200FF7F
+    #> 100 S20         E5      5      5  1  1  5   5 #8F00FF7F
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.

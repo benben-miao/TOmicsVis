@@ -6,13 +6,14 @@
 \usage{
 tsne_plot(
   data,
+  seed = 1,
   point_size = 3,
   point_alpha = 0.8,
   text_size = 2,
   text_alpha = 0.8,
   ci_level = 0.95,
   ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_AAAS",
+  sci_fill_color = "Sci_JAMA",
   sci_color_alpha = 0.9,
   legend_pos = "right",
   legend_dir = "vertical",
@@ -21,6 +22,8 @@ tsne_plot(
 }
 \arguments{
 \item{data}{Dataframe: include columns (IDs, Trait1, Trait2, ...).}
+
+\item{seed}{Numeric: set seed for robust result. Default: 1.}
 
 \item{point_size}{Numeric: point size. Default: 3, min: 0, max: null.}
 
@@ -60,11 +63,11 @@ data(tsne_data)
 # 3. Default parameters
 tsne_plot(tsne_data)
 
-# 4. Set point_alpha = 0.50
-tsne_plot(tsne_data, point_alpha = 0.50)
+# 4. Set seed = 5
+tsne_plot(tsne_data, seed = 5)
 
-# 5. Set sci_fill_color = "Sci_NPG"
-tsne_plot(tsne_data, sci_fill_color = "Sci_NPG")
+# 5. Set sci_fill_color = "Sci_Simpsons", seed = 6
+tsne_plot(tsne_data, sci_fill_color = "Sci_Simpsons", seed = 6)
 
 }
 \author{

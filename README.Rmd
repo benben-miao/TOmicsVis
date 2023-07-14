@@ -13,53 +13,34 @@ knitr::opts_chunk$set(
 ```
 
 # TOmicsVis
-
 ## 1. Introduction
-
 **TOmicsVis**: TranscriptOmics Visualization.
 
-**CRAN**: <https://cran.r-project.org/web/packages/TOmicsVis/index.html>
+**Github**: [https://github.com/benben-miao/TOmicsVis/](https://github.com/benben-miao/TOmicsVis/)
 
-**Github**: <https://github.com/benben-miao/TOmicsVis/>
+**Website**: [https://benben-miao.github.io/TOmicsVis/](https://benben-miao.github.io/TOmicsVis/)
 
-**Website**: <https://benben-miao.github.io/TOmicsVis/>
+**Author**: [benben-miao github](https://github.com/benben-miao)
 
-**README**: <https://cran.r-project.org/web/packages/TOmicsVis/readme/README.html>
-
-**Manual**: <https://cran.r-project.org/web/packages/TOmicsVis/TOmicsVis.pdf>
-
-**Authors\@R**:
-
--   [Benben Miao: https://github.com/benben-miao](https://github.com/benben-miao)
-
--   [Wei Dong: https://github.com/dongwei1220](https://github.com/dongwei1220)
+**BioSciTools**: [Biology Science Tools](https://github.com/BioSciTools/BioSciTools.github.io)
 
 ## 2. Install package
-
 ```{r}
-# 1. Install from CRAN (Stable Version)
-# install.packages("TOmicsVis")
-
-# 2. Install from Github (Laste Version)
+# 1. TOmicsVis
 # install.packages("devtools")
 # devtools::install_github("benben-miao/TOmicsVis")
-
 library(TOmicsVis)
 
-# 3. Recommend package
+# 2. Extra package
 # install.packages("ggplot2")
 library(ggplot2)
 ```
 
 ## 3. Usage cases
-
 ### 3.1 Samples Statistics
-
 #### 3.1.1 quantile_plot
-
 Quantile plot for visualizing data distribution.
-
-```{r quantile_plot, warning=FALSE}
+```{r quantile_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load box_data example datasets
 data(quantile_data)
 
@@ -67,30 +48,27 @@ data(quantile_data)
 quantile_plot(
   quantile_data,
   my_shape = "fill_circle",
-  point_size = 2.0,
+  point_size = 1.5,
   conf_int = TRUE,
   conf_level = 0.95,
   split_panel = "One_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
-  sci_fill_color = "Sci_Simpsons",
-  sci_color_alpha = 0.50,
+  sci_fill_color = "Sci_AAAS",
+  sci_color_alpha = 0.75,
   ggTheme = "theme_light"
 )
 ```
 
-Get help using command `?TOmicsVis::quantile_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
-
+Get help using command `?TOmicsVis::quantile_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html](https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::quantile_plot
 ```
 
 #### 3.1.2 corr_heatmap
-
 Correlation Heatmap for samples/groups based on Pearson algorithm.
-
-```{r corr_heatmap}
+```{r corr_heatmap, fig.width=10.00, fig.height=6.18}
 # 1. Load gene_exp example dataset
 data(gene_exp)
 head(gene_exp)
@@ -103,25 +81,22 @@ corr_heatmap(
   fill_type = "full",
   lable_size = 3,
   lable_digits = 3,
-  color_low = "#008800ee",
+  color_low = "blue",
   color_mid = "white",
-  color_high = "#ff0000ee",
+  color_high = "red",
   ggTheme = "theme_light"
 )
 ```
 
-Get help using command `?TOmicsVis::corr_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html>.
-
+Get help using command `?TOmicsVis::corr_heatmap` or reference page [https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html](https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::corr_heatmap
 ```
 
 #### 3.1.3 pca_plot
-
 PCA dimensional reduction visualization for RNA-Seq.
-
-```{r pca_plot}
+```{r pca_plot, fig.width=10.00, fig.height=6.18}
 # 1. Load pca_sample_gene and pca_group_sample example datasets
 data(pca_sample_gene)
 data(pca_group_sample)
@@ -132,62 +107,23 @@ pca_plot(
   pca_group_sample,
   point_size = 5,
   text_size = 5,
-  ellipse_alpha = 0.30,
+  ellipse_alpha = 0.3,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
 ```
 
-Get help using command `?TOmicsVis::pca_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html>.
-
+Get help using command `?TOmicsVis::pca_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html](https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::pca_plot
 ```
 
-#### 3.1.4 dendro_plot
-
-Dendrograms for multiple samples/groups clustering.
-
-```{r dendro_plot}
-# 1. Load example datasets
-data(gene_exp)
-
-# 2. Run pca_plot plot function
-dendro_plot(
-  gene_exp,
-  dist_method = "euclidean",
-  hc_method = "average",
-  tree_type = "rectangle",
-  k_num = 3,
-  palette = "npg",
-  color_labels_by_k = TRUE,
-  horiz = TRUE,
-  label_size = 0.8,
-  line_width = 0.7,
-  rect = TRUE,
-  rect_fill = TRUE,
-  title = "Cluster Dendrogram",
-  xlab = "",
-  ylab = "Height"
-)
-```
-
-Get help using command `?TOmicsVis::dendro_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::dendro_plot
-```
-
 ### 3.2 Traits Analysis
-
 #### 3.2.1 box_plot
-
 Box plot support two levels and multiple groups with P value.
-
-```{r box_plot, warning=FALSE}
+```{r box_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load box_data example datasets
 data(box_data)
 
@@ -209,18 +145,15 @@ box_plot(
 )
 ```
 
-Get help using command `?TOmicsVis::box_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/box_plot.html>.
-
+Get help using command `?TOmicsVis::box_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/box_plot.html](https://benben-miao.github.io/TOmicsVis/reference/box_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::box_plot
 ```
 
 #### 3.2.2 violin_plot
-
 Violin plot support two levels and multiple groups with P value.
-
-```{r violin_plot, warning=FALSE}
+```{r violin_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load box_data example datasets
 data(box_data)
 
@@ -234,7 +167,7 @@ violin_plot(
   add_element = "boxplot",
   element_alpha = 0.5,
   my_shape = "plus_times",
-  sci_fill_color = "Sci_NPG",
+  sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.5,
   sci_color_alpha = 1,
   legend_pos = "right",
@@ -243,18 +176,15 @@ violin_plot(
 )
 ```
 
-Get help using command `?TOmicsVis::violin_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html>.
-
+Get help using command `?TOmicsVis::violin_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html](https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::violin_plot
 ```
 
 #### 3.2.3 survival_plot
-
 Survival plot for analyzing and visualizing survival data.
-
-```{r survival_plot, warning=FALSE}
+```{r survival_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load survival_plot example datasets
 data(survival_data)
 
@@ -266,7 +196,7 @@ survival_plot(
   interval_style = "ribbon",
   risk_table = TRUE,
   num_censor = TRUE,
-  sci_palette = "npg",
+  sci_palette = "aaas",
   ggTheme = "theme_light",
   x_start = 0,
   y_start = 0,
@@ -276,52 +206,46 @@ survival_plot(
 )
 ```
 
-Get help using command `?TOmicsVis::survival_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html>.
-
+Get help using command `?TOmicsVis::survival_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html](https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::survival_plot
 ```
 
 #### 3.2.4 tsne_plot
-
 TSNE plot for analyzing and visualizing TSNE algorithm.
-
-```{r tsne_plot, warning=FALSE}
+```{r tsne_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load tsne_plot example datasets
 data(tsne_data)
 
 # 2. Run tsne_plot plot function
 tsne_plot(
   tsne_data,
+  seed = 5,
   point_size = 4,
-  point_alpha = 0.80,
+  point_alpha = 0.8,
   text_size = 2,
-  text_alpha = 1.00,
+  text_alpha = 0.8,
   ci_level = 0.95,
-  ellipse_alpha = 0.10,
-  sci_fill_color = "Sci_NPG",
-  sci_color_alpha = 0.50,
+  ellipse_alpha = 0.3,
+  sci_fill_color = "Sci_JAMA",
+  sci_color_alpha = 0.9,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
 ```
 
-Get help using command `?TOmicsVis::tsne_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html>.
-
+Get help using command `?TOmicsVis::tsne_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html](https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::tsne_plot
 ```
 
 ### 3.3 Differential Expression Analyais
-
 #### 3.3.1 venn_plot
-
 Venn plot for stat common and unique gene among multiple sets.
-
-```{r venn_plot, warning=FALSE}
+```{r venn_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load venn_data example datasets
 data(venn_data)
 
@@ -330,80 +254,46 @@ venn_plot(
   venn_data,
   line_type = "blank",
   ellipse_shape = "circle",
-  sci_fill_color = "Sci_D3",
-  sci_fill_alpha = 0.60
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.65
 )
 ```
 
-Get help using command `?TOmicsVis::venn_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html>.
-
+Get help using command `?TOmicsVis::venn_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html](https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::venn_plot
 ```
 
-#### 3.3.2 flower_plot
-
-flower plot for stat common and unique gene among multiple sets.
-
-```{r flower_plot, warning=FALSE}
-# 1. Load example datasets
-data(venn_data)
-
-# 2. Run flower_plot plot function
-flower_plot(
-  venn_data,
-  angle = 90,
-  a = 0.5,
-  b = 2,
-  r = 1,
-  ellipse_col_pal = "Spectral",
-  circle_col = "white",
-  label_text_cex = 1
-)
-```
-
-Get help using command `?TOmicsVis::flower_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::flower_plot
-```
-
-#### 3.3.3 circos_heatmap
-
+#### 3.3.2 circos_heatmap
 Circos heatmap plot for visualizing gene expressing in multiple samples.
-
-```{r circos_heatmap, warning=FALSE}
+```{r circos_heatmap, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load circos_heatmap_data example datasets
 data(circos_heatmap_data)
 
 # 2. Run circos_heatmap plot function
 circos_heatmap(
   circos_heatmap_data,
-  low_color = "#008800aa",
+  low_color = "#0000ff",
   mid_color = "#ffffff",
-  high_color = "#ff0000aa",
-  gap_size = 45,
+  high_color = "#ff0000",
+  gap_size = 10,
   cluster_method = "complete",
   distance_method = "euclidean",
   dend_height = 0.2,
-  rowname_size = 0.5
+  rowname_size = 0.8
 )
 ```
 
-Get help using command `?TOmicsVis::circos_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
-
+Get help using command `?TOmicsVis::circos_heatmap` or reference page [https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html](https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::circos_heatmap
 ```
 
-#### 3.3.4 volcano_plot
-
+#### 3.3.3 volcano_plot
 Volcano plot for visualizing differentailly expressed genes.
-
-```{r volcano_plot, warning=FALSE}
+```{r volcano_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load deg_data example datasets
 data(deg_data)
 
@@ -412,10 +302,10 @@ volcano_plot(
   deg_data,
   log2fc_cutoff = 1,
   pq_value = "pvalue",
-  pq_cutoff = 0.01,
+  pq_cutoff = 0.005,
   cutoff_line = "longdash",
   point_shape = "large_circle",
-  point_size = 1.5,
+  point_size = 1,
   point_alpha = 0.5,
   color_normal = "#888888",
   color_log2fc = "#008000",
@@ -423,23 +313,20 @@ volcano_plot(
   color_Log2fc_p = "#ff0000",
   label_size = 3,
   boxed_labels = FALSE,
-  draw_connectors = TRUE,
+  draw_connectors = FALSE,
   legend_pos = "right"
 )
 ```
 
-Get help using command `?TOmicsVis::volcano_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
-
+Get help using command `?TOmicsVis::volcano_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html](https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::volcano_plot
 ```
 
-#### 3.3.5 ma_plot
-
+#### 3.3.4 ma_plot
 MversusA plot for visualizing differentially expressed genes.
-
-```{r ma_plot, warning=FALSE}
+```{r ma_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load deg_data example datasets
 data(deg_data2)
 
@@ -448,10 +335,10 @@ ma_plot(
   deg_data2,
   foldchange = 2,
   fdr_value = 0.05,
-  point_size = 1.5,
-  color_up = "#FF000088",
-  color_down = "#00880088",
-  color_alpha = 0.20,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
   top_method = "fc",
   top_num = 20,
   label_size = 8,
@@ -463,51 +350,49 @@ ma_plot(
 )
 ```
 
-Get help using command `?TOmicsVis::ma_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
-
+Get help using command `?TOmicsVis::ma_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html](https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::ma_plot
 ```
 
-#### 3.3.6 heatmap_group
-
+#### 3.3.5 heatmap_group
 Heatmap group for visualizing grouped gene expression data.
-
-```{r heatmap_group, warning=FALSE}
+```{r heatmap_group, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(heatmap_group_data)
 head(heatmap_group_data)
 
 # 2. Run heatmap_group plot function
-heatmap_group(
-  heatmap_group_data,
-  scale_data = "none",
-  clust_method = "complete",
-  border_show = TRUE,
-  value_show = TRUE,
-  low_color = "#00880088",
-  mid_color = "#ffffff",
-  high_color = "#ff000088",
-  na_color = "#ffaa00",
-  x_angle = 45
+ma_plot(
+  deg_data2,
+  foldchange = 2,
+  fdr_value = 0.05,
+  point_size = 0.5,
+  color_up = "#FF0000",
+  color_down = "#008800",
+  color_alpha = 0.5,
+  top_method = "fc",
+  top_num = 20,
+  label_size = 8,
+  label_box = TRUE,
+  title = "Group1 -versus- Group2",
+  xlab = "Log2 mean expression",
+  ylab = "Log2 fold change",
+  ggTheme = "theme_minimal"
 )
 ```
 
-Get help using command `?TOmicsVis::heatmap_group` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html>.
-
+Get help using command `?TOmicsVis::heatmap_group` or reference page [https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html](https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::heatmap_group
 ```
 
 ### 3.4 Advanced Analysis
-
 #### 3.4.1 trend_plot
-
 Trend plot for visualizing gene expression trend profile in multiple traits.
-
-```{r trend_plot, warning=FALSE}
+```{r trend_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load chord_data example datasets
 data(trend_data)
 
@@ -516,89 +401,30 @@ trend_plot(
   trend_data,
   scale_method = "globalminmax",
   miss_value = "exclude",
-  line_alpha = 0.3,
+  line_alpha = 0.5,
   show_points = TRUE,
   show_boxplot = TRUE,
   num_column = 2,
   xlab = "Traits",
   ylab = "Genes Expression",
-  sci_fill_color = "Sci_Futurama",
-  sci_fill_alpha = 0.5,
-  sci_color_alpha = 0.5,
+  sci_fill_color = "Sci_AAAS",
+  sci_fill_alpha = 0.8,
+  sci_color_alpha = 0.8,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
 ```
 
-Get help using command `?TOmicsVis::trend_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html>.
-
+Get help using command `?TOmicsVis::trend_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html](https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::trend_plot
 ```
 
-#### 3.4.2 gene_cluster_trend
-
-Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.
-
-```{r gene_cluster_trend, warning=FALSE}
-# 1. Load example datasets
-data(gene_cluster_data)
-head(gene_cluster_data)
-
-# 2. Run plot function
-gene_cluster_trend(
-  gene_cluster_data,
-  thres = 0.25,
-  min_std = 0.2,
-  palette = "PiYG",
-  cluster_num = 4
-)
-```
-
-Get help using command `?TOmicsVis::gene_cluster_trend` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::gene_cluster_trend
-```
-
-#### 3.4.3 gene_rank_plot
-
-Gene ranking dotplot for visualizing differentailly expressed genes.
-
-```{r gene_rank_plot, warning=FALSE}
-# 1. Load example datasets
-data(deg_data)
-
-# 2. Run gene_rank_plot plot function
-gene_rank_plot(
-  deg_data,
-  log2fc = 1,
-  palette = "Spectral",
-  top_n = 10,
-  genes_to_label = NULL,
-  label_size = 5,
-  base_size = 12,
-  title = "Gene ranking dotplot",
-  xlab = "Ranking of differentially expressed genes",
-  ylab = "Log2FoldChange"
-)
-```
-
-Get help using command `?TOmicsVis::gene_rank_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::gene_rank_plot
-```
-
-#### 3.4.4 wgcna_pipeline
-
+#### 3.4.2 wgcna_pipeline
 WGCNA analysis pipeline for RNA-Seq.
-
-```{r wgcna_pipeline, warning=FALSE}
+```{r wgcna_pipeline, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load wgcna_pipeline example datasets
 data(wgcna_gene_exp)
 data(wgcna_sample_group)
@@ -607,98 +433,59 @@ data(wgcna_sample_group)
 # wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
 ```
 
-Get help using command `?TOmicsVis::wgcna_pipeline` or reference page <https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
-
+Get help using command `?TOmicsVis::wgcna_pipeline` or reference page [https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html](https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::wgcna_pipeline
 ```
 
-#### 3.4.5 network_plot
-
+#### 3.4.3 network_plot
 Network plot for analyzing and visualizing relationship of genes.
-
-```{r network_plot, warning=FALSE}
+```{r network_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(network_data)
 head(network_data)
-network_data <- head(network_data, 150)
 
 # 2. Run network_plot plot function
 network_plot(
   network_data,
   calcBy = "degree",
-  degreeValue = 0.1,
-  nodeColorNormal = "#ff880055",
+  degreeValue = 0.05,
+  nodeColorNormal = "#00888888",
   nodeBorderColor = "#FFFFFF",
-  nodeColorFrom = "#ff000055",
-  nodeColorTo = "#00880055",
+  nodeColorFrom = "#FF000088",
+  nodeColorTo = "#00880088",
   nodeShapeNormal = "circle",
-  nodeShapeSpatial = "circle",
-  nodeSize = 20,
+  nodeShapeSpatial = "csquare",
+  nodeSize = 10,
   labelSize = 0.5,
   edgeCurved = TRUE,
   netLayout = "layout_on_sphere"
 )
 ```
 
-Get help using command `?TOmicsVis::network_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/network_plot.html>.
-
+Get help using command `?TOmicsVis::network_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/network_plot.html](https://benben-miao.github.io/TOmicsVis/reference/network_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::network_plot
 ```
 
-#### 3.4.6 heatmap_cluster
-
-Heatmap cluster plot for visualizing clustered gene expression data.
-
-```{r heatmap_cluster, warning=FALSE}
-# 1. Load example datasets
-data(gene_exp)
-
-# 2. Run plot function
-heatmap_cluster(
-  gene_exp,
-  dist_method = "euclidean",
-  hc_method = "average",
-  k_num = 5,
-  palette = "Spectral",
-  cluster_pal = "Set1",
-  gaps_col = NULL,
-  angle_col = 45,
-  label_size = 10,
-  base_size = 12
-)
-```
-
-Get help using command `?TOmicsVis::heatmap_cluster` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
-
-```{r}
-# Get help with command in R console.
-# ?TOmicsVis::heatmap_cluster
-```
-
 ### 3.5 GO and KEGG Enrichment
-
 #### 3.5.1 chord_plot
-
 Chord plot for visualizing the relationships of pathways and genes.
-
-```{r chord_plot, warning=FALSE}
+```{r chord_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load chord_data example datasets
 data(chord_data)
-colnames(chord_data) <- c("G1","G2","G3","G4","G5")
 
 # 2. Run chord_plot plot function
 chord_plot(
   chord_data,
-  multi_colors = "VividColors",
+  multi_colors = "RainbowColors",
   color_alpha = 0.5,
   link_visible = TRUE,
   link_dir = -1,
   link_type = "diffHeight",
-  sector_scale = "Scale",
+  sector_scale = "Origin",
   width_circle = 3,
   dist_name = 3,
   label_dir = "Vertical",
@@ -706,18 +493,15 @@ chord_plot(
 )
 ```
 
-Get help using command `?TOmicsVis::chord_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
-
+Get help using command `?TOmicsVis::chord_plot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html](https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::chord_plot
 ```
 
 #### 3.5.2 go_enrich
-
 GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich, warning=FALSE}
+```{r go_enrich, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 head(go_anno)
@@ -736,18 +520,15 @@ res <- go_enrich(
 head(res)
 ```
 
-Get help using command `?TOmicsVis::go_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
-
+Get help using command `?TOmicsVis::go_enrich` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich
 ```
 
 #### 3.5.3 go_enrich_stat
-
 GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich_stat, warning=FALSE}
+```{r go_enrich_stat, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -771,18 +552,15 @@ go_enrich_stat(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_stat` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html>.
-
+Get help using command `?TOmicsVis::go_enrich_stat` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_stat
 ```
 
 #### 3.5.4 go_enrich_bar
-
 GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich_bar, warning=FALSE}
+```{r go_enrich_bar, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -806,18 +584,15 @@ go_enrich_bar(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html>.
-
+Get help using command `?TOmicsVis::go_enrich_bar` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_bar
 ```
 
 #### 3.5.5 go_enrich_dot
-
 GO enrichment analysis and dot plot based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich_dot, warning=FALSE}
+```{r go_enrich_dot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -841,18 +616,15 @@ go_enrich_dot(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html>.
-
+Get help using command `?TOmicsVis::go_enrich_dot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_dot
 ```
 
 #### 3.5.6 go_enrich_tree
-
 GO enrichment analysis and tree plot based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich_tree, warning=FALSE}
+```{r go_enrich_tree, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -877,18 +649,15 @@ go_enrich_tree(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_tree` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html>.
-
+Get help using command `?TOmicsVis::go_enrich_tree` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_tree
 ```
 
 #### 3.5.7 go_enrich_net
-
 GO enrichment analysis and net plot based on GO annotation results (None/Exist Reference Genome).
-
-```{r go_enrich_net, warning=FALSE}
+```{r go_enrich_net, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(go_anno)
 # head(go_anno)
@@ -911,18 +680,15 @@ go_enrich_net(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html>.
-
+Get help using command `?TOmicsVis::go_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_net
 ```
 
 #### 3.5.8 kegg_enrich
-
 KEGG enrichment analysis based on KEGG annotation results (None/Exist Reference Genome).
-
-```{r kegg_enrich, warning=FALSE}
+```{r kegg_enrich, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(kegg_anno)
 head(kegg_anno)
@@ -941,18 +707,15 @@ res <- kegg_enrich(
 head(res)
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html>.
-
+Get help using command `?TOmicsVis::kegg_enrich` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich
 ```
 
 #### 3.5.9 kegg_enrich_bar
-
 KEGG enrichment analysis and bar plot based on KEGG annotation results (None/Exist Reference Genome).
-
-```{r kegg_enrich_bar, warning=FALSE}
+```{r kegg_enrich_bar, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(kegg_anno)
 # head(kegg_anno)
@@ -976,18 +739,15 @@ kegg_enrich_bar(
 )
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html>.
-
+Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_bar
 ```
 
 #### 3.5.10 kegg_enrich_dot
-
 KEGG enrichment analysis and dot plot based on KEGG annotation results (None/Exist Reference Genome).
-
-```{r kegg_enrich_dot, warning=FALSE}
+```{r kegg_enrich_dot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(kegg_anno)
 # head(kegg_anno)
@@ -1011,18 +771,15 @@ kegg_enrich_dot(
 )
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html>.
-
+Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_dot
 ```
 
 #### 3.5.11 kegg_enrich_tree
-
 KEGG enrichment analysis and tree plot based on KEGG annotation results (None/Exist Reference Genome).
-
-```{r kegg_enrich_tree, warning=FALSE}
+```{r kegg_enrich_tree, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(kegg_anno)
 # head(kegg_anno)
@@ -1047,18 +804,15 @@ kegg_enrich_tree(
 )
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html>.
-
+Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_tree
 ```
 
 #### 3.5.12 kegg_enrich_net
-
 KEGG enrichment analysis and net plot based on KEGG annotation results (None/Exist Reference Genome).
-
-```{r kegg_enrich_net, warning=FALSE}
+```{r kegg_enrich_net, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(kegg_anno)
 # head(kegg_anno)
@@ -1081,20 +835,16 @@ kegg_enrich_net(
 )
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html>.
-
+Get help using command `?TOmicsVis::kegg_enrich_net` or reference page [https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html](https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_net
 ```
 
 ### 3.6 Tables Operations
-
 #### 3.6.1 table_split
-
 Table split used for splitting a grouped column to multiple columns.
-
-```{r table_split, warning=FALSE}
+```{r table_split, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load table_split_data example datasets
 data(table_split_data)
 head(table_split_data)
@@ -1107,18 +857,15 @@ res <- table_split(table_split_data,
 head(res)
 ```
 
-Get help using command `?TOmicsVis::table_split` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_split.html>.
-
+Get help using command `?TOmicsVis::table_split` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_split.html](https://benben-miao.github.io/TOmicsVis/reference/table_split.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_split
 ```
 
 #### 3.6.2 table_merge
-
 Table merge used to merge multiple variables to on variable.
-
-```{r table_merge, warning=FALSE}
+```{r table_merge, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(table_merge_data)
 head(table_merge_data)
@@ -1134,18 +881,15 @@ res <- table_merge(
 head(res)
 ```
 
-Get help using command `?TOmicsVis::table_merge` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_merge.html>.
-
+Get help using command `?TOmicsVis::table_merge` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_merge.html](https://benben-miao.github.io/TOmicsVis/reference/table_merge.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_merge
 ```
 
 #### 3.6.3 table_filter
-
 Table filter used to filter row by column condition.
-
-```{r table_filter, warning=FALSE}
+```{r table_filter, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(table_filter_data)
 head(table_filter_data)
@@ -1157,18 +901,15 @@ res <- table_filter(table_filter_data,
 head(res)
 ```
 
-Get help using command `?TOmicsVis::table_filter` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_filter.html>.
-
+Get help using command `?TOmicsVis::table_filter` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_filter.html](https://benben-miao.github.io/TOmicsVis/reference/table_filter.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_filter
 ```
 
 #### 3.6.4 table_cross
-
 Table cross used to cross search and merge results in two tables.
-
-```{r table_cross, warning=FALSE}
+```{r table_cross, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
 data(table_cross_data1)
 head(table_cross_data1)
@@ -1187,8 +928,7 @@ res <- table_cross(
 head(res)
 ```
 
-Get help using command `?TOmicsVis::table_cross` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_cross.html>.
-
+Get help using command `?TOmicsVis::table_cross` or reference page [https://benben-miao.github.io/TOmicsVis/reference/table_cross.html](https://benben-miao.github.io/TOmicsVis/reference/table_cross.html).
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_cross

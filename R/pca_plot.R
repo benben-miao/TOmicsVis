@@ -12,16 +12,16 @@
 #' @param legend_dir Character: legend director. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
-#' @importFrom stats prcomp
 #' @import ggplot2
+#' @importFrom stats prcomp
 #' @importFrom ggforce geom_mark_ellipse
 #' @export
 #'
 #' @examples
-#' # 1. Library TOmicsVis package
+#' # 1. Library package TOmicsVis
 #' library(TOmicsVis)
 #'
-#' # 2. Use example datasets
+#' # 2. Load example datasets
 #' data(pca_sample_gene)
 #' data(pca_group_sample)
 #'

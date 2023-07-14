@@ -39,10 +39,10 @@ Plot: PCA dimensional reduction visualization for RNA-Seq.
 PCA dimensional reduction visualization for RNA-Seq.
 }
 \examples{
-# 1. Library TOmicsVis package
+# 1. Library package TOmicsVis
 library(TOmicsVis)
 
-# 2. Use example datasets
+# 2. Load example datasets
 data(pca_sample_gene)
 data(pca_group_sample)
 

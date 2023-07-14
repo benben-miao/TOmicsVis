@@ -2,7 +2,7 @@
 % Please edit documentation in R/flower_plot.R
 \name{flower_plot}
 \alias{flower_plot}
-\title{flower plot for stat common and unique gene among multiple sets.}
+\title{Flower plot for stat common and unique gene among multiple sets.}
 \usage{
 flower_plot(
   flower_dat,
@@ -33,10 +33,10 @@ flower_plot(
 \item{label_text_cex}{Number: set the label text cex. Default: 1.}
 }
 \value{
-Plot: flower plot for stat common and unique gene among multiple sets.
+Plot: Flower plot for stat common and unique gene among multiple sets.
 }
 \description{
-flower plot for stat common and unique gene among multiple sets.
+Flower plot for stat common and unique gene among multiple sets.
 }
 \examples{
 # 1. Library TOmicsVis package

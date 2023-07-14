@@ -1,3 +1,16 @@
+## TOmicsVis 1.2.1
+
+**Date**: 2023-07-14
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed `?TOmicsVis::tsne_plot` function.
+2. Change README.Rmd fig.width=10.00, fig.height=6.18.
+
+---
+
 ## TOmicsVis 1.2.0
 
 **Date**: 2023-07-07

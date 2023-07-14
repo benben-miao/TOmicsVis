@@ -4,6 +4,7 @@
 #'
 #' @return Plot: TSNE plot for analyzing and visualizing TSNE algorithm.
 #' @param data Dataframe: include columns (IDs, Trait1, Trait2, ...).
+#' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param point_size Numeric: point size. Default: 3, min: 0, max: null.
 #' @param point_alpha Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.
 #' @param text_size Numeric: text size. Default: 2, min: 0 (hind), max: null.
@@ -32,20 +33,21 @@
 #' # 3. Default parameters
 #' tsne_plot(tsne_data)
 #'
-#' # 4. Set point_alpha = 0.50
-#' tsne_plot(tsne_data, point_alpha = 0.50)
+#' # 4. Set seed = 5
+#' tsne_plot(tsne_data, seed = 5)
 #'
-#' # 5. Set sci_fill_color = "Sci_NPG"
-#' tsne_plot(tsne_data, sci_fill_color = "Sci_NPG")
+#' # 5. Set sci_fill_color = "Sci_Simpsons", seed = 6
+#' tsne_plot(tsne_data, sci_fill_color = "Sci_Simpsons", seed = 6)
 #'
 tsne_plot <- function(data,
+											seed = 1,
 											point_size = 3,
 											point_alpha = 0.80,
 											text_size = 2,
 											text_alpha = 0.80,
 											ci_level = 0.95,
 											ellipse_alpha = 0.30,
-										 sci_fill_color = "Sci_AAAS",
+										 sci_fill_color = "Sci_JAMA",
 										 sci_color_alpha = 0.90,
 										 legend_pos = "right",
 										 legend_dir = "vertical",
@@ -63,28 +65,29 @@ tsne_plot <- function(data,
 	tsne_p <- tsne_ano$signif
 	tsne_r <- round(tsne_ano$statistic,3)
 
-	tsne_res <- Rtsne::Rtsne(as.matrix(unique(tsne_data)),
+	set.seed(seed)
+	tsne_res <- Rtsne::Rtsne(as.matrix(tsne_data),
 										dims = 2,
-										initial_dims = 50,
-										perplexity = 10,
-										theta = 0.0,
-										check_duplicates = TRUE,
-										pca = T,
-										partial_pca = FALSE,
-										max_iter = 1000,
-										verbose = getOption("verbose", FALSE),
-										is_distance = FALSE,
+										# initial_dims = 50,
+										perplexity = 3,
+										# theta = 0.0,
+										check_duplicates = F,
+										# pca = T,
+										# partial_pca = FALSE,
+										# max_iter = 1000,
+										verbose = getOption("verbose", FALSE)
+										# is_distance = FALSE,
 										# Y_init = NULL,
-										pca_center = TRUE,
-										pca_scale = FALSE,
-										normalize = TRUE,
+										# pca_center = TRUE,
+										# pca_scale = FALSE,
+										# normalize = TRUE,
 										# stop_lying_iter = ifelse(is.null(Y_init), 250L,0L),
 										# mom_switch_iter = ifelse(is.null(Y_init), 250L, 0L),
-										momentum = 0.5,
-										final_momentum = 0.8,
-										eta = 200,
-										exaggeration_factor = 12,
-										num_threads = 2
+										# momentum = 0.5,
+										# final_momentum = 0.8,
+										# eta = 200,
+										# exaggeration_factor = 12,
+										# num_threads = 2
 	)
 	# head(tsne_res)
 	tsne_out <- as.data.frame(tsne_res$Y)
