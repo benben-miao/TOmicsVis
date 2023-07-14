@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,120 +151,99 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 gene_6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                              kegg_pathway</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                            ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                               ko04977(Vitamin digestion and absorption)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                               ko04977(Vitamin digestion and absorption)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                            ko04610(Complement and coagulation cascades)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                       ko04142(Lysosome)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        id log2FC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  gene_5  -1.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 gene_12  -1.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 gene_15  -1.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 gene_22  -1.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 gene_28  -1.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 gene_33  -1.45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  gene_1   1.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  gene_2  -1.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  gene_3   1.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  gene_4  -1.35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  gene_5   1.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 gene_30   1.45</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">kegg_enrich</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              ID                    Description GeneRatio BgRatio     pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 ko00240          Pyrimidine metabolism      3/38  10/504 0.03283089</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 ko04016 MAPK signaling pathway - plant      2/38   6/504 0.06848785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 ko00052           Galactose metabolism      1/38   1/504 0.07539683</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 ko04066        HIF-1 signaling pathway      2/38   7/504 0.09139001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 ko03010                       Ribosome     10/38  87/504 0.09838857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 ko01200              Carbon metabolism      3/38  17/504 0.12885914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          p.adjust    qvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                          geneID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240                                                                gene_56/gene_58/gene_112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016                                                                         gene_56/gene_58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052                                                                                 gene_22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066                                                                         gene_15/gene_89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 gene_33/gene_72/gene_275/gene_276/gene_285/gene_286/gene_303/gene_383/gene_460/gene_557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200                                                               gene_89/gene_113/gene_240</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200     3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                ID                              Description GeneRatio BgRatio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977   ko04977         Vitamin digestion and absorption      5/15   12/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510   ko04510                           Focal adhesion      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512   ko04512                 ECM-receptor interaction      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 "ko00260 Glycine, serine and threonine metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460   ko00460               Cyanoamino acid metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670   ko00670                One carbon pool by folate      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              pvalue  p.adjust    qvalue                                geneID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977  0.02247971 0.1227209 0.1033439 gene_2/gene_4/gene_33/gene_34/gene_19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977      5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460      4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670      4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set padjust_method = "BH"</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">kegg_enrich</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, padjust_method <span class="op">=</span> <span class="st">"BH"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              ID                    Description GeneRatio BgRatio     pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 ko00240          Pyrimidine metabolism      3/38  10/504 0.03283089</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 ko04016 MAPK signaling pathway - plant      2/38   6/504 0.06848785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 ko00052           Galactose metabolism      1/38   1/504 0.07539683</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 ko04066        HIF-1 signaling pathway      2/38   7/504 0.09139001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 ko03010                       Ribosome     10/38  87/504 0.09838857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 ko01200              Carbon metabolism      3/38  17/504 0.12885914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          p.adjust    qvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                          geneID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240                                                                gene_56/gene_58/gene_112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016                                                                         gene_56/gene_58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052                                                                                 gene_22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066                                                                         gene_15/gene_89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 gene_33/gene_72/gene_275/gene_276/gene_285/gene_286/gene_303/gene_383/gene_460/gene_557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200                                                               gene_89/gene_113/gene_240</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200     3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                ID                              Description GeneRatio BgRatio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977   ko04977         Vitamin digestion and absorption      5/15   12/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510   ko04510                           Focal adhesion      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512   ko04512                 ECM-receptor interaction      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 "ko00260 Glycine, serine and threonine metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460   ko00460               Cyanoamino acid metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670   ko00670                One carbon pool by folate      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              pvalue  p.adjust    qvalue                                geneID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977  0.02247971 0.1227209 0.1033439 gene_2/gene_4/gene_33/gene_34/gene_19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977      5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460      4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670      4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set pvalue_cutoff = 0.80</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">kegg_enrich</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, pvalue_cutoff <span class="op">=</span> <span class="fl">0.80</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 7 rows [417, 512, 1078, 1083, 1089, 1186, 1273].</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              ID                    Description GeneRatio BgRatio     pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 ko00240          Pyrimidine metabolism      3/38  10/504 0.03283089</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 ko04016 MAPK signaling pathway - plant      2/38   6/504 0.06848785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 ko00052           Galactose metabolism      1/38   1/504 0.07539683</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 ko04066        HIF-1 signaling pathway      2/38   7/504 0.09139001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 ko03010                       Ribosome     10/38  87/504 0.09838857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 ko01200              Carbon metabolism      3/38  17/504 0.12885914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          p.adjust    qvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200 0.6627232 0.6627232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                          geneID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240                                                                gene_56/gene_58/gene_112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016                                                                         gene_56/gene_58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052                                                                                 gene_22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066                                                                         gene_15/gene_89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010 gene_33/gene_72/gene_275/gene_276/gene_285/gene_286/gene_303/gene_383/gene_460/gene_557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200                                                               gene_89/gene_113/gene_240</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00240     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04016     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko00052     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko04066     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko03010    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ko01200     3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                ID                              Description GeneRatio BgRatio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977   ko04977         Vitamin digestion and absorption      5/15   12/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510   ko04510                           Focal adhesion      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512   ko04512                 ECM-receptor interaction      2/15    2/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 "ko00260 Glycine, serine and threonine metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460   ko00460               Cyanoamino acid metabolism      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670   ko00670                One carbon pool by folate      4/15   11/93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              pvalue  p.adjust    qvalue                                geneID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977  0.02247971 0.1227209 0.1033439 gene_2/gene_4/gene_33/gene_34/gene_19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512  0.02454418 0.1227209 0.1033439                         gene_1/gene_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260 0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04977      5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04510      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko04512      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "ko00260     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00460      4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ko00670      4</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -579,7 +579,7 @@ go_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 ```
@@ -611,7 +611,7 @@ go_enrich_dot(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 ```
@@ -643,7 +643,7 @@ go_enrich_tree(
   category_num = 20,
   font_size = 4,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
@@ -676,7 +676,7 @@ go_enrich_net(
   net_layout = "circle",
   net_circular = TRUE,
   low_color = "#ff0000aa",
-  high_color = "#008888aa"
+  high_color = "#008800aa"
 )
 ```
 
@@ -734,7 +734,7 @@ kegg_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 ```
@@ -766,7 +766,7 @@ kegg_enrich_dot(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 ```
@@ -798,7 +798,7 @@ kegg_enrich_tree(
   category_num = 20,
   font_size = 4,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
@@ -831,7 +831,7 @@ kegg_enrich_net(
   net_layout = "circle",
   net_circular = TRUE,
   low_color = "#ff0000aa",
-  high_color = "#008888aa"
+  high_color = "#008800aa"
 )
 ```
 

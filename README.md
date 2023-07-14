@@ -323,7 +323,7 @@ tsne_plot(
   text_alpha = 0.8,
   ci_level = 0.95,
   ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_AAAS",
+  sci_fill_color = "Sci_JAMA",
   sci_color_alpha = 0.9,
   legend_pos = "right",
   legend_dir = "vertical",
@@ -786,37 +786,37 @@ head(go_anno)
 #> 4 gene_4
 #> 5 gene_5
 #> 6 gene_6
-#>                                                                                                 biological_process
-#> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
-#> 2                                                                                                             <NA>
-#> 3                                                                                                             <NA>
-#> 4 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
-#> 5                                                                                GO:0006956(complement activation)
-#> 6                                                                                                             <NA>
-#>                    cellular_component
-#> 1    GO:0005576(extracellular region)
-#> 2     GO:0005615(extracellular space)
-#> 3                                <NA>
-#> 4    GO:0005576(extracellular region)
-#> 5 GO:0005579(membrane attack complex)
-#> 6                                <NA>
-#>                             molecular_function
-#> 1                                         <NA>
-#> 2 GO:0004866(endopeptidase inhibitor activity)
-#> 3                                         <NA>
-#> 4                                         <NA>
-#> 5                                         <NA>
-#> 6                                         <NA>
+#>                                                                                                                                                                               biological_process
+#> 1                                                                                                                                             GO:0015986(ATP synthesis coupled proton transport)
+#> 2 GO:0071236(cellular response to antibiotic);GO:0071493(cellular response to UV-B);GO:0008630(intrinsic apoptotic signaling pathway in response to DNA damage);GO:0010043(response to zinc ion)
+#> 3                                                                                                                                                               GO:0009058(biosynthetic process)
+#> 4                                                                                                                                                                 GO:0006096(glycolytic process)
+#> 5                                                                                                                                                                                           <NA>
+#> 6                                                                                                                                                                        GO:0006412(translation)
+#>                                                                           cellular_component
+#> 1 "GO:0000276(mitochondrial proton-transporting ATP synthase complex, coupling factor F(o))"
+#> 2                                                                      GO:0005737(cytoplasm)
+#> 3                                                                                       <NA>
+#> 4                                              GO:0000015(phosphopyruvate hydratase complex)
+#> 5                                                                                       <NA>
+#> 6                                              GO:0022625(cytosolic large ribosomal subunit)
+#>                                                                                                                                     molecular_function
+#> 1                    GO:0047624(adenosine-tetraphosphatase activity);GO:0015078(proton transmembrane transporter activity);GO:0016887(ATPase activity)
+#> 2 "GO:0046872(metal ion binding);GO:0003680(AT DNA binding);GO:0008301(DNA binding, bending);GO:0042277(peptide binding);GO:0008270(zinc ion binding)"
+#> 3                                                                                                                       GO:0003824(catalytic activity)
+#> 4                                                                     GO:0000287(magnesium ion binding);GO:0004634(phosphopyruvate hydratase activity)
+#> 5                                                                                                               GO:0005319(lipid transporter activity)
+#> 6                                                                               GO:0003723(RNA binding);GO:0003735(structural constituent of ribosome)
 
 data(go_deg_fc)
 head(go_deg_fc)
 #>        id log2FC
-#> 1  gene_5  -1.20
-#> 2 gene_12  -1.25
-#> 3 gene_15  -1.30
-#> 4 gene_22  -1.35
-#> 5 gene_28  -1.40
-#> 6 gene_33  -1.45
+#> 1 gene_14  -1.20
+#> 2 gene_15   1.25
+#> 3 gene_16   1.30
+#> 4 gene_17   1.35
+#> 5 gene_18  -1.50
+#> 6 gene_20  -1.55
 
 # 2. Run go_enrich analysis function
 res <- go_enrich(
@@ -827,27 +827,27 @@ res <- go_enrich(
   qvalue_cutoff = 0.5
 )
 head(res)
-#>           ID           ontology                                    Description
-#> 1 GO:0000015 cellular component              phosphopyruvate hydratase complex
-#> 2 GO:0000027 biological process               ribosomal large subunit assembly
-#> 3 GO:0000028 biological process               ribosomal small subunit assembly
-#> 4 GO:0000280 biological process                               nuclear division
-#> 5 GO:0000287 molecular function                          magnesium ion binding
-#> 6 GO:0000334 molecular function 3-hydroxyanthranilate 3,4-dioxygenase activity
-#>   GeneRatio BgRatio      pvalue   p.adjust     qvalue
-#> 1      1/49   1/431 0.113689095 0.21992317 0.21992317
-#> 2      1/49   1/431 0.113689095 0.21992317 0.21992317
-#> 3      2/49   5/431 0.101279745 0.21992317 0.21992317
-#> 4      5/49   9/431 0.001384956 0.08171238 0.08171238
-#> 5      1/49   1/431 0.113689095 0.21992317 0.21992317
-#> 6      1/49   1/431 0.113689095 0.21992317 0.21992317
-#>                                     geneID Count
-#> 1                                  gene_89     1
-#> 2                                 gene_276     1
-#> 3                         gene_12/gene_557     2
-#> 4 gene_35/gene_58/gene_73/gene_91/gene_158     5
-#> 5                                  gene_89     1
-#> 6                                 gene_459     1
+#>           ID           ontology
+#> 1 GO:0000027 biological process
+#> 2 GO:0001732 biological process
+#> 3 GO:0001944 biological process
+#> 4 GO:0003723 molecular function
+#> 5 GO:0003735 molecular function
+#> 6 GO:0003743 molecular function
+#>                                               Description GeneRatio BgRatio
+#> 1                        ribosomal large subunit assembly      1/11   1/100
+#> 2 formation of cytoplasmic translation initiation complex      1/11   1/100
+#> 3                                 vasculature development      1/11   1/100
+#> 4                                             RNA binding      1/11  11/100
+#> 5                      structural constituent of ribosome      3/11  26/100
+#> 6                  translation initiation factor activity      1/11   1/100
+#>      pvalue  p.adjust    qvalue                  geneID Count
+#> 1 0.1100000 0.1850000 0.1578947                 gene_23     1
+#> 2 0.1100000 0.1850000 0.1578947                 gene_21     1
+#> 3 0.1100000 0.1850000 0.1578947                 gene_21     1
+#> 4 0.7421470 0.7421470 0.6334113                 gene_23     1
+#> 5 0.5849832 0.6365993 0.5433280 gene_22/gene_23/gene_24     3
+#> 6 0.1100000 0.1850000 0.1578947                 gene_21     1
 ```
 
 Get help using command `?TOmicsVis::go_enrich` or reference page
@@ -921,7 +921,7 @@ go_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 #> Scale for fill is already present.
@@ -962,7 +962,7 @@ go_enrich_dot(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 #> Scale for colour is already present.
@@ -1003,7 +1003,7 @@ go_enrich_tree(
   category_num = 20,
   font_size = 4,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
@@ -1045,7 +1045,7 @@ go_enrich_net(
   net_layout = "circle",
   net_circular = TRUE,
   low_color = "#ff0000aa",
-  high_color = "#008888aa"
+  high_color = "#008800aa"
 )
 #> Scale for size is already present.
 #> Adding another scale for size, which will replace the existing scale.
@@ -1081,21 +1081,21 @@ head(kegg_anno)
 #> 6 gene_6
 #>                                                                                                                              kegg_pathway
 #> 1 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
-#> 2                                                                                            ko04610(Complement and coagulation cascades)
+#> 2                                                                                               ko04977(Vitamin digestion and absorption)
 #> 3 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
-#> 4 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
+#> 4                                                                                               ko04977(Vitamin digestion and absorption)
 #> 5                                                                                            ko04610(Complement and coagulation cascades)
 #> 6                                                                                                                       ko04142(Lysosome)
 
 data(kegg_deg_fc)
 head(kegg_deg_fc)
 #>        id log2FC
-#> 1  gene_5  -1.20
-#> 2 gene_12  -1.25
-#> 3 gene_15  -1.30
-#> 4 gene_22  -1.35
-#> 5 gene_28  -1.40
-#> 6 gene_33  -1.45
+#> 1  gene_1   1.20
+#> 2  gene_2  -1.25
+#> 3  gene_3   1.30
+#> 4  gene_4  -1.35
+#> 5  gene_5   1.40
+#> 6 gene_30   1.45
 
 # 2. Run go_enrich analysis function
 res <- kegg_enrich(
@@ -1106,34 +1106,27 @@ res <- kegg_enrich(
   qvalue_cutoff = 1
 )
 head(res)
-#>              ID                    Description GeneRatio BgRatio     pvalue
-#> ko00240 ko00240          Pyrimidine metabolism      3/38  10/504 0.03283089
-#> ko04016 ko04016 MAPK signaling pathway - plant      2/38   6/504 0.06848785
-#> ko00052 ko00052           Galactose metabolism      1/38   1/504 0.07539683
-#> ko04066 ko04066        HIF-1 signaling pathway      2/38   7/504 0.09139001
-#> ko03010 ko03010                       Ribosome     10/38  87/504 0.09838857
-#> ko01200 ko01200              Carbon metabolism      3/38  17/504 0.12885914
-#>          p.adjust    qvalue
-#> ko00240 0.6627232 0.6627232
-#> ko04016 0.6627232 0.6627232
-#> ko00052 0.6627232 0.6627232
-#> ko04066 0.6627232 0.6627232
-#> ko03010 0.6627232 0.6627232
-#> ko01200 0.6627232 0.6627232
-#>                                                                                          geneID
-#> ko00240                                                                gene_56/gene_58/gene_112
-#> ko04016                                                                         gene_56/gene_58
-#> ko00052                                                                                 gene_22
-#> ko04066                                                                         gene_15/gene_89
-#> ko03010 gene_33/gene_72/gene_275/gene_276/gene_285/gene_286/gene_303/gene_383/gene_460/gene_557
-#> ko01200                                                               gene_89/gene_113/gene_240
-#>         Count
-#> ko00240     3
-#> ko04016     2
-#> ko00052     1
-#> ko04066     2
-#> ko03010    10
-#> ko01200     3
+#>                ID                              Description GeneRatio BgRatio
+#> ko04977   ko04977         Vitamin digestion and absorption      5/15   12/93
+#> ko04510   ko04510                           Focal adhesion      2/15    2/93
+#> ko04512   ko04512                 ECM-receptor interaction      2/15    2/93
+#> "ko00260 "ko00260 Glycine, serine and threonine metabolism      4/15   11/93
+#> ko00460   ko00460               Cyanoamino acid metabolism      4/15   11/93
+#> ko00670   ko00670                One carbon pool by folate      4/15   11/93
+#>              pvalue  p.adjust    qvalue                                geneID
+#> ko04977  0.02247971 0.1227209 0.1033439 gene_2/gene_4/gene_33/gene_34/gene_19
+#> ko04510  0.02454418 0.1227209 0.1033439                         gene_1/gene_3
+#> ko04512  0.02454418 0.1227209 0.1033439                         gene_1/gene_3
+#> "ko00260 0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18
+#> ko00460  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18
+#> ko00670  0.07369837 0.1842459 0.1551545       gene_30/gene_15/gene_17/gene_18
+#>          Count
+#> ko04977      5
+#> ko04510      2
+#> ko04512      2
+#> "ko00260     4
+#> ko00460      4
+#> ko00670      4
 ```
 
 Get help using command `?TOmicsVis::kegg_enrich` or reference page
@@ -1168,7 +1161,7 @@ kegg_enrich_bar(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 #> Scale for fill is already present.
@@ -1209,7 +1202,7 @@ kegg_enrich_dot(
   category_num = 30,
   font_size = 12,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   ggTheme = "theme_light"
 )
 #> Scale for colour is already present.
@@ -1250,7 +1243,7 @@ kegg_enrich_tree(
   category_num = 20,
   font_size = 4,
   low_color = "#ff0000aa",
-  high_color = "#008888aa",
+  high_color = "#008800aa",
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
@@ -1292,7 +1285,7 @@ kegg_enrich_net(
   net_layout = "circle",
   net_circular = TRUE,
   low_color = "#ff0000aa",
-  high_color = "#008888aa"
+  high_color = "#008800aa"
 )
 #> Scale for size is already present.
 #> Adding another scale for size, which will replace the existing scale.

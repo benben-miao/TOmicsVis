@@ -14,7 +14,7 @@ kegg_enrich_net(
   net_layout = "circle",
   net_circular = TRUE,
   low_color = "#ff0000aa",
-  high_color = "#008888aa"
+  high_color = "#008800aa"
 )
 }
 \arguments{

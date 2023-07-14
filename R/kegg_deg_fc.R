@@ -23,4 +23,4 @@
 "kegg_deg_fc"
 
 # kegg_deg_fc <- deg_fc
-# usethis::use_data(kegg_deg_fc)
+# usethis::use_data(kegg_deg_fc, overwrite = T)

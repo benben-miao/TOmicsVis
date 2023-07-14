@@ -54,7 +54,7 @@ kegg_enrich_tree <- function(kegg_anno,
 														 category_num = 20,
 														 font_size = 4,
 														 low_color = "#ff0000aa",
-														 high_color = "#008888aa",
+														 high_color = "#008800aa",
 														 hclust_method = "complete",
 														 ggTheme = "theme_light"
 										){

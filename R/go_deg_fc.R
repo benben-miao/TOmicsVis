@@ -23,4 +23,4 @@
 "go_deg_fc"
 
 # go_deg_fc <- deg_fc
-# usethis::use_data(go_deg_fc)
+# usethis::use_data(go_deg_fc, overwrite = T)

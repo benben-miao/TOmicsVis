@@ -23,4 +23,4 @@
 "go_anno"
 
 # go_anno <- gene_go
-# usethis::use_data(go_anno)
+# usethis::use_data(go_anno, overwrite = T)

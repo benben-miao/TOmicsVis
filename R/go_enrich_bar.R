@@ -59,7 +59,7 @@ go_enrich_bar <- function(go_anno,
 										 category_num = 30,
 										 font_size = 12,
 										 low_color = "#ff0000aa",
-										 high_color = "#008888aa",
+										 high_color = "#008800aa",
 										 ggTheme = "theme_light"
 										){
 
@@ -196,13 +196,13 @@ go_enrich_bar <- function(go_anno,
 		title = "",
 		label_format = 200
 	) +
-		# geom_text(aes(label = enrich_result$Count),
-		# 					vjust = 0.3,
-		# 					hjust = -0.5,
-		# 					size = 3,
-		# 					color = "#333333") +
+		geom_text(aes(label = Count),
+							vjust = 0.5,
+							hjust = -0.5,
+							size = 3,
+							color = "#333333") +
 		# geom_text(aes(label = paste("(",round(enrich_result$GeneRatio, 2),")", sep = "")),
-		# 					vjust = 0.3,
+		# 					vjust = 0.5,
 		# 					hjust = -0.5,
 		# 					size = 3,
 		# 					color = "#333333") +

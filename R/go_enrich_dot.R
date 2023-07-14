@@ -59,7 +59,7 @@ go_enrich_dot <- function(go_anno,
 										 category_num = 30,
 										 font_size = 12,
 										 low_color = "#ff0000aa",
-										 high_color = "#008888aa",
+										 high_color = "#008800aa",
 										 ggTheme = "theme_light"
 										){
 	# -> 2. Data Parameters

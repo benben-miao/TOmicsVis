@@ -1,6 +1,6 @@
 ## TOmicsVis 1.2.1
 
-**Date**: 2023-07-14
+**Date**: 2023-07-15
 
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
@@ -8,6 +8,8 @@
 
 1. Fixed `?TOmicsVis::tsne_plot` function.
 2. Change README.Rmd fig.width=10.00, fig.height=6.18.
+3. Update GO and KEGG example datasets.
+4. Fixed GO and KEGG enrichment results.
 
 ---
 

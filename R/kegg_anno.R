@@ -23,4 +23,4 @@
 "kegg_anno"
 
 # kegg_anno <- gene_kegg
-# usethis::use_data(kegg_anno)
+# usethis::use_data(kegg_anno, overwrite = T)
