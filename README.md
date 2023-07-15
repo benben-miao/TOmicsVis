@@ -9,12 +9,24 @@
 
 **Github**: <https://github.com/benben-miao/TOmicsVis/>
 
+**Latest version:** `devtools::install_github("benben-miao/TOmicsVis")`
+
+**CRAN**: <https://cloud.r-project.org/web/packages/TOmicsVis/>
+
+**Stable version:** `install.packages("TOmicsVis")`
+
 **Website**: <https://benben-miao.github.io/TOmicsVis/>
 
-**Author**: [benben-miao github](https://github.com/benben-miao)
+**OmicsSuite**: [Omics Suite Github:
+https://github.com/omicssuite/](https://github.com/omicssuite/)
 
-**BioSciTools**: [Biology Science
-Tools](https://github.com/BioSciTools/BioSciTools.github.io)
+**Authors**:
+
+- [benben-miao Github:
+  https://github.com/benben-miao/](https://github.com/benben-miao/)
+
+- [dongwei1220 Github:
+  https://github.com/dongwei1220/](https://github.com/dongwei1220/)
 
 ## 2. Install package
 
@@ -180,6 +192,47 @@ Get help using command `?TOmicsVis::pca_plot` or reference page
 # ?TOmicsVis::pca_plot
 ```
 
+#### 3.1.4 dendro_plot
+
+Dendrograms for multiple samples/groups clustering.
+
+``` r
+# 1. Load example datasets
+data(gene_exp)
+
+# 2. Run plot function
+dendro_plot(
+  gene_exp,
+  dist_method = "euclidean",
+  hc_method = "average",
+  tree_type = "rectangle",
+  k_num = 3,
+  palette = "npg",
+  color_labels_by_k = TRUE,
+  horiz = TRUE,
+  label_size = 0.8,
+  line_width = 0.7,
+  rect = TRUE,
+  rect_fill = TRUE,
+  title = "Cluster Dendrogram",
+  xlab = "",
+  ylab = "Height"
+)
+#> Registered S3 method overwritten by 'dendextend':
+#>   method     from 
+#>   rev.hclust vegan
+```
+
+![](man/figures/README-dendro_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::dendro_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::dendro_plot
+```
+
 ### 3.2 Traits Analysis
 
 #### 3.2.1 box_plot
@@ -193,7 +246,7 @@ data(box_data)
 # 2. Run box_plot plot function
 box_plot(
   box_data,
-  test_method = "wilcox.test",
+  test_method = "t.test",
   test_label = "p.format",
   notch = TRUE,
   group_level = "Three_Column",
@@ -243,7 +296,7 @@ data(box_data)
 # 2. Run violin_plot plot function
 violin_plot(
   box_data,
-  test_method = "wilcox.test",
+  test_method = "t.test",
   test_label = "p.format",
   group_level = "Three_Column",
   violin_orientation = "vertical",
@@ -371,7 +424,38 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 # ?TOmicsVis::venn_plot
 ```
 
-#### 3.3.2 circos_heatmap
+#### 3.3.2 flower_plot
+
+Venn plot for stat common and unique gene among multiple sets.
+
+``` r
+# 1. Load example datasets
+data(venn_data)
+
+# 2. Run plot function
+flower_plot(
+  venn_data,
+  angle = 90,
+  a = 0.5,
+  b = 2,
+  r = 1,
+  ellipse_col_pal = "Spectral",
+  circle_col = "white",
+  label_text_cex = 1
+)
+```
+
+![](man/figures/README-flower_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::flower_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::flower_plot
+```
+
+#### 3.3.3 circos_heatmap
 
 Circos heatmap plot for visualizing gene expressing in multiple samples.
 
@@ -403,7 +487,7 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page
 # ?TOmicsVis::circos_heatmap
 ```
 
-#### 3.3.3 volcano_plot
+#### 3.3.4 volcano_plot
 
 Volcano plot for visualizing differentailly expressed genes.
 
@@ -442,7 +526,7 @@ Get help using command `?TOmicsVis::volcano_plot` or reference page
 # ?TOmicsVis::volcano_plot
 ```
 
-#### 3.3.4 ma_plot
+#### 3.3.5 ma_plot
 
 MversusA plot for visualizing differentially expressed genes.
 
@@ -480,7 +564,7 @@ Get help using command `?TOmicsVis::ma_plot` or reference page
 # ?TOmicsVis::ma_plot
 ```
 
-#### 3.3.5 heatmap_group
+#### 3.3.6 heatmap_group
 
 Heatmap group for visualizing grouped gene expression data.
 
@@ -497,22 +581,17 @@ head(heatmap_group_data)
 #> Gene4  8.396409316  8.71705522  8.03906411 4.417013007 4.725269731 3.542216879
 
 # 2. Run heatmap_group plot function
-ma_plot(
-  deg_data2,
-  foldchange = 2,
-  fdr_value = 0.05,
-  point_size = 0.5,
-  color_up = "#FF0000",
-  color_down = "#008800",
-  color_alpha = 0.5,
-  top_method = "fc",
-  top_num = 20,
-  label_size = 8,
-  label_box = TRUE,
-  title = "Group1 -versus- Group2",
-  xlab = "Log2 mean expression",
-  ylab = "Log2 fold change",
-  ggTheme = "theme_minimal"
+heatmap_group(
+  data = heatmap_group_data,
+  scale_data = "none",
+  clust_method = "complete",
+  border_show = TRUE,
+  value_show = TRUE,
+  low_color = "#00880088",
+  mid_color = "#ffffff",
+  high_color = "#ff000088",
+  na_color = "#ff8800",
+  x_angle = 45
 )
 ```
 
@@ -567,7 +646,75 @@ Get help using command `?TOmicsVis::trend_plot` or reference page
 # ?TOmicsVis::trend_plot
 ```
 
-#### 3.4.2 wgcna_pipeline
+#### 3.4.2 gene_cluster_trend
+
+Gene cluster trend plot for visualizing gene expression trend profile in
+multiple samples.
+
+``` r
+# 1. Load example datasets
+data(gene_cluster_data)
+
+# 2. Run plot function
+gene_cluster_trend(
+  gene_cluster_data,
+  thres = 0.25,
+  min_std = 0.2,
+  palette = "PiYG",
+  cluster_num = 4
+)
+#> 0 genes excluded.
+#> 12 genes excluded.
+```
+
+![](man/figures/README-gene_cluster_trend-1.png)<!-- -->
+
+    #> NULL
+
+Get help using command `?TOmicsVis::gene_cluster_trend` or reference
+page
+<https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::gene_cluster_trend
+```
+
+#### 3.4.3 gene_rank_plot
+
+Gene cluster trend plot for visualizing gene expression trend profile in
+multiple samples.
+
+``` r
+# 1. Load example datasets
+data(deg_data)
+
+# 2. Run plot function
+gene_rank_plot(
+  data = deg_data,
+  log2fc = 1,
+  palette = "Spectral",
+  top_n = 10,
+  genes_to_label = NULL,
+  label_size = 5,
+  base_size = 12,
+  title = "Gene ranking dotplot",
+  xlab = "Ranking of differentially expressed genes",
+  ylab = "Log2FoldChange"
+)
+```
+
+![](man/figures/README-gene_rank_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::gene_rank_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::gene_rank_plot
+```
+
+#### 3.4.4 wgcna_pipeline
 
 WGCNA analysis pipeline for RNA-Seq.
 
@@ -588,7 +735,7 @@ Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
 # ?TOmicsVis::wgcna_pipeline
 ```
 
-#### 3.4.3 network_plot
+#### 3.4.5 network_plot
 
 Network plot for analyzing and visualizing relationship of genes.
 
@@ -630,6 +777,58 @@ Get help using command `?TOmicsVis::network_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::network_plot
+```
+
+#### 3.4.6 heatmap_cluster
+
+Heatmap cluster plot for visualizing clustered gene expression data.
+
+``` r
+# 1. Load example datasets
+data(gene_exp)
+head(gene_exp)
+#>              M1       M2       M3       M4       M5       M6        M7       M8
+#> RGL4   8.454808 8.019389 8.990836 9.718631 7.908075 4.147051  4.985084 4.576711
+#> MPP7   8.690520 8.630346 7.080873 9.838476 8.271824 5.179200  5.200868 3.266993
+#> UGCG   8.648366 8.600555 9.431046 7.923021 8.309214 4.902510  5.750804 4.492856
+#> CYSTM1 8.628884 9.238677 8.487243 8.958537 7.357109 4.541605  6.370533 4.246651
+#> ANXA2  4.983769 6.748022 6.220791 4.719403 3.284346 8.089850 10.637472 7.214912
+#> ENDOD1 5.551640 5.406465 4.663785 3.550765 4.103507 8.393991  9.538503 9.069923
+#>              M9      M10
+#> RGL4   4.930349 4.293700
+#> MPP7   5.565226 4.300309
+#> UGCG   4.659987 3.306275
+#> CYSTM1 4.745769 3.449627
+#> ANXA2  9.002710 5.123359
+#> ENDOD1 8.639664 7.106392
+
+# 2. Run network_plot plot function
+heatmap_cluster(
+  data = gene_exp,
+  dist_method = "euclidean",
+  hc_method = "average",
+  k_num = 5,
+  palette = "Spectral",
+  cluster_pal = "Set1",
+  gaps_col = NULL,
+  angle_col = 45,
+  label_size = 10,
+  base_size = 12
+)
+```
+
+![](man/figures/README-heatmap_cluster-1.png)<!-- -->
+
+    #> Using Cluster, gene as id variables
+
+![](man/figures/README-heatmap_cluster-2.png)<!-- -->![](man/figures/README-heatmap_cluster-3.png)<!-- -->
+
+Get help using command `?TOmicsVis::heatmap_cluster` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::heatmap_cluster
 ```
 
 ### 3.5 GO and KEGG Enrichment
