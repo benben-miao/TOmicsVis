@@ -94,6 +94,7 @@ dendro_plot <- function(data,
 	# Create dendrogram object
 	dend <- as.dendrogram(hc)
 
+	suppressWarnings(
 	p <- factoextra::fviz_dend(dend,
 														 k = k_num,
 														 k_colors = palette,
@@ -112,6 +113,7 @@ dendro_plot <- function(data,
 														 ylab = ylab
 														 ) +
 		theme(plot.title = element_text(hjust = 0.5))
+	)
 
 	return(p)
 }

@@ -240,50 +240,53 @@ quantile_plot <- function(data,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
+	suppressWarnings(
 	p <- ggpubr::ggqqplot(data,
-								x = colnames(data)[1],
-								color = colnames(data)[2],
-								combine = FALSE,
-								merge = FALSE,
-								size = point_size,
-								shape = shape,
-								add = c("qqline", "none"),
-								add.params = list(linetype = "solid",
-																	size = 1.5,
-																	alpha = 0.8
-								),
-								conf.int = conf_int,
-								conf.int.level = conf_level,
-								# title = title,
-								# xlab = xlab,
-								# ylab = ylab,
-								facet.by = facet_by,
-								panel.labs = NULL,
-								short.panel.labs = FALSE
-		) +
+														 x = colnames(data)[1],
+														 color = colnames(data)[2],
+														 combine = FALSE,
+														 merge = FALSE,
+														 size = point_size,
+														 shape = shape,
+														 add = c("qqline", "none"),
+														 add.params = list(linetype = "solid",
+														 									size = 1.5,
+														 									alpha = 0.8
+														 ),
+														 conf.int = conf_int,
+														 conf.int.level = conf_level,
+														 # title = title,
+														 # xlab = xlab,
+														 # ylab = ylab,
+														 facet.by = facet_by,
+														 panel.labs = NULL,
+														 short.panel.labs = FALSE
+	) +
 		sci_color +
 		gg_theme +
 		theme(plot.title = element_text(face = plotTitleFace,
 																		# "plain", "italic", "bold", "bold.italic"
 																		size = plotTitleSize,
 																		hjust = plotTitleHjust
-					),
-					axis.title = element_text(face = axisTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = axisTitleSize
-					),
-					axis.text = element_text(face = "plain",
-																	 size = axisTextSize
-					),
-					legend.title = element_text(face = "plain",
-																			size = legendTitleSize
-					),
-					legend.position = legend_pos,
-					# "none", "left", "right", "bottom", "top"
-					legend.direction = legend_dir
-					# "horizontal" or "vertical"
+		),
+		axis.title = element_text(face = axisTitleFace,
+															# "plain", "italic", "bold", "bold.italic"
+															size = axisTitleSize
+		),
+		axis.text = element_text(face = "plain",
+														 size = axisTextSize
+		),
+		legend.title = element_text(face = "plain",
+																size = legendTitleSize
+		),
+		legend.position = legend_pos,
+		# "none", "left", "right", "bottom", "top"
+		legend.direction = legend_dir
+		# "horizontal" or "vertical"
 		)
+	)
 	# # <- 4. Plot
 
 	return(p)
+	invisible()
 }

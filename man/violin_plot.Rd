@@ -6,7 +6,7 @@
 \usage{
 violin_plot(
   data,
-  test_method = "wilcox.test",
+  test_method = "t.test",
   test_label = "p.format",
   group_level = "Three_Column",
   violin_orientation = "vertical",
@@ -24,7 +24,7 @@ violin_plot(
 \arguments{
 \item{data}{Dataframe: include Value, Level1, Level2 columns.}
 
-\item{test_method}{Character: test methods of P value. Default: "wilcox.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".}
+\item{test_method}{Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".}
 
 \item{test_label}{Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).}
 

@@ -58,7 +58,7 @@ tsne_plot <- function(data,
 	tsne_tb <- as.data.frame(data)
 	rownames(tsne_tb) <- tsne_tb[,1]
 	tsne_data <- tsne_tb[,2:(ncol(tsne_tb) - 1)]
-	groups <- tsne_tb[,ncol(tsne_tb)]
+	groups <- as.factor(tsne_tb[,ncol(tsne_tb)])
 
 	tsne_ano <- vegan::anosim(x = tsne_data,
 										 grouping = groups)
@@ -218,12 +218,15 @@ tsne_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# # -> 4. Plot
+	labels <- row.names(tsne_data)
+
+	suppressWarnings(
 	p <- ggplot(tsne_out,
-							aes(x = tsne_out$tSNE1,
-									y = tsne_out$tSNE2,
-									color = groups,
-									shape = NULL,
-									label = row.names(tsne_data))) +
+							aes_string(x = "tSNE1",
+									y = "tSNE2",
+									color = "groups",
+									# shape = NULL,
+									label = "labels")) +
 		geom_point(size = point_size,
 							 alpha = point_alpha) +
 		geom_text(size = text_size,
@@ -231,9 +234,9 @@ tsne_plot <- function(data,
 							show.legend = FALSE) +
 		xlab("tSNE1") +
 		ylab("tSNE2") +
-		stat_ellipse(aes(x = tsne_out$tSNE1,
-										 y = tsne_out$tSNE2,
-										 fill = groups),
+		stat_ellipse(aes_string(x = "tSNE1",
+										 y = "tSNE2",
+										 fill = "groups"),
 								 geom = "polygon",
 								 alpha = ellipse_alpha,
 								 level = ci_level,
@@ -275,6 +278,7 @@ tsne_plot <- function(data,
 					legend.direction = legend_dir
 					# "horizontal" or "vertical"
 		)
+	)
 	# # <- 4. Plot
 
 	return(p)

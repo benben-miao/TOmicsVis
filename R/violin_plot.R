@@ -4,7 +4,7 @@
 #'
 #' @return Plot: violin plot support two levels and multiple groups with P value.
 #' @param data Dataframe: include Value, Level1, Level2 columns.
-#' @param test_method Character: test methods of P value. Default: "wilcox.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
+#' @param test_method Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
 #' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).
 #' @param group_level Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".
 #' @param violin_orientation Character: violin orientation. Default: "vertical", options: "vertical", "horizontal", "reverse".
@@ -47,7 +47,7 @@
 #' violin_plot(box_data, add_element = "jitter")
 #'
 violin_plot <- function(data,
-										 test_method = "wilcox.test",
+										 test_method = "t.test",
 										 test_label = "p.format",
 										 group_level = "Three_Column",
 										 violin_orientation = "vertical",

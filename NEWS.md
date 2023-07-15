@@ -1,6 +1,21 @@
-## TOmicsVis 1.2.1
+## TOmicsVis 1.2.2
 
 **Date**: 2023-07-15
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed `?TOmicsVis::box_plot` and `?TOmicsVis::violin_plot` by changing wilcox.test to t.test.
+2. Fixed `?TOmicsVis::dendro_plot` by adding supperssWarning.
+3. Fixed `?TOmicsVis::tsne_plot` by changing aes to aes_string.
+4. Fixed function for avoiding warning messages.
+
+---
+
+## TOmicsVis 1.2.1
+
+**Date**: 2023-07-14
 
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 

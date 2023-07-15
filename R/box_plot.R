@@ -4,7 +4,7 @@
 #'
 #' @return Plot: box plot support two levels and multiple groups with P value.
 #' @param data Dataframe: two levels and multiple groups
-#' @param test_method Character: test methods of P value. Default: "wilcox.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
+#' @param test_method Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
 #' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).
 #' @param notch Logical: Box notch or none. Default: TRUE, options: TRUE, FALSE.
 #' @param group_level Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".
@@ -46,7 +46,7 @@
 #' box_plot(box_data, add_element = "jitter")
 #'
 box_plot <- function(data,
-										 test_method = "wilcox.test",
+										 test_method = "t.test",
 										 test_label = "p.format",
 										 notch = TRUE,
 										 group_level = "Three_Column",
@@ -413,4 +413,5 @@ box_plot <- function(data,
 	# # <- 4. Plot
 
 	return(p)
+	invisible()
 }

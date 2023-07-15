@@ -178,6 +178,7 @@ ma_plot <- function(data,
 								xlab = xlab,
 								ylab = ylab
 	) +
+		# geom_text_repel(max.overlaps = Inf) +
 		gg_theme +
 		theme(plot.title = element_text(face = plotTitleFace,
 																		# "plain", "italic", "bold", "bold.italic"
