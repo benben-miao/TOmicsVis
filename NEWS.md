@@ -10,6 +10,7 @@
 2. Fixed `?TOmicsVis::dendro_plot` by adding supperssWarning.
 3. Fixed `?TOmicsVis::tsne_plot` by changing aes to aes_string.
 4. Fixed function for avoiding warning messages.
+5. Fixed `?TOmicsVis::go_enrich_bar` and `?TOmicsVis::kegg_enrich_bar` Count aes.
 
 ---
 

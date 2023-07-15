@@ -196,7 +196,7 @@ go_enrich_bar <- function(go_anno,
 		title = "",
 		label_format = 200
 	) +
-		geom_text(aes(label = Count),
+		geom_text(aes_string(label = "Count"),
 							vjust = 0.5,
 							hjust = -0.5,
 							size = 3,
