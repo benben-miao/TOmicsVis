@@ -1,6 +1,6 @@
 ## TOmicsVis 1.2.2
 
-**Date**: 2023-07-15
+**Date**: 2023-07-18
 
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
