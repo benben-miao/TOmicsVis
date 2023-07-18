@@ -1,12 +1,13 @@
-#' @title Heatmap cluster plot for visualizing clustered gene expression data.
-#' @description Heatmap cluster plot for visualizing clustered gene expression data.
+#' @title Heatmap cluster for visualizing clustered gene expression data.
+#' @description Heatmap cluster for visualizing clustered gene expression data.
 #' @author wei dong
 #'
-#' @return Plot: Heatmap cluster plot for visualizing clustered gene expression data.
+#' @return Plot: Heatmap cluster for visualizing clustered gene expression data.
 #' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
 #' @param dist_method Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".
 #' @param hc_method Character: hierarchical clustering method. Default: "average", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).
 #' @param k_num Numeric: the number of groups for cutting the tree. Default: 5.
+#' @param show_rownames Logical: boolean specifying if column names are be shown. Default: FALSE, options: TRUE or FALSE.
 #' @param palette Character: color palette used in heatmap. Default: "Spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
 #' @param cluster_pal Character: color palette used for the cluster. Default: "Set1", options: 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'.
 #' @param gaps_col Character: vector of columns indices that show where to put gaps into heatmap. Default: "NULL".
@@ -16,7 +17,6 @@
 #'
 #' @import ggplot2
 #' @import pheatmap
-#' @importFrom stats sd
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom grDevices colorRampPalette
 #' @importFrom reshape2 melt
@@ -29,22 +29,29 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset gene_exp
-#' data(gene_exp)
-#' head(gene_exp)
+#' data(gene_exp2)
+#' head(gene_exp2)
 #'
 #' # 3. Default parameters
-#' heatmap_cluster(gene_exp)
+#' heatmap_cluster(gene_exp2)
 #'
 #' # 4. Set palette = "RdBu"
-#' heatmap_cluster(gene_exp, palette = "RdBu")
+#' heatmap_cluster(gene_exp2, palette = "RdBu")
 #'
 #' # 5. Set cluster_pal = "Accent"
-#' heatmap_cluster(gene_exp, cluster_pal = "Accent")
+#' heatmap_cluster(gene_exp2, cluster_pal = "Accent")
+#'
+#' # 6. Set k_num = 3
+#' heatmap_cluster(gene_exp2, k_num = 3, palette = "PiYG")
+#'
+#' # 7. Set gaps_col = c(3,6)
+#' heatmap_cluster(gene_exp2, gaps_col = c(3,6), palette = "RdYlBu")
 #'
 heatmap_cluster <- function(data,
                             dist_method = "euclidean",
                             hc_method = "average",
                             k_num = 5,
+														show_rownames = FALSE,
                             palette = "Spectral",
                             cluster_pal = "Set1",
                             gaps_col = NULL,
@@ -86,11 +93,11 @@ heatmap_cluster <- function(data,
   # <- 3. Plot parameters
 
   p <- pheatmap::pheatmap(data, cluster_cols = F,
-                          cutree_rows = k_num,
+                          cutree_rows = k_num, show_rownames = show_rownames,
                           clustering_distance_rows = dist_method,
                           clustering_method = hc_method)
 
-  row_cluster = stats::cutree(p$tree_row, k = k_num)
+  row_cluster = stats::cutree(p$tree_row, k=k_num)
   newOrder = as.data.frame(data[p$tree_row$order,])
   newOrder$Cluster = paste0("C", row_cluster[match(rownames(newOrder), names(row_cluster))])
   row_annot <- data.frame(Cluster = newOrder$Cluster, row.names = rownames(newOrder))
@@ -107,6 +114,7 @@ heatmap_cluster <- function(data,
                            clustering_distance_rows = dist_method,
                            clustering_method = hc_method,
                            annotation_row = row_annot,
+  												 show_rownames = show_rownames,
                            color = colors, annotation_colors = ann_colors,
                            angle_col = angle_col, border_color = "white")
 
@@ -115,7 +123,7 @@ heatmap_cluster <- function(data,
   data_new$Cluster <- factor(data_new$Cluster, levels = unique(data_new$Cluster))
 
   # plot line trend
-  p2 <- ggplot(data_new,aes_string(x = "Sample", y = "Expression", group = "gene")) +
+  p2 <- ggplot2::ggplot(data_new,aes(Sample, Expression, group = gene)) +
     geom_line(color = "gray90",size = 0.8) +
     geom_hline(yintercept = 0,linetype = 2) +
     stat_summary(aes(group = 1), fun.y = mean, geom = "line", size = 1.2, color = "#c51b7d") +
