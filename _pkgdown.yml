@@ -46,7 +46,7 @@ navbar:
       icon: fa-film
       menu:
         - text: Platforms
-        - text: Bilibili
+        - text: BiliBili
           href: https://space.bilibili.com/34105515/channel/series
         - text: WeChat
           href: https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g

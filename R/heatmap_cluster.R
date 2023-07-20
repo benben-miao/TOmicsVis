@@ -22,6 +22,7 @@
 #' @importFrom reshape2 melt
 #' @importFrom ggplotify as.ggplot
 #' @importFrom cowplot plot_grid
+#' @importFrom stats sd
 #' @export
 #'
 #' @examples

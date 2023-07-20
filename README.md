@@ -33,7 +33,7 @@ devtools::install_github("benben-miao/TOmicsVis")
 devtools::install_git("https://gitclone.com/github.com/benben-miao/TOmicsVis.git")
 ```
 
-**1.2.3 CRAN**: <https://cloud.r-project.org/web/packages/TOmicsVis/>
+**1.2.3 CRAN**: <https://cran.r-project.org/package=TOmicsVis>
 
 **Install from CRAN:**
 
@@ -1236,8 +1236,7 @@ go_enrich_tree(
 )
 ```
 
-Get help using command `?TOmicsVis::go_enrich_tree` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html>.
+Get help using command `?TOmicsVis::go_enrich_tree`.
 
 ``` r
 # Get help with command in R console.
@@ -1472,8 +1471,7 @@ kegg_enrich_tree(
 )
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html>.
+Get help using command `?TOmicsVis::kegg_enrich_tree`.
 
 ``` r
 # Get help with command in R console.

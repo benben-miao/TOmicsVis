@@ -11,6 +11,7 @@
 #'
 #' @importFrom Mfuzz filter.NA filter.std standardise mestimate mfuzz mfuzz.plot
 #' @import RColorBrewer
+#' @import Biobase
 #' @import e1071
 #' @export
 #'
