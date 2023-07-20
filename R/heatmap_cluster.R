@@ -41,12 +41,6 @@
 #' # 5. Set cluster_pal = "Accent"
 #' heatmap_cluster(gene_exp2, cluster_pal = "Accent")
 #'
-#' # 6. Set k_num = 3
-#' heatmap_cluster(gene_exp2, k_num = 3, palette = "PiYG")
-#'
-#' # 7. Set gaps_col = c(3,6)
-#' heatmap_cluster(gene_exp2, gaps_col = c(3,6), palette = "RdYlBu")
-#'
 heatmap_cluster <- function(data,
                             dist_method = "euclidean",
                             hc_method = "average",
@@ -97,7 +91,7 @@ heatmap_cluster <- function(data,
                           clustering_distance_rows = dist_method,
                           clustering_method = hc_method)
 
-  row_cluster = stats::cutree(p$tree_row, k=k_num)
+  row_cluster = stats::cutree(p$tree_row, k = k_num)
   newOrder = as.data.frame(data[p$tree_row$order,])
   newOrder$Cluster = paste0("C", row_cluster[match(rownames(newOrder), names(row_cluster))])
   row_annot <- data.frame(Cluster = newOrder$Cluster, row.names = rownames(newOrder))
@@ -123,7 +117,8 @@ heatmap_cluster <- function(data,
   data_new$Cluster <- factor(data_new$Cluster, levels = unique(data_new$Cluster))
 
   # plot line trend
-  p2 <- ggplot2::ggplot(data_new,aes(Sample, Expression, group = gene)) +
+  p2 <- ggplot2::ggplot(data_new,
+                        aes_string("Sample", "Expression", group = "gene")) +
     geom_line(color = "gray90",size = 0.8) +
     geom_hline(yintercept = 0,linetype = 2) +
     stat_summary(aes(group = 1), fun.y = mean, geom = "line", size = 1.2, color = "#c51b7d") +

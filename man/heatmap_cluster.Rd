@@ -2,13 +2,14 @@
 % Please edit documentation in R/heatmap_cluster.R
 \name{heatmap_cluster}
 \alias{heatmap_cluster}
-\title{Heatmap cluster plot for visualizing clustered gene expression data.}
+\title{Heatmap cluster for visualizing clustered gene expression data.}
 \usage{
 heatmap_cluster(
   data,
   dist_method = "euclidean",
   hc_method = "average",
   k_num = 5,
+  show_rownames = FALSE,
   palette = "Spectral",
   cluster_pal = "Set1",
   gaps_col = NULL,
@@ -26,6 +27,8 @@ heatmap_cluster(
 
 \item{k_num}{Numeric: the number of groups for cutting the tree. Default: 5.}
 
+\item{show_rownames}{Logical: boolean specifying if column names are be shown. Default: FALSE, options: TRUE or FALSE.}
+
 \item{palette}{Character: color palette used in heatmap. Default: "Spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.}
 
 \item{cluster_pal}{Character: color palette used for the cluster. Default: "Set1", options: 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'.}
@@ -39,27 +42,27 @@ heatmap_cluster(
 \item{base_size}{Numeric: base font size. Default: 12, min: 0.}
 }
 \value{
-Plot: Heatmap cluster plot for visualizing clustered gene expression data.
+Plot: Heatmap cluster for visualizing clustered gene expression data.
 }
 \description{
-Heatmap cluster plot for visualizing clustered gene expression data.
+Heatmap cluster for visualizing clustered gene expression data.
 }
 \examples{
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
 # 2. Use example dataset gene_exp
-data(gene_exp)
-head(gene_exp)
+data(gene_exp2)
+head(gene_exp2)
 
 # 3. Default parameters
-heatmap_cluster(gene_exp)
+heatmap_cluster(gene_exp2)
 
 # 4. Set palette = "RdBu"
-heatmap_cluster(gene_exp, palette = "RdBu")
+heatmap_cluster(gene_exp2, palette = "RdBu")
 
 # 5. Set cluster_pal = "Accent"
-heatmap_cluster(gene_exp, cluster_pal = "Accent")
+heatmap_cluster(gene_exp2, cluster_pal = "Accent")
 
 }
 \author{
