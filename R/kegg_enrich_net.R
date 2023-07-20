@@ -144,18 +144,24 @@ kegg_enrich_net <- function(kegg_anno,
 	p <- cnetplot(
 		x = enrich_kegg,
 		showCategory = category_num,
-		foldChange = deg_list,
+		# foldChange = deg_list,
 		layout = net_layout, # 'star', 'circle', 'gem', 'dh', 'graphopt', 'grid', 'mds', 'randomly', 'fr', 'kk', 'drl' or 'lgl'.
-		colorEdge = TRUE,
+		# colorEdge = TRUE,
 		circular = net_circular,
 		node_label = "all",
-		cex_category = 1,
-		cex_gene = 1,
-		cex_label_category = cateLabelScale,
-		cex_label_gene = geneLabelScale,
+		# cex_category = 1,
+		# cex_gene = 1,
+		# cex_label_category = cateLabelScale,
+		# cex_label_gene = geneLabelScale,
 		# color_category = "#ff0000",
 		# color_gene = "#008000",
-		shadowtext = "all"
+		shadowtext = "all",
+		color.params = list(foldChange = deg_list,
+												edge = TRUE),
+		cex.params = list(category_node = 1,
+											gene_node = 1,
+											category_label = cateLabelScale,
+											gene_label = geneLabelScale)
 	) +
 		# guides(color = guide_legend(title="New Legend Title")) +
 		labs(color = "Genes") +

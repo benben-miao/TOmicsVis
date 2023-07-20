@@ -1,7 +1,7 @@
 Package: TOmicsVis
 Type: Package
 Title: Transcriptome Visualization Process Scheme
-Version: 1.2.2
+Version: 1.2.3
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
@@ -13,7 +13,7 @@ URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 LazyData: true
 Depends: 

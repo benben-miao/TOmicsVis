@@ -31,21 +31,10 @@ navbar:
         - text: Get Start
         - text: LongArticle
           href: https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ
-        - text: Tutorial
-        - text: Introduction
-          href: articles/Introduction.html
-        - text: SamplesStatistics
-          href: articles/SamplesStatistics.html
-        - text: TraitsAnalysis
-          href: articles/TraitsAnalysis.html
-        - text: DifferentialExpression
-          href: articles/DifferentialExpression.html
-        - text: AdvancedAnalysis
-          href: articles/AdvancedAnalysis.html
-        - text: GOandKEGG
-          href: articles/GOandKEGG.html
-        - text: TablesOperations
-          href: articles/TablesOperations.html
+        - text: -------
+        - text: Tutorials
+        - text: Tutorials
+          href: articles/Tutorials.html
         - text: -------
         - text: Blog
     news:
@@ -118,12 +107,10 @@ reference:
   - go_enrich_stat
   - go_enrich_bar
   - go_enrich_dot
-  - go_enrich_tree
   - go_enrich_net
   - kegg_enrich
   - kegg_enrich_bar
   - kegg_enrich_dot
-  - kegg_enrich_tree
   - kegg_enrich_net
 
 - title: ⑥Tables Operations

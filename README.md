@@ -13,13 +13,34 @@
 
 #### 1.2 Github and CRAN Install
 
-**Github**: <https://github.com/benben-miao/TOmicsVis/>
+**1.2.1 Install required packages from Bioconductor:**
 
-**Latest version:** `devtools::install_github("benben-miao/TOmicsVis")`
+``` r
+# Install required packages from Bioconductor
+install.packages("BiocManager")
+BiocManager::install(c("ComplexHeatmap", "EnhancedVolcano", "clusterProfiler", "enrichplot", "impute", "preprocessCore", "Mfuzz"))
+```
 
-**CRAN**: <https://cloud.r-project.org/web/packages/TOmicsVis/>
+**1.2.2 Github**: <https://github.com/benben-miao/TOmicsVis/>
 
-**Stable version:** `install.packages("TOmicsVis")`
+**Install from Github:**
+
+``` r
+install.packages("devtools")
+devtools::install_github("benben-miao/TOmicsVis")
+
+# Resolve network by GitClone
+devtools::install_git("https://gitclone.com/github.com/benben-miao/TOmicsVis.git")
+```
+
+**1.2.3 CRAN**: <https://cloud.r-project.org/web/packages/TOmicsVis/>
+
+**Install from CRAN:**
+
+``` r
+# Install from CRAN
+install.packages("TOmicsVis")
+```
 
 #### 1.3 Articles and Courses
 
@@ -44,15 +65,12 @@ https://github.com/omicssuite/](https://github.com/omicssuite/)
 - [dongwei1220 Github:
   https://github.com/dongwei1220/](https://github.com/dongwei1220/)
 
-## 2. Install package
+## 2. Libary packages
 
 ``` r
-# 1. TOmicsVis
-# install.packages("devtools")
-# devtools::install_github("benben-miao/TOmicsVis")
+# 1. Library TOmicsVis package
 library(TOmicsVis)
 #> 载入需要的程辑包：e1071
-#> Warning: 程辑包'e1071'是用R版本4.2.3 来建造的
 #> 
 #> Registered S3 method overwritten by 'GGally':
 #>   method from   
@@ -1216,11 +1234,7 @@ go_enrich_tree(
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
-#> Scale for colour is already present.
-#> Adding another scale for colour, which will replace the existing scale.
 ```
-
-![](man/figures/README-go_enrich_tree-1.png)<!-- -->
 
 Get help using command `?TOmicsVis::go_enrich_tree` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_tree.html>.
@@ -1456,11 +1470,7 @@ kegg_enrich_tree(
   hclust_method = "complete",
   ggTheme = "theme_light"
 )
-#> Scale for colour is already present.
-#> Adding another scale for colour, which will replace the existing scale.
 ```
-
-![](man/figures/README-kegg_enrich_tree-1.png)<!-- -->
 
 Get help using command `?TOmicsVis::kegg_enrich_tree` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_tree.html>.
@@ -1604,17 +1614,16 @@ Table filter used to filter row by column condition.
 data(table_filter_data)
 head(table_filter_data)
 #> # A tibble: 6 × 14
-#>   name         height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-#>   <chr>         <int> <dbl> <chr>   <chr>   <chr>     <dbl> <chr> <chr>  <chr>  
-#> 1 Luke Skywal…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
-#> 2 C-3PO           167    75 <NA>    gold    yellow    112   none  mascu… Tatooi…
-#> 3 R2-D2            96    32 <NA>    white,… red        33   none  mascu… Naboo  
-#> 4 Darth Vader     202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-#> 5 Leia Organa     150    49 brown   light   brown      19   fema… femin… Aldera…
-#> 6 Owen Lars       178   120 brown,… light   blue       52   male  mascu… Tatooi…
-#> # … with 4 more variables: species <chr>, films <list>, vehicles <list>,
-#> #   starships <list>, and abbreviated variable names ¹​hair_color, ²​skin_color,
-#> #   ³​eye_color, ⁴​birth_year, ⁵​homeworld
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+#> 2 C-3PO        167    75 <NA>       gold       yellow         112   none  mascu…
+#> 3 R2-D2         96    32 <NA>       white, bl… red             33   none  mascu…
+#> 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+#> 5 Leia Org…    150    49 brown      light      brown           19   fema… femin…
+#> 6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
 
 # 2. Run function
 res <- table_filter(table_filter_data, 
@@ -1622,17 +1631,16 @@ res <- table_filter(table_filter_data,
                     )
 head(res)
 #> # A tibble: 6 × 14
-#>   name      height  mass hair_color skin_…¹ eye_c…² birth…³ sex   gender homew…⁴
-#>   <chr>      <int> <dbl> <chr>      <chr>   <chr>     <dbl> <chr> <chr>  <chr>  
-#> 1 Greedo       173    74 <NA>       green   black        44 male  mascu… Rodia  
-#> 2 Nien Nunb    160    68 none       grey    black        NA male  mascu… Sullust
-#> 3 Gasgano      122    NA none       white,… black        NA male  mascu… Troiken
-#> 4 Kit Fisto    196    87 none       green   black        NA male  mascu… Glee A…
-#> 5 Plo Koon     188    80 none       orange  black        22 male  mascu… Dorin  
-#> 6 Lama Su      229    88 none       grey    black        NA male  mascu… Kamino 
-#> # … with 4 more variables: species <chr>, films <list>, vehicles <list>,
-#> #   starships <list>, and abbreviated variable names ¹​skin_color, ²​eye_color,
-#> #   ³​birth_year, ⁴​homeworld
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Greedo       173    74 <NA>       green      black             44 male  mascu…
+#> 2 Nien Nunb    160    68 none       grey       black             NA male  mascu…
+#> 3 Gasgano      122    NA none       white, bl… black             NA male  mascu…
+#> 4 Kit Fisto    196    87 none       green      black             NA male  mascu…
+#> 5 Plo Koon     188    80 none       orange     black             22 male  mascu…
+#> 6 Lama Su      229    88 none       grey       black             NA male  mascu…
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
 ```
 
 Get help using command `?TOmicsVis::table_filter` or reference page
