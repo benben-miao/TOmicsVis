@@ -13,7 +13,7 @@ development:
 
 navbar:
   structure:
-    left: [home, reference, articles, news, omicssuite]
+    left: [home, reference, articles, news, courses, omicssuite]
     right: [search, github]
   components:
     home:
@@ -28,6 +28,9 @@ navbar:
       text: Articles
       icon: fa-book
       menu:
+        - text: Get Start
+        - text: LongArticle
+          href: https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ
         - text: Tutorial
         - text: Introduction
           href: articles/Introduction.html
@@ -49,6 +52,15 @@ navbar:
       text: Versions
       icon: fa-code-branch
       href: news/index.html
+    courses:
+      text: Courses
+      icon: fa-film
+      menu:
+        - text: Platforms
+        - text: Bilibili
+          href: https://space.bilibili.com/34105515/channel/series
+        - text: WeChat
+          href: https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g
     omicssuite:
       text: OmicsSuite
       icon: fa-desktop
@@ -152,3 +164,4 @@ reference:
   - wgcna_gene_exp
   - wgcna_sample_group
   - heatmap_group_data
+  - gene_exp2

@@ -595,15 +595,16 @@ Get help using command `?TOmicsVis::network_plot` or reference page [https://ben
 Heatmap cluster plot for visualizing clustered gene expression data.
 ```{r heatmap_cluster, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
-data(gene_exp)
-head(gene_exp)
+data(gene_exp2)
+head(gene_exp2)
 
 # 2. Run network_plot plot function
 heatmap_cluster(
-  data = gene_exp,
+  data = gene_exp2,
   dist_method = "euclidean",
   hc_method = "average",
   k_num = 5,
+  show_rownames = FALSE,
   palette = "Spectral",
   cluster_pal = "Set1",
   gaps_col = NULL,

@@ -64,6 +64,8 @@
     Articles
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdown--articles">
+    <h6 class="dropdown-header" data-toc-skip>Get Start</h6>
+    <a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ">LongArticle</a>
     <h6 class="dropdown-header" data-toc-skip>Tutorial</h6>
     <a class="dropdown-item" href="articles/Introduction.html">Introduction</a>
     <a class="dropdown-item" href="articles/SamplesStatistics.html">SamplesStatistics</a>
@@ -82,6 +84,18 @@
      
     Versions
   </a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--courses">
+    <span class="fa fa-film"></span>
+     
+    Courses
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--courses">
+    <h6 class="dropdown-header" data-toc-skip>Platforms</h6>
+    <a class="external-link dropdown-item" href="https://space.bilibili.com/34105515/channel/series">Bilibili</a>
+    <a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g">WeChat</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/OmicsSuite/">
@@ -796,29 +810,23 @@
 <p>Heatmap cluster plot for visualizing clustered gene expression data.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span>
-<span><span class="co">#&gt;              M1       M2       M3       M4       M5       M6        M7       M8</span></span>
-<span><span class="co">#&gt; RGL4   8.454808 8.019389 8.990836 9.718631 7.908075 4.147051  4.985084 4.576711</span></span>
-<span><span class="co">#&gt; MPP7   8.690520 8.630346 7.080873 9.838476 8.271824 5.179200  5.200868 3.266993</span></span>
-<span><span class="co">#&gt; UGCG   8.648366 8.600555 9.431046 7.923021 8.309214 4.902510  5.750804 4.492856</span></span>
-<span><span class="co">#&gt; CYSTM1 8.628884 9.238677 8.487243 8.958537 7.357109 4.541605  6.370533 4.246651</span></span>
-<span><span class="co">#&gt; ANXA2  4.983769 6.748022 6.220791 4.719403 3.284346 8.089850 10.637472 7.214912</span></span>
-<span><span class="co">#&gt; ENDOD1 5.551640 5.406465 4.663785 3.550765 4.103507 8.393991  9.538503 9.069923</span></span>
-<span><span class="co">#&gt;              M9      M10</span></span>
-<span><span class="co">#&gt; RGL4   4.930349 4.293700</span></span>
-<span><span class="co">#&gt; MPP7   5.565226 4.300309</span></span>
-<span><span class="co">#&gt; UGCG   4.659987 3.306275</span></span>
-<span><span class="co">#&gt; CYSTM1 4.745769 3.449627</span></span>
-<span><span class="co">#&gt; ANXA2  9.002710 5.123359</span></span>
-<span><span class="co">#&gt; ENDOD1 8.639664 7.106392</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          S1_rep1   S1_rep2    S2_rep1    S2_rep2    S3_rep1    S3_rep2</span></span>
+<span><span class="co">#&gt; Gene1  316.79234  301.5714  391.75201  344.48179  180.03179  167.99952</span></span>
+<span><span class="co">#&gt; Gene2  204.21777  194.4057   64.07219   56.34101   93.47004   87.22305</span></span>
+<span><span class="co">#&gt; Gene3 1049.90451  999.4598 3196.23863 2810.56888 4958.83561 4627.41614</span></span>
+<span><span class="co">#&gt; Gene4 1413.60565 1345.6862 3356.37956 2951.38662 3947.88238 3684.02909</span></span>
+<span><span class="co">#&gt; Gene5   98.77808   94.0321  401.04150  352.65038  140.01861  130.66059</span></span>
+<span><span class="co">#&gt; Gene6 1202.25882 1144.4940 1135.11172  998.14502  784.29842  731.88052</span></span>
 <span></span>
 <span><span class="co"># 2. Run network_plot plot function</span></span>
 <span><span class="fu"><a href="reference/heatmap_cluster.html">heatmap_cluster</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">gene_exp</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">gene_exp2</span>,</span>
 <span>  dist_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>  hc_method <span class="op">=</span> <span class="st">"average"</span>,</span>
 <span>  k_num <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  show_rownames <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  palette <span class="op">=</span> <span class="st">"Spectral"</span>,</span>
 <span>  cluster_pal <span class="op">=</span> <span class="st">"Set1"</span>,</span>
 <span>  gaps_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
