@@ -22,18 +22,20 @@ navbar:
       href: index.html
     reference:
       text: Reference
-      icon: fa-file-code
+      icon: fa-passport
       href: reference/index.html
     articles:
       text: Articles
-      icon: fa-book
+      icon: fa-file-code
       menu:
         - text: Get Start
         - text: LongArticle
+          icon: fa-weixin
           href: https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ
         - text: -------
         - text: Tutorials
         - text: Tutorials
+          icon: fa-file-code
           href: articles/Tutorials.html
         - text: -------
         - text: Blog
@@ -47,19 +49,21 @@ navbar:
       menu:
         - text: Platforms
         - text: BiliBili
+          icon: fa-youtube
           href: https://space.bilibili.com/34105515/channel/series
         - text: WeChat
+          icon: fa-weixin
           href: https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g
     omicssuite:
       text: OmicsSuite
-      icon: fa-desktop
+      icon: fa-dna
       href: https://github.com/OmicsSuite/
 
 home:
   links:
   - text: OmicsSuite
     href: https://github.com/OmicsSuite/
-  - text: BioSciTools website
+  - text: OmicsSuite website
     href: https://github.com/OmicsSuite/OmicsSuite.github.io
 
 reference:
