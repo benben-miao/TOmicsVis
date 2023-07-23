@@ -155,6 +155,9 @@ myChart.setOption(
       trigger: 'item',
       triggerOn: 'mousemove'
     },
+    textStyle: {
+      fontFamily: "Times New Roman"
+    },
     series: [
       {
         type: 'tree',
