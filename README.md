@@ -13,6 +13,8 @@
 
 #### 1.2 Github and CRAN Install
 
+[![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.rstudio.com/web/packages/TOmicsVis/index.html)
+
 **1.2.1 Install required packages from Bioconductor:**
 
 ``` r
@@ -70,11 +72,6 @@ https://github.com/omicssuite/](https://github.com/omicssuite/)
 ``` r
 # 1. Library TOmicsVis package
 library(TOmicsVis)
-#> 载入需要的程辑包：e1071
-#> 
-#> Registered S3 method overwritten by 'GGally':
-#>   method from   
-#>   +.gg   ggplot2
 #> 载入需要的程辑包：Biobase
 #> 载入需要的程辑包：BiocGenerics
 #> 
@@ -95,6 +92,11 @@ library(TOmicsVis)
 #>     Vignettes contain introductory material; view with
 #>     'browseVignettes()'. To cite Bioconductor, see
 #>     'citation("Biobase")', and for packages 'citation("pkgname")'.
+#> 载入需要的程辑包：e1071
+#> 
+#> Registered S3 method overwritten by 'GGally':
+#>   method from   
+#>   +.gg   ggplot2
 #> 
 #> 载入程辑包：'DynDoc'
 #> The following object is masked from 'package:BiocGenerics':
