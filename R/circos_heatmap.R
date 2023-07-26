@@ -8,9 +8,12 @@
 #' @param mid_color Character: middle value color (color name or hex value). Default: "#ffffff".
 #' @param high_color Character: high value color (color name or hex value). Default: "#ff0000".
 #' @param gap_size Numeric: heatmap gap size. Default: 10, min: 0.
+#' @param cluster_run Logical: running cluster algorithm. Default: TRUE, options: TRUE, FALSE.
 #' @param cluster_method Character: cluster methods. Default: "complete", options: "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid".
 #' @param distance_method Character: distance methods. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski".
+#' @param dend_show Character: control dendgram display and position. Default: "inside", options: "none", "outside", "inside".
 #' @param dend_height Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.
+#' @param rowname_show Character: control rownames display and position. Hind first rowname by running rownames(data)[1]. Default: "outside", options: "none", "outside", "inside".
 #' @param rowname_size Numeric: rowname font size. Default: 0.80, min: 0.10, max: 10.00.
 #'
 #' @importFrom stats reorder
@@ -35,9 +38,12 @@ circos_heatmap <- function(data,
 													 mid_color = "#ffffff",
 													 high_color = "#ff0000",
 													 gap_size = 10,
+													 cluster_run = TRUE,
 													 cluster_method = "complete",
 													 distance_method = "euclidean",
+													 dend_show = "inside",
 													 dend_height = 0.20,
+													 rowname_show = "outside",
 													 rowname_size = 0.80
 													){
 
@@ -101,17 +107,18 @@ circos_heatmap <- function(data,
 									 bg.border = NA,
 									 bg.lty = graphics::par("lty"),
 									 bg.lwd = graphics::par("lwd"),
-									 cluster = TRUE,
+									 cluster = cluster_run,
 									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
 									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
 									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),
-									 dend.side = "inside", # "none", "outside", "inside"
+									 dend.side = dend_show, # "none", "outside", "inside"
 									 dend.track.height = dend_height,
-									 rownames.side = "outside", # "none", "outside", "inside"
+									 rownames.side = rowname_show, # "none", "outside", "inside"
 									 rownames.cex = rowname_size,
 									 rownames.font = graphics::par("font"),
 									 rownames.col = "black",
-									 track.height = 0.3
+									 track.height = 0.3,
+									 show.sector.labels = FALSE
 		)
 		# circos.track(track.index = get.current.track.index(),
 		# 			 panel.fun = function(x, y) {
@@ -126,7 +133,7 @@ circos_heatmap <- function(data,
 		# 			}, bg.border = NA)
 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
 		grid::grid.draw(legend)
-		circos.clear()
+		circlize::circos.clear()
 	}
 	# # <- 4. Plot
 

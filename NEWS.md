@@ -1,3 +1,15 @@
+## TOmicsVis 1.2.4
+
+**Date**: 2023-07-26
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Add new parameters (cluster_run, dend_show, rowname_show) for `?TOmicsVis::circos_heatmap` function.
+
+---
+
 ## TOmicsVis 1.2.3
 
 **Date**: 2023-07-20

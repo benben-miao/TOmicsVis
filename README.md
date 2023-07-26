@@ -501,14 +501,17 @@ data(circos_heatmap_data)
 
 # 2. Run circos_heatmap plot function
 circos_heatmap(
-  circos_heatmap_data,
+  data = circos_heatmap_data,
   low_color = "#0000ff",
   mid_color = "#ffffff",
   high_color = "#ff0000",
   gap_size = 10,
+  cluster_run = TRUE,
   cluster_method = "complete",
   distance_method = "euclidean",
+  dend_show = "inside",
   dend_height = 0.2,
+  rowname_show = "outside",
   rowname_size = 0.8
 )
 ```

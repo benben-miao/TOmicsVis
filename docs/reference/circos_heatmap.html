@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,9 +123,12 @@
 <span>  mid_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
 <span>  gap_size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  cluster_run <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cluster_method <span class="op">=</span> <span class="st">"complete"</span>,</span>
 <span>  distance_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
+<span>  dend_show <span class="op">=</span> <span class="st">"inside"</span>,</span>
 <span>  dend_height <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  rowname_show <span class="op">=</span> <span class="st">"outside"</span>,</span>
 <span>  rowname_size <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -152,6 +155,10 @@
 <dd><p>Numeric: heatmap gap size. Default: 10, min: 0.</p></dd>
 
 
+<dt>cluster_run</dt>
+<dd><p>Logical: running cluster algorithm. Default: TRUE, options: TRUE, FALSE.</p></dd>
+
+
 <dt>cluster_method</dt>
 <dd><p>Character: cluster methods. Default: "complete", options: "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid".</p></dd>
 
@@ -160,8 +167,16 @@
 <dd><p>Character: distance methods. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski".</p></dd>
 
 
+<dt>dend_show</dt>
+<dd><p>Character: control dendgram display and position. Default: "inside", options: "none", "outside", "inside".</p></dd>
+
+
 <dt>dend_height</dt>
 <dd><p>Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.</p></dd>
+
+
+<dt>rowname_show</dt>
+<dd><p>Character: control rownames display and position. Hind first rowname by running rownames(data)1. Default: "outside", options: "none", "outside", "inside".</p></dd>
 
 
 <dt>rowname_size</dt>

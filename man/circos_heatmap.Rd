@@ -10,9 +10,12 @@ circos_heatmap(
   mid_color = "#ffffff",
   high_color = "#ff0000",
   gap_size = 10,
+  cluster_run = TRUE,
   cluster_method = "complete",
   distance_method = "euclidean",
+  dend_show = "inside",
   dend_height = 0.2,
+  rowname_show = "outside",
   rowname_size = 0.8
 )
 }
@@ -27,11 +30,17 @@ circos_heatmap(
 
 \item{gap_size}{Numeric: heatmap gap size. Default: 10, min: 0.}
 
+\item{cluster_run}{Logical: running cluster algorithm. Default: TRUE, options: TRUE, FALSE.}
+
 \item{cluster_method}{Character: cluster methods. Default: "complete", options: "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid".}
 
 \item{distance_method}{Character: distance methods. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski".}
 
+\item{dend_show}{Character: control dendgram display and position. Default: "inside", options: "none", "outside", "inside".}
+
 \item{dend_height}{Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.}
+
+\item{rowname_show}{Character: control rownames display and position. Hind first rowname by running rownames(data)\link{1}. Default: "outside", options: "none", "outside", "inside".}
 
 \item{rowname_size}{Numeric: rowname font size. Default: 0.80, min: 0.10, max: 10.00.}
 }
