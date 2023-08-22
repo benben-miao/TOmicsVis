@@ -114,11 +114,21 @@ library(ggplot2)
 
 #### 3.1.1 quantile_plot
 
-Quantile plot for visualizing data distribution.
+**Input Data:** Dataframe: 1st-col: Values, 2nd-col: Groups.
+
+**Output Plot:** Quantile plot for visualizing data distribution.
 
 ``` r
-# 1. Load box_data example datasets
+# 1. Load example datasets
 data(quantile_data)
+head(quantile_data)
+#>   Weight    Sex
+#> 1  52.43 Female
+#> 2  54.76 Female
+#> 3  56.55 Female
+#> 4  52.07 Female
+#> 5  55.12 Female
+#> 6  56.71 Female
 
 # 2. Run quantile_plot plot function
 quantile_plot(

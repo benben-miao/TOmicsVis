@@ -23,4 +23,4 @@
 "quantile_data"
 
 # quantile_data <- data
-# usethis::use_data(quantile_data)
+# usethis::use_data(quantile_data, overwrite = TRUE)

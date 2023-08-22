@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,7 +135,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include Value, Group columns.</p></dd>
+<dd><p>Dataframe: 1st-col: Values, 2nd-col: Groups.</p></dd>
 
 
 <dt>my_shape</dt>
@@ -196,6 +196,14 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Weight    Sex</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  52.43 Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  54.76 Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  56.55 Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  52.07 Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  55.12 Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  56.71 Female</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
 <span class="r-in"><span><span class="fu">quantile_plot</span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span></span>

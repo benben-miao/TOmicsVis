@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -255,10 +255,20 @@ https://github.com/dongwei1220/</a></p></li>
 <div class="section level5">
 <h5 id="quantile_plot">3.1.1 quantile_plot<a class="anchor" aria-label="anchor" href="#quantile_plot"></a>
 </h5>
-<p>Quantile plot for visualizing data distribution.</p>
+<p><strong>Input Data:</strong> Dataframe: 1st-col: Values, 2nd-col:
+Groups. <strong>Output Plot:</strong> Quantile plot for visualizing data
+distribution.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Weight    Sex</span></span>
+<span><span class="co">#&gt; 1  52.43 Female</span></span>
+<span><span class="co">#&gt; 2  54.76 Female</span></span>
+<span><span class="co">#&gt; 3  56.55 Female</span></span>
+<span><span class="co">#&gt; 4  52.07 Female</span></span>
+<span><span class="co">#&gt; 5  55.12 Female</span></span>
+<span><span class="co">#&gt; 6  56.71 Female</span></span>
 <span></span>
 <span><span class="co"># 2. Run quantile_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/quantile_plot.html">quantile_plot</a></span><span class="op">(</span></span>

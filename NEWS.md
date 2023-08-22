@@ -1,3 +1,16 @@
+## TOmicsVis 1.2.5
+
+**Date**: 2023-08-22
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Create data-tables for store demo tables.
+2. Update `?TOmicsVis::quantile_data` and `?TOmicsVis::quantile_plot` data description.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.2.4
 
 **Date**: 2023-07-26

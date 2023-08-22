@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: quantile plot for visualizing data distribution.
-#' @param data Dataframe: include Value, Group columns.
+#' @param data Dataframe: 1st-col: Values, 2nd-col: Groups.
 #'
 #' @param my_shape Character: scatter shape. Default: "fill_circle", options: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle".
 #' @param point_size Numeric: point size. Default: 1.5, min: 0.0, max: not required.
@@ -27,6 +27,7 @@
 #'
 #' # 2. Use example dataset
 #' data(quantile_data)
+#' head(quantile_data)
 #'
 #' # 3. Default parameters
 #' quantile_plot(quantile_data)
