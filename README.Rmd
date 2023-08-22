@@ -90,7 +90,7 @@ library(ggplot2)
 
 #### 3.1.1 quantile_plot
 
-**Input Data:** Dataframe: 1st-col: Values, 2nd-col: Groups.
+**Input Data:** Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).
 
 **Output Plot:** Quantile plot for visualizing data distribution.
 
@@ -101,7 +101,7 @@ head(quantile_data)
 
 # 2. Run quantile_plot plot function
 quantile_plot(
-  quantile_data,
+  data = quantile_data,
   my_shape = "fill_circle",
   point_size = 1.5,
   conf_int = TRUE,
@@ -109,7 +109,7 @@ quantile_plot(
   split_panel = "One_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
-  sci_fill_color = "Sci_AAAS",
+  sci_fill_color = "Sci_NPG",
   sci_color_alpha = 0.75,
   ggTheme = "theme_light"
 )
@@ -124,24 +124,29 @@ Get help using command `?TOmicsVis::quantile_plot` or reference page <https://be
 
 #### 3.1.2 corr_heatmap
 
-Correlation Heatmap for samples/groups based on Pearson algorithm.
+**Input Data:** Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+
+**Output Plot:** Plot: heatmap plot filled with Pearson correlation values and P values.
 
 ```{r corr_heatmap, fig.width=10.00, fig.height=6.18}
-# 1. Load gene_exp example dataset
-data(gene_exp)
-head(gene_exp)
+# 1. Load example dataset
+data(gene_expression)
+head(gene_expression)
 
 # 2. Run corr_heatmap plot function
 corr_heatmap(
-  gene_exp,
+  data = gene_expression,
   corr_method = "pearson",
   cell_shape = "square",
   fill_type = "full",
   lable_size = 3,
+  axis_angle = 45,
+  axis_size = 12,
   lable_digits = 3,
   color_low = "blue",
   color_mid = "white",
   color_high = "red",
+  outline_color = "white",
   ggTheme = "theme_light"
 )
 ```
@@ -155,20 +160,29 @@ Get help using command `?TOmicsVis::corr_heatmap` or reference page <https://ben
 
 #### 3.1.3 pca_plot
 
-PCA dimensional reduction visualization for RNA-Seq.
+**Input Data1:** Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
+
+**Output Plot:** Plot: PCA dimensional reduction visualization for RNA-Seq.
 
 ```{r pca_plot, fig.width=10.00, fig.height=6.18}
-# 1. Load pca_sample_gene and pca_group_sample example datasets
-data(pca_sample_gene)
-data(pca_group_sample)
+# 1. Load example datasets
+data(gene_expression)
+
+data(samples_groups)
+head(samples_groups)
 
 # 2. Run pca_plot plot function
 pca_plot(
-  pca_sample_gene,
-  pca_group_sample,
+  sample_gene = gene_expression,
+  group_sample = samples_groups,
+  xPC = 1,
+  yPC = 2,
   point_size = 5,
   text_size = 5,
-  ellipse_alpha = 0.3,
+  fill_alpha = 0.10,
+  border_alpha = 0.00,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -184,29 +198,31 @@ Get help using command `?TOmicsVis::pca_plot` or reference page <https://benben-
 
 #### 3.1.4 dendro_plot
 
-Dendrograms for multiple samples/groups clustering.
+**Input Data:** Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+
+**Output Plot:** Plot: dendrogram for multiple samples clustering.
 
 ```{r dendro_plot, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
-data(gene_exp)
+data(gene_expression)
 
 # 2. Run plot function
 dendro_plot(
-  gene_exp,
+  data = gene_expression,
   dist_method = "euclidean",
-  hc_method = "average",
+  hc_method = "ward.D2",
   tree_type = "rectangle",
-  k_num = 3,
+  k_num = 5,
   palette = "npg",
   color_labels_by_k = TRUE,
-  horiz = TRUE,
-  label_size = 0.8,
-  line_width = 0.7,
+  horiz = FALSE,
+  label_size = 1,
+  line_width = 1,
   rect = TRUE,
   rect_fill = TRUE,
-  title = "Cluster Dendrogram",
-  xlab = "",
-  ylab = "Height"
+  xlab = "Samples",
+  ylab = "Height",
+  ggTheme = "theme_light"
 )
 ```
 

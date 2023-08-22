@@ -5,7 +5,7 @@
 \alias{quantile_data}
 \title{Quantile data for quantile_plot example.}
 \format{
-Dataframe: include Value, Group columns.
+Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).
 }
 \usage{
 data(quantile_data)

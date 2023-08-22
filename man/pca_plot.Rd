@@ -5,26 +5,35 @@
 \title{PCA dimensional reduction visualization for RNA-Seq.}
 \usage{
 pca_plot(
-  pca_sample_gene,
-  pca_group_sample,
+  sample_gene,
+  group_sample,
+  xPC = 1,
+  yPC = 2,
   point_size = 5,
   text_size = 5,
-  ellipse_alpha = 0.3,
+  fill_alpha = 0.1,
+  border_alpha = 0,
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
 }
 \arguments{
-\item{pca_sample_gene}{Dataframe: PCA data1 include samples and genes.}
+\item{sample_gene}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
 
-\item{pca_group_sample}{Dataframe: PCA data2 include groups and samples.}
+\item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
+
+\item{xPC}{Numeric: PC index at x axis. Default: 1, options: 1, 2, 3, ...}
+
+\item{yPC}{Numeric: PC index at y axis. Default: 2, options: 2, 3, 4, ...}
 
 \item{point_size}{Numeric: PCA plot point size. Default: 5, min: 0.}
 
 \item{text_size}{Numeric: PCA plot annotation size. Default: 5, min: 0.}
 
-\item{ellipse_alpha}{Numeric: ellipse fill color alpha. Default: 0.30, min: 0.00, max: 1.00.}
+\item{fill_alpha}{Numeric: ellipse fill color alpha. Default: 0.10, min: 0.00, max: 1.00.}
+
+\item{border_alpha}{Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.}
 
 \item{legend_pos}{Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".}
 
@@ -43,17 +52,20 @@ PCA dimensional reduction visualization for RNA-Seq.
 library(TOmicsVis)
 
 # 2. Load example datasets
-data(pca_sample_gene)
-data(pca_group_sample)
+data(gene_expression)
+head(gene_expression)
+
+data(samples_groups)
+head(samples_groups)
 
 # 3. Default parameters
-pca_plot(pca_sample_gene, pca_group_sample)
+pca_plot(gene_expression, samples_groups)
 
 # 4. Set ellipse_alpha = 0.30
-pca_plot(pca_sample_gene, pca_group_sample, ellipse_alpha = 0.00)
+pca_plot(gene_expression, samples_groups, ellipse_alpha = 0.00)
 
 # 5. Set legend_pos = "right", legend_dir = "vertical"
-pca_plot(pca_sample_gene, pca_group_sample, legend_pos = "top", legend_dir = "horizontal")
+pca_plot(gene_expression, samples_groups, legend_pos = "top", legend_dir = "horizontal")
 
 }
 \author{

@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   Tutorials: Tutorials.html
-last_built: 2023-08-22T08:51Z
+last_built: 2023-08-22T17:04Z
 urls:
   reference: https://github.com/benben-miao/TOmicsVis/reference
   article: https://github.com/benben-miao/TOmicsVis/articles

@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @docType data
-#' @format Dataframe: include columns (Genes, Log2FoldChange, Pvalue, Padj), rows (Genes).
+#' @format Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
 #' @usage data(deg_data)
 #'
 #' @keywords datasets

@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: quantile plot for visualizing data distribution.
-#' @param data Dataframe: 1st-col: Values, 2nd-col: Groups.
+#' @param data Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).
 #'
 #' @param my_shape Character: scatter shape. Default: "fill_circle", options: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle".
 #' @param point_size Numeric: point size. Default: 1.5, min: 0.0, max: not required.
@@ -12,7 +12,7 @@
 #' @param split_panel Character: split panel by groups. Default: "One_Panel", options: "One_Panel", "Split_Panel".
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
-#' @param sci_fill_color Character: ggsci fill or color palette. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
+#' @param sci_fill_color Character: ggsci fill or color palette. Default: "Sci_NPG", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param sci_color_alpha Numeric: ggsci border color alpha. Default: 0.75, min: 0.00, max: 1.00.
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
@@ -49,7 +49,7 @@ quantile_plot <- function(data,
 													split_panel = "One_Panel",
 													legend_pos = "right",
 													legend_dir = "vertical",
-													sci_fill_color = "Sci_AAAS",
+													sci_fill_color = "Sci_NPG",
 													sci_color_alpha = 0.75,
 													ggTheme = "theme_light"
 										){

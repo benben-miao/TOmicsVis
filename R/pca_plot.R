@@ -3,17 +3,21 @@
 #' @author benben-miao
 #'
 #' @return Plot: PCA dimensional reduction visualization for RNA-Seq.
-#' @param pca_sample_gene Dataframe: PCA data1 include samples and genes.
-#' @param pca_group_sample Dataframe: PCA data2 include groups and samples.
+#' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
+#' @param xPC Numeric: PC index at x axis. Default: 1, options: 1, 2, 3, ...
+#' @param yPC Numeric: PC index at y axis. Default: 2, options: 2, 3, 4, ...
 #' @param point_size Numeric: PCA plot point size. Default: 5, min: 0.
 #' @param text_size Numeric: PCA plot annotation size. Default: 5, min: 0.
-#' @param ellipse_alpha Numeric: ellipse fill color alpha. Default: 0.30, min: 0.00, max: 1.00.
+#' @param fill_alpha Numeric: ellipse fill color alpha. Default: 0.10, min: 0.00, max: 1.00.
+#' @param border_alpha Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend director. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @importFrom stats prcomp
+#' @importFrom grDevices rgb
 #' @importFrom ggforce geom_mark_ellipse
 #' @export
 #'
@@ -22,39 +26,45 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Load example datasets
-#' data(pca_sample_gene)
-#' data(pca_group_sample)
+#' data(gene_expression)
+#' head(gene_expression)
+#'
+#' data(samples_groups)
+#' head(samples_groups)
 #'
 #' # 3. Default parameters
-#' pca_plot(pca_sample_gene, pca_group_sample)
+#' pca_plot(gene_expression, samples_groups)
 #'
 #' # 4. Set ellipse_alpha = 0.30
-#' pca_plot(pca_sample_gene, pca_group_sample, ellipse_alpha = 0.00)
+#' pca_plot(gene_expression, samples_groups, ellipse_alpha = 0.00)
 #'
 #' # 5. Set legend_pos = "right", legend_dir = "vertical"
-#' pca_plot(pca_sample_gene, pca_group_sample, legend_pos = "top", legend_dir = "horizontal")
+#' pca_plot(gene_expression, samples_groups, legend_pos = "top", legend_dir = "horizontal")
 #'
-pca_plot <- function(pca_sample_gene,
-										 pca_group_sample,
+pca_plot <- function(sample_gene,
+										 group_sample,
+										 xPC = 1,
+										 yPC = 2,
 										 point_size = 5,
 										 text_size = 5,
-										 ellipse_alpha = 0.30,
+										 fill_alpha = 0.10,
+										 border_alpha = 0.00,
 										 legend_pos = "right",
 										 legend_dir = "vertical",
 										 ggTheme = "theme_light"
 										 ){
 	# -> 2. Data
-	pca_sample_gene <- as.data.frame(pca_sample_gene)
-	rownames(pca_sample_gene) <- pca_sample_gene[,1]
-	pca_sample_gene <- pca_sample_gene[,-1]
-	pca_sample_gene <- pca_sample_gene[rowSums(pca_sample_gene > 0) > 0, ]
-	groups <- pca_group_sample[,2]
+	sample_gene <- as.data.frame(sample_gene)
+	rownames(sample_gene) <- sample_gene[,1]
+	sample_gene <- sample_gene[,-1]
+	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
+	groups <- group_sample[,2]
 
-	pca_res <- stats::prcomp(t(pca_sample_gene))
+	pca_res <- stats::prcomp(t(sample_gene))
 	pca_out <- as.data.frame(pca_res$x)
 
 	percentage <- round(pca_res$sdev / sum(pca_res$sdev) * 100, 2)
-	percentage <- paste( colnames(pca_out), "(", paste( as.character(percentage), "%", ")", sep = ""))
+	percentage <- paste(colnames(pca_out), "(", paste( as.character(percentage), "%", ")", sep = ""))
 	# <- 2. Data
 
 	# -> 3. Plot parameters
@@ -133,11 +143,14 @@ pca_plot <- function(pca_sample_gene,
 
 	# -> 4. Plot
 	# colors <- distinctColorPalette(3)
+	labels <- row.names(pca_out)
 	p <- ggplot(pca_out,
-							aes(x = pca_out$PC1,y = pca_out$PC2,
-									color = groups,
-									shape = groups,
-									label = row.names(pca_out))) +
+							aes_string(x = paste("PC", xPC, sep = ""),
+												 y = paste("PC", yPC, sep = ""),
+									color = "groups",
+									shape = "groups",
+									label = "labels"
+									)) +
 		geom_point(size = point_size,
 							 show.legend = TRUE,
 							 alpha = 0.5) +
@@ -146,13 +159,11 @@ pca_plot <- function(pca_sample_gene,
 							alpha = 1,
 							hjust = -0.1,
 							vjust = 0.5) +
-		xlab(percentage[1]) +
-		ylab(percentage[2]) +
-		xlim(min(pca_out$PC1), max(pca_out$PC1) + (max(pca_out$PC1) - min(pca_out$PC1))*0.20) +
-		ylim(min(pca_out$PC2), max(pca_out$PC2) + (max(pca_out$PC2) - min(pca_out$PC2))*0.20) +
-		geom_mark_ellipse(aes(fill = groups,
-													color = groups),
-											alpha = ellipse_alpha,
+		xlab(percentage[xPC]) +
+		ylab(percentage[yPC]) +
+		geom_mark_ellipse(aes(fill = groups),
+											color = rgb(0, 0, 0, border_alpha),
+											alpha = fill_alpha,
 											show.legend = FALSE
 											# level = pca_ellipse_level
 		) +

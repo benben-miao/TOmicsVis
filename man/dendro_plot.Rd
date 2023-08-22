@@ -7,27 +7,27 @@
 dendro_plot(
   data,
   dist_method = "euclidean",
-  hc_method = "average",
+  hc_method = "ward.D2",
   tree_type = "rectangle",
-  k_num = 3,
+  k_num = 5,
   palette = "npg",
   color_labels_by_k = TRUE,
-  horiz = TRUE,
-  label_size = 0.8,
-  line_width = 0.7,
+  horiz = FALSE,
+  label_size = 1,
+  line_width = 1,
   rect = TRUE,
   rect_fill = TRUE,
-  title = "Cluster Dendrogram",
-  xlab = "",
-  ylab = "Height"
+  xlab = "Samples",
+  ylab = "Height",
+  ggTheme = "theme_light"
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe with cols (samples) and rows (genes).}
+\item{data}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
 
 \item{dist_method}{Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".}
 
-\item{hc_method}{Character: hierarchical clustering method. Default: "average", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).}
+\item{hc_method}{Character: hierarchical clustering method. Default: "ward.D2", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).}
 
 \item{tree_type}{Character: plot tree type. Default: "rectangle", options: "rectangle", "circular", "phylogenic".}
 
@@ -47,14 +47,16 @@ dendro_plot(
 
 \item{rect_fill}{Logical: fill the rectangle. Default: TRUE, options: TRUE or FALSE.}
 
-\item{title}{Character: main plot title. Default: "Cluster Dendrogram".}
-
 \item{xlab}{Character: title of the xlab. Default: "".}
 
 \item{ylab}{Character: title of the ylab. Default: "Height".}
+
+\item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+
+\item{title}{Character: main plot title. Default: "Cluster Dendrogram".}
 }
 \value{
-Plot: Dendrograms for multiple samples/groups clustering.
+Plot: dendrogram for multiple samples clustering.
 }
 \description{
 Dendrograms for multiple samples/groups clustering.
@@ -63,18 +65,18 @@ Dendrograms for multiple samples/groups clustering.
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
-# 2. Use example dataset gene_exp
-data(gene_exp)
-head(gene_exp)
+# 2. Use example dataset gene_expression
+data(gene_expression)
+head(gene_expression)
 
 # 3. Default parameters
-dendro_plot(gene_exp)
+dendro_plot(gene_expression)
 
 # 4. Set palette = "aaas"
-dendro_plot(gene_exp, palette = "aaas")
+dendro_plot(gene_expression, palette = "aaas")
 
 # 5. Set tree_type = "circular"
-dendro_plot(gene_exp, tree_type = "circular")
+dendro_plot(gene_expression, tree_type = "circular")
 
 }
 \author{

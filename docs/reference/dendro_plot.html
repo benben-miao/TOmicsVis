@@ -120,26 +120,26 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dendro_plot</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  dist_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
-<span>  hc_method <span class="op">=</span> <span class="st">"average"</span>,</span>
+<span>  hc_method <span class="op">=</span> <span class="st">"ward.D2"</span>,</span>
 <span>  tree_type <span class="op">=</span> <span class="st">"rectangle"</span>,</span>
-<span>  k_num <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  k_num <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  palette <span class="op">=</span> <span class="st">"npg"</span>,</span>
 <span>  color_labels_by_k <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  horiz <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  label_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  line_width <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>  horiz <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  line_width <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  rect <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  rect_fill <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  title <span class="op">=</span> <span class="st">"Cluster Dendrogram"</span>,</span>
-<span>  xlab <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  ylab <span class="op">=</span> <span class="st">"Height"</span></span>
+<span>  xlab <span class="op">=</span> <span class="st">"Samples"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Height"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: gene expression dataframe with cols (samples) and rows (genes).</p></dd>
+<dd><p>Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).</p></dd>
 
 
 <dt>dist_method</dt>
@@ -147,7 +147,7 @@
 
 
 <dt>hc_method</dt>
-<dd><p>Character: hierarchical clustering method. Default: "average", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).</p></dd>
+<dd><p>Character: hierarchical clustering method. Default: "ward.D2", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).</p></dd>
 
 
 <dt>tree_type</dt>
@@ -186,10 +186,6 @@
 <dd><p>Logical: fill the rectangle. Default: TRUE, options: TRUE or FALSE.</p></dd>
 
 
-<dt>title</dt>
-<dd><p>Character: main plot title. Default: "Cluster Dendrogram".</p></dd>
-
-
 <dt>xlab</dt>
 <dd><p>Character: title of the xlab. Default: "".</p></dd>
 
@@ -197,12 +193,20 @@
 <dt>ylab</dt>
 <dd><p>Character: title of the ylab. Default: "Height".</p></dd>
 
+
+<dt>ggTheme</dt>
+<dd><p>Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".</p></dd>
+
+
+<dt>title</dt>
+<dd><p>Character: main plot title. Default: "Cluster Dendrogram".</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>Plot: Dendrograms for multiple samples/groups clustering.</p>
+<p>Plot: dendrogram for multiple samples clustering.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -214,37 +218,37 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 1. Library TOmicsVis package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 2. Use example dataset gene_exp</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              M1       M2       M3       M4       M5       M6        M7       M8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RGL4   8.454808 8.019389 8.990836 9.718631 7.908075 4.147051  4.985084 4.576711</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MPP7   8.690520 8.630346 7.080873 9.838476 8.271824 5.179200  5.200868 3.266993</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> UGCG   8.648366 8.600555 9.431046 7.923021 8.309214 4.902510  5.750804 4.492856</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CYSTM1 8.628884 9.238677 8.487243 8.958537 7.357109 4.541605  6.370533 4.246651</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANXA2  4.983769 6.748022 6.220791 4.719403 3.284346 8.089850 10.637472 7.214912</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ENDOD1 5.551640 5.406465 4.663785 3.550765 4.103507 8.393991  9.538503 9.069923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              M9      M10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RGL4   4.930349 4.293700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MPP7   5.565226 4.300309</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> UGCG   4.659987 3.306275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CYSTM1 4.745769 3.449627</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANXA2  9.002710 5.123359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ENDOD1 8.639664 7.106392</span>
+<span class="r-in"><span><span class="co"># 2. Use example dataset gene_expression</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Transcripts   CT_1   CT_2   CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     transcript_0 655.78 631.08 669.89 654.21 402.56 447.09 510.08 442.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     transcript_1  92.72 112.26 150.30  88.35  76.35  94.55 120.24  80.89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    transcript_10  21.74  31.11  22.58  15.09  13.67  13.24  12.48   7.53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   transcript_100   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  transcript_1000   0.00  14.15  36.01   0.00   0.00 193.59 208.45   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 transcript_10000  89.18 158.04  86.28  82.97 117.78 102.24 129.61 112.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT15_3 LT12_1 LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 399.82 483.30 437.89 444.06   405.43   416.63   464.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  73.94  96.25  82.62  85.48    65.12    61.94    73.44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  13.35  11.16  11.36   6.96     7.82     4.01    10.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 232.40 148.58   0.00 181.61     0.02    12.18     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  85.70  80.89 124.11 115.25   113.87   107.69   119.83</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_exp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 method overwritten by 'dendextend':</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   method     from </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   rev.hclust vegan</span>
 <span class="r-plt img"><img src="dendro_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set palette = "aaas"</span></span></span>
-<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_exp</span>, palette <span class="op">=</span> <span class="st">"aaas"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_expression</span>, palette <span class="op">=</span> <span class="st">"aaas"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dendro_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set tree_type = "circular"</span></span></span>
-<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_exp</span>, tree_type <span class="op">=</span> <span class="st">"circular"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dendro_plot</span><span class="op">(</span><span class="va">gene_expression</span>, tree_type <span class="op">=</span> <span class="st">"circular"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dendro_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

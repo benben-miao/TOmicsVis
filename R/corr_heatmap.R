@@ -3,15 +3,18 @@
 #' @author benben-miao
 #'
 #' @return Plot: heatmap plot filled with Pearson correlation values and P values.
-#' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
+#' @param data Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
 #' @param corr_method Character: correlation method. Default: "pearson", options: "pearson", "spearman", "kendall".
 #' @param cell_shape Character: heatmap cell shape. Default: "square", options: "circle", "square".
 #' @param fill_type Character: heatmap fill type. Default: "full", options: "upper", "low", "full".
 #' @param lable_size Numeric: heatmap label size. Default: 3, min: 0.
+#' @param axis_angle Numeric: axis rotate angle. Default: 45, min: 0, max: 360.
+#' @param axis_size Numberic: axis font size. Default: 12, min: 0.
 #' @param lable_digits Numeric: heatmap label digits. Default: 3, min: 0, max: 3.
 #' @param color_low Character: low value color name or hex value. Default: "blue".
 #' @param color_mid Character: middle value color name or hex value. Default: "white".
 #' @param color_high Character: high value color name or hex value. Default: "red".
+#' @param outline_color Character: outline color name or hex value. Default: "white".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
@@ -23,26 +26,30 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset gene_exp
-#' data(gene_exp)
+#' data(gene_expression)
+#' head(gene_expression)
 #'
 #' # 3. Default parameters
-#' corr_heatmap(gene_exp)
+#' corr_heatmap(gene_expression)
 #'
 #' # 4. Set color_low = "#008800"
-#' corr_heatmap(gene_exp, color_low = "#008800")
+#' corr_heatmap(gene_expression, color_low = "#008800")
 #'
 #' # 5. Set cell_shape = "circle"
-#' corr_heatmap(gene_exp, cell_shape = "circle")
+#' corr_heatmap(gene_expression, cell_shape = "circle")
 #'
 corr_heatmap <- function(data,
 												 corr_method = "pearson",
 												 cell_shape = "square",
 												 fill_type = "full",
 												 lable_size = 3,
+												 axis_angle = 45,
+												 axis_size = 12,
 												 lable_digits = 3,
 												 color_low = "blue",
 												 color_mid = "white",
 												 color_high = "red",
+												 outline_color = "white",
 												 ggTheme = "theme_light"
 												 ){
 	# -> 2. NA and Duplicated
@@ -59,6 +66,13 @@ corr_heatmap <- function(data,
 	# ChoiceBox: "pearson", "spearman", "kendall"
 
 	corr <- round(cor(data, use = "na.or.complete", method = corr_method), 3)
+	if (corr_method == "pearson") {
+		legend_title <- "Pearson's\ncorrelation\ncoefficient"
+	}else if (corr_method == "spearman") {
+		legend_title <- "Spearman's\ncorrelation\ncoefficient"
+	}else if (corr_method == "kendall") {
+		legend_title <- "Kendall's\ncorrelation\ncoefficient"
+	}
 
 	# method <- "square"
 	# ChoiceBox: "circle", "square"
@@ -104,21 +118,34 @@ corr_heatmap <- function(data,
 	p <- ggcorrplot::ggcorrplot(corr,
 									hc.method = "complete",
 									method = cell_shape,
-									# colors = NULL,
-									outline.color = "white",
-									hc.order = TRUE,
+									# colors = c(color_low, color_mid, color_high),
+									outline.color = outline_color,
+									hc.order = FALSE,
 									type = fill_type,
 									lab = lab,
 									lab_size = lable_size,
-									legend.title = "Correlation",
+									tl.srt = axis_angle,
+									tl.cex = axis_size,
 									ggtheme = gg_theme,
-									digits = lable_digits
+									digits = lable_digits,
+									# sig.level = 0.05,
+									# insig = "pch",
+									# pch = 4,
+									# pch.col = "black",
+									# pch.cex = 5,
+									show.legend = TRUE,
+									legend.title = legend_title
 									) +
 		scale_fill_gradient2(low = color_low,
 												 mid = color_mid,
 												 high = color_high,
-												 limits = c(min(corr), max(corr))
-												 )
+												 # limits = c(min(corr), max(corr)),
+												 midpoint = median(corr),
+												 space = "Lab",
+												 guide = "colourbar",
+												 aesthetics = "fill"
+												 ) +
+		labs(fill = legend_title)
 
 	return(p)
 }

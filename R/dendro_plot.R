@@ -2,10 +2,10 @@
 #' @description Dendrograms for multiple samples/groups clustering.
 #' @author wei dong
 #'
-#' @return Plot: Dendrograms for multiple samples/groups clustering.
-#' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
+#' @return Plot: dendrogram for multiple samples clustering.
+#' @param data Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
 #' @param dist_method Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".
-#' @param hc_method Character: hierarchical clustering method. Default: "average", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).
+#' @param hc_method Character: hierarchical clustering method. Default: "ward.D2", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).
 #' @param tree_type Character: plot tree type. Default: "rectangle", options: "rectangle", "circular", "phylogenic".
 #' @param k_num Numeric: the number of groups for cutting the tree. Default: 3.
 #' @param palette Character: color palette used for the group. Default: "npg", options: "npg", "aaas", "lancet", "jco", "ucscgb", "uchicago", "simpsons" and "rickandmorty".
@@ -18,6 +18,7 @@
 #' @param title Character: main plot title. Default: "Cluster Dendrogram".
 #' @param xlab Character: title of the xlab. Default: "".
 #' @param ylab Character: title of the ylab. Default: "Height".
+#' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @importFrom stats dist hclust as.dendrogram
@@ -28,37 +29,40 @@
 #' # 1. Library TOmicsVis package
 #' library(TOmicsVis)
 #'
-#' # 2. Use example dataset gene_exp
-#' data(gene_exp)
-#' head(gene_exp)
+#' # 2. Use example dataset gene_expression
+#' data(gene_expression)
+#' head(gene_expression)
 #'
 #' # 3. Default parameters
-#' dendro_plot(gene_exp)
+#' dendro_plot(gene_expression)
 #'
 #' # 4. Set palette = "aaas"
-#' dendro_plot(gene_exp, palette = "aaas")
+#' dendro_plot(gene_expression, palette = "aaas")
 #'
 #' # 5. Set tree_type = "circular"
-#' dendro_plot(gene_exp, tree_type = "circular")
+#' dendro_plot(gene_expression, tree_type = "circular")
 #'
 dendro_plot <- function(data,
 												dist_method = "euclidean",
-												hc_method = "average",
+												hc_method = "ward.D2",
 												tree_type = "rectangle",
-												k_num = 3,
+												k_num = 5,
 												palette = "npg",
 												color_labels_by_k = TRUE,
-												horiz = TRUE,
-												label_size = 0.8,
-												line_width = 0.7,
+												horiz = FALSE,
+												label_size = 1.00,
+												line_width = 1.00,
 												rect = TRUE,
 												rect_fill = TRUE,
-												title = "Cluster Dendrogram",
-												xlab = "",
-												ylab = "Height"
+												xlab = "Samples",
+												ylab = "Height",
+												ggTheme = "theme_light"
 												){
 
 	# -> 2. NA and Duplicated
+	data <- as.data.frame(data)
+  data <- data[,-1]
+	data <- data[rowSums(data > 0) > 0, ]
 	data <- as.data.frame(t(data))
 	# data <- data[!is.na(data[, 1]), ]
 	# idx <- duplicated(data[, 1])
@@ -94,10 +98,33 @@ dendro_plot <- function(data,
 	# Create dendrogram object
 	dend <- as.dendrogram(hc)
 
+	# ggTheme <- "theme_light"
+	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+	if (ggTheme == "theme_default") {
+		gg_theme <- theme()
+	} else if (ggTheme == "theme_bw") {
+		gg_theme <- theme_bw()
+	} else if (ggTheme == "theme_gray") {
+		gg_theme <- theme_gray()
+	} else if (ggTheme == "theme_light") {
+		gg_theme <- theme_light()
+	} else if (ggTheme == "theme_linedraw") {
+		gg_theme <- theme_linedraw()
+	} else if (ggTheme == "theme_dark") {
+		gg_theme <- theme_dark()
+	} else if (ggTheme == "theme_minimal") {
+		gg_theme <- theme_minimal()
+	} else if (ggTheme == "theme_classic") {
+		gg_theme <- theme_classic()
+	} else if (ggTheme == "theme_void") {
+		gg_theme <- theme_void()
+	} else if (ggTheme == "theme_test") {
+		gg_theme <- theme_test()
+	}
+
 	suppressWarnings(
 	p <- factoextra::fviz_dend(dend,
 														 k = k_num,
-														 k_colors = palette,
 														 color_labels_by_k = color_labels_by_k,
 														 show_labels = TRUE,
 														 repel = TRUE,
@@ -108,11 +135,12 @@ dendro_plot <- function(data,
 														 horiz = horiz,
 														 cex = label_size,
 														 lwd = line_width,
-														 main = title,
+														 main = NULL,
 														 xlab = xlab,
-														 ylab = ylab
+														 ylab = ylab,
+														 k_colors = palette
 														 ) +
-		theme(plot.title = element_text(hjust = 0.5))
+		gg_theme
 	)
 
 	return(p)

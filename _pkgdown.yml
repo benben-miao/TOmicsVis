@@ -128,9 +128,8 @@ reference:
 - title: Example datasets in TOmicsVis
   desc: Example datasets in TOmicsVis.
   contents:
-  - gene_exp
-  - pca_sample_gene
-  - pca_group_sample
+  - gene_expression
+  - samples_groups
   - box_data
   - quantile_data
   - venn_data

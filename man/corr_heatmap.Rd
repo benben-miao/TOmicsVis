@@ -10,15 +10,18 @@ corr_heatmap(
   cell_shape = "square",
   fill_type = "full",
   lable_size = 3,
+  axis_angle = 45,
+  axis_size = 12,
   lable_digits = 3,
   color_low = "blue",
   color_mid = "white",
   color_high = "red",
+  outline_color = "white",
   ggTheme = "theme_light"
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe with cols (samples) and rows (genes).}
+\item{data}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
 
 \item{corr_method}{Character: correlation method. Default: "pearson", options: "pearson", "spearman", "kendall".}
 
@@ -28,6 +31,10 @@ corr_heatmap(
 
 \item{lable_size}{Numeric: heatmap label size. Default: 3, min: 0.}
 
+\item{axis_angle}{Numeric: axis rotate angle. Default: 45, min: 0, max: 360.}
+
+\item{axis_size}{Numberic: axis font size. Default: 12, min: 0.}
+
 \item{lable_digits}{Numeric: heatmap label digits. Default: 3, min: 0, max: 3.}
 
 \item{color_low}{Character: low value color name or hex value. Default: "blue".}
@@ -35,6 +42,8 @@ corr_heatmap(
 \item{color_mid}{Character: middle value color name or hex value. Default: "white".}
 
 \item{color_high}{Character: high value color name or hex value. Default: "red".}
+
+\item{outline_color}{Character: outline color name or hex value. Default: "white".}
 
 \item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
@@ -49,16 +58,17 @@ Correlation Heatmap for samples/groups based on Pearson algorithm.
 library(TOmicsVis)
 
 # 2. Use example dataset gene_exp
-data(gene_exp)
+data(gene_expression)
+head(gene_expression)
 
 # 3. Default parameters
-corr_heatmap(gene_exp)
+corr_heatmap(gene_expression)
 
 # 4. Set color_low = "#008800"
-corr_heatmap(gene_exp, color_low = "#008800")
+corr_heatmap(gene_expression, color_low = "#008800")
 
 # 5. Set cell_shape = "circle"
-corr_heatmap(gene_exp, cell_shape = "circle")
+corr_heatmap(gene_expression, cell_shape = "circle")
 
 }
 \author{

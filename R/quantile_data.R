@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @docType data
-#' @format Dataframe: include Value, Group columns.
+#' @format Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).
 #' @usage data(quantile_data)
 #'
 #' @keywords datasets
@@ -22,5 +22,9 @@
 #'
 "quantile_data"
 
+# data <- read.table(file = "data-tables/quantile_data.txt",
+# 									 header = TRUE,
+# 									 sep = "\t",
+# 									 stringsAsFactors = F)
 # quantile_data <- data
 # usethis::use_data(quantile_data, overwrite = TRUE)

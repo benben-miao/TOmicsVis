@@ -64,10 +64,10 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_cluster_trend.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_exp.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_exp2.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_exp2.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_expression.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_rank_plot.html</loc>
@@ -133,19 +133,16 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/network_plot.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_group_sample.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_sample_gene.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/quantile_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/quantile_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/samples_groups.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/survival_data.html</loc>
