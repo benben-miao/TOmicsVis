@@ -82,11 +82,13 @@ reference:
   - violin_plot
   - survival_plot
   - tsne_plot
+  - umap_plot
 
 - title: ③Differential Expression Analyais
   desc: Analysis and visualization based on gene expression data and differentially expressed genes.
   contents:
   - venn_plot
+  - upsetr_plot
   - flower_plot
   - circos_heatmap
   - volcano_plot

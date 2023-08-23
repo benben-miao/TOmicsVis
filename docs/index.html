@@ -531,9 +531,9 @@
 <span>  point_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  point_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  text_size <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  text_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  fill_alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  border_alpha <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  text_alpha <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<span>  fill_alpha <span class="op">=</span> <span class="fl">0.10</span>,</span>
+<span>  border_alpha <span class="op">=</span> <span class="fl">0.00</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
@@ -545,6 +545,40 @@
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::tsne_plot</span></span></code></pre></div>
 </div>
+<div class="section level4">
+<h4 id="id_325-umap_plot">3.2.5 umap_plot<a class="anchor" aria-label="anchor" href="#id_325-umap_plot"></a>
+</h4>
+<p><strong>Input Data1:</strong> Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
+<p><strong>Output Plot:</strong> UMAP plot for analyzing and visualizing UMAP algorithm.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2. Run tsne_plot plot function</span></span>
+<span><span class="fu"><a href="reference/umap_plot.html">umap_plot</a></span><span class="op">(</span></span>
+<span>  sample_gene <span class="op">=</span> <span class="va">gene_expression</span>,</span>
+<span>  group_sample <span class="op">=</span> <span class="va">samples_groups</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  multi_shape <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  point_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  text_size <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  text_alpha <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<span>  fill_alpha <span class="op">=</span> <span class="fl">0.00</span>,</span>
+<span>  border_alpha <span class="op">=</span> <span class="fl">0.00</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-umap_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/umap_plot.html">?TOmicsVis::umap_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html</a>.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::umap_plot</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="id_33-differential-expression-analyais">3.3 Differential Expression Analyais<a class="anchor" aria-label="anchor" href="#id_33-differential-expression-analyais"></a>
@@ -554,7 +588,7 @@
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
 <p><strong>Output Plot:</strong> Venn plot for stat common and unique gene among multiple sets.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
@@ -580,16 +614,58 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-venn_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::venn_plot</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="id_331-upsetr_plot">3.3.1 upsetr_plot<a class="anchor" aria-label="anchor" href="#id_331-upsetr_plot"></a>
+</h4>
+<p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
+<p><strong>Output Plot:</strong> UpSet plot for stat common and unique gene among multiple sets.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6</span></span>
+<span><span class="co">#&gt; 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354</span></span>
+<span><span class="co">#&gt; 2  transcript_604 transcript_6050  transcript_7601  transcript_2959</span></span>
+<span><span class="co">#&gt; 3 transcript_3912 transcript_1039  transcript_5960  transcript_5919</span></span>
+<span><span class="co">#&gt; 4 transcript_8676 transcript_1344  transcript_3240  transcript_2395</span></span>
+<span><span class="co">#&gt; 5 transcript_8832 transcript_3069 transcript_10224  transcript_9881</span></span>
+<span><span class="co">#&gt; 6   transcript_74 transcript_9809  transcript_3151  transcript_8836</span></span>
+<span></span>
+<span><span class="co"># 2. Run upsetr_plot plot function</span></span>
+<span><span class="fu"><a href="reference/upsetr_plot.html">upsetr_plot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">paired_degs</span>,</span>
+<span>  sets_num <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  keep_order <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  order_by <span class="op">=</span> <span class="st">"freq"</span>,</span>
+<span>  decrease <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  mainbar_color <span class="op">=</span> <span class="st">"#006600"</span>,</span>
+<span>  number_angle <span class="op">=</span> <span class="fl">45</span>,</span>
+<span>  matrix_color <span class="op">=</span> <span class="st">"#cc0000"</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">4.5</span>,</span>
+<span>  point_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  line_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>  shade_color <span class="op">=</span> <span class="st">"#cdcdcd"</span>,</span>
+<span>  shade_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  setsbar_color <span class="op">=</span> <span class="st">"#000066"</span>,</span>
+<span>  setsnum_size <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  text_scale <span class="op">=</span> <span class="fl">1.2</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-upsetr_plot-1.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/upsetr_plot.html">?TOmicsVis::upsetr_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html</a>.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
+<span><span class="co"># ?TOmicsVis::upsetr_plot</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="id_332-flower_plot">3.3.2 flower_plot<a class="anchor" aria-label="anchor" href="#id_332-flower_plot"></a>
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
 <p><strong>Output Plot:</strong> Flower plot for stat common and unique gene among multiple sets.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
 <span></span>
@@ -606,7 +682,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-flower_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/flower_plot.html">?TOmicsVis::flower_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html</a>.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::flower_plot</span></span></code></pre></div>
 </div>
@@ -614,7 +690,7 @@
 <h4 id="id_333-circos_heatmap">3.3.3 circos_heatmap<a class="anchor" aria-label="anchor" href="#id_333-circos_heatmap"></a>
 </h4>
 <p>Circos heatmap plot for visualizing gene expressing in multiple samples.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load circos_heatmap_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">circos_heatmap_data</span><span class="op">)</span></span>
 <span></span>
@@ -635,7 +711,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-circos_heatmap-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/circos_heatmap.html">?TOmicsVis::circos_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::circos_heatmap</span></span></code></pre></div>
 </div>
@@ -643,7 +719,7 @@
 <h4 id="id_334-volcano_plot">3.3.4 volcano_plot<a class="anchor" aria-label="anchor" href="#id_334-volcano_plot"></a>
 </h4>
 <p>Volcano plot for visualizing differentailly expressed genes.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load deg_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span>
 <span></span>
@@ -668,7 +744,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-volcano_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/volcano_plot.html">?TOmicsVis::volcano_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::volcano_plot</span></span></code></pre></div>
 </div>
@@ -676,7 +752,7 @@
 <h4 id="id_335-ma_plot">3.3.5 ma_plot<a class="anchor" aria-label="anchor" href="#id_335-ma_plot"></a>
 </h4>
 <p>MversusA plot for visualizing differentially expressed genes.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load deg_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data2</span><span class="op">)</span></span>
 <span></span>
@@ -700,7 +776,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-ma_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/ma_plot.html">?TOmicsVis::ma_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::ma_plot</span></span></code></pre></div>
 </div>
@@ -708,7 +784,7 @@
 <h4 id="id_336-heatmap_group">3.3.6 heatmap_group<a class="anchor" aria-label="anchor" href="#id_336-heatmap_group"></a>
 </h4>
 <p>Heatmap group for visualizing grouped gene expression data.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">heatmap_group_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">heatmap_group_data</span><span class="op">)</span></span>
@@ -735,7 +811,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-heatmap_group-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/heatmap_group.html">?TOmicsVis::heatmap_group</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html</a>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_group</span></span></code></pre></div>
 </div>
@@ -747,7 +823,7 @@
 <h4 id="id_341-trend_plot">3.4.1 trend_plot<a class="anchor" aria-label="anchor" href="#id_341-trend_plot"></a>
 </h4>
 <p>Trend plot for visualizing gene expression trend profile in multiple traits.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load chord_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">trend_data</span><span class="op">)</span></span>
 <span></span>
@@ -771,7 +847,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-trend_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/trend_plot.html">?TOmicsVis::trend_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html</a>.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::trend_plot</span></span></code></pre></div>
 </div>
@@ -779,7 +855,7 @@
 <h4 id="id_342-gene_cluster_trend">3.4.2 gene_cluster_trend<a class="anchor" aria-label="anchor" href="#id_342-gene_cluster_trend"></a>
 </h4>
 <p>Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_cluster_data</span><span class="op">)</span></span>
 <span></span>
@@ -794,9 +870,9 @@
 <span><span class="co">#&gt; 0 genes excluded.</span></span>
 <span><span class="co">#&gt; 12 genes excluded.</span></span></code></pre></div>
 <p><img src="reference/figures/README-gene_cluster_trend-1.png"><!-- --></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/gene_cluster_trend.html">?TOmicsVis::gene_cluster_trend</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_cluster_trend</span></span></code></pre></div>
 </div>
@@ -804,7 +880,7 @@
 <h4 id="id_343-gene_rank_plot">3.4.3 gene_rank_plot<a class="anchor" aria-label="anchor" href="#id_343-gene_rank_plot"></a>
 </h4>
 <p>Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span>
 <span></span>
@@ -823,7 +899,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-gene_rank_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/gene_rank_plot.html">?TOmicsVis::gene_rank_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html</a>.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_rank_plot</span></span></code></pre></div>
 </div>
@@ -831,7 +907,7 @@
 <h4 id="id_344-wgcna_pipeline">3.4.4 wgcna_pipeline<a class="anchor" aria-label="anchor" href="#id_344-wgcna_pipeline"></a>
 </h4>
 <p>WGCNA analysis pipeline for RNA-Seq.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load wgcna_pipeline example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wgcna_gene_exp</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wgcna_sample_group</span><span class="op">)</span></span>
@@ -839,7 +915,7 @@
 <span><span class="co"># 2. Run wgcna_pipeline plot function</span></span>
 <span><span class="co"># wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/wgcna_pipeline.html">?TOmicsVis::wgcna_pipeline</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html</a>.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::wgcna_pipeline</span></span></code></pre></div>
 </div>
@@ -847,7 +923,7 @@
 <h4 id="id_345-network_plot">3.4.5 network_plot<a class="anchor" aria-label="anchor" href="#id_345-network_plot"></a>
 </h4>
 <p>Network plot for analyzing and visualizing relationship of genes.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span>
@@ -877,7 +953,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-network_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/network_plot.html">?TOmicsVis::network_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/network_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/network_plot.html</a>.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::network_plot</span></span></code></pre></div>
 </div>
@@ -885,7 +961,7 @@
 <h4 id="id_346-heatmap_cluster">3.4.6 heatmap_cluster<a class="anchor" aria-label="anchor" href="#id_346-heatmap_cluster"></a>
 </h4>
 <p>Heatmap cluster plot for visualizing clustered gene expression data.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span>
@@ -912,10 +988,10 @@
 <span>  base_size <span class="op">=</span> <span class="fl">12</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-heatmap_cluster-1.png"><!-- --></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co">#&gt; Using Cluster, gene as id variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="co">#&gt; Using Cluster, gene as id variables</span></span></code></pre></div>
 <p><img src="reference/figures/README-heatmap_cluster-2.png"><!-- --><img src="reference/figures/README-heatmap_cluster-3.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/heatmap_cluster.html">?TOmicsVis::heatmap_cluster</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html</a>.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_cluster</span></span></code></pre></div>
 </div>
@@ -927,7 +1003,7 @@
 <h4 id="id_351-chord_plot">3.5.1 chord_plot<a class="anchor" aria-label="anchor" href="#id_351-chord_plot"></a>
 </h4>
 <p>Chord plot for visualizing the relationships of pathways and genes.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load chord_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">chord_data</span><span class="op">)</span></span>
 <span></span>
@@ -946,109 +1022,109 @@
 <span>  dist_label <span class="op">=</span> <span class="fl">0.3</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-chord_plot-1.png"><!-- --></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="co">#&gt;      rn         cn value1 value2 o1 o2 x1  x2       col</span></span>
-<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a><span class="co">#&gt; 1    S1 Samples.E1      4      4  5 20 61 161 #FF00007F</span></span>
-<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a><span class="co">#&gt; 2    S2 Samples.E1      7      7  5 19 45 157 #FF3D007F</span></span>
-<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a><span class="co">#&gt; 3    S3 Samples.E1      9      9  5 18 55 150 #FF7A007F</span></span>
-<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a><span class="co">#&gt; 4    S4 Samples.E1     14     14  5 17 55 141 #FFB8007F</span></span>
-<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a><span class="co">#&gt; 5    S5 Samples.E1      1      1  5 16 22 127 #FFF5007F</span></span>
-<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a><span class="co">#&gt; 6    S6 Samples.E1     10     10  5 15 59 126 #CCFF007F</span></span>
-<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a><span class="co">#&gt; 7    S7 Samples.E1      3      3  5 14 31 116 #8FFF007F</span></span>
-<span id="cb48-9"><a href="#cb48-9" tabindex="-1"></a><span class="co">#&gt; 8    S8 Samples.E1     15     15  5 13 52 113 #52FF007F</span></span>
-<span id="cb48-10"><a href="#cb48-10" tabindex="-1"></a><span class="co">#&gt; 9    S9 Samples.E1      5      5  5 12 37  98 #14FF007F</span></span>
-<span id="cb48-11"><a href="#cb48-11" tabindex="-1"></a><span class="co">#&gt; 10  S10 Samples.E1      7      7  5 11 27  93 #00FF297F</span></span>
-<span id="cb48-12"><a href="#cb48-12" tabindex="-1"></a><span class="co">#&gt; 11  S11 Samples.E1      6      6  5 10 35  86 #00FF667F</span></span>
-<span id="cb48-13"><a href="#cb48-13" tabindex="-1"></a><span class="co">#&gt; 12  S12 Samples.E1     11     11  5  9 49  80 #00FFA37F</span></span>
-<span id="cb48-14"><a href="#cb48-14" tabindex="-1"></a><span class="co">#&gt; 13  S13 Samples.E1     18     18  5  8 69  69 #00FFE07F</span></span>
-<span id="cb48-15"><a href="#cb48-15" tabindex="-1"></a><span class="co">#&gt; 14  S14 Samples.E1      1      1  5  7 22  51 #00E0FF7F</span></span>
-<span id="cb48-16"><a href="#cb48-16" tabindex="-1"></a><span class="co">#&gt; 15  S15 Samples.E1      5      5  5  6 58  50 #00A3FF7F</span></span>
-<span id="cb48-17"><a href="#cb48-17" tabindex="-1"></a><span class="co">#&gt; 16  S16 Samples.E1     12     12  5  5 48  45 #0066FF7F</span></span>
-<span id="cb48-18"><a href="#cb48-18" tabindex="-1"></a><span class="co">#&gt; 17  S17 Samples.E1      9      9  5  4 23  33 #0029FF7F</span></span>
-<span id="cb48-19"><a href="#cb48-19" tabindex="-1"></a><span class="co">#&gt; 18  S18 Samples.E1      5      5  5  3 50  24 #1400FF7F</span></span>
-<span id="cb48-20"><a href="#cb48-20" tabindex="-1"></a><span class="co">#&gt; 19  S19 Samples.E1      4      4  5  2 40  19 #5200FF7F</span></span>
-<span id="cb48-21"><a href="#cb48-21" tabindex="-1"></a><span class="co">#&gt; 20  S20 Samples.E1     15     15  5  1 58  15 #8F00FF7F</span></span>
-<span id="cb48-22"><a href="#cb48-22" tabindex="-1"></a><span class="co">#&gt; 21   S1         E2     16     16  4 20 57 166 #FF00007F</span></span>
-<span id="cb48-23"><a href="#cb48-23" tabindex="-1"></a><span class="co">#&gt; 22   S2         E2     11     11  4 19 38 150 #FF3D007F</span></span>
-<span id="cb48-24"><a href="#cb48-24" tabindex="-1"></a><span class="co">#&gt; 23   S3         E2      2      2  4 18 46 139 #FF7A007F</span></span>
-<span id="cb48-25"><a href="#cb48-25" tabindex="-1"></a><span class="co">#&gt; 24   S4         E2      9      9  4 17 41 137 #FFB8007F</span></span>
-<span id="cb48-26"><a href="#cb48-26" tabindex="-1"></a><span class="co">#&gt; 25   S5         E2      1      1  4 16 21 128 #FFF5007F</span></span>
-<span id="cb48-27"><a href="#cb48-27" tabindex="-1"></a><span class="co">#&gt; 26   S6         E2     18     18  4 15 49 127 #CCFF007F</span></span>
-<span id="cb48-28"><a href="#cb48-28" tabindex="-1"></a><span class="co">#&gt; 27   S7         E2      8      8  4 14 28 109 #8FFF007F</span></span>
-<span id="cb48-29"><a href="#cb48-29" tabindex="-1"></a><span class="co">#&gt; 28   S8         E2      4      4  4 13 37 101 #52FF007F</span></span>
-<span id="cb48-30"><a href="#cb48-30" tabindex="-1"></a><span class="co">#&gt; 29   S9         E2      4      4  4 12 32  97 #14FF007F</span></span>
-<span id="cb48-31"><a href="#cb48-31" tabindex="-1"></a><span class="co">#&gt; 30  S10         E2      9      9  4 11 20  93 #00FF297F</span></span>
-<span id="cb48-32"><a href="#cb48-32" tabindex="-1"></a><span class="co">#&gt; 31  S11         E2      7      7  4 10 29  84 #00FF667F</span></span>
-<span id="cb48-33"><a href="#cb48-33" tabindex="-1"></a><span class="co">#&gt; 32  S12         E2      2      2  4  9 38  77 #00FFA37F</span></span>
-<span id="cb48-34"><a href="#cb48-34" tabindex="-1"></a><span class="co">#&gt; 33  S13         E2     13     13  4  8 51  75 #00FFE07F</span></span>
-<span id="cb48-35"><a href="#cb48-35" tabindex="-1"></a><span class="co">#&gt; 34  S14         E2      2      2  4  7 21  62 #00E0FF7F</span></span>
-<span id="cb48-36"><a href="#cb48-36" tabindex="-1"></a><span class="co">#&gt; 35  S15         E2     13     13  4  6 53  60 #00A3FF7F</span></span>
-<span id="cb48-37"><a href="#cb48-37" tabindex="-1"></a><span class="co">#&gt; 36  S16         E2      7      7  4  5 36  47 #0066FF7F</span></span>
-<span id="cb48-38"><a href="#cb48-38" tabindex="-1"></a><span class="co">#&gt; 37  S17         E2      2      2  4  4 14  40 #0029FF7F</span></span>
-<span id="cb48-39"><a href="#cb48-39" tabindex="-1"></a><span class="co">#&gt; 38  S18         E2     13     13  4  3 45  38 #1400FF7F</span></span>
-<span id="cb48-40"><a href="#cb48-40" tabindex="-1"></a><span class="co">#&gt; 39  S19         E2     12     12  4  2 36  25 #5200FF7F</span></span>
-<span id="cb48-41"><a href="#cb48-41" tabindex="-1"></a><span class="co">#&gt; 40  S20         E2     13     13  4  1 43  13 #8F00FF7F</span></span>
-<span id="cb48-42"><a href="#cb48-42" tabindex="-1"></a><span class="co">#&gt; 41   S1         E3     12     12  3 20 41 150 #FF00007F</span></span>
-<span id="cb48-43"><a href="#cb48-43" tabindex="-1"></a><span class="co">#&gt; 42   S2         E3      2      2  3 19 27 138 #FF3D007F</span></span>
-<span id="cb48-44"><a href="#cb48-44" tabindex="-1"></a><span class="co">#&gt; 43   S3         E3     17     17  3 18 44 136 #FF7A007F</span></span>
-<span id="cb48-45"><a href="#cb48-45" tabindex="-1"></a><span class="co">#&gt; 44   S4         E3     12     12  3 17 32 119 #FFB8007F</span></span>
-<span id="cb48-46"><a href="#cb48-46" tabindex="-1"></a><span class="co">#&gt; 45   S5         E3      7      7  3 16 20 107 #FFF5007F</span></span>
-<span id="cb48-47"><a href="#cb48-47" tabindex="-1"></a><span class="co">#&gt; 46   S6         E3      9      9  3 15 31 100 #CCFF007F</span></span>
-<span id="cb48-48"><a href="#cb48-48" tabindex="-1"></a><span class="co">#&gt; 47   S7         E3      4      4  3 14 20  91 #8FFF007F</span></span>
-<span id="cb48-49"><a href="#cb48-49" tabindex="-1"></a><span class="co">#&gt; 48   S8         E3      9      9  3 13 33  87 #52FF007F</span></span>
-<span id="cb48-50"><a href="#cb48-50" tabindex="-1"></a><span class="co">#&gt; 49   S9         E3      7      7  3 12 28  78 #14FF007F</span></span>
-<span id="cb48-51"><a href="#cb48-51" tabindex="-1"></a><span class="co">#&gt; 50  S10         E3      1      1  3 11 11  71 #00FF297F</span></span>
-<span id="cb48-52"><a href="#cb48-52" tabindex="-1"></a><span class="co">#&gt; 51  S11         E3      5      5  3 10 22  70 #00FF667F</span></span>
-<span id="cb48-53"><a href="#cb48-53" tabindex="-1"></a><span class="co">#&gt; 52  S12         E3      2      2  3  9 36  65 #00FFA37F</span></span>
-<span id="cb48-54"><a href="#cb48-54" tabindex="-1"></a><span class="co">#&gt; 53  S13         E3      8      8  3  8 38  63 #00FFE07F</span></span>
-<span id="cb48-55"><a href="#cb48-55" tabindex="-1"></a><span class="co">#&gt; 54  S14         E3      2      2  3  7 19  55 #00E0FF7F</span></span>
-<span id="cb48-56"><a href="#cb48-56" tabindex="-1"></a><span class="co">#&gt; 55  S15         E3      6      6  3  6 40  53 #00A3FF7F</span></span>
-<span id="cb48-57"><a href="#cb48-57" tabindex="-1"></a><span class="co">#&gt; 56  S16         E3     15     15  3  5 29  47 #0066FF7F</span></span>
-<span id="cb48-58"><a href="#cb48-58" tabindex="-1"></a><span class="co">#&gt; 57  S17         E3      1      1  3  4 12  32 #0029FF7F</span></span>
-<span id="cb48-59"><a href="#cb48-59" tabindex="-1"></a><span class="co">#&gt; 58  S18         E3     13     13  3  3 32  31 #1400FF7F</span></span>
-<span id="cb48-60"><a href="#cb48-60" tabindex="-1"></a><span class="co">#&gt; 59  S19         E3      4      4  3  2 24  18 #5200FF7F</span></span>
-<span id="cb48-61"><a href="#cb48-61" tabindex="-1"></a><span class="co">#&gt; 60  S20         E3     14     14  3  1 30  14 #8F00FF7F</span></span>
-<span id="cb48-62"><a href="#cb48-62" tabindex="-1"></a><span class="co">#&gt; 61   S1         E4     18     18  2 20 29 227 #FF00007F</span></span>
-<span id="cb48-63"><a href="#cb48-63" tabindex="-1"></a><span class="co">#&gt; 62   S2         E4     15     15  2 19 25 209 #FF3D007F</span></span>
-<span id="cb48-64"><a href="#cb48-64" tabindex="-1"></a><span class="co">#&gt; 63   S3         E4     16     16  2 18 27 194 #FF7A007F</span></span>
-<span id="cb48-65"><a href="#cb48-65" tabindex="-1"></a><span class="co">#&gt; 64   S4         E4      3      3  2 17 20 178 #FFB8007F</span></span>
-<span id="cb48-66"><a href="#cb48-66" tabindex="-1"></a><span class="co">#&gt; 65   S5         E4      1      1  2 16 13 175 #FFF5007F</span></span>
-<span id="cb48-67"><a href="#cb48-67" tabindex="-1"></a><span class="co">#&gt; 66   S6         E4     13     13  2 15 22 174 #CCFF007F</span></span>
-<span id="cb48-68"><a href="#cb48-68" tabindex="-1"></a><span class="co">#&gt; 67   S7         E4     15     15  2 14 16 161 #8FFF007F</span></span>
-<span id="cb48-69"><a href="#cb48-69" tabindex="-1"></a><span class="co">#&gt; 68   S8         E4     13     13  2 13 24 146 #52FF007F</span></span>
-<span id="cb48-70"><a href="#cb48-70" tabindex="-1"></a><span class="co">#&gt; 69   S9         E4      3      3  2 12 21 133 #14FF007F</span></span>
-<span id="cb48-71"><a href="#cb48-71" tabindex="-1"></a><span class="co">#&gt; 70  S10         E4      4      4  2 11 10 130 #00FF297F</span></span>
-<span id="cb48-72"><a href="#cb48-72" tabindex="-1"></a><span class="co">#&gt; 71  S11         E4      8      8  2 10 17 126 #00FF667F</span></span>
-<span id="cb48-73"><a href="#cb48-73" tabindex="-1"></a><span class="co">#&gt; 72  S12         E4     16     16  2  9 34 118 #00FFA37F</span></span>
-<span id="cb48-74"><a href="#cb48-74" tabindex="-1"></a><span class="co">#&gt; 73  S13         E4     14     14  2  8 30 102 #00FFE07F</span></span>
-<span id="cb48-75"><a href="#cb48-75" tabindex="-1"></a><span class="co">#&gt; 74  S14         E4     14     14  2  7 17  88 #00E0FF7F</span></span>
-<span id="cb48-76"><a href="#cb48-76" tabindex="-1"></a><span class="co">#&gt; 75  S15         E4     16     16  2  6 34  74 #00A3FF7F</span></span>
-<span id="cb48-77"><a href="#cb48-77" tabindex="-1"></a><span class="co">#&gt; 76  S16         E4     12     12  2  5 14  58 #0066FF7F</span></span>
-<span id="cb48-78"><a href="#cb48-78" tabindex="-1"></a><span class="co">#&gt; 77  S17         E4     10     10  2  4 11  46 #0029FF7F</span></span>
-<span id="cb48-79"><a href="#cb48-79" tabindex="-1"></a><span class="co">#&gt; 78  S18         E4     11     11  2  3 19  36 #1400FF7F</span></span>
-<span id="cb48-80"><a href="#cb48-80" tabindex="-1"></a><span class="co">#&gt; 79  S19         E4     14     14  2  2 20  25 #5200FF7F</span></span>
-<span id="cb48-81"><a href="#cb48-81" tabindex="-1"></a><span class="co">#&gt; 80  S20         E4     11     11  2  1 16  11 #8F00FF7F</span></span>
-<span id="cb48-82"><a href="#cb48-82" tabindex="-1"></a><span class="co">#&gt; 81   S1         E5     11     11  1 20 11 192 #FF00007F</span></span>
-<span id="cb48-83"><a href="#cb48-83" tabindex="-1"></a><span class="co">#&gt; 82   S2         E5     10     10  1 19 10 181 #FF3D007F</span></span>
-<span id="cb48-84"><a href="#cb48-84" tabindex="-1"></a><span class="co">#&gt; 83   S3         E5     11     11  1 18 11 171 #FF7A007F</span></span>
-<span id="cb48-85"><a href="#cb48-85" tabindex="-1"></a><span class="co">#&gt; 84   S4         E5     17     17  1 17 17 160 #FFB8007F</span></span>
-<span id="cb48-86"><a href="#cb48-86" tabindex="-1"></a><span class="co">#&gt; 85   S5         E5     12     12  1 16 12 143 #FFF5007F</span></span>
-<span id="cb48-87"><a href="#cb48-87" tabindex="-1"></a><span class="co">#&gt; 86   S6         E5      9      9  1 15  9 131 #CCFF007F</span></span>
-<span id="cb48-88"><a href="#cb48-88" tabindex="-1"></a><span class="co">#&gt; 87   S7         E5      1      1  1 14  1 122 #8FFF007F</span></span>
-<span id="cb48-89"><a href="#cb48-89" tabindex="-1"></a><span class="co">#&gt; 88   S8         E5     11     11  1 13 11 121 #52FF007F</span></span>
-<span id="cb48-90"><a href="#cb48-90" tabindex="-1"></a><span class="co">#&gt; 89   S9         E5     18     18  1 12 18 110 #14FF007F</span></span>
-<span id="cb48-91"><a href="#cb48-91" tabindex="-1"></a><span class="co">#&gt; 90  S10         E5      6      6  1 11  6  92 #00FF297F</span></span>
-<span id="cb48-92"><a href="#cb48-92" tabindex="-1"></a><span class="co">#&gt; 91  S11         E5      9      9  1 10  9  86 #00FF667F</span></span>
-<span id="cb48-93"><a href="#cb48-93" tabindex="-1"></a><span class="co">#&gt; 92  S12         E5     18     18  1  9 18  77 #00FFA37F</span></span>
-<span id="cb48-94"><a href="#cb48-94" tabindex="-1"></a><span class="co">#&gt; 93  S13         E5     16     16  1  8 16  59 #00FFE07F</span></span>
-<span id="cb48-95"><a href="#cb48-95" tabindex="-1"></a><span class="co">#&gt; 94  S14         E5      3      3  1  7  3  43 #00E0FF7F</span></span>
-<span id="cb48-96"><a href="#cb48-96" tabindex="-1"></a><span class="co">#&gt; 95  S15         E5     18     18  1  6 18  40 #00A3FF7F</span></span>
-<span id="cb48-97"><a href="#cb48-97" tabindex="-1"></a><span class="co">#&gt; 96  S16         E5      2      2  1  5  2  22 #0066FF7F</span></span>
-<span id="cb48-98"><a href="#cb48-98" tabindex="-1"></a><span class="co">#&gt; 97  S17         E5      1      1  1  4  1  20 #0029FF7F</span></span>
-<span id="cb48-99"><a href="#cb48-99" tabindex="-1"></a><span class="co">#&gt; 98  S18         E5      8      8  1  3  8  19 #1400FF7F</span></span>
-<span id="cb48-100"><a href="#cb48-100" tabindex="-1"></a><span class="co">#&gt; 99  S19         E5      6      6  1  2  6  11 #5200FF7F</span></span>
-<span id="cb48-101"><a href="#cb48-101" tabindex="-1"></a><span class="co">#&gt; 100 S20         E5      5      5  1  1  5   5 #8F00FF7F</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="co">#&gt;      rn         cn value1 value2 o1 o2 x1  x2       col</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a><span class="co">#&gt; 1    S1 Samples.E1      4      4  5 20 61 161 #FF00007F</span></span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="co">#&gt; 2    S2 Samples.E1      7      7  5 19 45 157 #FF3D007F</span></span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a><span class="co">#&gt; 3    S3 Samples.E1      9      9  5 18 55 150 #FF7A007F</span></span>
+<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a><span class="co">#&gt; 4    S4 Samples.E1     14     14  5 17 55 141 #FFB8007F</span></span>
+<span id="cb52-6"><a href="#cb52-6" tabindex="-1"></a><span class="co">#&gt; 5    S5 Samples.E1      1      1  5 16 22 127 #FFF5007F</span></span>
+<span id="cb52-7"><a href="#cb52-7" tabindex="-1"></a><span class="co">#&gt; 6    S6 Samples.E1     10     10  5 15 59 126 #CCFF007F</span></span>
+<span id="cb52-8"><a href="#cb52-8" tabindex="-1"></a><span class="co">#&gt; 7    S7 Samples.E1      3      3  5 14 31 116 #8FFF007F</span></span>
+<span id="cb52-9"><a href="#cb52-9" tabindex="-1"></a><span class="co">#&gt; 8    S8 Samples.E1     15     15  5 13 52 113 #52FF007F</span></span>
+<span id="cb52-10"><a href="#cb52-10" tabindex="-1"></a><span class="co">#&gt; 9    S9 Samples.E1      5      5  5 12 37  98 #14FF007F</span></span>
+<span id="cb52-11"><a href="#cb52-11" tabindex="-1"></a><span class="co">#&gt; 10  S10 Samples.E1      7      7  5 11 27  93 #00FF297F</span></span>
+<span id="cb52-12"><a href="#cb52-12" tabindex="-1"></a><span class="co">#&gt; 11  S11 Samples.E1      6      6  5 10 35  86 #00FF667F</span></span>
+<span id="cb52-13"><a href="#cb52-13" tabindex="-1"></a><span class="co">#&gt; 12  S12 Samples.E1     11     11  5  9 49  80 #00FFA37F</span></span>
+<span id="cb52-14"><a href="#cb52-14" tabindex="-1"></a><span class="co">#&gt; 13  S13 Samples.E1     18     18  5  8 69  69 #00FFE07F</span></span>
+<span id="cb52-15"><a href="#cb52-15" tabindex="-1"></a><span class="co">#&gt; 14  S14 Samples.E1      1      1  5  7 22  51 #00E0FF7F</span></span>
+<span id="cb52-16"><a href="#cb52-16" tabindex="-1"></a><span class="co">#&gt; 15  S15 Samples.E1      5      5  5  6 58  50 #00A3FF7F</span></span>
+<span id="cb52-17"><a href="#cb52-17" tabindex="-1"></a><span class="co">#&gt; 16  S16 Samples.E1     12     12  5  5 48  45 #0066FF7F</span></span>
+<span id="cb52-18"><a href="#cb52-18" tabindex="-1"></a><span class="co">#&gt; 17  S17 Samples.E1      9      9  5  4 23  33 #0029FF7F</span></span>
+<span id="cb52-19"><a href="#cb52-19" tabindex="-1"></a><span class="co">#&gt; 18  S18 Samples.E1      5      5  5  3 50  24 #1400FF7F</span></span>
+<span id="cb52-20"><a href="#cb52-20" tabindex="-1"></a><span class="co">#&gt; 19  S19 Samples.E1      4      4  5  2 40  19 #5200FF7F</span></span>
+<span id="cb52-21"><a href="#cb52-21" tabindex="-1"></a><span class="co">#&gt; 20  S20 Samples.E1     15     15  5  1 58  15 #8F00FF7F</span></span>
+<span id="cb52-22"><a href="#cb52-22" tabindex="-1"></a><span class="co">#&gt; 21   S1         E2     16     16  4 20 57 166 #FF00007F</span></span>
+<span id="cb52-23"><a href="#cb52-23" tabindex="-1"></a><span class="co">#&gt; 22   S2         E2     11     11  4 19 38 150 #FF3D007F</span></span>
+<span id="cb52-24"><a href="#cb52-24" tabindex="-1"></a><span class="co">#&gt; 23   S3         E2      2      2  4 18 46 139 #FF7A007F</span></span>
+<span id="cb52-25"><a href="#cb52-25" tabindex="-1"></a><span class="co">#&gt; 24   S4         E2      9      9  4 17 41 137 #FFB8007F</span></span>
+<span id="cb52-26"><a href="#cb52-26" tabindex="-1"></a><span class="co">#&gt; 25   S5         E2      1      1  4 16 21 128 #FFF5007F</span></span>
+<span id="cb52-27"><a href="#cb52-27" tabindex="-1"></a><span class="co">#&gt; 26   S6         E2     18     18  4 15 49 127 #CCFF007F</span></span>
+<span id="cb52-28"><a href="#cb52-28" tabindex="-1"></a><span class="co">#&gt; 27   S7         E2      8      8  4 14 28 109 #8FFF007F</span></span>
+<span id="cb52-29"><a href="#cb52-29" tabindex="-1"></a><span class="co">#&gt; 28   S8         E2      4      4  4 13 37 101 #52FF007F</span></span>
+<span id="cb52-30"><a href="#cb52-30" tabindex="-1"></a><span class="co">#&gt; 29   S9         E2      4      4  4 12 32  97 #14FF007F</span></span>
+<span id="cb52-31"><a href="#cb52-31" tabindex="-1"></a><span class="co">#&gt; 30  S10         E2      9      9  4 11 20  93 #00FF297F</span></span>
+<span id="cb52-32"><a href="#cb52-32" tabindex="-1"></a><span class="co">#&gt; 31  S11         E2      7      7  4 10 29  84 #00FF667F</span></span>
+<span id="cb52-33"><a href="#cb52-33" tabindex="-1"></a><span class="co">#&gt; 32  S12         E2      2      2  4  9 38  77 #00FFA37F</span></span>
+<span id="cb52-34"><a href="#cb52-34" tabindex="-1"></a><span class="co">#&gt; 33  S13         E2     13     13  4  8 51  75 #00FFE07F</span></span>
+<span id="cb52-35"><a href="#cb52-35" tabindex="-1"></a><span class="co">#&gt; 34  S14         E2      2      2  4  7 21  62 #00E0FF7F</span></span>
+<span id="cb52-36"><a href="#cb52-36" tabindex="-1"></a><span class="co">#&gt; 35  S15         E2     13     13  4  6 53  60 #00A3FF7F</span></span>
+<span id="cb52-37"><a href="#cb52-37" tabindex="-1"></a><span class="co">#&gt; 36  S16         E2      7      7  4  5 36  47 #0066FF7F</span></span>
+<span id="cb52-38"><a href="#cb52-38" tabindex="-1"></a><span class="co">#&gt; 37  S17         E2      2      2  4  4 14  40 #0029FF7F</span></span>
+<span id="cb52-39"><a href="#cb52-39" tabindex="-1"></a><span class="co">#&gt; 38  S18         E2     13     13  4  3 45  38 #1400FF7F</span></span>
+<span id="cb52-40"><a href="#cb52-40" tabindex="-1"></a><span class="co">#&gt; 39  S19         E2     12     12  4  2 36  25 #5200FF7F</span></span>
+<span id="cb52-41"><a href="#cb52-41" tabindex="-1"></a><span class="co">#&gt; 40  S20         E2     13     13  4  1 43  13 #8F00FF7F</span></span>
+<span id="cb52-42"><a href="#cb52-42" tabindex="-1"></a><span class="co">#&gt; 41   S1         E3     12     12  3 20 41 150 #FF00007F</span></span>
+<span id="cb52-43"><a href="#cb52-43" tabindex="-1"></a><span class="co">#&gt; 42   S2         E3      2      2  3 19 27 138 #FF3D007F</span></span>
+<span id="cb52-44"><a href="#cb52-44" tabindex="-1"></a><span class="co">#&gt; 43   S3         E3     17     17  3 18 44 136 #FF7A007F</span></span>
+<span id="cb52-45"><a href="#cb52-45" tabindex="-1"></a><span class="co">#&gt; 44   S4         E3     12     12  3 17 32 119 #FFB8007F</span></span>
+<span id="cb52-46"><a href="#cb52-46" tabindex="-1"></a><span class="co">#&gt; 45   S5         E3      7      7  3 16 20 107 #FFF5007F</span></span>
+<span id="cb52-47"><a href="#cb52-47" tabindex="-1"></a><span class="co">#&gt; 46   S6         E3      9      9  3 15 31 100 #CCFF007F</span></span>
+<span id="cb52-48"><a href="#cb52-48" tabindex="-1"></a><span class="co">#&gt; 47   S7         E3      4      4  3 14 20  91 #8FFF007F</span></span>
+<span id="cb52-49"><a href="#cb52-49" tabindex="-1"></a><span class="co">#&gt; 48   S8         E3      9      9  3 13 33  87 #52FF007F</span></span>
+<span id="cb52-50"><a href="#cb52-50" tabindex="-1"></a><span class="co">#&gt; 49   S9         E3      7      7  3 12 28  78 #14FF007F</span></span>
+<span id="cb52-51"><a href="#cb52-51" tabindex="-1"></a><span class="co">#&gt; 50  S10         E3      1      1  3 11 11  71 #00FF297F</span></span>
+<span id="cb52-52"><a href="#cb52-52" tabindex="-1"></a><span class="co">#&gt; 51  S11         E3      5      5  3 10 22  70 #00FF667F</span></span>
+<span id="cb52-53"><a href="#cb52-53" tabindex="-1"></a><span class="co">#&gt; 52  S12         E3      2      2  3  9 36  65 #00FFA37F</span></span>
+<span id="cb52-54"><a href="#cb52-54" tabindex="-1"></a><span class="co">#&gt; 53  S13         E3      8      8  3  8 38  63 #00FFE07F</span></span>
+<span id="cb52-55"><a href="#cb52-55" tabindex="-1"></a><span class="co">#&gt; 54  S14         E3      2      2  3  7 19  55 #00E0FF7F</span></span>
+<span id="cb52-56"><a href="#cb52-56" tabindex="-1"></a><span class="co">#&gt; 55  S15         E3      6      6  3  6 40  53 #00A3FF7F</span></span>
+<span id="cb52-57"><a href="#cb52-57" tabindex="-1"></a><span class="co">#&gt; 56  S16         E3     15     15  3  5 29  47 #0066FF7F</span></span>
+<span id="cb52-58"><a href="#cb52-58" tabindex="-1"></a><span class="co">#&gt; 57  S17         E3      1      1  3  4 12  32 #0029FF7F</span></span>
+<span id="cb52-59"><a href="#cb52-59" tabindex="-1"></a><span class="co">#&gt; 58  S18         E3     13     13  3  3 32  31 #1400FF7F</span></span>
+<span id="cb52-60"><a href="#cb52-60" tabindex="-1"></a><span class="co">#&gt; 59  S19         E3      4      4  3  2 24  18 #5200FF7F</span></span>
+<span id="cb52-61"><a href="#cb52-61" tabindex="-1"></a><span class="co">#&gt; 60  S20         E3     14     14  3  1 30  14 #8F00FF7F</span></span>
+<span id="cb52-62"><a href="#cb52-62" tabindex="-1"></a><span class="co">#&gt; 61   S1         E4     18     18  2 20 29 227 #FF00007F</span></span>
+<span id="cb52-63"><a href="#cb52-63" tabindex="-1"></a><span class="co">#&gt; 62   S2         E4     15     15  2 19 25 209 #FF3D007F</span></span>
+<span id="cb52-64"><a href="#cb52-64" tabindex="-1"></a><span class="co">#&gt; 63   S3         E4     16     16  2 18 27 194 #FF7A007F</span></span>
+<span id="cb52-65"><a href="#cb52-65" tabindex="-1"></a><span class="co">#&gt; 64   S4         E4      3      3  2 17 20 178 #FFB8007F</span></span>
+<span id="cb52-66"><a href="#cb52-66" tabindex="-1"></a><span class="co">#&gt; 65   S5         E4      1      1  2 16 13 175 #FFF5007F</span></span>
+<span id="cb52-67"><a href="#cb52-67" tabindex="-1"></a><span class="co">#&gt; 66   S6         E4     13     13  2 15 22 174 #CCFF007F</span></span>
+<span id="cb52-68"><a href="#cb52-68" tabindex="-1"></a><span class="co">#&gt; 67   S7         E4     15     15  2 14 16 161 #8FFF007F</span></span>
+<span id="cb52-69"><a href="#cb52-69" tabindex="-1"></a><span class="co">#&gt; 68   S8         E4     13     13  2 13 24 146 #52FF007F</span></span>
+<span id="cb52-70"><a href="#cb52-70" tabindex="-1"></a><span class="co">#&gt; 69   S9         E4      3      3  2 12 21 133 #14FF007F</span></span>
+<span id="cb52-71"><a href="#cb52-71" tabindex="-1"></a><span class="co">#&gt; 70  S10         E4      4      4  2 11 10 130 #00FF297F</span></span>
+<span id="cb52-72"><a href="#cb52-72" tabindex="-1"></a><span class="co">#&gt; 71  S11         E4      8      8  2 10 17 126 #00FF667F</span></span>
+<span id="cb52-73"><a href="#cb52-73" tabindex="-1"></a><span class="co">#&gt; 72  S12         E4     16     16  2  9 34 118 #00FFA37F</span></span>
+<span id="cb52-74"><a href="#cb52-74" tabindex="-1"></a><span class="co">#&gt; 73  S13         E4     14     14  2  8 30 102 #00FFE07F</span></span>
+<span id="cb52-75"><a href="#cb52-75" tabindex="-1"></a><span class="co">#&gt; 74  S14         E4     14     14  2  7 17  88 #00E0FF7F</span></span>
+<span id="cb52-76"><a href="#cb52-76" tabindex="-1"></a><span class="co">#&gt; 75  S15         E4     16     16  2  6 34  74 #00A3FF7F</span></span>
+<span id="cb52-77"><a href="#cb52-77" tabindex="-1"></a><span class="co">#&gt; 76  S16         E4     12     12  2  5 14  58 #0066FF7F</span></span>
+<span id="cb52-78"><a href="#cb52-78" tabindex="-1"></a><span class="co">#&gt; 77  S17         E4     10     10  2  4 11  46 #0029FF7F</span></span>
+<span id="cb52-79"><a href="#cb52-79" tabindex="-1"></a><span class="co">#&gt; 78  S18         E4     11     11  2  3 19  36 #1400FF7F</span></span>
+<span id="cb52-80"><a href="#cb52-80" tabindex="-1"></a><span class="co">#&gt; 79  S19         E4     14     14  2  2 20  25 #5200FF7F</span></span>
+<span id="cb52-81"><a href="#cb52-81" tabindex="-1"></a><span class="co">#&gt; 80  S20         E4     11     11  2  1 16  11 #8F00FF7F</span></span>
+<span id="cb52-82"><a href="#cb52-82" tabindex="-1"></a><span class="co">#&gt; 81   S1         E5     11     11  1 20 11 192 #FF00007F</span></span>
+<span id="cb52-83"><a href="#cb52-83" tabindex="-1"></a><span class="co">#&gt; 82   S2         E5     10     10  1 19 10 181 #FF3D007F</span></span>
+<span id="cb52-84"><a href="#cb52-84" tabindex="-1"></a><span class="co">#&gt; 83   S3         E5     11     11  1 18 11 171 #FF7A007F</span></span>
+<span id="cb52-85"><a href="#cb52-85" tabindex="-1"></a><span class="co">#&gt; 84   S4         E5     17     17  1 17 17 160 #FFB8007F</span></span>
+<span id="cb52-86"><a href="#cb52-86" tabindex="-1"></a><span class="co">#&gt; 85   S5         E5     12     12  1 16 12 143 #FFF5007F</span></span>
+<span id="cb52-87"><a href="#cb52-87" tabindex="-1"></a><span class="co">#&gt; 86   S6         E5      9      9  1 15  9 131 #CCFF007F</span></span>
+<span id="cb52-88"><a href="#cb52-88" tabindex="-1"></a><span class="co">#&gt; 87   S7         E5      1      1  1 14  1 122 #8FFF007F</span></span>
+<span id="cb52-89"><a href="#cb52-89" tabindex="-1"></a><span class="co">#&gt; 88   S8         E5     11     11  1 13 11 121 #52FF007F</span></span>
+<span id="cb52-90"><a href="#cb52-90" tabindex="-1"></a><span class="co">#&gt; 89   S9         E5     18     18  1 12 18 110 #14FF007F</span></span>
+<span id="cb52-91"><a href="#cb52-91" tabindex="-1"></a><span class="co">#&gt; 90  S10         E5      6      6  1 11  6  92 #00FF297F</span></span>
+<span id="cb52-92"><a href="#cb52-92" tabindex="-1"></a><span class="co">#&gt; 91  S11         E5      9      9  1 10  9  86 #00FF667F</span></span>
+<span id="cb52-93"><a href="#cb52-93" tabindex="-1"></a><span class="co">#&gt; 92  S12         E5     18     18  1  9 18  77 #00FFA37F</span></span>
+<span id="cb52-94"><a href="#cb52-94" tabindex="-1"></a><span class="co">#&gt; 93  S13         E5     16     16  1  8 16  59 #00FFE07F</span></span>
+<span id="cb52-95"><a href="#cb52-95" tabindex="-1"></a><span class="co">#&gt; 94  S14         E5      3      3  1  7  3  43 #00E0FF7F</span></span>
+<span id="cb52-96"><a href="#cb52-96" tabindex="-1"></a><span class="co">#&gt; 95  S15         E5     18     18  1  6 18  40 #00A3FF7F</span></span>
+<span id="cb52-97"><a href="#cb52-97" tabindex="-1"></a><span class="co">#&gt; 96  S16         E5      2      2  1  5  2  22 #0066FF7F</span></span>
+<span id="cb52-98"><a href="#cb52-98" tabindex="-1"></a><span class="co">#&gt; 97  S17         E5      1      1  1  4  1  20 #0029FF7F</span></span>
+<span id="cb52-99"><a href="#cb52-99" tabindex="-1"></a><span class="co">#&gt; 98  S18         E5      8      8  1  3  8  19 #1400FF7F</span></span>
+<span id="cb52-100"><a href="#cb52-100" tabindex="-1"></a><span class="co">#&gt; 99  S19         E5      6      6  1  2  6  11 #5200FF7F</span></span>
+<span id="cb52-101"><a href="#cb52-101" tabindex="-1"></a><span class="co">#&gt; 100 S20         E5      5      5  1  1  5   5 #8F00FF7F</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::chord_plot</span></span></code></pre></div>
 </div>
@@ -1056,7 +1132,7 @@
 <h4 id="id_352-go_enrich">3.5.2 go_enrich<a class="anchor" aria-label="anchor" href="#id_352-go_enrich"></a>
 </h4>
 <p>GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
@@ -1130,7 +1206,7 @@
 <span><span class="co">#&gt; 5 0.5849832 0.6365993 0.5433280 gene_22/gene_23/gene_24     3</span></span>
 <span><span class="co">#&gt; 6 0.1100000 0.1850000 0.1578947                 gene_21     1</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/go_enrich.html">?TOmicsVis::go_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html</a>.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich</span></span></code></pre></div>
 </div>
@@ -1138,7 +1214,7 @@
 <h4 id="id_353-go_enrich_stat">3.5.3 go_enrich_stat<a class="anchor" aria-label="anchor" href="#id_353-go_enrich_stat"></a>
 </h4>
 <p>GO enrichment analysis and stat plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(go_anno)</span></span>
@@ -1162,7 +1238,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_stat-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_stat.html">?TOmicsVis::go_enrich_stat</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_stat</span></span></code></pre></div>
 </div>
@@ -1170,7 +1246,7 @@
 <h4 id="id_354-go_enrich_bar">3.5.4 go_enrich_bar<a class="anchor" aria-label="anchor" href="#id_354-go_enrich_bar"></a>
 </h4>
 <p>GO enrichment analysis and bar plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(go_anno)</span></span>
@@ -1196,7 +1272,7 @@
 <span><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_bar-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_bar.html">?TOmicsVis::go_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_bar</span></span></code></pre></div>
 </div>
@@ -1204,7 +1280,7 @@
 <h4 id="id_355-go_enrich_dot">3.5.5 go_enrich_dot<a class="anchor" aria-label="anchor" href="#id_355-go_enrich_dot"></a>
 </h4>
 <p>GO enrichment analysis and dot plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(go_anno)</span></span>
@@ -1230,7 +1306,7 @@
 <span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_dot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_dot.html">?TOmicsVis::go_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_dot</span></span></code></pre></div>
 </div>
@@ -1238,7 +1314,7 @@
 <h4 id="id_356-go_enrich_tree">3.5.6 go_enrich_tree<a class="anchor" aria-label="anchor" href="#id_356-go_enrich_tree"></a>
 </h4>
 <p>GO enrichment analysis and tree plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(go_anno)</span></span>
@@ -1262,7 +1338,7 @@
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Get help using command <code>?TOmicsVis::go_enrich_tree</code>.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_tree</span></span></code></pre></div>
 </div>
@@ -1270,7 +1346,7 @@
 <h4 id="id_357-go_enrich_net">3.5.7 go_enrich_net<a class="anchor" aria-label="anchor" href="#id_357-go_enrich_net"></a>
 </h4>
 <p>GO enrichment analysis and net plot based on GO annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">go_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(go_anno)</span></span>
@@ -1297,7 +1373,7 @@
 <span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_net-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_net</span></span></code></pre></div>
 </div>
@@ -1305,7 +1381,7 @@
 <h4 id="id_358-kegg_enrich">3.5.8 kegg_enrich<a class="anchor" aria-label="anchor" href="#id_358-kegg_enrich"></a>
 </h4>
 <p>KEGG enrichment analysis based on KEGG annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
@@ -1365,7 +1441,7 @@
 <span><span class="co">#&gt; ko00460      4</span></span>
 <span><span class="co">#&gt; ko00670      4</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/kegg_enrich.html">?TOmicsVis::kegg_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html</a>.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich</span></span></code></pre></div>
 </div>
@@ -1373,7 +1449,7 @@
 <h4 id="id_359-kegg_enrich_bar">3.5.9 kegg_enrich_bar<a class="anchor" aria-label="anchor" href="#id_359-kegg_enrich_bar"></a>
 </h4>
 <p>KEGG enrichment analysis and bar plot based on KEGG annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(kegg_anno)</span></span>
@@ -1399,7 +1475,7 @@
 <span><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_bar-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/kegg_enrich_bar.html">?TOmicsVis::kegg_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html</a>.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_bar</span></span></code></pre></div>
 </div>
@@ -1407,7 +1483,7 @@
 <h4 id="id_3510-kegg_enrich_dot">3.5.10 kegg_enrich_dot<a class="anchor" aria-label="anchor" href="#id_3510-kegg_enrich_dot"></a>
 </h4>
 <p>KEGG enrichment analysis and dot plot based on KEGG annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(kegg_anno)</span></span>
@@ -1433,7 +1509,7 @@
 <span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_dot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/kegg_enrich_dot.html">?TOmicsVis::kegg_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html</a>.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_dot</span></span></code></pre></div>
 </div>
@@ -1441,7 +1517,7 @@
 <h4 id="id_3511-kegg_enrich_tree">3.5.11 kegg_enrich_tree<a class="anchor" aria-label="anchor" href="#id_3511-kegg_enrich_tree"></a>
 </h4>
 <p>KEGG enrichment analysis and tree plot based on KEGG annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(kegg_anno)</span></span>
@@ -1465,7 +1541,7 @@
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Get help using command <code>?TOmicsVis::kegg_enrich_tree</code>.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_tree</span></span></code></pre></div>
 </div>
@@ -1473,7 +1549,7 @@
 <h4 id="id_3512-kegg_enrich_net">3.5.12 kegg_enrich_net<a class="anchor" aria-label="anchor" href="#id_3512-kegg_enrich_net"></a>
 </h4>
 <p>KEGG enrichment analysis and net plot based on KEGG annotation results (None/Exist Reference Genome).</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span>
 <span><span class="co"># head(kegg_anno)</span></span>
@@ -1500,7 +1576,7 @@
 <span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_net-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/kegg_enrich_net.html">?TOmicsVis::kegg_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_net</span></span></code></pre></div>
 </div>
@@ -1512,7 +1588,7 @@
 <h4 id="id_361-table_split">3.6.1 table_split<a class="anchor" aria-label="anchor" href="#id_361-table_split"></a>
 </h4>
 <p>Table split used for splitting a grouped column to multiple columns.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load table_split_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_split_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_split_data</span><span class="op">)</span></span>
@@ -1538,7 +1614,7 @@
 <span><span class="co">#&gt; 5     5   5    NA      NA   56 14.3</span></span>
 <span><span class="co">#&gt; 6     5   6    28      NA   66 14.9</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_split.html">?TOmicsVis::table_split</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_split</span></span></code></pre></div>
 </div>
@@ -1546,7 +1622,7 @@
 <h4 id="id_362-table_merge">3.6.2 table_merge<a class="anchor" aria-label="anchor" href="#id_362-table_merge"></a>
 </h4>
 <p>Table merge used to merge multiple variables to on variable.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span>
@@ -1575,7 +1651,7 @@
 <span><span class="co">#&gt; 5     5   5    Ozone    NA</span></span>
 <span><span class="co">#&gt; 6     5   6    Ozone    28</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_merge.html">?TOmicsVis::table_merge</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_merge</span></span></code></pre></div>
 </div>
@@ -1583,7 +1659,7 @@
 <h4 id="id_363-table_filter">3.6.3 table_filter<a class="anchor" aria-label="anchor" href="#id_363-table_filter"></a>
 </h4>
 <p>Table filter used to filter row by column condition.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_filter_data</span><span class="op">)</span></span>
@@ -1616,7 +1692,7 @@
 <span><span class="co">#&gt; # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,</span></span>
 <span><span class="co">#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_filter.html">?TOmicsVis::table_filter</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_filter</span></span></code></pre></div>
 </div>
@@ -1624,7 +1700,7 @@
 <h4 id="id_364-table_cross">3.6.4 table_cross<a class="anchor" aria-label="anchor" href="#id_364-table_cross"></a>
 </h4>
 <p>Table cross used to cross search and merge results in two tables.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span>
@@ -1654,7 +1730,7 @@
 <span><span class="co">#&gt; 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span></span>
 <span><span class="co">#&gt; 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/table_cross.html">?TOmicsVis::table_cross</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_cross</span></span></code></pre></div>
 </div>

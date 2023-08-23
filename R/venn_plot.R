@@ -25,10 +25,10 @@
 #'
 #' # 2. Use example dataset
 #' data(paired_degs)
+#' head(paired_degs)
 #'
 #' # 3. Default parameters
 #' venn_plot(paired_degs)
-#' head(paired_degs)
 #'
 #' # 4. Set line_type = "blank"
 #' venn_plot(paired_degs, line_type = "blank")

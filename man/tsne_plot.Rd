@@ -13,7 +13,7 @@ tsne_plot(
   point_alpha = 0.8,
   text_size = 5,
   text_alpha = 0.8,
-  fill_alpha = 0.05,
+  fill_alpha = 0.1,
   border_alpha = 0,
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
@@ -70,11 +70,11 @@ head(samples_groups)
 # 3. Default parameters
 tsne_plot(gene_expression, samples_groups)
 
-# 4. Set seed = 5
-tsne_plot(gene_expression, samples_groups, seed = 6)
-
-# 5. Set sci_fill_color = "Sci_NPG", seed = 6
+# 4. Set sci_fill_color = "Sci_NPG", seed = 6
 tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
+
+# 5. Set multi_shape = TRUE, fill_alpha = 0.00
+tsne_plot(gene_expression, samples_groups, multi_shape = TRUE, fill_alpha = 0.00)
 
 }
 \author{

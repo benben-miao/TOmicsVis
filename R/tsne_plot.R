@@ -40,11 +40,11 @@
 #' # 3. Default parameters
 #' tsne_plot(gene_expression, samples_groups)
 #'
-#' # 4. Set seed = 5
-#' tsne_plot(gene_expression, samples_groups, seed = 6)
-#'
-#' # 5. Set sci_fill_color = "Sci_NPG", seed = 6
+#' # 4. Set sci_fill_color = "Sci_NPG", seed = 6
 #' tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
+#'
+#' # 5. Set multi_shape = TRUE, fill_alpha = 0.00
+#' tsne_plot(gene_expression, samples_groups, multi_shape = TRUE, fill_alpha = 0.00)
 #'
 tsne_plot <- function(sample_gene,
 											group_sample,
@@ -54,7 +54,7 @@ tsne_plot <- function(sample_gene,
 											point_alpha = 0.80,
 											text_size = 5,
 											text_alpha = 0.80,
-											fill_alpha = 0.05,
+											fill_alpha = 0.10,
 											border_alpha = 0.00,
 											sci_fill_color = "Sci_AAAS",
 											legend_pos = "right",
@@ -261,6 +261,11 @@ tsne_plot <- function(sample_gene,
 		xlab("tSNE1") +
 		ylab("tSNE2") +
 		geom_mark_ellipse(aes(fill = groups),
+											label.fontsize = 0,
+											label.colour	= "#ffffff00",
+											label.fill = "#ffffff00",
+											con.size = 0,
+											con.colour = "#ffffff00",
 											color = rgb(0, 0, 0, border_alpha),
 											alpha = fill_alpha,
 											show.legend = TRUE

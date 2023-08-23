@@ -472,9 +472,9 @@ tsne_plot(
   point_size = 5,
   point_alpha = 0.8,
   text_size = 5,
-  text_alpha = 0.8,
-  fill_alpha = 0.05,
-  border_alpha = 0,
+  text_alpha = 0.80,
+  fill_alpha = 0.10,
+  border_alpha = 0.00,
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
@@ -490,6 +490,50 @@ Get help using command `?TOmicsVis::tsne_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::tsne_plot
+```
+
+#### 3.2.5 umap_plot
+
+**Input Data1:** Dataframe: gene expression dataframe (1st-col:
+Transcripts or Genes, 2nd-col~: Samples).
+
+**Input Data2:** Dataframe: Samples and groups for gene expression
+(1st-col: Samples, 2nd-col: Groups).
+
+**Output Plot:** UMAP plot for analyzing and visualizing UMAP algorithm.
+
+``` r
+# 1. Load example datasets
+data(gene_expression)
+data(samples_groups)
+
+# 2. Run tsne_plot plot function
+umap_plot(
+  sample_gene = gene_expression,
+  group_sample = samples_groups,
+  seed = 1,
+  multi_shape = TRUE,
+  point_size = 5,
+  point_alpha = 1,
+  text_size = 5,
+  text_alpha = 0.80,
+  fill_alpha = 0.00,
+  border_alpha = 0.00,
+  sci_fill_color = "Sci_AAAS",
+  legend_pos = "right",
+  legend_dir = "vertical",
+  ggTheme = "theme_light"
+)
+```
+
+![](man/figures/README-umap_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::umap_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::umap_plot
 ```
 
 ### 3.3 Differential Expression Analyais
@@ -536,6 +580,57 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::venn_plot
+```
+
+#### 3.3.1 upsetr_plot
+
+**Input Data2:** Dataframe: Paired comparisons differentially expressed
+genes (degs) among groups (1st-col~: degs of paired comparisons).
+
+**Output Plot:** UpSet plot for stat common and unique gene among
+multiple sets.
+
+``` r
+# 1. Load example datasets
+data(paired_degs)
+head(paired_degs)
+#>        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6
+#> 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354
+#> 2  transcript_604 transcript_6050  transcript_7601  transcript_2959
+#> 3 transcript_3912 transcript_1039  transcript_5960  transcript_5919
+#> 4 transcript_8676 transcript_1344  transcript_3240  transcript_2395
+#> 5 transcript_8832 transcript_3069 transcript_10224  transcript_9881
+#> 6   transcript_74 transcript_9809  transcript_3151  transcript_8836
+
+# 2. Run upsetr_plot plot function
+upsetr_plot(
+  data = paired_degs,
+  sets_num = 4,
+  keep_order = FALSE,
+  order_by = "freq",
+  decrease = TRUE,
+  mainbar_color = "#006600",
+  number_angle = 45,
+  matrix_color = "#cc0000",
+  point_size = 4.5,
+  point_alpha = 0.5,
+  line_size = 0.8,
+  shade_color = "#cdcdcd",
+  shade_alpha = 0.5,
+  setsbar_color = "#000066",
+  setsnum_size = 6,
+  text_scale = 1.2
+)
+```
+
+![](man/figures/README-upsetr_plot-1.png)<!-- -->
+
+Get help using command `?TOmicsVis::upsetr_plot` or reference page
+<https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html>.
+
+``` r
+# Get help with command in R console.
+# ?TOmicsVis::upsetr_plot
 ```
 
 #### 3.3.2 flower_plot
