@@ -1,3 +1,23 @@
+## TOmicsVis 1.2.6
+
+**Date**: 2023-08-23
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Create data-tables for store demo tables.
+2. Update `?TOmicsVis::dendro_plot` function.
+3. Create `?TOmicsVis::traits_sex` dataset.
+4. Update `?TOmicsVis::box_plot` function.
+5. Update `?TOmicsVis::violin_plot` function.
+6. Update `?TOmicsVis::survival_plot` function.
+7. Create `?TOmicsVis::paired_degs` dataset.
+8. Update `?TOmicsVis::venn_plot` function.
+9. Update `?TOmicsVis::flower_plot` function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.2.5
 
 **Date**: 2023-08-22
@@ -5,7 +25,13 @@
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
 
 1. Create data-tables for store demo tables.
-2. Update `?TOmicsVis::quantile_data` and `?TOmicsVis::quantile_plot` data description.
+2. Create `?TOmicsVis::weight_sex` dataset.
+3. Update `?TOmicsVis::quantile_plot` function.
+4. Create `?TOmicsVis::gene_expression` dataset.
+5. Update `?TOmicsVis::corr_heatmap` function.
+6. Create `?TOmicsVis::samples_groups` dataset.
+7. Update `?TOmicsVis::pca_plot` function.
+8. Update `?TOmicsVis::tsne_plot` function.
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 

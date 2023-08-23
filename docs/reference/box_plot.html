@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,7 +123,7 @@
 <span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
 <span>  notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
-<span>  add_element <span class="op">=</span> <span class="st">"dotplot"</span>,</span>
+<span>  add_element <span class="op">=</span> <span class="st">"jitter"</span>,</span>
 <span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -137,7 +137,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: two levels and multiple groups</p></dd>
+<dd><p>Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).</p></dd>
 
 
 <dt>test_method</dt>
@@ -157,7 +157,7 @@
 
 
 <dt>add_element</dt>
-<dd><p>Character: add new plot. Default: "dotplot", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".</p></dd>
+<dd><p>Character: add new plot. Default: "jitter", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".</p></dd>
 
 
 <dt>my_shape</dt>
@@ -205,70 +205,34 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Value Traits    Sex</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 36.74 Weight Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 38.54 Weight Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 44.91 Weight Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 43.53 Weight Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 39.03 Weight Female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 26.01 Weight Female</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Bin width defaults to 1/30 of the range of the data. Pick better value with</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `binwidth`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
+<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="box_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set test_label = "p.signif",</span></span></span>
-<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">box_data</span>, test_label <span class="op">=</span> <span class="st">"p.signif"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Bin width defaults to 1/30 of the range of the data. Pick better value with</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `binwidth`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
+<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">traits_sex</span>, test_label <span class="op">=</span> <span class="st">"p.signif"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="box_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set notch = FALSE</span></span></span>
-<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">box_data</span>, notch <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Bin width defaults to 1/30 of the range of the data. Pick better value with</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `binwidth`.</span>
+<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">traits_sex</span>, notch <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="box_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 6. Set group_level = "Two_Column"</span></span></span>
-<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">box_data</span>, group_level <span class="op">=</span> <span class="st">"Two_Column"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Bin width defaults to 1/30 of the range of the data. Pick better value with</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `binwidth`.</span>
+<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">traits_sex</span>, group_level <span class="op">=</span> <span class="st">"Two_Column"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="box_plot-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set add_element = "jitter"</span></span></span>
-<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">box_data</span>, add_element <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Notch went outside hinges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span>
+<span class="r-in"><span><span class="co"># 7. Set add_element = "point"</span></span></span>
+<span class="r-in"><span><span class="fu">box_plot</span><span class="op">(</span><span class="va">traits_sex</span>, add_element <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="box_plot-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

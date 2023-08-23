@@ -10,7 +10,7 @@ quantile_plot(
   point_size = 1.5,
   conf_int = TRUE,
   conf_level = 0.95,
-  split_panel = "One_Panel",
+  split_panel = "Split_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
@@ -19,7 +19,7 @@ quantile_plot(
 )
 }
 \arguments{
-\item{data}{Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).}
+\item{data}{Dataframe: Weight and Sex traits dataframe (1st-col: Weight, 2nd-col: Sex).}
 
 \item{my_shape}{Character: scatter shape. Default: "fill_circle", options: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle".}
 
@@ -29,7 +29,7 @@ quantile_plot(
 
 \item{conf_level}{Numeric: confidence interval value. Default: 0.95, min: 0.00, max: 1.00.}
 
-\item{split_panel}{Character: split panel by groups. Default: "One_Panel", options: "One_Panel", "Split_Panel".}
+\item{split_panel}{Character: split panel by groups. Default: "Split_Panel", options: "One_Panel", "Split_Panel".}
 
 \item{legend_pos}{Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".}
 
@@ -52,20 +52,20 @@ Quantile plot for visualizing data distribution.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(quantile_data)
-head(quantile_data)
+data(weight_sex)
+head(weight_sex)
 
 # 3. Default parameters
-quantile_plot(quantile_data)
+quantile_plot(weight_sex)
 
 # 4. Set split_panel = "Split_Panel"
-quantile_plot(quantile_data, split_panel = "Split_Panel")
+quantile_plot(weight_sex, split_panel = "Split_Panel")
 
 # 5. Set sci_fill_color = "Sci_Futurama"
-quantile_plot(quantile_data, sci_fill_color = "Sci_Futurama")
+quantile_plot(weight_sex, sci_fill_color = "Sci_Futurama")
 
 # 6. Set conf_int = FALSE
-quantile_plot(quantile_data, conf_int = FALSE)
+quantile_plot(weight_sex, conf_int = FALSE)
 
 }
 \author{

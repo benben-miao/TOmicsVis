@@ -9,10 +9,13 @@ pca_plot(
   group_sample,
   xPC = 1,
   yPC = 2,
+  multi_shape = TRUE,
   point_size = 5,
+  point_alpha = 0.8,
   text_size = 5,
-  fill_alpha = 0.1,
+  fill_alpha = 0.05,
   border_alpha = 0,
+  sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -27,13 +30,19 @@ pca_plot(
 
 \item{yPC}{Numeric: PC index at y axis. Default: 2, options: 2, 3, 4, ...}
 
+\item{multi_shape}{Logical: groups as shapes. Default: TRUE, options: TRUE, FALSE.}
+
 \item{point_size}{Numeric: PCA plot point size. Default: 5, min: 0.}
+
+\item{point_alpha}{Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.}
 
 \item{text_size}{Numeric: PCA plot annotation size. Default: 5, min: 0.}
 
 \item{fill_alpha}{Numeric: ellipse fill color alpha. Default: 0.10, min: 0.00, max: 1.00.}
 
 \item{border_alpha}{Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.}
+
+\item{sci_fill_color}{Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".}
 
 \item{legend_pos}{Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".}
 
@@ -61,11 +70,11 @@ head(samples_groups)
 # 3. Default parameters
 pca_plot(gene_expression, samples_groups)
 
-# 4. Set ellipse_alpha = 0.30
-pca_plot(gene_expression, samples_groups, ellipse_alpha = 0.00)
+# 4. Set multi_shape = FALSE
+pca_plot(gene_expression, samples_groups, multi_shape = FALSE)
 
-# 5. Set legend_pos = "right", legend_dir = "vertical"
-pca_plot(gene_expression, samples_groups, legend_pos = "top", legend_dir = "horizontal")
+# 5. Set sci_fill_color = "Sci_NPG", fill_alpha = 0.10
+pca_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", fill_alpha = 0.10)
 
 }
 \author{

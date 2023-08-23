@@ -133,6 +133,9 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/network_plot.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/paired_degs.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_plot.html</loc>
   </url>
   <url>
@@ -178,6 +181,9 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/table_split_data.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/traits_sex.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/trend_data.html</loc>
   </url>
   <url>
@@ -200,6 +206,9 @@
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/volcano_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/weight_sex.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/wgcna_gene_exp.html</loc>

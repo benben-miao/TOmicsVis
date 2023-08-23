@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,15 +129,15 @@
 <span>  x_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_end <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  x_break <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  y_break <span class="op">=</span> <span class="fl">25</span></span>
+<span>  x_break <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  y_break <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include columns (Time, Status, Group), rows (records).</p></dd>
+<dd><p>Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).</p></dd>
 
 
 <dt>curve_function</dt>
@@ -181,11 +181,11 @@
 
 
 <dt>x_break</dt>
-<dd><p>Numeric: x-axis break value. Default: 100, min: 0, max: null.</p></dd>
+<dd><p>Numeric: x-axis break value. Default: 10, min: 0, max: null.</p></dd>
 
 
 <dt>y_break</dt>
-<dd><p>Numeric: y-axis break value. Default: 25, min: 0, max: 100.</p></dd>
+<dd><p>Numeric: y-axis break value. Default: 10, min: 0, max: 100.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -206,6 +206,14 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Time Status Group</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   48      0    CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   48      0    CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   48      0    CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   48      0    CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   48      0    CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   48      0    CT</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
 <span class="r-in"><span><span class="fu">survival_plot</span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span></span>

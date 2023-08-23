@@ -5,7 +5,7 @@
 \alias{survival_data}
 \title{Survival data as example data for survival_plot function.}
 \format{
-Dataframe: include columns (Time, Status, Group), rows (records).
+Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
 }
 \usage{
 data(survival_data)

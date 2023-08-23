@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @docType data
-#' @format Dataframe: include columns (Time, Status, Group), rows (records).
+#' @format Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
 #' @usage data(survival_data)
 #'
 #' @keywords datasets
@@ -22,5 +22,9 @@
 #'
 "survival_data"
 
+# data <- read.table(file = "data-tables/survival_data.txt",
+# 									 header = TRUE,
+# 									 sep = "\t",
+# 									 stringsAsFactors = F)
 # survival_data <- data
-# usethis::use_data(survival_data)
+# usethis::use_data(survival_data, overwrite = T)

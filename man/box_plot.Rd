@@ -10,7 +10,7 @@ box_plot(
   test_label = "p.format",
   notch = TRUE,
   group_level = "Three_Column",
-  add_element = "dotplot",
+  add_element = "jitter",
   my_shape = "fill_circle",
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.5,
@@ -21,7 +21,7 @@ box_plot(
 )
 }
 \arguments{
-\item{data}{Dataframe: two levels and multiple groups}
+\item{data}{Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).}
 
 \item{test_method}{Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".}
 
@@ -31,7 +31,7 @@ box_plot(
 
 \item{group_level}{Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".}
 
-\item{add_element}{Character: add new plot. Default: "dotplot", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".}
+\item{add_element}{Character: add new plot. Default: "jitter", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".}
 
 \item{my_shape}{Character: box scatter shape. Default: "fill_circle", options: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle".}
 
@@ -58,22 +58,23 @@ Box plot support two levels and multiple groups with P value.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(box_data)
+data(traits_sex)
+head(traits_sex)
 
 # 3. Default parameters
-box_plot(box_data)
+box_plot(traits_sex)
 
 # 4. Set test_label = "p.signif",
-box_plot(box_data, test_label = "p.signif")
+box_plot(traits_sex, test_label = "p.signif")
 
 # 5. Set notch = FALSE
-box_plot(box_data, notch = FALSE)
+box_plot(traits_sex, notch = FALSE)
 
 # 6. Set group_level = "Two_Column"
-box_plot(box_data, group_level = "Two_Column")
+box_plot(traits_sex, group_level = "Two_Column")
 
-# 7. Set add_element = "jitter"
-box_plot(box_data, add_element = "jitter")
+# 7. Set add_element = "point"
+box_plot(traits_sex, add_element = "point")
 
 }
 \author{

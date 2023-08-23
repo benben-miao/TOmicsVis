@@ -3,7 +3,7 @@
 #' @author wei dong
 #'
 #' @return Plot: Flower plot for stat common and unique gene among multiple sets.
-#' @param flower_dat Dataframe: multiple gene sets as columns.
+#' @param flower_dat Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).
 #' @param angle Number: set the angle of rotation in degress. Default: 90.
 #' @param a Number: set the radii of the ellipses along the x-axes. Default: 0.5.
 #' @param b Number: set the radii of the ellipses along the y-axes. Default: 2.
@@ -20,24 +20,27 @@
 #' # 1. Library TOmicsVis package
 #' library(TOmicsVis)
 #'
-#' # 2. Use example dataset venn_data
-#' data(venn_data)
-#' head(venn_data)
+#' # 2. Use example dataset paired_degs
+#' data(paired_degs)
+#' head(paired_degs)
 #'
 #' # 3. Default parameters
-#' flower_plot(venn_data)
+#' flower_plot(paired_degs)
 #'
 #' # 4. Set angle = 60
-#' flower_plot(venn_data, angle = 60)
+#' flower_plot(paired_degs, angle = 60)
 #'
-#' # 5. Set ellipse_col_pal = "Spectral"
-#' flower_plot(venn_data, ellipse_col_pal = "Spectral")
+#' # 5. Set ellipse_col_pal = "Accent"
+#' flower_plot(paired_degs, ellipse_col_pal = "Accent")
 #'
 #' # 6. Set a = 1, b = 2, r = 1
-#' flower_plot(venn_data, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
+#' flower_plot(paired_degs, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
 #'
-flower_plot <- function(flower_dat, angle = 90,
-                        a = 0.5, b = 2, r = 1,
+flower_plot <- function(flower_dat,
+                        angle = 90,
+                        a = 1,
+                        b = 2,
+                        r = 1,
                         ellipse_col_pal = "Spectral",
                         circle_col = "white",
                         label_text_cex = 1

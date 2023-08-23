@@ -7,7 +7,7 @@
 flower_plot(
   flower_dat,
   angle = 90,
-  a = 0.5,
+  a = 1,
   b = 2,
   r = 1,
   ellipse_col_pal = "Spectral",
@@ -16,7 +16,7 @@ flower_plot(
 )
 }
 \arguments{
-\item{flower_dat}{Dataframe: multiple gene sets as columns.}
+\item{flower_dat}{Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).}
 
 \item{angle}{Number: set the angle of rotation in degress. Default: 90.}
 
@@ -42,21 +42,21 @@ Flower plot for stat common and unique gene among multiple sets.
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
-# 2. Use example dataset venn_data
-data(venn_data)
-head(venn_data)
+# 2. Use example dataset paired_degs
+data(paired_degs)
+head(paired_degs)
 
 # 3. Default parameters
-flower_plot(venn_data)
+flower_plot(paired_degs)
 
 # 4. Set angle = 60
-flower_plot(venn_data, angle = 60)
+flower_plot(paired_degs, angle = 60)
 
-# 5. Set ellipse_col_pal = "Spectral"
-flower_plot(venn_data, ellipse_col_pal = "Spectral")
+# 5. Set ellipse_col_pal = "Accent"
+flower_plot(paired_degs, ellipse_col_pal = "Accent")
 
 # 6. Set a = 1, b = 2, r = 1
-flower_plot(venn_data, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
+flower_plot(paired_degs, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
 
 }
 \author{

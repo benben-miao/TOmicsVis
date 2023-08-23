@@ -114,31 +114,31 @@ library(ggplot2)
 
 #### 3.1.1 quantile_plot
 
-**Input Data:** Dataframe: Trait measurement of samples in multiple
-groups (1st-col: Values, 2nd-col: Groups).
+**Input Data:** Dataframe: Weight and Sex traits dataframe (1st-col:
+Weight, 2nd-col: Sex).
 
 **Output Plot:** Quantile plot for visualizing data distribution.
 
 ``` r
 # 1. Load example datasets
-data(quantile_data)
-head(quantile_data)
+data(weight_sex)
+head(weight_sex)
 #>   Weight    Sex
-#> 1  52.43 Female
-#> 2  54.76 Female
-#> 3  56.55 Female
-#> 4  52.07 Female
-#> 5  55.12 Female
-#> 6  56.71 Female
+#> 1  36.74 Female
+#> 2  38.54 Female
+#> 3  44.91 Female
+#> 4  43.53 Female
+#> 5  39.03 Female
+#> 6  26.01 Female
 
 # 2. Run quantile_plot plot function
 quantile_plot(
-  data = quantile_data,
+  data = weight_sex,
   my_shape = "fill_circle",
   point_size = 1.5,
   conf_int = TRUE,
   conf_level = 0.95,
-  split_panel = "One_Panel",
+  split_panel = "Split_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
@@ -313,20 +313,32 @@ Get help using command `?TOmicsVis::dendro_plot` or reference page
 
 #### 3.2.1 box_plot
 
-Box plot support two levels and multiple groups with P value.
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits
+dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+
+**Output Plot:** Plot: Box plot support two levels and multiple groups
+with P value.
 
 ``` r
-# 1. Load box_data example datasets
-data(box_data)
+# 1. Load example datasets
+data(traits_sex)
+head(traits_sex)
+#>   Value Traits    Sex
+#> 1 36.74 Weight Female
+#> 2 38.54 Weight Female
+#> 3 44.91 Weight Female
+#> 4 43.53 Weight Female
+#> 5 39.03 Weight Female
+#> 6 26.01 Weight Female
 
 # 2. Run box_plot plot function
 box_plot(
-  box_data,
+  data = traits_sex,
   test_method = "t.test",
   test_label = "p.format",
   notch = TRUE,
   group_level = "Three_Column",
-  add_element = "dotplot",
+  add_element = "jitter",
   my_shape = "fill_circle",
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.5,
@@ -335,20 +347,6 @@ box_plot(
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
-#> Bin width defaults to 1/30 of the range of the data. Pick better value with
-#> `binwidth`.
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
-#> Notch went outside hinges
-#> ℹ Do you want `notch = FALSE`?
 ```
 
 ![](man/figures/README-box_plot-1.png)<!-- -->
@@ -363,15 +361,19 @@ Get help using command `?TOmicsVis::box_plot` or reference page
 
 #### 3.2.2 violin_plot
 
-Violin plot support two levels and multiple groups with P value.
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits
+dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+
+**Output Plot:** Plot: Violin plot support two levels and multiple
+groups with P value.
 
 ``` r
-# 1. Load box_data example datasets
-data(box_data)
+# 1. Load example datasets
+data(traits_sex)
 
 # 2. Run violin_plot plot function
 violin_plot(
-  box_data,
+  data = traits_sex,
   test_method = "t.test",
   test_label = "p.format",
   group_level = "Three_Column",
@@ -400,15 +402,27 @@ Get help using command `?TOmicsVis::violin_plot` or reference page
 
 #### 3.2.3 survival_plot
 
-Survival plot for analyzing and visualizing survival data.
+**Input Data:** Dataframe: survival record data (1st-col: Time, 2nd-col:
+Status, 3rd-col: Group).
+
+**Output Plot:** Survival plot for analyzing and visualizing survival
+data.
 
 ``` r
-# 1. Load survival_plot example datasets
+# 1. Load example datasets
 data(survival_data)
+head(survival_data)
+#>   Time Status Group
+#> 1   48      0    CT
+#> 2   48      0    CT
+#> 3   48      0    CT
+#> 4   48      0    CT
+#> 5   48      0    CT
+#> 6   48      0    CT
 
 # 2. Run survival_plot plot function
 survival_plot(
-  survival_data,
+  data = survival_data,
   curve_function = "pct",
   conf_inter = TRUE,
   interval_style = "ribbon",
@@ -419,8 +433,8 @@ survival_plot(
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 100,
-  y_break = 25
+  x_break = 10,
+  y_break = 10
 )
 ```
 
@@ -436,24 +450,32 @@ Get help using command `?TOmicsVis::survival_plot` or reference page
 
 #### 3.2.4 tsne_plot
 
-TSNE plot for analyzing and visualizing TSNE algorithm.
+**Input Data1:** Dataframe: gene expression dataframe (1st-col:
+Transcripts or Genes, 2nd-col~: Samples).
+
+**Input Data2:** Dataframe: Samples and groups for gene expression
+(1st-col: Samples, 2nd-col: Groups).
+
+**Output Plot:** TSNE plot for analyzing and visualizing TSNE algorithm.
 
 ``` r
-# 1. Load tsne_plot example datasets
-data(tsne_data)
+# 1. Load example datasets
+data(gene_expression)
+data(samples_groups)
 
 # 2. Run tsne_plot plot function
 tsne_plot(
-  tsne_data,
-  seed = 5,
-  point_size = 4,
+  sample_gene = gene_expression,
+  group_sample = samples_groups,
+  seed = 1,
+  multi_shape = FALSE,
+  point_size = 5,
   point_alpha = 0.8,
-  text_size = 2,
+  text_size = 5,
   text_alpha = 0.8,
-  ci_level = 0.95,
-  ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_JAMA",
-  sci_color_alpha = 0.9,
+  fill_alpha = 0.05,
+  border_alpha = 0,
+  sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -474,19 +496,35 @@ Get help using command `?TOmicsVis::tsne_plot` or reference page
 
 #### 3.3.1 venn_plot
 
-Venn plot for stat common and unique gene among multiple sets.
+**Input Data2:** Dataframe: Paired comparisons differentially expressed
+genes (degs) among groups (1st-col~: degs of paired comparisons).
+
+**Output Plot:** Venn plot for stat common and unique gene among
+multiple sets.
 
 ``` r
-# 1. Load venn_data example datasets
-data(venn_data)
+# 1. Load example datasets
+data(paired_degs)
+head(paired_degs)
+#>        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6
+#> 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354
+#> 2  transcript_604 transcript_6050  transcript_7601  transcript_2959
+#> 3 transcript_3912 transcript_1039  transcript_5960  transcript_5919
+#> 4 transcript_8676 transcript_1344  transcript_3240  transcript_2395
+#> 5 transcript_8832 transcript_3069 transcript_10224  transcript_9881
+#> 6   transcript_74 transcript_9809  transcript_3151  transcript_8836
 
 # 2. Run venn_plot plot function
 venn_plot(
-  venn_data,
-  line_type = "blank",
-  ellipse_shape = "circle",
-  sci_fill_color = "Sci_AAAS",
-  sci_fill_alpha = 0.65
+  data = paired_degs,
+    title_size = 1,
+    label_show = TRUE,
+    label_size = 0.8,
+    border_show = TRUE,
+    line_type = "longdash",
+    ellipse_shape = "circle",
+    sci_fill_color = "Sci_AAAS",
+    sci_fill_alpha = 0.65
 )
 ```
 
@@ -502,17 +540,21 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 
 #### 3.3.2 flower_plot
 
-Venn plot for stat common and unique gene among multiple sets.
+**Input Data2:** Dataframe: Paired comparisons differentially expressed
+genes (degs) among groups (1st-col~: degs of paired comparisons).
+
+**Output Plot:** Flower plot for stat common and unique gene among
+multiple sets.
 
 ``` r
 # 1. Load example datasets
-data(venn_data)
+data(paired_degs)
 
 # 2. Run plot function
 flower_plot(
-  venn_data,
+  flower_dat = paired_degs,
   angle = 90,
-  a = 0.5,
+  a = 1,
   b = 2,
   r = 1,
   ellipse_col_pal = "Spectral",

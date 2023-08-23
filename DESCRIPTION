@@ -1,7 +1,7 @@
 Package: TOmicsVis
 Type: Package
 Title: Transcriptome Visualization Process Scheme
-Version: 1.2.5
+Version: 1.2.6
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),

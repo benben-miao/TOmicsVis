@@ -3,16 +3,17 @@
 #' @author benben-miao
 #'
 #' @return Plot: TSNE plot for analyzing and visualizing TSNE algorithm.
-#' @param data Dataframe: include columns (IDs, Trait1, Trait2, ...).
+#' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 #' @param seed Numeric: set seed for robust result. Default: 1.
-#' @param point_size Numeric: point size. Default: 3, min: 0, max: null.
+#' @param multi_shape Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.
+#' @param point_size Numeric: point size. Default: 5, min: 0, max: null.
 #' @param point_alpha Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.
-#' @param text_size Numeric: text size. Default: 2, min: 0 (hind), max: null.
+#' @param text_size Numeric: text size. Default: 5, min: 0 (hind), max: null.
 #' @param text_alpha Numeric: text alpha. Default: 0.80, min: 0.00, max: 1.00.
-#' @param ci_level Numeric: confidence interval level. Default: 0.95, min: 0.00, max: 1.00.
-#' @param ellipse_alpha Numeric: ellipse alpha. Default: 0.30, min: 0.00, max: 1.00.
+#' @param fill_alpha Numeric: ellipse alpha. Default: 0.30, min: 0.00, max: 1.00.
+#' @param border_alpha Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.
 #' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
-#' @param sci_color_alpha Numeric: ggsci border color alpha. Default: 1.00, min: 0.00, max: 1.00.
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
@@ -21,6 +22,8 @@
 #' @import ggsci
 #' @importFrom Rtsne Rtsne
 #' @importFrom vegan anosim
+#' @importFrom grDevices rgb
+#' @importFrom ggforce geom_mark_ellipse
 #' @export
 #'
 #' @examples
@@ -28,45 +31,53 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(tsne_data)
+#' data(gene_expression)
+#' head(gene_expression)
+#'
+#' data(samples_groups)
+#' head(samples_groups)
 #'
 #' # 3. Default parameters
-#' tsne_plot(tsne_data)
+#' tsne_plot(gene_expression, samples_groups)
 #'
 #' # 4. Set seed = 5
-#' tsne_plot(tsne_data, seed = 5)
+#' tsne_plot(gene_expression, samples_groups, seed = 6)
 #'
-#' # 5. Set sci_fill_color = "Sci_Simpsons", seed = 6
-#' tsne_plot(tsne_data, sci_fill_color = "Sci_Simpsons", seed = 6)
+#' # 5. Set sci_fill_color = "Sci_NPG", seed = 6
+#' tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
 #'
-tsne_plot <- function(data,
+tsne_plot <- function(sample_gene,
+											group_sample,
 											seed = 1,
-											point_size = 3,
+											multi_shape = FALSE,
+											point_size = 5,
 											point_alpha = 0.80,
-											text_size = 2,
+											text_size = 5,
 											text_alpha = 0.80,
-											ci_level = 0.95,
-											ellipse_alpha = 0.30,
-										 sci_fill_color = "Sci_JAMA",
-										 sci_color_alpha = 0.90,
-										 legend_pos = "right",
-										 legend_dir = "vertical",
-										 ggTheme = "theme_light"
-										){
+											fill_alpha = 0.05,
+											border_alpha = 0.00,
+											sci_fill_color = "Sci_AAAS",
+											legend_pos = "right",
+											legend_dir = "vertical",
+											ggTheme = "theme_light"
+											){
 
 	# -> 2. NA and Duplicated
-	tsne_tb <- as.data.frame(data)
-	rownames(tsne_tb) <- tsne_tb[,1]
-	tsne_data <- tsne_tb[,2:(ncol(tsne_tb) - 1)]
-	groups <- as.factor(tsne_tb[,ncol(tsne_tb)])
+	sample_gene <- as.data.frame(sample_gene)
+	rownames(sample_gene) <- sample_gene[,1]
+	sample_gene <- sample_gene[,-1]
+	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
+	t_sample_gene <- t(sample_gene)
+	groups <- group_sample[,2]
 
-	tsne_ano <- vegan::anosim(x = tsne_data,
+	tsne_ano <- vegan::anosim(x = t_sample_gene,
 										 grouping = groups)
 	tsne_p <- tsne_ano$signif
 	tsne_r <- round(tsne_ano$statistic,3)
 
 	set.seed(seed)
-	tsne_res <- Rtsne::Rtsne(as.matrix(tsne_data),
+	m_sample_gene <- as.matrix(t_sample_gene)
+	tsne_res <- Rtsne::Rtsne(m_sample_gene,
 										dims = 2,
 										# initial_dims = 50,
 										perplexity = 3,
@@ -147,7 +158,7 @@ tsne_plot <- function(data,
 	# ci_level <- 0.95
 	# slide: 0.95, 0, 0.01, 1
 
-	# sci_color_alpha <- 0.92
+	sci_color_alpha <- 1.00
 	# sci_fill_color <- "Sci_NPG"
 	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
 	if (sci_fill_color == "Default") {
@@ -218,40 +229,53 @@ tsne_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# # -> 4. Plot
-	labels <- row.names(tsne_data)
+	labels <- row.names(t_sample_gene)
 
-	suppressWarnings(
-	p <- ggplot(tsne_out,
-							aes_string(x = "tSNE1",
-									y = "tSNE2",
-									color = "groups",
-									# shape = NULL,
-									label = "labels")) +
+	if (multi_shape) {
+		p <- ggplot(tsne_out,
+								aes_string(x = "tSNE1",
+													 y = "tSNE2",
+													 color = "groups",
+													 shape = "groups",
+													 label = "labels")
+		)
+	}else {
+		p <- ggplot(tsne_out,
+								aes_string(x = "tSNE1",
+													 y = "tSNE2",
+													 color = "groups",
+													 # shape = "groups",
+													 label = "labels")
+		)
+	}
+
+	p <- p +
 		geom_point(size = point_size,
+							 show.legend = TRUE,
 							 alpha = point_alpha) +
 		geom_text(size = text_size,
 							alpha = text_alpha,
-							show.legend = FALSE) +
+							show.legend = FALSE,
+							hjust = -0.1,
+							vjust = 0.5) +
 		xlab("tSNE1") +
 		ylab("tSNE2") +
-		stat_ellipse(aes_string(x = "tSNE1",
-										 y = "tSNE2",
-										 fill = "groups"),
-								 geom = "polygon",
-								 alpha = ellipse_alpha,
-								 level = ci_level,
-								 show.legend = FALSE
+		geom_mark_ellipse(aes(fill = groups),
+											color = rgb(0, 0, 0, border_alpha),
+											alpha = fill_alpha,
+											show.legend = TRUE
+											# level = pca_ellipse_level
 		) +
 		annotate("text",
-						 x = min(tsne_out$tSNE1) + ((max(tsne_out$tSNE1) - min(tsne_out$tSNE1)) * 0.2),
+						 x = min(tsne_out$tSNE1) + ((max(tsne_out$tSNE1) - min(tsne_out$tSNE1)) * 0.01),
 						 y = max(tsne_out$tSNE2),
 						 parse = TRUE,
 						 size = 5,
 						 label = paste('R:',tsne_r),
 						 colour = "black") +
 		annotate("text",
-						 x = min(tsne_out$tSNE1) + ((max(tsne_out$tSNE1) - min(tsne_out$tSNE1)) * 0.2),
-						 y = max(tsne_out$tSNE2) - ((max(tsne_out$tSNE2) - min(tsne_out$tSNE2)) * 0.1),
+						 x = min(tsne_out$tSNE1) + ((max(tsne_out$tSNE1) - min(tsne_out$tSNE1)) * 0.01),
+						 y = max(tsne_out$tSNE2) - ((max(tsne_out$tSNE2) - min(tsne_out$tSNE2)) * 0.05),
 						 parse = TRUE,
 						 size = 5,
 						 label = paste('P:',tsne_p),
@@ -278,7 +302,6 @@ tsne_plot <- function(data,
 					legend.direction = legend_dir
 					# "horizontal" or "vertical"
 		)
-	)
 	# # <- 4. Plot
 
 	return(p)

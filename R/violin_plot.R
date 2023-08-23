@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: violin plot support two levels and multiple groups with P value.
-#' @param data Dataframe: include Value, Level1, Level2 columns.
+#' @param data Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
 #' @param test_method Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
 #' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).
 #' @param group_level Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".
@@ -29,22 +29,23 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(box_data)
+#' data(traits_sex)
+#' head(traits_sex)
 #'
 #' # 3. Default parameters
-#' violin_plot(box_data)
+#' violin_plot(traits_sex)
 #'
 #' # 4. Set test_label = "p.signif",
-#' violin_plot(box_data, test_label = "p.signif")
+#' violin_plot(traits_sex, test_label = "p.signif")
 #'
 #' # 5. Set violin_orientation = "horizontal"
-#' violin_plot(box_data, violin_orientation = "horizontal")
+#' violin_plot(traits_sex, violin_orientation = "horizontal")
 #'
 #' # 6. Set group_level = "Two_Column"
-#' violin_plot(box_data, group_level = "Two_Column")
+#' violin_plot(traits_sex, group_level = "Two_Column")
 #'
 #' # 7. Set add_element = "jitter"
-#' violin_plot(box_data, add_element = "jitter")
+#' violin_plot(traits_sex, add_element = "jitter")
 #'
 violin_plot <- function(data,
 										 test_method = "t.test",

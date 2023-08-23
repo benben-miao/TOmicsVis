@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -158,18 +158,19 @@
 <h5 id="meta-information">1.1 Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a>
 </h5>
 <p><strong>TOmicsVis</strong>: TranscriptOmics Visualization.</p>
-<p><strong>Website</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">https://benben-miao.github.io/TOmicsVis/</a></p>
+<p><strong>Website</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="external-link uri">https://benben-miao.github.io/TOmicsVis/</a></p>
 </div>
 <div class="section level5">
 <h5 id="github-and-cran-install">1.2 Github and CRAN Install<a class="anchor" aria-label="anchor" href="#github-and-cran-install"></a>
 </h5>
+<p><a href="https://cran.rstudio.com/web/packages/TOmicsVis/index.html" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange"></a></p>
 <p><strong>1.2.1 Install required packages from
 Bioconductor:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install required packages from Bioconductor</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ComplexHeatmap"</span>, <span class="st">"EnhancedVolcano"</span>, <span class="st">"clusterProfiler"</span>, <span class="st">"enrichplot"</span>, <span class="st">"impute"</span>, <span class="st">"preprocessCore"</span>, <span class="st">"Mfuzz"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>1.2.2 Github</strong>: <a href="https://github.com/benben-miao/TOmicsVis/">https://github.com/benben-miao/TOmicsVis/</a></p>
+<p><strong>1.2.2 Github</strong>: <a href="https://github.com/benben-miao/TOmicsVis/" class="uri">https://github.com/benben-miao/TOmicsVis/</a></p>
 <p><strong>Install from Github:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
@@ -177,7 +178,7 @@ Bioconductor:</strong></p>
 <span></span>
 <span><span class="co"># Resolve network by GitClone</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitclone.com/github.com/benben-miao/TOmicsVis.git"</span><span class="op">)</span></span></code></pre></div>
-<p><strong>1.2.3 CRAN</strong>: <a href="https://cran.r-project.org/package=TOmicsVis" class="external-link">https://cran.r-project.org/package=TOmicsVis</a></p>
+<p><strong>1.2.3 CRAN</strong>: <a href="https://cran.r-project.org/package=TOmicsVis" class="external-link uri">https://cran.r-project.org/package=TOmicsVis</a></p>
 <p><strong>Install from CRAN:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install from CRAN</span></span>
@@ -186,7 +187,7 @@ Bioconductor:</strong></p>
 <div class="section level5">
 <h5 id="articles-and-courses">1.3 Articles and Courses<a class="anchor" aria-label="anchor" href="#articles-and-courses"></a>
 </h5>
-<p><strong>Videos Courses:</strong> <a href="https://space.bilibili.com/34105515/channel/series" class="external-link">https://space.bilibili.com/34105515/channel/series</a></p>
+<p><strong>Videos Courses:</strong> <a href="https://space.bilibili.com/34105515/channel/series" class="external-link uri">https://space.bilibili.com/34105515/channel/series</a></p>
 <p><strong>Article Introduction:</strong> <a href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ" class="external-link">全解TOmicsVis完美应用于转录组可视化R包</a></p>
 <p><strong>Article Courses:</strong> <a href="https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g" class="external-link">TOmicsVis
 转录组学R代码分析及可视化视频</a></p>
@@ -255,29 +256,30 @@ https://github.com/dongwei1220/</a></p></li>
 <div class="section level5">
 <h5 id="quantile_plot">3.1.1 quantile_plot<a class="anchor" aria-label="anchor" href="#quantile_plot"></a>
 </h5>
-<p><strong>Input Data:</strong> Dataframe: Trait measurement of samples
-in multiple groups (1st-col: Values, 2nd-col: Groups). <strong>Output
-Plot:</strong> Quantile plot for visualizing data distribution.</p>
+<p><strong>Input Data:</strong> Dataframe: Weight and Sex traits
+dataframe (1st-col: Weight, 2nd-col: Sex).</p>
+<p><strong>Output Plot:</strong> Quantile plot for visualizing data
+distribution.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Weight    Sex</span></span>
-<span><span class="co">#&gt; 1  52.43 Female</span></span>
-<span><span class="co">#&gt; 2  54.76 Female</span></span>
-<span><span class="co">#&gt; 3  56.55 Female</span></span>
-<span><span class="co">#&gt; 4  52.07 Female</span></span>
-<span><span class="co">#&gt; 5  55.12 Female</span></span>
-<span><span class="co">#&gt; 6  56.71 Female</span></span>
+<span><span class="co">#&gt; 1  36.74 Female</span></span>
+<span><span class="co">#&gt; 2  38.54 Female</span></span>
+<span><span class="co">#&gt; 3  44.91 Female</span></span>
+<span><span class="co">#&gt; 4  43.53 Female</span></span>
+<span><span class="co">#&gt; 5  39.03 Female</span></span>
+<span><span class="co">#&gt; 6  26.01 Female</span></span>
 <span></span>
 <span><span class="co"># 2. Run quantile_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/quantile_plot.html">quantile_plot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">quantile_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">weight_sex</span>,</span>
 <span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
 <span>  point_size <span class="op">=</span> <span class="fl">1.5</span>,</span>
 <span>  conf_int <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  conf_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  split_panel <span class="op">=</span> <span class="st">"One_Panel"</span>,</span>
+<span>  split_panel <span class="op">=</span> <span class="st">"Split_Panel"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_NPG"</span>,</span>
@@ -286,7 +288,7 @@ Plot:</strong> Quantile plot for visualizing data distribution.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/quantile_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/quantile_plot.html">?TOmicsVis::quantile_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html</a>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::quantile_plot</span></span></code></pre></div>
@@ -295,9 +297,9 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quanti
 <h5 id="corr_heatmap">3.1.2 corr_heatmap<a class="anchor" aria-label="anchor" href="#corr_heatmap"></a>
 </h5>
 <p><strong>Input Data:</strong> Dataframe: gene expression dataframe
-(1st-col: Transcripts or Genes, 2nd-col~: Samples). <strong>Output
-Plot:</strong> Plot: heatmap plot filled with Pearson correlation values
-and P values.</p>
+(1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Output Plot:</strong> Plot: heatmap plot filled with Pearson
+correlation values and P values.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
@@ -337,7 +339,7 @@ and P values.</p>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">fill</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/corr_heatmap-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/corr_heatmap.html">?TOmicsVis::corr_heatmap</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::corr_heatmap</span></span></code></pre></div>
@@ -346,10 +348,11 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/corr_h
 <h5 id="pca_plot">3.1.3 pca_plot<a class="anchor" aria-label="anchor" href="#pca_plot"></a>
 </h5>
 <p><strong>Input Data1:</strong> Dataframe: gene expression dataframe
-(1st-col: Transcripts or Genes, 2nd-col~: Samples). <strong>Input
-Data2:</strong> Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups). <strong>Output Plot:</strong> Plot:
-PCA dimensional reduction visualization for RNA-Seq.</p>
+(1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene
+expression (1st-col: Samples, 2nd-col: Groups).</p>
+<p><strong>Output Plot:</strong> Plot: PCA dimensional reduction
+visualization for RNA-Seq.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
@@ -380,7 +383,7 @@ PCA dimensional reduction visualization for RNA-Seq.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/pca_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/pca_plot.html">?TOmicsVis::pca_plot</a></code> or reference
-page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html</a>.</p>
+page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html</a>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::pca_plot</span></span></code></pre></div>
@@ -389,8 +392,9 @@ page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html" c
 <h5 id="dendro_plot">3.1.4 dendro_plot<a class="anchor" aria-label="anchor" href="#dendro_plot"></a>
 </h5>
 <p><strong>Input Data:</strong> Dataframe: gene expression dataframe
-(1st-col: Transcripts or Genes, 2nd-col~: Samples). <strong>Output
-Plot:</strong> Plot: dendrogram for multiple samples clustering.</p>
+(1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Output Plot:</strong> Plot: dendrogram for multiple samples
+clustering.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
@@ -418,7 +422,7 @@ Plot:</strong> Plot: dendrogram for multiple samples clustering.</p>
 <span><span class="co">#&gt;   rev.hclust vegan</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/dendro_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/dendro_plot.html">?TOmicsVis::dendro_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::dendro_plot</span></span></code></pre></div>
@@ -430,19 +434,31 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro
 <div class="section level5">
 <h5 id="box_plot">3.2.1 box_plot<a class="anchor" aria-label="anchor" href="#box_plot"></a>
 </h5>
-<p>Box plot support two levels and multiple groups with P value.</p>
+<p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and
+Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col:
+Sex).</p>
+<p><strong>Output Plot:</strong> Plot: Box plot support two levels and
+multiple groups with P value.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Value Traits    Sex</span></span>
+<span><span class="co">#&gt; 1 36.74 Weight Female</span></span>
+<span><span class="co">#&gt; 2 38.54 Weight Female</span></span>
+<span><span class="co">#&gt; 3 44.91 Weight Female</span></span>
+<span><span class="co">#&gt; 4 43.53 Weight Female</span></span>
+<span><span class="co">#&gt; 5 39.03 Weight Female</span></span>
+<span><span class="co">#&gt; 6 26.01 Weight Female</span></span>
 <span></span>
 <span><span class="co"># 2. Run box_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/box_plot.html">box_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">box_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">traits_sex</span>,</span>
 <span>  test_method <span class="op">=</span> <span class="st">"t.test"</span>,</span>
 <span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
 <span>  notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
-<span>  add_element <span class="op">=</span> <span class="st">"dotplot"</span>,</span>
+<span>  add_element <span class="op">=</span> <span class="st">"jitter"</span>,</span>
 <span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -450,24 +466,10 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Bin width defaults to 1/30 of the range of the data. Pick better value with</span></span>
-<span><span class="co">#&gt; `binwidth`.</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Do you want `notch = FALSE`?</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/box_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/box_plot.html">?TOmicsVis::box_plot</a></code> or reference
-page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
+page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::box_plot</span></span></code></pre></div>
@@ -475,14 +477,18 @@ page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" c
 <div class="section level5">
 <h5 id="violin_plot">3.2.2 violin_plot<a class="anchor" aria-label="anchor" href="#violin_plot"></a>
 </h5>
-<p>Violin plot support two levels and multiple groups with P value.</p>
+<p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and
+Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col:
+Sex).</p>
+<p><strong>Output Plot:</strong> Plot: Violin plot support two levels
+and multiple groups with P value.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run violin_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/violin_plot.html">violin_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">box_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">traits_sex</span>,</span>
 <span>  test_method <span class="op">=</span> <span class="st">"t.test"</span>,</span>
 <span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
 <span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
@@ -499,7 +505,7 @@ page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" c
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/violin_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/violin_plot.html">?TOmicsVis::violin_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html</a>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::violin_plot</span></span></code></pre></div>
@@ -507,14 +513,25 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin
 <div class="section level5">
 <h5 id="survival_plot">3.2.3 survival_plot<a class="anchor" aria-label="anchor" href="#survival_plot"></a>
 </h5>
-<p>Survival plot for analyzing and visualizing survival data.</p>
+<p><strong>Input Data:</strong> Dataframe: survival record data
+(1st-col: Time, 2nd-col: Status, 3rd-col: Group).</p>
+<p><strong>Output Plot:</strong> Survival plot for analyzing and
+visualizing survival data.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load survival_plot example datasets</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Time Status Group</span></span>
+<span><span class="co">#&gt; 1   48      0    CT</span></span>
+<span><span class="co">#&gt; 2   48      0    CT</span></span>
+<span><span class="co">#&gt; 3   48      0    CT</span></span>
+<span><span class="co">#&gt; 4   48      0    CT</span></span>
+<span><span class="co">#&gt; 5   48      0    CT</span></span>
+<span><span class="co">#&gt; 6   48      0    CT</span></span>
 <span></span>
 <span><span class="co"># 2. Run survival_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/survival_plot.html">survival_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">survival_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">survival_data</span>,</span>
 <span>  curve_function <span class="op">=</span> <span class="st">"pct"</span>,</span>
 <span>  conf_inter <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  interval_style <span class="op">=</span> <span class="st">"ribbon"</span>,</span>
@@ -525,12 +542,12 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin
 <span>  x_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_end <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  x_break <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  y_break <span class="op">=</span> <span class="fl">25</span></span>
+<span>  x_break <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  y_break <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/survival_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/survival_plot.html">?TOmicsVis::survival_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html</a>.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::survival_plot</span></span></code></pre></div>
@@ -538,30 +555,37 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/surviv
 <div class="section level5">
 <h5 id="tsne_plot">3.2.4 tsne_plot<a class="anchor" aria-label="anchor" href="#tsne_plot"></a>
 </h5>
-<p>TSNE plot for analyzing and visualizing TSNE algorithm.</p>
+<p><strong>Input Data1:</strong> Dataframe: gene expression dataframe
+(1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene
+expression (1st-col: Samples, 2nd-col: Groups).</p>
+<p><strong>Output Plot:</strong> TSNE plot for analyzing and visualizing
+TSNE algorithm.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load tsne_plot example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tsne_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run tsne_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/tsne_plot.html">tsne_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">tsne_data</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  point_size <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  sample_gene <span class="op">=</span> <span class="va">gene_expression</span>,</span>
+<span>  group_sample <span class="op">=</span> <span class="va">samples_groups</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  multi_shape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  point_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  text_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  text_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  text_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  ci_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  ellipse_alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_JAMA"</span>,</span>
-<span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>  fill_alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  border_alpha <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/tsne_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/tsne_plot.html">?TOmicsVis::tsne_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html</a>.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::tsne_plot</span></span></code></pre></div>
@@ -573,22 +597,38 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_p
 <div class="section level5">
 <h5 id="venn_plot">3.3.1 venn_plot<a class="anchor" aria-label="anchor" href="#venn_plot"></a>
 </h5>
-<p>Venn plot for stat common and unique gene among multiple sets.</p>
+<p><strong>Input Data2:</strong> Dataframe: Paired comparisons
+differentially expressed genes (degs) among groups (1st-col~: degs of
+paired comparisons).</p>
+<p><strong>Output Plot:</strong> Venn plot for stat common and unique
+gene among multiple sets.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load venn_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">venn_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6</span></span>
+<span><span class="co">#&gt; 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354</span></span>
+<span><span class="co">#&gt; 2  transcript_604 transcript_6050  transcript_7601  transcript_2959</span></span>
+<span><span class="co">#&gt; 3 transcript_3912 transcript_1039  transcript_5960  transcript_5919</span></span>
+<span><span class="co">#&gt; 4 transcript_8676 transcript_1344  transcript_3240  transcript_2395</span></span>
+<span><span class="co">#&gt; 5 transcript_8832 transcript_3069 transcript_10224  transcript_9881</span></span>
+<span><span class="co">#&gt; 6   transcript_74 transcript_9809  transcript_3151  transcript_8836</span></span>
 <span></span>
 <span><span class="co"># 2. Run venn_plot plot function</span></span>
 <span><span class="fu"><a href="../reference/venn_plot.html">venn_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">venn_data</span>,</span>
-<span>  line_type <span class="op">=</span> <span class="st">"blank"</span>,</span>
-<span>  ellipse_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
-<span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.65</span></span>
+<span>  data <span class="op">=</span> <span class="va">paired_degs</span>,</span>
+<span>    title_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    label_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    label_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>    border_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    line_type <span class="op">=</span> <span class="st">"longdash"</span>,</span>
+<span>    ellipse_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
+<span>    sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>    sci_fill_alpha <span class="op">=</span> <span class="fl">0.65</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/venn_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::venn_plot</span></span></code></pre></div>
@@ -596,16 +636,20 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_p
 <div class="section level5">
 <h5 id="flower_plot">3.3.2 flower_plot<a class="anchor" aria-label="anchor" href="#flower_plot"></a>
 </h5>
-<p>Venn plot for stat common and unique gene among multiple sets.</p>
+<p><strong>Input Data2:</strong> Dataframe: Paired comparisons
+differentially expressed genes (degs) among groups (1st-col~: degs of
+paired comparisons).</p>
+<p><strong>Output Plot:</strong> Flower plot for stat common and unique
+gene among multiple sets.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">venn_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run plot function</span></span>
 <span><span class="fu"><a href="../reference/flower_plot.html">flower_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">venn_data</span>,</span>
+<span>  flower_dat <span class="op">=</span> <span class="va">paired_degs</span>,</span>
 <span>  angle <span class="op">=</span> <span class="fl">90</span>,</span>
-<span>  a <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  a <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  b <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  r <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  ellipse_col_pal <span class="op">=</span> <span class="st">"Spectral"</span>,</span>
@@ -614,7 +658,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_p
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/flower_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/flower_plot.html">?TOmicsVis::flower_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html</a>.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::flower_plot</span></span></code></pre></div>
@@ -630,19 +674,22 @@ samples.</p>
 <span></span>
 <span><span class="co"># 2. Run circos_heatmap plot function</span></span>
 <span><span class="fu"><a href="../reference/circos_heatmap.html">circos_heatmap</a></span><span class="op">(</span></span>
-<span>  <span class="va">circos_heatmap_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">circos_heatmap_data</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#0000ff"</span>,</span>
 <span>  mid_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
 <span>  gap_size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  cluster_run <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cluster_method <span class="op">=</span> <span class="st">"complete"</span>,</span>
 <span>  distance_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
+<span>  dend_show <span class="op">=</span> <span class="st">"inside"</span>,</span>
 <span>  dend_height <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  rowname_show <span class="op">=</span> <span class="st">"outside"</span>,</span>
 <span>  rowname_size <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/circos_heatmap-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/circos_heatmap.html">?TOmicsVis::circos_heatmap</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::circos_heatmap</span></span></code></pre></div>
@@ -676,7 +723,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/volcano_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/volcano_plot.html">?TOmicsVis::volcano_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::volcano_plot</span></span></code></pre></div>
@@ -709,7 +756,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcan
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/ma_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/ma_plot.html">?TOmicsVis::ma_plot</a></code> or reference
-page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
+page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::ma_plot</span></span></code></pre></div>
@@ -745,7 +792,7 @@ page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" cl
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/heatmap_group-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/heatmap_group.html">?TOmicsVis::heatmap_group</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html</a>.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_group</span></span></code></pre></div>
@@ -783,7 +830,7 @@ traits.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/trend_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/trend_plot.html">?TOmicsVis::trend_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html</a>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::trend_plot</span></span></code></pre></div>
@@ -810,7 +857,7 @@ in multiple samples.</p>
 <p><img src="Tutorials_files/figure-html/gene_cluster_trend-1.png" width="960"></p>
 <pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 <p>Get help using command <code><a href="../reference/gene_cluster_trend.html">?TOmicsVis::gene_cluster_trend</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_cluster_trend</span></span></code></pre></div>
@@ -839,7 +886,7 @@ in multiple samples.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/gene_rank_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/gene_rank_plot.html">?TOmicsVis::gene_rank_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html</a>.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_rank_plot</span></span></code></pre></div>
@@ -856,7 +903,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_r
 <span><span class="co"># 2. Run wgcna_pipeline plot function</span></span>
 <span><span class="co"># wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/wgcna_pipeline.html">?TOmicsVis::wgcna_pipeline</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html</a>.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::wgcna_pipeline</span></span></code></pre></div>
@@ -895,7 +942,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/network_plot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/network_plot.html">?TOmicsVis::network_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/network_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/network_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/network_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/network_plot.html</a>.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::network_plot</span></span></code></pre></div>
@@ -935,7 +982,7 @@ data.</p>
 <pre><code><span><span class="co">#&gt; Using Cluster, gene as id variables</span></span></code></pre>
 <p><img src="Tutorials_files/figure-html/heatmap_cluster-2.png" width="960"><img src="Tutorials_files/figure-html/heatmap_cluster-3.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/heatmap_cluster.html">?TOmicsVis::heatmap_cluster</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html</a>.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_cluster</span></span></code></pre></div>
@@ -1070,7 +1117,7 @@ genes.</p>
 <span><span class="co">#&gt; 99  S19         E5      6      6  1  2  6  11 #5200FF7F</span></span>
 <span><span class="co">#&gt; 100 S20         E5      5      5  1  1  5   5 #8F00FF7F</span></span></code></pre>
 <p>Get help using command <code><a href="../reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::chord_plot</span></span></code></pre></div>
@@ -1154,7 +1201,7 @@ Reference Genome).</p>
 <span><span class="co">#&gt; 5 0.5849832 0.6365993 0.5433280 gene_22/gene_23/gene_24     3</span></span>
 <span><span class="co">#&gt; 6 0.1100000 0.1850000 0.1578947                 gene_21     1</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/go_enrich.html">?TOmicsVis::go_enrich</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html</a>.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich</span></span></code></pre></div>
@@ -1188,7 +1235,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enr
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/go_enrich_stat-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/go_enrich_stat.html">?TOmicsVis::go_enrich_stat</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_stat</span></span></code></pre></div>
@@ -1224,7 +1271,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enr
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">fill</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/go_enrich_bar-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/go_enrich_bar.html">?TOmicsVis::go_enrich_bar</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_bar</span></span></code></pre></div>
@@ -1260,7 +1307,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enr
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/go_enrich_dot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/go_enrich_dot.html">?TOmicsVis::go_enrich_dot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_dot</span></span></code></pre></div>
@@ -1330,7 +1377,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enr
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/go_enrich_net-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_net</span></span></code></pre></div>
@@ -1400,7 +1447,7 @@ Reference Genome).</p>
 <span><span class="co">#&gt; ko00460      4</span></span>
 <span><span class="co">#&gt; ko00670      4</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/kegg_enrich.html">?TOmicsVis::kegg_enrich</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html</a>.</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich</span></span></code></pre></div>
@@ -1436,7 +1483,7 @@ results (None/Exist Reference Genome).</p>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">fill</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/kegg_enrich_bar-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/kegg_enrich_bar.html">?TOmicsVis::kegg_enrich_bar</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html</a>.</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_bar</span></span></code></pre></div>
@@ -1472,7 +1519,7 @@ results (None/Exist Reference Genome).</p>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/kegg_enrich_dot-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/kegg_enrich_dot.html">?TOmicsVis::kegg_enrich_dot</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html</a>.</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_dot</span></span></code></pre></div>
@@ -1542,7 +1589,7 @@ results (None/Exist Reference Genome).</p>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/kegg_enrich_net-1.png" width="960"></p>
 <p>Get help using command <code><a href="../reference/kegg_enrich_net.html">?TOmicsVis::kegg_enrich_net</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_net</span></span></code></pre></div>
@@ -1582,7 +1629,7 @@ columns.</p>
 <span><span class="co">#&gt; 5     5   5    NA      NA   56 14.3</span></span>
 <span><span class="co">#&gt; 6     5   6    28      NA   66 14.9</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/table_split.html">?TOmicsVis::table_split</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_split</span></span></code></pre></div>
@@ -1620,7 +1667,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_
 <span><span class="co">#&gt; 5     5   5    Ozone    NA</span></span>
 <span><span class="co">#&gt; 6     5   6    Ozone    28</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/table_merge.html">?TOmicsVis::table_merge</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_merge</span></span></code></pre></div>
@@ -1662,7 +1709,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   vehicles &lt;list&gt;, starships &lt;list&gt;</span></span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/table_filter.html">?TOmicsVis::table_filter</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_filter</span></span></code></pre></div>
@@ -1701,7 +1748,7 @@ reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_
 <span><span class="co">#&gt; 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span></span>
 <span><span class="co">#&gt; 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span></span></code></pre></div>
 <p>Get help using command <code><a href="../reference/table_cross.html">?TOmicsVis::table_cross</a></code> or
-reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="external-link">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
+reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_cross</span></span></code></pre></div>

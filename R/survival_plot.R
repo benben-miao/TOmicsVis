@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: survival plot for analyzing and visualizing survival data.
-#' @param data Dataframe: include columns (Time, Status, Group), rows (records).
+#' @param data Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
 #' @param curve_function Character: an arbitrary function defining a transformation of the survival curve. Often used transformations can be specified with a character argument: "event" plots cumulative events (f(y) = 1-y), "cumhaz" plots the cumulative hazard function (f(y) = -log(y)), and "pct" for survival probability in percentage.
 #' @param conf_inter Logical: confidence interval. Default: TRUE, options: TRUE, FALSE.
 #' @param interval_style Character: confidence interval style. Default: "ribbon", options: "ribbon", "step".
@@ -14,8 +14,8 @@
 #' @param x_start Numeric: x-axis start value. Default: 0, min: 0, max: null.
 #' @param y_start Numeric: y-axis start value. Default: 0, min: 0, max: 100.
 #' @param y_end Numeric: y-axis end value. Default: 100, min: 0, max: 100.
-#' @param x_break Numeric: x-axis break value. Default: 100, min: 0, max: null.
-#' @param y_break Numeric: y-axis break value. Default: 25, min: 0, max: 100.
+#' @param x_break Numeric: x-axis break value. Default: 10, min: 0, max: null.
+#' @param y_break Numeric: y-axis break value. Default: 10, min: 0, max: 100.
 #'
 #' @import ggplot2
 #' @import ggsci
@@ -29,6 +29,7 @@
 #'
 #' # 2. Use example dataset
 #' data(survival_data)
+#' head(survival_data)
 #'
 #' # 3. Default parameters
 #' survival_plot(survival_data)
@@ -50,8 +51,8 @@ survival_plot <- function(data,
 													x_start = 0,
 													y_start = 0,
 													y_end = 100,
-													x_break = 100,
-													y_break = 25
+													x_break = 10,
+													y_break = 10
 													){
 	# -> 2. Data
 	data <- as.data.frame(data)

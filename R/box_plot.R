@@ -3,12 +3,12 @@
 #' @author benben-miao
 #'
 #' @return Plot: box plot support two levels and multiple groups with P value.
-#' @param data Dataframe: two levels and multiple groups
+#' @param data Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
 #' @param test_method Character: test methods of P value. Default: "t.test", options: "wilcox.test", "t.test", "anova", "kruskal.test".
 #' @param test_label Character: test label of P value. Default: "p.format", options: "p.signif", "p.format". c(0, 0.0001, 0.001, 0.01, 0.05, 1).
 #' @param notch Logical: Box notch or none. Default: TRUE, options: TRUE, FALSE.
 #' @param group_level Character: group levels. Default: "Three_Column", options: "Two_Column", "Three_Column".
-#' @param add_element Character: add new plot. Default: "dotplot", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".
+#' @param add_element Character: add new plot. Default: "jitter", options: "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range".
 #' @param my_shape Character: box scatter shape. Default: "fill_circle", options: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle".
 #' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param sci_fill_alpha Numeric: ggsci fill color alpha. Default: 0.50, min: 0.00, max: 1.00.
@@ -28,29 +28,30 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(box_data)
+#' data(traits_sex)
+#' head(traits_sex)
 #'
 #' # 3. Default parameters
-#' box_plot(box_data)
+#' box_plot(traits_sex)
 #'
 #' # 4. Set test_label = "p.signif",
-#' box_plot(box_data, test_label = "p.signif")
+#' box_plot(traits_sex, test_label = "p.signif")
 #'
 #' # 5. Set notch = FALSE
-#' box_plot(box_data, notch = FALSE)
+#' box_plot(traits_sex, notch = FALSE)
 #'
 #' # 6. Set group_level = "Two_Column"
-#' box_plot(box_data, group_level = "Two_Column")
+#' box_plot(traits_sex, group_level = "Two_Column")
 #'
-#' # 7. Set add_element = "jitter"
-#' box_plot(box_data, add_element = "jitter")
+#' # 7. Set add_element = "point"
+#' box_plot(traits_sex, add_element = "point")
 #'
 box_plot <- function(data,
 										 test_method = "t.test",
 										 test_label = "p.format",
 										 notch = TRUE,
 										 group_level = "Three_Column",
-										 add_element = "dotplot",
+										 add_element = "jitter",
 										 my_shape = "fill_circle",
 										 sci_fill_color = "Sci_AAAS",
 										 sci_fill_alpha = 0.50,

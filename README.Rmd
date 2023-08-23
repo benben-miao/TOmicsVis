@@ -90,23 +90,23 @@ library(ggplot2)
 
 #### 3.1.1 quantile_plot
 
-**Input Data:** Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).
+**Input Data:** Dataframe: Weight and Sex traits dataframe (1st-col: Weight, 2nd-col: Sex).
 
 **Output Plot:** Quantile plot for visualizing data distribution.
 
 ```{r quantile_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
-data(quantile_data)
-head(quantile_data)
+data(weight_sex)
+head(weight_sex)
 
 # 2. Run quantile_plot plot function
 quantile_plot(
-  data = quantile_data,
+  data = weight_sex,
   my_shape = "fill_circle",
   point_size = 1.5,
   conf_int = TRUE,
   conf_level = 0.95,
-  split_panel = "One_Panel",
+  split_panel = "Split_Panel",
   legend_pos = "right",
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
@@ -237,20 +237,23 @@ Get help using command `?TOmicsVis::dendro_plot` or reference page <https://benb
 
 #### 3.2.1 box_plot
 
-Box plot support two levels and multiple groups with P value.
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+
+**Output Plot:** Plot: Box plot support two levels and multiple groups with P value.
 
 ```{r box_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
-# 1. Load box_data example datasets
-data(box_data)
+# 1. Load example datasets
+data(traits_sex)
+head(traits_sex)
 
 # 2. Run box_plot plot function
 box_plot(
-  box_data,
+  data = traits_sex,
   test_method = "t.test",
   test_label = "p.format",
   notch = TRUE,
   group_level = "Three_Column",
-  add_element = "dotplot",
+  add_element = "jitter",
   my_shape = "fill_circle",
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.5,
@@ -270,15 +273,17 @@ Get help using command `?TOmicsVis::box_plot` or reference page <https://benben-
 
 #### 3.2.2 violin_plot
 
-Violin plot support two levels and multiple groups with P value.
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+
+**Output Plot:** Plot: Violin plot support two levels and multiple groups with P value.
 
 ```{r violin_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
-# 1. Load box_data example datasets
-data(box_data)
+# 1. Load example datasets
+data(traits_sex)
 
 # 2. Run violin_plot plot function
 violin_plot(
-  box_data,
+  data = traits_sex,
   test_method = "t.test",
   test_label = "p.format",
   group_level = "Three_Column",
@@ -304,15 +309,18 @@ Get help using command `?TOmicsVis::violin_plot` or reference page <https://benb
 
 #### 3.2.3 survival_plot
 
-Survival plot for analyzing and visualizing survival data.
+**Input Data:** Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
+
+**Output Plot:** Survival plot for analyzing and visualizing survival data.
 
 ```{r survival_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
-# 1. Load survival_plot example datasets
+# 1. Load example datasets
 data(survival_data)
+head(survival_data)
 
 # 2. Run survival_plot plot function
 survival_plot(
-  survival_data,
+  data = survival_data,
   curve_function = "pct",
   conf_inter = TRUE,
   interval_style = "ribbon",
@@ -323,8 +331,8 @@ survival_plot(
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 100,
-  y_break = 25
+  x_break = 10,
+  y_break = 10
 )
 ```
 
@@ -337,24 +345,30 @@ Get help using command `?TOmicsVis::survival_plot` or reference page <https://be
 
 #### 3.2.4 tsne_plot
 
-TSNE plot for analyzing and visualizing TSNE algorithm.
+**Input Data1:** Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
+
+**Output Plot:** TSNE plot for analyzing and visualizing TSNE algorithm.
 
 ```{r tsne_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
-# 1. Load tsne_plot example datasets
-data(tsne_data)
+# 1. Load example datasets
+data(gene_expression)
+data(samples_groups)
 
 # 2. Run tsne_plot plot function
 tsne_plot(
-  tsne_data,
-  seed = 5,
-  point_size = 4,
+  sample_gene = gene_expression,
+  group_sample = samples_groups,
+  seed = 1,
+  multi_shape = FALSE,
+  point_size = 5,
   point_alpha = 0.8,
-  text_size = 2,
+  text_size = 5,
   text_alpha = 0.8,
-  ci_level = 0.95,
-  ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_JAMA",
-  sci_color_alpha = 0.9,
+  fill_alpha = 0.05,
+  border_alpha = 0,
+  sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
@@ -372,19 +386,26 @@ Get help using command `?TOmicsVis::tsne_plot` or reference page <https://benben
 
 #### 3.3.1 venn_plot
 
-Venn plot for stat common and unique gene among multiple sets.
+**Input Data2:** Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).
+
+**Output Plot:** Venn plot for stat common and unique gene among multiple sets.
 
 ```{r venn_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
-# 1. Load venn_data example datasets
-data(venn_data)
+# 1. Load example datasets
+data(paired_degs)
+head(paired_degs)
 
 # 2. Run venn_plot plot function
 venn_plot(
-  venn_data,
-  line_type = "blank",
-  ellipse_shape = "circle",
-  sci_fill_color = "Sci_AAAS",
-  sci_fill_alpha = 0.65
+  data = paired_degs,
+	title_size = 1,
+	label_show = TRUE,
+	label_size = 0.8,
+	border_show = TRUE,
+	line_type = "longdash",
+	ellipse_shape = "circle",
+	sci_fill_color = "Sci_AAAS",
+	sci_fill_alpha = 0.65
 )
 ```
 
@@ -397,17 +418,19 @@ Get help using command `?TOmicsVis::venn_plot` or reference page <https://benben
 
 #### 3.3.2 flower_plot
 
-Venn plot for stat common and unique gene among multiple sets.
+**Input Data2:** Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).
+
+**Output Plot:** Flower plot for stat common and unique gene among multiple sets.
 
 ```{r flower_plot, warning=FALSE, fig.width=10.00, fig.height=6.18}
 # 1. Load example datasets
-data(venn_data)
+data(paired_degs)
 
 # 2. Run plot function
 flower_plot(
-  venn_data,
+  flower_dat = paired_degs,
   angle = 90,
-  a = 0.5,
+  a = 1,
   b = 2,
   r = 1,
   ellipse_col_pal = "Spectral",

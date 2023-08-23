@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -239,28 +239,28 @@
 <div class="section level4">
 <h4 id="id_311-quantile_plot">3.1.1 quantile_plot<a class="anchor" aria-label="anchor" href="#id_311-quantile_plot"></a>
 </h4>
-<p><strong>Input Data:</strong> Dataframe: Trait measurement of samples in multiple groups (1st-col: Values, 2nd-col: Groups).</p>
+<p><strong>Input Data:</strong> Dataframe: Weight and Sex traits dataframe (1st-col: Weight, 2nd-col: Sex).</p>
 <p><strong>Output Plot:</strong> Quantile plot for visualizing data distribution.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">quantile_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Weight    Sex</span></span>
-<span><span class="co">#&gt; 1  52.43 Female</span></span>
-<span><span class="co">#&gt; 2  54.76 Female</span></span>
-<span><span class="co">#&gt; 3  56.55 Female</span></span>
-<span><span class="co">#&gt; 4  52.07 Female</span></span>
-<span><span class="co">#&gt; 5  55.12 Female</span></span>
-<span><span class="co">#&gt; 6  56.71 Female</span></span>
+<span><span class="co">#&gt; 1  36.74 Female</span></span>
+<span><span class="co">#&gt; 2  38.54 Female</span></span>
+<span><span class="co">#&gt; 3  44.91 Female</span></span>
+<span><span class="co">#&gt; 4  43.53 Female</span></span>
+<span><span class="co">#&gt; 5  39.03 Female</span></span>
+<span><span class="co">#&gt; 6  26.01 Female</span></span>
 <span></span>
 <span><span class="co"># 2. Run quantile_plot plot function</span></span>
 <span><span class="fu"><a href="reference/quantile_plot.html">quantile_plot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">quantile_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">weight_sex</span>,</span>
 <span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
 <span>  point_size <span class="op">=</span> <span class="fl">1.5</span>,</span>
 <span>  conf_int <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  conf_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  split_panel <span class="op">=</span> <span class="st">"One_Panel"</span>,</span>
+<span>  split_panel <span class="op">=</span> <span class="st">"Split_Panel"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_NPG"</span>,</span>
@@ -404,19 +404,28 @@
 <div class="section level4">
 <h4 id="id_321-box_plot">3.2.1 box_plot<a class="anchor" aria-label="anchor" href="#id_321-box_plot"></a>
 </h4>
-<p>Box plot support two levels and multiple groups with P value.</p>
+<p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).</p>
+<p><strong>Output Plot:</strong> Plot: Box plot support two levels and multiple groups with P value.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Value Traits    Sex</span></span>
+<span><span class="co">#&gt; 1 36.74 Weight Female</span></span>
+<span><span class="co">#&gt; 2 38.54 Weight Female</span></span>
+<span><span class="co">#&gt; 3 44.91 Weight Female</span></span>
+<span><span class="co">#&gt; 4 43.53 Weight Female</span></span>
+<span><span class="co">#&gt; 5 39.03 Weight Female</span></span>
+<span><span class="co">#&gt; 6 26.01 Weight Female</span></span>
 <span></span>
 <span><span class="co"># 2. Run box_plot plot function</span></span>
 <span><span class="fu"><a href="reference/box_plot.html">box_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">box_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">traits_sex</span>,</span>
 <span>  test_method <span class="op">=</span> <span class="st">"t.test"</span>,</span>
 <span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
 <span>  notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
-<span>  add_element <span class="op">=</span> <span class="st">"dotplot"</span>,</span>
+<span>  add_element <span class="op">=</span> <span class="st">"jitter"</span>,</span>
 <span>  my_shape <span class="op">=</span> <span class="st">"fill_circle"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -424,21 +433,7 @@
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Bin width defaults to 1/30 of the range of the data. Pick better value with</span></span>
-<span><span class="co">#&gt; `binwidth`.</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span>
-<span><span class="co">#&gt; Notch went outside hinges</span></span>
-<span><span class="co">#&gt; ℹ Do you want `notch = FALSE`?</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-box_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/box_plot.html">?TOmicsVis::box_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -448,14 +443,15 @@
 <div class="section level4">
 <h4 id="id_322-violin_plot">3.2.2 violin_plot<a class="anchor" aria-label="anchor" href="#id_322-violin_plot"></a>
 </h4>
-<p>Violin plot support two levels and multiple groups with P value.</p>
+<p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).</p>
+<p><strong>Output Plot:</strong> Plot: Violin plot support two levels and multiple groups with P value.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load box_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">box_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run violin_plot plot function</span></span>
 <span><span class="fu"><a href="reference/violin_plot.html">violin_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">box_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">traits_sex</span>,</span>
 <span>  test_method <span class="op">=</span> <span class="st">"t.test"</span>,</span>
 <span>  test_label <span class="op">=</span> <span class="st">"p.format"</span>,</span>
 <span>  group_level <span class="op">=</span> <span class="st">"Three_Column"</span>,</span>
@@ -479,14 +475,23 @@
 <div class="section level4">
 <h4 id="id_323-survival_plot">3.2.3 survival_plot<a class="anchor" aria-label="anchor" href="#id_323-survival_plot"></a>
 </h4>
-<p>Survival plot for analyzing and visualizing survival data.</p>
+<p><strong>Input Data:</strong> Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).</p>
+<p><strong>Output Plot:</strong> Survival plot for analyzing and visualizing survival data.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load survival_plot example datasets</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Time Status Group</span></span>
+<span><span class="co">#&gt; 1   48      0    CT</span></span>
+<span><span class="co">#&gt; 2   48      0    CT</span></span>
+<span><span class="co">#&gt; 3   48      0    CT</span></span>
+<span><span class="co">#&gt; 4   48      0    CT</span></span>
+<span><span class="co">#&gt; 5   48      0    CT</span></span>
+<span><span class="co">#&gt; 6   48      0    CT</span></span>
 <span></span>
 <span><span class="co"># 2. Run survival_plot plot function</span></span>
 <span><span class="fu"><a href="reference/survival_plot.html">survival_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">survival_data</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">survival_data</span>,</span>
 <span>  curve_function <span class="op">=</span> <span class="st">"pct"</span>,</span>
 <span>  conf_inter <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  interval_style <span class="op">=</span> <span class="st">"ribbon"</span>,</span>
@@ -497,8 +502,8 @@
 <span>  x_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_end <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  x_break <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  y_break <span class="op">=</span> <span class="fl">25</span></span>
+<span>  x_break <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  y_break <span class="op">=</span> <span class="fl">10</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-survival_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/survival_plot.html">?TOmicsVis::survival_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html</a>.</p>
@@ -509,23 +514,27 @@
 <div class="section level4">
 <h4 id="id_324-tsne_plot">3.2.4 tsne_plot<a class="anchor" aria-label="anchor" href="#id_324-tsne_plot"></a>
 </h4>
-<p>TSNE plot for analyzing and visualizing TSNE algorithm.</p>
+<p><strong>Input Data1:</strong> Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).</p>
+<p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
+<p><strong>Output Plot:</strong> TSNE plot for analyzing and visualizing TSNE algorithm.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load tsne_plot example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tsne_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run tsne_plot plot function</span></span>
 <span><span class="fu"><a href="reference/tsne_plot.html">tsne_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">tsne_data</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  point_size <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  sample_gene <span class="op">=</span> <span class="va">gene_expression</span>,</span>
+<span>  group_sample <span class="op">=</span> <span class="va">samples_groups</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  multi_shape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  point_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  text_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  text_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  text_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  ci_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  ellipse_alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_JAMA"</span>,</span>
-<span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>  fill_alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  border_alpha <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
@@ -543,18 +552,31 @@
 <div class="section level4">
 <h4 id="id_331-venn_plot">3.3.1 venn_plot<a class="anchor" aria-label="anchor" href="#id_331-venn_plot"></a>
 </h4>
-<p>Venn plot for stat common and unique gene among multiple sets.</p>
+<p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
+<p><strong>Output Plot:</strong> Venn plot for stat common and unique gene among multiple sets.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Load venn_data example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">venn_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6</span></span>
+<span><span class="co">#&gt; 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354</span></span>
+<span><span class="co">#&gt; 2  transcript_604 transcript_6050  transcript_7601  transcript_2959</span></span>
+<span><span class="co">#&gt; 3 transcript_3912 transcript_1039  transcript_5960  transcript_5919</span></span>
+<span><span class="co">#&gt; 4 transcript_8676 transcript_1344  transcript_3240  transcript_2395</span></span>
+<span><span class="co">#&gt; 5 transcript_8832 transcript_3069 transcript_10224  transcript_9881</span></span>
+<span><span class="co">#&gt; 6   transcript_74 transcript_9809  transcript_3151  transcript_8836</span></span>
 <span></span>
 <span><span class="co"># 2. Run venn_plot plot function</span></span>
 <span><span class="fu"><a href="reference/venn_plot.html">venn_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">venn_data</span>,</span>
-<span>  line_type <span class="op">=</span> <span class="st">"blank"</span>,</span>
-<span>  ellipse_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
-<span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.65</span></span>
+<span>  data <span class="op">=</span> <span class="va">paired_degs</span>,</span>
+<span>    title_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    label_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    label_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>    border_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    line_type <span class="op">=</span> <span class="st">"longdash"</span>,</span>
+<span>    ellipse_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
+<span>    sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
+<span>    sci_fill_alpha <span class="op">=</span> <span class="fl">0.65</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-venn_plot-1.png"><!-- --></p>
 <p>Get help using command <code><a href="reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
@@ -565,16 +587,17 @@
 <div class="section level4">
 <h4 id="id_332-flower_plot">3.3.2 flower_plot<a class="anchor" aria-label="anchor" href="#id_332-flower_plot"></a>
 </h4>
-<p>Venn plot for stat common and unique gene among multiple sets.</p>
+<p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
+<p><strong>Output Plot:</strong> Flower plot for stat common and unique gene among multiple sets.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">venn_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 2. Run plot function</span></span>
 <span><span class="fu"><a href="reference/flower_plot.html">flower_plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">venn_data</span>,</span>
+<span>  flower_dat <span class="op">=</span> <span class="va">paired_degs</span>,</span>
 <span>  angle <span class="op">=</span> <span class="fl">90</span>,</span>
-<span>  a <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  a <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  b <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  r <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  ellipse_col_pal <span class="op">=</span> <span class="st">"Spectral"</span>,</span>

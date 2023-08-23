@@ -128,11 +128,13 @@ reference:
 - title: Example datasets in TOmicsVis
   desc: Example datasets in TOmicsVis.
   contents:
+  - weight_sex
+  - traits_sex
+  - survival_data
   - gene_expression
+  - gene_exp2
   - samples_groups
-  - box_data
-  - quantile_data
-  - venn_data
+  - paired_degs
   - chord_data
   - circos_heatmap_data
   - deg_data
@@ -140,8 +142,6 @@ reference:
   - trend_data
   - gene_cluster_data
   - table_split_data
-  - survival_data
-  - tsne_data
   - table_merge_data
   - table_filter_data
   - table_cross_data1
@@ -154,4 +154,3 @@ reference:
   - wgcna_gene_exp
   - wgcna_sample_group
   - heatmap_group_data
-  - gene_exp2

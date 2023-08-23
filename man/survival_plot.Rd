@@ -16,12 +16,12 @@ survival_plot(
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 100,
-  y_break = 25
+  x_break = 10,
+  y_break = 10
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Time, Status, Group), rows (records).}
+\item{data}{Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).}
 
 \item{curve_function}{Character: an arbitrary function defining a transformation of the survival curve. Often used transformations can be specified with a character argument: "event" plots cumulative events (f(y) = 1-y), "cumhaz" plots the cumulative hazard function (f(y) = -log(y)), and "pct" for survival probability in percentage.}
 
@@ -43,9 +43,9 @@ survival_plot(
 
 \item{y_end}{Numeric: y-axis end value. Default: 100, min: 0, max: 100.}
 
-\item{x_break}{Numeric: x-axis break value. Default: 100, min: 0, max: null.}
+\item{x_break}{Numeric: x-axis break value. Default: 10, min: 0, max: null.}
 
-\item{y_break}{Numeric: y-axis break value. Default: 25, min: 0, max: 100.}
+\item{y_break}{Numeric: y-axis break value. Default: 10, min: 0, max: 100.}
 }
 \value{
 Plot: survival plot for analyzing and visualizing survival data.
@@ -59,6 +59,7 @@ library(TOmicsVis)
 
 # 2. Use example dataset
 data(survival_data)
+head(survival_data)
 
 # 3. Default parameters
 survival_plot(survival_data)

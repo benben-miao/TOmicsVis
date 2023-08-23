@@ -7,10 +7,13 @@
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 #' @param xPC Numeric: PC index at x axis. Default: 1, options: 1, 2, 3, ...
 #' @param yPC Numeric: PC index at y axis. Default: 2, options: 2, 3, 4, ...
+#' @param multi_shape Logical: groups as shapes. Default: TRUE, options: TRUE, FALSE.
 #' @param point_size Numeric: PCA plot point size. Default: 5, min: 0.
+#' @param point_alpha Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.
 #' @param text_size Numeric: PCA plot annotation size. Default: 5, min: 0.
 #' @param fill_alpha Numeric: ellipse fill color alpha. Default: 0.10, min: 0.00, max: 1.00.
 #' @param border_alpha Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.
+#' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend director. Default: "vertical", options: "horizontal", "vertical".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
@@ -35,20 +38,23 @@
 #' # 3. Default parameters
 #' pca_plot(gene_expression, samples_groups)
 #'
-#' # 4. Set ellipse_alpha = 0.30
-#' pca_plot(gene_expression, samples_groups, ellipse_alpha = 0.00)
+#' # 4. Set multi_shape = FALSE
+#' pca_plot(gene_expression, samples_groups, multi_shape = FALSE)
 #'
-#' # 5. Set legend_pos = "right", legend_dir = "vertical"
-#' pca_plot(gene_expression, samples_groups, legend_pos = "top", legend_dir = "horizontal")
+#' # 5. Set sci_fill_color = "Sci_NPG", fill_alpha = 0.10
+#' pca_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", fill_alpha = 0.10)
 #'
 pca_plot <- function(sample_gene,
 										 group_sample,
 										 xPC = 1,
 										 yPC = 2,
+										 multi_shape = TRUE,
 										 point_size = 5,
+										 point_alpha = 0.80,
 										 text_size = 5,
-										 fill_alpha = 0.10,
+										 fill_alpha = 0.05,
 										 border_alpha = 0.00,
+										 sci_fill_color = "Sci_AAAS",
 										 legend_pos = "right",
 										 legend_dir = "vertical",
 										 ggTheme = "theme_light"
@@ -58,9 +64,10 @@ pca_plot <- function(sample_gene,
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
 	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
+	t_sample_gene <- t(sample_gene)
 	groups <- group_sample[,2]
 
-	pca_res <- stats::prcomp(t(sample_gene))
+	pca_res <- stats::prcomp(t_sample_gene)
 	pca_out <- as.data.frame(pca_res$x)
 
 	percentage <- round(pca_res$sdev / sum(pca_res$sdev) * 100, 2)
@@ -93,6 +100,48 @@ pca_plot <- function(sample_gene,
 		gg_theme <- theme_void()
 	} else if (ggTheme == "theme_test") {
 		gg_theme <- theme_test()
+	}
+
+	sci_color_alpha <- 1.00
+	# sci_fill_color <- "Sci_NPG"
+	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
+	if (sci_fill_color == "Default") {
+		sci_color <- NULL
+	} else if (sci_fill_color == "Sci_AAAS") {
+		sci_color <- scale_color_aaas(alpha = sci_color_alpha)
+		# Science and Science Translational Medicine:
+	} else if (sci_fill_color == "Sci_NPG") {
+		sci_color <- scale_color_npg(alpha = sci_color_alpha)
+	} else if (sci_fill_color == "Sci_Simpsons") {
+		sci_color <- scale_color_simpsons(alpha = sci_color_alpha)
+		# The Simpsons
+	} else if (sci_fill_color == "Sci_JAMA") {
+		sci_color <- scale_color_jama(alpha = sci_color_alpha)
+		# The Journal of the American Medical Association
+	} else if (sci_fill_color == "Sci_Lancet") {
+		sci_color <- scale_color_lancet(alpha = sci_color_alpha)
+		#  Lancet Oncology
+	} else if (sci_fill_color == "Sci_Futurama") {
+		sci_color <- scale_color_futurama(alpha = sci_color_alpha)
+		# Futurama
+	} else if (sci_fill_color == "Sci_JCO") {
+		sci_color <- scale_color_jco(alpha = sci_color_alpha)
+		# Journal of Clinical Oncology:
+	} else if (sci_fill_color == "Sci_NEJM") {
+		sci_color <- scale_color_nejm(alpha = sci_color_alpha)
+		# The New England Journal of Medicine
+	} else if (sci_fill_color == "Sci_IGV") {
+		sci_color <- scale_color_igv(alpha = sci_color_alpha)
+		# Integrative Genomics Viewer (IGV)
+	} else if (sci_fill_color == "Sci_UCSC") {
+		sci_color <- scale_color_ucscgb(alpha = sci_color_alpha)
+		# UCSC Genome Browser chromosome sci_color
+	} else if (sci_fill_color == "Sci_D3") {
+		sci_color <- scale_color_d3(alpha = sci_color_alpha)
+		# D3.JS
+	} else if (sci_fill_color == "Sci_Material") {
+		sci_color <- scale_color_material(alpha = sci_color_alpha)
+		# The Material Design color palettes
 	}
 
 	# pca_geom_point_size <- 5
@@ -144,16 +193,29 @@ pca_plot <- function(sample_gene,
 	# -> 4. Plot
 	# colors <- distinctColorPalette(3)
 	labels <- row.names(pca_out)
-	p <- ggplot(pca_out,
-							aes_string(x = paste("PC", xPC, sep = ""),
-												 y = paste("PC", yPC, sep = ""),
-									color = "groups",
-									shape = "groups",
-									label = "labels"
-									)) +
+
+	if (multi_shape) {
+		p <- ggplot(pca_out,
+								aes_string(x = paste("PC", xPC, sep = ""),
+													 y = paste("PC", yPC, sep = ""),
+													 color = "groups",
+													 shape = "groups",
+													 label = "labels"
+								))
+	}else {
+		p <- ggplot(pca_out,
+								aes_string(x = paste("PC", xPC, sep = ""),
+													 y = paste("PC", yPC, sep = ""),
+													 color = "groups",
+													 # shape = "groups",
+													 label = "labels"
+								))
+	}
+
+	p <- p +
 		geom_point(size = point_size,
 							 show.legend = TRUE,
-							 alpha = 0.5) +
+							 alpha = point_alpha) +
 		geom_text(size = text_size,
 							show.legend = FALSE,
 							alpha = 1,
@@ -164,7 +226,7 @@ pca_plot <- function(sample_gene,
 		geom_mark_ellipse(aes(fill = groups),
 											color = rgb(0, 0, 0, border_alpha),
 											alpha = fill_alpha,
-											show.legend = FALSE
+											show.legend = TRUE
 											# level = pca_ellipse_level
 		) +
 		# coord_fixed() +
@@ -175,6 +237,7 @@ pca_plot <- function(sample_gene,
 		#              show.legend = FALSE,
 		#              level = pca_ellipse_level
 		# ) +
+		sci_color +
 		gg_theme +
 		theme(plot.title = element_text(face = plotTitleFace,
 																		# "plain", "italic", "bold", "bold.italic"

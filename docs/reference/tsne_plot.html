@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,16 +118,17 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tsne_plot</span><span class="op">(</span></span>
-<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">sample_gene</span>,</span>
+<span>  <span class="va">group_sample</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  point_size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  multi_shape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  point_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  text_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  text_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  text_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  ci_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  ellipse_alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_JAMA"</span>,</span>
-<span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>  fill_alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  border_alpha <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
@@ -136,16 +137,24 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>data</dt>
-<dd><p>Dataframe: include columns (IDs, Trait1, Trait2, ...).</p></dd>
+    <dl><dt>sample_gene</dt>
+<dd><p>Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).</p></dd>
+
+
+<dt>group_sample</dt>
+<dd><p>Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p></dd>
 
 
 <dt>seed</dt>
 <dd><p>Numeric: set seed for robust result. Default: 1.</p></dd>
 
 
+<dt>multi_shape</dt>
+<dd><p>Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.</p></dd>
+
+
 <dt>point_size</dt>
-<dd><p>Numeric: point size. Default: 3, min: 0, max: null.</p></dd>
+<dd><p>Numeric: point size. Default: 5, min: 0, max: null.</p></dd>
 
 
 <dt>point_alpha</dt>
@@ -153,27 +162,23 @@
 
 
 <dt>text_size</dt>
-<dd><p>Numeric: text size. Default: 2, min: 0 (hind), max: null.</p></dd>
+<dd><p>Numeric: text size. Default: 5, min: 0 (hind), max: null.</p></dd>
 
 
 <dt>text_alpha</dt>
 <dd><p>Numeric: text alpha. Default: 0.80, min: 0.00, max: 1.00.</p></dd>
 
 
-<dt>ci_level</dt>
-<dd><p>Numeric: confidence interval level. Default: 0.95, min: 0.00, max: 1.00.</p></dd>
-
-
-<dt>ellipse_alpha</dt>
+<dt>fill_alpha</dt>
 <dd><p>Numeric: ellipse alpha. Default: 0.30, min: 0.00, max: 1.00.</p></dd>
+
+
+<dt>border_alpha</dt>
+<dd><p>Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.</p></dd>
 
 
 <dt>sci_fill_color</dt>
 <dd><p>Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".</p></dd>
-
-
-<dt>sci_color_alpha</dt>
-<dd><p>Numeric: ggsci border color alpha. Default: 1.00, min: 0.00, max: 1.00.</p></dd>
 
 
 <dt>legend_pos</dt>
@@ -205,36 +210,43 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tsne_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Transcripts   CT_1   CT_2   CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     transcript_0 655.78 631.08 669.89 654.21 402.56 447.09 510.08 442.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     transcript_1  92.72 112.26 150.30  88.35  76.35  94.55 120.24  80.89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    transcript_10  21.74  31.11  22.58  15.09  13.67  13.24  12.48   7.53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   transcript_100   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  transcript_1000   0.00  14.15  36.01   0.00   0.00 193.59 208.45   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 transcript_10000  89.18 158.04  86.28  82.97 117.78 102.24 129.61 112.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT15_3 LT12_1 LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 399.82 483.30 437.89 444.06   405.43   416.63   464.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  73.94  96.25  82.62  85.48    65.12    61.94    73.44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  13.35  11.16  11.36   6.96     7.82     4.01    10.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 232.40 148.58   0.00 181.61     0.02    12.18     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  85.70  80.89 124.11 115.25   113.87   107.69   119.83</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Samples Groups</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    CT_1     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    CT_2     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    CT_3     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  LT20_1   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  LT20_2   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  LT20_3   LT20</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">tsne_data</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Probable convergence failure</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following aesthetics were dropped during statistical transformation: <span style="color: #00BB00;">label</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> This can happen when ggplot fails to infer the correct grouping structure in</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   the data.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Did you forget to specify a `group` aesthetic or to convert a numerical</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   variable into a factor?</span>
+<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">gene_expression</span>, <span class="va">samples_groups</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="tsne_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set seed = 5</span></span></span>
-<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">tsne_data</span>, seed <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Probable convergence failure</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following aesthetics were dropped during statistical transformation: <span style="color: #00BB00;">label</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> This can happen when ggplot fails to infer the correct grouping structure in</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   the data.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Did you forget to specify a `group` aesthetic or to convert a numerical</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   variable into a factor?</span>
+<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">gene_expression</span>, <span class="va">samples_groups</span>, seed <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="tsne_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set sci_fill_color = "Sci_Simpsons", seed = 6</span></span></span>
-<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">tsne_data</span>, sci_fill_color <span class="op">=</span> <span class="st">"Sci_Simpsons"</span>, seed <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Probable convergence failure</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The following aesthetics were dropped during statistical transformation: <span style="color: #00BB00;">label</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> This can happen when ggplot fails to infer the correct grouping structure in</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   the data.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Did you forget to specify a `group` aesthetic or to convert a numerical</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   variable into a factor?</span>
+<span class="r-in"><span><span class="co"># 5. Set sci_fill_color = "Sci_NPG", seed = 6</span></span></span>
+<span class="r-in"><span><span class="fu">tsne_plot</span><span class="op">(</span><span class="va">gene_expression</span>, <span class="va">samples_groups</span>, sci_fill_color <span class="op">=</span> <span class="st">"Sci_NPG"</span>, seed <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="tsne_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

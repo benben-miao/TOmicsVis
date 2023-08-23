@@ -3,7 +3,11 @@
 #' @author benben-miao
 #'
 #' @return Plot: venn plot for stat common and unique gene among multiple sets.
-#' @param data Dataframe: multiple gene sets as columns.
+#' @param data Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).
+#' @param title_size Numeric: sets title size. Default: 1, min: 0, max: NULL.
+#' @param label_show Logical: show intersection labels. Default: TRUE, options: TRUE, FALSE.
+#' @param label_size Numeric: intersection labels size. Default: 0.8, min: 0, max: NULL.
+#' @param border_show Logical: show border line. Default: TRUE, options: TRUE, FALSE.
 #' @param line_type Character: ellipse border line type. Default: "blank", options: "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash".
 #' @param ellipse_shape Character: ellipse shape. Default: "circle", options: "circle", "ellipse".
 #' @param sci_fill_color Character: ggsci color palette. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
@@ -20,26 +24,31 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(venn_data)
+#' data(paired_degs)
 #'
 #' # 3. Default parameters
-#' venn_plot(venn_data)
+#' venn_plot(paired_degs)
+#' head(paired_degs)
 #'
-#' # 4. Set line_type = "dashed"
-#' venn_plot(venn_data, line_type = "dashed")
+#' # 4. Set line_type = "blank"
+#' venn_plot(paired_degs, line_type = "blank")
 #'
 #' # 5. Set ellipse_shape = "ellipse"
-#' venn_plot(venn_data, ellipse_shape = "ellipse")
+#' venn_plot(paired_degs, ellipse_shape = "ellipse")
 #'
 #' # 6. Set sci_fill_color = "Sci_IGV"
-#' venn_plot(venn_data, sci_fill_color = "Sci_IGV")
+#' venn_plot(paired_degs, sci_fill_color = "Sci_IGV")
 #'
 venn_plot <- function(data,
-										 line_type = "blank",
-										 ellipse_shape = "circle",
-										 sci_fill_color = "Sci_AAAS",
-										 sci_fill_alpha = 0.65
-										){
+											title_size = 1,
+											label_show = TRUE,
+											label_size = 0.8,
+											border_show = TRUE,
+											line_type = "longdash",
+											ellipse_shape = "circle",
+											sci_fill_color = "Sci_AAAS",
+											sci_fill_alpha = 0.65
+											){
 	# -> 2. NA and Duplicated
 	data_venn <- as.list(data)
 	data_venn <- lapply(data_venn, function(x) {
@@ -117,16 +126,17 @@ venn_plot <- function(data,
 
 	# -> 4. Plot
 	p <- venn::venn(x = data_venn,
-					 ggplot = TRUE, # FALSE
-					 linetype = line_type,
-					 zcolor = colors,
-					 opacity = sci_fill_alpha,
-					 borders = FALSE,
-					 ellipse = ellipse,
-					 ilcs = 1,
-					 sncs = 1,
-					 box = FALSE
-	)
+									ilabels = label_show,
+									ilcs = label_size,
+									sncs = title_size,
+									ggplot = TRUE, # FALSE
+									linetype = line_type,
+									zcolor = colors,
+									opacity = sci_fill_alpha,
+									borders = border_show,
+									ellipse = ellipse,
+									box = FALSE
+				)
 	# <- 4. Plot
 
 	return(p)

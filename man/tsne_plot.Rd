@@ -5,41 +5,44 @@
 \title{TSNE plot for analyzing and visualizing TSNE algorithm.}
 \usage{
 tsne_plot(
-  data,
+  sample_gene,
+  group_sample,
   seed = 1,
-  point_size = 3,
+  multi_shape = FALSE,
+  point_size = 5,
   point_alpha = 0.8,
-  text_size = 2,
+  text_size = 5,
   text_alpha = 0.8,
-  ci_level = 0.95,
-  ellipse_alpha = 0.3,
-  sci_fill_color = "Sci_JAMA",
-  sci_color_alpha = 0.9,
+  fill_alpha = 0.05,
+  border_alpha = 0,
+  sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
   ggTheme = "theme_light"
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (IDs, Trait1, Trait2, ...).}
+\item{sample_gene}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
+
+\item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
 
 \item{seed}{Numeric: set seed for robust result. Default: 1.}
 
-\item{point_size}{Numeric: point size. Default: 3, min: 0, max: null.}
+\item{multi_shape}{Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.}
+
+\item{point_size}{Numeric: point size. Default: 5, min: 0, max: null.}
 
 \item{point_alpha}{Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.}
 
-\item{text_size}{Numeric: text size. Default: 2, min: 0 (hind), max: null.}
+\item{text_size}{Numeric: text size. Default: 5, min: 0 (hind), max: null.}
 
 \item{text_alpha}{Numeric: text alpha. Default: 0.80, min: 0.00, max: 1.00.}
 
-\item{ci_level}{Numeric: confidence interval level. Default: 0.95, min: 0.00, max: 1.00.}
+\item{fill_alpha}{Numeric: ellipse alpha. Default: 0.30, min: 0.00, max: 1.00.}
 
-\item{ellipse_alpha}{Numeric: ellipse alpha. Default: 0.30, min: 0.00, max: 1.00.}
+\item{border_alpha}{Numeric: ellipse border color alpha. Default: 0.10, min: 0.00, max: 1.00.}
 
 \item{sci_fill_color}{Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".}
-
-\item{sci_color_alpha}{Numeric: ggsci border color alpha. Default: 1.00, min: 0.00, max: 1.00.}
 
 \item{legend_pos}{Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".}
 
@@ -58,16 +61,20 @@ TSNE plot for analyzing and visualizing TSNE algorithm.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(tsne_data)
+data(gene_expression)
+head(gene_expression)
+
+data(samples_groups)
+head(samples_groups)
 
 # 3. Default parameters
-tsne_plot(tsne_data)
+tsne_plot(gene_expression, samples_groups)
 
 # 4. Set seed = 5
-tsne_plot(tsne_data, seed = 5)
+tsne_plot(gene_expression, samples_groups, seed = 6)
 
-# 5. Set sci_fill_color = "Sci_Simpsons", seed = 6
-tsne_plot(tsne_data, sci_fill_color = "Sci_Simpsons", seed = 6)
+# 5. Set sci_fill_color = "Sci_NPG", seed = 6
+tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
 
 }
 \author{

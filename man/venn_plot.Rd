@@ -6,14 +6,26 @@
 \usage{
 venn_plot(
   data,
-  line_type = "blank",
+  title_size = 1,
+  label_show = TRUE,
+  label_size = 0.8,
+  border_show = TRUE,
+  line_type = "longdash",
   ellipse_shape = "circle",
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.65
 )
 }
 \arguments{
-\item{data}{Dataframe: multiple gene sets as columns.}
+\item{data}{Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).}
+
+\item{title_size}{Numeric: sets title size. Default: 1, min: 0, max: NULL.}
+
+\item{label_show}{Logical: show intersection labels. Default: TRUE, options: TRUE, FALSE.}
+
+\item{label_size}{Numeric: intersection labels size. Default: 0.8, min: 0, max: NULL.}
+
+\item{border_show}{Logical: show border line. Default: TRUE, options: TRUE, FALSE.}
 
 \item{line_type}{Character: ellipse border line type. Default: "blank", options: "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash".}
 
@@ -34,19 +46,20 @@ Venn plot for stat common and unique gene among multiple sets.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(venn_data)
+data(paired_degs)
 
 # 3. Default parameters
-venn_plot(venn_data)
+venn_plot(paired_degs)
+head(paired_degs)
 
-# 4. Set line_type = "dashed"
-venn_plot(venn_data, line_type = "dashed")
+# 4. Set line_type = "blank"
+venn_plot(paired_degs, line_type = "blank")
 
 # 5. Set ellipse_shape = "ellipse"
-venn_plot(venn_data, ellipse_shape = "ellipse")
+venn_plot(paired_degs, ellipse_shape = "ellipse")
 
 # 6. Set sci_fill_color = "Sci_IGV"
-venn_plot(venn_data, sci_fill_color = "Sci_IGV")
+venn_plot(paired_degs, sci_fill_color = "Sci_IGV")
 
 }
 \author{
