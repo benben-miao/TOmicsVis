@@ -6,12 +6,13 @@
 \usage{
 volcano_plot(
   data,
+  title = "CT-vs-LT12",
   log2fc_cutoff = 1,
   pq_value = "pvalue",
-  pq_cutoff = 0.005,
+  pq_cutoff = 0.05,
   cutoff_line = "longdash",
   point_shape = "large_circle",
-  point_size = 1,
+  point_size = 2,
   point_alpha = 0.5,
   color_normal = "#888888",
   color_log2fc = "#008000",
@@ -24,7 +25,9 @@ volcano_plot(
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Genes, Log2FoldChange, Pvalue, Padj), rows (Genes).}
+\item{data}{Dataframe: differentially expressed genes (DEGs) stats (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).}
+
+\item{title}{Character: title of plot. Default: CT-vs-LT12.}
 
 \item{log2fc_cutoff}{Numeric: log2(FoldChange) cutoff log2(2) = 1. Default: 1.0, min: 0.0, max: null.}
 
@@ -67,16 +70,17 @@ Volcano plot for visualizing differentailly expressed genes.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(deg_data)
+data(degs_stats)
+head(degs_stats)
 
 # 3. Default parameters
-volcano_plot(deg_data)
+volcano_plot(degs_stats)
 
 # 4. Set color_Log2fc_p = "#ff8800"
-volcano_plot(deg_data, color_Log2fc_p = "#ff8800")
+volcano_plot(degs_stats, color_Log2fc_p = "#ff8800")
 
 # 5. Set boxed_labels = TRUE
-volcano_plot(deg_data, boxed_labels = TRUE)
+volcano_plot(degs_stats, boxed_labels = TRUE)
 
 }
 \author{

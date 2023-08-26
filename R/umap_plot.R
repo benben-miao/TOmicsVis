@@ -258,6 +258,7 @@ umap_plot <- function(sample_gene,
 						 size = 5,
 						 label = paste('P:',umap_p),
 						 colour = "black") +
+		labs(fill = "Groups", color = "Groups", shape = "Groups") +
 		sci_color +
 		gg_theme +
 		theme(plot.title = element_text(face = plotTitleFace,

@@ -21,7 +21,7 @@ corr_heatmap(
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
+\item{data}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{corr_method}{Character: correlation method. Default: "pearson", options: "pearson", "spearman", "kendall".}
 

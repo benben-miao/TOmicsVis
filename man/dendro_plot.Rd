@@ -23,7 +23,7 @@ dendro_plot(
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
+\item{data}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{dist_method}{Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".}
 
@@ -52,8 +52,6 @@ dendro_plot(
 \item{ylab}{Character: title of the ylab. Default: "Height".}
 
 \item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
-
-\item{title}{Character: main plot title. Default: "Cluster Dendrogram".}
 }
 \value{
 Plot: dendrogram for multiple samples clustering.

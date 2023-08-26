@@ -6,9 +6,9 @@
 \usage{
 ma_plot(
   data,
-  foldchange = 2,
+  foldchange = 1,
   fdr_value = 0.05,
-  point_size = 0.5,
+  point_size = 3,
   color_up = "#FF0000",
   color_down = "#008800",
   color_alpha = 0.5,
@@ -16,20 +16,20 @@ ma_plot(
   top_num = 20,
   label_size = 8,
   label_box = TRUE,
-  title = "Group1 -versus- Group2",
+  title = "CT-vs-LT12",
   xlab = "Log2 mean expression",
   ylab = "Log2 fold change",
-  ggTheme = "theme_minimal"
+  ggTheme = "theme_light"
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Genes, baseMean, Log2FoldChange, Padj), rows (Genes).}
+\item{data}{Dataframe: differentially expressed genes (DEGs) stats 2 (1st-col: Gene, 2nd-col: baseMean, 3rd-col: Log2FoldChange, 4th-col: FDR).}
 
-\item{foldchange}{Numeric: fold change value. Default: 2.00, min: 0.00, max: null.}
+\item{foldchange}{Numeric: fold change value. Default: 1.0, min: 0.0, max: null.}
 
 \item{fdr_value}{Numeric: false discovery rate. Default: 0.05, min: 0.00, max: 1.00.}
 
-\item{point_size}{Numeric: point size. Default: 0.50, min: 0.00, max: null.}
+\item{point_size}{Numeric: point size. Default: 1.0, min: 0.0, max: null.}
 
 \item{color_up}{Character: up-regulated genes color (color name or hex value). Default: "#FF0000".}
 
@@ -45,13 +45,13 @@ ma_plot(
 
 \item{label_box}{Logical: add box to label. Default: TRUE, options: TRUE, FALSE.}
 
-\item{title}{Character: plot title. Default: "Group1 -versus- Group2".}
+\item{title}{Character: plot title. Default: "CT-vs-Trait1".}
 
 \item{xlab}{Character: x label. Default: "Log2 mean expression".}
 
 \item{ylab}{Character: y label. Default: "Log2 fold change".}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_minimal", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
 Plot: MversusA plot for visualizing differentially expressed genes.
@@ -64,16 +64,17 @@ MversusA plot for visualizing differentially expressed genes.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(deg_data2)
+data(degs_stats2)
+head(degs_stats2)
 
 # 3. Default parameters
-ma_plot(deg_data2)
+ma_plot(degs_stats2)
 
 # 4. Set color_up = "#FF8800"
-ma_plot(deg_data2, color_up = "#FF8800")
+ma_plot(degs_stats2, color_up = "#FF8800")
 
-# 5. Set color_alpha = 0.30
-ma_plot(deg_data2, color_alpha = 0.30)
+# 5. Set top_num = 10
+ma_plot(degs_stats2, top_num = 10)
 
 }
 \author{

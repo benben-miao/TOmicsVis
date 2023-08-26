@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,19 +123,23 @@
 <span>  hc_method <span class="op">=</span> <span class="st">"average"</span>,</span>
 <span>  k_num <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  show_rownames <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  palette <span class="op">=</span> <span class="st">"Spectral"</span>,</span>
+<span>  palette <span class="op">=</span> <span class="st">"RdBu"</span>,</span>
 <span>  cluster_pal <span class="op">=</span> <span class="st">"Set1"</span>,</span>
-<span>  gaps_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  border_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
 <span>  angle_col <span class="op">=</span> <span class="fl">45</span>,</span>
 <span>  label_size <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>  base_size <span class="op">=</span> <span class="fl">12</span></span>
+<span>  base_size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  line_color <span class="op">=</span> <span class="st">"#0000cd"</span>,</span>
+<span>  line_alpha <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  summary_color <span class="op">=</span> <span class="st">"#0000cd"</span>,</span>
+<span>  summary_alpha <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: gene expression dataframe with cols (samples) and rows (genes).</p></dd>
+<dd><p>Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p></dd>
 
 
 <dt>dist_method</dt>
@@ -155,15 +159,15 @@
 
 
 <dt>palette</dt>
-<dd><p>Character: color palette used in heatmap. Default: "Spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.</p></dd>
+<dd><p>Character: color palette used in heatmap. Default: "RdBu", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.</p></dd>
 
 
 <dt>cluster_pal</dt>
 <dd><p>Character: color palette used for the cluster. Default: "Set1", options: 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'.</p></dd>
 
 
-<dt>gaps_col</dt>
-<dd><p>Character: vector of columns indices that show where to put gaps into heatmap. Default: "NULL".</p></dd>
+<dt>border_color</dt>
+<dd><p>Character: cell border color (color name or hex value). Default: "#ffffff".</p></dd>
 
 
 <dt>angle_col</dt>
@@ -176,6 +180,22 @@
 
 <dt>base_size</dt>
 <dd><p>Numeric: base font size. Default: 12, min: 0.</p></dd>
+
+
+<dt>line_color</dt>
+<dd><p>Character: trend lines color. Default: "#0000cd".</p></dd>
+
+
+<dt>line_alpha</dt>
+<dd><p>Numeric: trend lines alpha. Default: 0.20, min: 0.00, max: 1.00.</p></dd>
+
+
+<dt>summary_color</dt>
+<dd><p>Charater: summary line color. Default: "#0000cd".</p></dd>
+
+
+<dt>summary_alpha</dt>
+<dd><p>Numeric: summary line alpha. Default: 0.80, min: 0.00, max: 1.00.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -194,40 +214,42 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 1. Library TOmicsVis package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 2. Use example dataset gene_exp</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          S1_rep1   S1_rep2    S2_rep1    S2_rep2    S3_rep1    S3_rep2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1  316.79234  301.5714  391.75201  344.48179  180.03179  167.99952</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2  204.21777  194.4057   64.07219   56.34101   93.47004   87.22305</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3 1049.90451  999.4598 3196.23863 2810.56888 4958.83561 4627.41614</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4 1413.60565 1345.6862 3356.37956 2951.38662 3947.88238 3684.02909</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5   98.77808   94.0321  401.04150  352.65038  140.01861  130.66059</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6 1202.25882 1144.4940 1135.11172  998.14502  784.29842  731.88052</span>
+<span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes  CT_1    CT_2  CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2 24.50   39.83 55.38 114.11 159.32  96.88 169.56 464.84 182.66 116.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN 14.97   18.71 10.30  71.23 142.67 213.54 253.15 320.80 104.15 174.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1  1.54    1.56  2.04  14.95  13.60  15.87  12.80  17.74   6.06  10.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG  0.00 1911.99  0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2  2.07    2.86  2.54   0.85   0.49   0.47   0.42   0.13   0.26   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  6.62   14.59  9.30  24.90  33.94  23.19  24.00  36.08  27.40  24.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 497.29 464.48   471.43   693.62   229.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 305.81 469.48  1291.90   991.90   966.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  10.71  30.95     9.84    10.91     7.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28   0.11     0.37     0.15     0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  38.74  34.54    62.72    41.36    28.75</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_exp2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_cluster-1.png" alt="" width="700" height="433"></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Cluster, gene as id variables</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `fun.y` argument of `stat_summary()` is deprecated as of ggplot2 3.3.0.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `fun` argument instead.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">TOmicsVis</span> package.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/benben-miao/TOmicsVis/issues/&gt;</span>.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Graphs cannot be horizontally aligned unless the axis parameter is set. Placing graphs unaligned.</span>
 <span class="r-plt img"><img src="heatmap_cluster-2.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="heatmap_cluster-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set palette = "RdBu"</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_exp2</span>, palette <span class="op">=</span> <span class="st">"RdBu"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set palette = "PuOr"</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_expression2</span>, palette <span class="op">=</span> <span class="st">"PuOr"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_cluster-4.png" alt="" width="700" height="433"></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Cluster, gene as id variables</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Graphs cannot be horizontally aligned unless the axis parameter is set. Placing graphs unaligned.</span>
 <span class="r-plt img"><img src="heatmap_cluster-5.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="heatmap_cluster-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set cluster_pal = "Accent"</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_exp2</span>, cluster_pal <span class="op">=</span> <span class="st">"Accent"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set line_color = "#ff0000", summary_color = "#ff0000"</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_cluster</span><span class="op">(</span><span class="va">gene_expression2</span>, line_color <span class="op">=</span> <span class="st">"#ff0000"</span>, summary_color <span class="op">=</span> <span class="st">"#ff0000"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_cluster-7.png" alt="" width="700" height="433"></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Cluster, gene as id variables</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Graphs cannot be horizontally aligned unless the axis parameter is set. Placing graphs unaligned.</span>

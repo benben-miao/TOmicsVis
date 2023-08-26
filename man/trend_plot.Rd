@@ -6,12 +6,12 @@
 \usage{
 trend_plot(
   data,
-  scale_method = "globalminmax",
+  scale_method = "centerObs",
   miss_value = "exclude",
   line_alpha = 0.5,
   show_points = TRUE,
   show_boxplot = TRUE,
-  num_column = 2,
+  num_column = 1,
   xlab = "Traits",
   ylab = "Genes Expression",
   sci_fill_color = "Sci_AAAS",
@@ -23,7 +23,7 @@ trend_plot(
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Gene, Trait1, Trait2, ..., Pathway), rows (Genes).}
+\item{data}{Dataframe: Shared degs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).}
 
 \item{scale_method}{Character: data scale methods. Default: "globalminmax" (global min and max values), options: "std" (standard), "robust", "uniminmax" (unique min and max values), "globalminmax", "center", "centerObs" (center observes).}
 
@@ -64,22 +64,17 @@ Trend plot for visualizing gene expression trend profile in multiple traits.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(trend_data)
+data(gene_expression3)
+head(gene_expression3)
 
 # 3. Default parameters
-trend_plot(trend_data)
+trend_plot(gene_expression3[1:50,])
 
-# 4. Set scale_method = "std"
-trend_plot(trend_data, scale_method = "std")
+# 4. Set line_alpha = 0.30
+trend_plot(gene_expression3[1:50,], line_alpha = 0.30)
 
-# 5. Set miss_value = "mean"
-trend_plot(trend_data, miss_value = "mean")
-
-# 6. Set line_alpha = 0.30
-trend_plot(trend_data, line_alpha = 0.30)
-
-# 7. Set sci_fill_color = "Sci_IGV"
-trend_plot(trend_data, sci_fill_color = "Sci_IGV")
+# 5. Set sci_fill_color = "Sci_NPG"
+trend_plot(gene_expression3[1:50,], sci_fill_color = "Sci_NPG")
 
 }
 \author{

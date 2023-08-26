@@ -1,9 +1,9 @@
-#' @title Network data as example for network_plot function.
-#' @description Network data as example for network_plot function.
+#' @title Network data from WGCNA tan module top-200 dataframe.
+#' @description Network data from WGCNA tan module top-200 dataframe.
 #' @author benben-miao
 #'
 #' @docType data
-#' @format Dataframe: include columns (source_node, target_node).
+#' @format Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).
 #' @usage data(network_data)
 #'
 #' @keywords datasets
@@ -22,5 +22,9 @@
 #'
 "network_data"
 
+# data <- read.table(file = "data-tables/network_data.txt",
+# 									 header = TRUE,
+# 									 sep = "\t",
+# 									 stringsAsFactors = F)
 # network_data <- data
 # usethis::use_data(network_data)

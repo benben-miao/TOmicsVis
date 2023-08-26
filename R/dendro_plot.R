@@ -3,7 +3,7 @@
 #' @author wei dong
 #'
 #' @return Plot: dendrogram for multiple samples clustering.
-#' @param data Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param data Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param dist_method Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".
 #' @param hc_method Character: hierarchical clustering method. Default: "ward.D2", options: "ward.D", "ward.D2", "single", "complete","average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).
 #' @param tree_type Character: plot tree type. Default: "rectangle", options: "rectangle", "circular", "phylogenic".
@@ -15,7 +15,6 @@
 #' @param line_width Numeric: branches and rectangle line width. Default: 0.7, min: 0.
 #' @param rect Logical: add a rectangle around groups. Default: TRUE, options: TRUE or FALSE.
 #' @param rect_fill Logical: fill the rectangle. Default: TRUE, options: TRUE or FALSE.
-#' @param title Character: main plot title. Default: "Cluster Dendrogram".
 #' @param xlab Character: title of the xlab. Default: "".
 #' @param ylab Character: title of the ylab. Default: "Height".
 #' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".

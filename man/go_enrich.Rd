@@ -6,16 +6,16 @@
 \usage{
 go_enrich(
   go_anno,
-  go_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 0.5,
-  qvalue_cutoff = 0.5
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05
 )
 }
 \arguments{
-\item{go_anno}{Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.}
+\item{go_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{go_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -34,22 +34,19 @@ GO enrichment analysis based on GO annotation results (None/Exist Reference Geno
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(go_anno)
-head(go_anno)
-
-data(go_deg_fc)
-head(go_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-res <- go_enrich(go_anno, go_deg_fc)
+res <- go_enrich(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 head(res)
 
 # 4. Set padjust_method = "BH"
-res <- go_enrich(go_anno, go_deg_fc, padjust_method = "BH")
+res <- go_enrich(gene_go_kegg[,-5], gene_go_kegg[100:200,1], padjust_method = "BH")
 head(res)
 
 # 5. Set pvalue_cutoff = 0.10
-res <- go_enrich(go_anno, go_deg_fc, pvalue_cutoff = 0.10)
+res <- go_enrich(gene_go_kegg[,-5], gene_go_kegg[100:200,1], pvalue_cutoff = 0.10)
 head(res)
 
 }

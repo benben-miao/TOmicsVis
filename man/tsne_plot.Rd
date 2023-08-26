@@ -22,7 +22,7 @@ tsne_plot(
 )
 }
 \arguments{
-\item{sample_gene}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
+\item{sample_gene}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
 

@@ -6,10 +6,10 @@
 \usage{
 go_enrich_net(
   go_anno,
-  go_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 0.5,
-  qvalue_cutoff = 0.5,
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
   net_circular = TRUE,
@@ -18,9 +18,9 @@ go_enrich_net(
 )
 }
 \arguments{
-\item{go_anno}{Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.}
+\item{go_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{go_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -49,14 +49,11 @@ GO enrichment analysis and net plot (None/Exist Reference Genome).
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(go_anno)
-head(go_anno)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
-data(go_deg_fc)
-head(go_deg_fc)
-
-# 3. Set low_color = "#ff8800ff", high_color = "#008888ff"
-go_enrich_net(go_anno, go_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
+# 3. Default parameters
+go_enrich_net(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 
 }
 \author{

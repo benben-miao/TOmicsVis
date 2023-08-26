@@ -10,16 +10,20 @@ heatmap_cluster(
   hc_method = "average",
   k_num = 5,
   show_rownames = FALSE,
-  palette = "Spectral",
+  palette = "RdBu",
   cluster_pal = "Set1",
-  gaps_col = NULL,
+  border_color = "#ffffff",
   angle_col = 45,
   label_size = 10,
-  base_size = 12
+  base_size = 12,
+  line_color = "#0000cd",
+  line_alpha = 0.2,
+  summary_color = "#0000cd",
+  summary_alpha = 0.8
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe with cols (samples) and rows (genes).}
+\item{data}{Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{dist_method}{Character: distance measure method. Default: "euclidean", options: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski".}
 
@@ -29,17 +33,25 @@ heatmap_cluster(
 
 \item{show_rownames}{Logical: boolean specifying if column names are be shown. Default: FALSE, options: TRUE or FALSE.}
 
-\item{palette}{Character: color palette used in heatmap. Default: "Spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.}
+\item{palette}{Character: color palette used in heatmap. Default: "RdBu", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.}
 
 \item{cluster_pal}{Character: color palette used for the cluster. Default: "Set1", options: 'Set1', 'Set2', 'Set3', 'Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2'.}
 
-\item{gaps_col}{Character: vector of columns indices that show where to put gaps into heatmap. Default: "NULL".}
+\item{border_color}{Character: cell border color (color name or hex value). Default: "#ffffff".}
 
 \item{angle_col}{Numeric: angle of the column labels. Default: 45.}
 
 \item{label_size}{Numeric: fontsize for the plot. Default: 10, min: 0.}
 
 \item{base_size}{Numeric: base font size. Default: 12, min: 0.}
+
+\item{line_color}{Character: trend lines color. Default: "#0000cd".}
+
+\item{line_alpha}{Numeric: trend lines alpha. Default: 0.20, min: 0.00, max: 1.00.}
+
+\item{summary_color}{Charater: summary line color. Default: "#0000cd".}
+
+\item{summary_alpha}{Numeric: summary line alpha. Default: 0.80, min: 0.00, max: 1.00.}
 }
 \value{
 Plot: Heatmap cluster for visualizing clustered gene expression data.
@@ -51,18 +63,18 @@ Heatmap cluster for visualizing clustered gene expression data.
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
-# 2. Use example dataset gene_exp
-data(gene_exp2)
-head(gene_exp2)
+# 2. Use example dataset
+data(gene_expression2)
+head(gene_expression2)
 
 # 3. Default parameters
-heatmap_cluster(gene_exp2)
+heatmap_cluster(gene_expression2)
 
-# 4. Set palette = "RdBu"
-heatmap_cluster(gene_exp2, palette = "RdBu")
+# 4. Set palette = "PuOr"
+heatmap_cluster(gene_expression2, palette = "PuOr")
 
-# 5. Set cluster_pal = "Accent"
-heatmap_cluster(gene_exp2, cluster_pal = "Accent")
+# 5. Set line_color = "#ff0000", summary_color = "#ff0000"
+heatmap_cluster(gene_expression2, line_color = "#ff0000", summary_color = "#ff0000")
 
 }
 \author{

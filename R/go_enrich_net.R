@@ -3,8 +3,8 @@
 #' @author benben-miao
 #'
 #' @return PLot: GO enrichment analysis and net plot (None/Exist Reference Genome).
-#' @param go_anno Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.
-#' @param go_deg_fc Dataframe: include columns (id, log2FC).
+#' @param go_anno Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+#' @param degs_list Dataframe: degs list.
 #' @param padjust_method Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 #' @param pvalue_cutoff Numeric: P-value cutoff. Recommend: small than 0.05.
 #' @param qvalue_cutoff Numeric: Q-value cutoff. Recommend: small than 0.05.
@@ -29,20 +29,17 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(go_anno)
-#' head(go_anno)
+#' data(gene_go_kegg)
+#' head(gene_go_kegg)
 #'
-#' data(go_deg_fc)
-#' head(go_deg_fc)
-#'
-#' # 3. Set low_color = "#ff8800ff", high_color = "#008888ff"
-#' go_enrich_net(go_anno, go_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
+#' # 3. Default parameters
+#' go_enrich_net(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 #'
 go_enrich_net <- function(go_anno,
-										 go_deg_fc,
+													degs_list,
 										 padjust_method = "fdr",
-										 pvalue_cutoff = 0.50,
-										 qvalue_cutoff = 0.50,
+										 pvalue_cutoff = 0.05,
+										 qvalue_cutoff = 0.05,
 										 category_num = 20,
 										 net_layout = "circle",
 										 net_circular = TRUE,
@@ -62,14 +59,14 @@ go_enrich_net <- function(go_anno,
 
 	# -> 3. Data
 	gene_go <- go_anno
-	deg_fc <- go_deg_fc
+	degs_list <- degs_list
 
-	deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	deg_list <- with(deg_fc, setNames(log2FC, id))
+	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
+	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
 	gene_go1 <- melt(gene_go,
 									 na.rm = FALSE,
-									 id.vars = c("id"),
+									 id.vars = c("Genes"),
 									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
 									 variable.name = "ontology",
 									 value.name = "term",
@@ -91,13 +88,13 @@ go_enrich_net <- function(go_anno,
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
-	gene_go5 <- data.frame(gene_go4["id"],
+	gene_go5 <- data.frame(gene_go4["Genes"],
 												 gene_go4["term"],
 												 gene_go4["ontology"],
 												 gene_go4["description"]
 	)
 
-	enrich_results <- enricher(gene = deg_fc[[1]],
+	enrich_results <- enricher(gene = degs_list,
 														 TERM2GENE = data.frame(gene_go5[,2],gene_go5[,1]),
 														 TERM2NAME = data.frame(gene_go5[,2],gene_go5[,4]),
 														 pvalueCutoff = pvalue_cutoff,
@@ -164,7 +161,7 @@ go_enrich_net <- function(go_anno,
 	p <- cnetplot(
 		x = enrich_results,
 		showCategory = category_num,
-		color.params = list(foldChange = deg_list,
+		color.params = list(foldChange = NULL,
 												edge = TRUE),
 		# foldChange = deg_list,
 		# colorEdge = TRUE,
@@ -188,7 +185,9 @@ go_enrich_net <- function(go_anno,
 		theme(
 			# text = element_text(family = fonts)
 		) +
-		scale_color_gradient(low = low_color, high = high_color, space = "Lab")
+		scale_fill_gradient(low = low_color, high = high_color,
+												 space = "Lab",
+												 guide = "colourbar", aesthetics = "fill")
 
 	# p
 	# <- 5. Plot

@@ -6,10 +6,10 @@
 \usage{
 kegg_enrich_bar(
   kegg_anno,
-  kegg_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 1,
-  qvalue_cutoff = 1,
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05,
   sign_by = "p.adjust",
   category_num = 30,
   font_size = 12,
@@ -19,9 +19,9 @@ kegg_enrich_bar(
 )
 }
 \arguments{
-\item{kegg_anno}{Dataframe: include columns (id, kegg_pathway),  symbol ";" split ko pathways.}
+\item{kegg_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{kegg_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -52,26 +52,20 @@ KEGG enrichment analysis and bar plot (None/Exist Reference Genome).
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(kegg_anno)
-head(kegg_anno)
-
-data(kegg_deg_fc)
-head(kegg_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-kegg_enrich_bar(kegg_anno, kegg_deg_fc)
+kegg_enrich_bar(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])
 
 # 4. Set padjust_method = "BH"
-kegg_enrich_bar(kegg_anno, kegg_deg_fc, padjust_method = "BH")
+kegg_enrich_bar(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], padjust_method = "BH")
 
 # 5. Set category_num = 10
-kegg_enrich_bar(kegg_anno, kegg_deg_fc, category_num = 10)
+kegg_enrich_bar(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], category_num = 10)
 
-# 6. Set low_color = "#ff8800ff", high_color = "#008888ff"
-kegg_enrich_bar(kegg_anno, kegg_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
-
-# 7. Set ggTheme = "theme_minimal"
-kegg_enrich_bar(kegg_anno, kegg_deg_fc, ggTheme = "theme_minimal")
+# 6. Set ggTheme = "theme_bw"
+kegg_enrich_bar(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], ggTheme = "theme_bw")
 
 }
 \author{

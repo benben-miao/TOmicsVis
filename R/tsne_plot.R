@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: TSNE plot for analyzing and visualizing TSNE algorithm.
-#' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param sample_gene Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 #' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param multi_shape Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.
@@ -285,6 +285,7 @@ tsne_plot <- function(sample_gene,
 						 size = 5,
 						 label = paste('P:',tsne_p),
 						 colour = "black") +
+		labs(fill = "Groups", color = "Groups", shape = "Groups") +
 		sci_color +
 		gg_theme +
 		theme(plot.title = element_text(face = plotTitleFace,

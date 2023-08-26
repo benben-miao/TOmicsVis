@@ -1,3 +1,48 @@
+## TOmicsVis 1.2.8
+
+**Date**: 2023-08-25
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Create `?TOmicsVis::gene_go_kegg` dataset.
+2. Update `?TOmicsVis::chord_plot` function.
+3. Create `?TOmicsVis::gene_go_kegg2` dataset.
+4. Update `?TOmicsVis::go_enrich` function.
+5. Create `?TOmicsVis::network_data` dataset.
+6. Update `?TOmicsVis::network_plot` function.
+7. Update `?TOmicsVis::wgcna_pipeline` function.
+9. Update `?TOmicsVis::kegg_enrich` function.
+10. Update `?TOmicsVis::table_split` function.
+11. Update `?TOmicsVis::table_merge` function.
+12. Update `?TOmicsVis::table_cross` function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
+## TOmicsVis 1.2.7
+
+**Date**: 2023-08-24
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Create `?TOmicsVis::gene_expression2` dataset.
+2. Update `?TOmicsVis::circos_heatmap` function.
+3. Create `?TOmicsVis::degs_stats` dataset.
+4. Update `?TOmicsVis::volcano_plot` function.
+5. Create `?TOmicsVis::degs_stats2` dataset.
+6. Update `?TOmicsVis::ma_plot` function.
+7. Update `?TOmicsVis::heatmap_group` function.
+8. Create `?TOmicsVis::gene_expression3` dataset.
+9. Update `?TOmicsVis::trend_plot` function.
+10. Update `?TOmicsVis::gene_cluster_trend` function.
+11. Update `?TOmicsVis::gene_rank_plot` function.
+12. Update `?TOmicsVis::heatmap_cluster` function.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.2.6
 
 **Date**: 2023-08-23

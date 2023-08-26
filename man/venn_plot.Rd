@@ -46,20 +46,20 @@ Venn plot for stat common and unique gene among multiple sets.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(paired_degs)
-head(paired_degs)
+data(degs_lists)
+head(degs_lists)
 
 # 3. Default parameters
-venn_plot(paired_degs)
+venn_plot(degs_lists)
 
 # 4. Set line_type = "blank"
-venn_plot(paired_degs, line_type = "blank")
+venn_plot(degs_lists, line_type = "blank")
 
 # 5. Set ellipse_shape = "ellipse"
-venn_plot(paired_degs, ellipse_shape = "ellipse")
+venn_plot(degs_lists, ellipse_shape = "ellipse")
 
 # 6. Set sci_fill_color = "Sci_IGV"
-venn_plot(paired_degs, sci_fill_color = "Sci_IGV")
+venn_plot(degs_lists, sci_fill_color = "Sci_IGV")
 
 }
 \author{

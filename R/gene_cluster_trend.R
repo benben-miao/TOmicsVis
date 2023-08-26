@@ -3,7 +3,7 @@
 #' @author wei dong
 #'
 #' @return Plot: Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.
-#' @param data Dataframe: gene expression dataframe with cols (samples) and rows (genes).
+#' @param data Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).
 #' @param thres Number: set the threshold for excluding genes. Default: 0.25.
 #' @param min_std Number: set the threshold for minimum standard deviation. Default: 0.2.
 #' @param palette Character: set the color palette to be used for plotting. Default: "PiYG", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
@@ -20,17 +20,17 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset gene_cluster_data
-#' data(gene_cluster_data)
-#' head(gene_cluster_data)
+#' data(gene_expression3)
+#' head(gene_expression3)
 #'
 #' # 3. Default parameters
-#' gene_cluster_trend(gene_cluster_data)
+#' gene_cluster_trend(gene_expression3[,-7])
 #'
 #' # 4. Set palette = "RdBu"
-#' gene_cluster_trend(gene_cluster_data, palette = "RdBu")
+#' gene_cluster_trend(gene_expression3[,-7], palette = "RdBu")
 #'
 #' # 5. Set cluster_num = 6
-#' gene_cluster_trend(gene_cluster_data, cluster_num = 6, palette = "Spectral")
+#' gene_cluster_trend(gene_expression3[,-7], cluster_num = 6, palette = "Spectral")
 #'
 gene_cluster_trend <- function(data,
                                thres = 0.25,
@@ -40,6 +40,9 @@ gene_cluster_trend <- function(data,
                                ){
 
   # create ExpressionSet object
+  data <- as.data.frame(data)
+  rownames(data) <- data[,1]
+  data <- data[,-1]
   eset <- new("ExpressionSet", exprs = as.matrix(data))
 
   # Data pre-processing

@@ -9,18 +9,19 @@ circos_heatmap(
   low_color = "#0000ff",
   mid_color = "#ffffff",
   high_color = "#ff0000",
-  gap_size = 10,
+  gap_size = 25,
   cluster_run = TRUE,
   cluster_method = "complete",
   distance_method = "euclidean",
   dend_show = "inside",
   dend_height = 0.2,
+  track_height = 0.3,
   rowname_show = "outside",
   rowname_size = 0.8
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Sample1, Sample2, ...), rows (Gene1, Gene2, ...).}
+\item{data}{Dataframe: Shared degs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{low_color}{Character: min value color (color name or hex value). Default: "#0000ff".}
 
@@ -28,7 +29,7 @@ circos_heatmap(
 
 \item{high_color}{Character: high value color (color name or hex value). Default: "#ff0000".}
 
-\item{gap_size}{Numeric: heatmap gap size. Default: 10, min: 0.}
+\item{gap_size}{Numeric: heatmap gap size. Default: 25, min: 0.}
 
 \item{cluster_run}{Logical: running cluster algorithm. Default: TRUE, options: TRUE, FALSE.}
 
@@ -40,7 +41,9 @@ circos_heatmap(
 
 \item{dend_height}{Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.}
 
-\item{rowname_show}{Character: control rownames display and position. Hind first rowname by running rownames(data)\link{1}. Default: "outside", options: "none", "outside", "inside".}
+\item{track_height}{Numeric: heatmap track height. Default: 0.30, min: 0.00, max: 0.50.}
+
+\item{rowname_show}{Character: control rownames display and position. Hind first rowname by running rownames(data). Default: "outside", options: "none", "outside", "inside".}
 
 \item{rowname_size}{Numeric: rowname font size. Default: 0.80, min: 0.10, max: 10.00.}
 }
@@ -55,10 +58,11 @@ Circos heatmap plot for visualizing gene expressing in multiple samples.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(circos_heatmap_data)
+data(gene_expression2)
+head(gene_expression2)
 
 # 3. Default parameters
-circos_heatmap(circos_heatmap_data)
+circos_heatmap(gene_expression2[1:50,])
 
 }
 \author{

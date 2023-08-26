@@ -3,15 +3,15 @@
 \docType{data}
 \name{gene_expression}
 \alias{gene_expression}
-\title{Gene Expression dataframe of RNA-Seq.}
+\title{All genes in all samples expression dataframe of RNA-Seq.}
 \format{
-Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 }
 \usage{
 data(gene_expression)
 }
 \description{
-Gene Expression dataframe of RNA-Seq.
+All genes in all samples expression dataframe of RNA-Seq.
 }
 \examples{
 # 1. Library TOmicsVis package

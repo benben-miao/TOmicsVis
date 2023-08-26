@@ -42,21 +42,21 @@ Flower plot for stat common and unique gene among multiple sets.
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
-# 2. Use example dataset paired_degs
-data(paired_degs)
-head(paired_degs)
+# 2. Use example dataset
+data(degs_lists)
+head(degs_lists)
 
 # 3. Default parameters
-flower_plot(paired_degs)
+flower_plot(degs_lists)
 
 # 4. Set angle = 60
-flower_plot(paired_degs, angle = 60)
+flower_plot(degs_lists, angle = 60)
 
 # 5. Set ellipse_col_pal = "Accent"
-flower_plot(paired_degs, ellipse_col_pal = "Accent")
+flower_plot(degs_lists, ellipse_col_pal = "Accent")
 
 # 6. Set a = 1, b = 2, r = 1
-flower_plot(paired_degs, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
+flower_plot(degs_lists, a = 1, b = 2, r = 1, ellipse_col_pal = "Set2")
 
 }
 \author{

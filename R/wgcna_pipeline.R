@@ -3,8 +3,17 @@
 #' @author benben-miao
 #'
 #' @return WGCNA results in tempdir() directory of current session.
-#' @param wgcna_gene_exp Dataframe: include gene expression data.
-#' @param wgcna_sample_group Dataframe: include samples and groups data.
+#' @param sample_gene Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+#' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
+#' @param R_cutofff Numeric: Rsquare cutoff. Default: 0.85, min: 0.00, max: 1.00.
+#' @param max_block Numeric: max block size. Default: 5000.
+#' @param min_module Numeric: min module gene number. Default: 20.
+#' @param network_type Character: network type. Default: "unsigned", options: "unsigned", "signed", "signed hybrid".
+#' @param merge_cutoff Numeric: merge modules cutoff. Default: 0.15.
+#' @param cor_type Character: correlation type. Default: "pearson", options: "pearson", "bicor".
+#' @param na_color Character: NA value color (color name or hex value). Default: "#cdcdcd".
+#' @param xlab_angle Numeric: X axis lable angle. Default: 45, min: 0, max: 360.
+#' @param text_size Numeric: cell text size. Default: 0.7, min: 0, max: NULL.
 #'
 #' @import WGCNA
 #' @import stringr
@@ -20,20 +29,31 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(wgcna_gene_exp)
-#' head(wgcna_gene_exp)
+#' data(gene_expression)
+#' head(gene_expression)
 #'
-#' data(wgcna_sample_group)
-#' head(wgcna_sample_group)
+#' data(samples_groups)
+#' head(samples_groups)
 #'
-wgcna_pipeline <- function(wgcna_gene_exp,
-													 wgcna_sample_group
+wgcna_pipeline <- function(sample_gene,
+													 group_sample,
+													 R_cutofff = 0.85,
+													 max_block = 5000,
+													 min_module = 20,
+													 network_type = "unsigned",
+													 merge_cutoff = 0.15,
+													 cor_type = "pearson",
+													 na_color = "#cdcdcd",
+													 xlab_angle = 45,
+													 text_size = 0.7
 													){
 	pipeline <- function(){
 
 	results_dir <- tempdir()
 
-	expData <- wgcna_gene_exp
+	sample_gene <- as.data.frame(sample_gene)
+	rownames(sample_gene) <- sample_gene[,1]
+	expData <- as.data.frame(sample_gene[,-1])
 	# dim(expData)
 	# head(expData, 10)
 	m.mad <- apply(expData,1,mad)
@@ -42,7 +62,10 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 													 							 probs = seq(0, 1, 0.25))[2],0.01)),]
 	expData <- t(expData)
 
-	groupData <- wgcna_sample_group
+	group_sample <- as.data.frame(group_sample)
+	rownames(group_sample) <- group_sample[,1]
+	groupData <- as.data.frame(group_sample[,-1])
+	colnames(groupData) <- "Groups"
 
 	gsg = WGCNA::goodSamplesGenes(expData, verbose = 3);
 	gsg$allOK
@@ -56,7 +79,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	sft = pickSoftThreshold(expData,
 													dataIsExpr = TRUE,
 													weights = NULL,
-													RsquaredCut = 0.85,
+													RsquaredCut = R_cutofff,
 													powerVector = powers,
 													removeFirst = FALSE,
 													corFnc = cor,
@@ -153,16 +176,16 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 
 	bwnet = blockwiseModules(expData,
 													 power = sft$powerEstimate,
-													 # maxBlockSize = 2500,
+													 maxBlockSize = max_block,
 													 TOMType = "unsigned",
-													 minModuleSize = 25,
-													 networkType = "unsigned",
+													 minModuleSize = min_module,
+													 networkType = network_type,
 													 reassignThreshold = 0,
-													 mergeCutHeight = 0.25,
+													 mergeCutHeight = merge_cutoff,
 													 numericLabels = TRUE,
 													 pamRespectsDendro = FALSE,
 													 saveTOMs = TRUE,
-													 corType = "pearson",
+													 corType = cor_type,
 													 loadTOM = FALSE,
 													 TOMDenom = "min",
 													 deepSplit = 1,
@@ -178,7 +201,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 															 zeroIsGrey = TRUE,
 															 # colorSeq = pal_igv(palette = c("default", "alternating"), alpha = 0.90)(51),
 															 colorSeq = NULL,
-															 naColor = "grey",
+															 naColor = na_color,
 															 commonColorCode = TRUE
 	)
 	# table(moduleColors)
@@ -305,9 +328,10 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 	dev.off()
 
 
-	table(groupData$Group)
-	design = model.matrix(~0 + groupData$Group)
-	colnames(design) = levels(groupData$Group)
+	table(groupData$Groups)
+	design = model.matrix(~0 + groupData$Groups)
+	groupData$Groups <- as.factor(groupData$Groups)
+	colnames(design) = levels(groupData$Groups)
 
 	MEs0 = moduleEigengenes(expData, moduleColors)$eigengenes
 	MEs = orderMEs(MEs0)
@@ -337,7 +361,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 								 invertColors = FALSE,
 								 setStdMargins = TRUE,
 								 xLabelsPosition = "bottom",
-								 xLabelsAngle = 0,
+								 xLabelsAngle = xlab_angle,
 								 xLabelsAdj = 1,
 								 yLabelsPosition = "left",
 								 xColorWidth = 2 * strheight("M"),
@@ -346,11 +370,12 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 								 yColorOffset = strwidth("M")/3,
 								 colorLabels = FALSE,
 								 colors = blueWhiteRed(100), # greenWhiteRed(50)
+								 naColor = na_color,
 								 textMatrix = textMatrix,
-								 cex.text = 0.7,
+								 cex.text = text_size,
 								 zlim = c(-1,1),
 								 plotLegend = TRUE,
-								 legendLabel = "",
+								 legendLabel = "Pearson's correlation coefficient",
 								 cex.legendLabel = 1,
 								 main = paste("Module-trait relationships")
 	)
@@ -370,7 +395,7 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 								 invertColors = FALSE,
 								 setStdMargins = TRUE,
 								 xLabelsPosition = "bottom",
-								 xLabelsAngle = 0,
+								 xLabelsAngle = xlab_angle,
 								 xLabelsAdj = 1,
 								 yLabelsPosition = "left",
 								 xColorWidth = 2 * strheight("M"),
@@ -379,11 +404,12 @@ wgcna_pipeline <- function(wgcna_gene_exp,
 								 yColorOffset = strwidth("M")/3,
 								 colorLabels = FALSE,
 								 colors = blueWhiteRed(100), # greenWhiteRed(50)
+								 naColor = na_color,
 								 textMatrix = textMatrix,
-								 cex.text = 0.7,
+								 cex.text = text_size,
 								 zlim = c(-1,1),
 								 plotLegend = TRUE,
-								 legendLabel = "",
+								 legendLabel = "Pearson's correlation coefficient",
 								 cex.legendLabel = 1,
 								 main = paste("Module-trait relationships")
 	)

@@ -5,36 +5,54 @@
 \title{Heatmap group for visualizing grouped gene expression data.}
 \usage{
 heatmap_group(
-  data,
-  scale_data = "none",
+  sample_gene,
+  group_sample,
+  scale_data = "row",
   clust_method = "complete",
   border_show = TRUE,
+  border_color = "#ffffff",
   value_show = TRUE,
-  low_color = "#00880088",
+  value_decimal = 2,
+  value_size = 5,
+  axis_size = 8,
+  cell_height = 10,
+  low_color = "#00880055",
   mid_color = "#ffffff",
-  high_color = "#ff000088",
+  high_color = "#ff000055",
   na_color = "#ff8800",
   x_angle = 45
 )
 }
 \arguments{
-\item{data}{Dataframe: include level1 columns (Groups, Group1, Group2, ...), level2 columns (GeneID, Sample1, Sample2, ...).}
+\item{sample_gene}{Dataframe: Shared degs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
-\item{scale_data}{Character: scale data. Default: "none", options: "row", "column", "none".}
+\item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
+
+\item{scale_data}{Character: scale data. Default: "row", options: "row", "column", "none".}
 
 \item{clust_method}{Character: cluster method. Default: "complete", options: "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC).}
 
 \item{border_show}{Logical: show border. Default: TRUE, options: TRUE, FALSE.}
 
+\item{border_color}{Character: cell border color (color value or hex value with alpha). Default: "#ffffff".}
+
 \item{value_show}{Logical: show value in cell. Default: TRUE, options: TRUE, FALSE.}
 
-\item{low_color}{Character: min value color (color value or hex value with alpha).}
+\item{value_decimal}{Numeric: cell value decimal. Default: 2, min: 0, max: 5.}
 
-\item{mid_color}{Character: min value color (color value or hex value with alpha).}
+\item{value_size}{Numeric: cell value font size. Default: 5, min: 0, max: NULL.}
 
-\item{high_color}{Character: min value color (color value or hex value with alpha).}
+\item{axis_size}{Numeric: axis title font size. Default: 8, min: 0, max: NULL.}
 
-\item{na_color}{Character: min value color (color value or hex value with alpha).}
+\item{cell_height}{Numeric: cell height for value size and axis size. Default: 10.}
+
+\item{low_color}{Character: min value color (color value or hex value with alpha). Default: "#00880055".}
+
+\item{mid_color}{Character: min value color (color value or hex value with alpha). Default: "#ffffff".}
+
+\item{high_color}{Character: min value color (color value or hex value with alpha). Default: "#ff000055".}
+
+\item{na_color}{Character: min value color (color value or hex value with alpha). Default: "#ff8800".}
 
 \item{x_angle}{Numeric: x axis text angle. Default: 45, min: 0, max: 360.}
 }
@@ -49,23 +67,23 @@ Heatmap group for visualizing grouped gene expression data.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(heatmap_group_data)
-head(heatmap_group_data)
+data(gene_expression2)
+head(gene_expression2)
+
+data(samples_groups)
+head(samples_groups)
 
 # 3. Default parameters
-heatmap_group(heatmap_group_data)
+heatmap_group(gene_expression2[1:50,], samples_groups)
 
-# 4. Set scale_data = "row"
-heatmap_group(heatmap_group_data, scale_data = "row")
+# 4. Set scale_data = "column"
+heatmap_group(gene_expression2[1:50,], samples_groups, scale_data = "column")
 
-# 5. Set border_show = TRUE
-heatmap_group(heatmap_group_data, border_show = TRUE)
+# 5. Set value_show = FALSE
+heatmap_group(gene_expression2[1:50,], samples_groups, value_show = FALSE)
 
 # 6. Set low_color = "#00008888"
-heatmap_group(heatmap_group_data, low_color = "#00008888")
-
-# 7. Set x_angle = 90
-heatmap_group(heatmap_group_data, x_angle = 90)
+heatmap_group(gene_expression2[1:50,], samples_groups, low_color = "#00008888")
 
 }
 \author{

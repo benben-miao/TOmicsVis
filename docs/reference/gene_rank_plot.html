@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +134,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include columns (Genes, Log2FoldChange, Pvalue, Padj), rows (Genes).</p></dd>
+<dd><p>Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).</p></dd>
 
 
 <dt>log2fc</dt>
@@ -189,27 +189,28 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 1. Library TOmicsVis package</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 2. Use example dataset deg_data</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       gene log2FoldChange       pvalue         padj</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   TSPAN6    -0.37951916 1.110402e-04 8.624777e-04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     DPM1     0.19692044 7.098804e-02 1.925517e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    SCYL3     0.03099276 8.197068e-01 9.138939e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 C1orf112    -0.08980230 7.453748e-01 8.742951e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      CFH     0.41603874 1.435285e-06 1.680276e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6    FUCA2    -0.24315848 5.171574e-03 2.422830e-02</span>
+<span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Gene log2FoldChange      Pvalue         FDR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  A1I3    -1.13855748 0.000111040 0.000862478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   A1M     0.59076131 0.070988041 0.192551708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   A2M     0.09297827 0.819706797 0.913893947</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 A2ML1    -0.26940689 0.745374782 0.874295125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  ABAT     1.24811621 0.000001440 0.000016800</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 ABCC3    -0.72947545 0.005171574 0.024228298</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gene_rank_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set top_n = 5</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, top_n <span class="op">=</span> <span class="fl">5</span>, palette <span class="op">=</span> <span class="st">"PiYG"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">degs_stats</span>, top_n <span class="op">=</span> <span class="fl">5</span>, palette <span class="op">=</span> <span class="st">"PiYG"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gene_rank_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")</span></span></span>
-<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">deg_data</span>, genes_to_label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SELL"</span>,<span class="st">"CCR7"</span>,<span class="st">"KLRG1"</span>,<span class="st">"IL7R"</span><span class="op">)</span>, palette <span class="op">=</span> <span class="st">"PuOr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_rank_plot</span><span class="op">(</span><span class="va">degs_stats</span>, genes_to_label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SELL"</span>,<span class="st">"CCR7"</span>,<span class="st">"KLRG1"</span>,<span class="st">"IL7R"</span><span class="op">)</span>, palette <span class="op">=</span> <span class="st">"PuOr"</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 4 rows containing missing values (`geom_text_repel()`).</span>
 <span class="r-plt img"><img src="gene_rank_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

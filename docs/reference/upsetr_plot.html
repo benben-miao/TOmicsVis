@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,8 +220,8 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        CT.vs.LT20      CT.vs.LT15       CT.vs.LT12     CT.vs.LT12_6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 transcript_9024 transcript_4738  transcript_9956 transcript_10354</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  transcript_604 transcript_6050  transcript_7601  transcript_2959</span>
@@ -231,19 +231,19 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6   transcript_74 transcript_9809  transcript_3151  transcript_8836</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">paired_degs</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="upsetr_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set keep_order = TRUE, order_by = "degree"</span></span></span>
-<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">paired_degs</span>, keep_order <span class="op">=</span> <span class="cn">TRUE</span>, order_by <span class="op">=</span> <span class="st">"degree"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">degs_lists</span>, keep_order <span class="op">=</span> <span class="cn">TRUE</span>, order_by <span class="op">=</span> <span class="st">"degree"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="upsetr_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set mainbar_color = "#333333", number_angle = 0</span></span></span>
-<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">paired_degs</span>, mainbar_color <span class="op">=</span> <span class="st">"#333333"</span>, number_angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">degs_lists</span>, mainbar_color <span class="op">=</span> <span class="st">"#333333"</span>, number_angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="upsetr_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 6. Set shade_color = "#ffcc00", setsbar_color = "#0000cc"</span></span></span>
-<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">paired_degs</span>, shade_color <span class="op">=</span> <span class="st">"#ffcc00"</span>, setsbar_color <span class="op">=</span> <span class="st">"#0000cc"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">upsetr_plot</span><span class="op">(</span><span class="va">degs_lists</span>, shade_color <span class="op">=</span> <span class="st">"#ffcc00"</span>, setsbar_color <span class="op">=</span> <span class="st">"#0000cc"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="upsetr_plot-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

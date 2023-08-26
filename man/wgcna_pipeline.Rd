@@ -4,12 +4,42 @@
 \alias{wgcna_pipeline}
 \title{WGCNA analysis pipeline for RNA-Seq.}
 \usage{
-wgcna_pipeline(wgcna_gene_exp, wgcna_sample_group)
+wgcna_pipeline(
+  sample_gene,
+  group_sample,
+  R_cutofff = 0.85,
+  max_block = 5000,
+  min_module = 20,
+  network_type = "unsigned",
+  merge_cutoff = 0.15,
+  cor_type = "pearson",
+  na_color = "#cdcdcd",
+  xlab_angle = 45,
+  text_size = 0.7
+)
 }
 \arguments{
-\item{wgcna_gene_exp}{Dataframe: include gene expression data.}
+\item{sample_gene}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
-\item{wgcna_sample_group}{Dataframe: include samples and groups data.}
+\item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
+
+\item{R_cutofff}{Numeric: Rsquare cutoff. Default: 0.85, min: 0.00, max: 1.00.}
+
+\item{max_block}{Numeric: max block size. Default: 5000.}
+
+\item{min_module}{Numeric: min module gene number. Default: 20.}
+
+\item{network_type}{Character: network type. Default: "unsigned", options: "unsigned", "signed", "signed hybrid".}
+
+\item{merge_cutoff}{Numeric: merge modules cutoff. Default: 0.15.}
+
+\item{cor_type}{Character: correlation type. Default: "pearson", options: "pearson", "bicor".}
+
+\item{na_color}{Character: NA value color (color name or hex value). Default: "#cdcdcd".}
+
+\item{xlab_angle}{Numeric: X axis lable angle. Default: 45, min: 0, max: 360.}
+
+\item{text_size}{Numeric: cell text size. Default: 0.7, min: 0, max: NULL.}
 }
 \value{
 WGCNA results in tempdir() directory of current session.
@@ -22,11 +52,11 @@ WGCNA analysis pipeline for RNA-Seq.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(wgcna_gene_exp)
-head(wgcna_gene_exp)
+data(gene_expression)
+head(gene_expression)
 
-data(wgcna_sample_group)
-head(wgcna_sample_group)
+data(samples_groups)
+head(samples_groups)
 
 }
 \author{

@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Table: include multiple variables.
-#' @param data Dataframe: include multiple variables (columns).
+#' @param data Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 #' @param merge_vars Vector: include merged variable (column) names. Default: c("Ozone", "Solar.R", "Wind", "Temp") in example data.
 #' @param new_var Character: new variable (column) name. Default: "Variable".
 #' @param new_value Character: new variable (column) value name. Default: "Value".
@@ -17,21 +17,21 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(table_merge_data)
-#' head(table_merge_data)
+#' data(gene_go_kegg)
+#' head(gene_go_kegg)
 #'
 #' # 3. Default parameters
-#' res <- table_merge(table_merge_data)
+#' res <- table_merge(gene_go_kegg)
 #' head(res)
 #'
-#' # 4. Set merge_vars = c("Ozone", "Solar.R")
-#' res <- table_merge(table_merge_data, merge_vars = c("Ozone", "Solar.R"))
+#' # 4. Set new_var = "GO", new_value = "Terms"
+#' res <- table_merge(gene_go_kegg, new_var = "GO", new_value = "Terms")
 #' head(res)
 #'
 table_merge <- function(data,
-												merge_vars = c("Ozone", "Solar.R", "Wind", "Temp"),
-												new_var = "Variable",
-												new_value = "Value",
+												merge_vars = c("biological_process", "cellular_component", "molecular_function"),
+												new_var = "go_category",
+												new_value = "go_term",
 												na_remove = FALSE
 												){
 	res <- reshape2::melt(data,

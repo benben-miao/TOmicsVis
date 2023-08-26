@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,7 +139,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).</p></dd>
+<dd><p>Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p></dd>
 
 
 <dt>dist_method</dt>
@@ -197,10 +197,6 @@
 <dt>ggTheme</dt>
 <dd><p>Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".</p></dd>
 
-
-<dt>title</dt>
-<dd><p>Character: main plot title. Default: "Cluster Dendrogram".</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -221,7 +217,7 @@
 <span class="r-in"><span><span class="co"># 2. Use example dataset gene_expression</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Transcripts   CT_1   CT_2   CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Genes   CT_1   CT_2   CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     transcript_0 655.78 631.08 669.89 654.21 402.56 447.09 510.08 442.22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     transcript_1  92.72 112.26 150.30  88.35  76.35  94.55 120.24  80.89</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    transcript_10  21.74  31.11  22.58  15.09  13.67  13.24  12.48   7.53</span>

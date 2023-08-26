@@ -3,15 +3,15 @@
 \docType{data}
 \name{network_data}
 \alias{network_data}
-\title{Network data as example for network_plot function.}
+\title{Network data from WGCNA tan module top-200 dataframe.}
 \format{
-Dataframe: include columns (source_node, target_node).
+Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).
 }
 \usage{
 data(network_data)
 }
 \description{
-Network data as example for network_plot function.
+Network data from WGCNA tan module top-200 dataframe.
 }
 \examples{
 # 1. Library TOmicsVis package

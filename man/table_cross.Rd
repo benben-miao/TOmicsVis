@@ -7,15 +7,15 @@
 table_cross(
   data1,
   data2,
-  inter_var = "geneID",
+  inter_var = "Genes",
   left_index = TRUE,
-  right_index = FALSE
+  right_index = TRUE
 )
 }
 \arguments{
-\item{data1}{Dataframe: include multiple columns, as left table.}
+\item{data1}{Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
-\item{data2}{Dataframe: include multiple columns, as right table.}
+\item{data2}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
 \item{inter_var}{Character: Intersecting variable (column name). Default: "geneID" in example data.}
 
@@ -34,35 +34,24 @@ Table cross used to cross search and merge results in two tables.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(table_cross_data1)
-head(table_cross_data1)
+data(gene_expression2)
+head(gene_expression2)
 
-data(table_cross_data2)
-head(table_cross_data2)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-res <- table_cross(table_cross_data1,
-table_cross_data2,
-inter_var = "geneID"
-)
+res <- table_cross(gene_expression2, gene_go_kegg, inter_var = "Genes")
 head(res)
 
-# 4. Set left_index = TRUE, right_index = TRUE
-res <- table_cross(table_cross_data1,
-table_cross_data2,
-inter_var = "geneID",
-left_index = TRUE,
-right_index = TRUE
-)
+# 4. Set left_index = TRUE, right_index = FALSE
+res <- table_cross(gene_expression2, gene_go_kegg,
+inter_var = "Genes", left_index = TRUE, right_index = FALSE)
 head(res)
 
-# 5. Set left_index = FALSE, right_index = FALSE
-res <- table_cross(table_cross_data1,
-table_cross_data2,
-inter_var = "geneID",
-left_index = FALSE,
-right_index = FALSE
-)
+# 5. Set left_index = FALSE, right_index = TRUE
+res <- table_cross(gene_expression2, gene_go_kegg,
+inter_var = "Genes", left_index = FALSE, right_index = TRUE)
 head(res)
 
 }

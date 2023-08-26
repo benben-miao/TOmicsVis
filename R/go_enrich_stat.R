@@ -3,8 +3,8 @@
 #' @author benben-miao
 #'
 #' @return Plot: GO enrichment analysis and stat plot (None/Exist Reference Genome).
-#' @param go_anno Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.
-#' @param go_deg_fc Dataframe: include columns (id, log2FC).
+#' @param go_anno Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+#' @param degs_list Dataframe: degs list.
 #' @param padjust_method Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 #' @param pvalue_cutoff Numeric: P-value cutoff. Recommend: small than 0.05.
 #' @param qvalue_cutoff Numeric: Q-value cutoff. Recommend: small than 0.05.
@@ -28,32 +28,29 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(go_anno)
-#' head(go_anno)
-#'
-#' data(go_deg_fc)
-#' head(go_deg_fc)
+#' data(gene_go_kegg)
+#' head(gene_go_kegg)
 #'
 #' # 3. Default parameters
-#' go_enrich_stat(go_anno, go_deg_fc)
+#' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 #'
 #' # 4. Set padjust_method = "BH"
-#' go_enrich_stat(go_anno, go_deg_fc, padjust_method = "BH")
+#' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], padjust_method = "BH")
 #'
 #' # 5. Set max_go_item = 10
-#' go_enrich_stat(go_anno, go_deg_fc, max_go_item = 10)
+#' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], max_go_item = 10)
 #'
 #' # 6. Set strip_fill = "#008888"
-#' go_enrich_stat(go_anno, go_deg_fc, strip_fill = "#008888")
+#' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], strip_fill = "#008888")
 #'
 #' # 7. Set sci_fill_color = "Sci_JAMA"
-#' go_enrich_stat(go_anno, go_deg_fc, sci_fill_color = "Sci_JAMA")
+#' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], sci_fill_color = "Sci_JAMA")
 #'
 go_enrich_stat <- function(go_anno,
-										 go_deg_fc,
+										 degs_list,
 										 padjust_method = "fdr",
-										 pvalue_cutoff = 0.50,
-										 qvalue_cutoff = 0.50,
+										 pvalue_cutoff = 0.05,
+										 qvalue_cutoff = 0.05,
 										 max_go_item = 15,
 										 strip_fill = "#CDCDCD",
 										 xtext_angle = 45,
@@ -77,14 +74,14 @@ go_enrich_stat <- function(go_anno,
 
 	# -> 3. Data
 	gene_go <- go_anno
-	deg_fc <- go_deg_fc
+	degs_list <- degs_list
 
-	deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	deg_list <- with(deg_fc, setNames(log2FC, id))
+	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
+	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
 	gene_go1 <- reshape2::melt(gene_go,
 									 na.rm = FALSE,
-									 id.vars = c("id"),
+									 id.vars = c("Genes"),
 									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
 									 variable.name = "ontology",
 									 value.name = "term",
@@ -106,13 +103,13 @@ go_enrich_stat <- function(go_anno,
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
-	gene_go5 <- data.frame(gene_go4["id"],
+	gene_go5 <- data.frame(gene_go4["Genes"],
 												 gene_go4["term"],
 												 gene_go4["ontology"],
 												 gene_go4["description"]
 	)
 
-	enrich_results <- clusterProfiler::enricher(gene = deg_fc[[1]],
+	enrich_results <- clusterProfiler::enricher(gene = degs_list,
 														 TERM2GENE = data.frame(gene_go5[,2],gene_go5[,1]),
 														 TERM2NAME = data.frame(gene_go5[,2],gene_go5[,4]),
 														 pvalueCutoff = pvalue_cutoff,
@@ -266,7 +263,8 @@ go_enrich_stat <- function(go_anno,
 		# text = element_text(family = fonts),
 		axis.text = element_text(colour = "#000000"),
 		strip.text.x = element_text(size = 10,
-																colour = "#333333"),
+																colour = "#333333",
+																face = "bold"),
 		strip.background.x = element_rect(fill = strip_fill,
 																			color = strip_fill),
 		legend.position = "top",

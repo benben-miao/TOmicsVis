@@ -28,20 +28,20 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(paired_degs)
-#' head(paired_degs)
+#' data(degs_lists)
+#' head(degs_lists)
 #'
 #' # 3. Default parameters
-#' upsetr_plot(paired_degs)
+#' upsetr_plot(degs_lists)
 #'
 #' # 4. Set keep_order = TRUE, order_by = "degree"
-#' upsetr_plot(paired_degs, keep_order = TRUE, order_by = "degree")
+#' upsetr_plot(degs_lists, keep_order = TRUE, order_by = "degree")
 #'
 #' # 5. Set mainbar_color = "#333333", number_angle = 0
-#' upsetr_plot(paired_degs, mainbar_color = "#333333", number_angle = 0)
+#' upsetr_plot(degs_lists, mainbar_color = "#333333", number_angle = 0)
 #'
 #' # 6. Set shade_color = "#ffcc00", setsbar_color = "#0000cc"
-#' upsetr_plot(paired_degs, shade_color = "#ffcc00", setsbar_color = "#0000cc")
+#' upsetr_plot(degs_lists, shade_color = "#ffcc00", setsbar_color = "#0000cc")
 #'
 upsetr_plot <- function(data,
 												sets_num = 4,

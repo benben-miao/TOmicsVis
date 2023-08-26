@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,20 +120,20 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">table_cross</span><span class="op">(</span></span>
 <span>  <span class="va">data1</span>,</span>
 <span>  <span class="va">data2</span>,</span>
-<span>  inter_var <span class="op">=</span> <span class="st">"geneID"</span>,</span>
+<span>  inter_var <span class="op">=</span> <span class="st">"Genes"</span>,</span>
 <span>  left_index <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  right_index <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  right_index <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data1</dt>
-<dd><p>Dataframe: include multiple columns, as left table.</p></dd>
+<dd><p>Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p></dd>
 
 
 <dt>data2</dt>
-<dd><p>Dataframe: include multiple columns, as right table.</p></dd>
+<dd><p>Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).</p></dd>
 
 
 <dt>inter_var</dt>
@@ -165,56 +165,200 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_cross_data1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      geneID root_exp leave_exp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Unigene01  16.4798    3.3122</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Unigene02  44.5027   24.1932</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Unigene03  86.9566   43.0663</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes  CT_1    CT_2  CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2 24.50   39.83 55.38 114.11 159.32  96.88 169.56 464.84 182.66 116.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN 14.97   18.71 10.30  71.23 142.67 213.54 253.15 320.80 104.15 174.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1  1.54    1.56  2.04  14.95  13.60  15.87  12.80  17.74   6.06  10.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG  0.00 1911.99  0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2  2.07    2.86  2.54   0.85   0.49   0.47   0.42   0.13   0.26   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  6.62   14.59  9.30  24.90  33.94  23.19  24.00  36.08  27.40  24.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 497.29 464.48   471.43   693.62   229.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 305.81 469.48  1291.90   991.90   966.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  10.71  30.95     9.84    10.91     7.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28   0.11     0.37     0.15     0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  38.74  34.54    62.72    41.36    28.75</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_cross_data2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_cross_data2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      geneID  KO_id                     ko_definition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Unigene02 K10592 E3 ubiquitin-protein ligase HUWE1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Unigene03 K10592    NADH dehydrogenase I subunit 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Unigene04 K05579         dehydrogenase I subunit 7</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        FN1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 14-3-3ZETA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       A1I3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        A2M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       AARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       ABAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0005576(extracellular region)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            GO:0005737(cytoplasm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                       molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                            GO:0019904(protein domain specific binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">table_cross_data1</span>,</span></span>
-<span class="r-in"><span><span class="va">table_cross_data2</span>,</span></span>
-<span class="r-in"><span>inter_var <span class="op">=</span> <span class="st">"geneID"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">gene_expression2</span>, <span class="va">gene_go_kegg</span>, inter_var <span class="op">=</span> <span class="st">"Genes"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      geneID root_exp leave_exp  KO_id                     ko_definition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Unigene01  16.4798    3.3122   &lt;NA&gt;                              &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes CT_1 CT_2 CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 14-3-3ZETA   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       A1I3   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        A2M   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       AARS   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       ABAT   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      ABCB7   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                      biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0009448(gamma-aminobutyric acid metabolic process)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                           cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      GO:0005737(cytoplasm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 GO:0016021(integral component of membrane)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                       molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                            GO:0019904(protein domain specific binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      GO:0005524(ATP binding);GO:0016887(ATPase activity);GO:0042626(ATPase-coupled transmembrane transporter activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                                                                                                                 ko02010(ABC transporters)</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set left_index = TRUE, right_index = TRUE</span></span></span>
-<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">table_cross_data1</span>,</span></span>
-<span class="r-in"><span><span class="va">table_cross_data2</span>,</span></span>
-<span class="r-in"><span>inter_var <span class="op">=</span> <span class="st">"geneID"</span>,</span></span>
-<span class="r-in"><span>left_index <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>right_index <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set left_index = TRUE, right_index = FALSE</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">gene_expression2</span>, <span class="va">gene_go_kegg</span>,</span></span>
+<span class="r-in"><span>inter_var <span class="op">=</span> <span class="st">"Genes"</span>, left_index <span class="op">=</span> <span class="cn">TRUE</span>, right_index <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      geneID root_exp leave_exp  KO_id                     ko_definition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Unigene01  16.4798    3.3122   &lt;NA&gt;                              &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Unigene04       NA        NA K05579         dehydrogenase I subunit 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes  CT_1    CT_2  CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2 24.50   39.83 55.38 114.11 159.32  96.88 169.56 464.84 182.66 116.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN 14.97   18.71 10.30  71.23 142.67 213.54 253.15 320.80 104.15 174.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1  1.54    1.56  2.04  14.95  13.60  15.87  12.80  17.74   6.06  10.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG  0.00 1911.99  0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2  2.07    2.86  2.54   0.85   0.49   0.47   0.42   0.13   0.26   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  6.62   14.59  9.30  24.90  33.94  23.19  24.00  36.08  27.40  24.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 497.29 464.48   471.43   693.62   229.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 305.81 469.48  1291.90   991.90   966.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  10.71  30.95     9.84    10.91     7.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28   0.11     0.37     0.15     0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  38.74  34.54    62.72    41.36    28.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                   biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                               &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                               &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                               &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                               &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                               &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 GO:0006886(intracellular protein transport);GO:0016192(vesicle-mediated transport)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                      &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                      &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                      &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 GO:0030117(membrane coat)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                            molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     GO:0016747(transferase activity, transferring acyl groups other than amino-acyl groups)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                        &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                            GO:0016491(oxidoreductase activity);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                        &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0016620(oxidoreductase activity, acting on the aldehyde or oxo group of donors, NAD or NADP as acceptor)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                        &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                                                                                                                                                                                                                                                                      ko00280(Valine, leucine and isoleucine degradation);ko00071(Fatty acid degradation);ko00062(Fatty acid elongation);ko01212(Fatty acid metabolism)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                  ko00350(Tyrosine metabolism);ko00010(Glycolysis / Gluconeogenesis);ko00680(Methane metabolism);ko00071(Fatty acid degradation);ko00830(Retinol metabolism);ko01200(Carbon metabolism);ko01220(Degradation of aromatic compounds);ko00625(Chloroalkane and chloroalkene degradation);ko00982(Drug metabolism - cytochrome P450);ko00980(Metabolism of xenobiotics by cytochrome P450);ko00626(Naphthalene degradation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ko00330(Arginine and proline metabolism);ko00340(Histidine metabolism);ko00310(Lysine degradation);ko00380(Tryptophan metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00053(Ascorbate and aldarate metabolism);ko00010(Glycolysis / Gluconeogenesis);ko00620(Pyruvate metabolism);ko00071(Fatty acid degradation);ko00561(Glycerolipid metabolism);ko00410(beta-Alanine metabolism);ko00981(Insect hormone biosynthesis);ko00903(Limonene and pinene degradation);ko00625(Chloroalkane and chloroalkene degradation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ko04142(Lysosome)</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set left_index = FALSE, right_index = FALSE</span></span></span>
-<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">table_cross_data1</span>,</span></span>
-<span class="r-in"><span><span class="va">table_cross_data2</span>,</span></span>
-<span class="r-in"><span>inter_var <span class="op">=</span> <span class="st">"geneID"</span>,</span></span>
-<span class="r-in"><span>left_index <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>right_index <span class="op">=</span> <span class="cn">FALSE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set left_index = FALSE, right_index = TRUE</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_cross</span><span class="op">(</span><span class="va">gene_expression2</span>, <span class="va">gene_go_kegg</span>,</span></span>
+<span class="r-in"><span>inter_var <span class="op">=</span> <span class="st">"Genes"</span>, left_index <span class="op">=</span> <span class="cn">FALSE</span>, right_index <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      geneID root_exp leave_exp  KO_id                     ko_definition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Unigene02  44.5027   24.1932 K10592 E3 ubiquitin-protein ligase HUWE1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Unigene03  86.9566   43.0663 K10592    NADH dehydrogenase I subunit 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes CT_1 CT_2 CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 14-3-3ZETA   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       A1I3   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        A2M   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       AARS   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       ABAT   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      ABCB7   NA   NA   NA     NA     NA     NA     NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     NA     NA       NA       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                      biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0009448(gamma-aminobutyric acid metabolic process)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                  &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                           cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      GO:0005737(cytoplasm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 GO:0016021(integral component of membrane)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                       molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                            GO:0019904(protein domain specific binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      GO:0005524(ATP binding);GO:0016887(ATPase activity);GO:0042626(ATPase-coupled transmembrane transporter activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                                                                                                                 ko02010(ABC transporters)</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

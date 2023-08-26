@@ -6,10 +6,10 @@
 \usage{
 kegg_enrich_net(
   kegg_anno,
-  kegg_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 1,
-  qvalue_cutoff = 1,
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
   net_circular = TRUE,
@@ -18,9 +18,9 @@ kegg_enrich_net(
 )
 }
 \arguments{
-\item{kegg_anno}{Dataframe: include columns (id, kegg_pathway),  symbol ";" split ko pathways.}
+\item{kegg_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{kegg_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -49,20 +49,14 @@ KEGG enrichment analysis and net plot (None/Exist Reference Genome).
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(kegg_anno)
-head(kegg_anno)
-
-data(kegg_deg_fc)
-head(kegg_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-kegg_enrich_net(kegg_anno, kegg_deg_fc)
+kegg_enrich_net(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])
 
 # 4. Set category_num = 10
-kegg_enrich_net(kegg_anno, kegg_deg_fc, category_num = 10)
-
-# 5. Set low_color = "#ff8800ff", high_color = "#008888ff"
-kegg_enrich_net(kegg_anno, kegg_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
+kegg_enrich_net(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], category_num = 10)
 
 }
 \author{

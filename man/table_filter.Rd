@@ -7,7 +7,7 @@
 table_filter(data, ...)
 }
 \arguments{
-\item{data}{Dataframe: include multiple columns and many rows.}
+\item{data}{Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).}
 
 \item{...}{Expression: multiple expressions.}
 }
@@ -22,15 +22,11 @@ Table filter used to filter row by column condition.
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(table_filter_data)
-head(table_filter_data)
+data(traits_sex)
+head(traits_sex)
 
 # 3. Set height > 100 & eye_color == "black"
-res <- table_filter(table_filter_data, height > 100 & eye_color == "black")
-head(res)
-
-# 4. Set eye_color == "blue" | eye_color == "yellow"
-res <- table_filter(table_filter_data, eye_color == "blue" | eye_color == "yellow")
+res <- table_filter(traits_sex, Sex == "Male" & Traits == "Weight" & Value > 40)
 head(res)
 
 }

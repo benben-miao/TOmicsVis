@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,72 +119,87 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">network_plot</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
-<span>  calcBy <span class="op">=</span> <span class="st">"degree"</span>,</span>
-<span>  degreeValue <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  nodeColorNormal <span class="op">=</span> <span class="st">"#00888888"</span>,</span>
-<span>  nodeBorderColor <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
-<span>  nodeColorFrom <span class="op">=</span> <span class="st">"#FF000088"</span>,</span>
-<span>  nodeColorTo <span class="op">=</span> <span class="st">"#00880088"</span>,</span>
-<span>  nodeShapeNormal <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  nodeShapeSpatial <span class="op">=</span> <span class="st">"csquare"</span>,</span>
-<span>  nodeSize <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>  labelSize <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  edgeCurved <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  netLayout <span class="op">=</span> <span class="st">"layout_on_sphere"</span></span>
+<span>  calc_by <span class="op">=</span> <span class="st">"degree"</span>,</span>
+<span>  degree_value <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  normal_color <span class="op">=</span> <span class="st">"#008888cc"</span>,</span>
+<span>  border_color <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
+<span>  from_color <span class="op">=</span> <span class="st">"#FF0000cc"</span>,</span>
+<span>  to_color <span class="op">=</span> <span class="st">"#008800cc"</span>,</span>
+<span>  normal_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
+<span>  spatial_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
+<span>  node_size <span class="op">=</span> <span class="fl">25</span>,</span>
+<span>  lable_color <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  edge_color <span class="op">=</span> <span class="st">"#888888"</span>,</span>
+<span>  edge_width <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>  edge_curved <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  net_layout <span class="op">=</span> <span class="st">"layout_on_sphere"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include columns (source_node, target_node).</p></dd>
+<dd><p>Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).</p></dd>
 
 
-<dt>calcBy</dt>
+<dt>calc_by</dt>
 <dd><p>Character: calculate relationship by "degree", "node". Default: "degree".</p></dd>
 
 
-<dt>degreeValue</dt>
-<dd><p>Numeric: degree value when calcBy = "degree". Default: 0.05, min: 0.00, max: 1.00.</p></dd>
+<dt>degree_value</dt>
+<dd><p>Numeric: degree value when calc_by = "degree". Default: 0.05, min: 0.00, max: 1.00.</p></dd>
 
 
-<dt>nodeColorNormal</dt>
+<dt>normal_color</dt>
 <dd><p>Character: normal relationship nodes color (color name of hex value).</p></dd>
 
 
-<dt>nodeBorderColor</dt>
+<dt>border_color</dt>
 <dd><p>Character: node border color (color name or hex value).</p></dd>
 
 
-<dt>nodeColorFrom</dt>
-<dd><p>Character: the start color of nodes that meet degreeValue.</p></dd>
+<dt>from_color</dt>
+<dd><p>Character: the start color of nodes that meet degree_value.</p></dd>
 
 
-<dt>nodeColorTo</dt>
-<dd><p>Character: the end color of nodes that meet degreeValue.</p></dd>
+<dt>to_color</dt>
+<dd><p>Character: the end color of nodes that meet degree_value.</p></dd>
 
 
-<dt>nodeShapeNormal</dt>
+<dt>normal_shape</dt>
 <dd><p>Character: normal node shape. Default: "circle", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".</p></dd>
 
 
-<dt>nodeShapeSpatial</dt>
-<dd><p>Character: meet degreeValue node shape. Default: "csquare", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".</p></dd>
+<dt>spatial_shape</dt>
+<dd><p>Character: meet degree_value node shape. Default: "csquare", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".</p></dd>
 
 
-<dt>nodeSize</dt>
+<dt>node_size</dt>
 <dd><p>Numeric: node size. Default: 10, min: 0, max: NULL.</p></dd>
 
 
-<dt>labelSize</dt>
+<dt>lable_color</dt>
+<dd><p>Character: gene labels color. Default: "#FFFFFF".</p></dd>
+
+
+<dt>label_size</dt>
 <dd><p>Numeric: node label size. Default: 0.5, min: 0, max: NULL.</p></dd>
 
 
-<dt>edgeCurved</dt>
+<dt>edge_color</dt>
+<dd><p>Character: edges color. Default: "#888888".</p></dd>
+
+
+<dt>edge_width</dt>
+<dd><p>Numeric: edges width. Default: 1.5.</p></dd>
+
+
+<dt>edge_curved</dt>
 <dd><p>Logical: curved edges. Default: TRUE, options: TRUE, FALSE.</p></dd>
 
 
-<dt>netLayout</dt>
+<dt>net_layout</dt>
 <dd><p>Character: network layout. Default: "layout_on_sphere", options: "layout_as_bipartite", "layout_as_star", "layout_as_tree", "layout_components", "layout_in_circle", "layout_nicely", "layout_on_grid", "layout_on_sphere","layout_randomly","layout_with_dh","layout_with_drl","layout_with_fr","layout_with_gem","layout_with_graphopt","layout_with_kk","layout_with_lgl","layout_with_mds","layout_with_sugiyama".</p></dd>
 
 </dl></div>
@@ -207,36 +222,35 @@
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   node1           node2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  ABL2  PC-3p-5622_465</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ABL2  PC-5p-33384_55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ABL2  chi-miR-107-3p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  ABL2  chi-miR-15b-5p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 CASP2 PC-3p-10204_250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 CASP2    bta-miR-6123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Source Target</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cebpd  Cebpd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  CYR61  Cebpd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  Cebpd CDKN1B</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  CYR61 CDKN1B</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   junb  Cebpd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 IGFBP1  Cebpd</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
 <span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>number of items to replace is not a multiple of replacement length</span>
 <span class="r-plt img"><img src="network_plot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set calcBy = "node"</span></span></span>
-<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, calcBy <span class="op">=</span> <span class="st">"node"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>number of items to replace is not a multiple of replacement length</span>
+<span class="r-in"><span><span class="co"># 4. Set calc_by = "node"</span></span></span>
+<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, calc_by <span class="op">=</span> <span class="st">"node"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="network_plot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set degreeValue = 0.1</span></span></span>
-<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, degreeValue <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set degree_value = 0.1</span></span></span>
+<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, degree_value <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>number of items to replace is not a multiple of replacement length</span>
 <span class="r-plt img"><img src="network_plot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 6. Set nodeColorNormal = "#00888833"</span></span></span>
-<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, nodeColorNormal <span class="op">=</span> <span class="st">"#00888833"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 6. Set normal_color = "#ff8800cc"</span></span></span>
+<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, normal_color <span class="op">=</span> <span class="st">"#ff8800cc"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>number of items to replace is not a multiple of replacement length</span>
 <span class="r-plt img"><img src="network_plot-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set labelSize = 0</span></span></span>
-<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, labelSize <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 7. Set net_layout = "layout_as_tree"</span></span></span>
+<span class="r-in"><span><span class="fu">network_plot</span><span class="op">(</span><span class="va">network_data</span>, net_layout <span class="op">=</span> <span class="st">"layout_as_tree"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>number of items to replace is not a multiple of replacement length</span>
 <span class="r-plt img"><img src="network_plot-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>

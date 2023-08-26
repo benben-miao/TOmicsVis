@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,32 +127,6 @@
         <dd>Quantile plot for visualizing data distribution.</dd>
       </dl><dl><dt>
           
-          <code><a href="corr_heatmap.html">corr_heatmap()</a></code> 
-        </dt>
-        <dd>Correlation Heatmap for samples/groups based on Pearson algorithm.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pca_plot.html">pca_plot()</a></code> 
-        </dt>
-        <dd>PCA dimensional reduction visualization for RNA-Seq.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dendro_plot.html">dendro_plot()</a></code> 
-        </dt>
-        <dd>Dendrograms for multiple samples/groups clustering.</dd>
-      </dl></div><div class="section level2">
-      <h2 id="-traits-analysis">②Traits Analysis<a class="anchor" aria-label="anchor" href="#-traits-analysis"></a></h2>
-      
-      <p class="section-desc"></p><p>Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
           <code><a href="box_plot.html">box_plot()</a></code> 
         </dt>
         <dd>Box plot support two levels and multiple groups with P value.</dd>
@@ -166,6 +140,37 @@
           <code><a href="survival_plot.html">survival_plot()</a></code> 
         </dt>
         <dd>Survival plot for analyzing and visualizing survival data.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="-traits-analysis">②Traits Analysis<a class="anchor" aria-label="anchor" href="#-traits-analysis"></a></h2>
+      
+      <p class="section-desc"></p><p>Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="corr_heatmap.html">corr_heatmap()</a></code> 
+        </dt>
+        <dd>Correlation Heatmap for samples/groups based on Pearson algorithm.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pca_analysis.html">pca_analysis()</a></code> 
+        </dt>
+        <dd>PCA dimensional reduction analysis for RNA-Seq.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pca_plot.html">pca_plot()</a></code> 
+        </dt>
+        <dd>PCA dimensional reduction visualization for RNA-Seq.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="tsne_analysis.html">tsne_analysis()</a></code> 
+        </dt>
+        <dd>TSNE analysis for analyzing and visualizing TSNE algorithm.</dd>
       </dl><dl><dt>
           
           <code><a href="tsne_plot.html">tsne_plot()</a></code> 
@@ -173,9 +178,19 @@
         <dd>TSNE plot for analyzing and visualizing TSNE algorithm.</dd>
       </dl><dl><dt>
           
+          <code><a href="umap_analysis.html">umap_analysis()</a></code> 
+        </dt>
+        <dd>UMAP analysis for analyzing RNA-Seq data.</dd>
+      </dl><dl><dt>
+          
           <code><a href="umap_plot.html">umap_plot()</a></code> 
         </dt>
         <dd>UMAP plot for analyzing and visualizing UMAP algorithm.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dendro_plot.html">dendro_plot()</a></code> 
+        </dt>
+        <dd>Dendrograms for multiple samples/groups clustering.</dd>
       </dl></div><div class="section level2">
       <h2 id="-differential-expression-analyais">③Differential Expression Analyais<a class="anchor" aria-label="anchor" href="#-differential-expression-analyais"></a></h2>
       
@@ -204,11 +219,6 @@
         <dd>Flower plot for stat common and unique gene among multiple sets.</dd>
       </dl><dl><dt>
           
-          <code><a href="circos_heatmap.html">circos_heatmap()</a></code> 
-        </dt>
-        <dd>Circos heatmap plot for visualizing gene expressing in multiple samples.</dd>
-      </dl><dl><dt>
-          
           <code><a href="volcano_plot.html">volcano_plot()</a></code> 
         </dt>
         <dd>Volcano plot for visualizing differentailly expressed genes.</dd>
@@ -222,6 +232,16 @@
           <code><a href="heatmap_group.html">heatmap_group()</a></code> 
         </dt>
         <dd>Heatmap group for visualizing grouped gene expression data.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="circos_heatmap.html">circos_heatmap()</a></code> 
+        </dt>
+        <dd>Circos heatmap plot for visualizing gene expressing in multiple samples.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="chord_plot.html">chord_plot()</a></code> 
+        </dt>
+        <dd>Chord plot for visualizing the relationships of pathways and genes.</dd>
       </dl></div><div class="section level2">
       <h2 id="-advanced-analysis">④Advanced Analysis<a class="anchor" aria-label="anchor" href="#-advanced-analysis"></a></h2>
       
@@ -235,9 +255,9 @@
 
       <dl><dt>
           
-          <code><a href="trend_plot.html">trend_plot()</a></code> 
+          <code><a href="gene_rank_plot.html">gene_rank_plot()</a></code> 
         </dt>
-        <dd>Trend plot for visualizing gene expression trend profile in multiple traits.</dd>
+        <dd>Gene ranking dotplot for visualizing differentailly expressed genes.</dd>
       </dl><dl><dt>
           
           <code><a href="gene_cluster_trend.html">gene_cluster_trend()</a></code> 
@@ -245,19 +265,19 @@
         <dd>Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.</dd>
       </dl><dl><dt>
           
-          <code><a href="gene_rank_plot.html">gene_rank_plot()</a></code> 
+          <code><a href="trend_plot.html">trend_plot()</a></code> 
         </dt>
-        <dd>Gene ranking dotplot for visualizing differentailly expressed genes.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="network_plot.html">network_plot()</a></code> 
-        </dt>
-        <dd>Network plot for analyzing and visualizing relationship of genes.</dd>
+        <dd>Trend plot for visualizing gene expression trend profile in multiple traits.</dd>
       </dl><dl><dt>
           
           <code><a href="wgcna_pipeline.html">wgcna_pipeline()</a></code> 
         </dt>
         <dd>WGCNA analysis pipeline for RNA-Seq.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="network_plot.html">network_plot()</a></code> 
+        </dt>
+        <dd>Network plot for analyzing and visualizing relationship of genes.</dd>
       </dl><dl><dt>
           
           <code><a href="heatmap_cluster.html">heatmap_cluster()</a></code> 
@@ -275,11 +295,6 @@
       
 
       <dl><dt>
-          
-          <code><a href="chord_plot.html">chord_plot()</a></code> 
-        </dt>
-        <dd>Chord plot for visualizing the relationships of pathways and genes.</dd>
-      </dl><dl><dt>
           
           <code><a href="go_enrich.html">go_enrich()</a></code> 
         </dt>
@@ -385,12 +400,17 @@
           
           <code><a href="gene_expression.html">gene_expression</a></code> 
         </dt>
-        <dd>Gene Expression dataframe of RNA-Seq.</dd>
+        <dd>All genes in all samples expression dataframe of RNA-Seq.</dd>
       </dl><dl><dt>
           
-          <code><a href="gene_exp2.html">gene_exp2</a></code> 
+          <code><a href="gene_expression2.html">gene_expression2</a></code> 
         </dt>
-        <dd>Gene Expression dataframe of RNA-Seq.</dd>
+        <dd>Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gene_expression3.html">gene_expression3</a></code> 
+        </dt>
+        <dd>Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq.</dd>
       </dl><dl><dt>
           
           <code><a href="samples_groups.html">samples_groups</a></code> 
@@ -398,104 +418,34 @@
         <dd>Samples and groups for gene expression.</dd>
       </dl><dl><dt>
           
-          <code><a href="paired_degs.html">paired_degs</a></code> 
+          <code><a href="degs_lists.html">degs_lists</a></code> 
         </dt>
         <dd>Paired comparisons differentially expressed genes (degs) among groups.</dd>
       </dl><dl><dt>
           
-          <code><a href="chord_data.html">chord_data</a></code> 
+          <code><a href="degs_stats.html">degs_stats</a></code> 
         </dt>
-        <dd>Chord data as example data for the chord_plot function.</dd>
+        <dd>All DEGs of paired comparison CT-vs-LT12 stats dataframe.</dd>
       </dl><dl><dt>
           
-          <code><a href="circos_heatmap_data.html">circos_heatmap_data</a></code> 
+          <code><a href="degs_stats2.html">degs_stats2</a></code> 
         </dt>
-        <dd>Gene expression as example data for circos_heatmap function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="deg_data.html">deg_data</a></code> 
-        </dt>
-        <dd>Differentially expressed genes (DEGs) for volcano_plot function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="deg_data2.html">deg_data2</a></code> 
-        </dt>
-        <dd>Differentially expressed genes (DEGs) for ma_plot function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="trend_data.html">trend_data</a></code> 
-        </dt>
-        <dd>Trend data include genes expression in multiple traits as example for trend_plot function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="gene_cluster_data.html">gene_cluster_data</a></code> 
-        </dt>
-        <dd>Gene cluster data for gene_cluster_trend function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="table_split_data.html">table_split_data</a></code> 
-        </dt>
-        <dd>Table split data as example for table_split function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="table_merge_data.html">table_merge_data</a></code> 
-        </dt>
-        <dd>Table merge data as example for table_merge function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="table_filter_data.html">table_filter_data</a></code> 
-        </dt>
-        <dd>Table filter data as example for table_filter function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="table_cross_data1.html">table_cross_data1</a></code> 
-        </dt>
-        <dd>Table cross data1 for table_cross function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="table_cross_data2.html">table_cross_data2</a></code> 
-        </dt>
-        <dd>Table cross data2 for table_cross function.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="go_anno.html">go_anno</a></code> 
-        </dt>
-        <dd>GO annotation (BP, CC, MF) of genes as template data.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="go_deg_fc.html">go_deg_fc</a></code> 
-        </dt>
-        <dd>GO deg (differentially expressed genes) and fc (fold change) template data.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="kegg_anno.html">kegg_anno</a></code> 
-        </dt>
-        <dd>KEGG annotation (kegg_pathway) of genes as template data.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="kegg_deg_fc.html">kegg_deg_fc</a></code> 
-        </dt>
-        <dd>KEGG deg (differentially expressed genes) and fc (fold change) template data.</dd>
+        <dd>All DEGs of paired comparison CT-vs-LT12 stats2 dataframe.</dd>
       </dl><dl><dt>
           
           <code><a href="network_data.html">network_data</a></code> 
         </dt>
-        <dd>Network data as example for network_plot function.</dd>
+        <dd>Network data from WGCNA tan module top-200 dataframe.</dd>
       </dl><dl><dt>
           
-          <code><a href="wgcna_gene_exp.html">wgcna_gene_exp</a></code> 
+          <code><a href="gene_go_kegg.html">gene_go_kegg</a></code> 
         </dt>
-        <dd>WGCNA gene expression data for wgcna_analysis.</dd>
+        <dd>GO and KEGG annotation of background genes.</dd>
       </dl><dl><dt>
           
-          <code><a href="wgcna_sample_group.html">wgcna_sample_group</a></code> 
+          <code><a href="gene_go_kegg2.html">gene_go_kegg2</a></code> 
         </dt>
-        <dd>WGCNA samples groups data for wgcna_analysis.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="heatmap_group_data.html">heatmap_group_data</a></code> 
-        </dt>
-        <dd>Heatmap group data for heatmap_group function.</dd>
+        <dd>GO and KEGG annotation of background genes.</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

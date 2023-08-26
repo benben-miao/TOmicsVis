@@ -6,10 +6,10 @@
 \usage{
 go_enrich_bar(
   go_anno,
-  go_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 0.5,
-  qvalue_cutoff = 0.5,
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05,
   sign_by = "p.adjust",
   category_num = 30,
   font_size = 12,
@@ -19,9 +19,9 @@ go_enrich_bar(
 )
 }
 \arguments{
-\item{go_anno}{Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.}
+\item{go_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{go_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -42,7 +42,7 @@ go_enrich_bar(
 \item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
-Table: GO enrichment analysis and bar plot (None/Exist Reference Genome).
+Plot: GO enrichment analysis and bar plot (None/Exist Reference Genome).
 }
 \description{
 GO enrichment analysis and bar plot (None/Exist Reference Genome).
@@ -52,26 +52,20 @@ GO enrichment analysis and bar plot (None/Exist Reference Genome).
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(go_anno)
-head(go_anno)
-
-data(go_deg_fc)
-head(go_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-go_enrich_bar(go_anno, go_deg_fc)
+go_enrich_bar(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 
 # 4. Set padjust_method = "BH"
-go_enrich_bar(go_anno, go_deg_fc, padjust_method = "BH")
+go_enrich_bar(gene_go_kegg[,-5], gene_go_kegg[100:200,1], padjust_method = "BH")
 
 # 5. Set category_num = 10
-go_enrich_bar(go_anno, go_deg_fc, category_num = 10)
+go_enrich_bar(gene_go_kegg[,-5], gene_go_kegg[100:200,1], category_num = 10)
 
-# 6. Set low_color = "#ff8800ff", high_color = "#008888ff"
-go_enrich_bar(go_anno, go_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
-
-# 7. Set ggTheme = "theme_bw"
-go_enrich_bar(go_anno, go_deg_fc, ggTheme = "theme_bw")
+# 6. Set ggTheme = "theme_bw"
+go_enrich_bar(gene_go_kegg[,-5], gene_go_kegg[100:200,1], ggTheme = "theme_bw")
 
 }
 \author{

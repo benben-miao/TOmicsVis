@@ -6,16 +6,16 @@
 \usage{
 kegg_enrich(
   kegg_anno,
-  kegg_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 1,
-  qvalue_cutoff = 1
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05
 )
 }
 \arguments{
-\item{kegg_anno}{Dataframe: include columns (id, kegg_pathway),  symbol ";" split ko pathways.}
+\item{kegg_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{kegg_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -34,22 +34,19 @@ KEGG enrichment analysis based on KEGG annotation results (None/Exist Reference 
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(kegg_anno)
-head(kegg_anno)
-
-data(kegg_deg_fc)
-head(kegg_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-res <- kegg_enrich(kegg_anno, kegg_deg_fc)
+res <- kegg_enrich(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])
 head(res)
 
 # 4. Set padjust_method = "BH"
-res <- kegg_enrich(kegg_anno, kegg_deg_fc, padjust_method = "BH")
+res <- kegg_enrich(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], padjust_method = "BH")
 head(res)
 
 # 5. Set pvalue_cutoff = 0.80
-res <- kegg_enrich(kegg_anno, kegg_deg_fc, pvalue_cutoff = 0.80)
+res <- kegg_enrich(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], pvalue_cutoff = 0.80)
 head(res)
 
 }

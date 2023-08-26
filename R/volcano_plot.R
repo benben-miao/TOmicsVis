@@ -3,7 +3,8 @@
 #' @author benben-miao
 #'
 #' @return Plot: volcano plot for visualizing differentailly expressed genes.
-#' @param data Dataframe: include columns (Genes, Log2FoldChange, Pvalue, Padj), rows (Genes).
+#' @param data Dataframe: differentially expressed genes (DEGs) stats (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).
+#' @param title Character: title of plot. Default: CT-vs-LT12.
 #' @param log2fc_cutoff Numeric: log2(FoldChange) cutoff log2(2) = 1. Default: 1.0, min: 0.0, max: null.
 #' @param pq_value Character: select pvalue or qvalue. Default: "pvalue", options: "pvalue", "padj".
 #' @param pq_cutoff Numeric: pvalue or qvalue cutoff. Default: 0.005, min: 0.000, max: 1.000.
@@ -30,34 +31,36 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(deg_data)
+#' data(degs_stats)
+#' head(degs_stats)
 #'
 #' # 3. Default parameters
-#' volcano_plot(deg_data)
+#' volcano_plot(degs_stats)
 #'
 #' # 4. Set color_Log2fc_p = "#ff8800"
-#' volcano_plot(deg_data, color_Log2fc_p = "#ff8800")
+#' volcano_plot(degs_stats, color_Log2fc_p = "#ff8800")
 #'
 #' # 5. Set boxed_labels = TRUE
-#' volcano_plot(deg_data, boxed_labels = TRUE)
+#' volcano_plot(degs_stats, boxed_labels = TRUE)
 #'
 volcano_plot <- function(data,
-										 log2fc_cutoff = 1.0,
-										 pq_value = "pvalue",
-										 pq_cutoff = 0.005,
-										 cutoff_line = "longdash",
-										 point_shape = "large_circle",
-										 point_size = 1.0,
-										 point_alpha = 0.50,
-										 color_normal = "#888888",
-										 color_log2fc = "#008000",
-										 color_pvalue = "#0088ee",
-										 color_Log2fc_p = "#ff0000",
-										 label_size = 3.0,
-										 boxed_labels = FALSE,
-										 draw_connectors = FALSE,
-										 legend_pos = "right"
-										){
+												 title = "CT-vs-LT12",
+												 log2fc_cutoff = 1.0,
+												 pq_value = "pvalue",
+												 pq_cutoff = 0.05,
+												 cutoff_line = "longdash",
+												 point_shape = "large_circle",
+												 point_size = 2.0,
+												 point_alpha = 0.50,
+												 color_normal = "#888888",
+												 color_log2fc = "#008000",
+												 color_pvalue = "#0088ee",
+												 color_Log2fc_p = "#ff0000",
+												 label_size = 3.0,
+												 boxed_labels = FALSE,
+												 draw_connectors = FALSE,
+												 legend_pos = "right"
+												){
 
 	# -> 2. Data
 	data <- as.data.frame(data)
@@ -208,7 +211,7 @@ volcano_plot <- function(data,
 		xlab = paste("Log2","fold change"),
 		ylab = paste("-Log10",pq_value),
 		axisLabSize = 16,
-		title = NULL,
+		title = title,
 		subtitle = NULL,
 		caption = paste0('Total = ', nrow(data), ' variables'),
 		# titleLabSize = 20,
@@ -243,7 +246,9 @@ volcano_plot <- function(data,
 		border = "partial",
 		borderWidth = 0.8,
 		borderColour = "black") +
-		theme()
+		theme(
+			plot.title = element_text(hjust = 0.5)
+		)
 	# # <- 4. Plot
 
 	return(p)

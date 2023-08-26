@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,7 +129,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: gene expression dataframe with cols (samples) and rows (genes).</p></dd>
+<dd><p>Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).</p></dd>
 
 
 <dt>thres</dt>
@@ -165,34 +165,41 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset gene_cluster_data</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_cluster_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_cluster_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Time1      Time2       Time3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1  0.1774993  1.6563226 -1.15259948</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2 -0.5037254 -0.5207024  0.46416071</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3  0.1050310  0.6079246  0.72893247</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4 -1.1791537  0.4340085  0.41061745</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5  0.8368975 -0.7047414 -1.46114720</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6  0.2611762  0.1351524 -0.01890809</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes         CT        LT20     LT15      LT12      LT12_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2  39.903333 123.4366667 272.3533 359.28333  464.940000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN  14.660000 142.4800000 226.0333 316.43667 1083.523333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1   1.713333  14.8066667  12.2000  17.54333    9.343333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG 637.330000   0.0000000   0.0000   0.00000    0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2   2.490000   0.6033333   0.2700   0.13000    0.210000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  10.170000  27.3433333  29.1600  32.44667   44.276667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 Pathways</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 PPAR signaling pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 PPAR signaling pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 PPAR signaling pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 PPAR signaling pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 PPAR signaling pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 PPAR signaling pathway</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_cluster_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 genes excluded.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
 <span class="r-plt img"><img src="gene_cluster_trend-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set palette = "RdBu"</span></span></span>
-<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_cluster_data</span>, palette <span class="op">=</span> <span class="st">"RdBu"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, palette <span class="op">=</span> <span class="st">"RdBu"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 genes excluded.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
 <span class="r-plt img"><img src="gene_cluster_trend-2.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 5. Set cluster_num = 6</span></span></span>
-<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_cluster_data</span>, cluster_num <span class="op">=</span> <span class="fl">6</span>, palette <span class="op">=</span> <span class="st">"Spectral"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">gene_cluster_trend</span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, cluster_num <span class="op">=</span> <span class="fl">6</span>, palette <span class="op">=</span> <span class="st">"Spectral"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 genes excluded.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 genes excluded.</span>
 <span class="r-plt img"><img src="gene_cluster_trend-3.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span></span></span>

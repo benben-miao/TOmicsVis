@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,14 +118,20 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">heatmap_group</span><span class="op">(</span></span>
-<span>  <span class="va">data</span>,</span>
-<span>  scale_data <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>  <span class="va">sample_gene</span>,</span>
+<span>  <span class="va">group_sample</span>,</span>
+<span>  scale_data <span class="op">=</span> <span class="st">"row"</span>,</span>
 <span>  clust_method <span class="op">=</span> <span class="st">"complete"</span>,</span>
 <span>  border_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  border_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
 <span>  value_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  low_color <span class="op">=</span> <span class="st">"#00880088"</span>,</span>
+<span>  value_decimal <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  value_size <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  axis_size <span class="op">=</span> <span class="fl">8</span>,</span>
+<span>  cell_height <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  low_color <span class="op">=</span> <span class="st">"#00880055"</span>,</span>
 <span>  mid_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
-<span>  high_color <span class="op">=</span> <span class="st">"#ff000088"</span>,</span>
+<span>  high_color <span class="op">=</span> <span class="st">"#ff000055"</span>,</span>
 <span>  na_color <span class="op">=</span> <span class="st">"#ff8800"</span>,</span>
 <span>  x_angle <span class="op">=</span> <span class="fl">45</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -133,12 +139,16 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>data</dt>
-<dd><p>Dataframe: include level1 columns (Groups, Group1, Group2, ...), level2 columns (GeneID, Sample1, Sample2, ...).</p></dd>
+    <dl><dt>sample_gene</dt>
+<dd><p>Dataframe: Shared degs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p></dd>
+
+
+<dt>group_sample</dt>
+<dd><p>Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p></dd>
 
 
 <dt>scale_data</dt>
-<dd><p>Character: scale data. Default: "none", options: "row", "column", "none".</p></dd>
+<dd><p>Character: scale data. Default: "row", options: "row", "column", "none".</p></dd>
 
 
 <dt>clust_method</dt>
@@ -149,24 +159,44 @@
 <dd><p>Logical: show border. Default: TRUE, options: TRUE, FALSE.</p></dd>
 
 
+<dt>border_color</dt>
+<dd><p>Character: cell border color (color value or hex value with alpha). Default: "#ffffff".</p></dd>
+
+
 <dt>value_show</dt>
 <dd><p>Logical: show value in cell. Default: TRUE, options: TRUE, FALSE.</p></dd>
 
 
+<dt>value_decimal</dt>
+<dd><p>Numeric: cell value decimal. Default: 2, min: 0, max: 5.</p></dd>
+
+
+<dt>value_size</dt>
+<dd><p>Numeric: cell value font size. Default: 5, min: 0, max: NULL.</p></dd>
+
+
+<dt>axis_size</dt>
+<dd><p>Numeric: axis title font size. Default: 8, min: 0, max: NULL.</p></dd>
+
+
+<dt>cell_height</dt>
+<dd><p>Numeric: cell height for value size and axis size. Default: 10.</p></dd>
+
+
 <dt>low_color</dt>
-<dd><p>Character: min value color (color value or hex value with alpha).</p></dd>
+<dd><p>Character: min value color (color value or hex value with alpha). Default: "#00880055".</p></dd>
 
 
 <dt>mid_color</dt>
-<dd><p>Character: min value color (color value or hex value with alpha).</p></dd>
+<dd><p>Character: min value color (color value or hex value with alpha). Default: "#ffffff".</p></dd>
 
 
 <dt>high_color</dt>
-<dd><p>Character: min value color (color value or hex value with alpha).</p></dd>
+<dd><p>Character: min value color (color value or hex value with alpha). Default: "#ff000055".</p></dd>
 
 
 <dt>na_color</dt>
-<dd><p>Character: min value color (color value or hex value with alpha).</p></dd>
+<dd><p>Character: min value color (color value or hex value with alpha). Default: "#ff8800".</p></dd>
 
 
 <dt>x_angle</dt>
@@ -190,35 +220,48 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">heatmap_group_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">heatmap_group_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 V2          V3          V4          V5          V6          V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Groups     Control     Control     Control       Treat       Treat       Treat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GeneID    Control1    Control2    Control3      Treat1      Treat2      Treat3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1   6.59934411 5.226266025 3.693287538 9.308119032 8.987864851        &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2  5.760380377 4.892783021 5.448923917  8.66208104 8.793319848 8.765914637</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3  9.561905115 4.549168157 3.998654922 9.790770004 7.133187551  7.37959102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4  8.396409316  8.71705522  8.03906411 4.417013007 4.725269731 3.542216879</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes  CT_1    CT_2  CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2 24.50   39.83 55.38 114.11 159.32  96.88 169.56 464.84 182.66 116.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN 14.97   18.71 10.30  71.23 142.67 213.54 253.15 320.80 104.15 174.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1  1.54    1.56  2.04  14.95  13.60  15.87  12.80  17.74   6.06  10.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG  0.00 1911.99  0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2  2.07    2.86  2.54   0.85   0.49   0.47   0.42   0.13   0.26   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  6.62   14.59  9.30  24.90  33.94  23.19  24.00  36.08  27.40  24.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 497.29 464.48   471.43   693.62   229.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 305.81 469.48  1291.90   991.90   966.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  10.71  30.95     9.84    10.91     7.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28   0.11     0.37     0.15     0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  38.74  34.54    62.72    41.36    28.75</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Samples Groups</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    CT_1     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    CT_2     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    CT_3     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  LT20_1   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  LT20_2   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  LT20_3   LT20</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">heatmap_group_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span>, <span class="va">samples_groups</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_group-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set scale_data = "row"</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">heatmap_group_data</span>, scale_data <span class="op">=</span> <span class="st">"row"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set scale_data = "column"</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span>, <span class="va">samples_groups</span>, scale_data <span class="op">=</span> <span class="st">"column"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_group-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set border_show = TRUE</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">heatmap_group_data</span>, border_show <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 5. Set value_show = FALSE</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span>, <span class="va">samples_groups</span>, value_show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_group-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 6. Set low_color = "#00008888"</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">heatmap_group_data</span>, low_color <span class="op">=</span> <span class="st">"#00008888"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span>, <span class="va">samples_groups</span>, low_color <span class="op">=</span> <span class="st">"#00008888"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heatmap_group-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 7. Set x_angle = 90</span></span></span>
-<span class="r-in"><span><span class="fu">heatmap_group</span><span class="op">(</span><span class="va">heatmap_group_data</span>, x_angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="heatmap_group-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,17 +117,65 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wgcna_pipeline</span><span class="op">(</span><span class="va">wgcna_gene_exp</span>, <span class="va">wgcna_sample_group</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wgcna_pipeline</span><span class="op">(</span></span>
+<span>  <span class="va">sample_gene</span>,</span>
+<span>  <span class="va">group_sample</span>,</span>
+<span>  R_cutofff <span class="op">=</span> <span class="fl">0.85</span>,</span>
+<span>  max_block <span class="op">=</span> <span class="fl">5000</span>,</span>
+<span>  min_module <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  network_type <span class="op">=</span> <span class="st">"unsigned"</span>,</span>
+<span>  merge_cutoff <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>  cor_type <span class="op">=</span> <span class="st">"pearson"</span>,</span>
+<span>  na_color <span class="op">=</span> <span class="st">"#cdcdcd"</span>,</span>
+<span>  xlab_angle <span class="op">=</span> <span class="fl">45</span>,</span>
+<span>  text_size <span class="op">=</span> <span class="fl">0.7</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>wgcna_gene_exp</dt>
-<dd><p>Dataframe: include gene expression data.</p></dd>
+    <dl><dt>sample_gene</dt>
+<dd><p>Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p></dd>
 
 
-<dt>wgcna_sample_group</dt>
-<dd><p>Dataframe: include samples and groups data.</p></dd>
+<dt>group_sample</dt>
+<dd><p>Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p></dd>
+
+
+<dt>R_cutofff</dt>
+<dd><p>Numeric: Rsquare cutoff. Default: 0.85, min: 0.00, max: 1.00.</p></dd>
+
+
+<dt>max_block</dt>
+<dd><p>Numeric: max block size. Default: 5000.</p></dd>
+
+
+<dt>min_module</dt>
+<dd><p>Numeric: min module gene number. Default: 20.</p></dd>
+
+
+<dt>network_type</dt>
+<dd><p>Character: network type. Default: "unsigned", options: "unsigned", "signed", "signed hybrid".</p></dd>
+
+
+<dt>merge_cutoff</dt>
+<dd><p>Numeric: merge modules cutoff. Default: 0.15.</p></dd>
+
+
+<dt>cor_type</dt>
+<dd><p>Character: correlation type. Default: "pearson", options: "pearson", "bicor".</p></dd>
+
+
+<dt>na_color</dt>
+<dd><p>Character: NA value color (color name or hex value). Default: "#cdcdcd".</p></dd>
+
+
+<dt>xlab_angle</dt>
+<dd><p>Numeric: X axis lable angle. Default: 45, min: 0, max: 360.</p></dd>
+
+
+<dt>text_size</dt>
+<dd><p>Numeric: cell text size. Default: 0.7, min: 0, max: NULL.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -147,32 +195,32 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wgcna_gene_exp</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wgcna_gene_exp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     CT1    CT2    CT3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_0     655.78 631.08 669.89 654.21 402.56 447.09 510.08 442.22 399.82</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_1      92.72 112.26 150.30  88.35  76.35  94.55 120.24  80.89  73.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_10     21.74  31.11  22.58  15.09  13.67  13.24  12.48   7.53  13.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_100     0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_1000    0.00  14.15  36.01   0.00   0.00 193.59 208.45   0.00 232.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_10000  89.18 158.04  86.28  82.97 117.78 102.24 129.61 112.73  85.70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  LT12_1 LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_0     483.30 437.89 444.06   405.43   416.63   464.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_1      96.25  82.62  85.48    65.12    61.94    73.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_10     11.16  11.36   6.96     7.82     4.01    10.02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_100     0.00   0.00   0.00     0.00     0.00     0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_1000  148.58   0.00 181.61     0.02    12.18     0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> transcript_10000  80.89 124.11 115.25   113.87   107.69   119.83</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Genes   CT_1   CT_2   CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     transcript_0 655.78 631.08 669.89 654.21 402.56 447.09 510.08 442.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     transcript_1  92.72 112.26 150.30  88.35  76.35  94.55 120.24  80.89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    transcript_10  21.74  31.11  22.58  15.09  13.67  13.24  12.48   7.53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   transcript_100   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  transcript_1000   0.00  14.15  36.01   0.00   0.00 193.59 208.45   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 transcript_10000  89.18 158.04  86.28  82.97 117.78 102.24 129.61 112.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT15_3 LT12_1 LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 399.82 483.30 437.89 444.06   405.43   416.63   464.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  73.94  96.25  82.62  85.48    65.12    61.94    73.44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  13.35  11.16  11.36   6.96     7.82     4.01    10.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 232.40 148.58   0.00 181.61     0.02    12.18     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  85.70  80.89 124.11 115.25   113.87   107.69   119.83</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wgcna_sample_group</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">wgcna_sample_group</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Group</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CT1       CT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CT2       CT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CT3       CT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LT20_1  LT20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LT20_2  LT20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LT20_3  LT20</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Samples Groups</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    CT_1     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    CT_2     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    CT_3     CT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  LT20_1   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  LT20_2   LT20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  LT20_3   LT20</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

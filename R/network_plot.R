@@ -3,19 +3,22 @@
 #' @author benben-miao
 #'
 #' @return Plot: network plot for analyzing and visualizing relationship of genes.
-#' @param data Dataframe: include columns (source_node, target_node).
-#' @param calcBy Character: calculate relationship by "degree", "node". Default: "degree".
-#' @param degreeValue Numeric: degree value when calcBy = "degree". Default: 0.05, min: 0.00, max: 1.00.
-#' @param nodeColorNormal Character: normal relationship nodes color (color name of hex value).
-#' @param nodeBorderColor Character: node border color (color name or hex value).
-#' @param nodeColorFrom Character: the start color of nodes that meet degreeValue.
-#' @param nodeColorTo Character: the end color of nodes that meet degreeValue.
-#' @param nodeShapeNormal Character: normal node shape. Default: "circle", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".
-#' @param nodeShapeSpatial Character: meet degreeValue node shape. Default: "csquare", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".
-#' @param nodeSize Numeric: node size. Default: 10, min: 0, max: NULL.
-#' @param labelSize Numeric: node label size. Default: 0.5, min: 0, max: NULL.
-#' @param edgeCurved Logical: curved edges. Default: TRUE, options: TRUE, FALSE.
-#' @param netLayout Character: network layout. Default: "layout_on_sphere", options: "layout_as_bipartite", "layout_as_star", "layout_as_tree", "layout_components", "layout_in_circle", "layout_nicely", "layout_on_grid", "layout_on_sphere","layout_randomly","layout_with_dh","layout_with_drl","layout_with_fr","layout_with_gem","layout_with_graphopt","layout_with_kk","layout_with_lgl","layout_with_mds","layout_with_sugiyama".
+#' @param data Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).
+#' @param calc_by Character: calculate relationship by "degree", "node". Default: "degree".
+#' @param degree_value Numeric: degree value when calc_by = "degree". Default: 0.05, min: 0.00, max: 1.00.
+#' @param normal_color Character: normal relationship nodes color (color name of hex value).
+#' @param border_color Character: node border color (color name or hex value).
+#' @param from_color Character: the start color of nodes that meet degree_value.
+#' @param to_color Character: the end color of nodes that meet degree_value.
+#' @param normal_shape Character: normal node shape. Default: "circle", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".
+#' @param spatial_shape Character: meet degree_value node shape. Default: "csquare", options: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle".
+#' @param node_size Numeric: node size. Default: 10, min: 0, max: NULL.
+#' @param lable_color Character: gene labels color. Default: "#FFFFFF".
+#' @param label_size Numeric: node label size. Default: 0.5, min: 0, max: NULL.
+#' @param edge_color Character: edges color. Default: "#888888".
+#' @param edge_width Numeric: edges width. Default: 1.5.
+#' @param edge_curved Logical: curved edges. Default: TRUE, options: TRUE, FALSE.
+#' @param net_layout Character: network layout. Default: "layout_on_sphere", options: "layout_as_bipartite", "layout_as_star", "layout_as_tree", "layout_components", "layout_in_circle", "layout_nicely", "layout_on_grid", "layout_on_sphere","layout_randomly","layout_with_dh","layout_with_drl","layout_with_fr","layout_with_gem","layout_with_graphopt","layout_with_kk","layout_with_lgl","layout_with_mds","layout_with_sugiyama".
 #'
 #' @importFrom grDevices colorRamp
 #' @import igraph
@@ -32,31 +35,34 @@
 #' # 3. Default parameters
 #' network_plot(network_data)
 #'
-#' # 4. Set calcBy = "node"
-#' network_plot(network_data, calcBy = "node")
+#' # 4. Set calc_by = "node"
+#' network_plot(network_data, calc_by = "node")
 #'
-#' # 5. Set degreeValue = 0.1
-#' network_plot(network_data, degreeValue = 0.1)
+#' # 5. Set degree_value = 0.1
+#' network_plot(network_data, degree_value = 0.1)
 #'
-#' # 6. Set nodeColorNormal = "#00888833"
-#' network_plot(network_data, nodeColorNormal = "#00888833")
+#' # 6. Set normal_color = "#ff8800cc"
+#' network_plot(network_data, normal_color = "#ff8800cc")
 #'
-#' # 7. Set labelSize = 0
-#' network_plot(network_data, labelSize = 0)
+#' # 7. Set net_layout = "layout_as_tree"
+#' network_plot(network_data, net_layout = "layout_as_tree")
 #'
 network_plot <- function(data,
-												 calcBy = "degree",
-												 degreeValue = 0.05,
-												 nodeColorNormal = "#00888888",
-												 nodeBorderColor = "#FFFFFF",
-												 nodeColorFrom = "#FF000088",
-												 nodeColorTo = "#00880088",
-												 nodeShapeNormal = "circle",
-												 nodeShapeSpatial = "csquare",
-												 nodeSize = 10,
-												 labelSize = 0.5,
-												 edgeCurved = TRUE,
-												 netLayout = "layout_on_sphere"
+												 calc_by = "degree",
+												 degree_value = 0.5,
+												 normal_color = "#008888cc",
+												 border_color = "#FFFFFF",
+												 from_color = "#FF0000cc",
+												 to_color = "#008800cc",
+												 normal_shape = "circle",
+												 spatial_shape = "circle",
+												 node_size = 25,
+												 lable_color = "#FFFFFF",
+												 label_size = 0.5,
+												 edge_color = "#888888",
+												 edge_width = 1.5,
+												 edge_curved = TRUE,
+												 net_layout = "layout_on_sphere"
 												){
 	# -> 2. Data
 	data <- as.data.frame(data)
@@ -67,43 +73,43 @@ network_plot <- function(data,
 	# fonts <- "Times"
 	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
 
-	# calcBy <- "degree"
+	# calc_by <- "degree"
 	# ChoiceBox: "degree", "node"
 
-	# degreeValue <- 0.05
+	# degree_value <- 0.05
 	# Slider: 0.07, 0.00, 0.01, 1.00
 
-	# nodeColorNormal <- "#21abcdcc"
+	# normal_color <- "#21abcdcc"
 	# ColerPicker
 
-	# nodeColorFrom <- "#FF000088"
+	# from_color <- "#FF000088"
 	# ColorPicker
 
-	# nodeColorTo <- "#00800088"
+	# to_color <- "#00800088"
 	# ColorPicker
 
-	# nodeBorderColor <- "#FFFFFF"
+	# border_color <- "#FFFFFF"
 	# ColorPicker
 
-	# nodeShapeNormal <- "circle"
+	# normal_shape <- "circle"
 	# ChoiceBox: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle"
 
-	# nodeShapeSpatial <- "circle"
+	# spatial_shape <- "circle"
 	# ChoiceBox: "circle", "crectangle", "csquare", "none", "pie", "raster", "rectangle", "sphere", "square", "vrectangle"
 
-	# nodeSize <- 10
+	# node_size <- 10
 	# Slider: 10, 0, 1, 100
 
-	# labelSize <- 0.5
+	# label_size <- 0.5
 	# Slider: 0.5, 0.0, 0.1, 10.0
 
-	labelColor <- "#333333"
+	labelColor <- lable_color
 	# ColorPicker
 
-	edgeColor <- "#888888"
+	edgeColor <- edge_color
 	# ColorPicker
 
-	edgeWidth <- 2.0
+	edgeWidth <- edge_width
 	# Slider: 2.0, 0.0, 0.1, 10.0
 
 	linkDir <- "HiddenArrow"
@@ -114,22 +120,22 @@ network_plot <- function(data,
 	}
 	# ChoiceBox: "HiddenArrow", "ShowArrow"
 
-	# edgeCurved <- "EdgeStraight"
-	# if (edgeCurved == "EdgeStraight") {
-	# 	edgeCurved <- FALSE
-	# } else if (edgeCurved == "EdgeCurved") {
-	# 	edgeCurved <- TRUE
+	# edge_curved <- "EdgeStraight"
+	# if (edge_curved == "EdgeStraight") {
+	# 	edge_curved <- FALSE
+	# } else if (edge_curved == "edge_curved") {
+	# 	edge_curved <- TRUE
 	# }
-	# ChoiceBox: "EdgeStraight", "EdgeCurved"
+	# ChoiceBox: "EdgeStraight", "edge_curved"
 
 	edgeArrowType <- 1
 	# Slider: 1, 0, 1, 3
 
 	edgeArrowSize <- 0.0
 	# Slider: 0.0, 0.0, 0.1, 5.0
-	# ChoiceBox: "EdgeStraight", "EdgeCurved"
+	# ChoiceBox: "EdgeStraight", "edge_curved"
 
-	# netLayout <- "layout_on_sphere"
+	# net_layout <- "layout_on_sphere"
 	# ChoiceBox: "layout_as_bipartite", "layout_as_star", "layout_as_tree", "layout_components", "layout_in_circle", "layout_nicely", "layout_on_grid", "layout_on_sphere","layout_randomly","layout_with_dh","layout_with_drl","layout_with_fr","layout_with_gem","layout_with_graphopt","layout_with_kk","layout_with_lgl","layout_with_mds","layout_with_sugiyama"
 	# <- 3. Plot parameters
 
@@ -140,7 +146,7 @@ network_plot <- function(data,
 		vertices = NULL
 	)
 
-	if (calcBy == "degree") {
+	if (calc_by == "degree") {
 		deg <- igraph::degree(
 			net,
 			v = igraph::V(net),
@@ -149,21 +155,21 @@ network_plot <- function(data,
 			normalized = T
 		)
 
-		vcolor <- rep(nodeColorNormal,
-									vcount(net))
-		vcolor[deg > degreeValue] <- colorRampPalette(c(nodeColorFrom,
-																										nodeColorTo))(10)
-		vertex_shape <- rep(nodeShapeNormal,
-												vcount(net))
-		vertex_shape[deg > degreeValue] <- nodeShapeSpatial
-	}else if (calcBy == "node") {
-		vcolor <- rep(nodeColorNormal,
-									vcount(net))
-		vcolor[V(net)$name %in% data$node1] <- colorRampPalette(c(nodeColorFrom,
-																															nodeColorTo))(10)
-		vertex_shape <- rep(nodeShapeNormal,
-												vcount(net))
-		vertex_shape[V(net)$name %in% data$node1] <- nodeShapeSpatial
+		vcolor <- rep(normal_color,
+									igraph::vcount(net))
+		vcolor[deg > degree_value] <- colorRampPalette(c(from_color,
+																										to_color))(10)
+		vertex_shape <- rep(normal_shape,
+												igraph::vcount(net))
+		vertex_shape[deg > degree_value] <- spatial_shape
+	}else if (calc_by == "node") {
+		vcolor <- rep(normal_color,
+									igraph::vcount(net))
+		vcolor[V(net)$name %in% data$node1] <- colorRampPalette(c(from_color,
+																															to_color))(10)
+		vertex_shape <- rep(normal_shape,
+												igraph::vcount(net))
+		vertex_shape[V(net)$name %in% data$node1] <- spatial_shape
 	}
 
 
@@ -178,15 +184,15 @@ network_plot <- function(data,
 			axes = F,
 			add = F,
 			vertex.color = vcolor,
-			vertex.size = nodeSize,
+			vertex.size = node_size,
 			vertex.shape = vertex_shape, # "circle","crectangle","csquare","none","pie","raster","rectangle","sphere","square","vrectangle"
 			# vertex.size2 = 30,
-			vertex.frame.color = nodeBorderColor,
+			vertex.frame.color = border_color,
 			# vertex.label = NA,
 			vertex.label.color = labelColor,
 			# vertex.label.family = "Times",
-			vertex.label.cex = labelSize,
-			vertex.label.font = 1, # 1 is plain text, 2 is bold face, 3 is italic, 4 is bold and italic and 5 specifies the symbol font.
+			vertex.label.cex = label_size,
+			vertex.label.font = 2, # 1 is plain text, 2 is bold face, 3 is italic, 4 is bold and italic and 5 specifies the symbol font.
 			vertex.label.dist = 0,
 			vertex.label.degree = -pi/4,
 			edge.color = edgeColor,
@@ -194,13 +200,13 @@ network_plot <- function(data,
 			# edge.label.color = input$label_color,
 			# edge.label.family = input$label_family,
 			# edge.label.font = input$label_font,
-			layout = do.call(netLayout, list(net)), # String to Matrix
+			layout = do.call(net_layout, list(net)), # String to Matrix
 			edge.arrow.mode = edgeArrowType,
 			edge.arrow.size = edgeArrowSize,
 			# edge.arrow.width = input$arrow_width,
 			edge.width = edgeWidth,
 			edge.lty = 1,
-			edge.curved = edgeCurved,
+			edge.curved = edge_curved,
 			margin = c(0, 0, 0, 0)
 		)
 	)

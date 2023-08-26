@@ -13,7 +13,7 @@ gene_cluster_trend(
 )
 }
 \arguments{
-\item{data}{Dataframe: gene expression dataframe with cols (samples) and rows (genes).}
+\item{data}{Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).}
 
 \item{thres}{Number: set the threshold for excluding genes. Default: 0.25.}
 
@@ -34,17 +34,17 @@ Gene cluster trend plot for visualizing gene expression trend profile in multipl
 library(TOmicsVis)
 
 # 2. Use example dataset gene_cluster_data
-data(gene_cluster_data)
-head(gene_cluster_data)
+data(gene_expression3)
+head(gene_expression3)
 
 # 3. Default parameters
-gene_cluster_trend(gene_cluster_data)
+gene_cluster_trend(gene_expression3[,-7])
 
 # 4. Set palette = "RdBu"
-gene_cluster_trend(gene_cluster_data, palette = "RdBu")
+gene_cluster_trend(gene_expression3[,-7], palette = "RdBu")
 
 # 5. Set cluster_num = 6
-gene_cluster_trend(gene_cluster_data, cluster_num = 6, palette = "Spectral")
+gene_cluster_trend(gene_expression3[,-7], cluster_num = 6, palette = "Spectral")
 
 }
 \author{

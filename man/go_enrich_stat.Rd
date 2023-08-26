@@ -6,10 +6,10 @@
 \usage{
 go_enrich_stat(
   go_anno,
-  go_deg_fc,
+  degs_list,
   padjust_method = "fdr",
-  pvalue_cutoff = 0.5,
-  qvalue_cutoff = 0.5,
+  pvalue_cutoff = 0.05,
+  qvalue_cutoff = 0.05,
   max_go_item = 15,
   strip_fill = "#CDCDCD",
   xtext_angle = 45,
@@ -19,9 +19,9 @@ go_enrich_stat(
 )
 }
 \arguments{
-\item{go_anno}{Dataframe: include columns (id, biological_process, cellular_component, molecular_function),  symbol ";" split GO terms.}
+\item{go_anno}{Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).}
 
-\item{go_deg_fc}{Dataframe: include columns (id, log2FC).}
+\item{degs_list}{Dataframe: degs list.}
 
 \item{padjust_method}{Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".}
 
@@ -52,26 +52,23 @@ GO enrichment analysis and stat plot (None/Exist Reference Genome).
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(go_anno)
-head(go_anno)
-
-data(go_deg_fc)
-head(go_deg_fc)
+data(gene_go_kegg)
+head(gene_go_kegg)
 
 # 3. Default parameters
-go_enrich_stat(go_anno, go_deg_fc)
+go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
 
 # 4. Set padjust_method = "BH"
-go_enrich_stat(go_anno, go_deg_fc, padjust_method = "BH")
+go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], padjust_method = "BH")
 
 # 5. Set max_go_item = 10
-go_enrich_stat(go_anno, go_deg_fc, max_go_item = 10)
+go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], max_go_item = 10)
 
 # 6. Set strip_fill = "#008888"
-go_enrich_stat(go_anno, go_deg_fc, strip_fill = "#008888")
+go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], strip_fill = "#008888")
 
 # 7. Set sci_fill_color = "Sci_JAMA"
-go_enrich_stat(go_anno, go_deg_fc, sci_fill_color = "Sci_JAMA")
+go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1], sci_fill_color = "Sci_JAMA")
 
 }
 \author{

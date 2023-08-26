@@ -3,8 +3,8 @@
 #' @author benben-miao
 #'
 #' @return Plot: KEGG enrichment analysis and net plot (None/Exist Reference Genome).
-#' @param kegg_anno Dataframe: include columns (id, kegg_pathway),  symbol ";" split ko pathways.
-#' @param kegg_deg_fc Dataframe: include columns (id, log2FC).
+#' @param kegg_anno Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+#' @param degs_list Dataframe: degs list.
 #' @param padjust_method Character: P-value adjust to Q-value. Default: "fdr" (false discovery rate), options: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none".
 #' @param pvalue_cutoff Numeric: P-value cutoff. Recommend: small than 0.05.
 #' @param qvalue_cutoff Numeric: Q-value cutoff. Recommend: small than 0.05.
@@ -29,26 +29,20 @@
 #' library(TOmicsVis)
 #'
 #' # 2. Use example dataset
-#' data(kegg_anno)
-#' head(kegg_anno)
-#'
-#' data(kegg_deg_fc)
-#' head(kegg_deg_fc)
+#' data(gene_go_kegg)
+#' head(gene_go_kegg)
 #'
 #' # 3. Default parameters
-#' kegg_enrich_net(kegg_anno, kegg_deg_fc)
+#' kegg_enrich_net(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])
 #'
 #' # 4. Set category_num = 10
-#' kegg_enrich_net(kegg_anno, kegg_deg_fc, category_num = 10)
-#'
-#' # 5. Set low_color = "#ff8800ff", high_color = "#008888ff"
-#' kegg_enrich_net(kegg_anno, kegg_deg_fc, low_color = "#ff8800ff", high_color = "#008888ff")
+#' kegg_enrich_net(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1], category_num = 10)
 #'
 kegg_enrich_net <- function(kegg_anno,
-														kegg_deg_fc,
+														degs_list,
 													 padjust_method = "fdr",
-													 pvalue_cutoff = 1.00,
-													 qvalue_cutoff = 1.00,
+													 pvalue_cutoff = 0.05,
+													 qvalue_cutoff = 0.05,
 													 category_num = 20,
 													 net_layout = "circle",
 													 net_circular = TRUE,
@@ -68,10 +62,10 @@ kegg_enrich_net <- function(kegg_anno,
 
 	# -> 3. Data
 	gene_kegg <- kegg_anno
-	deg_fc <- kegg_deg_fc
+	degs_list <- degs_list
 
-	deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	deg_list <- with(deg_fc, setNames(log2FC, id))
+	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
+	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
 	gene_kegg7 <- separate_rows(data = gene_kegg,
 															"kegg_pathway",
@@ -87,7 +81,7 @@ kegg_enrich_net <- function(kegg_anno,
 	gene_kegg9 <- drop_na(gene_kegg8)
 	gene_kegg9["description"] <- gsub(")", "", gene_kegg9$description)
 
-	enrich_kegg <- enricher(gene = deg_fc[[1]],
+	enrich_kegg <- enricher(gene = degs_list,
 													TERM2GENE = data.frame(gene_kegg9[,2],gene_kegg9[,1]),
 													TERM2NAME = gene_kegg9[,2:3],
 													pvalueCutoff = pvalue_cutoff,
@@ -156,7 +150,7 @@ kegg_enrich_net <- function(kegg_anno,
 		# color_category = "#ff0000",
 		# color_gene = "#008000",
 		shadowtext = "all",
-		color.params = list(foldChange = deg_list,
+		color.params = list(foldChange = NULL,
 												edge = TRUE),
 		cex.params = list(category_node = 1,
 											gene_node = 1,
@@ -168,7 +162,9 @@ kegg_enrich_net <- function(kegg_anno,
 		theme(
 			# text = element_text(family = fonts)
 		) +
-		scale_color_gradient(low = low_color, high = high_color, space = "Lab")
+		scale_fill_gradient(low = low_color, high = high_color,
+												space = "Lab",
+												guide = "colourbar", aesthetics = "fill")
 
 	# p
 	# <- 5. Plot

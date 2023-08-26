@@ -1,9 +1,9 @@
-#' @title Gene Expression dataframe of RNA-Seq.
-#' @description Gene Expression dataframe of RNA-Seq.
+#' @title All genes in all samples expression dataframe of RNA-Seq.
+#' @description All genes in all samples expression dataframe of RNA-Seq.
 #' @author benben-miao
 #'
 #' @docType data
-#' @format Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @format Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @usage data(gene_expression)
 #'
 #' @keywords datasets

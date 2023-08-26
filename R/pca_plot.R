@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: PCA dimensional reduction visualization for RNA-Seq.
-#' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param sample_gene Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 #' @param xPC Numeric: PC index at x axis. Default: 1, options: 1, 2, 3, ...
 #' @param yPC Numeric: PC index at y axis. Default: 2, options: 2, 3, 4, ...
@@ -229,6 +229,7 @@ pca_plot <- function(sample_gene,
 											show.legend = TRUE
 											# level = pca_ellipse_level
 		) +
+		labs(fill = "Groups", color = "Groups", shape = "Groups") +
 		# coord_fixed() +
 		# stat_ellipse(aes(x = PC1, y = PC2,
 		#                  fill = groups),

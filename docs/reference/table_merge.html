@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,9 +119,9 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">table_merge</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
-<span>  merge_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span><span class="op">)</span>,</span>
-<span>  new_var <span class="op">=</span> <span class="st">"Variable"</span>,</span>
-<span>  new_value <span class="op">=</span> <span class="st">"Value"</span>,</span>
+<span>  merge_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"biological_process"</span>, <span class="st">"cellular_component"</span>, <span class="st">"molecular_function"</span><span class="op">)</span>,</span>
+<span>  new_var <span class="op">=</span> <span class="st">"go_category"</span>,</span>
+<span>  new_value <span class="op">=</span> <span class="st">"go_term"</span>,</span>
 <span>  na_remove <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -129,7 +129,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include multiple variables (columns).</p></dd>
+<dd><p>Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).</p></dd>
 
 
 <dt>merge_vars</dt>
@@ -165,37 +165,107 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    41     190  7.4   67     5   1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    36     118  8.0   72     5   2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    12     149 12.6   74     5   3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    18     313 11.5   62     5   4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6    28      NA 14.9   66     5   6</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        FN1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 14-3-3ZETA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       A1I3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        A2M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       AARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       ABAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0005576(extracellular region)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            GO:0005737(cytoplasm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                       molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                            GO:0019904(protein domain specific binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_merge</span><span class="op">(</span><span class="va">table_merge_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_merge</span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Month Day Variable Value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     5   1    Ozone    41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     5   2    Ozone    36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     5   3    Ozone    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     5   4    Ozone    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5   5    Ozone    NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     5   6    Ozone    28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        FN1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 14-3-3ZETA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       A1I3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        A2M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       AARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       ABAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          go_category</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                            go_term</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 4. Set merge_vars = c("Ozone", "Solar.R")</span></span></span>
-<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_merge</span><span class="op">(</span><span class="va">table_merge_data</span>, merge_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># 4. Set new_var = "GO", new_value = "Terms"</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">table_merge</span><span class="op">(</span><span class="va">gene_go_kegg</span>, new_var <span class="op">=</span> <span class="st">"GO"</span>, new_value <span class="op">=</span> <span class="st">"Terms"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Wind Temp Month Day Variable Value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  7.4   67     5   1    Ozone    41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  8.0   72     5   2    Ozone    36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 12.6   74     5   3    Ozone    12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 11.5   62     5   4    Ozone    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 14.3   56     5   5    Ozone    NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 14.9   66     5   6    Ozone    28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        FN1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 14-3-3ZETA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       A1I3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        A2M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       AARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       ABAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   GO</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                              Terms</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

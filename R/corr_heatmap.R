@@ -3,7 +3,7 @@
 #' @author benben-miao
 #'
 #' @return Plot: heatmap plot filled with Pearson correlation values and P values.
-#' @param data Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
+#' @param data Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param corr_method Character: correlation method. Default: "pearson", options: "pearson", "spearman", "kendall".
 #' @param cell_shape Character: heatmap cell shape. Default: "square", options: "circle", "square".
 #' @param fill_type Character: heatmap fill type. Default: "full", options: "upper", "low", "full".

@@ -3,7 +3,7 @@
 #' @author wei dong
 #'
 #' @return Plot: Gene ranking dotplot for visualizing differentailly expressed genes.
-#' @param data Dataframe: include columns (Genes, Log2FoldChange, Pvalue, Padj), rows (Genes).
+#' @param data Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).
 #' @param log2fc Numeric: log2(FoldChange) cutoff log2(2) = 1. Default: 1.0, min: 0.0, max: null.
 #' @param palette Character: color palette used for the point. Default: "spectral", options: 'Spectral', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', 'RdYlBu', 'RdYlGn'.
 #' @param top_n Numeric: number of top differentailly expressed genes. Default: 10, min: 0.
@@ -26,30 +26,30 @@
 #' # 1. Library TOmicsVis package
 #' library(TOmicsVis)
 #'
-#' # 2. Use example dataset deg_data
-#' data(deg_data)
-#' head(deg_data)
+#' # 2. Use example dataset
+#' data(degs_stats)
+#' head(degs_stats)
 #'
 #' # 3. Default parameters
-#' gene_rank_plot(deg_data)
+#' gene_rank_plot(degs_stats)
 #'
 #' # 4. Set top_n = 5
-#' gene_rank_plot(deg_data, top_n = 5, palette = "PiYG")
+#' gene_rank_plot(degs_stats, top_n = 5, palette = "PiYG")
 #'
 #' # 5. Set genes_to_label = c("SELL","CCR7","KLRG1","IL7R")
-#' gene_rank_plot(deg_data, genes_to_label = c("SELL","CCR7","KLRG1","IL7R"), palette = "PuOr")
+#' gene_rank_plot(degs_stats, genes_to_label = c("SELL","CCR7","KLRG1","IL7R"), palette = "PuOr")
 #'
 
 gene_rank_plot <- function(data,
-												 log2fc = 1,
-											   	 palette = "Spectral",
-												 top_n = 10,
-												 genes_to_label = NULL,
-											  	 label_size = 5,
-												 base_size = 12,
-										  		 title = "Gene ranking dotplot",
-										  		 xlab = "Ranking of differentially expressed genes",
-										  		 ylab = "Log2FoldChange"
+													log2fc = 1,
+											   	palette = "Spectral",
+													top_n = 10,
+													genes_to_label = NULL,
+											  	label_size = 5,
+													base_size = 12,
+									  			title = "Gene ranking dotplot",
+									  			xlab = "Ranking of differentially expressed genes",
+									  			ylab = "Log2FoldChange"
 												 ){
 
 	# -> 2. NA and Duplicated

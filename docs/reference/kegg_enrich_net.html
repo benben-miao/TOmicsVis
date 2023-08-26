@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,10 +119,10 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kegg_enrich_net</span><span class="op">(</span></span>
 <span>  <span class="va">kegg_anno</span>,</span>
-<span>  <span class="va">kegg_deg_fc</span>,</span>
+<span>  <span class="va">degs_list</span>,</span>
 <span>  padjust_method <span class="op">=</span> <span class="st">"fdr"</span>,</span>
-<span>  pvalue_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  qvalue_cutoff <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  pvalue_cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  qvalue_cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  category_num <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>  net_layout <span class="op">=</span> <span class="st">"circle"</span>,</span>
 <span>  net_circular <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -134,11 +134,11 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>kegg_anno</dt>
-<dd><p>Dataframe: include columns (id, kegg_pathway),  symbol ";" split ko pathways.</p></dd>
+<dd><p>Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).</p></dd>
 
 
-<dt>kegg_deg_fc</dt>
-<dd><p>Dataframe: include columns (id, log2FC).</p></dd>
+<dt>degs_list</dt>
+<dd><p>Dataframe: degs list.</p></dd>
 
 
 <dt>padjust_method</dt>
@@ -190,59 +190,59 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">kegg_anno</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 gene_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 gene_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 gene_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 gene_4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 gene_5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 gene_6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                              kegg_pathway</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                               ko04977(Vitamin digestion and absorption)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                               ko04977(Vitamin digestion and absorption)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                            ko04610(Complement and coagulation cascades)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                       ko04142(Lysosome)</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        id log2FC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  gene_1   1.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  gene_2  -1.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  gene_3   1.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  gene_4  -1.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  gene_5   1.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 gene_30   1.45</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Genes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        FN1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 14-3-3ZETA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       A1I3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        A2M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       AARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       ABAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                 biological_process</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 cellular_component</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 GO:0005576(extracellular region)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  GO:0005615(extracellular space)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            GO:0005737(cytoplasm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                             &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                       molecular_function</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                   &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                            GO:0019904(protein domain specific binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                           GO:0004866(endopeptidase inhibitor activity)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                kegg_pathway</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">kegg_enrich_net</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
+<span class="r-in"><span><span class="fu">kegg_enrich_net</span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span>, <span class="va">gene_go_kegg</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">200</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 27 rows [695, 696, 744, 747,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> 750, 968, 977, 1177, 1474, 1646, 1653, 1659, 1886, 2163, 2174, 2187, 2193,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> 2198, 2258, 2259, ...].</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>ggrepel: 4 unlabeled data points (too many overlaps). Consider increasing max.overlaps</span>
 <span class="r-plt img"><img src="kegg_enrich_net-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 4. Set category_num = 10</span></span></span>
-<span class="r-in"><span><span class="fu">kegg_enrich_net</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, category_num <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
+<span class="r-in"><span><span class="fu">kegg_enrich_net</span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span>, <span class="va">gene_go_kegg</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">200</span>,<span class="fl">1</span><span class="op">]</span>, category_num <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 27 rows [695, 696, 744, 747,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> 750, 968, 977, 1177, 1474, 1646, 1653, 1659, 1886, 2163, 2174, 2187, 2193,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> 2198, 2258, 2259, ...].</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>ggrepel: 4 unlabeled data points (too many overlaps). Consider increasing max.overlaps</span>
 <span class="r-plt img"><img src="kegg_enrich_net-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># 5. Set low_color = "#ff8800ff", high_color = "#008888ff"</span></span></span>
-<span class="r-in"><span><span class="fu">kegg_enrich_net</span><span class="op">(</span><span class="va">kegg_anno</span>, <span class="va">kegg_deg_fc</span>, low_color <span class="op">=</span> <span class="st">"#ff8800ff"</span>, high_color <span class="op">=</span> <span class="st">"#008888ff"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Expected 2 pieces. Additional pieces discarded in 2 rows [203, 233].</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">size</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">size</span>, which will replace the existing scale.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">colour</span> is already present.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">colour</span>, which will replace the existing scale.</span>
-<span class="r-plt img"><img src="kegg_enrich_net-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -6,8 +6,9 @@
 \usage{
 chord_plot(
   data,
-  multi_colors = "RainbowColors",
-  color_alpha = 0.5,
+  multi_colors = "VividColors",
+  color_seed = 10,
+  color_alpha = 0.3,
   link_visible = TRUE,
   link_dir = -1,
   link_type = "diffHeight",
@@ -15,13 +16,16 @@ chord_plot(
   width_circle = 3,
   dist_name = 3,
   label_dir = "Vertical",
-  dist_label = 0.3
+  dist_label = 0.3,
+  label_scale = 0.8
 )
 }
 \arguments{
-\item{data}{Dataframe: include columns (Samples, Set1, Set2, ...), rows (Gene1, Gene2, ...).}
+\item{data}{Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
-\item{multi_colors}{Character: color palette. Default: "RainbowColors", options: "VividColors", "RainbowColors".}
+\item{multi_colors}{Character: color palette. Default: "VividColors", options: "VividColors", "RainbowColors".}
+
+\item{color_seed}{Numeric: rand seed for VividColors. Default: 10.}
 
 \item{color_alpha}{Numeric: color alpha. Default: 0.50, min: 0.00, max: 1.00.}
 
@@ -40,6 +44,8 @@ chord_plot(
 \item{label_dir}{Character: label director. Default: "Vertical", options: "Horizontal", "Vertical".}
 
 \item{dist_label}{Numeric: the distance of label and circle. Default: 0.3, min: 0.0.}
+
+\item{label_scale}{Numeric: labels font size sclae. Default: 0.8, min: 0, max: NULL.}
 }
 \value{
 Plot: chord plot is used to visualize complex relationships between samples and genes, as well as between pathways and genes.
@@ -52,13 +58,11 @@ Chord plot is used to visualize complex relationships between samples and genes,
 library(TOmicsVis)
 
 # 2. Use example dataset
-data(chord_data)
+data(gene_expression2)
+head(gene_expression2)
 
 # 3. Default parameters
-chord_plot(chord_data)
-
-# 4. Set multi_colors = "VividColors"
-chord_plot(chord_data, multi_colors = "VividColors")
+chord_plot(gene_expression2[1:30,])
 
 }
 \author{

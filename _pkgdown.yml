@@ -71,18 +71,21 @@ reference:
   desc: Statistical sample outliers, correlation among samples, distance among samples, etc.
   contents:
   - quantile_plot
-  - corr_heatmap
-  - pca_plot
-  - dendro_plot
+  - box_plot
+  - violin_plot
+  - survival_plot
 
 - title: ②Traits Analysis
   desc: Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.
   contents:
-  - box_plot
-  - violin_plot
-  - survival_plot
+  - corr_heatmap
+  - pca_analysis
+  - pca_plot
+  - tsne_analysis
   - tsne_plot
+  - umap_analysis
   - umap_plot
+  - dendro_plot
 
 - title: ③Differential Expression Analyais
   desc: Analysis and visualization based on gene expression data and differentially expressed genes.
@@ -90,25 +93,25 @@ reference:
   - venn_plot
   - upsetr_plot
   - flower_plot
-  - circos_heatmap
   - volcano_plot
   - ma_plot
   - heatmap_group
+  - circos_heatmap
+  - chord_plot
 
 - title: ④Advanced Analysis
   desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
   contents:
-  - trend_plot
-  - gene_cluster_trend
   - gene_rank_plot
-  - network_plot
+  - gene_cluster_trend
+  - trend_plot
   - wgcna_pipeline
+  - network_plot
   - heatmap_cluster
 
 - title: ⑤GO and KEGG Enrichment
   desc: GO and KEGG enrichment analysis and visualization.
   contents:
-  - chord_plot
   - go_enrich
   - go_enrich_stat
   - go_enrich_bar
@@ -134,25 +137,12 @@ reference:
   - traits_sex
   - survival_data
   - gene_expression
-  - gene_exp2
+  - gene_expression2
+  - gene_expression3
   - samples_groups
-  - paired_degs
-  - chord_data
-  - circos_heatmap_data
-  - deg_data
-  - deg_data2
-  - trend_data
-  - gene_cluster_data
-  - table_split_data
-  - table_merge_data
-  - table_filter_data
-  - table_cross_data1
-  - table_cross_data2
-  - go_anno
-  - go_deg_fc
-  - kegg_anno
-  - kegg_deg_fc
+  - degs_lists
+  - degs_stats
+  - degs_stats2
   - network_data
-  - wgcna_gene_exp
-  - wgcna_sample_group
-  - heatmap_group_data
+  - gene_go_kegg
+  - gene_go_kegg2

@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,12 +122,13 @@
 <span>  low_color <span class="op">=</span> <span class="st">"#0000ff"</span>,</span>
 <span>  mid_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#ff0000"</span>,</span>
-<span>  gap_size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  gap_size <span class="op">=</span> <span class="fl">25</span>,</span>
 <span>  cluster_run <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cluster_method <span class="op">=</span> <span class="st">"complete"</span>,</span>
 <span>  distance_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>  dend_show <span class="op">=</span> <span class="st">"inside"</span>,</span>
 <span>  dend_height <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  track_height <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>  rowname_show <span class="op">=</span> <span class="st">"outside"</span>,</span>
 <span>  rowname_size <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -136,7 +137,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>Dataframe: include columns (Sample1, Sample2, ...), rows (Gene1, Gene2, ...).</p></dd>
+<dd><p>Dataframe: Shared degs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p></dd>
 
 
 <dt>low_color</dt>
@@ -152,7 +153,7 @@
 
 
 <dt>gap_size</dt>
-<dd><p>Numeric: heatmap gap size. Default: 10, min: 0.</p></dd>
+<dd><p>Numeric: heatmap gap size. Default: 25, min: 0.</p></dd>
 
 
 <dt>cluster_run</dt>
@@ -175,8 +176,12 @@
 <dd><p>Numeric: dendgram height. Default: 0.20, min: 0.00, max: 0.50.</p></dd>
 
 
+<dt>track_height</dt>
+<dd><p>Numeric: heatmap track height. Default: 0.30, min: 0.00, max: 0.50.</p></dd>
+
+
 <dt>rowname_show</dt>
-<dd><p>Character: control rownames display and position. Hind first rowname by running rownames(data)1. Default: "outside", options: "none", "outside", "inside".</p></dd>
+<dd><p>Character: control rownames display and position. Hind first rowname by running rownames(data). Default: "outside", options: "none", "outside", "inside".</p></dd>
 
 
 <dt>rowname_size</dt>
@@ -200,10 +205,29 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 2. Use example dataset</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">circos_heatmap_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Genes  CT_1    CT_2  CT_3 LT20_1 LT20_2 LT20_3 LT15_1 LT15_2 LT15_3 LT12_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ACAA2 24.50   39.83 55.38 114.11 159.32  96.88 169.56 464.84 182.66 116.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ACAN 14.97   18.71 10.30  71.23 142.67 213.54 253.15 320.80 104.15 174.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ADH1  1.54    1.56  2.04  14.95  13.60  15.87  12.80  17.74   6.06  10.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  AHSG  0.00 1911.99  0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 ALDH2  2.07    2.86  2.54   0.85   0.49   0.47   0.42   0.13   0.26   0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AP1S3  6.62   14.59  9.30  24.90  33.94  23.19  24.00  36.08  27.40  24.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   LT12_2 LT12_3 LT12_6_1 LT12_6_2 LT12_6_3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 497.29 464.48   471.43   693.62   229.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 305.81 469.48  1291.90   991.90   966.77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  10.71  30.95     9.84    10.91     7.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.00   0.00     0.00     0.00     0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.28   0.11     0.37     0.15     0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  38.74  34.54    62.72    41.36    28.75</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># 3. Default parameters</span></span></span>
-<span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">circos_heatmap_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">circos_heatmap</span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Note: 15 points are out of plotting region in sector 'group', track</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> '3'.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Note: 15 points are out of plotting region in sector 'group', track</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> '3'.</span>
 <span class="r-plt img"><img src="circos_heatmap-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

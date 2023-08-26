@@ -25,13 +25,7 @@
     <loc>https://github.com/benben-miao/TOmicsVis/news/index.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/box_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/box_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/chord_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/chord_plot.html</loc>
@@ -40,16 +34,16 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/circos_heatmap.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/circos_heatmap_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/corr_heatmap.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/deg_data.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/degs_lists.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/deg_data2.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/degs_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/degs_stats2.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/dendro_plot.html</loc>
@@ -58,25 +52,25 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/flower_plot.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_cluster_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_cluster_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_exp2.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_expression.html</loc>
   </url>
   <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_expression2.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_expression3.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_go_kegg.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_go_kegg2.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/gene_rank_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/go_anno.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/go_deg_fc.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/go_enrich.html</loc>
@@ -100,16 +94,7 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/heatmap_group.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/heatmap_group_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/kegg_anno.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/kegg_deg_fc.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/kegg_enrich.html</loc>
@@ -133,13 +118,10 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/network_plot.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/paired_degs.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_analysis.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/pca_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/quantile_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/quantile_plot.html</loc>
@@ -157,52 +139,34 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/table_cross.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/table_cross_data1.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/table_cross_data2.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/table_filter.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/table_filter_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/table_merge.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/table_merge_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/table_split.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/table_split_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/traits_sex.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/trend_data.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/trend_plot.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/tsne_data.html</loc>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/tsne_analysis.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/tsne_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/benben-miao/TOmicsVis/reference/umap_analysis.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/umap_plot.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/upsetr_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/venn_data.html</loc>
   </url>
   <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/venn_plot.html</loc>
@@ -217,12 +181,6 @@
     <loc>https://github.com/benben-miao/TOmicsVis/reference/weight_sex.html</loc>
   </url>
   <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/wgcna_gene_exp.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/benben-miao/TOmicsVis/reference/wgcna_pipeline.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/benben-miao/TOmicsVis/reference/wgcna_sample_group.html</loc>
   </url>
 </urlset>

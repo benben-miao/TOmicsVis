@@ -347,8 +347,10 @@ box_plot <- function(data,
 						),
 						legend.position = legend_pos,
 						# "none", "left", "right", "bottom", "top"
-						legend.direction = legend_dir
+						legend.direction = legend_dir,
 						# "horizontal" or "vertical"
+						strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
+						strip.text = element_text(color = "#333333", size = 10, face = "bold")
 			)
 	} else if (group_level == "Three_Column") {
 		p <- ggboxplot(data,
@@ -407,8 +409,10 @@ box_plot <- function(data,
 						),
 						legend.position = legend_pos,
 						# "none", "left", "right", "bottom", "top"
-						legend.direction = legend_dir
+						legend.direction = legend_dir,
 						# "horizontal" or "vertical"
+						strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
+						strip.text = element_text(color = "#333333", size = 10, face = "bold")
 			)
 	}
 	# # <- 4. Plot
