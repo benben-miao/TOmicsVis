@@ -67,6 +67,10 @@ home:
     href: https://github.com/OmicsSuite/OmicsSuite.github.io
 
 reference:
+- title: TOmicsVis Shinyapp
+  contents:
+  - tomicsvis
+
 - title: ①Samples Statistics
   desc: Statistical sample outliers, correlation among samples, distance among samples, etc.
   contents:

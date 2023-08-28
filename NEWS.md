@@ -1,3 +1,15 @@
+## TOmicsVis 2.0.0
+
+**Date**: 2023-08-28
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Major version update: we have developed the Shiny UI for the TOmicsVis package. If you install the latest version of TOmicsVis-v2.0.0 or above, you can use the `TOmicsVis::tomicsvis()'function to start the Shiny application locally.
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
 ## TOmicsVis 1.2.8
 
 **Date**: 2023-08-25

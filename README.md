@@ -1,3 +1,6 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # TOmicsVis
 
 ## 1. Introduction
@@ -9,6 +12,20 @@
 **Website**: <https://benben-miao.github.io/TOmicsVis/>
 
 #### 1.2 Github and CRAN Install
+
+**New!!! TOmicsVis Shinyapp:**
+
+``` r
+# Start shiny application.
+TOmicsVis::tomicsvis()
+```
+
+<figure>
+<img
+src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png"
+alt="TOmicsVis Shinyapp" />
+<figcaption aria-hidden="true">TOmicsVis Shinyapp</figcaption>
+</figure>
 
 [![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.rstudio.com/web/packages/TOmicsVis/index.html)
 
@@ -1055,12 +1072,12 @@ chord_plot(
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn   cn value1 value2 o1 o2      x1     x2       col
-    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #9AEFE2B2
-    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #CCE933B2
-    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #6934E3B2
-    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #A75FEDB2
-    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #6EF148B2
-    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E4BAD6B2
+    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #C5EF9DB2
+    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #509967B2
+    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #A685D7B2
+    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #CF6D90B2
+    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #DA3AEBB2
+    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #CFE8C1B2
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.

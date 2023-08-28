@@ -26,6 +26,13 @@ knitr::opts_chunk$set(
 
 #### 1.2 Github and CRAN Install
 
+**New!!! TOmicsVis Shinyapp:**
+
+```{r eval=FALSE}
+# Start shiny application.
+TOmicsVis::tomicsvis()
+```
+
 [![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.rstudio.com/web/packages/TOmicsVis/index.html)
 
 **1.2.1 Install required packages from Bioconductor:**
