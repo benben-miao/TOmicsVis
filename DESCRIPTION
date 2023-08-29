@@ -64,5 +64,9 @@ Imports:
     shiny
 Suggests: 
 	knitr,
-    rmarkdown
+    rmarkdown,
+    bs4Dash,
+    DT,
+    colourpicker,
+    shinyWidgets
 VignetteBuilder: knitr

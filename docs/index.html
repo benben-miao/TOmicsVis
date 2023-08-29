@@ -139,22 +139,23 @@
 <div class="section level2">
 <h2 id="id_1-introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#id_1-introduction"></a>
 </h2>
-<div class="section level4">
-<h4 id="id_11-meta-information">1.1 Meta Information<a class="anchor" aria-label="anchor" href="#id_11-meta-information"></a>
-</h4>
 <p><strong>TOmicsVis</strong>: TranscriptOmics Visualization.</p>
 <p><strong>Website</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="external-link uri">https://benben-miao.github.io/TOmicsVis/</a></p>
-</div>
 <div class="section level4">
-<h4 id="id_12-github-and-cran-install">1.2 Github and CRAN Install<a class="anchor" aria-label="anchor" href="#id_12-github-and-cran-install"></a>
+<h4 id="id_11-tomicsvis-shinyapp">1.1 TOmicsVis Shinyapp<a class="anchor" aria-label="anchor" href="#id_11-tomicsvis-shinyapp"></a>
 </h4>
-<p><strong>New!!! TOmicsVis Shinyapp:</strong></p>
+<p><strong>1.1.1 Local start funcion:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Start shiny application.</span></span>
 <span><span class="fu">TOmicsVis</span><span class="fu">::</span><span class="fu"><a href="reference/tomicsvis.html">tomicsvis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <figure><img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shinyapp"><figcaption aria-hidden="true">
 TOmicsVis Shinyapp
-</figcaption></figure><p><a href="https://cran.rstudio.com/web/packages/TOmicsVis/index.html" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange"></a></p>
+</figcaption></figure><p><strong>1.1.2 Online cloud platform:</strong> <a href="https://shiny.hiplot.cn/tomicsvis-shiny/" class="external-link uri">https://shiny.hiplot.cn/tomicsvis-shiny/</a></p>
+</div>
+<div class="section level4">
+<h4 id="id_12-github-and-cran-install">1.2 Github and CRAN Install<a class="anchor" aria-label="anchor" href="#id_12-github-and-cran-install"></a>
+</h4>
+<p><a href="https://cran.r-project.org/package=TOmicsVis" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange"></a></p>
 <p><strong>1.2.1 Install required packages from Bioconductor:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install required packages from Bioconductor</span></span>
@@ -1002,12 +1003,12 @@ TOmicsVis Shinyapp
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-chord_plot-1.png"><!-- --></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
-<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #C5EF9DB2</span></span>
-<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #509967B2</span></span>
-<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #A685D7B2</span></span>
-<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #CF6D90B2</span></span>
-<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #DA3AEBB2</span></span>
-<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #CFE8C1B2</span></span></code></pre></div>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #89A2E4B2</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #E5B07FB2</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #CB6280B2</span></span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #DEBD62B2</span></span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #56CCD8B2</span></span>
+<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #6ABA8AB2</span></span></code></pre></div>
 <p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
@@ -1988,8 +1989,9 @@ TOmicsVis Shinyapp
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 

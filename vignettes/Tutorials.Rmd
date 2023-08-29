@@ -18,15 +18,13 @@ knitr::opts_chunk$set(
 
 ## 1. Introduction
 
-#### 1.1 Meta Information
-
 **TOmicsVis**: TranscriptOmics Visualization.
 
 **Website**: <https://benben-miao.github.io/TOmicsVis/>
 
-#### 1.2 Github and CRAN Install
+#### 1.1 TOmicsVis Shinyapp
 
-**New!!! TOmicsVis Shinyapp:**
+**1.1.1 Local start funcion:**
 
 ```{r eval=FALSE}
 # Start shiny application.
@@ -34,6 +32,10 @@ TOmicsVis::tomicsvis()
 ```
 
 ![TOmicsVis Shinyapp](https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png)
+
+**1.1.2 Online cloud platform:** <https://shiny.hiplot.cn/tomicsvis-shiny/>
+
+#### 1.2 Github and CRAN Install
 
 [![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.r-project.org/package=TOmicsVis)
 

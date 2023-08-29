@@ -153,20 +153,24 @@
 <div class="section level3">
 <h3 id="introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h3>
-<div class="section level5">
-<h5 id="meta-information">1.1 Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a>
-</h5>
 <p><strong>TOmicsVis</strong>: TranscriptOmics Visualization.</p>
 <p><strong>Website</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="external-link uri">https://benben-miao.github.io/TOmicsVis/</a></p>
+<div class="section level5">
+<h5 id="tomicsvis-shinyapp">1.1 TOmicsVis Shinyapp<a class="anchor" aria-label="anchor" href="#tomicsvis-shinyapp"></a>
+</h5>
+<p><strong>1.1.1 Local start funcion:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Start shiny application.</span></span>
+<span><span class="fu">TOmicsVis</span><span class="fu">::</span><span class="fu"><a href="../reference/tomicsvis.html">tomicsvis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shinyapp"><div class="figcaption">TOmicsVis Shinyapp</div>
+</div>
+<p><strong>1.1.2 Online cloud platform:</strong> <a href="https://shiny.hiplot.cn/tomicsvis-shiny/" class="external-link uri">https://shiny.hiplot.cn/tomicsvis-shiny/</a></p>
 </div>
 <div class="section level5">
 <h5 id="github-and-cran-install">1.2 Github and CRAN Install<a class="anchor" aria-label="anchor" href="#github-and-cran-install"></a>
 </h5>
-<p><strong>New!!! TOmicsVis Shinyapp:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Start shiny application.</span></span>
-<span><span class="fu">TOmicsVis</span><span class="fu">::</span><span class="fu"><a href="../reference/tomicsvis.html">tomicsvis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><a href="https://cran.rstudio.com/web/packages/TOmicsVis/index.html" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange"></a></p>
+<p><a href="https://cran.r-project.org/package=TOmicsVis" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange"></a></p>
 <p><strong>1.2.1 Install required packages from
 Bioconductor:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -1095,12 +1099,12 @@ relationships of pathways and genes.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/chord_plot-1.png" width="960"></p>
 <pre><code><span><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
-<span><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #D8EC47B2</span></span>
-<span><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #6FF138B2</span></span>
-<span><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #5AE695B2</span></span>
-<span><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #A6D8E5B2</span></span>
-<span><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #5BEB71B2</span></span>
-<span><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E09A7FB2</span></span></code></pre>
+<span><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #E7DEEDB2</span></span>
+<span><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #9D7081B2</span></span>
+<span><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E2BABAB2</span></span>
+<span><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #DD753FB2</span></span>
+<span><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #7745A1B2</span></span>
+<span><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #A57BE3B2</span></span></code></pre>
 <p>Get help using command <code><a href="../reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or
 reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
