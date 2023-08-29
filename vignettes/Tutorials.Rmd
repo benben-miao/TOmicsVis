@@ -33,7 +33,9 @@ knitr::opts_chunk$set(
 TOmicsVis::tomicsvis()
 ```
 
-[![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.rstudio.com/web/packages/TOmicsVis/index.html)
+![TOmicsVis Shinyapp](https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png)
+
+[![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.r-project.org/package=TOmicsVis)
 
 **1.2.1 Install required packages from Bioconductor:**
 

@@ -62,7 +62,7 @@ data(gene_expression2)
 head(gene_expression2)
 
 # 3. Default parameters
-chord_plot(gene_expression2[1:30,])
+chord_plot(gene_expression2[1:20,])
 
 }
 \author{

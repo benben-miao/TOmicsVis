@@ -16,6 +16,10 @@ options = list(warn = -1)
 # BiocManager::install(c("ComplexHeatmap", "EnhancedVolcano", "clusterProfiler", "enrichplot", "impute", "preprocessCore", "Mfuzz"))
 # devtools::install_github("benben-miao/TOmicsVis")
 #
+if (!require("TOmicsVis", quietly = TRUE)) {
+    devtools::install_version("TOmicsVis", version = "2.0.0", dependencies = TRUE)
+}
+
 library(shiny)
 library(DT)
 library(bs4Dash)

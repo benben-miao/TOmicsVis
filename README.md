@@ -27,7 +27,7 @@ alt="TOmicsVis Shinyapp" />
 <figcaption aria-hidden="true">TOmicsVis Shinyapp</figcaption>
 </figure>
 
-[![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.rstudio.com/web/packages/TOmicsVis/index.html)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/TOmicsVis?color=orange)](https://cran.r-project.org/package=TOmicsVis)
 
 **1.2.1 Install required packages from Bioconductor:**
 
@@ -1072,12 +1072,12 @@ chord_plot(
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn   cn value1 value2 o1 o2      x1     x2       col
-    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #C5EF9DB2
-    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #509967B2
-    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #A685D7B2
-    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #CF6D90B2
-    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #DA3AEBB2
-    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #CFE8C1B2
+    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #DAECC0B2
+    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #694858B2
+    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #C047A3B2
+    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #E7934EB2
+    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #71EC4AB2
+    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #D334EDB2
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
