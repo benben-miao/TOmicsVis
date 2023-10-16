@@ -1,5 +1,21 @@
 ## TOmicsVis 2.0.0
 
+**Date**: 2023-10-16
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Paper Publish: TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface
+
+>Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “ TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. https://doi.org/10.1002/imt2.137
+
+2. Citation function: `citation(package = "TOmicsVis")`
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+---
+
+## TOmicsVis 2.0.0
+
 **Date**: 2023-08-28
 
 <span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>

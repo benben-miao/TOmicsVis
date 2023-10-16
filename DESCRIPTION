@@ -1,6 +1,6 @@
 Package: TOmicsVis
 Type: Package
-Title: Transcriptome Visualization Process Scheme
+Title: TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface
 Version: 2.0.0
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 

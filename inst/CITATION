@@ -1,0 +1,11 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface",
+  author   = "Ben-Ben Miao, Wei Dong, Zhao-Fang Han, Xuan Luo, Cai-Huan Ke, Wei-Wei You",
+  journal  = "iMeta",
+  year     = "2023",
+  volume   = "e137",
+  number   = "",
+  pages    = "1-14",
+  doi      = "https://doi.org/10.1002/imt2.137"
+)

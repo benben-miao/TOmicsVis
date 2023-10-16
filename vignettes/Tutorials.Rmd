@@ -18,9 +18,15 @@ knitr::opts_chunk$set(
 
 ## 1. Introduction
 
-**TOmicsVis**: TranscriptOmics Visualization.
+**TOmicsVis**: TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface.
 
-**Website**: <https://benben-miao.github.io/TOmicsVis/>
+**SourceCode:** <https://github.com/benben-miao/TOmicsVis/>
+
+**Website API**: <https://benben-miao.github.io/TOmicsVis/>
+
+**Citation:** `citation(package = "TOmicsVis")`
+
+>Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “ TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. https://doi.org/10.1002/imt2.137
 
 #### 1.1 TOmicsVis Shinyapp
 
