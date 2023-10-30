@@ -80,6 +80,10 @@ install.packages("TOmicsVis")
 
 **Resources Download:** <https://www.aliyundrive.com/s/tSp8FEohswW>
 
+**TOmicsVis 微信交流群:**
+
+![](https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png)
+
 #### 1.4 About and Authors
 
 **OmicsSuite**: [Omics Suite Github: https://github.com/omicssuite/](https://github.com/omicssuite/)

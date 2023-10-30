@@ -186,15 +186,15 @@ Bioconductor:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install required packages from Bioconductor</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ComplexHeatmap"</span>, <span class="st">"EnhancedVolcano"</span>, <span class="st">"clusterProfiler"</span>, <span class="st">"enrichplot"</span>, <span class="st">"impute"</span>, <span class="st">"preprocessCore"</span>, <span class="st">"Mfuzz"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ComplexHeatmap"</span>, <span class="st">"EnhancedVolcano"</span>, <span class="st">"clusterProfiler"</span>, <span class="st">"enrichplot"</span>, <span class="st">"impute"</span>, <span class="st">"preprocessCore"</span>, <span class="st">"Mfuzz"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>1.2.2 Github</strong>: <a href="https://github.com/benben-miao/TOmicsVis/" class="uri">https://github.com/benben-miao/TOmicsVis/</a></p>
 <p><strong>Install from Github:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"benben-miao/TOmicsVis"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"benben-miao/TOmicsVis"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Resolve network by GitClone</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitclone.com/github.com/benben-miao/TOmicsVis.git"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitclone.com/github.com/benben-miao/TOmicsVis.git"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>1.2.3 CRAN</strong>: <a href="https://cran.r-project.org/package=TOmicsVis" class="external-link uri">https://cran.r-project.org/package=TOmicsVis</a></p>
 <p><strong>Install from CRAN:</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -207,6 +207,8 @@ Bioconductor:</strong></p>
 <p><strong>Video Courses:</strong> <a href="https://space.bilibili.com/34105515/channel/series" class="external-link uri">https://space.bilibili.com/34105515/channel/series</a></p>
 <p><strong>Article Courses:</strong> <a href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ" class="external-link">全解TOmicsVis完美应用于转录组可视化R包</a></p>
 <p><strong>Resources Download:</strong> <a href="https://www.aliyundrive.com/s/tSp8FEohswW" class="external-link uri">https://www.aliyundrive.com/s/tSp8FEohswW</a></p>
+<p><strong>TOmicsVis 微信交流群:</strong></p>
+<p><img src="https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png"></p>
 </div>
 <div class="section level5">
 <h5 id="about-and-authors">1.4 About and Authors<a class="anchor" aria-label="anchor" href="#about-and-authors"></a>
@@ -1108,12 +1110,12 @@ relationships of pathways and genes.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutorials_files/figure-html/chord_plot-1.png" width="960"></p>
 <pre><code><span><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
-<span><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #C2A9DAB2</span></span>
-<span><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #D794ABB2</span></span>
-<span><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E6D1E7B2</span></span>
-<span><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #B488E4B2</span></span>
-<span><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #D371E8B2</span></span>
-<span><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #D67F6FB2</span></span></code></pre>
+<span><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #6C99E4B2</span></span>
+<span><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #F097DBB2</span></span>
+<span><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #DF843EB2</span></span>
+<span><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #D6E6B8B2</span></span>
+<span><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #BBEE9BB2</span></span>
+<span><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #79C882B2</span></span></code></pre>
 <p>Get help using command <code><a href="../reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or
 reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">

@@ -80,6 +80,10 @@ install.packages("TOmicsVis")
 
 **Resources Download:** <https://www.aliyundrive.com/s/tSp8FEohswW>
 
+**TOmicsVis 微信交流群:**
+
+![](https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png)
+
 #### 1.4 About and Authors
 
 **OmicsSuite**: [Omics Suite Github:
@@ -1084,12 +1088,12 @@ chord_plot(
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn   cn value1 value2 o1 o2      x1     x2       col
-    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #9E8CA7B2
-    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #E7D6DAB2
-    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #DFC38FB2
-    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #BC65E3B2
-    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #95E3E4B2
-    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E5586BB2
+    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #D88E9EB2
+    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #E781E0B2
+    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E55237B2
+    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #44BBBBB2
+    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #99F1E4B2
+    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #656CD9B2
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
