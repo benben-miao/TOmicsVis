@@ -5,6 +5,7 @@
 #' @return Plot: survival plot for analyzing and visualizing survival data.
 #' @param data Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
 #' @param curve_function Character: an arbitrary function defining a transformation of the survival curve. Often used transformations can be specified with a character argument: "event" plots cumulative events (f(y) = 1-y), "cumhaz" plots the cumulative hazard function (f(y) = -log(y)), and "pct" for survival probability in percentage.
+#' @param log_rank Character: the weights to be used in computing the p-value for log-rank test. Default: "1", options: "1", "n", "sqrtN", "S1", "S2", "FH". so that weight correspond to the test as : 1 - log-rank, n - Gehan-Breslow (generalized Wilcoxon), sqrtN - Tarone-Ware, S1 - Peto-Peto's modified survival estimate, S2 - modified Peto-Peto (by Andersen), FH - Fleming-Harrington(p=1, q=1).
 #' @param conf_inter Logical: confidence interval. Default: TRUE, options: TRUE, FALSE.
 #' @param interval_style Character: confidence interval style. Default: "ribbon", options: "ribbon", "step".
 #' @param risk_table Logical: show cumulative risk table. Default: TRUE, options: TRUE, FALSE.
@@ -41,6 +42,7 @@
 #'
 survival_plot <- function(data,
 													curve_function = "pct",
+													log_rank = "1",
 													conf_inter = TRUE,
 													interval_style = "ribbon",
 													risk_table = TRUE,
@@ -150,7 +152,8 @@ survival_plot <- function(data,
 		conf.int.style = interval_style,
 		# conf.int.alpha = 0.50,
 		pval = TRUE,
-		pval.method = FALSE,
+		pval.method = TRUE,
+		log.rank.weights = log_rank,
 		xlab = "Time",
 		ylab = "Survival probability",
 		ggtheme = gg_theme,
