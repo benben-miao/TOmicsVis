@@ -15,7 +15,6 @@
 #' @param y_start Numeric: y-axis start value. Default: 0, min: 0, max: 100.
 #' @param y_end Numeric: y-axis end value. Default: 100, min: 0, max: 100.
 #' @param x_break Numeric: x-axis break value. Default: 10, min: 0, max: null.
-#' @param y_break Numeric: y-axis break value. Default: 10, min: 0, max: 100.
 #'
 #' @import ggplot2
 #' @import ggsci
@@ -51,8 +50,8 @@ survival_plot <- function(data,
 													x_start = 0,
 													y_start = 0,
 													y_end = 100,
-													x_break = 10,
-													y_break = 10
+													x_break = 10
+													# y_break = 10
 													){
 	# -> 2. Data
 	data <- as.data.frame(data)
@@ -147,25 +146,28 @@ survival_plot <- function(data,
 		fit,
 		data = data,
 		fun = curve_function,
-		risk.table = risk_table,
-		pval = TRUE,
 		conf.int = conf_inter,
 		conf.int.style = interval_style,
-		size = 1,
+		# conf.int.alpha = 0.50,
+		pval = TRUE,
+		pval.method = FALSE,
 		xlab = "Time",
 		ylab = "Survival probability",
 		ggtheme = gg_theme,
-		risk.table.y.text.col = TRUE,
+		risk.table = risk_table,
 		risk.table.height = 0.25,
 		risk.table.y.text = TRUE,
+		risk.table.y.text.col = TRUE,
 		ncensor.plot = num_censor,
 		ncensor.plot.height = 0.25,
+		cumevents = FALSE,
+		cumcensor = FALSE,
 		surv.median.line = "hv",
 		palette = sci_palette,
 		xlim = c(x_start, xLimEnd),
 		ylim = c(y_start, y_end),
-		break.x.by = x_break,
-		break.y.by = y_break
+		break.x.by = x_break
+		# break.y.by = y_break
 	)
 	# p
 	# # <- 4. Plot

@@ -16,8 +16,7 @@ survival_plot(
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 10,
-  y_break = 10
+  x_break = 10
 )
 }
 \arguments{
@@ -44,8 +43,6 @@ survival_plot(
 \item{y_end}{Numeric: y-axis end value. Default: 100, min: 0, max: 100.}
 
 \item{x_break}{Numeric: x-axis break value. Default: 10, min: 0, max: null.}
-
-\item{y_break}{Numeric: y-axis break value. Default: 10, min: 0, max: 100.}
 }
 \value{
 Plot: survival plot for analyzing and visualizing survival data.

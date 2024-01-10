@@ -1,4 +1,16 @@
-## TOmicsVis 2.0.0
+## TOmicsVis 2.1.1
+
+**Date**: 2024-01-10
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Resolves a bug where `?TOmicsVis::survival_plot` function does not display the Y-axis percentage correctly.
+
+---
+
+## TOmicsVis 2.1.0
 
 **Date**: 2023-10-16
 
