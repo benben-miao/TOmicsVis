@@ -46,16 +46,15 @@
 #'
 kegg_enrich_bar <- function(kegg_anno,
 														degs_list,
-											  padjust_method = "fdr",
-											  pvalue_cutoff = 0.05,
-											  qvalue_cutoff = 0.05,
-												sign_by = "p.adjust",
-												category_num = 30,
-												font_size = 12,
-												low_color = "#ff0000aa",
-												high_color = "#008800aa",
-												ggTheme = "theme_light"
-											){
+														padjust_method = "fdr",
+														pvalue_cutoff = 0.05,
+														qvalue_cutoff = 0.05,
+														sign_by = "p.adjust",
+														category_num = 30,
+														font_size = 12,
+														low_color = "#ff0000aa",
+														high_color = "#008800aa",
+														ggTheme = "theme_light") {
 	# -> 2. Data Parameters
 	# padjust_method <- "fdr"
 	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
@@ -74,29 +73,27 @@ kegg_enrich_bar <- function(kegg_anno,
 	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
 	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
-	gene_kegg7 <- separate_rows(data = gene_kegg,
-															"kegg_pathway",
-															sep = ";"
-	)
+	gene_kegg7 <- separate_rows(data = gene_kegg, "kegg_pathway", sep = ";")
 
 	gene_kegg8 <- separate(gene_kegg7,
 												 "kegg_pathway",
 												 c("kegg_pathway", "description"),
-												 "\\("
-	)
+												 "\\(")
 
 	gene_kegg9 <- drop_na(gene_kegg8)
 	gene_kegg9["description"] <- gsub(")", "", gene_kegg9$description)
 
-	enrich_kegg <- enricher(gene = degs_list,
-													TERM2GENE = data.frame(gene_kegg9[,2],gene_kegg9[,1]),
-													TERM2NAME = gene_kegg9[,2:3],
-													pvalueCutoff = pvalue_cutoff,
-													pAdjustMethod = padjust_method, # "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
-													qvalueCutoff = qvalue_cutoff,
-													minGSSize = 1,
-													maxGSSize = 1000
-													)
+	enrich_kegg <- enricher(
+		gene = degs_list,
+		TERM2GENE = data.frame(gene_kegg9[, 2], gene_kegg9[, 1]),
+		TERM2NAME = gene_kegg9[, 2:3],
+		pvalueCutoff = pvalue_cutoff,
+		pAdjustMethod = padjust_method,
+		# "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+		qvalueCutoff = qvalue_cutoff,
+		minGSSize = 1,
+		maxGSSize = 1000
+	)
 
 	enrich_result <- enrich_kegg@result
 
@@ -156,18 +153,21 @@ kegg_enrich_bar <- function(kegg_anno,
 	# -> 5. Plot
 	p <- barplot(
 		height = enrich_kegg,
-		x = "GeneRatio", # 'Count' and 'GeneRatio'
+		x = "GeneRatio",
+		# 'Count' and 'GeneRatio'
 		color = sign_by,
 		showCategory = category_num,
 		font.size = font_size,
 		title = "",
 		label_format = 200
 	) +
-		geom_text(aes_string(label = "Count"),
-							vjust = 0.5,
-							hjust = -0.5,
-							size = 3,
-							color = "#333333") +
+		geom_text(
+			aes_string(label = "Count"),
+			vjust = 0.5,
+			hjust = -0.5,
+			size = 3,
+			color = "#333333"
+		) +
 		# geom_text(aes(label = paste("(",round(enrich_result$GeneRatio, 2),")", sep = "")),
 		# 					vjust = 0.3,
 		# 					hjust = -0.5,
@@ -176,11 +176,11 @@ kegg_enrich_bar <- function(kegg_anno,
 		xlab("Gene Number") +
 		ylab("KEGG Pathways") +
 		gg_theme +
-		theme(
-			# text = element_text(family = fonts),
-			axis.text = element_text(colour = "#000000")
-		) +
-		scale_fill_gradient(low = low_color, high = high_color, space = "Lab")
+		theme(# text = element_text(family = fonts),
+			axis.text = element_text(colour = "#000000")) +
+		scale_fill_gradient(low = low_color,
+												high = high_color,
+												space = "Lab")
 
 	# p
 	# <- 5. Plot

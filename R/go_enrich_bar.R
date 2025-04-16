@@ -45,18 +45,16 @@
 #' go_enrich_bar(gene_go_kegg[,-5], gene_go_kegg[100:200,1], ggTheme = "theme_bw")
 #'
 go_enrich_bar <- function(go_anno,
-										 degs_list,
-										 padjust_method = "fdr",
-										 pvalue_cutoff = 0.05,
-										 qvalue_cutoff = 0.05,
-										 sign_by = "p.adjust",
-										 category_num = 30,
-										 font_size = 12,
-										 low_color = "#ff0000aa",
-										 high_color = "#008800aa",
-										 ggTheme = "theme_light"
-										){
-
+													degs_list,
+													padjust_method = "fdr",
+													pvalue_cutoff = 0.05,
+													qvalue_cutoff = 0.05,
+													sign_by = "p.adjust",
+													category_num = 30,
+													font_size = 12,
+													low_color = "#ff0000aa",
+													high_color = "#008800aa",
+													ggTheme = "theme_light") {
 	# -> 2. Data Parameters
 	# padjust_method <- "fdr"
 	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
@@ -75,44 +73,40 @@ go_enrich_bar <- function(go_anno,
 	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
 	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
-	gene_go1 <- melt(gene_go,
-									 na.rm = FALSE,
-									 id.vars = c("Genes"),
-									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
-									 variable.name = "ontology",
-									 value.name = "term",
-									 factorsAsStrings = TRUE
+	gene_go1 <- melt(
+		gene_go,
+		na.rm = FALSE,
+		id.vars = c("Genes"),
+		measure.vars = c(
+			"biological_process",
+			"cellular_component",
+			"molecular_function"
+		),
+		variable.name = "ontology",
+		value.name = "term",
+		factorsAsStrings = TRUE
 	)
 
-	gene_go2 <- separate_rows(data = gene_go1,
-														"term",
-														sep = ";"
-	)
+	gene_go2 <- separate_rows(data = gene_go1, "term", sep = ";")
 
-	gene_go3 <- separate(gene_go2,
-											 "term",
-											 c("term", "description"),
-											 "\\("
-	)
+	gene_go3 <- separate(gene_go2, "term", c("term", "description"), "\\(")
 
 	gene_go4 <- drop_na(gene_go3)
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
-	gene_go5 <- data.frame(gene_go4["Genes"],
-												 gene_go4["term"],
-												 gene_go4["ontology"],
-												 gene_go4["description"]
-	)
+	gene_go5 <- data.frame(gene_go4["Genes"], gene_go4["term"], gene_go4["ontology"], gene_go4["description"])
 
-	enrich_results <- enricher(gene = degs_list,
-														 TERM2GENE = data.frame(gene_go5[,2],gene_go5[,1]),
-														 TERM2NAME = data.frame(gene_go5[,2],gene_go5[,4]),
-														 pvalueCutoff = pvalue_cutoff,
-														 pAdjustMethod = padjust_method, # "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
-														 qvalueCutoff = qvalue_cutoff,
-														 minGSSize = 1,
-														 maxGSSize = 1000
+	enrich_results <- enricher(
+		gene = degs_list,
+		TERM2GENE = data.frame(gene_go5[, 2], gene_go5[, 1]),
+		TERM2NAME = data.frame(gene_go5[, 2], gene_go5[, 4]),
+		pvalueCutoff = pvalue_cutoff,
+		pAdjustMethod = padjust_method,
+		# "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+		qvalueCutoff = qvalue_cutoff,
+		minGSSize = 1,
+		maxGSSize = 1000
 	)
 
 	enrich_result <- enrich_results@result
@@ -120,11 +114,7 @@ go_enrich_bar <- function(go_anno,
 	gene_go6 <- data.frame(gene_go5["term"], gene_go5["ontology"])
 	gene_go6 <- distinct(gene_go6, .keep_all = TRUE)
 
-	enrich_table <- merge(gene_go6,
-												enrich_result,
-												by.x = "term",
-												by.y = "ID"
-	)
+	enrich_table <- merge(gene_go6, enrich_result, by.x = "term", by.y = "ID")
 	colnames(enrich_table)[1] <- "ID"
 
 	# write.table(enrich_table,
@@ -183,18 +173,21 @@ go_enrich_bar <- function(go_anno,
 	# -> 5. Plot
 	p <- barplot(
 		height = enrich_results,
-		x = "GeneRatio", # 'Count' and 'GeneRatio'
+		x = "GeneRatio",
+		# 'Count' and 'GeneRatio'
 		color = sign_by,
 		showCategory = category_num,
 		font.size = font_size,
 		title = "",
 		label_format = 200
 	) +
-		geom_text(aes_string(label = "Count"),
-							vjust = 0.5,
-							hjust = -0.5,
-							size = 3,
-							color = "#333333") +
+		geom_text(
+			aes_string(label = "Count"),
+			vjust = 0.5,
+			hjust = -0.5,
+			size = 3,
+			color = "#333333"
+		) +
 		# geom_text(aes(label = paste("(",round(enrich_result$GeneRatio, 2),")", sep = "")),
 		# 					vjust = 0.5,
 		# 					hjust = -0.5,
@@ -203,11 +196,11 @@ go_enrich_bar <- function(go_anno,
 		xlab("Gene Number") +
 		ylab("GO terms") +
 		gg_theme +
-		theme(
-			# text = element_text(family = fonts),
-			axis.text = element_text(colour = "#000000")
-		) +
-		scale_fill_gradient(low = low_color, high = high_color, space = "Lab")
+		theme(# text = element_text(family = fonts),
+			axis.text = element_text(colour = "#000000")) +
+		scale_fill_gradient(low = low_color,
+												high = high_color,
+												space = "Lab")
 
 	# p
 	# <- 5. Plot

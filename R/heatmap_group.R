@@ -63,14 +63,13 @@ heatmap_group <- function(sample_gene,
 													mid_color = "#ffffff",
 													high_color = "#ff000055",
 													na_color = "#ff8800",
-													x_angle = 45
-												 ){
+													x_angle = 45) {
 	# -> 2. Data Operation
 	sample_gene <- as.data.frame(sample_gene)
-	rownames(sample_gene) <- sample_gene[,1]
-	sample_gene <- sample_gene[,-1]
+	rownames(sample_gene) <- sample_gene[, 1]
+	sample_gene <- sample_gene[, -1]
 
-	groups <- group_sample[,2]
+	groups <- group_sample[, 2]
 	# <- 2. Data Operation
 
 	# -> 3. Plot Parameters
@@ -92,9 +91,7 @@ heatmap_group <- function(sample_gene,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
-	anno_col <- data.frame(
-		Groups = groups
-	)
+	anno_col <- data.frame(Groups = groups)
 	rownames(anno_col) <- colnames(sample_gene)
 
 	group <- levels(as.factor(groups))
@@ -102,32 +99,33 @@ heatmap_group <- function(sample_gene,
 	names(group_color) <- group
 	group_color
 
-	anno_colors = list(
-		Groups = group_color
-	)
+	anno_colors = list(Groups = group_color)
 
-	p <- pheatmap::pheatmap(sample_gene,
-								color = colorRampPalette(c(low_color, mid_color, high_color))(100),
-								scale = scale_data, # "row", "column", "none"
-								kmeans_k = NA,
-								clustering_method = clust_method, # "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
-								border = border_show,
-								border_color = border_color,
-								cellwidth = NA,
-								cellheight = cell_height,
-								display_numbers = value_show,
-								number_format = paste("%.", value_decimal, "f", sep = ""),
-								number_color = "#333333",
-								fontsize_number = value_size,
-								na_col = na_color,
-								fontsize_row = axis_size,
-								fontsize_col = axis_size,
-								angle_col = x_angle,
-								legend = TRUE,
-								legend_breaks = NA,
-								legend_labels = NA,
-								annotation_col = anno_col,
-								annotation_colors = anno_colors
+	p <- pheatmap::pheatmap(
+		sample_gene,
+		color = colorRampPalette(c(low_color, mid_color, high_color))(100),
+		scale = scale_data,
+		# "row", "column", "none"
+		kmeans_k = NA,
+		clustering_method = clust_method,
+		# "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
+		border = border_show,
+		border_color = border_color,
+		cellwidth = NA,
+		cellheight = cell_height,
+		display_numbers = value_show,
+		number_format = paste("%.", value_decimal, "f", sep = ""),
+		number_color = "#333333",
+		fontsize_number = value_size,
+		na_col = na_color,
+		fontsize_row = axis_size,
+		fontsize_col = axis_size,
+		angle_col = x_angle,
+		legend = TRUE,
+		legend_breaks = NA,
+		legend_labels = NA,
+		annotation_col = anno_col,
+		annotation_colors = anno_colors
 	)
 	# # <- 4. Plot
 

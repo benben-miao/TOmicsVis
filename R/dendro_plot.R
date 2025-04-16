@@ -55,12 +55,10 @@ dendro_plot <- function(data,
 												rect_fill = TRUE,
 												xlab = "Samples",
 												ylab = "Height",
-												ggTheme = "theme_light"
-												){
-
+												ggTheme = "theme_light") {
 	# -> 2. NA and Duplicated
 	data <- as.data.frame(data)
-  data <- data[,-1]
+	data <- data[, -1]
 	data <- data[rowSums(data > 0) > 0, ]
 	data <- as.data.frame(t(data))
 	# data <- data[!is.na(data[, 1]), ]
@@ -122,24 +120,25 @@ dendro_plot <- function(data,
 	}
 
 	suppressWarnings(
-	p <- factoextra::fviz_dend(dend,
-														 k = k_num,
-														 color_labels_by_k = color_labels_by_k,
-														 show_labels = TRUE,
-														 repel = TRUE,
-														 type = tree_type,
-														 rect = rect,
-														 rect_border = palette,
-														 rect_fill = rect_fill,
-														 horiz = horiz,
-														 cex = label_size,
-														 lwd = line_width,
-														 main = NULL,
-														 xlab = xlab,
-														 ylab = ylab,
-														 k_colors = palette
-														 ) +
-		gg_theme
+		p <- factoextra::fviz_dend(
+			dend,
+			k = k_num,
+			color_labels_by_k = color_labels_by_k,
+			show_labels = TRUE,
+			repel = TRUE,
+			type = tree_type,
+			rect = rect,
+			rect_border = palette,
+			rect_fill = rect_fill,
+			horiz = horiz,
+			cex = label_size,
+			lwd = line_width,
+			main = NULL,
+			xlab = xlab,
+			ylab = ylab,
+			k_colors = palette
+		) +
+			gg_theme
 	)
 
 	return(p)

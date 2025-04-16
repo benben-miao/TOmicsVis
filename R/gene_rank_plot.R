@@ -41,22 +41,20 @@
 #'
 
 gene_rank_plot <- function(data,
-													log2fc = 1,
-											   	palette = "Spectral",
-													top_n = 10,
-													genes_to_label = NULL,
-											  	label_size = 5,
-													base_size = 12,
-									  			title = "Gene ranking dotplot",
-									  			xlab = "Ranking of differentially expressed genes",
-									  			ylab = "Log2FoldChange"
-												 ){
-
+													 log2fc = 1,
+													 palette = "Spectral",
+													 top_n = 10,
+													 genes_to_label = NULL,
+													 label_size = 5,
+													 base_size = 12,
+													 title = "Gene ranking dotplot",
+													 xlab = "Ranking of differentially expressed genes",
+													 ylab = "Log2FoldChange") {
 	# -> 2. NA and Duplicated
 	data <- as.data.frame(data)
 	# rename data
-	colnames(data) <- c("gene","log2FC","pvalue","padj")
-	data <- data[!duplicated(data$gene),]
+	colnames(data) <- c("gene", "log2FC", "pvalue", "padj")
+	data <- data[!duplicated(data$gene), ]
 	rownames(data) <- data$gene
 	# <- 2. NA and Duplicated
 
@@ -82,7 +80,7 @@ gene_rank_plot <- function(data,
 	# <- 3. Plot parameters
 
 	# ordered by log2FoldChange and pvalue
-	data <- data[order(-data$log2FC,data$pvalue),]
+	data <- data[order(-data$log2FC, data$pvalue), ]
 	# add the rank column
 	data$rank <- 1:nrow(data)
 
@@ -91,31 +89,49 @@ gene_rank_plot <- function(data,
 		genes_to_label <- genes_to_label
 	}
 	else{
-		top_n_up <- rownames(head(data,top_n))
-		top_n_down <- rownames(tail(data,top_n))
-		genes_to_label <- c(top_n_up,top_n_down)
+		top_n_up <- rownames(head(data, top_n))
+		top_n_down <- rownames(tail(data, top_n))
+		genes_to_label <- c(top_n_up, top_n_down)
 	}
 
 	data["log2FC_abs"] <- abs(data["log2FC"])
 
 	p <- ggplot(data,
-							aes_string(x = "rank", y = "log2FC",
-		color = "pvalue", size = "log2FC_abs")) +
+							aes_string(
+								x = "rank",
+								y = "log2FC",
+								color = "pvalue",
+								size = "log2FC_abs"
+							)) +
 		geom_point() +
 		scale_color_gradientn(colours = colors) +
-		geom_hline(yintercept = c(-log2fc, log2fc), linetype = 2, size = 0.3) +
-		geom_hline(yintercept = 0, linetype = 1, size = 0.5) +
-		geom_vline(xintercept = median(data$rank), linetype = 2, size = 0.3) +
-		ggrepel::geom_text_repel(data = data[genes_to_label,],
-														 aes_string(x = "rank", y = "log2FC", label = "gene"),
-					size = label_size, color = "red",
-					max.overlaps = 20) +
+		geom_hline(
+			yintercept = c(-log2fc, log2fc),
+			linetype = 2,
+			size = 0.3
+		) +
+		geom_hline(yintercept = 0,
+							 linetype = 1,
+							 size = 0.5) +
+		geom_vline(
+			xintercept = median(data$rank),
+			linetype = 2,
+			size = 0.3
+		) +
+		ggrepel::geom_text_repel(
+			data = data[genes_to_label, ],
+			aes_string(x = "rank", y = "log2FC", label = "gene"),
+			size = label_size,
+			color = "red",
+			max.overlaps = 20
+		) +
 		xlab(xlab) + ylab(ylab) +
-		labs(title = title, color = "Pvalue", size = "Log2FoldChange") +
+		labs(title = title,
+				 color = "Pvalue",
+				 size = "Log2FoldChange") +
 		ylim(c(-max(abs(data$log2FC)), max(abs(data$log2FC)))) +
 		theme_bw(base_size = base_size) +
-		theme(plot.title = element_text(hjust = 0.5),
-					panel.grid = element_blank())
+		theme(plot.title = element_text(hjust = 0.5), panel.grid = element_blank())
 
 	return(p)
 }

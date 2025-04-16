@@ -47,13 +47,11 @@ circos_heatmap <- function(data,
 													 dend_height = 0.20,
 													 track_height = 0.30,
 													 rowname_show = "outside",
-													 rowname_size = 0.80
-													){
-
+													 rowname_size = 0.80) {
 	# -> 2. Data Operation
 	data <- as.data.frame(data)
-	rownames(data) <- data[,1]
-	data <- data[,-1]
+	rownames(data) <- data[, 1]
+	data <- data[, -1]
 	# mat = rbind(cbind(matrix(rnorm(50*5, mean = 1), nr = 50),
 	# 				   matrix(rnorm(50*5, mean = -1), nr = 50)),
 	# 			 cbind(matrix(rnorm(50*5, mean = -1), nr = 50),
@@ -97,54 +95,67 @@ circos_heatmap <- function(data,
 
 	# # -> 4. Plot
 
-	p <- function(){
+	p <- function() {
 		circlize::circos.clear()
 		medians <- apply(data, 2, median)
 		col_fun = circlize::colorRamp2(c(round(min(data)), median(medians), round(max(data))),
-												 c(low_color, mid_color, high_color))
+																	 c(low_color, mid_color, high_color))
 
 		circlize::circos.par(gap.after = c(gap_size))
-		circlize::circos.heatmap(data,
-									 split = NULL,
-									 col = col_fun,
-									 na.col = "grey",
-									 cell.border = NA,
-									 cell.lty = 1,
-									 cell.lwd = 1,
-									 bg.border = NA,
-									 bg.lty = graphics::par("lty"),
-									 bg.lwd = graphics::par("lwd"),
-									 cluster = cluster_run,
-									 clustering.method = cluster_method, # "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
-									 distance.method = distance_method, # "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
-									 dend.callback = function(dend, m, si) stats::reorder(dend, rowMeans(m)),
-									 dend.side = dend_show, # "none", "outside", "inside"
-									 dend.track.height = dend_height,
-									 rownames.side = rowname_show, # "none", "outside", "inside"
-									 rownames.cex = rowname_size,
-									 rownames.font = graphics::par("font"),
-									 rownames.col = "black",
-									 track.height = track_height,
-									 show.sector.labels = FALSE
+		circlize::circos.heatmap(
+			data,
+			split = NULL,
+			col = col_fun,
+			na.col = "grey",
+			cell.border = NA,
+			cell.lty = 1,
+			cell.lwd = 1,
+			bg.border = NA,
+			bg.lty = graphics::par("lty"),
+			bg.lwd = graphics::par("lwd"),
+			cluster = cluster_run,
+			clustering.method = cluster_method,
+			# "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
+			distance.method = distance_method,
+			# "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
+			dend.callback = function(dend, m, si)
+				stats::reorder(dend, rowMeans(m)),
+			dend.side = dend_show,
+			# "none", "outside", "inside"
+			dend.track.height = dend_height,
+			rownames.side = rowname_show,
+			# "none", "outside", "inside"
+			rownames.cex = rowname_size,
+			rownames.font = graphics::par("font"),
+			rownames.col = "black",
+			track.height = track_height,
+			show.sector.labels = FALSE
 		)
 		# circlize::circos.text(1, 1,
 		# 											cex = 0.5,
 		# 						labels = colnames(data),
 		# 						facing = "inside",
 		# 						niceFacing = TRUE)
-		circlize::circos.track(track.index = circlize::get.current.track.index(),
-													 panel.fun = function(x, y) {
-			if (circlize::CELL_META$sector.numeric.index == 1) { # the last sector
-				cn = colnames(data)
-				n = length(cn)
-				circlize::circos.text(x = rep(circlize::CELL_META$cell.xlim[2], n) + circlize::convert_x(1, "mm"),
-										y = 1:n + n,
-										labels = cn,
-										niceFacing = TRUE,
-										cex = 0.5, adj = c(0, 0),
-										facing = "inside")
-			}
-		}, bg.border = NA)
+		circlize::circos.track(
+			track.index = circlize::get.current.track.index(),
+			panel.fun = function(x, y) {
+				if (circlize::CELL_META$sector.numeric.index == 1) {
+					# the last sector
+					cn = colnames(data)
+					n = length(cn)
+					circlize::circos.text(
+						x = rep(circlize::CELL_META$cell.xlim[2], n) + circlize::convert_x(1, "mm"),
+						y = 1:n + n,
+						labels = cn,
+						niceFacing = TRUE,
+						cex = 0.5,
+						adj = c(0, 0),
+						facing = "inside"
+					)
+				}
+			},
+			bg.border = NA
+		)
 
 		# circos.track(track.index = get.current.track.index(),
 		# 			 panel.fun = function(x, y) {

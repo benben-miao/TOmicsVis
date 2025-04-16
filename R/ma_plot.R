@@ -55,9 +55,7 @@ ma_plot <- function(data,
 										title = "CT-vs-LT12",
 										xlab = "Log2 mean expression",
 										ylab = "Log2 fold change",
-										ggTheme = "theme_light"
-										){
-
+										ggTheme = "theme_light") {
 	# -> 2. Data Operation
 	# data(diff_express)
 	# # diff_express <- diff_express[diff_express$detection_call == 1,]
@@ -161,45 +159,43 @@ ma_plot <- function(data,
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
-	p <- ggpubr::ggmaplot(data,
-								fdr = fdr_value,
-								fc = foldchange,
-								genenames = as.vector(data[[1]]),
-								detection_call = NULL,
-								size = point_size,
-								alpha = color_alpha,
-								seed = 123,
-								font.label = c(label_size, "bold", "black"),
-								label.rectangle = label_box,
-								palette = c(color_up, color_down, "#AAAAAA"),
-								top = top_num,
-								select.top.method = top_method, # "padj", "fc"
-								label.select = NULL,
-								main = title,
-								xlab = xlab,
-								ylab = ylab
+	p <- ggpubr::ggmaplot(
+		data,
+		fdr = fdr_value,
+		fc = foldchange,
+		genenames = as.vector(data[[1]]),
+		detection_call = NULL,
+		size = point_size,
+		alpha = color_alpha,
+		seed = 123,
+		font.label = c(label_size, "bold", "black"),
+		label.rectangle = label_box,
+		palette = c(color_up, color_down, "#AAAAAA"),
+		top = top_num,
+		select.top.method = top_method,
+		# "padj", "fc"
+		label.select = NULL,
+		main = title,
+		xlab = xlab,
+		ylab = ylab
 	) +
 		# geom_text_repel(max.overlaps = Inf) +
 		gg_theme +
-		theme(plot.title = element_text(face = plotTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = plotTitleSize,
-																		hjust = plotTitleHjust
-		),
-		axis.title = element_text(face = axisTitleFace,
-															# "plain", "italic", "bold", "bold.italic"
-															size = axisTitleSize
-		),
-		axis.text = element_text(face = "plain",
-														 size = axisTextSize
-		),
-		legend.title = element_text(face = "plain",
-																size = legendTitleSize
-		),
-		legend.position = legendPosition,
-		# "none", "left", "right", "bottom", "top"
-		legend.direction = legendDirection
-		# "horizontal" or "vertical"
+		theme(
+			plot.title = element_text(
+				face = plotTitleFace,
+				# "plain", "italic", "bold", "bold.italic"
+				size = plotTitleSize,
+				hjust = plotTitleHjust
+			),
+			axis.title = element_text(face = axisTitleFace, # "plain", "italic", "bold", "bold.italic"
+																size = axisTitleSize),
+			axis.text = element_text(face = "plain", size = axisTextSize),
+			legend.title = element_text(face = "plain", size = legendTitleSize),
+			legend.position = legendPosition,
+			# "none", "left", "right", "bottom", "top"
+			legend.direction = legendDirection
+			# "horizontal" or "vertical"
 		)
 	# # <- 4. Plot
 

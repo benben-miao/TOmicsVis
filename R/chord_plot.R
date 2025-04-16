@@ -48,8 +48,7 @@ chord_plot <- function(data,
 											 dist_name = 3.0,
 											 label_dir = "Vertical",
 											 dist_label = 0.3,
-											 label_scale = 0.8
-											){
+											 label_scale = 0.8) {
 	# -> 2. Data
 	rownames(data) <- data[, 1]
 	data <- data[, -1]
@@ -70,7 +69,7 @@ chord_plot <- function(data,
 	set.seed(color_seed)
 	if (multi_colors == "VividColors") {
 		grid_col <- randomcoloR::distinctColorPalette(color_num)
-	}else if (multi_colors == "RainbowColors") {
+	} else if (multi_colors == "RainbowColors") {
 		grid_col <- grDevices::rainbow(color_num)
 	}
 	# ChoiceBox: "VividColors", "RainbowColors"
@@ -95,7 +94,7 @@ chord_plot <- function(data,
 	# sector_scale <- "Origin"
 	if (sector_scale == "Origin") {
 		scale <- FALSE
-	}else if (sector_scale == "Scale") {
+	} else if (sector_scale == "Scale") {
 		scale <- TRUE
 	}
 	# ChoiceBox: "Origin", "Scale"
@@ -115,85 +114,93 @@ chord_plot <- function(data,
 
 	# # -> 4. Plot
 	if (label_dir == "Horizontal") {
-		p <- circlize::chordDiagram(data,
-								 grid.col = grid_col,
-								 grid.border = NULL,
-								 transparency = color_alpha,
-								 # col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
-								 row.col = NULL,
-								 column.col = NULL,
-								 order = NULL,
-								 directional = link_dir, # 1, -1, 0, 2
-								 direction.type = link_type, # diffHeight and arrows
-								 diffHeight = circlize::convert_height(2, "mm"),
-								 reduce = 1e-5,
-								 xmax = NULL,
-								 self.link = 2,
-								 symmetric = FALSE,
-								 keep.diagonal = FALSE,
-								 preAllocateTracks = NULL,
-								 annotationTrack = "grid", # c("name", "grid", "axis")
-								 annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
-								 link.border = NA,
-								 link.lwd = graphics::par("lwd"),
-								 link.lty = graphics::par("lty"),
-								 link.sort = FALSE,
-								 link.decreasing = TRUE,
-								 # link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
-								 # link.arr.width = link.arr.length/2,
-								 # link.arr.type = "triangle",
-								 # link.arr.lty = par("lty"),
-								 # link.arr.lwd = par("lwd"),
-								 # link.arr.col = par("col"),
-								 link.largest.ontop = FALSE,
-								 link.visible = link_visible,
-								 link.rank = NULL,
-								 link.overlap = FALSE,
-								 scale = scale,
-								 group = NULL,
-								 big.gap = 10,
-								 small.gap = 1
+		p <- circlize::chordDiagram(
+			data,
+			grid.col = grid_col,
+			grid.border = NULL,
+			transparency = color_alpha,
+			# col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
+			row.col = NULL,
+			column.col = NULL,
+			order = NULL,
+			directional = link_dir,
+			# 1, -1, 0, 2
+			direction.type = link_type,
+			# diffHeight and arrows
+			diffHeight = circlize::convert_height(2, "mm"),
+			reduce = 1e-5,
+			xmax = NULL,
+			self.link = 2,
+			symmetric = FALSE,
+			keep.diagonal = FALSE,
+			preAllocateTracks = NULL,
+			annotationTrack = "grid",
+			# c("name", "grid", "axis")
+			annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
+			link.border = NA,
+			link.lwd = graphics::par("lwd"),
+			link.lty = graphics::par("lty"),
+			link.sort = FALSE,
+			link.decreasing = TRUE,
+			# link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
+			# link.arr.width = link.arr.length/2,
+			# link.arr.type = "triangle",
+			# link.arr.lty = par("lty"),
+			# link.arr.lwd = par("lwd"),
+			# link.arr.col = par("col"),
+			link.largest.ontop = FALSE,
+			link.visible = link_visible,
+			link.rank = NULL,
+			link.overlap = FALSE,
+			scale = scale,
+			group = NULL,
+			big.gap = 10,
+			small.gap = 1
 		)
 		# circos.clear()
 	} else if (label_dir == "Vertical") {
-		p <- circlize::chordDiagram(data,
-								 grid.col = grid_col,
-								 grid.border = NULL,
-								 transparency = color_alpha,
-								 # col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
-								 row.col = NULL,
-								 column.col = NULL,
-								 order = NULL,
-								 directional = link_dir, # 1, -1, 0, 2
-								 direction.type = link_type, # diffHeight and arrows
-								 diffHeight = circlize::convert_height(2, "mm"),
-								 reduce = 1e-5,
-								 xmax = NULL,
-								 self.link = 2,
-								 symmetric = FALSE,
-								 keep.diagonal = FALSE,
-								 preAllocateTracks = 1,
-								 annotationTrack = "grid", # c("name", "grid", "axis")
-								 annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
-								 link.border = NA,
-								 link.lwd = graphics::par("lwd"),
-								 link.lty = graphics::par("lty"),
-								 link.sort = FALSE,
-								 link.decreasing = TRUE,
-								 # link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
-								 # link.arr.width = link.arr.length/2,
-								 # link.arr.type = "triangle",
-								 # link.arr.lty = par("lty"),
-								 # link.arr.lwd = par("lwd"),
-								 # link.arr.col = par("col"),
-								 link.largest.ontop = FALSE,
-								 link.visible = link_visible,
-								 link.rank = NULL,
-								 link.overlap = FALSE,
-								 scale = scale,
-								 group = NULL,
-								 big.gap = 10,
-								 small.gap = 1
+		p <- circlize::chordDiagram(
+			data,
+			grid.col = grid_col,
+			grid.border = NULL,
+			transparency = color_alpha,
+			# col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
+			row.col = NULL,
+			column.col = NULL,
+			order = NULL,
+			directional = link_dir,
+			# 1, -1, 0, 2
+			direction.type = link_type,
+			# diffHeight and arrows
+			diffHeight = circlize::convert_height(2, "mm"),
+			reduce = 1e-5,
+			xmax = NULL,
+			self.link = 2,
+			symmetric = FALSE,
+			keep.diagonal = FALSE,
+			preAllocateTracks = 1,
+			annotationTrack = "grid",
+			# c("name", "grid", "axis")
+			annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
+			link.border = NA,
+			link.lwd = graphics::par("lwd"),
+			link.lty = graphics::par("lty"),
+			link.sort = FALSE,
+			link.decreasing = TRUE,
+			# link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
+			# link.arr.width = link.arr.length/2,
+			# link.arr.type = "triangle",
+			# link.arr.lty = par("lty"),
+			# link.arr.lwd = par("lwd"),
+			# link.arr.col = par("col"),
+			link.largest.ontop = FALSE,
+			link.visible = link_visible,
+			link.rank = NULL,
+			link.overlap = FALSE,
+			scale = scale,
+			group = NULL,
+			big.gap = 10,
+			small.gap = 1
 		)
 		# circos.clear()
 		circlize::circos.trackPlotRegion(
@@ -202,13 +209,14 @@ chord_plot <- function(data,
 				xlim <- circlize::get.cell.meta.data("xlim")
 				ylim <- circlize::get.cell.meta.data("ylim")
 				sector.name <- circlize::get.cell.meta.data("sector.index")
-				circlize::circos.text(mean(xlim),
-										ylim[1] + dist_label,
-										sector.name,
-										facing = "clockwise",
-										niceFacing = TRUE,
-										adj = c(0, 0.5),
-										cex = label_scale
+				circlize::circos.text(
+					mean(xlim),
+					ylim[1] + dist_label,
+					sector.name,
+					facing = "clockwise",
+					niceFacing = TRUE,
+					adj = c(0, 0.5),
+					cex = label_scale
 				)
 				circlize::circos.axis(
 					h = "top",

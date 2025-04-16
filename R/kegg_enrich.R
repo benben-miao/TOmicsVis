@@ -39,10 +39,9 @@
 #'
 kegg_enrich <- function(kegg_anno,
 												degs_list,
-											  padjust_method = "fdr",
-											  pvalue_cutoff = 0.05,
-											  qvalue_cutoff = 0.05
-											){
+												padjust_method = "fdr",
+												pvalue_cutoff = 0.05,
+												qvalue_cutoff = 0.05) {
 	# -> 2. Data Parameters
 	# padjust_method <- "fdr"
 	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
@@ -61,29 +60,27 @@ kegg_enrich <- function(kegg_anno,
 	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
 	# deg_list <- with(deg_fc, setNames(log2FC, id))
 
-	gene_kegg7 <- separate_rows(data = gene_kegg,
-															"kegg_pathway",
-															sep = ";"
-	)
+	gene_kegg7 <- separate_rows(data = gene_kegg, "kegg_pathway", sep = ";")
 
 	gene_kegg8 <- separate(gene_kegg7,
 												 "kegg_pathway",
 												 c("kegg_pathway", "description"),
-												 "\\("
-	)
+												 "\\(")
 
 	gene_kegg9 <- drop_na(gene_kegg8)
 	gene_kegg9["description"] <- gsub(")", "", gene_kegg9$description)
 
-	enrich_kegg <- enricher(gene = degs_list,
-													TERM2GENE = data.frame(gene_kegg9[,2],gene_kegg9[,1]),
-													TERM2NAME = gene_kegg9[,2:3],
-													pvalueCutoff = pvalue_cutoff,
-													pAdjustMethod = padjust_method, # "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
-													qvalueCutoff = qvalue_cutoff,
-													minGSSize = 1,
-													maxGSSize = 1000
-													)
+	enrich_kegg <- enricher(
+		gene = degs_list,
+		TERM2GENE = data.frame(gene_kegg9[, 2], gene_kegg9[, 1]),
+		TERM2NAME = gene_kegg9[, 2:3],
+		pvalueCutoff = pvalue_cutoff,
+		pAdjustMethod = padjust_method,
+		# "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+		qvalueCutoff = qvalue_cutoff,
+		minGSSize = 1,
+		maxGSSize = 1000
+	)
 
 	enrich_result <- enrich_kegg@result
 

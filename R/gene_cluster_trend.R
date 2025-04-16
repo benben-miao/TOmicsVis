@@ -33,46 +33,45 @@
 #' gene_cluster_trend(gene_expression3[,-7], cluster_num = 6, palette = "Spectral")
 #'
 gene_cluster_trend <- function(data,
-                               thres = 0.25,
-                               min_std = 0.2,
-                               palette = "PiYG",
-                               cluster_num = 4
-                               ){
+															 thres = 0.25,
+															 min_std = 0.2,
+															 palette = "PiYG",
+															 cluster_num = 4) {
+	# create ExpressionSet object
+	data <- as.data.frame(data)
+	rownames(data) <- data[, 1]
+	data <- data[, -1]
+	eset <- new("ExpressionSet", exprs = as.matrix(data))
 
-  # create ExpressionSet object
-  data <- as.data.frame(data)
-  rownames(data) <- data[,1]
-  data <- data[,-1]
-  eset <- new("ExpressionSet", exprs = as.matrix(data))
+	# Data pre-processing
+	eset <- Mfuzz::filter.NA(eset, thres = thres)
+	#eset <- fill.NA(eset,mode="mean",k=10)
+	eset <- Mfuzz::filter.std(eset, min.std = min_std, visu = F)
 
-  # Data pre-processing
-  eset <- Mfuzz::filter.NA(eset, thres = thres)
-  #eset <- fill.NA(eset,mode="mean",k=10)
-  eset <- Mfuzz::filter.std(eset, min.std = min_std, visu = F)
+	# data normalization
+	eset <- Mfuzz::standardise(eset)
+	# set cluster number
+	c <- cluster_num
+	# estimate m value
+	m <- Mfuzz::mestimate(eset)
 
-  # data normalization
-  eset <- Mfuzz::standardise(eset)
-  # set cluster number
-  c <- cluster_num
-  # estimate m value
-  m <- Mfuzz::mestimate(eset)
+	# perform mfuzz clustering
+	cl <- Mfuzz::mfuzz(eset, centers = c, m = m)
 
-  # perform mfuzz clustering
-  cl <- Mfuzz::mfuzz(eset, centers = c, m = m)
+	# set the color palettes
+	# The diverging palettes are: BrBG PiYG PRGn PuOr RdBu RdGy RdYlBu RdYlGn Spectral
+	palettes <- RColorBrewer::brewer.pal(8, palette)
+	colors <- rev(grDevices::colorRampPalette(palettes)(1000))
 
-  # set the color palettes
-  # The diverging palettes are: BrBG PiYG PRGn PuOr RdBu RdGy RdYlBu RdYlGn Spectral
-  palettes <- RColorBrewer::brewer.pal(8, palette)
-  colors <- rev(grDevices::colorRampPalette(palettes)(1000))
+	# plot gene cluster trend
+	p <- Mfuzz::mfuzz.plot(
+		eset,
+		cl,
+		mfrow = c(2, (c / 2 + 0.5)),
+		colo = colors,
+		time.labels = colnames(eset),
+		new.window = FALSE
+	)
 
-  # plot gene cluster trend
-  p <- Mfuzz::mfuzz.plot(
-    eset,
-    cl,
-    mfrow = c(2,(c/2 + 0.5)),
-    colo = colors,
-    time.labels = colnames(eset),
-    new.window = FALSE)
-
-  return(p)
+	return(p)
 }

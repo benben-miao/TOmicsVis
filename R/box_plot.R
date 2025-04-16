@@ -58,8 +58,7 @@ box_plot <- function(data,
 										 sci_color_alpha = 1.00,
 										 legend_pos = "right",
 										 legend_dir = "vertical",
-										 ggTheme = "theme_light"
-										){
+										 ggTheme = "theme_light") {
 	# -> 2. Data Operation
 	# set.seed(123)
 	# wdata = data.frame(
@@ -285,43 +284,50 @@ box_plot <- function(data,
 	my_comparisons <- combn(groups, 2, simplify = FALSE)
 	my_comparisons <- lapply(my_comparisons, as.character)
 
-	symnum_args <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
-											symbols = c("****", "***", "**", "*", "ns"))
+	symnum_args <- list(
+		cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
+		symbols = c("****", "***", "**", "*", "ns")
+	)
 	# <- 3. Plot Parameters
 
 	# # -> 4. Plot
 	if (group_level == "Two_Column") {
-		p <- ggboxplot(data,
-									 x = colnames(data)[2],
-									 y = colnames(data)[1],
-									 combine = FALSE,
-									 merge = FALSE,
-									 color = colnames(data)[2],
-									 fill = colnames(data)[2],
-									 # title = title,
-									 xlab = xlab,
-									 ylab = ylab,
-									 bxp.errorbar = FALSE,
-									 bxp.errorbar.width = 0.3,
-									 # facet.by = colnames(data)[3],
-									 # panel.labs = NULL,
-									 # short.panel.labs = FALSE,
-									 linetype = lineType,
-									 # "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash"
-									 size = lineSize, # Numeric value (e.g.: size = 1). change the size of points and outlines
-									 width = boxWidth, # numeric value between 0 and 1 specifying box width
-									 notch = notch,
-									 add = add_element,
-									 # "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range"
-									 outlier.shape = shape,
-									 error.plot = boxError
-									 # "pointrange", "linerange", "crossbar", "errorbar", "upper_errorbar", "lower_errorbar", "upper_pointrange", "lower_pointrange", "upper_linerange", "lower_linerange"
+		p <- ggboxplot(
+			data,
+			x = colnames(data)[2],
+			y = colnames(data)[1],
+			combine = FALSE,
+			merge = FALSE,
+			color = colnames(data)[2],
+			fill = colnames(data)[2],
+			# title = title,
+			xlab = xlab,
+			ylab = ylab,
+			bxp.errorbar = FALSE,
+			bxp.errorbar.width = 0.3,
+			# facet.by = colnames(data)[3],
+			# panel.labs = NULL,
+			# short.panel.labs = FALSE,
+			linetype = lineType,
+			# "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash"
+			size = lineSize,
+			# Numeric value (e.g.: size = 1). change the size of points and outlines
+			width = boxWidth,
+			# numeric value between 0 and 1 specifying box width
+			notch = notch,
+			add = add_element,
+			# "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range"
+			outlier.shape = shape,
+			error.plot = boxError
+			# "pointrange", "linerange", "crossbar", "errorbar", "upper_errorbar", "lower_errorbar", "upper_pointrange", "lower_pointrange", "upper_linerange", "lower_linerange"
 		) +
 			stat_compare_means(
 				comparisons = my_comparisons,
-				method = test_method, # "wilcox.test", "t.test", "anova", "kruskal.test"
+				method = test_method,
+				# "wilcox.test", "t.test", "anova", "kruskal.test"
 				hide.ns = hide_ns,
-				label = test_label, # "p.signif", "p.format"
+				label = test_label,
+				# "p.signif", "p.format"
 				tip.length = 0.03,
 				bracket.size = bracketSize,
 				# symnum.args = symnum_args,
@@ -330,60 +336,65 @@ box_plot <- function(data,
 			sci_color +
 			sci_fill +
 			gg_theme +
-			theme(plot.title = element_text(face = plotTitleFace,
-																			# "plain", "italic", "bold", "bold.italic"
-																			size = plotTitleSize,
-																			hjust = plotTitleHjust
-						),
-						axis.title = element_text(face = axisTitleFace,
-																			# "plain", "italic", "bold", "bold.italic"
-																			size = axisTitleSize
-						),
-						axis.text = element_text(face = "plain",
-																		 size = axisTextSize
-						),
-						legend.title = element_text(face = "plain",
-																				size = legendTitleSize
-						),
-						legend.position = legend_pos,
-						# "none", "left", "right", "bottom", "top"
-						legend.direction = legend_dir,
-						# "horizontal" or "vertical"
-						strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
-						strip.text = element_text(color = "#333333", size = 10, face = "bold")
+			theme(
+				plot.title = element_text(
+					face = plotTitleFace,
+					# "plain", "italic", "bold", "bold.italic"
+					size = plotTitleSize,
+					hjust = plotTitleHjust
+				),
+				axis.title = element_text(face = axisTitleFace, # "plain", "italic", "bold", "bold.italic"
+																	size = axisTitleSize),
+				axis.text = element_text(face = "plain", size = axisTextSize),
+				legend.title = element_text(face = "plain", size = legendTitleSize),
+				legend.position = legend_pos,
+				# "none", "left", "right", "bottom", "top"
+				legend.direction = legend_dir,
+				# "horizontal" or "vertical"
+				strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
+				strip.text = element_text(
+					color = "#333333",
+					size = 10,
+					face = "bold"
+				)
 			)
 	} else if (group_level == "Three_Column") {
-		p <- ggboxplot(data,
-									 x = colnames(data)[2],
-									 y = colnames(data)[1],
-									 combine = FALSE,
-									 merge = FALSE,
-									 color = colnames(data)[2],
-									 fill = colnames(data)[2],
-									 # title = title,
-									 xlab = xlab,
-									 ylab = ylab,
-									 bxp.errorbar = FALSE,
-									 bxp.errorbar.width = 0.3,
-									 facet.by = colnames(data)[3],
-									 panel.labs = NULL,
-									 short.panel.labs = FALSE,
-									 linetype = lineType,
-									 # "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash"
-									 size = lineSize, # Numeric value (e.g.: size = 1). change the size of points and outlines
-									 width = boxWidth, # numeric value between 0 and 1 specifying box width
-									 notch = notch,
-									 add = add_element,
-									 # "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range"
-									 outlier.shape = shape,
-									 error.plot = boxError
-									 # "pointrange", "linerange", "crossbar", "errorbar", "upper_errorbar", "lower_errorbar", "upper_pointrange", "lower_pointrange", "upper_linerange", "lower_linerange"
+		p <- ggboxplot(
+			data,
+			x = colnames(data)[2],
+			y = colnames(data)[1],
+			combine = FALSE,
+			merge = FALSE,
+			color = colnames(data)[2],
+			fill = colnames(data)[2],
+			# title = title,
+			xlab = xlab,
+			ylab = ylab,
+			bxp.errorbar = FALSE,
+			bxp.errorbar.width = 0.3,
+			facet.by = colnames(data)[3],
+			panel.labs = NULL,
+			short.panel.labs = FALSE,
+			linetype = lineType,
+			# "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash"
+			size = lineSize,
+			# Numeric value (e.g.: size = 1). change the size of points and outlines
+			width = boxWidth,
+			# numeric value between 0 and 1 specifying box width
+			notch = notch,
+			add = add_element,
+			# "none", "dotplot", "jitter", "boxplot", "point", "mean", "mean_se", "mean_sd", "mean_ci", "mean_range", "median", "median_iqr", "median_hilow", "median_q1q3", "median_mad", "median_range"
+			outlier.shape = shape,
+			error.plot = boxError
+			# "pointrange", "linerange", "crossbar", "errorbar", "upper_errorbar", "lower_errorbar", "upper_pointrange", "lower_pointrange", "upper_linerange", "lower_linerange"
 		) +
 			stat_compare_means(
 				comparisons = my_comparisons,
-				method = test_method, # "wilcox.test", "t.test", "anova", "kruskal.test"
+				method = test_method,
+				# "wilcox.test", "t.test", "anova", "kruskal.test"
 				hide.ns = hide_ns,
-				label = test_label, # "p.signif", "p.format"
+				label = test_label,
+				# "p.signif", "p.format"
 				tip.length = 0.03,
 				bracket.size = bracketSize,
 				# symnum.args = symnum_args,
@@ -392,27 +403,27 @@ box_plot <- function(data,
 			sci_color +
 			sci_fill +
 			gg_theme +
-			theme(plot.title = element_text(face = plotTitleFace,
-																			# "plain", "italic", "bold", "bold.italic"
-																			size = plotTitleSize,
-																			hjust = plotTitleHjust
-						),
-						axis.title = element_text(face = axisTitleFace,
-																			# "plain", "italic", "bold", "bold.italic"
-																			size = axisTitleSize
-						),
-						axis.text = element_text(face = "plain",
-																		 size = axisTextSize
-						),
-						legend.title = element_text(face = "plain",
-																				size = legendTitleSize
-						),
-						legend.position = legend_pos,
-						# "none", "left", "right", "bottom", "top"
-						legend.direction = legend_dir,
-						# "horizontal" or "vertical"
-						strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
-						strip.text = element_text(color = "#333333", size = 10, face = "bold")
+			theme(
+				plot.title = element_text(
+					face = plotTitleFace,
+					# "plain", "italic", "bold", "bold.italic"
+					size = plotTitleSize,
+					hjust = plotTitleHjust
+				),
+				axis.title = element_text(face = axisTitleFace, # "plain", "italic", "bold", "bold.italic"
+																	size = axisTitleSize),
+				axis.text = element_text(face = "plain", size = axisTextSize),
+				legend.title = element_text(face = "plain", size = legendTitleSize),
+				legend.position = legend_pos,
+				# "none", "left", "right", "bottom", "top"
+				legend.direction = legend_dir,
+				# "horizontal" or "vertical"
+				strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
+				strip.text = element_text(
+					color = "#333333",
+					size = 10,
+					face = "bold"
+				)
 			)
 	}
 	# # <- 4. Plot
