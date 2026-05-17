@@ -15,7 +15,7 @@ display warnings from Mfuzz dependency"><!-- Global site tag (gtag.js) - Google 
 
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.99.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,11 +78,12 @@ display warnings from Mfuzz dependency</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Use this instead of library(TOmicsVis)</span></span></span>
 <span class="r-in"><span><span class="fu">load_TOmicsVis</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ✓ TOmicsVis v2.7.1 loaded successfully!</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> [OK] TOmicsVis v0.99.0 loaded successfully!</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   All functions ready to use.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Then use all functions normally</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="volcano_plot.html">volcano_plot</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `linewidth` argument instead.</span>

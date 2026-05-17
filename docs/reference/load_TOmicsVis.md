@@ -18,11 +18,12 @@ Invisible NULL. Loads TOmicsVis into the session namespace
 ``` r
 # Use this instead of library(TOmicsVis)
 load_TOmicsVis()
-#> ✓ TOmicsVis v2.7.1 loaded successfully!
+#> [OK] TOmicsVis v0.99.0 loaded successfully!
 #>   All functions ready to use.
 
 # Then use all functions normally
 data(gene_expression)
+data(degs_stats)
 volcano_plot(degs_stats)
 #> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
 #> ℹ Please use the `linewidth` argument instead.

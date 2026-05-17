@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface • TOmicsVis</title>
+<title>TOmicsVis an All-in-One Transcriptomic Analysis and Visualization R Package with Shinyapp Interface • TOmicsVis</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="TOmicsVis an All-in-One Transcriptomic Analysis and Visualization R Package with Shinyapp Interface">
 <meta name="description" content='Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.'>
 <meta property="og:description" content='Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.'>
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-000000-0"></script><script>
@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.99.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="tomicsvis-version-271">TOmicsVis (Version 2.7.1)<a class="anchor" aria-label="anchor" href="#tomicsvis-version-271"></a>
+<div class="page-header"><h1 id="tomicsvis">TOmicsVis<a class="anchor" aria-label="anchor" href="#tomicsvis"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="id_1-introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#id_1-introduction"></a>
@@ -102,8 +102,8 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Start shiny application.</span></span>
 <span><span class="fu">TOmicsVis</span><span class="fu">::</span><span class="fu"><a href="reference/tomicsvis.html">tomicsvis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<figure><img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shinyapp"><figcaption aria-hidden="true">
-TOmicsVis Shinyapp
+<figure><p><img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shinyapp"></p>
+<figcaption aria-hidden="true"><p>TOmicsVis Shinyapp</p>
 </figcaption></figure><p><strong>1.1.2 Online cloud platform:</strong> <a href="https://shiny.hiplot.cn/tomicsvis-shiny/" class="external-link uri">https://shiny.hiplot.cn/tomicsvis-shiny/</a></p>
 </div>
 <div class="section level4">
@@ -936,13 +936,13 @@ TOmicsVis Shinyapp
 <span>  label_scale <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-chord_plot-1.png"><!-- --></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
-<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2</span></span>
-<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2</span></span>
-<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2</span></span>
-<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2</span></span>
-<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2</span></span>
-<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
+<span><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2</span></span>
+<span><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2</span></span>
+<span><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2</span></span>
+<span><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2</span></span>
+<span><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2</span></span>
+<span><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2</span></span></code></pre>
 <p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
@@ -1035,7 +1035,7 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 0 genes excluded.</span></span>
 <span><span class="co">#&gt; 0 genes excluded.</span></span></code></pre></div>
 <p><img src="reference/figures/README-gene_cluster_trend-1.png"><!-- --></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 <p>Get help using command <code><a href="reference/gene_cluster_trend.html">?TOmicsVis::gene_cluster_trend</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>

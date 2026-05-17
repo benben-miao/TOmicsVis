@@ -1,12 +1,16 @@
-## TOmicsVis 2.7.2
+## TOmicsVis 0.99.0
 
 **Date**: 2026-05-18
 
-<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bioconductor Initial Submission:</span>
 
-1. Enhanced `?TOmicsVis::venn_plot` function with 9 color schemes (Vibrant, Pastel, Ocean, Sunset, Forest, Neon, Candy, Earth, Wine).
-2. Added customizable parameters for `?TOmicsVis::venn_plot`: `color_scheme`, `label_color`, `border_color`, `line_width`, `fill_alpha`, and `custom_colors`.
-3. Created internal utility functions for plot customization (17 helper functions with @keywords internal).
+1. Submit TOmicsVis to Bioconductor for the first time
+2. Enhanced `?TOmicsVis::venn_plot` function with 9 color schemes (Vibrant, Pastel, Ocean, Sunset, Forest, Neon, Candy, Earth, Wine).
+3. Added customizable parameters for `?TOmicsVis::venn_plot`: `color_scheme`, `label_color`, `border_color`, `line_width`, `fill_alpha`, and `custom_colors`.
+4. Created internal utility functions for plot customization (17 helper functions with @keywords internal).
+5. Fixed all CRAN check errors (0 errors achieved)
+6. Optimized namespace imports to avoid conflicts
+7. Added biocViews field for Bioconductor compliance
 
 <span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
 

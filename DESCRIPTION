@@ -1,16 +1,14 @@
 Package: TOmicsVis
 Type: Package
 Title: TOmicsVis an All-in-One Transcriptomic Analysis and Visualization R Package with Shinyapp Interface
-Version: 2.7.2
+Version: 0.99.0
 Date: 2026-05-18
 Authors@R: c(
-    person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
+    person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com",
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
-    person(given = 'Wei', family = 'Dong', email = 'dwei1220779@gmail.com', 
+    person(given = 'Wei', family = 'Dong', email = 'dwei1220779@gmail.com',
            role = c("aut"), comment = c(ORCID = '0000-0003-2201-7164'))
 	)
-Author: Benben Miao [aut, cre] (<benben.miao@outlook.com>), Wei Dong [aut] (<dwei1220779@gmail.com>)
-Maintainer: Benben Miao <benben.miao@outlook.com>
 Description: Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.
 URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/

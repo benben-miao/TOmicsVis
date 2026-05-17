@@ -1,12 +1,10 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TOmicsVis (Version 2.7.1)
+# TOmicsVis
 
 ## 1. Introduction
 
-**TOmicsVis**: An all-in-one transcriptomic analysis and visualization R
-package with Shiny app interface.
+**TOmicsVis**: An all-in-one transcriptomic analysis and visualization R package with Shiny app interface.
 
 **Current Version:** 2.7.1 (2026-05-17)
 
@@ -16,10 +14,7 @@ package with Shiny app interface.
 
 **Citation:** `citation(package = "TOmicsVis")`
 
-> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and
-> You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis
-> and Visualization R Package with shinyapp Interface.” iMeta e137.
-> <https://doi.org/10.1002/imt2.137>
+> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. <https://doi.org/10.1002/imt2.137>
 
 #### 1.1 TOmicsVis Shinyapp
 
@@ -31,14 +26,18 @@ TOmicsVis::tomicsvis()
 ```
 
 <figure>
-<img
-src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png"
-alt="TOmicsVis Shinyapp" />
-<figcaption aria-hidden="true">TOmicsVis Shinyapp</figcaption>
+
+<img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shinyapp"/>
+
+<figcaption aria-hidden="true">
+
+TOmicsVis Shinyapp
+
+</figcaption>
+
 </figure>
 
-**1.1.2 Online cloud platform:**
-<https://shiny.hiplot.cn/tomicsvis-shiny/>
+**1.1.2 Online cloud platform:** <https://shiny.hiplot.cn/tomicsvis-shiny/>
 
 #### 1.2 Github and CRAN Install
 
@@ -108,8 +107,7 @@ volcano_plot(degs_stats)
 
 #### 3.1.1 quantile_plot
 
-**Input Data:** Dataframe: Weight and Sex traits dataframe (1st-col:
-Weight, 2nd-col: Sex).
+**Input Data:** Dataframe: Weight and Sex traits dataframe (1st-col: Weight, 2nd-col: Sex).
 
 **Output Plot:** Quantile plot for visualizing data distribution.
 
@@ -143,8 +141,7 @@ quantile_plot(
 
 ![](man/figures/README-quantile_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::quantile_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
+Get help using command `?TOmicsVis::quantile_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -153,11 +150,9 @@ Get help using command `?TOmicsVis::quantile_plot` or reference page
 
 #### 3.1.2 box_plot
 
-**Input Data:** Dataframe: Length, Width, Weight, and Sex traits
-dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
 
-**Output Plot:** Plot: Box plot support two levels and multiple groups
-with P value.
+**Output Plot:** Plot: Box plot support two levels and multiple groups with P value.
 
 ``` r
 # 1. Load example datasets
@@ -191,8 +186,7 @@ box_plot(
 
 ![](man/figures/README-box_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::box_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/box_plot.html>.
+Get help using command `?TOmicsVis::box_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/box_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -201,11 +195,9 @@ Get help using command `?TOmicsVis::box_plot` or reference page
 
 #### 3.1.3 violin_plot
 
-**Input Data:** Dataframe: Length, Width, Weight, and Sex traits
-dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
+**Input Data:** Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).
 
-**Output Plot:** Plot: Violin plot support two levels and multiple
-groups with P value.
+**Output Plot:** Plot: Violin plot support two levels and multiple groups with P value.
 
 ``` r
 # 1. Load example datasets
@@ -232,8 +224,7 @@ violin_plot(
 
 ![](man/figures/README-violin_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::violin_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html>.
+Get help using command `?TOmicsVis::violin_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -242,11 +233,9 @@ Get help using command `?TOmicsVis::violin_plot` or reference page
 
 #### 3.1.4 survival_plot
 
-**Input Data:** Dataframe: survival record data (1st-col: Time, 2nd-col:
-Status, 3rd-col: Group).
+**Input Data:** Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).
 
-**Output Plot:** Survival plot for analyzing and visualizing survival
-data.
+**Output Plot:** Survival plot for analyzing and visualizing survival data.
 
 ``` r
 # 1. Load example datasets
@@ -281,8 +270,7 @@ survival_plot(
 
 ![](man/figures/README-survival_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::survival_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html>.
+Get help using command `?TOmicsVis::survival_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -293,11 +281,9 @@ Get help using command `?TOmicsVis::survival_plot` or reference page
 
 #### 3.2.1 corr_heatmap
 
-**Input Data:** Dataframe: All genes in all samples expression dataframe
-of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Output Plot:** Plot: heatmap plot filled with Pearson correlation
-values and P values.
+**Output Plot:** Plot: heatmap plot filled with Pearson correlation values and P values.
 
 ``` r
 # 1. Load example dataset
@@ -348,8 +334,7 @@ corr_heatmap(
 
 ![](man/figures/README-corr_heatmap-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::corr_heatmap` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html>.
+Get help using command `?TOmicsVis::corr_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html>.
 
 ``` r
 # Get help with command in R console.
@@ -358,11 +343,9 @@ Get help using command `?TOmicsVis::corr_heatmap` or reference page
 
 #### 3.2.2 pca_analysis
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
 **Output Table:** PCA dimensional reduction analysis for RNA-Seq.
 
@@ -406,8 +389,7 @@ head(res)
 #> LT20_3  -5369.380  2606.1762  5.619822e-11
 ```
 
-Get help using command `?TOmicsVis::pca_analysis` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html>.
+Get help using command `?TOmicsVis::pca_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html>.
 
 ``` r
 # Get help with command in R console.
@@ -416,14 +398,11 @@ Get help using command `?TOmicsVis::pca_analysis` or reference page
 
 #### 3.2.3 pca_plot
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
-**Output Plot:** Plot: PCA dimensional reduction visualization for
-RNA-Seq.
+**Output Plot:** Plot: PCA dimensional reduction visualization for RNA-Seq.
 
 ``` r
 # 1. Load example datasets
@@ -457,8 +436,7 @@ pca_plot(
 
 ![](man/figures/README-pca_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::pca_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html>.
+Get help using command `?TOmicsVis::pca_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -467,14 +445,11 @@ Get help using command `?TOmicsVis::pca_plot` or reference page
 
 #### 3.2.4 tsne_analysis
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
-**Output Table:** TSNE analysis for analyzing and visualizing TSNE
-algorithm.
+**Output Table:** TSNE analysis for analyzing and visualizing TSNE algorithm.
 
 ``` r
 # 1. Load example datasets
@@ -493,8 +468,7 @@ head(res)
 #> 6  -7.535410 -38.35476
 ```
 
-Get help using command `?TOmicsVis::tsne_analysis` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html>.
+Get help using command `?TOmicsVis::tsne_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html>.
 
 ``` r
 # Get help with command in R console.
@@ -503,11 +477,9 @@ Get help using command `?TOmicsVis::tsne_analysis` or reference page
 
 #### 3.2.5 tsne_plot
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
 **Output Plot:** TSNE plot for analyzing and visualizing TSNE algorithm.
 
@@ -539,8 +511,7 @@ tsne_plot(
 
 ![](man/figures/README-tsne_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::tsne_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html>.
+Get help using command `?TOmicsVis::tsne_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -549,11 +520,9 @@ Get help using command `?TOmicsVis::tsne_plot` or reference page
 
 #### 3.2.6 umap_analysis
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
 **Output Table:** UMAP analysis for analyzing RNA-Seq data.
 
@@ -574,8 +543,7 @@ head(res)
 #> LT20_3 -0.42657219 -1.20536760
 ```
 
-Get help using command `?TOmicsVis::umap_analysis` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html>.
+Get help using command `?TOmicsVis::umap_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html>.
 
 ``` r
 # Get help with command in R console.
@@ -584,11 +552,9 @@ Get help using command `?TOmicsVis::umap_analysis` or reference page
 
 #### 3.2.7 umap_plot
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
 **Output Plot:** UMAP plot for analyzing and visualizing UMAP algorithm.
 
@@ -618,8 +584,7 @@ umap_plot(
 
 ![](man/figures/README-umap_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::umap_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html>.
+Get help using command `?TOmicsVis::umap_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -628,8 +593,7 @@ Get help using command `?TOmicsVis::umap_plot` or reference page
 
 #### 3.2.8 dendro_plot
 
-**Input Data:** Dataframe: All genes in all samples expression dataframe
-of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
 **Output Plot:** Plot: dendrogram for multiple samples clustering.
 
@@ -662,8 +626,7 @@ dendro_plot(
 
 ![](man/figures/README-dendro_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::dendro_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
+Get help using command `?TOmicsVis::dendro_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -674,11 +637,9 @@ Get help using command `?TOmicsVis::dendro_plot` or reference page
 
 #### 3.3.1 venn_plot
 
-**Input Data2:** Dataframe: Paired comparisons differentially expressed
-genes (degs) among groups (1st-col~: degs of paired comparisons).
+**Input Data2:** Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col\~: degs of paired comparisons).
 
-**Output Plot:** Venn plot for stat common and unique gene among
-multiple sets.
+**Output Plot:** Venn plot for stat common and unique gene among multiple sets.
 
 ``` r
 # 1. Load example datasets
@@ -708,8 +669,7 @@ venn_plot(
 
 ![](man/figures/README-venn_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::venn_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html>.
+Get help using command `?TOmicsVis::venn_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -718,11 +678,9 @@ Get help using command `?TOmicsVis::venn_plot` or reference page
 
 #### 3.3.2 upsetr_plot
 
-**Input Data2:** Dataframe: Paired comparisons differentially expressed
-genes (degs) among groups (1st-col~: degs of paired comparisons).
+**Input Data2:** Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col\~: degs of paired comparisons).
 
-**Output Plot:** UpSet plot for stat common and unique gene among
-multiple sets.
+**Output Plot:** UpSet plot for stat common and unique gene among multiple sets.
 
 ``` r
 # 1. Load example datasets
@@ -759,8 +717,7 @@ upsetr_plot(
 
 ![](man/figures/README-upsetr_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::upsetr_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html>.
+Get help using command `?TOmicsVis::upsetr_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -769,11 +726,9 @@ Get help using command `?TOmicsVis::upsetr_plot` or reference page
 
 #### 3.3.3 flower_plot
 
-**Input Data2:** Dataframe: Paired comparisons differentially expressed
-genes (degs) among groups (1st-col~: degs of paired comparisons).
+**Input Data2:** Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col\~: degs of paired comparisons).
 
-**Output Plot:** Flower plot for stat common and unique gene among
-multiple sets.
+**Output Plot:** Flower plot for stat common and unique gene among multiple sets.
 
 ``` r
 # 1. Load example datasets
@@ -794,8 +749,7 @@ flower_plot(
 
 ![](man/figures/README-flower_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::flower_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
+Get help using command `?TOmicsVis::flower_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -804,12 +758,9 @@ Get help using command `?TOmicsVis::flower_plot` or reference page
 
 #### 3.3.4 volcano_plot
 
-**Input Data2:** Dataframe: All DEGs of paired comparison CT-vs-LT12
-stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col:
-Pvalue, 4th-col: FDR).
+**Input Data2:** Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).
 
-**Output Plot:** Volcano plot for visualizing differentailly expressed
-genes.
+**Output Plot:** Volcano plot for visualizing differentailly expressed genes.
 
 ``` r
 # 1. Load example datasets
@@ -847,8 +798,7 @@ volcano_plot(
 
 ![](man/figures/README-volcano_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::volcano_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
+Get help using command `?TOmicsVis::volcano_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -857,12 +807,9 @@ Get help using command `?TOmicsVis::volcano_plot` or reference page
 
 #### 3.3.5 ma_plot
 
-**Input Data2:** Dataframe: All DEGs of paired comparison CT-vs-LT12
-stats2 dataframe (1st-col: Gene, 2nd-col: baseMean, 3rd-col:
-Log2FoldChange, 4th-col: FDR).
+**Input Data2:** Dataframe: All DEGs of paired comparison CT-vs-LT12 stats2 dataframe (1st-col: Gene, 2nd-col: baseMean, 3rd-col: Log2FoldChange, 4th-col: FDR).
 
-**Output Plot:** MversusA plot for visualizing differentially expressed
-genes.
+**Output Plot:** MversusA plot for visualizing differentially expressed genes.
 
 ``` r
 # 1. Load example datasets
@@ -898,8 +845,7 @@ ma_plot(
 
 ![](man/figures/README-ma_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::ma_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
+Get help using command `?TOmicsVis::ma_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -908,15 +854,11 @@ Get help using command `?TOmicsVis::ma_plot` or reference page
 
 #### 3.3.6 heatmap_group
 
-**Input Data1:** Dataframe: Shared DEGs of all paired comparisons in all
-samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~:
-Samples).
+**Input Data1:** Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
-**Output Plot:** Heatmap group for visualizing grouped gene expression
-data.
+**Output Plot:** Heatmap group for visualizing grouped gene expression data.
 
 ``` r
 # 1. Load example datasets
@@ -946,8 +888,7 @@ heatmap_group(
 
 ![](man/figures/README-heatmap_group-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::heatmap_group` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html>.
+Get help using command `?TOmicsVis::heatmap_group` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html>.
 
 ``` r
 # Get help with command in R console.
@@ -956,12 +897,9 @@ Get help using command `?TOmicsVis::heatmap_group` or reference page
 
 #### 3.3.7 circos_heatmap
 
-**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all
-samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~:
-Samples).
+**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~: Samples).
 
-**Output Plot:** Circos heatmap plot for visualizing gene expressing in
-multiple samples.
+**Output Plot:** Circos heatmap plot for visualizing gene expressing in multiple samples.
 
 ``` r
 # 1. Load example datasets
@@ -1002,8 +940,7 @@ circos_heatmap(
 
 ![](man/figures/README-circos_heatmap-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::circos_heatmap` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
+Get help using command `?TOmicsVis::circos_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1012,12 +949,9 @@ Get help using command `?TOmicsVis::circos_heatmap` or reference page
 
 #### 3.3.8 chord_plot
 
-**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all
-samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~:
-Samples).
+**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~: Samples).
 
-**Output Plot:** Chord plot for visualizing the relationships of
-pathways and genes.
+**Output Plot:** Chord plot for visualizing the relationships of pathways and genes.
 
 ``` r
 # 1. Load chord_data example datasets
@@ -1058,16 +992,17 @@ chord_plot(
 
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
-    #>      rn   cn value1 value2 o1 o2      x1     x2       col
-    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2
-    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2
-    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2
-    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2
-    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2
-    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2
+```         
+#>      rn   cn value1 value2 o1 o2      x1     x2       col
+#> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2
+#> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2
+#> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2
+#> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2
+#> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2
+#> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2
+```
 
-Get help using command `?TOmicsVis::chord_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
+Get help using command `?TOmicsVis::chord_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1078,12 +1013,9 @@ Get help using command `?TOmicsVis::chord_plot` or reference page
 
 #### 3.4.1 gene_rank_plot
 
-**Input Data:** Dataframe: All DEGs of paired comparison CT-vs-LT12
-stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col:
-Pvalue, 4th-col: FDR).
+**Input Data:** Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).
 
-**Output Plot:** Gene cluster trend plot for visualizing gene expression
-trend profile in multiple samples.
+**Output Plot:** Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.
 
 ``` r
 # 1. Load example datasets
@@ -1106,8 +1038,7 @@ gene_rank_plot(
 
 ![](man/figures/README-gene_rank_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::gene_rank_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
+Get help using command `?TOmicsVis::gene_rank_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1116,12 +1047,9 @@ Get help using command `?TOmicsVis::gene_rank_plot` or reference page
 
 #### 3.4.2 gene_cluster_trend
 
-**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all
-groups expression dataframe of RNA-Seq. (1st-col: Genes,
-2nd-col~n-1-col: Groups, n-col: Pathways).
+**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~n-1-col: Groups, n-col: Pathways).
 
-**Output Plot:** Gene cluster trend plot for visualizing gene expression
-trend profile in multiple samples.
+**Output Plot:** Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.
 
 ``` r
 # 1. Load example datasets
@@ -1176,11 +1104,11 @@ gene_cluster_trend(
 
 ![](man/figures/README-gene_cluster_trend-1.png)<!-- -->
 
-    #> NULL
+```         
+#> NULL
+```
 
-Get help using command `?TOmicsVis::gene_cluster_trend` or reference
-page
-<https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
+Get help using command `?TOmicsVis::gene_cluster_trend` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1189,12 +1117,9 @@ page
 
 #### 3.4.3 trend_plot
 
-**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all
-groups expression dataframe of RNA-Seq. (1st-col: Genes,
-2nd-col~n-1-col: Groups, n-col: Pathways).
+**Input Data2:** Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~n-1-col: Groups, n-col: Pathways).
 
-**Output Plot:** Trend plot for visualizing gene expression trend
-profile in multiple traits.
+**Output Plot:** Trend plot for visualizing gene expression trend profile in multiple traits.
 
 ``` r
 # 1. Load example datasets
@@ -1237,8 +1162,7 @@ trend_plot(
 
 ![](man/figures/README-trend_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::trend_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html>.
+Get help using command `?TOmicsVis::trend_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1247,11 +1171,9 @@ Get help using command `?TOmicsVis::trend_plot` or reference page
 
 #### 3.4.4 wgcna_pipeline
 
-**Input Data1:** Dataframe: All genes in all samples expression
-dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
+**Input Data1:** Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: Samples and groups for gene expression
-(1st-col: Samples, 2nd-col: Groups).
+**Input Data2:** Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
 
 **Output Plot:** WGCNA analysis pipeline for RNA-Seq.
 
@@ -1352,8 +1274,7 @@ wgcna_pipeline(gene_expression[1:3000,], samples_groups)
 #>          moduleEigengenes: Calculating 11 module eigengenes in given set.
 ```
 
-Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
+Get help using command `?TOmicsVis::wgcna_pipeline` or reference page <https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1362,11 +1283,9 @@ Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
 
 #### 3.4.5 network_plot
 
-**Input Data:** Dataframe: Network data from WGCNA tan module top-200
-dataframe (1st-col: Source, 2nd-col: Target).
+**Input Data:** Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).
 
-**Output Plot:** Network plot for analyzing and visualizing relationship
-of genes.
+**Output Plot:** Network plot for analyzing and visualizing relationship of genes.
 
 ``` r
 # 1. Load example datasets
@@ -1403,8 +1322,7 @@ network_plot(
 
 ![](man/figures/README-network_plot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::network_plot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/network_plot.html>.
+Get help using command `?TOmicsVis::network_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/network_plot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1413,12 +1331,9 @@ Get help using command `?TOmicsVis::network_plot` or reference page
 
 #### 3.4.6 heatmap_cluster
 
-**Input Data:** Dataframe: Shared DEGs of all paired comparisons in all
-samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~:
-Samples).
+**Input Data:** Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~: Samples).
 
-**Output Plot:** Heatmap cluster plot for visualizing clustered gene
-expression data.
+**Output Plot:** Heatmap cluster plot for visualizing clustered gene expression data.
 
 ``` r
 # 1. Load example datasets
@@ -1461,8 +1376,7 @@ heatmap_cluster(
 
 ![](man/figures/README-heatmap_cluster-1.png)<!-- -->![](man/figures/README-heatmap_cluster-2.png)<!-- -->![](man/figures/README-heatmap_cluster-3.png)<!-- -->
 
-Get help using command `?TOmicsVis::heatmap_cluster` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
+Get help using command `?TOmicsVis::heatmap_cluster` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1473,12 +1387,9 @@ Get help using command `?TOmicsVis::heatmap_cluster` or reference page
 
 #### 3.5.1 go_enrich
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Table:** GO enrichment analysis based on GO annotation results
-(None/Exist Reference Genome).
+**Output Table:** GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1559,8 +1470,7 @@ head(res)
 #> 6 1.110997e-01 9.458955e-02                                     ATP1B1     1
 ```
 
-Get help using command `?TOmicsVis::go_enrich` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
+Get help using command `?TOmicsVis::go_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1569,12 +1479,9 @@ Get help using command `?TOmicsVis::go_enrich` or reference page
 
 #### 3.5.2 go_enrich_stat
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** GO enrichment analysis and stat plot (None/Exist
-Reference Genome).
+**Output Plot:** GO enrichment analysis and stat plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1598,8 +1505,7 @@ go_enrich_stat(
 
 ![](man/figures/README-go_enrich_stat-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::go_enrich_stat` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html>.
+Get help using command `?TOmicsVis::go_enrich_stat` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1608,12 +1514,9 @@ Get help using command `?TOmicsVis::go_enrich_stat` or reference page
 
 #### 3.5.3 go_enrich_bar
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** GO enrichment analysis and bar plot (None/Exist
-Reference Genome).
+**Output Plot:** GO enrichment analysis and bar plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1639,8 +1542,7 @@ go_enrich_bar(
 
 ![](man/figures/README-go_enrich_bar-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::go_enrich_bar` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html>.
+Get help using command `?TOmicsVis::go_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1649,12 +1551,9 @@ Get help using command `?TOmicsVis::go_enrich_bar` or reference page
 
 #### 3.5.4 go_enrich_dot
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** GO enrichment analysis and dot plot (None/Exist
-Reference Genome).
+**Output Plot:** GO enrichment analysis and dot plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1678,8 +1577,7 @@ go_enrich_dot(
 
 ![](man/figures/README-go_enrich_dot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::go_enrich_dot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html>.
+Get help using command `?TOmicsVis::go_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1688,12 +1586,9 @@ Get help using command `?TOmicsVis::go_enrich_dot` or reference page
 
 #### 3.5.5 go_enrich_net
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** GO enrichment analysis and net plot (None/Exist
-Reference Genome).
+**Output Plot:** GO enrichment analysis and net plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1715,8 +1610,7 @@ go_enrich_net(
 
 ![](man/figures/README-go_enrich_net-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::go_enrich_net` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html>.
+Get help using command `?TOmicsVis::go_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1725,12 +1619,9 @@ Get help using command `?TOmicsVis::go_enrich_net` or reference page
 
 #### 3.5.6 kegg_enrich
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** GO enrichment analysis based on GO annotation results
-(None/Exist Reference Genome).
+**Output Plot:** GO enrichment analysis based on GO annotation results (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1818,8 +1709,7 @@ head(res)
 #> ko04971     4
 ```
 
-Get help using command `?TOmicsVis::kegg_enrich` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html>.
+Get help using command `?TOmicsVis::kegg_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1828,12 +1718,9 @@ Get help using command `?TOmicsVis::kegg_enrich` or reference page
 
 #### 3.5.7 kegg_enrich_bar
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** KEGG enrichment analysis and bar plot (None/Exist
-Reference Genome).
+**Output Plot:** KEGG enrichment analysis and bar plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1859,8 +1746,7 @@ kegg_enrich_bar(
 
 ![](man/figures/README-kegg_enrich_bar-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html>.
+Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1869,12 +1755,9 @@ Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page
 
 #### 3.5.8 kegg_enrich_dot
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** KEGG enrichment analysis and dot plot (None/Exist
-Reference Genome).
+**Output Plot:** KEGG enrichment analysis and dot plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1898,8 +1781,7 @@ kegg_enrich_dot(
 
 ![](man/figures/README-kegg_enrich_dot-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html>.
+Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1908,12 +1790,9 @@ Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page
 
 #### 3.5.9 kegg_enrich_net
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** KEGG enrichment analysis and net plot (None/Exist
-Reference Genome).
+**Output Plot:** KEGG enrichment analysis and net plot (None/Exist Reference Genome).
 
 ``` r
 # 1. Load example datasets
@@ -1935,8 +1814,7 @@ kegg_enrich_net(
 
 ![](man/figures/README-kegg_enrich_net-1.png)<!-- -->
 
-Get help using command `?TOmicsVis::kegg_enrich_net` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html>.
+Get help using command `?TOmicsVis::kegg_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html>.
 
 ``` r
 # Get help with command in R console.
@@ -1947,12 +1825,9 @@ Get help using command `?TOmicsVis::kegg_enrich_net` or reference page
 
 #### 3.6.1 table_split
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Table:** Table split used for splitting a grouped column to
-multiple columns.
+**Output Table:** Table split used for splitting a grouped column to multiple columns.
 
 ``` r
 # 1. Load example datasets
@@ -2006,8 +1881,7 @@ head(res)
 #> 6 ACMSD ko00380(Trypto… GO:1904985(negati… GO:0005829(cytoso… GO:0001760(aminoc…
 ```
 
-Get help using command `?TOmicsVis::table_split` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/table_split.html>.
+Get help using command `?TOmicsVis::table_split` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_split.html>.
 
 ``` r
 # Get help with command in R console.
@@ -2016,12 +1890,9 @@ Get help using command `?TOmicsVis::table_split` or reference page
 
 #### 3.6.2 table_merge
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Table:** Table merge used to merge multiple variables to on
-variable.
+**Output Table:** Table merge used to merge multiple variables to on variable.
 
 ``` r
 # 1. Load example datasets
@@ -2083,8 +1954,7 @@ head(res)
 #> 6 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… molecular_… GO:001…
 ```
 
-Get help using command `?TOmicsVis::table_merge` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/table_merge.html>.
+Get help using command `?TOmicsVis::table_merge` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_merge.html>.
 
 ``` r
 # Get help with command in R console.
@@ -2093,9 +1963,7 @@ Get help using command `?TOmicsVis::table_merge` or reference page
 
 #### 3.6.3 table_filter
 
-**Input Data:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
 **Output Table:** Table filter used to filter row by column condition.
 
@@ -2126,8 +1994,7 @@ head(res)
 #> 6 40.02 Weight Male
 ```
 
-Get help using command `?TOmicsVis::table_filter` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/table_filter.html>.
+Get help using command `?TOmicsVis::table_filter` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_filter.html>.
 
 ``` r
 # Get help with command in R console.
@@ -2136,16 +2003,11 @@ Get help using command `?TOmicsVis::table_filter` or reference page
 
 #### 3.6.4 table_cross
 
-**Input Data1:** Dataframe: Shared DEGs of all paired comparisons in all
-samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~:
-Samples).
+**Input Data1:** Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col\~: Samples).
 
-**Input Data2:** Dataframe: GO and KEGG annotation of background genes
-(1st-col: Genes, 2nd-col: biological_process, 3rd-col:
-cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
+**Input Data2:** Dataframe: GO and KEGG annotation of background genes (1st-col: Genes, 2nd-col: biological_process, 3rd-col: cellular_component, 4th-col: molecular_function, 5th-col: kegg_pathway).
 
-**Output Plot:** Table cross used to cross search and merge results in
-two tables.
+**Output Plot:** Table cross used to cross search and merge results in two tables.
 
 ``` r
 # 1. Load example datasets
@@ -2257,8 +2119,7 @@ head(res)
 #> 6                                                                                                                                                                                                                 ko02010(ABC transporters)
 ```
 
-Get help using command `?TOmicsVis::table_cross` or reference page
-<https://benben-miao.github.io/TOmicsVis/reference/table_cross.html>.
+Get help using command `?TOmicsVis::table_cross` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_cross.html>.
 
 ``` r
 # Get help with command in R console.
@@ -2314,10 +2175,7 @@ tomicsvis()
 
 If you use TOmicsVis in your research, please cite:
 
-> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and
-> You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis
-> and Visualization R Package with shinyapp Interface.” iMeta e137.
-> <https://doi.org/10.1002/imt2.137>
+> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. <https://doi.org/10.1002/imt2.137>
 
 ``` r
 # Get citation information

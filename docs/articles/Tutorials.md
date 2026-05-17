@@ -1,13 +1,13 @@
 # Tutorials
 
-## TOmicsVis (Version 2.7.1)
+## TOmicsVis
 
 ### 1. Introduction
 
 **TOmicsVis**: An all-in-one transcriptomic analysis and visualization R
 package with Shiny app interface.
 
-**Current Version:** 2.7.1 (2026-05-17)
+**Current Version:** 0.99.0 (2026-05-18)
 
 **SourceCode:** <https://github.com/benben-miao/TOmicsVis/>
 
@@ -79,7 +79,7 @@ install.packages("TOmicsVis")
 library(TOmicsVis)
 #> 
 #> Warning in fun(libname, pkgname): couldn't connect to display ":0"
-#> Welcome to TOmicsVis v2.7.1! An All-in-One Transcriptomic Analysis and Visualization Package.
+#> Welcome to TOmicsVis v0.99.0! An All-in-One Transcriptomic Analysis and Visualization Package.
 
 # 2. Extra package
 # install.packages("ggplot2")
@@ -1174,41 +1174,6 @@ gene_cluster_trend(
   palette = "PiYG",
   cluster_num = 4
 )
-#> 
-#> Attaching package: 'generics'
-#> The following objects are masked from 'package:base':
-#> 
-#>     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
-#>     setequal, union
-#> 
-#> Attaching package: 'BiocGenerics'
-#> The following object is masked from 'package:DynDoc':
-#> 
-#>     path
-#> The following objects are masked from 'package:stats':
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from 'package:base':
-#> 
-#>     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
-#>     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
-#>     get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
-#>     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-#>     rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
-#>     unsplit, which.max, which.min
-#> Welcome to Bioconductor
-#> 
-#>     Vignettes contain introductory material; view with
-#>     'browseVignettes()'. To cite Bioconductor, see
-#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
-#> 
-#> Attaching package: 'e1071'
-#> The following object is masked from 'package:generics':
-#> 
-#>     interpolate
-#> The following object is masked from 'package:ggplot2':
-#> 
-#>     element
 #> 0 genes excluded.
 #> 0 genes excluded.
 ```
@@ -1362,7 +1327,7 @@ wgcna_pipeline(gene_expression[1:3000,], samples_groups)
 #>     ..matrix multiplication (system BLAS)..
 #>     ..normalization..
 #>     ..done.
-#>    ..saving TOM for block 1 into file /var/folders/hq/53g1lc391h730n9c3mrx4qb00000gn/T//RtmpXvBBtL/TOM.tom-block.1.RData
+#>    ..saving TOM for block 1 into file /var/folders/hq/53g1lc391h730n9c3mrx4qb00000gn/T//RtmpKLinLL/TOM.tom-block.1.RData
 #>  ....clustering..
 #>  ....detecting modules..
 #>      ..done.

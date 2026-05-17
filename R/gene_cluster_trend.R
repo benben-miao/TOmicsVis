@@ -53,14 +53,14 @@ gene_cluster_trend <- function(data,
 				 "Please install: BiocManager::install('Biobase')",
 				 call. = FALSE)
 	}
-	suppressPackageStartupMessages(library(Biobase))
+	suppressPackageStartupMessages(suppressWarnings(require(Biobase, quietly = TRUE)))
 
 	if (!requireNamespace("e1071", quietly = TRUE)) {
 		stop("Package 'e1071' is required for gene_cluster_trend().\n",
 				 "Please install: install.packages('e1071')",
-					call. = FALSE)
+				 call. = FALSE)
 	}
-	suppressPackageStartupMessages(library(e1071))
+	suppressPackageStartupMessages(suppressWarnings(require(e1071, quietly = TRUE)))
 
 	exprs_data <- as.matrix(data)
 	eset <- methods::new("ExpressionSet", exprs = exprs_data)

@@ -12,13 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# TOmicsVis (Version 2.7.1)
+# TOmicsVis
 
 ## 1. Introduction
 
 **TOmicsVis**: An all-in-one transcriptomic analysis and visualization R package with Shiny app interface.
 
-**Current Version:** 2.7.1 (2026-05-17)
+**Current Version:** 0.99.0 (2026-05-18)
 
 **SourceCode:** <https://github.com/benben-miao/TOmicsVis/>
 

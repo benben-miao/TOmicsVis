@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.99.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,24 @@
       <small>Source: <a href="https://github.com/benben-miao/TOmicsVis/blob/main/{path}/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.99.0" id="tomicsvis-0990">TOmicsVis 0.99.0<a class="anchor" aria-label="anchor" href="#tomicsvis-0990"></a></h2>
+<p><strong>Date</strong>: 2026-05-18</p>
+<p><span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bioconductor Initial Submission:</span></p>
+<ol style="list-style-type: decimal"><li>Submit TOmicsVis to Bioconductor for the first time</li>
+<li>Enhanced <code><a href="../reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> function with 9 color schemes (Vibrant, Pastel, Ocean, Sunset, Forest, Neon, Candy, Earth, Wine).</li>
+<li>Added customizable parameters for <code><a href="../reference/venn_plot.html">?TOmicsVis::venn_plot</a></code>: <code>color_scheme</code>, <code>label_color</code>, <code>border_color</code>, <code>line_width</code>, <code>fill_alpha</code>, and <code>custom_colors</code>.</li>
+<li>Created internal utility functions for plot customization (17 helper functions with <a href="https://github.com/{user}keywords" class="external-link">@keywords</a> internal).</li>
+<li>Fixed all CRAN check errors (0 errors achieved)</li>
+<li>Optimized namespace imports to avoid conflicts</li>
+<li>Added biocViews field for Bioconductor compliance</li>
+</ol><p><span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span></p>
+<ol style="list-style-type: decimal"><li>Fixed unused argument error in <code>?TOmicsVis::go_enrich_net()</code> function (<code>net_circular = TRUE</code>).</li>
+<li>Fixed unused argument error in <code>?TOmicsVis::kegg_enrich_net()</code> function (<code>net_circular = TRUE</code>).</li>
+<li>Fixed Shiny application UI errors: replaced deprecated <code>bs4Box</code> with <code>bs4Card</code>, corrected <code>bs4DashPage</code> parameter order.</li>
+<li>Fixed <code>_pkgdown.yml</code> YAML syntax error at line 182 (unescaped colon in string value).</li>
+<li>Fixed pkgdown articles configuration format error (invalid external resource links).</li>
+</ol><hr></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.1.1" id="tomicsvis-211">TOmicsVis 2.1.1<a class="anchor" aria-label="anchor" href="#tomicsvis-211"></a></h2>
 <p><strong>Date</strong>: 2024-01-10</p>

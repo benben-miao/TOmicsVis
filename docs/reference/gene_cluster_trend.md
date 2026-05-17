@@ -77,38 +77,6 @@ head(gene_expression3)
 
 # 3. Default parameters
 gene_cluster_trend(gene_expression3[,-7])
-#> 
-#> Attaching package: ‘generics’
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
-#>     setequal, union
-#> 
-#> Attaching package: ‘BiocGenerics’
-#> The following object is masked from ‘package:DynDoc’:
-#> 
-#>     path
-#> The following objects are masked from ‘package:stats’:
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,
-#>     as.data.frame, basename, cbind, colnames, dirname, do.call,
-#>     duplicated, eval, evalq, get, grep, grepl, is.unsorted, lapply,
-#>     mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
-#>     rank, rbind, rownames, sapply, saveRDS, table, tapply, unique,
-#>     unsplit, which.max, which.min
-#> Welcome to Bioconductor
-#> 
-#>     Vignettes contain introductory material; view with
-#>     'browseVignettes()'. To cite Bioconductor, see
-#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
-#> 
-#> Attaching package: ‘e1071’
-#> The following object is masked from ‘package:generics’:
-#> 
-#>     interpolate
 #> 0 genes excluded.
 #> 0 genes excluded.
 

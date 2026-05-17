@@ -1,5 +1,42 @@
 # Changelog
 
+## TOmicsVis 0.99.0
+
+**Date**: 2026-05-18
+
+Bioconductor Initial Submission:
+
+1.  Submit TOmicsVis to Bioconductor for the first time
+2.  Enhanced
+    [`?TOmicsVis::venn_plot`](https://benben-miao.github.io/TOmicsVis/reference/venn_plot.md)
+    function with 9 color schemes (Vibrant, Pastel, Ocean, Sunset,
+    Forest, Neon, Candy, Earth, Wine).
+3.  Added customizable parameters for
+    [`?TOmicsVis::venn_plot`](https://benben-miao.github.io/TOmicsVis/reference/venn_plot.md):
+    `color_scheme`, `label_color`, `border_color`, `line_width`,
+    `fill_alpha`, and `custom_colors`.
+4.  Created internal utility functions for plot customization (17 helper
+    functions with [@keywords](https://github.com/%7Buser%7Dkeywords)
+    internal).
+5.  Fixed all CRAN check errors (0 errors achieved)
+6.  Optimized namespace imports to avoid conflicts
+7.  Added biocViews field for Bioconductor compliance
+
+Bugs Fixed:
+
+1.  Fixed unused argument error in `?TOmicsVis::go_enrich_net()`
+    function (`net_circular = TRUE`).
+2.  Fixed unused argument error in `?TOmicsVis::kegg_enrich_net()`
+    function (`net_circular = TRUE`).
+3.  Fixed Shiny application UI errors: replaced deprecated `bs4Box` with
+    `bs4Card`, corrected `bs4DashPage` parameter order.
+4.  Fixed `_pkgdown.yml` YAML syntax error at line 182 (unescaped colon
+    in string value).
+5.  Fixed pkgdown articles configuration format error (invalid external
+    resource links).
+
+------------------------------------------------------------------------
+
 ## TOmicsVis 2.1.1
 
 **Date**: 2024-01-10
