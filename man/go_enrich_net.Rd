@@ -12,6 +12,7 @@ go_enrich_net(
   qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
+  net_circular = TRUE,
   low_color = "#ff0000aa",
   high_color = "#008800aa"
 )
@@ -31,11 +32,11 @@ go_enrich_net(
 
 \item{net_layout}{Character: network layout. Default: "circle", options: 'star', 'circle', 'gem', 'dh', 'graphopt', 'grid', 'mds', 'randomly', 'fr', 'kk', 'drl' or 'lgl'.}
 
+\item{net_circular}{Logical: network circular. Default: TRUE, options: TRUE, FALSE.}
+
 \item{low_color}{Character: low value (p-value or q-value) color (color name or hex value).}
 
 \item{high_color}{Character: high value (p-value or q-value) color (color name or hex value).}
-
-\item{net_circular}{Logical: network circular. Default: TRUE, options: TRUE, FALSE.}
 }
 \value{
 PLot: GO enrichment analysis and net plot (None/Exist Reference Genome).

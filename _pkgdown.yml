@@ -1,15 +1,26 @@
 # https://pkgdown.r-lib.org/articles/customise.html
-url: https://github.com/benben-miao/TOmicsVis/
+# TOmicsVis Package Documentation (Version 2.7.1)
+# Last Updated: 2026-05-17
+
+url: https://benben-miao.github.io/TOmicsVis/
+
 template:
   bootstrap: 5
-  # bootswatch: sketchy
   theme: breeze-light
   bslib:
     code-bg: "#008888"
     code_font: {google: "JetBrains Mono"}
+  params:
+    ganalytics: UA-000000-0
 
 development:
-  mode: auto
+  mode: release
+
+articles:
+- title: User Guides
+  navbar: ~
+  contents:
+  - Tutorials
 
 navbar:
   structure:
@@ -67,11 +78,13 @@ home:
     href: https://github.com/OmicsSuite/OmicsSuite.github.io
 
 reference:
-- title: TOmicsVis Shinyapp
+- title: Package Utilities
+  desc: Core package functions for loading and launching applications
   contents:
+  - load_TOmicsVis
   - tomicsvis
 
-- title: ①Samples Statistics
+- title: ① Samples Statistics
   desc: Statistical sample outliers, correlation among samples, distance among samples, etc.
   contents:
   - quantile_plot
@@ -79,7 +92,7 @@ reference:
   - violin_plot
   - survival_plot
 
-- title: ②Traits Analysis
+- title: ② Traits Analysis
   desc: Statistical analysis of traits, such as adding R and P values to box plots and violin plots, and more dimensionality reduction analysis.
   contents:
   - corr_heatmap
@@ -91,7 +104,7 @@ reference:
   - umap_plot
   - dendro_plot
 
-- title: ③Differential Expression Analyais
+- title: ③ Differential Expression Analysis
   desc: Analysis and visualization based on gene expression data and differentially expressed genes.
   contents:
   - venn_plot
@@ -103,8 +116,8 @@ reference:
   - circos_heatmap
   - chord_plot
 
-- title: ④Advanced Analysis
-  desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co expression modules for genes, and exploring genes related to traits in expression modules.
+- title: ④ Advanced Analysis
+  desc: Advanced analysis of Transcriptome includes exploring gene expression trends of multiple groups of samples, constructing co-expression modules for genes, and exploring genes related to traits in expression modules.
   contents:
   - gene_rank_plot
   - gene_cluster_trend
@@ -113,7 +126,7 @@ reference:
   - network_plot
   - heatmap_cluster
 
-- title: ⑤GO and KEGG Enrichment
+- title: ⑤ GO and KEGG Enrichment
   desc: GO and KEGG enrichment analysis and visualization.
   contents:
   - go_enrich
@@ -126,7 +139,7 @@ reference:
   - kegg_enrich_dot
   - kegg_enrich_net
 
-- title: ⑥Tables Operations
+- title: ⑥ Tables Operations
   desc: Quickly manipulate specific Transcriptome data structures.
   contents:
   - table_split
@@ -135,7 +148,7 @@ reference:
   - table_cross
 
 - title: Example datasets in TOmicsVis
-  desc: Example datasets in TOmicsVis.
+  desc: Example datasets included in TOmicsVis for testing and demonstration.
   contents:
   - weight_sex
   - traits_sex
@@ -150,3 +163,30 @@ reference:
   - network_data
   - gene_go_kegg
   - gene_go_kegg2
+
+footer:
+  structure:
+    left: [developed_by, package]
+    right: [legal]
+  components:
+    developed_by:
+      text: Developed by
+      href: https://github.com/benben-miao
+    legal:
+      text: "License: MIT + file LICENSE"
+      href: LICENSE-text.html
+
+search:
+  exclude:
+  - news
+
+build:
+  render: never
+  lazy: true
+
+repo:
+  url:
+    home: https://github.com/benben-miao/TOmicsVis/
+    source: https://github.com/benben-miao/TOmicsVis/blob/main/{path}
+    issue: https://github.com/benben-miao/TOmicsVis/issues/{issue}
+    user: https://github.com/{user}

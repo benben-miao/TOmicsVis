@@ -76,28 +76,6 @@ devtools::install_git("https://gitclone.com/github.com/benben-miao/TOmicsVis.git
 install.packages("TOmicsVis")
 ```
 
-#### 1.3 Articles and Courses
-
-**Video Courses:** <https://space.bilibili.com/34105515/channel/series>
-
-**Article Courses:** [全解TOmicsVis完美应用于转录组可视化R包](https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ)
-
-**Resources Download:** <https://www.aliyundrive.com/s/tSp8FEohswW>
-
-**TOmicsVis 微信交流群:**
-
-![](https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png)
-
-#### 1.4 About and Authors
-
-**OmicsSuite**: [Omics Suite Github: https://github.com/omicssuite/](https://github.com/omicssuite/)
-
-**Authors**:
-
--   [benben-miao Github: https://github.com/benben-miao/](https://github.com/benben-miao/)
-
--   [dongwei1220 Github: https://github.com/dongwei1220/](https://github.com/dongwei1220/)
-
 ## 2. Library packages
 
 ### 2.1 Standard loading method
@@ -151,7 +129,7 @@ quantile_plot(
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
   sci_color_alpha = 0.75,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -187,7 +165,7 @@ box_plot(
   sci_color_alpha = 1,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -223,7 +201,7 @@ violin_plot(
   sci_color_alpha = 1,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -254,7 +232,7 @@ survival_plot(
   risk_table = TRUE,
   num_censor = TRUE,
   sci_palette = "aaas",
-  ggTheme = "theme_light",
+  ggTheme = "theme_publication",
   x_start = 0,
   y_start = 0,
   y_end = 100,
@@ -296,7 +274,7 @@ corr_heatmap(
   color_mid = "white",
   color_high = "red",
   outline_color = "white",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -361,7 +339,7 @@ pca_plot(
   border_alpha = 0.00,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -425,7 +403,7 @@ tsne_plot(
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -489,7 +467,7 @@ umap_plot(
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -526,7 +504,7 @@ dendro_plot(
   rect_fill = TRUE,
   xlab = "Samples",
   ylab = "Height",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -553,14 +531,14 @@ head(degs_lists)
 # 2. Run venn_plot plot function
 venn_plot(
   data = degs_lists,
-	title_size = 1,
+	title_size = 1.2,
 	label_show = TRUE,
-	label_size = 0.8,
+	label_size = 1,
 	border_show = TRUE,
-	line_type = "longdash",
+	line_type = "solid",
 	ellipse_shape = "circle",
-	sci_fill_color = "Sci_AAAS",
-	sci_fill_alpha = 0.65
+	color_scheme = "Vibrant",
+	fill_alpha = 0.55
 )
 ```
 
@@ -707,7 +685,7 @@ ma_plot(
   title = "CT-vs-LT12",
   xlab = "Log2 mean expression",
   ylab = "Log2 fold change",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -919,7 +897,7 @@ trend_plot(
   sci_color_alpha = 0.8,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1089,7 +1067,7 @@ go_enrich_stat(
   xtext_angle = 45,
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.8,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1122,7 +1100,7 @@ go_enrich_bar(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1155,7 +1133,7 @@ go_enrich_dot(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1248,7 +1226,7 @@ kegg_enrich_bar(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1281,7 +1259,7 @@ kegg_enrich_dot(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1440,4 +1418,60 @@ Get help using command `?TOmicsVis::table_cross` or reference page <https://benb
 ```{r}
 # Get help with command in R console.
 # ?TOmicsVis::table_cross
+```
+
+## 4. Quick Start Examples
+
+### 4.1 Complete differential expression analysis workflow
+
+```{r eval=FALSE}
+# Load package
+load_TOmicsVis()
+
+# Step 1: Visualize DEGs with volcano plot
+data(degs_stats)
+volcano_plot(data = degs_stats, title = "DEGs Analysis")
+
+# Step 2: Create heatmap of top DEGs
+data(gene_expression2)
+data(samples_groups)
+heatmap_group(
+  sample_gene = gene_expression2[1:50,],
+  group_sample = samples_groups
+)
+
+# Step 3: Perform PCA analysis
+data(gene_expression)
+pca_plot(
+  sample_gene = gene_expression,
+  group_sample = samples_groups
+)
+
+# Step 4: GO enrichment analysis
+data(gene_go_kegg)
+go_enrich_bar(
+  go_anno = gene_go_kegg[,-5],
+  degs_list = gene_go_kegg[100:200,1]
+)
+```
+
+### 4.2 Launch Shiny app for interactive analysis
+
+```{r eval=FALSE}
+# Start TOmicsVis Shiny app (recommended for beginners)
+tomicsvis()
+
+# Or access online cloud platform:
+# https://shiny.hiplot.cn/tomicsvis-shiny/
+```
+
+## 5. Citation
+
+If you use TOmicsVis in your research, please cite:
+
+> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. "TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface." iMeta e137. https://doi.org/10.1002/imt2.137
+
+```{r}
+# Get citation information
+citation(package = "TOmicsVis")
 ```

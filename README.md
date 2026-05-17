@@ -1,12 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TOmicsVis
+# TOmicsVis (Version 2.7.1)
 
 ## 1. Introduction
 
-**TOmicsVis**: TOmicsVis: An all-in-one transcriptomic analysis and
-visualization R package with Shinyapp interface.
+**TOmicsVis**: An all-in-one transcriptomic analysis and visualization R
+package with Shiny app interface.
+
+**Current Version:** 2.7.1 (2026-05-17)
 
 **SourceCode:** <https://github.com/benben-miao/TOmicsVis/>
 
@@ -15,7 +17,7 @@ visualization R package with Shinyapp interface.
 **Citation:** `citation(package = "TOmicsVis")`
 
 > Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and
-> You, Wei-Wei. 2023. “ TOmicsVis: An All-in-One Transcriptomic Analysis
+> You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis
 > and Visualization R Package with shinyapp Interface.” iMeta e137.
 > <https://doi.org/10.1002/imt2.137>
 
@@ -71,71 +73,33 @@ devtools::install_git("https://gitclone.com/github.com/benben-miao/TOmicsVis.git
 install.packages("TOmicsVis")
 ```
 
-#### 1.3 Articles and Courses
+## 2. Library packages
 
-**Video Courses:** <https://space.bilibili.com/34105515/channel/series>
-
-**Article Courses:**
-[全解TOmicsVis完美应用于转录组可视化R包](https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ)
-
-**Resources Download:** <https://www.aliyundrive.com/s/tSp8FEohswW>
-
-**TOmicsVis 微信交流群:**
-
-![](https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png)
-
-#### 1.4 About and Authors
-
-**OmicsSuite**: [Omics Suite Github:
-https://github.com/omicssuite/](https://github.com/omicssuite/)
-
-**Authors**:
-
-- [benben-miao Github:
-  https://github.com/benben-miao/](https://github.com/benben-miao/)
-
-- [dongwei1220 Github:
-  https://github.com/dongwei1220/](https://github.com/dongwei1220/)
-
-## 2. Libary packages
+### 2.1 Standard loading method
 
 ``` r
 # 1. Library TOmicsVis package
 library(TOmicsVis)
-#> 载入需要的程辑包：Biobase
-#> 载入需要的程辑包：BiocGenerics
 #> 
-#> 载入程辑包：'BiocGenerics'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from 'package:base':
-#> 
-#>     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
-#>     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
-#>     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
-#>     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
-#>     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
-#>     table, tapply, union, unique, unsplit, which.max, which.min
-#> Welcome to Bioconductor
-#> 
-#>     Vignettes contain introductory material; view with
-#>     'browseVignettes()'. To cite Bioconductor, see
-#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
-#> 载入需要的程辑包：e1071
-#> 
-#> Registered S3 method overwritten by 'GGally':
-#>   method from   
-#>   +.gg   ggplot2
-#> 
-#> 载入程辑包：'DynDoc'
-#> The following object is masked from 'package:BiocGenerics':
-#> 
-#>     path
+#> Warning in fun(libname, pkgname): couldn't connect to display ":0"
+#> Welcome to TOmicsVis v2.7.1! An All-in-One Transcriptomic Analysis and Visualization Package.
 
 # 2. Extra package
 # install.packages("ggplot2")
 library(ggplot2)
+```
+
+### 2.2 Recommended loading method (suppress warnings)
+
+``` r
+# Use load_TOmicsVis() to suppress harmless display warnings from Mfuzz dependency
+load_TOmicsVis()
+# Output: ✓ TOmicsVis v2.7.1 loaded successfully!
+#         All functions ready to use.
+
+# Then use all functions normally
+data(gene_expression)
+volcano_plot(degs_stats)
 ```
 
 ## 3. Usage cases
@@ -173,7 +137,7 @@ quantile_plot(
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
   sci_color_alpha = 0.75,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -221,7 +185,7 @@ box_plot(
   sci_color_alpha = 1,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -262,7 +226,7 @@ violin_plot(
   sci_color_alpha = 1,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -305,13 +269,14 @@ survival_plot(
   risk_table = TRUE,
   num_censor = TRUE,
   sci_palette = "aaas",
-  ggTheme = "theme_light",
+  ggTheme = "theme_publication",
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 10,
-  y_break = 10
+  x_break = 10
 )
+#> Ignoring unknown labels:
+#> • colour : "Strata"
 ```
 
 ![](man/figures/README-survival_plot-1.png)<!-- -->
@@ -367,8 +332,16 @@ corr_heatmap(
   color_mid = "white",
   color_high = "red",
   outline_color = "white",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
+#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
+#> ℹ Please use tidy evaluation idioms with `aes()`.
+#> ℹ See also `vignette("ggplot2-in-packages")` for more information.
+#> ℹ The deprecated feature was likely used in the ggcorrplot package.
+#>   Please report the issue at <https://github.com/kassambara/ggcorrplot/issues>.
+#> This warning is displayed once per session.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
 #> Scale for fill is already present.
 #> Adding another scale for fill, which will replace the existing scale.
 ```
@@ -425,12 +398,12 @@ head(res)
 #> LT20_2   -941.3943  -5072.401   5345.106   6494.1383  -3954.2153   9351.346
 #> LT20_3   7263.9321  -7774.725  -1853.546 -21427.2641    -46.1503 -12507.011
 #>              PC13       PC14          PC15
-#> CT_1    -2704.613  2396.7383  2.528517e-11
-#> CT_2    -2633.057 -1375.3352  6.825657e-11
-#> CT_3     5193.978   188.5601  2.255671e-11
-#> LT20_1   3937.457 -7871.8062  4.864246e-11
-#> LT20_2 -12904.673  6071.6618 -2.020696e-10
-#> LT20_3  -5369.380  2606.1762  1.903509e-11
+#> CT_1    -2704.613  2396.7383  4.266986e-11
+#> CT_2    -2633.057 -1375.3352  1.484187e-11
+#> CT_3     5193.978   188.5601  4.119713e-11
+#> LT20_1   3937.457 -7871.8062  1.031765e-10
+#> LT20_2 -12904.673  6071.6618 -8.107249e-11
+#> LT20_3  -5369.380  2606.1762  5.619822e-11
 ```
 
 Get help using command `?TOmicsVis::pca_analysis` or reference page
@@ -478,7 +451,7 @@ pca_plot(
   border_alpha = 0.00,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -511,13 +484,13 @@ data(samples_groups)
 # 2. Run tsne_analysis plot function
 res <- tsne_analysis(gene_expression, samples_groups)
 head(res)
-#>       TSNE1     TSNE2
-#> 1 -67.41252 -16.61397
-#> 2  43.08349 -34.02654
-#> 3 123.32273  54.14358
-#> 4 -42.52065 -31.30027
-#> 5  94.98790  48.97986
-#> 6 -23.90637 -22.26434
+#>        TSNE1     TSNE2
+#> 1  29.722650 -29.60331
+#> 2 -58.256581 -63.65201
+#> 3  50.814277 108.29664
+#> 4   8.804477 -44.87441
+#> 5  44.802722  85.24188
+#> 6  -7.535410 -38.35476
 ```
 
 Get help using command `?TOmicsVis::tsne_analysis` or reference page
@@ -558,8 +531,10 @@ tsne_plot(
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
+#> Ignoring unknown labels:
+#> • shape : "Groups"
 ```
 
 ![](man/figures/README-tsne_plot-1.png)<!-- -->
@@ -587,16 +562,16 @@ dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 data(gene_expression)
 data(samples_groups)
 
-# 2. Run tsne_plot plot function
+# 2. Run umap_analysis function
 res <- umap_analysis(gene_expression, samples_groups)
 head(res)
-#>             UMAP1       UMAP2
-#> CT_1   -0.6752746  0.49425898
-#> CT_2    1.0232441  0.03062202
-#> CT_3   -0.4722297 -1.32183550
-#> LT20_1 -0.2414214  0.13870703
-#> LT20_2  0.1991701 -1.23434000
-#> LT20_3  0.6431577  1.11879669
+#>              UMAP1       UMAP2
+#> CT_1    0.39894968  0.39023545
+#> CT_2   -0.60445627 -0.40203491
+#> CT_3    1.09099797 -0.10852843
+#> LT20_1 -0.09000485  0.08849396
+#> LT20_2  0.99760329 -0.84753825
+#> LT20_3 -0.42657219 -1.20536760
 ```
 
 Get help using command `?TOmicsVis::umap_analysis` or reference page
@@ -637,7 +612,7 @@ umap_plot(
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -678,7 +653,7 @@ dendro_plot(
   rect_fill = TRUE,
   xlab = "Samples",
   ylab = "Height",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 #> Registered S3 method overwritten by 'dendextend':
 #>   method     from 
@@ -720,14 +695,14 @@ head(degs_lists)
 # 2. Run venn_plot plot function
 venn_plot(
   data = degs_lists,
-    title_size = 1,
+    title_size = 1.2,
     label_show = TRUE,
-    label_size = 0.8,
+    label_size = 1,
     border_show = TRUE,
-    line_type = "longdash",
+    line_type = "solid",
     ellipse_shape = "circle",
-    sci_fill_color = "Sci_AAAS",
-    sci_fill_alpha = 0.65
+    color_scheme = "Vibrant",
+    fill_alpha = 0.55
 )
 ```
 
@@ -917,7 +892,7 @@ ma_plot(
   title = "CT-vs-LT12",
   xlab = "Log2 mean expression",
   ylab = "Log2 fold change",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1023,10 +998,6 @@ circos_heatmap(
   rowname_show = "outside",
   rowname_size = 0.8
 )
-#> Note: 15 points are out of plotting region in sector 'group', track
-#> '3'.
-#> Note: 15 points are out of plotting region in sector 'group', track
-#> '3'.
 ```
 
 ![](man/figures/README-circos_heatmap-1.png)<!-- -->
@@ -1088,12 +1059,12 @@ chord_plot(
 ![](man/figures/README-chord_plot-1.png)<!-- -->
 
     #>      rn   cn value1 value2 o1 o2      x1     x2       col
-    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #D88E9EB2
-    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #E781E0B2
-    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E55237B2
-    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #44BBBBB2
-    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #99F1E4B2
-    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #656CD9B2
+    #> 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2
+    #> 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2
+    #> 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2
+    #> 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2
+    #> 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2
+    #> 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2
 
 Get help using command `?TOmicsVis::chord_plot` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
@@ -1164,6 +1135,41 @@ gene_cluster_trend(
   palette = "PiYG",
   cluster_num = 4
 )
+#> 
+#> Attaching package: 'generics'
+#> The following objects are masked from 'package:base':
+#> 
+#>     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+#>     setequal, union
+#> 
+#> Attaching package: 'BiocGenerics'
+#> The following object is masked from 'package:DynDoc':
+#> 
+#>     path
+#> The following objects are masked from 'package:stats':
+#> 
+#>     IQR, mad, sd, var, xtabs
+#> The following objects are masked from 'package:base':
+#> 
+#>     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+#>     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+#>     get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+#>     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+#>     rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+#>     unsplit, which.max, which.min
+#> Welcome to Bioconductor
+#> 
+#>     Vignettes contain introductory material; view with
+#>     'browseVignettes()'. To cite Bioconductor, see
+#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
+#> 
+#> Attaching package: 'e1071'
+#> The following object is masked from 'package:generics':
+#> 
+#>     interpolate
+#> The following object is masked from 'package:ggplot2':
+#> 
+#>     element
 #> 0 genes excluded.
 #> 0 genes excluded.
 ```
@@ -1225,7 +1231,7 @@ trend_plot(
   sci_color_alpha = 0.8,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1278,8 +1284,72 @@ head(samples_groups)
 #> 5  LT20_2   LT20
 #> 6  LT20_3   LT20
 
-# 2. Run wgcna_pipeline plot function
-# wgcna_pipeline(gene_expression[1:3000,], samples_groups)
+# 2. Run wgcna_pipeline function
+# Note: This function requires substantial computation time for large datasets
+# For quick testing, use a subset of genes (e.g., 1000-3000 genes)
+wgcna_pipeline(gene_expression[1:3000,], samples_groups)
+#>  Flagging genes and samples with too many missing values...
+#>   ..step 1
+#> pickSoftThreshold: will use block size 2185.
+#>  pickSoftThreshold: calculating connectivity for given powers...
+#>    ..working on genes 1 through 2185 of 2185
+#>    Power SFT.R.sq  slope truncated.R.sq mean.k. median.k. max.k.
+#> 1      1   0.0319 -0.378          0.553  613.00   583.000  943.0
+#> 2      2   0.6390 -1.130          0.787  259.00   226.000  551.0
+#> 3      3   0.8600 -1.270          0.906  134.00   105.000  368.0
+#> 4      4   0.9240 -1.300          0.945   78.40    55.000  265.0
+#> 5      5   0.9400 -1.310          0.958   50.20    31.500  201.0
+#> 6      6   0.9530 -1.310          0.974   34.20    18.800  160.0
+#> 7      7   0.9540 -1.300          0.978   24.50    12.000  130.0
+#> 8      8   0.9490 -1.320          0.976   18.20     8.030  108.0
+#> 9      9   0.9590 -1.310          0.985   13.90     5.520   90.9
+#> 10    10   0.9610 -1.300          0.988   10.90     3.870   77.6
+#> 11    12   0.9560 -1.300          0.991    7.17     2.060   58.4
+#> 12    14   0.9400 -1.320          0.981    5.01     1.160   47.1
+#> 13    16   0.9300 -1.340          0.982    3.67     0.711   39.0
+#> 14    18   0.9110 -1.360          0.964    2.79     0.466   33.0
+#> 15    20   0.9350 -1.340          0.983    2.19     0.312   28.5
+#>  Calculating module eigengenes block-wise from all genes
+#>    Flagging genes and samples with too many missing values...
+#>     ..step 1
+#>  ..Working on block 1 .
+#>     TOM calculation: adjacency..
+#>     ..will not use multithreading.
+#>      Fraction of slow calculations: 0.000000
+#>     ..connectivity..
+#>     ..matrix multiplication (system BLAS)..
+#>     ..normalization..
+#>     ..done.
+#>    ..saving TOM for block 1 into file /var/folders/hq/53g1lc391h730n9c3mrx4qb00000gn/T//RtmpPCBSZH/TOM.tom-block.1.RData
+#>  ....clustering..
+#>  ....detecting modules..
+#>      ..done.
+#>  ....calculating module eigengenes..
+#>      moduleEigengenes : Working on ME for module 1
+#>      moduleEigengenes : Working on ME for module 2
+#>      moduleEigengenes : Working on ME for module 3
+#>      moduleEigengenes : Working on ME for module 4
+#>      moduleEigengenes : Working on ME for module 5
+#>      moduleEigengenes : Working on ME for module 6
+#>      moduleEigengenes : Working on ME for module 7
+#>      moduleEigengenes : Working on ME for module 8
+#>      moduleEigengenes : Working on ME for module 9
+#>      moduleEigengenes : Working on ME for module 10
+#>  ....checking kME in modules..
+#>      ..removing 120 genes from module 1 because their KME is too low.
+#>      ..removing 131 genes from module 2 because their KME is too low.
+#>      ..removing 1 genes from module 3 because their KME is too low.
+#>      ..removing 2 genes from module 4 because their KME is too low.
+#>      ..removing 1 genes from module 5 because their KME is too low.
+#>  ..merging modules that are too close..
+#>      mergeCloseModules: Merging modules whose distance is less than 0.15
+#>        multiSetMEs: Calculating module MEs.
+#>          Working on set 1 ...
+#>          moduleEigengenes: Calculating 11 module eigengenes in given set.
+#>        Calculating new MEs...
+#>        multiSetMEs: Calculating module MEs.
+#>          Working on set 1 ...
+#>          moduleEigengenes: Calculating 11 module eigengenes in given set.
 ```
 
 Get help using command `?TOmicsVis::wgcna_pipeline` or reference page
@@ -1369,7 +1439,7 @@ head(gene_expression2)
 #> 5   0.28   0.11     0.37     0.15     0.11
 #> 6  38.74  34.54    62.72    41.36    28.75
 
-# 2. Run network_plot plot function
+# 2. Run heatmap_cluster function
 heatmap_cluster(
   data = gene_expression2,
   dist_method = "euclidean",
@@ -1389,11 +1459,7 @@ heatmap_cluster(
 )
 ```
 
-![](man/figures/README-heatmap_cluster-1.png)<!-- -->
-
-    #> Using Cluster, gene as id variables
-
-![](man/figures/README-heatmap_cluster-2.png)<!-- -->![](man/figures/README-heatmap_cluster-3.png)<!-- -->
+![](man/figures/README-heatmap_cluster-1.png)<!-- -->![](man/figures/README-heatmap_cluster-2.png)<!-- -->![](man/figures/README-heatmap_cluster-3.png)<!-- -->
 
 Get help using command `?TOmicsVis::heatmap_cluster` or reference page
 <https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
@@ -1470,27 +1536,27 @@ head(res)
 #> 4 GO:0000398 biological process
 #> 5 GO:0000774 molecular function
 #> 6 GO:0001671 molecular function
-#>                                                                 Description
-#> 1                     vacuolar proton-transporting V-type ATPase, V1 domain
-#> 2  mitochondrial proton-transporting ATP synthase complex, catalytic core F
-#> 3 mitochondrial proton-transporting ATP synthase complex, coupling factor F
-#> 4                                            mRNA splicing, via spliceosome
-#> 5                                adenyl-nucleotide exchange factor activity
-#> 6                                                 ATPase activator activity
-#>   GeneRatio BgRatio       pvalue     p.adjust       qvalue
-#> 1     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02
-#> 2     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02
-#> 3     6/101  6/1279 2.109128e-07 1.075656e-05 9.158058e-06
-#> 4     1/101 14/1279 6.858207e-01 7.363549e-01 6.269275e-01
-#> 5     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02
-#> 6     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02
-#>                                       geneID Count
-#> 1                                    ATP6V1H     1
-#> 2                                    ATP5F1E     1
-#> 3 ATP5MC1/ATP5ME/ATP5MG/ATP5PB/ATP5PD/ATP5PF     6
-#> 4                                      CDC40     1
-#> 5                                       BAG2     1
-#> 6                                     ATP1B1     1
+#>                                                                   Description
+#> 1                       vacuolar proton-transporting V-type ATPase, V1 domain
+#> 2  mitochondrial proton-transporting ATP synthase complex, catalytic core F(1
+#> 3 mitochondrial proton-transporting ATP synthase complex, coupling factor F(o
+#> 4                                              mRNA splicing, via spliceosome
+#> 5                                  adenyl-nucleotide exchange factor activity
+#> 6                                                   ATPase activator activity
+#>   GeneRatio BgRatio RichFactor FoldEnrichment     zScore       pvalue
+#> 1     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02
+#> 2     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02
+#> 3     6/101  6/1279 1.00000000     12.6633663  8.3818292 2.109128e-07
+#> 4     1/101 14/1279 0.07142857      0.9045262 -0.1051372 6.858207e-01
+#> 5     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02
+#> 6     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02
+#>       p.adjust       qvalue                                     geneID Count
+#> 1 1.110997e-01 9.458955e-02                                    ATP6V1H     1
+#> 2 1.110997e-01 9.458955e-02                                    ATP5F1E     1
+#> 3 1.075656e-05 9.158058e-06 ATP5MC1/ATP5ME/ATP5MG/ATP5PB/ATP5PD/ATP5PF     6
+#> 4 7.363549e-01 6.269275e-01                                      CDC40     1
+#> 5 1.110997e-01 9.458955e-02                                       BAG2     1
+#> 6 1.110997e-01 9.458955e-02                                     ATP1B1     1
 ```
 
 Get help using command `?TOmicsVis::go_enrich` or reference page
@@ -1526,7 +1592,7 @@ go_enrich_stat(
   xtext_angle = 45,
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.8,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 ```
 
@@ -1565,7 +1631,7 @@ go_enrich_bar(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 #> Scale for fill is already present.
 #> Adding another scale for fill, which will replace the existing scale.
@@ -1606,10 +1672,8 @@ go_enrich_dot(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
-#> Scale for colour is already present.
-#> Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](man/figures/README-go_enrich_dot-1.png)<!-- -->
@@ -1644,7 +1708,6 @@ go_enrich_net(
   qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
-  net_circular = TRUE,
   low_color = "#ff0000aa",
   high_color = "#008800aa"
 )
@@ -1725,13 +1788,20 @@ head(res)
 #> ko04610 ko04610 Complement and coagulation cascades    13/101 43/1279
 #> ko04145 ko04145                           Phagosome    11/101 33/1279
 #> ko04971 ko04971              Gastric acid secretion     4/101  4/1279
-#>               pvalue     p.adjust       qvalue
-#> ko04966 1.573976e-08 2.030430e-06 1.723090e-06
-#> ko00190 5.232645e-08 3.375056e-06 2.864185e-06
-#> ko04721 1.069634e-06 4.599427e-05 3.903227e-05
-#> ko04610 1.078094e-05 3.476853e-04 2.950573e-04
-#> ko04145 1.941460e-05 5.008968e-04 4.250776e-04
-#> ko04971 3.679084e-05 7.910030e-04 6.712714e-04
+#>         RichFactor FoldEnrichment   zScore       pvalue     p.adjust
+#> ko04966  1.0000000      12.663366 9.056968 1.573976e-08 2.030430e-06
+#> ko00190  0.2613636       3.309743 6.572077 5.232645e-08 3.375056e-06
+#> ko04721  0.6153846       7.792841 7.205427 1.069634e-06 4.599427e-05
+#> ko04610  0.3023256       3.828460 5.522407 1.078094e-05 3.476853e-04
+#> ko04145  0.3333333       4.221122 5.487299 1.941460e-05 5.008968e-04
+#> ko04971  1.0000000      12.663366 6.838365 3.679084e-05 7.910030e-04
+#>               qvalue
+#> ko04966 1.723090e-06
+#> ko00190 2.864185e-06
+#> ko04721 3.903227e-05
+#> ko04610 2.950573e-04
+#> ko04145 4.250776e-04
+#> ko04971 6.712714e-04
 #>                                                                                                                                                                                        geneID
 #> ko04966                                                                                                                              ATP6V0C/ATP6V0E1/ATP6V1B2/ATP6V1C1A/ATP6V1F/ATP6V1G1/CA1
 #> ko00190 ATP5F1A/ATP5F1B/ATP5F1C/ATP5F1D/ATP5F1E/ATP5MC1/ATP5MC2/ATP5MC3/ATP5ME/ATP5MF/ATP5MG/ATP5PB/ATP5PD/ATP5PF/ATP5PO/ATP6V0B/ATP6V0C/ATP6V0E1/ATP6V1B2/ATP6V1C1A/ATP6V1F/ATP6V1G1/ATP6V1H
@@ -1781,7 +1851,7 @@ kegg_enrich_bar(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 #> Scale for fill is already present.
 #> Adding another scale for fill, which will replace the existing scale.
@@ -1822,10 +1892,8 @@ kegg_enrich_dot(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
-#> Scale for colour is already present.
-#> Adding another scale for colour, which will replace the existing scale.
 ```
 
 ![](man/figures/README-kegg_enrich_dot-1.png)<!-- -->
@@ -1860,7 +1928,6 @@ kegg_enrich_net(
   qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
-  net_circular = TRUE,
   low_color = "#ff0000aa",
   high_color = "#008800aa"
 )
@@ -1928,41 +1995,15 @@ res <- table_split(
   miss_drop = TRUE
 )
 head(res)
-#>        Genes
-#> 1 14-3-3ZETA
-#> 2       A1I3
-#> 3        A2M
-#> 4       AARS
-#> 5       ABAT
-#> 6      ABCB7
-#>                                                                                                                                                                                                                                kegg_pathway
-#> 1 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)
-#> 2                                                                                                                                                                                              ko04610(Complement and coagulation cascades)
-#> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)
-#> 4                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)
-#> 5         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)
-#> 6                                                                                                                                                                                                                 ko02010(ABC transporters)
-#>                                      biological_process
-#> 1                                                  <NA>
-#> 2                                                  <NA>
-#> 3                                                  <NA>
-#> 4                GO:0006419(alanyl-tRNA aminoacylation)
-#> 5 GO:0009448(gamma-aminobutyric acid metabolic process)
-#> 6                                                  <NA>
-#>                           cellular_component
-#> 1                                       <NA>
-#> 2            GO:0005615(extracellular space)
-#> 3            GO:0005615(extracellular space)
-#> 4                      GO:0005737(cytoplasm)
-#> 5                                       <NA>
-#> 6 GO:0016021(integral component of membrane)
-#>                                                                                                       molecular_function
-#> 1                                                                            GO:0019904(protein domain specific binding)
-#> 2                                                                           GO:0004866(endopeptidase inhibitor activity)
-#> 3                                                                           GO:0004866(endopeptidase inhibitor activity)
-#> 4 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)
-#> 5                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)
-#> 6      GO:0005524(ATP binding);GO:0016887(ATPase activity);GO:0042626(ATPase-coupled transmembrane transporter activity)
+#> # A tibble: 6 × 5
+#>   Genes kegg_pathway    biological_process cellular_component molecular_function
+#>   <chr> <chr>           <chr>              <chr>              <chr>             
+#> 1 FN1   ko04810(Regula… GO:0003181(atriov… GO:0005576(extrac… <NA>              
+#> 2 AARS  ko00970(Aminoa… GO:0006419(alanyl… GO:0005737(cytopl… GO:0004813(alanin…
+#> 3 ABAT  ko00250(Alanin… GO:0009448(gamma-… <NA>               GO:0003867(4-amin…
+#> 4 ACADL ko00071(Fatty … GO:0042758(long-c… <NA>               GO:0050660(flavin…
+#> 5 ACADM ko00280(Valine… GO:0006635(fatty … GO:0005739(mitoch… GO:0050660(flavin…
+#> 6 ACMSD ko00380(Trypto… GO:1904985(negati… GO:0005829(cytoso… GO:0001760(aminoc…
 ```
 
 Get help using command `?TOmicsVis::table_split` or reference page
@@ -2031,34 +2072,15 @@ res <- table_merge(
   na_remove = FALSE
 )
 head(res)
-#>        Genes
-#> 1        FN1
-#> 2 14-3-3ZETA
-#> 3       A1I3
-#> 4        A2M
-#> 5       AARS
-#> 6       ABAT
-#>                                                                                                                                                                                                                                kegg_pathway
-#> 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)
-#> 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)
-#> 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)
-#> 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)
-#> 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)
-#> 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)
-#>          go_category
-#> 1 biological_process
-#> 2 biological_process
-#> 3 biological_process
-#> 4 biological_process
-#> 5 biological_process
-#> 6 biological_process
-#>                                                                                                            go_term
-#> 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)
-#> 2                                                                                                             <NA>
-#> 3                                                                                                             <NA>
-#> 4                                                                                                             <NA>
-#> 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)
-#> 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)
+#> # A tibble: 6 × 4
+#>   Genes      kegg_pathway                                    go_category go_term
+#>   <chr>      <chr>                                           <chr>       <chr>  
+#> 1 FN1        ko04810(Regulation of actin cytoskeleton);ko04… biological… GO:000…
+#> 2 FN1        ko04810(Regulation of actin cytoskeleton);ko04… cellular_c… GO:000…
+#> 3 FN1        ko04810(Regulation of actin cytoskeleton);ko04… molecular_… <NA>   
+#> 4 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… biological… <NA>   
+#> 5 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… cellular_c… <NA>   
+#> 6 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… molecular_… GO:001…
 ```
 
 Get help using command `?TOmicsVis::table_merge` or reference page
@@ -2241,4 +2263,81 @@ Get help using command `?TOmicsVis::table_cross` or reference page
 ``` r
 # Get help with command in R console.
 # ?TOmicsVis::table_cross
+```
+
+## 4. Quick Start Examples
+
+### 4.1 Complete differential expression analysis workflow
+
+``` r
+# Load package
+load_TOmicsVis()
+
+# Step 1: Visualize DEGs with volcano plot
+data(degs_stats)
+volcano_plot(data = degs_stats, title = "DEGs Analysis")
+
+# Step 2: Create heatmap of top DEGs
+data(gene_expression2)
+data(samples_groups)
+heatmap_group(
+  sample_gene = gene_expression2[1:50,],
+  group_sample = samples_groups
+)
+
+# Step 3: Perform PCA analysis
+data(gene_expression)
+pca_plot(
+  sample_gene = gene_expression,
+  group_sample = samples_groups
+)
+
+# Step 4: GO enrichment analysis
+data(gene_go_kegg)
+go_enrich_bar(
+  go_anno = gene_go_kegg[,-5],
+  degs_list = gene_go_kegg[100:200,1]
+)
+```
+
+### 4.2 Launch Shiny app for interactive analysis
+
+``` r
+# Start TOmicsVis Shiny app (recommended for beginners)
+tomicsvis()
+
+# Or access online cloud platform:
+# https://shiny.hiplot.cn/tomicsvis-shiny/
+```
+
+## 5. Citation
+
+If you use TOmicsVis in your research, please cite:
+
+> Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and
+> You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis
+> and Visualization R Package with shinyapp Interface.” iMeta e137.
+> <https://doi.org/10.1002/imt2.137>
+
+``` r
+# Get citation information
+citation(package = "TOmicsVis")
+#> To cite package 'TOmicsVis' in publications use:
+#> 
+#>   Miao B, Dong W, Han Z, Luo X, Ke C, You W (2023). "TOmicsVis: An
+#>   all-in-one transcriptomic analysis and visualization R package with
+#>   Shinyapp interface." _iMeta_, *e137*, 1-14. doi:10.1002/imt2.137
+#>   <https://doi.org/10.1002/imt2.137>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface},
+#>     author = {Ben-Ben Miao and Wei Dong and Zhao-Fang Han and Xuan Luo and Cai-Huan Ke and Wei-Wei You},
+#>     journal = {iMeta},
+#>     year = {2023},
+#>     volume = {e137},
+#>     pages = {1-14},
+#>     doi = {https://doi.org/10.1002/imt2.137},
+#>   }
 ```

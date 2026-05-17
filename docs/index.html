@@ -5,146 +5,95 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content='Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.'>
 <title>TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface • TOmicsVis</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/JetBrains_Mono-0.4.7/font.css" rel="stylesheet">
-<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface">
+<meta name="description" content='Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.'>
 <meta property="og:description" content='Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.'>
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-000000-0"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-000000-0');
+</script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="index.html">TOmicsVis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.7.1</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item">
-  <a class="nav-link" href="index.html">
-    <span class="fa fa-home"></span>
-     
-    Home
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="reference/index.html">
-    <span class="fa fa-passport"></span>
-     
-    Reference
-  </a>
-</li>
+<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home"></span> Home</a></li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html"><span class="fa fa-passport"></span> Reference</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--articles">
-    <span class="fa fa-file-code"></span>
-     
-    Articles
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdown--articles">
-    <h6 class="dropdown-header" data-toc-skip>Get Start</h6>
-    <a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ">
-      <span class="fa fa-weixin"></span>
-       
-      LongArticle
-    </a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Tutorials</h6>
-    <a class="dropdown-item" href="articles/Tutorials.html">
-      <span class="fa fa-file-code"></span>
-       
-      Tutorials
-    </a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Blog</h6>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-file-code"></span> Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><h6 class="dropdown-header" data-toc-skip>Get Start</h6></li>
+    <li><a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ"><span class="fa fa-weixin"></span> LongArticle</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Tutorials</h6></li>
+    <li><a class="dropdown-item" href="articles/Tutorials.html"><span class="fa fa-file-code"></span> Tutorials</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Blog</h6></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="news/index.html">
-    <span class="fa fa-code-branch"></span>
-     
-    Versions
-  </a>
-</li>
+<li class="nav-item"><a class="nav-link" href="news/index.html"><span class="fa fa-code-branch"></span> Versions</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--courses">
-    <span class="fa fa-film"></span>
-     
-    Courses
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdown--courses">
-    <h6 class="dropdown-header" data-toc-skip>Platforms</h6>
-    <a class="external-link dropdown-item" href="https://space.bilibili.com/34105515/channel/series">
-      <span class="fa fa-youtube"></span>
-       
-      BiliBili
-    </a>
-    <a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g">
-      <span class="fa fa-weixin"></span>
-       
-      WeChat
-    </a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-courses" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-film"></span> Courses</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-courses">
+<li><h6 class="dropdown-header" data-toc-skip>Platforms</h6></li>
+    <li><a class="external-link dropdown-item" href="https://space.bilibili.com/34105515/channel/series"><span class="fa fa-youtube"></span> BiliBili</a></li>
+    <li><a class="external-link dropdown-item" href="https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g"><span class="fa fa-weixin"></span> WeChat</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/OmicsSuite/">
-    <span class="fa fa-dna"></span>
-     
-    OmicsSuite
-  </a>
-</li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/OmicsSuite/"><span class="fa fa-dna"></span> OmicsSuite</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="nav-link" href="https://github.com/benben-miao/TOmicsVis/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/benben-miao/TOmicsVis/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="tomicsvis">TOmicsVis<a class="anchor" aria-label="anchor" href="#tomicsvis"></a>
+<div class="page-header"><h1 id="tomicsvis-version-271">TOmicsVis (Version 2.7.1)<a class="anchor" aria-label="anchor" href="#tomicsvis-version-271"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="id_1-introduction">1. Introduction<a class="anchor" aria-label="anchor" href="#id_1-introduction"></a>
 </h2>
-<p><strong>TOmicsVis</strong>: TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface.</p>
-<p><strong>SourceCode:</strong> <a href="https://github.com/benben-miao/TOmicsVis/" class="uri">https://github.com/benben-miao/TOmicsVis/</a></p>
-<p><strong>Website API</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="external-link uri">https://benben-miao.github.io/TOmicsVis/</a></p>
+<p><strong>TOmicsVis</strong>: An all-in-one transcriptomic analysis and visualization R package with Shiny app interface.</p>
+<p><strong>Current Version:</strong> 2.7.1 (2026-05-17)</p>
+<p><strong>SourceCode:</strong> <a href="https://github.com/benben-miao/TOmicsVis/" class="external-link uri">https://github.com/benben-miao/TOmicsVis/</a></p>
+<p><strong>Website API</strong>: <a href="https://benben-miao.github.io/TOmicsVis/" class="uri">https://benben-miao.github.io/TOmicsVis/</a></p>
 <p><strong>Citation:</strong> <code>citation(package = "TOmicsVis")</code></p>
 <blockquote>
-<p>Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “ TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. <a href="https://doi.org/10.1002/imt2.137" class="external-link uri">https://doi.org/10.1002/imt2.137</a></p>
+<p>Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. <a href="https://doi.org/10.1002/imt2.137" class="external-link uri">https://doi.org/10.1002/imt2.137</a></p>
 </blockquote>
 <div class="section level4">
 <h4 id="id_11-tomicsvis-shinyapp">1.1 TOmicsVis Shinyapp<a class="anchor" aria-label="anchor" href="#id_11-tomicsvis-shinyapp"></a>
@@ -166,80 +115,51 @@ TOmicsVis Shinyapp
 <code class="sourceCode R"><span><span class="co"># Install required packages from Bioconductor</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ComplexHeatmap"</span>, <span class="st">"EnhancedVolcano"</span>, <span class="st">"clusterProfiler"</span>, <span class="st">"enrichplot"</span>, <span class="st">"impute"</span>, <span class="st">"preprocessCore"</span>, <span class="st">"Mfuzz"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>1.2.2 Github</strong>: <a href="https://github.com/benben-miao/TOmicsVis/" class="uri">https://github.com/benben-miao/TOmicsVis/</a></p>
+<p><strong>1.2.2 Github</strong>: <a href="https://github.com/benben-miao/TOmicsVis/" class="external-link uri">https://github.com/benben-miao/TOmicsVis/</a></p>
 <p><strong>Install from Github:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"benben-miao/TOmicsVis"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"benben-miao/TOmicsVis"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Resolve network by GitClone</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitclone.com/github.com/benben-miao/TOmicsVis.git"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitclone.com/github.com/benben-miao/TOmicsVis.git"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>1.2.3 CRAN</strong>: <a href="https://cran.r-project.org/package=TOmicsVis" class="external-link uri">https://cran.r-project.org/package=TOmicsVis</a></p>
 <p><strong>Install from CRAN:</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install from CRAN</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"TOmicsVis"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="id_13-articles-and-courses">1.3 Articles and Courses<a class="anchor" aria-label="anchor" href="#id_13-articles-and-courses"></a>
-</h4>
-<p><strong>Video Courses:</strong> <a href="https://space.bilibili.com/34105515/channel/series" class="external-link uri">https://space.bilibili.com/34105515/channel/series</a></p>
-<p><strong>Article Courses:</strong> <a href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ" class="external-link">全解TOmicsVis完美应用于转录组可视化R包</a></p>
-<p><strong>Resources Download:</strong> <a href="https://www.aliyundrive.com/s/tSp8FEohswW" class="external-link uri">https://www.aliyundrive.com/s/tSp8FEohswW</a></p>
-<p><strong>TOmicsVis 微信交流群:</strong></p>
-<p><img src="https://benben-miao.github.io/TOmicsVis/WeChat-GroupLink.png"></p>
-</div>
-<div class="section level4">
-<h4 id="id_14-about-and-authors">1.4 About and Authors<a class="anchor" aria-label="anchor" href="#id_14-about-and-authors"></a>
-</h4>
-<p><strong>OmicsSuite</strong>: <a href="https://github.com/omicssuite/" class="external-link">Omics Suite Github: https://github.com/omicssuite/</a></p>
-<p><strong>Authors</strong>:</p>
-<ul>
-<li><p><a href="https://github.com/benben-miao/" class="external-link">benben-miao Github: https://github.com/benben-miao/</a></p></li>
-<li><p><a href="https://github.com/dongwei1220/" class="external-link">dongwei1220 Github: https://github.com/dongwei1220/</a></p></li>
-</ul>
-</div>
 </div>
 <div class="section level2">
-<h2 id="id_2-libary-packages">2. Libary packages<a class="anchor" aria-label="anchor" href="#id_2-libary-packages"></a>
+<h2 id="id_2-library-packages">2. Library packages<a class="anchor" aria-label="anchor" href="#id_2-library-packages"></a>
 </h2>
+<div class="section level3">
+<h3 id="id_21-standard-loading-method">2.1 Standard loading method<a class="anchor" aria-label="anchor" href="#id_21-standard-loading-method"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Library TOmicsVis package</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/" class="external-link">TOmicsVis</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; 载入需要的程辑包：Biobase</span></span>
-<span><span class="co">#&gt; 载入需要的程辑包：BiocGenerics</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://benben-miao.github.io/TOmicsVis/">TOmicsVis</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 载入程辑包：'BiocGenerics'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     IQR, mad, sd, var, xtabs</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     anyDuplicated, aperm, append, as.data.frame, basename, cbind,</span></span>
-<span><span class="co">#&gt;     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,</span></span>
-<span><span class="co">#&gt;     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,</span></span>
-<span><span class="co">#&gt;     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,</span></span>
-<span><span class="co">#&gt;     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,</span></span>
-<span><span class="co">#&gt;     table, tapply, union, unique, unsplit, which.max, which.min</span></span>
-<span><span class="co">#&gt; Welcome to Bioconductor</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Vignettes contain introductory material; view with</span></span>
-<span><span class="co">#&gt;     'browseVignettes()'. To cite Bioconductor, see</span></span>
-<span><span class="co">#&gt;     'citation("Biobase")', and for packages 'citation("pkgname")'.</span></span>
-<span><span class="co">#&gt; 载入需要的程辑包：e1071</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Registered S3 method overwritten by 'GGally':</span></span>
-<span><span class="co">#&gt;   method from   </span></span>
-<span><span class="co">#&gt;   +.gg   ggplot2</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 载入程辑包：'DynDoc'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:BiocGenerics':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     path</span></span>
+<span><span class="co">#&gt; Warning in fun(libname, pkgname): couldn't connect to display ":0"</span></span>
+<span><span class="co">#&gt; Welcome to TOmicsVis v2.7.1! An All-in-One Transcriptomic Analysis and Visualization Package.</span></span>
 <span></span>
 <span><span class="co"># 2. Extra package</span></span>
 <span><span class="co"># install.packages("ggplot2")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_22-recommended-loading-method-suppress-warnings">2.2 Recommended loading method (suppress warnings)<a class="anchor" aria-label="anchor" href="#id_22-recommended-loading-method-suppress-warnings"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use load_TOmicsVis() to suppress harmless display warnings from Mfuzz dependency</span></span>
+<span><span class="fu"><a href="reference/load_TOmicsVis.html">load_TOmicsVis</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># Output: ✓ TOmicsVis v2.7.1 loaded successfully!</span></span>
+<span><span class="co">#         All functions ready to use.</span></span>
+<span></span>
+<span><span class="co"># Then use all functions normally</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/volcano_plot.html">volcano_plot</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="id_3-usage-cases">3. Usage cases<a class="anchor" aria-label="anchor" href="#id_3-usage-cases"></a>
@@ -252,7 +172,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: Weight and Sex traits dataframe (1st-col: Weight, 2nd-col: Sex).</p>
 <p><strong>Output Plot:</strong> Quantile plot for visualizing data distribution.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weight_sex</span><span class="op">)</span></span>
@@ -276,11 +196,11 @@ TOmicsVis Shinyapp
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_NPG"</span>,</span>
 <span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.75</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-quantile_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/quantile_plot.html">?TOmicsVis::quantile_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html</a>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/quantile_plot.html">?TOmicsVis::quantile_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html</a>.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::quantile_plot</span></span></code></pre></div>
 </div>
@@ -289,7 +209,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).</p>
 <p><strong>Output Plot:</strong> Plot: Box plot support two levels and multiple groups with P value.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
@@ -315,11 +235,11 @@ TOmicsVis Shinyapp
 <span>  sci_color_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-box_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/box_plot.html">?TOmicsVis::box_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/box_plot.html">?TOmicsVis::box_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/box_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/box_plot.html</a>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::box_plot</span></span></code></pre></div>
 </div>
@@ -328,7 +248,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: Length, Width, Weight, and Sex traits dataframe (1st-col: Value, 2nd-col: Traits, 3rd-col: Sex).</p>
 <p><strong>Output Plot:</strong> Plot: Violin plot support two levels and multiple groups with P value.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">traits_sex</span><span class="op">)</span></span>
 <span></span>
@@ -347,11 +267,11 @@ TOmicsVis Shinyapp
 <span>  sci_color_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-violin_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/violin_plot.html">?TOmicsVis::violin_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html</a>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/violin_plot.html">?TOmicsVis::violin_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html</a>.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::violin_plot</span></span></code></pre></div>
 </div>
@@ -360,7 +280,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: survival record data (1st-col: Time, 2nd-col: Status, 3rd-col: Group).</p>
 <p><strong>Output Plot:</strong> Survival plot for analyzing and visualizing survival data.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">survival_data</span><span class="op">)</span></span>
@@ -381,16 +301,17 @@ TOmicsVis Shinyapp
 <span>  risk_table <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  num_censor <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  sci_palette <span class="op">=</span> <span class="st">"aaas"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span>,</span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span>,</span>
 <span>  x_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_start <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  y_end <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>  x_break <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>  y_break <span class="op">=</span> <span class="fl">10</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span>  x_break <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; • colour : "Strata"</span></span></code></pre></div>
 <p><img src="reference/figures/README-survival_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/survival_plot.html">?TOmicsVis::survival_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html</a>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/survival_plot.html">?TOmicsVis::survival_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html</a>.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::survival_plot</span></span></code></pre></div>
 </div>
@@ -403,7 +324,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Output Plot:</strong> Plot: heatmap plot filled with Pearson correlation values and P values.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
@@ -436,13 +357,21 @@ TOmicsVis Shinyapp
 <span>  color_mid <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>  color_high <span class="op">=</span> <span class="st">"red"</span>,</span>
 <span>  outline_color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">#&gt; ℹ Please use tidy evaluation idioms with `aes()`.</span></span>
+<span><span class="co">#&gt; ℹ See also `vignette("ggplot2-in-packages")` for more information.</span></span>
+<span><span class="co">#&gt; ℹ The deprecated feature was likely used in the ggcorrplot package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at &lt;https://github.com/kassambara/ggcorrplot/issues&gt;.</span></span>
+<span><span class="co">#&gt; This warning is displayed once per session.</span></span>
+<span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span>
+<span><span class="co">#&gt; generated.</span></span>
 <span><span class="co">#&gt; Scale for fill is already present.</span></span>
 <span><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-corr_heatmap-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/corr_heatmap.html">?TOmicsVis::corr_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html</a>.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/corr_heatmap.html">?TOmicsVis::corr_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html</a>.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::corr_heatmap</span></span></code></pre></div>
 </div>
@@ -452,7 +381,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Table:</strong> PCA dimensional reduction analysis for RNA-Seq.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span></span>
@@ -484,14 +413,14 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; LT20_2   -941.3943  -5072.401   5345.106   6494.1383  -3954.2153   9351.346</span></span>
 <span><span class="co">#&gt; LT20_3   7263.9321  -7774.725  -1853.546 -21427.2641    -46.1503 -12507.011</span></span>
 <span><span class="co">#&gt;              PC13       PC14          PC15</span></span>
-<span><span class="co">#&gt; CT_1    -2704.613  2396.7383  2.528517e-11</span></span>
-<span><span class="co">#&gt; CT_2    -2633.057 -1375.3352  6.825657e-11</span></span>
-<span><span class="co">#&gt; CT_3     5193.978   188.5601  2.255671e-11</span></span>
-<span><span class="co">#&gt; LT20_1   3937.457 -7871.8062  4.864246e-11</span></span>
-<span><span class="co">#&gt; LT20_2 -12904.673  6071.6618 -2.020696e-10</span></span>
-<span><span class="co">#&gt; LT20_3  -5369.380  2606.1762  1.903509e-11</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/pca_analysis.html">?TOmicsVis::pca_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html</a>.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; CT_1    -2704.613  2396.7383  4.266986e-11</span></span>
+<span><span class="co">#&gt; CT_2    -2633.057 -1375.3352  1.484187e-11</span></span>
+<span><span class="co">#&gt; CT_3     5193.978   188.5601  4.119713e-11</span></span>
+<span><span class="co">#&gt; LT20_1   3937.457 -7871.8062  1.031765e-10</span></span>
+<span><span class="co">#&gt; LT20_2 -12904.673  6071.6618 -8.107249e-11</span></span>
+<span><span class="co">#&gt; LT20_3  -5369.380  2606.1762  5.619822e-11</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/pca_analysis.html">?TOmicsVis::pca_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html</a>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::pca_analysis</span></span></code></pre></div>
 </div>
@@ -501,7 +430,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Plot:</strong> Plot: PCA dimensional reduction visualization for RNA-Seq.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span></span>
@@ -527,11 +456,11 @@ TOmicsVis Shinyapp
 <span>  border_alpha <span class="op">=</span> <span class="fl">0.00</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-pca_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/pca_plot.html">?TOmicsVis::pca_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html</a>.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/pca_plot.html">?TOmicsVis::pca_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html</a>.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::pca_plot</span></span></code></pre></div>
 </div>
@@ -541,7 +470,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Table:</strong> TSNE analysis for analyzing and visualizing TSNE algorithm.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
@@ -549,15 +478,15 @@ TOmicsVis Shinyapp
 <span><span class="co"># 2. Run tsne_analysis plot function</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tsne_analysis.html">tsne_analysis</a></span><span class="op">(</span><span class="va">gene_expression</span>, <span class="va">samples_groups</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       TSNE1     TSNE2</span></span>
-<span><span class="co">#&gt; 1 -67.41252 -16.61397</span></span>
-<span><span class="co">#&gt; 2  43.08349 -34.02654</span></span>
-<span><span class="co">#&gt; 3 123.32273  54.14358</span></span>
-<span><span class="co">#&gt; 4 -42.52065 -31.30027</span></span>
-<span><span class="co">#&gt; 5  94.98790  48.97986</span></span>
-<span><span class="co">#&gt; 6 -23.90637 -22.26434</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/tsne_analysis.html">?TOmicsVis::tsne_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html</a>.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt;        TSNE1     TSNE2</span></span>
+<span><span class="co">#&gt; 1  29.722650 -29.60331</span></span>
+<span><span class="co">#&gt; 2 -58.256581 -63.65201</span></span>
+<span><span class="co">#&gt; 3  50.814277 108.29664</span></span>
+<span><span class="co">#&gt; 4   8.804477 -44.87441</span></span>
+<span><span class="co">#&gt; 5  44.802722  85.24188</span></span>
+<span><span class="co">#&gt; 6  -7.535410 -38.35476</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/tsne_analysis.html">?TOmicsVis::tsne_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html</a>.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::tsne_analysis</span></span></code></pre></div>
 </div>
@@ -567,7 +496,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Plot:</strong> TSNE plot for analyzing and visualizing TSNE algorithm.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
@@ -587,11 +516,13 @@ TOmicsVis Shinyapp
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; • shape : "Groups"</span></span></code></pre></div>
 <p><img src="reference/figures/README-tsne_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/tsne_plot.html">?TOmicsVis::tsne_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html</a>.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/tsne_plot.html">?TOmicsVis::tsne_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html</a>.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::tsne_plot</span></span></code></pre></div>
 </div>
@@ -601,23 +532,23 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Table:</strong> UMAP analysis for analyzing RNA-Seq data.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 2. Run tsne_plot plot function</span></span>
+<span><span class="co"># 2. Run umap_analysis function</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/umap_analysis.html">umap_analysis</a></span><span class="op">(</span><span class="va">gene_expression</span>, <span class="va">samples_groups</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             UMAP1       UMAP2</span></span>
-<span><span class="co">#&gt; CT_1   -0.6752746  0.49425898</span></span>
-<span><span class="co">#&gt; CT_2    1.0232441  0.03062202</span></span>
-<span><span class="co">#&gt; CT_3   -0.4722297 -1.32183550</span></span>
-<span><span class="co">#&gt; LT20_1 -0.2414214  0.13870703</span></span>
-<span><span class="co">#&gt; LT20_2  0.1991701 -1.23434000</span></span>
-<span><span class="co">#&gt; LT20_3  0.6431577  1.11879669</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/umap_analysis.html">?TOmicsVis::umap_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html</a>.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt;              UMAP1       UMAP2</span></span>
+<span><span class="co">#&gt; CT_1    0.39894968  0.39023545</span></span>
+<span><span class="co">#&gt; CT_2   -0.60445627 -0.40203491</span></span>
+<span><span class="co">#&gt; CT_3    1.09099797 -0.10852843</span></span>
+<span><span class="co">#&gt; LT20_1 -0.09000485  0.08849396</span></span>
+<span><span class="co">#&gt; LT20_2  0.99760329 -0.84753825</span></span>
+<span><span class="co">#&gt; LT20_3 -0.42657219 -1.20536760</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/umap_analysis.html">?TOmicsVis::umap_analysis</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html</a>.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::umap_analysis</span></span></code></pre></div>
 </div>
@@ -627,7 +558,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Plot:</strong> UMAP plot for analyzing and visualizing UMAP algorithm.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
@@ -647,11 +578,11 @@ TOmicsVis Shinyapp
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-umap_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/umap_plot.html">?TOmicsVis::umap_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html</a>.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/umap_plot.html">?TOmicsVis::umap_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html</a>.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::umap_plot</span></span></code></pre></div>
 </div>
@@ -660,7 +591,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Output Plot:</strong> Plot: dendrogram for multiple samples clustering.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span></span>
@@ -680,14 +611,14 @@ TOmicsVis Shinyapp
 <span>  rect_fill <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="st">"Samples"</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="st">"Height"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Registered S3 method overwritten by 'dendextend':</span></span>
 <span><span class="co">#&gt;   method     from </span></span>
 <span><span class="co">#&gt;   rev.hclust vegan</span></span></code></pre></div>
 <p><img src="reference/figures/README-dendro_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/dendro_plot.html">?TOmicsVis::dendro_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html</a>.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/dendro_plot.html">?TOmicsVis::dendro_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html</a>.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::dendro_plot</span></span></code></pre></div>
 </div>
@@ -700,7 +631,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
 <p><strong>Output Plot:</strong> Venn plot for stat common and unique gene among multiple sets.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span>
@@ -715,18 +646,18 @@ TOmicsVis Shinyapp
 <span><span class="co"># 2. Run venn_plot plot function</span></span>
 <span><span class="fu"><a href="reference/venn_plot.html">venn_plot</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">degs_lists</span>,</span>
-<span>    title_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    title_size <span class="op">=</span> <span class="fl">1.2</span>,</span>
 <span>    label_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    label_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>    label_size <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>    border_show <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    line_type <span class="op">=</span> <span class="st">"longdash"</span>,</span>
+<span>    line_type <span class="op">=</span> <span class="st">"solid"</span>,</span>
 <span>    ellipse_shape <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>    sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
-<span>    sci_fill_alpha <span class="op">=</span> <span class="fl">0.65</span></span>
+<span>    color_scheme <span class="op">=</span> <span class="st">"Vibrant"</span>,</span>
+<span>    fill_alpha <span class="op">=</span> <span class="fl">0.55</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-venn_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/venn_plot.html">?TOmicsVis::venn_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html</a>.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::venn_plot</span></span></code></pre></div>
 </div>
@@ -735,7 +666,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
 <p><strong>Output Plot:</strong> UpSet plot for stat common and unique gene among multiple sets.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span>
@@ -767,8 +698,8 @@ TOmicsVis Shinyapp
 <span>  text_scale <span class="op">=</span> <span class="fl">1.2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-upsetr_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/upsetr_plot.html">?TOmicsVis::upsetr_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html</a>.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/upsetr_plot.html">?TOmicsVis::upsetr_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html</a>.</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::upsetr_plot</span></span></code></pre></div>
 </div>
@@ -777,7 +708,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Paired comparisons differentially expressed genes (degs) among groups (1st-col~: degs of paired comparisons).</p>
 <p><strong>Output Plot:</strong> Flower plot for stat common and unique gene among multiple sets.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_lists</span><span class="op">)</span></span>
 <span></span>
@@ -793,8 +724,8 @@ TOmicsVis Shinyapp
 <span>  label_text_cex <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-flower_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/flower_plot.html">?TOmicsVis::flower_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html</a>.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/flower_plot.html">?TOmicsVis::flower_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html</a>.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::flower_plot</span></span></code></pre></div>
 </div>
@@ -803,7 +734,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).</p>
 <p><strong>Output Plot:</strong> Volcano plot for visualizing differentailly expressed genes.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span>
@@ -836,8 +767,8 @@ TOmicsVis Shinyapp
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-volcano_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/volcano_plot.html">?TOmicsVis::volcano_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/volcano_plot.html">?TOmicsVis::volcano_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html</a>.</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::volcano_plot</span></span></code></pre></div>
 </div>
@@ -846,7 +777,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: All DEGs of paired comparison CT-vs-LT12 stats2 dataframe (1st-col: Gene, 2nd-col: baseMean, 3rd-col: Log2FoldChange, 4th-col: FDR).</p>
 <p><strong>Output Plot:</strong> MversusA plot for visualizing differentially expressed genes.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">degs_stats2</span><span class="op">)</span></span>
@@ -874,11 +805,11 @@ TOmicsVis Shinyapp
 <span>  title <span class="op">=</span> <span class="st">"CT-vs-LT12"</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="st">"Log2 mean expression"</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="st">"Log2 fold change"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-ma_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/ma_plot.html">?TOmicsVis::ma_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/ma_plot.html">?TOmicsVis::ma_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html</a>.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::ma_plot</span></span></code></pre></div>
 </div>
@@ -888,7 +819,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Plot:</strong> Heatmap group for visualizing grouped gene expression data.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
@@ -913,8 +844,8 @@ TOmicsVis Shinyapp
 <span>  x_angle <span class="op">=</span> <span class="fl">45</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-heatmap_group-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/heatmap_group.html">?TOmicsVis::heatmap_group</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html</a>.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/heatmap_group.html">?TOmicsVis::heatmap_group</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html</a>.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_group</span></span></code></pre></div>
 </div>
@@ -923,7 +854,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Output Plot:</strong> Circos heatmap plot for visualizing gene expressing in multiple samples.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
@@ -957,14 +888,10 @@ TOmicsVis Shinyapp
 <span>  track_height <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>  rowname_show <span class="op">=</span> <span class="st">"outside"</span>,</span>
 <span>  rowname_size <span class="op">=</span> <span class="fl">0.8</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Note: 15 points are out of plotting region in sector 'group', track</span></span>
-<span><span class="co">#&gt; '3'.</span></span>
-<span><span class="co">#&gt; Note: 15 points are out of plotting region in sector 'group', track</span></span>
-<span><span class="co">#&gt; '3'.</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-circos_heatmap-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/circos_heatmap.html">?TOmicsVis::circos_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/circos_heatmap.html">?TOmicsVis::circos_heatmap</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html</a>.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::circos_heatmap</span></span></code></pre></div>
 </div>
@@ -973,7 +900,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Output Plot:</strong> Chord plot for visualizing the relationships of pathways and genes.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load chord_data example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
@@ -1009,15 +936,15 @@ TOmicsVis Shinyapp
 <span>  label_scale <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-chord_plot-1.png"><!-- --></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
-<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #D88E9EB2</span></span>
-<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #E781E0B2</span></span>
-<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E55237B2</span></span>
-<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #44BBBBB2</span></span>
-<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #99F1E4B2</span></span>
-<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #656CD9B2</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co">#&gt;      rn   cn value1 value2 o1 o2      x1     x2       col</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="co">#&gt; 1 ACAA2 CT_1  24.50  24.50 15 30 3779.75 394.66 #7FD2DFB2</span></span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a><span class="co">#&gt; 2  ACAN CT_1  14.97  14.97 15 29 5349.40 370.16 #A5B6A8B2</span></span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a><span class="co">#&gt; 3  ADH1 CT_1   1.54   1.54 15 28  166.82 355.19 #E99F84B2</span></span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a><span class="co">#&gt; 4  AHSG CT_1   0.00   0.00 15 27 1911.99 353.65 #6E5086B2</span></span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a><span class="co">#&gt; 5 ALDH2 CT_1   2.07   2.07 15 26   11.11 353.65 #B9C2E0B2</span></span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a><span class="co">#&gt; 6 AP1S3 CT_1   6.62   6.62 15 25  430.19 351.58 #E1DAE2B2</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/chord_plot.html">?TOmicsVis::chord_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html</a>.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::chord_plot</span></span></code></pre></div>
 </div>
@@ -1030,7 +957,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: All DEGs of paired comparison CT-vs-LT12 stats dataframe (1st-col: Genes, 2nd-col: log2FoldChange, 3rd-col: Pvalue, 4th-col: FDR).</p>
 <p><strong>Output Plot:</strong> Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span>
 <span></span>
@@ -1048,8 +975,8 @@ TOmicsVis Shinyapp
 <span>  ylab <span class="op">=</span> <span class="st">"Log2FoldChange"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-gene_rank_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/gene_rank_plot.html">?TOmicsVis::gene_rank_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html</a>.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/gene_rank_plot.html">?TOmicsVis::gene_rank_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html</a>.</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_rank_plot</span></span></code></pre></div>
 </div>
@@ -1058,7 +985,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).</p>
 <p><strong>Output Plot:</strong> Gene cluster trend plot for visualizing gene expression trend profile in multiple samples.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">)</span></span>
 <span></span>
@@ -1070,12 +997,47 @@ TOmicsVis Shinyapp
 <span>  palette <span class="op">=</span> <span class="st">"PiYG"</span>,</span>
 <span>  cluster_num <span class="op">=</span> <span class="fl">4</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'generics'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,</span></span>
+<span><span class="co">#&gt;     setequal, union</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'BiocGenerics'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:DynDoc':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     path</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     IQR, mad, sd, var, xtabs</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     anyDuplicated, aperm, append, as.data.frame, basename, cbind,</span></span>
+<span><span class="co">#&gt;     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,</span></span>
+<span><span class="co">#&gt;     get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,</span></span>
+<span><span class="co">#&gt;     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span></span>
+<span><span class="co">#&gt;     rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,</span></span>
+<span><span class="co">#&gt;     unsplit, which.max, which.min</span></span>
+<span><span class="co">#&gt; Welcome to Bioconductor</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Vignettes contain introductory material; view with</span></span>
+<span><span class="co">#&gt;     'browseVignettes()'. To cite Bioconductor, see</span></span>
+<span><span class="co">#&gt;     'citation("Biobase")', and for packages 'citation("pkgname")'.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'e1071'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:generics':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     interpolate</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:ggplot2':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     element</span></span>
 <span><span class="co">#&gt; 0 genes excluded.</span></span>
 <span><span class="co">#&gt; 0 genes excluded.</span></span></code></pre></div>
 <p><img src="reference/figures/README-gene_cluster_trend-1.png"><!-- --></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/gene_cluster_trend.html">?TOmicsVis::gene_cluster_trend</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/gene_cluster_trend.html">?TOmicsVis::gene_cluster_trend</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html</a>.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::gene_cluster_trend</span></span></code></pre></div>
 </div>
@@ -1084,7 +1046,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data2:</strong> Dataframe: Shared DEGs of all paired comparisons in all groups expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~n-1-col: Groups, n-col: Pathways).</p>
 <p><strong>Output Plot:</strong> Trend plot for visualizing gene expression trend profile in multiple traits.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression3</span><span class="op">)</span></span>
@@ -1119,11 +1081,11 @@ TOmicsVis Shinyapp
 <span>  sci_color_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  legend_pos <span class="op">=</span> <span class="st">"right"</span>,</span>
 <span>  legend_dir <span class="op">=</span> <span class="st">"vertical"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-trend_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/trend_plot.html">?TOmicsVis::trend_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html</a>.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/trend_plot.html">?TOmicsVis::trend_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html</a>.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::trend_plot</span></span></code></pre></div>
 </div>
@@ -1133,7 +1095,7 @@ TOmicsVis Shinyapp
 <p><strong>Input Data1:</strong> Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Input Data2:</strong> Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).</p>
 <p><strong>Output Plot:</strong> WGCNA analysis pipeline for RNA-Seq.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load wgcna_pipeline example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
@@ -1162,10 +1124,74 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 5  LT20_2   LT20</span></span>
 <span><span class="co">#&gt; 6  LT20_3   LT20</span></span>
 <span></span>
-<span><span class="co"># 2. Run wgcna_pipeline plot function</span></span>
-<span><span class="co"># wgcna_pipeline(gene_expression[1:3000,], samples_groups)</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/wgcna_pipeline.html">?TOmicsVis::wgcna_pipeline</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html</a>.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<span><span class="co"># 2. Run wgcna_pipeline function</span></span>
+<span><span class="co"># Note: This function requires substantial computation time for large datasets</span></span>
+<span><span class="co"># For quick testing, use a subset of genes (e.g., 1000-3000 genes)</span></span>
+<span><span class="fu"><a href="reference/wgcna_pipeline.html">wgcna_pipeline</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3000</span>,<span class="op">]</span>, <span class="va">samples_groups</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  Flagging genes and samples with too many missing values...</span></span>
+<span><span class="co">#&gt;   ..step 1</span></span>
+<span><span class="co">#&gt; pickSoftThreshold: will use block size 2185.</span></span>
+<span><span class="co">#&gt;  pickSoftThreshold: calculating connectivity for given powers...</span></span>
+<span><span class="co">#&gt;    ..working on genes 1 through 2185 of 2185</span></span>
+<span><span class="co">#&gt;    Power SFT.R.sq  slope truncated.R.sq mean.k. median.k. max.k.</span></span>
+<span><span class="co">#&gt; 1      1   0.0319 -0.378          0.553  613.00   583.000  943.0</span></span>
+<span><span class="co">#&gt; 2      2   0.6390 -1.130          0.787  259.00   226.000  551.0</span></span>
+<span><span class="co">#&gt; 3      3   0.8600 -1.270          0.906  134.00   105.000  368.0</span></span>
+<span><span class="co">#&gt; 4      4   0.9240 -1.300          0.945   78.40    55.000  265.0</span></span>
+<span><span class="co">#&gt; 5      5   0.9400 -1.310          0.958   50.20    31.500  201.0</span></span>
+<span><span class="co">#&gt; 6      6   0.9530 -1.310          0.974   34.20    18.800  160.0</span></span>
+<span><span class="co">#&gt; 7      7   0.9540 -1.300          0.978   24.50    12.000  130.0</span></span>
+<span><span class="co">#&gt; 8      8   0.9490 -1.320          0.976   18.20     8.030  108.0</span></span>
+<span><span class="co">#&gt; 9      9   0.9590 -1.310          0.985   13.90     5.520   90.9</span></span>
+<span><span class="co">#&gt; 10    10   0.9610 -1.300          0.988   10.90     3.870   77.6</span></span>
+<span><span class="co">#&gt; 11    12   0.9560 -1.300          0.991    7.17     2.060   58.4</span></span>
+<span><span class="co">#&gt; 12    14   0.9400 -1.320          0.981    5.01     1.160   47.1</span></span>
+<span><span class="co">#&gt; 13    16   0.9300 -1.340          0.982    3.67     0.711   39.0</span></span>
+<span><span class="co">#&gt; 14    18   0.9110 -1.360          0.964    2.79     0.466   33.0</span></span>
+<span><span class="co">#&gt; 15    20   0.9350 -1.340          0.983    2.19     0.312   28.5</span></span>
+<span><span class="co">#&gt;  Calculating module eigengenes block-wise from all genes</span></span>
+<span><span class="co">#&gt;    Flagging genes and samples with too many missing values...</span></span>
+<span><span class="co">#&gt;     ..step 1</span></span>
+<span><span class="co">#&gt;  ..Working on block 1 .</span></span>
+<span><span class="co">#&gt;     TOM calculation: adjacency..</span></span>
+<span><span class="co">#&gt;     ..will not use multithreading.</span></span>
+<span><span class="co">#&gt;      Fraction of slow calculations: 0.000000</span></span>
+<span><span class="co">#&gt;     ..connectivity..</span></span>
+<span><span class="co">#&gt;     ..matrix multiplication (system BLAS)..</span></span>
+<span><span class="co">#&gt;     ..normalization..</span></span>
+<span><span class="co">#&gt;     ..done.</span></span>
+<span><span class="co">#&gt;    ..saving TOM for block 1 into file /var/folders/hq/53g1lc391h730n9c3mrx4qb00000gn/T//RtmpPCBSZH/TOM.tom-block.1.RData</span></span>
+<span><span class="co">#&gt;  ....clustering..</span></span>
+<span><span class="co">#&gt;  ....detecting modules..</span></span>
+<span><span class="co">#&gt;      ..done.</span></span>
+<span><span class="co">#&gt;  ....calculating module eigengenes..</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 1</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 2</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 3</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 4</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 5</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 6</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 7</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 8</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 9</span></span>
+<span><span class="co">#&gt;      moduleEigengenes : Working on ME for module 10</span></span>
+<span><span class="co">#&gt;  ....checking kME in modules..</span></span>
+<span><span class="co">#&gt;      ..removing 120 genes from module 1 because their KME is too low.</span></span>
+<span><span class="co">#&gt;      ..removing 131 genes from module 2 because their KME is too low.</span></span>
+<span><span class="co">#&gt;      ..removing 1 genes from module 3 because their KME is too low.</span></span>
+<span><span class="co">#&gt;      ..removing 2 genes from module 4 because their KME is too low.</span></span>
+<span><span class="co">#&gt;      ..removing 1 genes from module 5 because their KME is too low.</span></span>
+<span><span class="co">#&gt;  ..merging modules that are too close..</span></span>
+<span><span class="co">#&gt;      mergeCloseModules: Merging modules whose distance is less than 0.15</span></span>
+<span><span class="co">#&gt;        multiSetMEs: Calculating module MEs.</span></span>
+<span><span class="co">#&gt;          Working on set 1 ...</span></span>
+<span><span class="co">#&gt;          moduleEigengenes: Calculating 11 module eigengenes in given set.</span></span>
+<span><span class="co">#&gt;        Calculating new MEs...</span></span>
+<span><span class="co">#&gt;        multiSetMEs: Calculating module MEs.</span></span>
+<span><span class="co">#&gt;          Working on set 1 ...</span></span>
+<span><span class="co">#&gt;          moduleEigengenes: Calculating 11 module eigengenes in given set.</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/wgcna_pipeline.html">?TOmicsVis::wgcna_pipeline</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html</a>.</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::wgcna_pipeline</span></span></code></pre></div>
 </div>
@@ -1174,7 +1200,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: Network data from WGCNA tan module top-200 dataframe (1st-col: Source, 2nd-col: Target).</p>
 <p><strong>Output Plot:</strong> Network plot for analyzing and visualizing relationship of genes.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">network_data</span><span class="op">)</span></span>
@@ -1206,8 +1232,8 @@ TOmicsVis Shinyapp
 <span>  net_layout <span class="op">=</span> <span class="st">"layout_on_sphere"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-network_plot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/network_plot.html">?TOmicsVis::network_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/network_plot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/network_plot.html</a>.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<p>Get help using command <code><a href="reference/network_plot.html">?TOmicsVis::network_plot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/network_plot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/network_plot.html</a>.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::network_plot</span></span></code></pre></div>
 </div>
@@ -1216,7 +1242,7 @@ TOmicsVis Shinyapp
 </h4>
 <p><strong>Input Data:</strong> Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).</p>
 <p><strong>Output Plot:</strong> Heatmap cluster plot for visualizing clustered gene expression data.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1. Load example datasets</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
@@ -1235,7 +1261,7 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 5   0.28   0.11     0.37     0.15     0.11</span></span>
 <span><span class="co">#&gt; 6  38.74  34.54    62.72    41.36    28.75</span></span>
 <span></span>
-<span><span class="co"># 2. Run network_plot plot function</span></span>
+<span><span class="co"># 2. Run heatmap_cluster function</span></span>
 <span><span class="fu"><a href="reference/heatmap_cluster.html">heatmap_cluster</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">gene_expression2</span>,</span>
 <span>  dist_method <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
@@ -1253,10 +1279,8 @@ TOmicsVis Shinyapp
 <span>  summary_color <span class="op">=</span> <span class="st">"#0000cd"</span>,</span>
 <span>  summary_alpha <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-heatmap_cluster-1.png"><!-- --></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="co">#&gt; Using Cluster, gene as id variables</span></span></code></pre></div>
-<p><img src="reference/figures/README-heatmap_cluster-2.png"><!-- --><img src="reference/figures/README-heatmap_cluster-3.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/heatmap_cluster.html">?TOmicsVis::heatmap_cluster</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html</a>.</p>
+<p><img src="reference/figures/README-heatmap_cluster-1.png"><!-- --><img src="reference/figures/README-heatmap_cluster-2.png"><!-- --><img src="reference/figures/README-heatmap_cluster-3.png"><!-- --></p>
+<p>Get help using command <code><a href="reference/heatmap_cluster.html">?TOmicsVis::heatmap_cluster</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html</a>.</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::heatmap_cluster</span></span></code></pre></div>
@@ -1326,28 +1350,28 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 4 GO:0000398 biological process</span></span>
 <span><span class="co">#&gt; 5 GO:0000774 molecular function</span></span>
 <span><span class="co">#&gt; 6 GO:0001671 molecular function</span></span>
-<span><span class="co">#&gt;                                                                 Description</span></span>
-<span><span class="co">#&gt; 1                     vacuolar proton-transporting V-type ATPase, V1 domain</span></span>
-<span><span class="co">#&gt; 2  mitochondrial proton-transporting ATP synthase complex, catalytic core F</span></span>
-<span><span class="co">#&gt; 3 mitochondrial proton-transporting ATP synthase complex, coupling factor F</span></span>
-<span><span class="co">#&gt; 4                                            mRNA splicing, via spliceosome</span></span>
-<span><span class="co">#&gt; 5                                adenyl-nucleotide exchange factor activity</span></span>
-<span><span class="co">#&gt; 6                                                 ATPase activator activity</span></span>
-<span><span class="co">#&gt;   GeneRatio BgRatio       pvalue     p.adjust       qvalue</span></span>
-<span><span class="co">#&gt; 1     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02</span></span>
-<span><span class="co">#&gt; 2     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02</span></span>
-<span><span class="co">#&gt; 3     6/101  6/1279 2.109128e-07 1.075656e-05 9.158058e-06</span></span>
-<span><span class="co">#&gt; 4     1/101 14/1279 6.858207e-01 7.363549e-01 6.269275e-01</span></span>
-<span><span class="co">#&gt; 5     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02</span></span>
-<span><span class="co">#&gt; 6     1/101  1/1279 7.896794e-02 1.110997e-01 9.458955e-02</span></span>
-<span><span class="co">#&gt;                                       geneID Count</span></span>
-<span><span class="co">#&gt; 1                                    ATP6V1H     1</span></span>
-<span><span class="co">#&gt; 2                                    ATP5F1E     1</span></span>
-<span><span class="co">#&gt; 3 ATP5MC1/ATP5ME/ATP5MG/ATP5PB/ATP5PD/ATP5PF     6</span></span>
-<span><span class="co">#&gt; 4                                      CDC40     1</span></span>
-<span><span class="co">#&gt; 5                                       BAG2     1</span></span>
-<span><span class="co">#&gt; 6                                     ATP1B1     1</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/go_enrich.html">?TOmicsVis::go_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html</a>.</p>
+<span><span class="co">#&gt;                                                                   Description</span></span>
+<span><span class="co">#&gt; 1                       vacuolar proton-transporting V-type ATPase, V1 domain</span></span>
+<span><span class="co">#&gt; 2  mitochondrial proton-transporting ATP synthase complex, catalytic core F(1</span></span>
+<span><span class="co">#&gt; 3 mitochondrial proton-transporting ATP synthase complex, coupling factor F(o</span></span>
+<span><span class="co">#&gt; 4                                              mRNA splicing, via spliceosome</span></span>
+<span><span class="co">#&gt; 5                                  adenyl-nucleotide exchange factor activity</span></span>
+<span><span class="co">#&gt; 6                                                   ATPase activator activity</span></span>
+<span><span class="co">#&gt;   GeneRatio BgRatio RichFactor FoldEnrichment     zScore       pvalue</span></span>
+<span><span class="co">#&gt; 1     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02</span></span>
+<span><span class="co">#&gt; 2     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02</span></span>
+<span><span class="co">#&gt; 3     6/101  6/1279 1.00000000     12.6633663  8.3818292 2.109128e-07</span></span>
+<span><span class="co">#&gt; 4     1/101 14/1279 0.07142857      0.9045262 -0.1051372 6.858207e-01</span></span>
+<span><span class="co">#&gt; 5     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02</span></span>
+<span><span class="co">#&gt; 6     1/101  1/1279 1.00000000     12.6633663  3.4151671 7.896794e-02</span></span>
+<span><span class="co">#&gt;       p.adjust       qvalue                                     geneID Count</span></span>
+<span><span class="co">#&gt; 1 1.110997e-01 9.458955e-02                                    ATP6V1H     1</span></span>
+<span><span class="co">#&gt; 2 1.110997e-01 9.458955e-02                                    ATP5F1E     1</span></span>
+<span><span class="co">#&gt; 3 1.075656e-05 9.158058e-06 ATP5MC1/ATP5ME/ATP5MG/ATP5PB/ATP5PD/ATP5PF     6</span></span>
+<span><span class="co">#&gt; 4 7.363549e-01 6.269275e-01                                      CDC40     1</span></span>
+<span><span class="co">#&gt; 5 1.110997e-01 9.458955e-02                                       BAG2     1</span></span>
+<span><span class="co">#&gt; 6 1.110997e-01 9.458955e-02                                     ATP1B1     1</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/go_enrich.html">?TOmicsVis::go_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html</a>.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich</span></span></code></pre></div>
@@ -1373,10 +1397,10 @@ TOmicsVis Shinyapp
 <span>  xtext_angle <span class="op">=</span> <span class="fl">45</span>,</span>
 <span>  sci_fill_color <span class="op">=</span> <span class="st">"Sci_AAAS"</span>,</span>
 <span>  sci_fill_alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_stat-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/go_enrich_stat.html">?TOmicsVis::go_enrich_stat</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
+<p>Get help using command <code><a href="reference/go_enrich_stat.html">?TOmicsVis::go_enrich_stat</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html</a>.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_stat</span></span></code></pre></div>
@@ -1402,12 +1426,12 @@ TOmicsVis Shinyapp
 <span>  font_size <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Scale for fill is already present.</span></span>
 <span><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_bar-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/go_enrich_bar.html">?TOmicsVis::go_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
+<p>Get help using command <code><a href="reference/go_enrich_bar.html">?TOmicsVis::go_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html</a>.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_bar</span></span></code></pre></div>
@@ -1433,12 +1457,10 @@ TOmicsVis Shinyapp
 <span>  font_size <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Scale for colour is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_dot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/go_enrich_dot.html">?TOmicsVis::go_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
+<p>Get help using command <code><a href="reference/go_enrich_dot.html">?TOmicsVis::go_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html</a>.</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_dot</span></span></code></pre></div>
@@ -1461,12 +1483,11 @@ TOmicsVis Shinyapp
 <span>  qvalue_cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  category_num <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>  net_layout <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  net_circular <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-go_enrich_net-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
+<p>Get help using command <code><a href="reference/go_enrich_net.html">?TOmicsVis::go_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::go_enrich_net</span></span></code></pre></div>
@@ -1532,13 +1553,20 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; ko04610 ko04610 Complement and coagulation cascades    13/101 43/1279</span></span>
 <span><span class="co">#&gt; ko04145 ko04145                           Phagosome    11/101 33/1279</span></span>
 <span><span class="co">#&gt; ko04971 ko04971              Gastric acid secretion     4/101  4/1279</span></span>
-<span><span class="co">#&gt;               pvalue     p.adjust       qvalue</span></span>
-<span><span class="co">#&gt; ko04966 1.573976e-08 2.030430e-06 1.723090e-06</span></span>
-<span><span class="co">#&gt; ko00190 5.232645e-08 3.375056e-06 2.864185e-06</span></span>
-<span><span class="co">#&gt; ko04721 1.069634e-06 4.599427e-05 3.903227e-05</span></span>
-<span><span class="co">#&gt; ko04610 1.078094e-05 3.476853e-04 2.950573e-04</span></span>
-<span><span class="co">#&gt; ko04145 1.941460e-05 5.008968e-04 4.250776e-04</span></span>
-<span><span class="co">#&gt; ko04971 3.679084e-05 7.910030e-04 6.712714e-04</span></span>
+<span><span class="co">#&gt;         RichFactor FoldEnrichment   zScore       pvalue     p.adjust</span></span>
+<span><span class="co">#&gt; ko04966  1.0000000      12.663366 9.056968 1.573976e-08 2.030430e-06</span></span>
+<span><span class="co">#&gt; ko00190  0.2613636       3.309743 6.572077 5.232645e-08 3.375056e-06</span></span>
+<span><span class="co">#&gt; ko04721  0.6153846       7.792841 7.205427 1.069634e-06 4.599427e-05</span></span>
+<span><span class="co">#&gt; ko04610  0.3023256       3.828460 5.522407 1.078094e-05 3.476853e-04</span></span>
+<span><span class="co">#&gt; ko04145  0.3333333       4.221122 5.487299 1.941460e-05 5.008968e-04</span></span>
+<span><span class="co">#&gt; ko04971  1.0000000      12.663366 6.838365 3.679084e-05 7.910030e-04</span></span>
+<span><span class="co">#&gt;               qvalue</span></span>
+<span><span class="co">#&gt; ko04966 1.723090e-06</span></span>
+<span><span class="co">#&gt; ko00190 2.864185e-06</span></span>
+<span><span class="co">#&gt; ko04721 3.903227e-05</span></span>
+<span><span class="co">#&gt; ko04610 2.950573e-04</span></span>
+<span><span class="co">#&gt; ko04145 4.250776e-04</span></span>
+<span><span class="co">#&gt; ko04971 6.712714e-04</span></span>
 <span><span class="co">#&gt;                                                                                                                                                                                        geneID</span></span>
 <span><span class="co">#&gt; ko04966                                                                                                                              ATP6V0C/ATP6V0E1/ATP6V1B2/ATP6V1C1A/ATP6V1F/ATP6V1G1/CA1</span></span>
 <span><span class="co">#&gt; ko00190 ATP5F1A/ATP5F1B/ATP5F1C/ATP5F1D/ATP5F1E/ATP5MC1/ATP5MC2/ATP5MC3/ATP5ME/ATP5MF/ATP5MG/ATP5PB/ATP5PD/ATP5PF/ATP5PO/ATP6V0B/ATP6V0C/ATP6V0E1/ATP6V1B2/ATP6V1C1A/ATP6V1F/ATP6V1G1/ATP6V1H</span></span>
@@ -1553,7 +1581,7 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; ko04610    13</span></span>
 <span><span class="co">#&gt; ko04145    11</span></span>
 <span><span class="co">#&gt; ko04971     4</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/kegg_enrich.html">?TOmicsVis::kegg_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html</a>.</p>
+<p>Get help using command <code><a href="reference/kegg_enrich.html">?TOmicsVis::kegg_enrich</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html</a>.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich</span></span></code></pre></div>
@@ -1579,12 +1607,12 @@ TOmicsVis Shinyapp
 <span>  font_size <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Scale for fill is already present.</span></span>
 <span><span class="co">#&gt; Adding another scale for fill, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_bar-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/kegg_enrich_bar.html">?TOmicsVis::kegg_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html</a>.</p>
+<p>Get help using command <code><a href="reference/kegg_enrich_bar.html">?TOmicsVis::kegg_enrich_bar</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html</a>.</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_bar</span></span></code></pre></div>
@@ -1610,12 +1638,10 @@ TOmicsVis Shinyapp
 <span>  font_size <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span>,</span>
-<span>  ggTheme <span class="op">=</span> <span class="st">"theme_light"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Scale for colour is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for colour, which will replace the existing scale.</span></span></code></pre></div>
+<span>  ggTheme <span class="op">=</span> <span class="st">"theme_publication"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_dot-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/kegg_enrich_dot.html">?TOmicsVis::kegg_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html</a>.</p>
+<p>Get help using command <code><a href="reference/kegg_enrich_dot.html">?TOmicsVis::kegg_enrich_dot</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html</a>.</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_dot</span></span></code></pre></div>
@@ -1638,12 +1664,11 @@ TOmicsVis Shinyapp
 <span>  qvalue_cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  category_num <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>  net_layout <span class="op">=</span> <span class="st">"circle"</span>,</span>
-<span>  net_circular <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  low_color <span class="op">=</span> <span class="st">"#ff0000aa"</span>,</span>
 <span>  high_color <span class="op">=</span> <span class="st">"#008800aa"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-kegg_enrich_net-1.png"><!-- --></p>
-<p>Get help using command <code><a href="reference/kegg_enrich_net.html">?TOmicsVis::kegg_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
+<p>Get help using command <code><a href="reference/kegg_enrich_net.html">?TOmicsVis::kegg_enrich_net</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html</a>.</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::kegg_enrich_net</span></span></code></pre></div>
@@ -1698,42 +1723,16 @@ TOmicsVis Shinyapp
 <span>  miss_drop <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        Genes</span></span>
-<span><span class="co">#&gt; 1 14-3-3ZETA</span></span>
-<span><span class="co">#&gt; 2       A1I3</span></span>
-<span><span class="co">#&gt; 3        A2M</span></span>
-<span><span class="co">#&gt; 4       AARS</span></span>
-<span><span class="co">#&gt; 5       ABAT</span></span>
-<span><span class="co">#&gt; 6      ABCB7</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                kegg_pathway</span></span>
-<span><span class="co">#&gt; 1 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span></span>
-<span><span class="co">#&gt; 4                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span></span>
-<span><span class="co">#&gt; 5         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span></span>
-<span><span class="co">#&gt; 6                                                                                                                                                                                                                 ko02010(ABC transporters)</span></span>
-<span><span class="co">#&gt;                                      biological_process</span></span>
-<span><span class="co">#&gt; 1                                                  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2                                                  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3                                                  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                GO:0006419(alanyl-tRNA aminoacylation)</span></span>
-<span><span class="co">#&gt; 5 GO:0009448(gamma-aminobutyric acid metabolic process)</span></span>
-<span><span class="co">#&gt; 6                                                  &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;                           cellular_component</span></span>
-<span><span class="co">#&gt; 1                                       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2            GO:0005615(extracellular space)</span></span>
-<span><span class="co">#&gt; 3            GO:0005615(extracellular space)</span></span>
-<span><span class="co">#&gt; 4                      GO:0005737(cytoplasm)</span></span>
-<span><span class="co">#&gt; 5                                       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6 GO:0016021(integral component of membrane)</span></span>
-<span><span class="co">#&gt;                                                                                                       molecular_function</span></span>
-<span><span class="co">#&gt; 1                                                                            GO:0019904(protein domain specific binding)</span></span>
-<span><span class="co">#&gt; 2                                                                           GO:0004866(endopeptidase inhibitor activity)</span></span>
-<span><span class="co">#&gt; 3                                                                           GO:0004866(endopeptidase inhibitor activity)</span></span>
-<span><span class="co">#&gt; 4 GO:0004813(alanine-tRNA ligase activity);GO:0005524(ATP binding);GO:0000049(tRNA binding);GO:0008270(zinc ion binding)</span></span>
-<span><span class="co">#&gt; 5                              GO:0003867(4-aminobutyrate transaminase activity);GO:0030170(pyridoxal phosphate binding)</span></span>
-<span><span class="co">#&gt; 6      GO:0005524(ATP binding);GO:0016887(ATPase activity);GO:0042626(ATPase-coupled transmembrane transporter activity)</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/table_split.html">?TOmicsVis::table_split</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   Genes kegg_pathway    biological_process cellular_component molecular_function</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;             </span></span>
+<span><span class="co">#&gt; 1 FN1   ko04810(Regula… GO:0003181(atriov… GO:0005576(extrac… &lt;NA&gt;              </span></span>
+<span><span class="co">#&gt; 2 AARS  ko00970(Aminoa… GO:0006419(alanyl… GO:0005737(cytopl… GO:0004813(alanin…</span></span>
+<span><span class="co">#&gt; 3 ABAT  ko00250(Alanin… GO:0009448(gamma-… &lt;NA&gt;               GO:0003867(4-amin…</span></span>
+<span><span class="co">#&gt; 4 ACADL ko00071(Fatty … GO:0042758(long-c… &lt;NA&gt;               GO:0050660(flavin…</span></span>
+<span><span class="co">#&gt; 5 ACADM ko00280(Valine… GO:0006635(fatty … GO:0005739(mitoch… GO:0050660(flavin…</span></span>
+<span><span class="co">#&gt; 6 ACMSD ko00380(Trypto… GO:1904985(negati… GO:0005829(cytoso… GO:0001760(aminoc…</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/table_split.html">?TOmicsVis::table_split</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_split.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/table_split.html</a>.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_split</span></span></code></pre></div>
@@ -1792,35 +1791,16 @@ TOmicsVis Shinyapp
 <span>  na_remove <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        Genes</span></span>
-<span><span class="co">#&gt; 1        FN1</span></span>
-<span><span class="co">#&gt; 2 14-3-3ZETA</span></span>
-<span><span class="co">#&gt; 3       A1I3</span></span>
-<span><span class="co">#&gt; 4        A2M</span></span>
-<span><span class="co">#&gt; 5       AARS</span></span>
-<span><span class="co">#&gt; 6       ABAT</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                kegg_pathway</span></span>
-<span><span class="co">#&gt; 1                                                                                                   ko04810(Regulation of actin cytoskeleton);ko04510(Focal adhesion);ko04151(PI3K-Akt signaling pathway);ko04512(ECM-receptor interaction)</span></span>
-<span><span class="co">#&gt; 2 ko04110(Cell cycle);ko04114(Oocyte meiosis);ko04390(Hippo signaling pathway);ko04391(Hippo signaling pathway -fly);ko04013(MAPK signaling pathway - fly);ko04151(PI3K-Akt signaling pathway);ko04212(Longevity regulating pathway - worm)</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span></span>
-<span><span class="co">#&gt; 4                                                                                                                                                                                              ko04610(Complement and coagulation cascades)</span></span>
-<span><span class="co">#&gt; 5                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span></span>
-<span><span class="co">#&gt; 6         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span></span>
-<span><span class="co">#&gt;          go_category</span></span>
-<span><span class="co">#&gt; 1 biological_process</span></span>
-<span><span class="co">#&gt; 2 biological_process</span></span>
-<span><span class="co">#&gt; 3 biological_process</span></span>
-<span><span class="co">#&gt; 4 biological_process</span></span>
-<span><span class="co">#&gt; 5 biological_process</span></span>
-<span><span class="co">#&gt; 6 biological_process</span></span>
-<span><span class="co">#&gt;                                                                                                            go_term</span></span>
-<span><span class="co">#&gt; 1 GO:0003181(atrioventricular valve morphogenesis);GO:0003128(heart field specification);GO:0001756(somitogenesis)</span></span>
-<span><span class="co">#&gt; 2                                                                                                             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3                                                                                                             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                                                                                                             &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5                                                                           GO:0006419(alanyl-tRNA aminoacylation)</span></span>
-<span><span class="co">#&gt; 6                                                            GO:0009448(gamma-aminobutyric acid metabolic process)</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/table_merge.html">?TOmicsVis::table_merge</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;   Genes      kegg_pathway                                    go_category go_term</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                                           &lt;chr&gt;       &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 FN1        ko04810(Regulation of actin cytoskeleton);ko04… biological… GO:000…</span></span>
+<span><span class="co">#&gt; 2 FN1        ko04810(Regulation of actin cytoskeleton);ko04… cellular_c… GO:000…</span></span>
+<span><span class="co">#&gt; 3 FN1        ko04810(Regulation of actin cytoskeleton);ko04… molecular_… &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt; 4 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… biological… &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt; 5 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… cellular_c… &lt;NA&gt;   </span></span>
+<span><span class="co">#&gt; 6 14-3-3ZETA ko04110(Cell cycle);ko04114(Oocyte meiosis);ko… molecular_… GO:001…</span></span></code></pre></div>
+<p>Get help using command <code><a href="reference/table_merge.html">?TOmicsVis::table_merge</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_merge.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/table_merge.html</a>.</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_merge</span></span></code></pre></div>
@@ -1855,7 +1835,7 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 4 44.95 Weight Male</span></span>
 <span><span class="co">#&gt; 5 43.21 Weight Male</span></span>
 <span><span class="co">#&gt; 6 40.02 Weight Male</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/table_filter.html">?TOmicsVis::table_filter</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
+<p>Get help using command <code><a href="reference/table_filter.html">?TOmicsVis::table_filter</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_filter.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/table_filter.html</a>.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_filter</span></span></code></pre></div>
@@ -1974,20 +1954,96 @@ TOmicsVis Shinyapp
 <span><span class="co">#&gt; 4                                                                                                                                                                                                      ko00970(Aminoacyl-tRNA biosynthesis)</span></span>
 <span><span class="co">#&gt; 5         ko00250(Alanine, aspartate and glutamate metabolism);ko00280(Valine, leucine and isoleucine degradation);ko00650(Butanoate metabolism);ko00640(Propanoate metabolism);ko00410(beta-Alanine metabolism);ko04727(GABAergic synapse)</span></span>
 <span><span class="co">#&gt; 6                                                                                                                                                                                                                 ko02010(ABC transporters)</span></span></code></pre></div>
-<p>Get help using command <code><a href="reference/table_cross.html">?TOmicsVis::table_cross</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="external-link uri">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
+<p>Get help using command <code><a href="reference/table_cross.html">?TOmicsVis::table_cross</a></code> or reference page <a href="https://benben-miao.github.io/TOmicsVis/reference/table_cross.html" class="uri">https://benben-miao.github.io/TOmicsVis/reference/table_cross.html</a>.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get help with command in R console.</span></span>
 <span><span class="co"># ?TOmicsVis::table_cross</span></span></code></pre></div>
 </div>
 </div>
 </div>
+<div class="section level2">
+<h2 id="id_4-quick-start-examples">4. Quick Start Examples<a class="anchor" aria-label="anchor" href="#id_4-quick-start-examples"></a>
+</h2>
+<div class="section level3">
+<h3 id="id_41-complete-differential-expression-analysis-workflow">4.1 Complete differential expression analysis workflow<a class="anchor" aria-label="anchor" href="#id_41-complete-differential-expression-analysis-workflow"></a>
+</h3>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load package</span></span>
+<span><span class="fu"><a href="reference/load_TOmicsVis.html">load_TOmicsVis</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 1: Visualize DEGs with volcano plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">degs_stats</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/volcano_plot.html">volcano_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">degs_stats</span>, title <span class="op">=</span> <span class="st">"DEGs Analysis"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 2: Create heatmap of top DEGs</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">samples_groups</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/heatmap_group.html">heatmap_group</a></span><span class="op">(</span></span>
+<span>  sample_gene <span class="op">=</span> <span class="va">gene_expression2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span>,</span>
+<span>  group_sample <span class="op">=</span> <span class="va">samples_groups</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 3: Perform PCA analysis</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_expression</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/pca_plot.html">pca_plot</a></span><span class="op">(</span></span>
+<span>  sample_gene <span class="op">=</span> <span class="va">gene_expression</span>,</span>
+<span>  group_sample <span class="op">=</span> <span class="va">samples_groups</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Step 4: GO enrichment analysis</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gene_go_kegg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/go_enrich_bar.html">go_enrich_bar</a></span><span class="op">(</span></span>
+<span>  go_anno <span class="op">=</span> <span class="va">gene_go_kegg</span><span class="op">[</span>,<span class="op">-</span><span class="fl">5</span><span class="op">]</span>,</span>
+<span>  degs_list <span class="op">=</span> <span class="va">gene_go_kegg</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">200</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_42-launch-shiny-app-for-interactive-analysis">4.2 Launch Shiny app for interactive analysis<a class="anchor" aria-label="anchor" href="#id_42-launch-shiny-app-for-interactive-analysis"></a>
+</h3>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Start TOmicsVis Shiny app (recommended for beginners)</span></span>
+<span><span class="fu"><a href="reference/tomicsvis.html">tomicsvis</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or access online cloud platform:</span></span>
+<span><span class="co"># https://shiny.hiplot.cn/tomicsvis-shiny/</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="id_5-citation">5. Citation<a class="anchor" aria-label="anchor" href="#id_5-citation"></a>
+</h2>
+<p>If you use TOmicsVis in your research, please cite:</p>
+<blockquote>
+<p>Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. “TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface.” iMeta e137. <a href="https://doi.org/10.1002/imt2.137" class="external-link uri">https://doi.org/10.1002/imt2.137</a></p>
+</blockquote>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get citation information</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"TOmicsVis"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'TOmicsVis' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Miao B, Dong W, Han Z, Luo X, Ke C, You W (2023). "TOmicsVis: An</span></span>
+<span><span class="co">#&gt;   all-in-one transcriptomic analysis and visualization R package with</span></span>
+<span><span class="co">#&gt;   Shinyapp interface." _iMeta_, *e137*, 1-14. doi:10.1002/imt2.137</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1002/imt2.137&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface},</span></span>
+<span><span class="co">#&gt;     author = {Ben-Ben Miao and Wei Dong and Zhao-Fang Han and Xuan Luo and Cai-Huan Ke and Wei-Wei You},</span></span>
+<span><span class="co">#&gt;     journal = {iMeta},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     volume = {e137},</span></span>
+<span><span class="co">#&gt;     pages = {1-14},</span></span>
+<span><span class="co">#&gt;     doi = {https://doi.org/10.1002/imt2.137},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=TOmicsVis" class="external-link">View on CRAN</a></li>
-<li><a href="https://github.com/benben-miao/TOmicsVis/">Browse source code</a></li>
-<li><a href="https://github.com/benben-miao/TOmicsVis/issues/">Report a bug</a></li>
+<li><a href="https://github.com/benben-miao/TOmicsVis/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/benben-miao/TOmicsVis/issues/" class="external-link">Report a bug</a></li>
 <li><a href="https://github.com/OmicsSuite/" class="external-link">OmicsSuite</a></li>
 <li><a href="https://github.com/OmicsSuite/OmicsSuite.github.io" class="external-link">OmicsSuite website</a></li>
 </ul>
@@ -2013,8 +2069,8 @@ TOmicsVis Shinyapp
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Benben Miao <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7307-1331" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Wei Dong <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2201-7164" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Benben Miao <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7307-1331" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Wei Dong <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2201-7164" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -2025,21 +2081,19 @@ TOmicsVis Shinyapp
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Benben Miao, Wei Dong.</p>
+  <p>list(text = “Developed by”, href = “<a href="https://github.com/benben-miao" class="external-link uri">https://github.com/benben-miao</a>”) TOmicsVis</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>list(text = “License: MIT + file LICENSE”, href = “LICENSE-text.html”)</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

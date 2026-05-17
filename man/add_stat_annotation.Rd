@@ -35,3 +35,4 @@ Enhanced ggplot object
 \description{
 Add formatted statistical test results to plots
 }
+\keyword{internal}

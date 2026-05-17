@@ -17,3 +17,4 @@ Logical: TRUE if valid hex color
 \description{
 Validate if a string is a valid hex color code
 }
+\keyword{internal}

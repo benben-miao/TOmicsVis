@@ -15,3 +15,4 @@ Scale function or NULL
 \description{
 Get ggsci color scale function by palette name
 }
+\keyword{internal}

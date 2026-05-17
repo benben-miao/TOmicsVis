@@ -21,3 +21,4 @@ Logical: TRUE if within range (invisible)
 \description{
 Validate if numeric value is within specified range
 }
+\keyword{internal}

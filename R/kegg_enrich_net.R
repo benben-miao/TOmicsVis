@@ -44,6 +44,7 @@ kegg_enrich_net <- function(kegg_anno,
 													 qvalue_cutoff = 0.05,
 													 category_num = 20,
 													 net_layout = "circle",
+													 net_circular = TRUE,
 													 low_color = "#ff0000aa",
 													 high_color = "#008800aa"
 													){

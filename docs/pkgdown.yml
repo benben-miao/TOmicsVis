@@ -1,10 +1,9 @@
-pandoc: 3.1.1
-pkgdown: 2.0.7
+pandoc: 3.6.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   Tutorials: Tutorials.html
-last_built: 2023-10-30T06:40Z
+last_built: 2026-05-17T12:49Z
 urls:
-  reference: https://github.com/benben-miao/TOmicsVis/reference
-  article: https://github.com/benben-miao/TOmicsVis/articles
-
+  reference: https://benben-miao.github.io/TOmicsVis/reference
+  article: https://benben-miao.github.io/TOmicsVis/articles

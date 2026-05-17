@@ -19,3 +19,4 @@ Processed data.frame
 \description{
 Preprocess data frame/matrix with NA handling and validation
 }
+\keyword{internal}

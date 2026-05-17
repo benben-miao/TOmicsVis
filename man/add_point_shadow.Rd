@@ -19,3 +19,4 @@ Enhanced ggplot object
 \description{
 Add a soft shadow/glow effect to scatter plot points (simplified version)
 }
+\keyword{internal}

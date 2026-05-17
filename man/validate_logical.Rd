@@ -17,3 +17,4 @@ Logical: TRUE if valid logical (invisible)
 \description{
 Validate if value is logical
 }
+\keyword{internal}

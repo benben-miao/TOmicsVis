@@ -3,6 +3,7 @@
 #' @param theme_name Character: theme name
 #' @param base_size Numeric: base font size. Default: 12
 #' @return Theme object
+#' @keywords internal
 
 get_ggtheme <- function(theme_name = "theme_publication", base_size = 12) {
 	theme_map <- list(
@@ -42,6 +43,7 @@ get_ggtheme <- function(theme_name = "theme_publication", base_size = 12) {
 #' @description Create a publication-ready clean theme without background grid lines for professional figures
 #' @param base_size Numeric: base font size. Default: 12
 #' @return Theme object with no grid lines and professional styling
+#' @keywords internal
 
 theme_publication <- function(base_size = 12) {
 	theme_minimal(base_size = base_size) +
@@ -62,6 +64,7 @@ theme_publication <- function(base_size = 12) {
 #' @description Get ggsci color scale function by palette name
 #' @param pal_name Character: ggsci palette name
 #' @return Scale function or NULL
+#' @keywords internal
 
 get_ggsci_color <- function(pal_name = "Sci_AAAS", alpha = 1) {
 	sci_color_map <- list(
@@ -92,6 +95,7 @@ get_ggsci_color <- function(pal_name = "Sci_AAAS", alpha = 1) {
 #' @param n Numeric: number of colors to return
 #' @param alpha Numeric: transparency (0-1)
 #' @return Character vector of hex colors
+#' @keywords internal
 
 get_ggsci_palette <- function(pal_name = "Sci_AAAS", n = 10, alpha = 1) {
 	palette_map <- list(
@@ -146,6 +150,7 @@ get_ggsci_palette <- function(pal_name = "Sci_AAAS", n = 10, alpha = 1) {
 #' @param x Character: color string to validate
 #' @param param_name Character: parameter name for error message
 #' @return Logical: TRUE if valid hex color
+#' @keywords internal
 
 validate_hex_color <- function(x, param_name = "color_str") {
 	if (!is.character(x) || length(x) != 1 || !grepl("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", x)) {
@@ -161,6 +166,7 @@ validate_hex_color <- function(x, param_name = "color_str") {
 #' @param min_val Numeric: minimum allowed value (inclusive). Default: 0
 #' @param max_val Numeric: maximum allowed value (inclusive). Default: NULL (no max)
 #' @return Logical: TRUE if within range (invisible)
+#' @keywords internal
 
 validate_numeric_range <- function(x, param_name = "x", min_val = 0, max_val = NULL) {
 	if (!is.numeric(x) || length(x) != 1 || is.na(x)) {
@@ -180,6 +186,7 @@ validate_numeric_range <- function(x, param_name = "x", min_val = 0, max_val = N
 #' @param x Logical: value to validate
 #' @param param_name Character: parameter name for error message
 #' @return Logical: TRUE if valid logical (invisible)
+#' @keywords internal
 
 validate_logical <- function(x, param_name = "x") {
 	if (!is.logical(x) || length(x) != 1) {
@@ -194,6 +201,7 @@ validate_logical <- function(x, param_name = "x") {
 #' @param param_name Character: parameter name for error message
 #' @param options Character vector: allowed options
 #' @return Logical: TRUE if valid option (invisible)
+#' @keywords internal
 
 validate_character_options <- function(x, param_name = "x", options) {
 	if (!is.character(x) || length(x) != 1 || !(x %in% options)) {
@@ -208,6 +216,7 @@ validate_character_options <- function(x, param_name = "x", options) {
 #' @param x Object to validate
 #' @param param_name Character: parameter name for error message
 #' @return Logical: TRUE if valid (invisible)
+#' @keywords internal
 
 validate_is_dataframe <- function(x, param_name = "x") {
 	if (!is.data.frame(x)) {
@@ -221,6 +230,7 @@ validate_is_dataframe <- function(x, param_name = "x") {
 #' @param x Object to validate
 #' @param param_name Character: parameter name for error message
 #' @return Logical: TRUE if valid (invisible)
+#' @keywords internal
 
 validate_is_dataframe_or_matrix <- function(x, param_name = "x") {
 	if (!is.data.frame(x) && !is.matrix(x)) {
@@ -235,6 +245,7 @@ validate_is_dataframe_or_matrix <- function(x, param_name = "x") {
 #' @param min_cols Integer: minimum number of columns required. Default: 1
 #' @param remove_na Logical: remove rows with NA in first column. Default: TRUE
 #' @return Processed data.frame
+#' @keywords internal
 
 safe_preprocess_data <- function(data, min_cols = 1, remove_na = TRUE) {
 	if (!is.data.frame(data) && !is.matrix(data)) {
@@ -267,6 +278,7 @@ safe_preprocess_data <- function(data, min_cols = 1, remove_na = TRUE) {
 #' @param pal_name Character: palette name
 #' @param alpha Numeric: transparency value. Default: 1
 #' @return Scale function or default
+#' @keywords internal
 
 get_ggsci_fill <- function(pal_name = "Sci_AAAS", alpha = 1) {
 	valid_palettes <- c("Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA",
@@ -303,18 +315,18 @@ get_ggsci_fill <- function(pal_name = "Sci_AAAS", alpha = 1) {
 }
 
 #' @title Create publication-ready theme enhancements
-#' @description Add professional styling for publication-quality plots
+#' @description Add professional styling for publication-quality plots with no grid lines
 #' @param p ggplot object: the plot to enhance
 #' @param font_family Character: font family. Default: "sans"
-#' @param line_size Numeric: grid line size. Default: 0.3
 #' @return Enhanced ggplot object
+#' @keywords internal
 
-enhance_plot_publication <- function(p, font_family = "sans", line_size = 0.3) {
+enhance_plot_publication <- function(p, font_family = "sans") {
 	p +
 		theme(
 			text = element_text(family = font_family),
-			panel.grid.major = element_line(size = line_size, color = "#D0D0D0"),
-			panel.grid.minor = element_line(size = 0.1, color = "#E8E8E8"),
+			panel.grid.major = element_blank(),
+			panel.grid.minor = element_blank(),
 			panel.border = element_rect(fill = NA, color = "black", size = 0.5),
 			plot.background = element_rect(fill = "white", color = NA),
 			panel.background = element_rect(fill = "white")
@@ -327,6 +339,7 @@ enhance_plot_publication <- function(p, font_family = "sans", line_size = 0.3) {
 #' @param shadow_color Character: shadow color. Default: "#00000020"
 #' @param shadow_size Numeric: shadow size multiplier. Default: 1.2
 #' @return Enhanced ggplot object
+#' @keywords internal
 
 add_point_shadow <- function(p, shadow_color = "#00000020", shadow_size = 1.2) {
 	warning("add_point_shadow() is experimental and may not work with all plot types")
@@ -338,6 +351,7 @@ add_point_shadow <- function(p, shadow_color = "#00000020", shadow_size = 1.2) {
 #' @param palette_type Character: type of palette. Options: "sequential", "diverging", "categorical", "heatmap"
 #' @param n Integer: number of colors needed
 #' @return Character vector of hex colors
+#' @keywords internal
 
 get_optimized_palette <- function(palette_type = "categorical", n = 10) {
 	palettes <- list(
@@ -376,6 +390,7 @@ get_optimized_palette <- function(palette_type = "categorical", n = 10) {
 #' @param p_value Numeric: p-value to format
 #' @param digits Integer: decimal places. Default: 3
 #' @return Formatted character string
+#' @keywords internal
 
 format_pvalue <- function(p_value, digits = 3) {
 	if (is.na(p_value) || is.null(p_value)) {
@@ -403,9 +418,10 @@ format_pvalue <- function(p_value, digits = 3) {
 #' @param vjust Vertical justification. Default: 0
 #' @param size Text size. Default: 5
 #' @return Enhanced ggplot object
+#' @keywords internal
 
 add_stat_annotation <- function(p, label, x = Inf, y = -Inf,
-															 hjust = 0, vjust = 0, size = 5) {
+									 hjust = 0, vjust = 0, size = 5) {
 	p + annotate("text", x = x, y = y, label = label,
 							hjust = hjust, vjust = vjust,
 							size = size, color = "black",

@@ -17,3 +17,4 @@ Scale function or default
 \description{
 Safely get ggsci fill color scale with error handling
 }
+\keyword{internal}

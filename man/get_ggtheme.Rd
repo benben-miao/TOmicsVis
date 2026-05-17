@@ -17,3 +17,4 @@ Theme object
 \description{
 Get ggplot2 theme object by theme name with enhanced customization
 }
+\keyword{internal}

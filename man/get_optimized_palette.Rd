@@ -17,3 +17,4 @@ Character vector of hex colors
 \description{
 Return color palettes optimized for different omics data types
 }
+\keyword{internal}

@@ -19,3 +19,4 @@ Logical: TRUE if valid option (invisible)
 \description{
 Validate if character is one of allowed options
 }
+\keyword{internal}

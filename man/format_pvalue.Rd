@@ -17,3 +17,4 @@ Formatted character string
 \description{
 Format p-value with appropriate significance indicators
 }
+\keyword{internal}

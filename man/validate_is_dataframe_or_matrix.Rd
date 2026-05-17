@@ -17,3 +17,4 @@ Logical: TRUE if valid (invisible)
 \description{
 Validate input is a data.frame or matrix
 }
+\keyword{internal}

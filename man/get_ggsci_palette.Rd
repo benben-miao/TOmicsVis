@@ -19,3 +19,4 @@ Character vector of hex colors
 \description{
 Get actual hex color values from ggsci palette
 }
+\keyword{internal}

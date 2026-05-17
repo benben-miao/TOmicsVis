@@ -15,3 +15,4 @@ Theme object with no grid lines and professional styling
 \description{
 Create a publication-ready clean theme without background grid lines for professional figures
 }
+\keyword{internal}

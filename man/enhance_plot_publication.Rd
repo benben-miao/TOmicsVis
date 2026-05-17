@@ -4,18 +4,17 @@
 \alias{enhance_plot_publication}
 \title{Create publication-ready theme enhancements}
 \usage{
-enhance_plot_publication(p, font_family = "sans", line_size = 0.3)
+enhance_plot_publication(p, font_family = "sans")
 }
 \arguments{
 \item{p}{ggplot object: the plot to enhance}
 
 \item{font_family}{Character: font family. Default: "sans"}
-
-\item{line_size}{Numeric: grid line size. Default: 0.3}
 }
 \value{
 Enhanced ggplot object
 }
 \description{
-Add professional styling for publication-quality plots
+Add professional styling for publication-quality plots with no grid lines
 }
+\keyword{internal}

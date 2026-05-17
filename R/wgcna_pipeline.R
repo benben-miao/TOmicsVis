@@ -1,3 +1,20 @@
+save_plot_both <- function(plot_fn, results_dir, filename, width = 10, height = 7) {
+	pdf(file = paste(results_dir, paste0(filename, ".pdf"), sep = "/"),
+			width = width, height = height
+	)
+	plot_fn()
+	dev.off()
+
+	jpeg(filename = paste(results_dir, paste0(filename, ".jpg"), sep = "/"),
+			 width = width,
+			 height = height,
+			 units = "in",
+			 res = 300,
+			 quality = 100)
+	plot_fn()
+	dev.off()
+}
+
 #' @title WGCNA analysis pipeline for RNA-Seq.
 #' @description WGCNA analysis pipeline for RNA-Seq.
 #' @author benben-miao
@@ -35,23 +52,6 @@
 #' data(samples_groups)
 #' head(samples_groups)
 #'
-
-save_plot_both <- function(plot_fn, results_dir, filename, width = 10, height = 7) {
-	pdf(file = paste(results_dir, paste0(filename, ".pdf"), sep = "/"),
-			width = width, height = height
-	)
-	plot_fn()
-	dev.off()
-
-	jpeg(filename = paste(results_dir, paste0(filename, ".jpg"), sep = "/"),
-			 width = width,
-			 height = height,
-			 units = "in",
-			 res = 300,
-			 quality = 100)
-	plot_fn()
-	dev.off()
-}
 
 wgcna_pipeline <- function(sample_gene,
 													 group_sample,
