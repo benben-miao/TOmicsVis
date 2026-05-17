@@ -1,8 +1,8 @@
 Package: TOmicsVis
 Type: Package
-Title: TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface
-Version: 2.7.1
-Date: 2026-05-17
+Title: TOmicsVis an All-in-One Transcriptomic Analysis and Visualization R Package with Shinyapp Interface
+Version: 2.7.2
+Date: 2026-05-18
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
@@ -17,6 +17,11 @@ BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
+biocViews: Software, Visualization, DifferentialExpression, GeneExpression,
+    GO, KEGG, PathwayAnalysis, Clustering, DimensionReduction,
+    SurvivalAnalysis, Network, HeatMap, VolcanoPlot, MAPlot,
+    PCA, tSNE, UMAP, VennDiagram, ChordDiagram, Circos,
+    shinyApp, DataRepresentation
 Depends: 
     R (>= 4.0)
 Imports: 
@@ -54,8 +59,10 @@ Imports:
     venn,
     UpSetR,
     randomcoloR,
-    ggcorrplot
-Suggests: 
+    ggcorrplot,
+    tidyselect,
+    e1071
+Suggests:
     knitr,
     rmarkdown,
     bs4Dash,
@@ -65,6 +72,7 @@ Suggests:
     Biostrings,
     plotrix,
     ggpubr,
-    ggpolypath
+    ggpolypath,
+    testthat
 VignetteBuilder: knitr
 Config/roxygen2/version: 8.0.0

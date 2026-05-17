@@ -19,6 +19,7 @@ load_TOmicsVis()
 
 # Then use all functions normally
 data(gene_expression)
+data(degs_stats)
 volcano_plot(degs_stats)
 
 }

@@ -11,6 +11,7 @@
 #'
 #' @importFrom Mfuzz filter.NA filter.std standardise mestimate mfuzz mfuzz.plot
 #' @importFrom Biobase ExpressionSet exprs
+#' @importFrom e1071 cmeans
 #' @export
 #'
 #' @examples
@@ -52,14 +53,14 @@ gene_cluster_trend <- function(data,
 				 "Please install: BiocManager::install('Biobase')",
 				 call. = FALSE)
 	}
-	library(Biobase, quietly = TRUE)
+	suppressPackageStartupMessages(library(Biobase))
 
 	if (!requireNamespace("e1071", quietly = TRUE)) {
 		stop("Package 'e1071' is required for gene_cluster_trend().\n",
 				 "Please install: install.packages('e1071')",
 					call. = FALSE)
 	}
-	library(e1071, quietly = TRUE)
+	suppressPackageStartupMessages(library(e1071))
 
 	exprs_data <- as.matrix(data)
 	eset <- methods::new("ExpressionSet", exprs = exprs_data)

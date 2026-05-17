@@ -10,6 +10,7 @@
 #'
 #' # Then use all functions normally
 #' data(gene_expression)
+#' data(degs_stats)
 #' volcano_plot(degs_stats)
 #'
 #' @export
@@ -26,7 +27,7 @@ load_TOmicsVis <- function() {
   
   suppressPackageStartupMessages(library(TOmicsVis))
   
-  message("✓ TOmicsVis v", utils::packageDescription("TOmicsVis", fields = "Version"), 
+  message("[OK] TOmicsVis v", utils::packageDescription("TOmicsVis", fields = "Version"), 
           " loaded successfully!")
   message("  All functions ready to use.")
   
