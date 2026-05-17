@@ -1,3 +1,23 @@
+## TOmicsVis 2.7.2
+
+**Date**: 2026-05-18
+
+<span style="background-color: green; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">New Features:</span>
+
+1. Enhanced `?TOmicsVis::venn_plot` function with 9 color schemes (Vibrant, Pastel, Ocean, Sunset, Forest, Neon, Candy, Earth, Wine).
+2. Added customizable parameters for `?TOmicsVis::venn_plot`: `color_scheme`, `label_color`, `border_color`, `line_width`, `fill_alpha`, and `custom_colors`.
+3. Created internal utility functions for plot customization (17 helper functions with @keywords internal).
+
+<span style="background-color: red; border-radius: 10px; padding: 0px 5px; font-weight: bold; color: white;">Bugs Fixed:</span>
+
+1. Fixed unused argument error in `?TOmicsVis::go_enrich_net()` function (`net_circular = TRUE`).
+2. Fixed unused argument error in `?TOmicsVis::kegg_enrich_net()` function (`net_circular = TRUE`).
+3. Fixed Shiny application UI errors: replaced deprecated `bs4Box` with `bs4Card`, corrected `bs4DashPage` parameter order.
+4. Fixed `_pkgdown.yml` YAML syntax error at line 182 (unescaped colon in string value).
+5. Fixed pkgdown articles configuration format error (invalid external resource links).
+
+---
+
 ## TOmicsVis 2.1.1
 
 **Date**: 2024-01-10

@@ -889,6 +889,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_quantile",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -899,7 +900,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -1130,7 +1131,8 @@ ui <- shinyUI(
                                         choices = c(
                                             "wilcox.test",
                                             "t.test",
-                                            "anova"
+                                            "anova",
+                                            "kruskal.test"
                                         ),
                                         selected = "t.test",
                                         multiple = FALSE,
@@ -1311,6 +1313,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_box",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -1321,7 +1324,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -1552,7 +1555,8 @@ ui <- shinyUI(
                                         choices = c(
                                             "wilcox.test",
                                             "t.test",
-                                            "anova"
+                                            "anova",
+                                            "kruskal.test"
                                         ),
                                         selected = "t.test",
                                         multiple = FALSE,
@@ -1753,6 +1757,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_violin",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -1763,7 +1768,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -2059,6 +2064,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_survival",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -2069,7 +2075,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     ),
@@ -2485,48 +2491,48 @@ ui <- shinyUI(
                                     colourInput(
                                         inputId = "color_low_corr",
                                         label = "Low Color",
-                                        value = "blue",
+                                        value = "#0000FF",
                                         showColour = "both",
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
                                     colourInput(
                                         inputId = "color_mid_corr",
                                         label = "Middle Color",
-                                        value = "white",
+                                        value = "#FFFFFF",
                                         showColour = "both",
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
                                     colourInput(
                                         inputId = "color_high_corr",
                                         label = "High Color",
-                                        value = "red",
+                                        value = "#FF0000",
                                         showColour = "both",
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
                                     colourInput(
                                         inputId = "outline_color_corr",
                                         label = "Outline Color",
-                                        value = "white",
+                                        value = "#FFFFFF",
                                         showColour = "both",
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -2534,6 +2540,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_corr",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -2544,7 +2551,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -3131,6 +3138,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_pca_plot",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -3141,7 +3149,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -3770,6 +3778,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_tsne_plot",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -3780,7 +3789,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -4403,6 +4412,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_umap_plot",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -4413,7 +4423,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -4815,6 +4825,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_dendro",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -4825,7 +4836,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -5130,33 +5141,29 @@ ui <- shinyUI(
                                         width = NULL
                                     ),
                                     selectInput(
-                                        inputId = "sci_fill_color_venn",
-                                        label = "Sci Color",
+                                        inputId = "color_scheme_venn",
+                                        label = "Color Scheme",
                                         choices = c(
-                                            "Sci_AAAS",
-                                            "Sci_NPG",
-                                            "Sci_Simpsons",
-                                            "Sci_JAMA",
-                                            "Sci_GSEA",
-                                            "Sci_Lancet",
-                                            "Sci_Futurama",
-                                            "Sci_JCO",
-                                            "Sci_NEJM",
-                                            "Sci_IGV",
-                                            "Sci_UCSC",
-                                            "Sci_D3",
-                                            "Sci_Material"
+                                            "Vibrant",
+                                            "Pastel",
+                                            "Ocean",
+                                            "Sunset",
+                                            "Forest",
+                                            "Neon",
+                                            "Candy",
+                                            "Earth",
+                                            "Wine"
                                         ),
-                                        selected = "Sci_AAAS",
+                                        selected = "Vibrant",
                                         multiple = FALSE,
                                         width = NULL
                                     ),
                                     sliderInput(
-                                        inputId = "sci_fill_alpha_venn",
-                                        label = "Color Alpha",
+                                        inputId = "fill_alpha_venn",
+                                        label = "Fill Alpha",
                                         min = 0.00,
                                         max = 1.00,
-                                        value = 0.65,
+                                        value = 0.55,
                                         step = 0.01,
                                         round = TRUE,
                                         ticks = TRUE,
@@ -5167,6 +5174,34 @@ ui <- shinyUI(
                                         timeFormat = TRUE,
                                         timezone = NULL,
                                         dragRange = TRUE
+                                    ),
+                                    colourInput(
+                                        inputId = "label_color_venn",
+                                        label = "Label Color",
+                                        value = "#333333",
+                                        showColour = "both",
+                                        palette = "square",
+                                        allowTransparent = TRUE
+                                    ),
+                                    colourInput(
+                                        inputId = "border_color_venn",
+                                        label = "Border Color",
+                                        value = "#666666",
+                                        showColour = "both",
+                                        palette = "square",
+                                        allowTransparent = TRUE
+                                    ),
+                                    sliderInput(
+                                        inputId = "line_width_venn",
+                                        label = "Line Width",
+                                        min = 0.1,
+                                        max = 3.0,
+                                        value = 0.8,
+                                        step = 0.1,
+                                        round = TRUE,
+                                        ticks = TRUE,
+                                        animate = FALSE,
+                                        width = NULL
                                     )
                                 )
                             )
@@ -5444,7 +5479,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -5473,7 +5508,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -5536,7 +5571,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -5548,7 +5583,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -5845,12 +5880,12 @@ ui <- shinyUI(
                                     colourInput(
                                         inputId = "circle_col_flower",
                                         label = "Circle Color",
-                                        value = "white",
+                                        value = "#FFFFFF",
                                         showColour = "both",
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6236,7 +6271,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6248,7 +6283,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6260,7 +6295,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6272,7 +6307,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6604,7 +6639,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6616,7 +6651,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -6702,6 +6737,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_ma",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -6712,7 +6748,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -6992,7 +7028,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7081,7 +7117,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7093,7 +7129,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7105,7 +7141,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7117,7 +7153,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7392,7 +7428,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7404,7 +7440,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -7416,7 +7452,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -8913,6 +8949,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_trend",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -8923,7 +8960,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -9184,7 +9221,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9196,7 +9233,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9208,7 +9245,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9220,7 +9257,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9287,7 +9324,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9316,7 +9353,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9695,7 +9732,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9758,7 +9795,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -9787,7 +9824,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -10391,6 +10428,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_go_stat",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -10401,7 +10439,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -10765,7 +10803,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -10777,7 +10815,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -10785,6 +10823,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_go_bar",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -10795,7 +10834,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -11159,7 +11198,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -11171,7 +11210,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -11179,6 +11218,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_go_dot",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -11189,7 +11229,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -11554,7 +11594,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -11566,7 +11606,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     )
@@ -12155,7 +12195,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -12167,7 +12207,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -12175,6 +12215,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_kegg_bar",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -12185,7 +12226,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -12549,7 +12590,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -12561,7 +12602,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -12569,6 +12610,7 @@ ui <- shinyUI(
                                         inputId = "ggTheme_kegg_dot",
                                         label = "Themes",
                                         choices = c(
+                                            "theme_publication",
                                             "theme_default",
                                             "theme_bw",
                                             "theme_gray",
@@ -12579,7 +12621,7 @@ ui <- shinyUI(
                                             "theme_classic",
                                             "theme_void"
                                         ),
-                                        selected = "theme_light",
+                                        selected = "theme_publication",
                                         multiple = FALSE,
                                         width = NULL
                                     )
@@ -12944,7 +12986,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     ),
@@ -12956,7 +12998,7 @@ ui <- shinyUI(
                                         palette = "square",
                                         allowedCols = NULL,
                                         allowTransparent = TRUE,
-                                        returnName = TRUE,
+                                        returnName = FALSE,
                                         closeOnClick = FALSE,
                                         width = NULL
                                     )
@@ -14090,8 +14132,7 @@ server <- shinyServer(function(session, input, output) {
                     x_start = input$x_start_survival,
                     y_start = input$y_start_survival,
                     y_end = input$y_end_survival,
-                    x_break = input$x_break_survival,
-                    y_break = input$y_break_survival
+                    x_break = input$x_break_survival
                 )
             })
         # })
@@ -14136,8 +14177,7 @@ server <- shinyServer(function(session, input, output) {
                         x_start = input$x_start_survival,
                         y_start = input$y_start_survival,
                         y_end = input$y_end_survival,
-                        x_break = input$x_break_survival,
-                        y_break = input$y_break_survival
+                        x_break = input$x_break_survival
                     )
                 })
 
@@ -15273,11 +15313,14 @@ server <- shinyServer(function(session, input, output) {
                 title_size = input$title_size_venn,
                 label_show = input$label_show_venn,
                 label_size = input$label_size_venn,
+                label_color = input$label_color_venn,
                 border_show = input$border_show_venn,
+                border_color = input$border_color_venn,
                 line_type = input$line_type_venn,
+                line_width = input$line_width_venn,
                 ellipse_shape = input$ellipse_shape_venn,
-                sci_fill_color = input$sci_fill_color_venn,
-                sci_fill_alpha = input$sci_fill_alpha_venn
+                color_scheme = input$color_scheme_venn,
+                fill_alpha = input$fill_alpha_venn
             )
         })
         # })
@@ -15315,11 +15358,14 @@ server <- shinyServer(function(session, input, output) {
                         title_size = input$title_size_venn,
                         label_show = input$label_show_venn,
                         label_size = input$label_size_venn,
+                        label_color = input$label_color_venn,
                         border_show = input$border_show_venn,
+                        border_color = input$border_color_venn,
                         line_type = input$line_type_venn,
+                        line_width = input$line_width_venn,
                         ellipse_shape = input$ellipse_shape_venn,
-                        sci_fill_color = input$sci_fill_color_venn,
-                        sci_fill_alpha = input$sci_fill_alpha_venn
+                        color_scheme = input$color_scheme_venn,
+                        fill_alpha = input$fill_alpha_venn
                     )
                 })
 
@@ -18044,7 +18090,7 @@ server <- shinyServer(function(session, input, output) {
                 net_layout = input$net_layout_kegg_net,
                 net_circular = input$net_circular_kegg_net,
                 low_color = input$low_color_kegg_net,
-                high_color = input$high_color_kegg_anno
+                high_color = input$high_color_kegg_net
             )
         })
         # })
@@ -18096,7 +18142,7 @@ server <- shinyServer(function(session, input, output) {
                         net_layout = input$net_layout_kegg_net,
                         net_circular = input$net_circular_kegg_net,
                         low_color = input$low_color_kegg_net,
-                        high_color = input$high_color_kegg_anno
+                        high_color = input$high_color_kegg_net
                     )
                 })
 
@@ -18518,7 +18564,7 @@ runApp(list(ui = ui, server = server), port = 6767)
 #     palette = "square",
 #     allowedCols = NULL,
 #     allowTransparent = TRUE,
-#     returnName = TRUE,
+#     returnName = FALSE,
 #     closeOnClick = FALSE,
 #     width = NULL
 # ),
@@ -18592,7 +18638,7 @@ runApp(list(ui = ui, server = server), port = 6767)
 #         "theme_classic",
 #         "theme_void"
 #     ),
-#     selected = "theme_light",
+#     selected = "theme_publication",
 #     multiple = FALSE,
 #     width = NULL
 # ),
