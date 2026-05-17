@@ -19,7 +19,7 @@ ma_plot(
   title = "CT-vs-LT12",
   xlab = "Log2 mean expression",
   ylab = "Log2 fold change",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -51,13 +51,16 @@ ma_plot(
 
 \item{ylab}{Character: y label. Default: "Log2 fold change".}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
 Plot: MversusA plot for visualizing differentially expressed genes.
 }
 \description{
 MversusA plot for visualizing differentially expressed genes.
+}
+\note{
+Requires package 'ggpubr' (install via: install.packages("ggpubr"))
 }
 \examples{
 # 1. Library TOmicsVis package

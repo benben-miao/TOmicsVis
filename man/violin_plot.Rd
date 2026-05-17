@@ -18,7 +18,7 @@ violin_plot(
   sci_color_alpha = 1,
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -48,13 +48,16 @@ violin_plot(
 
 \item{legend_dir}{Character: legend direction. Default: "vertical", options: "horizontal", "vertical".}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
 Plot: violin plot support two levels and multiple groups with P value.
 }
 \description{
 Violin plot support two levels and multiple groups with P value.
+}
+\note{
+Requires package 'ggpubr' (install via: install.packages("ggpubr"))
 }
 \examples{
 # 1. Library TOmicsVis package

@@ -16,7 +16,7 @@
 #' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend director. Default: "vertical", options: "horizontal", "vertical".
-#' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
+#' @param ggTheme Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @importFrom stats prcomp
@@ -57,9 +57,63 @@ pca_plot <- function(sample_gene,
 										 sci_fill_color = "Sci_AAAS",
 										 legend_pos = "right",
 										 legend_dir = "vertical",
-										 ggTheme = "theme_light"
-										 ){
-	# -> 2. Data
+										 ggTheme = "theme_publication"
+										){
+
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+
+	if (ncol(sample_gene) < 2) {
+		stop("sample_gene must have at least 2 columns (1 gene column + 1+ sample columns)", call. = FALSE)
+	}
+
+	if (ncol(group_sample) < 2) {
+		stop("group_sample must have at least 2 columns (Samples, Groups)", call. = FALSE)
+	}
+
+	if (!is.numeric(xPC) || xPC < 1 || !is.numeric(yPC) || yPC < 1) {
+		stop("xPC and yPC must be positive integers", call. = FALSE)
+	}
+
+	if (xPC == yPC) {
+		stop("xPC and yPC must be different values", call. = FALSE)
+	}
+
+	if (!validate_numeric_range(point_size, min_val = 0)) {
+		stop("point_size must be a non-negative number", call. = FALSE)
+	}
+
+	if (!validate_numeric_range(point_alpha, min_val = 0, max_val = 1)) {
+		stop("point_alpha must be between 0 and 1", call. = FALSE)
+	}
+
+	if (!validate_numeric_range(text_size, min_val = 0)) {
+		stop("text_size must be a non-negative number", call. = FALSE)
+	}
+
+	if (!validate_numeric_range(fill_alpha, min_val = 0, max_val = 1)) {
+		stop("fill_alpha must be between 0 and 1", call. = FALSE)
+	}
+
+	if (!validate_numeric_range(border_alpha, min_val = 0, max_val = 1)) {
+		stop("border_alpha must be between 0 and 1", call. = FALSE)
+	}
+
+	valid_legend_pos <- c("none", "left", "right", "bottom", "top")
+	if (!legend_pos %in% valid_legend_pos) {
+		stop(sprintf("legend_pos must be one of: %s", paste(valid_legend_pos, collapse = ", ")), call. = FALSE)
+	}
+
+	valid_legend_dir <- c("horizontal", "vertical")
+	if (!legend_dir %in% valid_legend_dir) {
+		stop(sprintf("legend_dir must be one of: %s", paste(valid_legend_dir, collapse = ", ")), call. = FALSE)
+	}
+
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
@@ -72,143 +126,30 @@ pca_plot <- function(sample_gene,
 
 	percentage <- round(pca_res$sdev / sum(pca_res$sdev) * 100, 2)
 	percentage <- paste(colnames(pca_out), "(", paste( as.character(percentage), "%", ")", sep = ""))
-	# <- 2. Data
 
-	# -> 3. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
+	sci_color <- get_ggsci_color(sci_fill_color)
+	if (!is.null(sci_color)) {
+		sci_color <- sci_color()
 	}
 
-	sci_color_alpha <- 1.00
-	# sci_fill_color <- "Sci_NPG"
-	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
-	if (sci_fill_color == "Default") {
-		sci_color <- NULL
-	} else if (sci_fill_color == "Sci_AAAS") {
-		sci_color <- scale_color_aaas(alpha = sci_color_alpha)
-		# Science and Science Translational Medicine:
-	} else if (sci_fill_color == "Sci_NPG") {
-		sci_color <- scale_color_npg(alpha = sci_color_alpha)
-	} else if (sci_fill_color == "Sci_Simpsons") {
-		sci_color <- scale_color_simpsons(alpha = sci_color_alpha)
-		# The Simpsons
-	} else if (sci_fill_color == "Sci_JAMA") {
-		sci_color <- scale_color_jama(alpha = sci_color_alpha)
-		# The Journal of the American Medical Association
-	} else if (sci_fill_color == "Sci_Lancet") {
-		sci_color <- scale_color_lancet(alpha = sci_color_alpha)
-		#  Lancet Oncology
-	} else if (sci_fill_color == "Sci_Futurama") {
-		sci_color <- scale_color_futurama(alpha = sci_color_alpha)
-		# Futurama
-	} else if (sci_fill_color == "Sci_JCO") {
-		sci_color <- scale_color_jco(alpha = sci_color_alpha)
-		# Journal of Clinical Oncology:
-	} else if (sci_fill_color == "Sci_NEJM") {
-		sci_color <- scale_color_nejm(alpha = sci_color_alpha)
-		# The New England Journal of Medicine
-	} else if (sci_fill_color == "Sci_IGV") {
-		sci_color <- scale_color_igv(alpha = sci_color_alpha)
-		# Integrative Genomics Viewer (IGV)
-	} else if (sci_fill_color == "Sci_UCSC") {
-		sci_color <- scale_color_ucscgb(alpha = sci_color_alpha)
-		# UCSC Genome Browser chromosome sci_color
-	} else if (sci_fill_color == "Sci_D3") {
-		sci_color <- scale_color_d3(alpha = sci_color_alpha)
-		# D3.JS
-	} else if (sci_fill_color == "Sci_Material") {
-		sci_color <- scale_color_material(alpha = sci_color_alpha)
-		# The Material Design color palettes
-	}
-
-	# pca_geom_point_size <- 5
-	# Slider: 4, 0, 0.1, 20
-
-	# pca_geom_text_size <- 5
-	# Slider: 6, 0, 0.1, 20
-
-	# pca_ellipse_alpha <- 0.3
-	# Slider: 0.3, 0, 0.1, 1
-
-	# pca_ellipse_level <- 0.95
-	# Slider: 0.95, 0, 0.01, 1
-
-	# pca_legend_pos <- "right"
-	# ChoiceBox: "none", "left", "right", "bottom", "top"
-
-	# pca_legend_dir <- "vertical"
-	# ChoiceBox: "vertical", "horizontal"
-
-	plotTitleFace <- "bold"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	plotTitleSize <- 18
-	# Slider: 18, 0, 50, 1
-
-	plotTitleHjust <- 0.5
-	# Slider: 0.5, 0.0, 1.0, 0.1
-
-	axisTitleFace <- "plain"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	axisTitleSize <- 14
-	# Slider: 16, 0, 50, 1
-
-	axisTextSize <- 10
-	# Slider: 10, 0, 50, 1
-
-	legendTitleSize <- 12
-	# Slider: 12, 0, 50, 1
-
-	# legend_pos <- "right"
-	# ChoiceBox: "none", "left", "right", "bottom", "top"
-
-	# legend_dir <- "vertical"
-	# ChoiceBox: "horizontal", "vertical"
-	# <- 3. Plot parameters
-
-	# -> 4. Plot
-	# colors <- distinctColorPalette(3)
 	labels <- row.names(pca_out)
 
 	if (multi_shape) {
 		p <- ggplot(pca_out,
-								aes_string(x = paste("PC", xPC, sep = ""),
-													 y = paste("PC", yPC, sep = ""),
-													 color = "groups",
-													 shape = "groups",
-													 label = "labels"
+								aes(x = .data[[paste("PC", xPC, sep = "")]],
+									y = .data[[paste("PC", yPC, sep = "")]],
+									color = groups,
+									shape = groups,
+									label = labels
 								))
-	}else {
+	} else {
 		p <- ggplot(pca_out,
-								aes_string(x = paste("PC", xPC, sep = ""),
-													 y = paste("PC", yPC, sep = ""),
-													 color = "groups",
-													 # shape = "groups",
-													 label = "labels"
+								aes(x = .data[[paste("PC", xPC, sep = "")]],
+									y = .data[[paste("PC", yPC, sep = "")]],
+									color = groups,
+									label = labels
 								))
 	}
 
@@ -227,40 +168,26 @@ pca_plot <- function(sample_gene,
 											color = rgb(0, 0, 0, border_alpha),
 											alpha = fill_alpha,
 											show.legend = TRUE
-											# level = pca_ellipse_level
 		) +
 		labs(fill = "Groups", color = "Groups", shape = "Groups") +
-		# coord_fixed() +
-		# stat_ellipse(aes(x = PC1, y = PC2,
-		#                  fill = groups),
-		#              geom = "polygon",
-		#              alpha = pca_ellipse_alpha,
-		#              show.legend = FALSE,
-		#              level = pca_ellipse_level
-		# ) +
 		sci_color +
 		gg_theme +
-		theme(plot.title = element_text(face = plotTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = plotTitleSize,
-																		hjust = plotTitleHjust
+		theme(plot.title = element_text(face = "bold",
+																		size = 18,
+																		hjust = 0.5
 					),
-					axis.title = element_text(face = axisTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = axisTitleSize
+					axis.title = element_text(face = "plain",
+																		size = 14
 					),
 					axis.text = element_text(face = "plain",
-																	 size = axisTextSize
+																	 size = 10
 					),
 					legend.title = element_text(face = "plain",
-																			size = legendTitleSize
+																			size = 12
 					),
 					legend.position = legend_pos,
-					# "none", "left", "right", "bottom", "top"
 					legend.direction = legend_dir
-					# "horizontal" or "vertical"
 		)
-	# <- 4. Plot
 
 	return(p)
 }

@@ -8,8 +8,8 @@
 #' @param value_var Character: value column name. Default: "go_term".
 #' @param miss_drop Logical: drop missing values or NA values. Default: TRUE, options: TRUE, FALSE.
 #'
-#' @importFrom reshape2 dcast
-#' @importFrom stats as.formula
+#' @importFrom tidyr pivot_wider
+#' @importFrom tidyselect all_of
 #' @export
 #'
 #' @examples
@@ -24,21 +24,36 @@
 #' res <- table_split(gene_go_kegg2)
 #' head(res)
 #'
+
 table_split <- function(data,
 												grouped_var = "go_category",
 												value_var = "go_term",
 												miss_drop = TRUE
 												){
-	res <- reshape2::dcast(data,
-							 as.formula(paste("... ~ ",
-							 								 grouped_var,
-							 								 sep = "")
-							 					 ),
-							 value.var = value_var,
-							 margins = NULL,
-							 drop = miss_drop
-							 )
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (!(grouped_var %in% colnames(data))) {
+		stop("grouped_var '", grouped_var, "' not found in data columns", call. = FALSE)
+	}
+
+	if (!(value_var %in% colnames(data))) {
+		stop("value_var '", value_var, "' not found in data columns", call. = FALSE)
+	}
+
+	if (miss_drop) {
+		data <- data[!is.na(data[[value_var]]), ]
+	}
+
+	id_cols <- setdiff(colnames(data), c(grouped_var, value_var))
+
+	res <- tidyr::pivot_wider(data,
+														 id_cols = all_of(id_cols),
+														 names_from = grouped_var,
+														 values_from = value_var
+	)
 
 	return(res)
-	invisible()
 }

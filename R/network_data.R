@@ -21,10 +21,3 @@
 #' network_data
 #'
 "network_data"
-
-# data <- read.table(file = "data-tables/network_data.txt",
-# 									 header = TRUE,
-# 									 sep = "\t",
-# 									 stringsAsFactors = F)
-# network_data <- data
-# usethis::use_data(network_data)

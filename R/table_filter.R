@@ -21,13 +21,18 @@
 #' res <- table_filter(traits_sex, Sex == "Male" & Traits == "Weight" & Value > 40)
 #' head(res)
 #'
+
 table_filter <- function(data,
 												...
 												){
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
 	res <- dplyr::filter(data,
 								...
 								)
 
 	return(res)
-	invisible()
 }

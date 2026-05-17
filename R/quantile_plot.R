@@ -14,12 +14,12 @@
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
 #' @param sci_fill_color Character: ggsci fill or color palette. Default: "Sci_NPG", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param sci_color_alpha Numeric: ggsci border color alpha. Default: 0.75, min: 0.00, max: 1.00.
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom ggpubr ggqqplot
 #' @export
+#' @note Requires package 'ggpubr' (install via: install.packages("ggpubr"))
 #'
 #' @examples
 #' # 1. Library TOmicsVis package
@@ -41,6 +41,7 @@
 #' # 6. Set conf_int = FALSE
 #' quantile_plot(weight_sex, conf_int = FALSE)
 #'
+
 quantile_plot <- function(data,
 													my_shape = "fill_circle",
 													point_size = 1.5,
@@ -51,196 +52,68 @@ quantile_plot <- function(data,
 													legend_dir = "vertical",
 													sci_fill_color = "Sci_NPG",
 													sci_color_alpha = 0.75,
-													ggTheme = "theme_light"
-										){
-	# -> 2. Data Operation
-	# set.seed(123)
-	# wdata = data.frame(
-	#     sex = factor(rep(c("F", "M"), each=200)),
-	#     weight = c(rnorm(200, 55), rnorm(200, 58)))
-	# <- 2. Data Operation
+													ggTheme = "theme_publication") {
 
-	# -> 3. Plot Parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	validate_is_dataframe_or_matrix(data, "data")
+	validate_numeric_range(ncol(data), "ncol(data)", min = 2)
+	validate_character_options(my_shape, "my_shape",
+														 c("border_square", "border_circle", "border_triangle", "plus", "times",
+															 "border_diamond", "border_triangle_down", "square_times", "plus_times",
+															 "diamond_plus", "circle_plus", "di_triangle", "square_plus",
+															 "circle_times", "square_triangle", "fill_square", "fill_circle",
+															 "fill_triangle", "fill_diamond", "large_circle", "small_circle",
+															 "fill_border_circle", "fill_border_square", "fill_border_diamond",
+															 "fill_border_triangle"))
+	validate_numeric_range(point_size, "point_size", min = 0)
+	validate_logical(conf_int, "conf_int")
+	validate_numeric_range(conf_level, "conf_level", min = 0, max = 1)
+	validate_character_options(split_panel, "split_panel", c("One_Panel", "Split_Panel"))
+	validate_character_options(legend_pos, "legend_pos", c("none", "left", "right", "bottom", "top"))
+	validate_character_options(legend_dir, "legend_dir", c("horizontal", "vertical"))
+	validate_character_options(sci_fill_color, "sci_fill_color",
+														 c("Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA",
+															 "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV",
+															 "Sci_UCSC", "Sci_D3", "Sci_Material"))
+	validate_numeric_range(sci_color_alpha, "sci_color_alpha", min = 0, max = 1)
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
+	if (!requireNamespace("ggpubr", quietly = TRUE)) {
+		stop("Package 'ggpubr' is required for quantile_plot().\n",
+             "Please install: install.packages('ggpubr')",
+             call. = FALSE)
 	}
 
-	# sci_color_alpha <- 0.75
-	# sci_fill_color <- "Sci_AAAS"
-	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
+	gg_theme <- get_ggtheme(ggTheme)
+
 	if (sci_fill_color == "Default") {
 		sci_color <- NULL
-	} else if (sci_fill_color == "Sci_AAAS") {
-		sci_color <- scale_color_aaas(alpha = sci_color_alpha)
-		# Science and Science Translational Medicine:
-	} else if (sci_fill_color == "Sci_NPG") {
-		sci_color <- scale_color_npg(alpha = sci_color_alpha)
-	} else if (sci_fill_color == "Sci_Simpsons") {
-		sci_color <- scale_color_simpsons(alpha = sci_color_alpha)
-		# The Simpsons
-	} else if (sci_fill_color == "Sci_JAMA") {
-		sci_color <- scale_color_jama(alpha = sci_color_alpha)
-		# The Journal of the American Medical Association
-	} else if (sci_fill_color == "Sci_Lancet") {
-		sci_color <- scale_color_lancet(alpha = sci_color_alpha)
-		#  Lancet Oncology
-	} else if (sci_fill_color == "Sci_Futurama") {
-		sci_color <- scale_color_futurama(alpha = sci_color_alpha)
-		# Futurama
-	} else if (sci_fill_color == "Sci_JCO") {
-		sci_color <- scale_color_jco(alpha = sci_color_alpha)
-		# Journal of Clinical Oncology:
-	} else if (sci_fill_color == "Sci_NEJM") {
-		sci_color <- scale_color_nejm(alpha = sci_color_alpha)
-		# The New England Journal of Medicine
-	} else if (sci_fill_color == "Sci_IGV") {
-		sci_color <- scale_color_igv(alpha = sci_color_alpha)
-		# Integrative Genomics Viewer (IGV)
-	} else if (sci_fill_color == "Sci_UCSC") {
-		sci_color <- scale_color_ucscgb(alpha = sci_color_alpha)
-		# UCSC Genome Browser chromosome sci_color
-	} else if (sci_fill_color == "Sci_D3") {
-		sci_color <- scale_color_d3(alpha = sci_color_alpha)
-		# D3.JS
-	} else if (sci_fill_color == "Sci_Material") {
-		sci_color <- scale_color_material(alpha = sci_color_alpha)
-		# The Material Design color palettes
+	} else {
+		sci_color <- get_ggsci_color(sci_fill_color)
+		if (!is.null(sci_color)) {
+			sci_color <- sci_color(alpha = sci_color_alpha)
+		}
 	}
 
-	# my_shape <- "fill_circle"
-	# ChoiceBox: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle"
-	if (my_shape == "border_square") {
-		shape <- 0
-	} else if (my_shape == "border_circle") {
-		shape <- 1
-	} else if (my_shape == "border_triangle") {
-		shape <- 2
-	} else if (my_shape == "plus") {
-		shape <- 3
-	} else if (my_shape == "times") {
-		shape <- 4
-	} else if (my_shape == "border_diamond") {
-		shape <- 5
-	} else if (my_shape == "border_triangle_down") {
-		shape <- 6
-	} else if (my_shape == "square_times") {
-		shape <- 7
-	} else if (my_shape == "plus_times") {
-		shape <- 8
-	} else if (my_shape == "diamond_plus") {
-		shape <- 9
-	} else if (my_shape == "circle_plus") {
-		shape <- 10
-	} else if (my_shape == "di_triangle") {
-		shape <- 11
-	} else if (my_shape == "square_plus") {
-		shape <- 12
-	} else if (my_shape == "circle_times") {
-		shape <- 13
-	} else if (my_shape == "square_triangle") {
-		shape <- 14
-	} else if (my_shape == "fill_square") {
-		shape <- 15
-	} else if (my_shape == "fill_circle") {
-		shape <- 16
-	} else if (my_shape == "fill_triangle") {
-		shape <- 17
-	} else if (my_shape == "fill_diamond") {
-		shape <- 18
-	} else if (my_shape == "large_circle") {
-		shape <- 19
-	} else if (my_shape == "small_circle") {
-		shape <- 20
-	} else if (my_shape == "fill_border_circle") {
-		shape <- 21
-	} else if (my_shape == "fill_border_square") {
-		shape <- 22
-	} else if (my_shape == "fill_border_diamond") {
-		shape <- 23
-	} else if (my_shape == "fill_border_triangle") {
-		shape <- 24
-	}
+	shape_lookup <- list(
+		border_square = 0, border_circle = 1, border_triangle = 2, plus = 3, times = 4,
+		border_diamond = 5, border_triangle_down = 6, square_times = 7, plus_times = 8,
+		diamond_plus = 9, circle_plus = 10, di_triangle = 11, square_plus = 12,
+		circle_times = 13, square_triangle = 14, fill_square = 15, fill_circle = 16,
+		fill_triangle = 17, fill_diamond = 18, large_circle = 19, small_circle = 20,
+		fill_border_circle = 21, fill_border_square = 22, fill_border_diamond = 23,
+		fill_border_triangle = 24
+	)
+	shape <- shape_lookup[[my_shape]]
 
-	# title = "QuantileQuantile Plot"
-	# TextField
-
-	# xlab = "Theoretical"
-	# ylab = "Sample"
-
-	# point_size = 1.5
-	# Slider: 10, 1, 50, 1
-
-	# confInt = "Conf_Show"
-	# # ChoiceBox: "Conf_Show", "Conf_Hidden"
-	# if (confInt == "Conf_Show") {
-	# 	conf_int = TRUE
-	# } else if (confInt == "Conf_Hidden") {
-	# 	conf_int = FALSE
-	# }
-
-	# conf_level = 0.95
-	# Slider: 0.95, 0.00, 1.00, 0.01
-
-	# split_panel = "One_Panel"
-	# ChoiceBox: "One_Panel", "Split_Panel"
 	if (split_panel == "One_Panel") {
-		facet_by = NULL
+		facet_by <- NULL
 	} else if (split_panel == "Split_Panel") {
-		facet_by = colnames(data)[2]
+		facet_by <- colnames(data)[2]
 	}
 
-	plotTitleFace = "bold"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	plotTitleSize = 18
-	# Slider: 18, 0, 50, 1
-
-	plotTitleHjust = 0.5
-	# Slider: 0.5, 0.0, 1.0, 0.1
-
-	axisTitleFace = "plain"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	axisTitleSize = 16
-	# Slider: 16, 0, 50, 1
-
-	axisTextSize = 10
-	# Slider: 10, 0, 50, 1
-
-	legendTitleSize = 12
-	# Slider: 12, 0, 50, 1
-
-	# legend_pos = "right"
-	# ChoiceBox: "none", "left", "right", "bottom", "top"
-
-	# legend_dir = "vertical"
-	# ChoiceBox: "horizontal", "vertical"
-	# <- 3. Plot Parameters
-
-	# # -> 4. Plot
 	suppressWarnings(
 	p <- ggpubr::ggqqplot(data,
 														 x = colnames(data)[1],
@@ -256,40 +129,22 @@ quantile_plot <- function(data,
 														 ),
 														 conf.int = conf_int,
 														 conf.int.level = conf_level,
-														 # title = title,
-														 # xlab = xlab,
-														 # ylab = ylab,
 														 facet.by = facet_by,
 														 panel.labs = NULL,
 														 short.panel.labs = FALSE
 	) +
 		sci_color +
 		gg_theme +
-		theme(plot.title = element_text(face = plotTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = plotTitleSize,
-																		hjust = plotTitleHjust
-		),
-		axis.title = element_text(face = axisTitleFace,
-															# "plain", "italic", "bold", "bold.italic"
-															size = axisTitleSize
-		),
-		axis.text = element_text(face = "plain",
-														 size = axisTextSize
-		),
-		legend.title = element_text(face = "plain",
-																size = legendTitleSize
-		),
+		theme(plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+		axis.title = element_text(face = "plain", size = 16),
+		axis.text = element_text(face = "plain", size = 10),
+		legend.title = element_text(face = "plain", size = 12),
 		legend.position = legend_pos,
-		# "none", "left", "right", "bottom", "top"
 		legend.direction = legend_dir,
-		# "horizontal" or "vertical"
 		strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
 		strip.text = element_text(color = "#333333", size = 10, face = "bold")
 		)
 	)
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

@@ -18,7 +18,7 @@ pca_plot(
   sci_fill_color = "Sci_AAAS",
   legend_pos = "right",
   legend_dir = "vertical",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -48,7 +48,7 @@ pca_plot(
 
 \item{legend_dir}{Character: legend director. Default: "vertical", options: "horizontal", "vertical".}
 
-\item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+\item{ggTheme}{Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
 \value{
 Plot: PCA dimensional reduction visualization for RNA-Seq.

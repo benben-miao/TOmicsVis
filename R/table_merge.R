@@ -9,7 +9,7 @@
 #' @param new_value Character: new variable (column) value name. Default: "Value".
 #' @param na_remove Logical: remove NA value. Default: FALSE, options: TRUE, FALSE.
 #'
-#' @importFrom reshape2 melt
+#' @importFrom tidyr pivot_longer
 #' @export
 #'
 #' @examples
@@ -28,20 +28,31 @@
 #' res <- table_merge(gene_go_kegg, new_var = "GO", new_value = "Terms")
 #' head(res)
 #'
+
 table_merge <- function(data,
 												merge_vars = c("biological_process", "cellular_component", "molecular_function"),
 												new_var = "go_category",
 												new_value = "go_term",
 												na_remove = FALSE
 												){
-	res <- reshape2::melt(data,
-							measure.vars = merge_vars,
-							variable.name = new_var,
-							na.rm = na_remove,
-							value.name = new_value,
-							factorsAsStrings = TRUE
-							)
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (!all(merge_vars %in% colnames(data))) {
+		stop("Some merge_vars not found in data columns", call. = FALSE)
+	}
+
+	res <- tidyr::pivot_longer(data,
+														 cols = all_of(merge_vars),
+															names_to = new_var,
+															values_to = new_value
+	)
+
+	if (na_remove) {
+		res <- res[!is.na(res[[new_value]]), ]
+	}
 
 	return(res)
-	invisible()
 }

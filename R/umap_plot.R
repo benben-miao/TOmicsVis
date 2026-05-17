@@ -16,7 +16,7 @@
 #' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param legend_pos Character: legend position. Default: "right", options: "none", "left", "right", "bottom", "top".
 #' @param legend_dir Character: legend direction. Default: "vertical", options: "horizontal", "vertical".
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import ggplot2
 #' @import ggsci
@@ -59,10 +59,17 @@ umap_plot <- function(sample_gene,
 											sci_fill_color = "Sci_AAAS",
 											legend_pos = "right",
 											legend_dir = "vertical",
-											ggTheme = "theme_light"
-											){
+										ggTheme = "theme_publication"
+										){
 
-	# -> 2. NA and Duplicated
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
@@ -78,147 +85,31 @@ umap_plot <- function(sample_gene,
 	set.seed(seed)
 	umap_res <- umap(t_sample_gene)
 	umap_out <- as.data.frame(umap_res$layout[,c(1,2)])
-	# write.table(umap_out,
-	# 						file = "Results.txt",
-	# 						append = FALSE,
-	# 						sep = "\t",
-	# 						quote = FALSE,
-	# 						na = "NA"
-	# )
 	colnames(umap_out) <- c("UMAP1","UMAP2")
-	# <- 2. NA and Duplicated
 
-	# -> 3. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
+	sci_color <- get_ggsci_color(sci_fill_color)
+	if (!is.null(sci_color)) {
+		sci_color <- sci_color()
 	}
 
-	# point_size <- 3
-	# slide: 5, 0, 0.1, 20
-	# point_alpha <- 0.8
-	# slide: 0.8, 0, 0.1, 1
-
-	# text_size <- 2
-	# slide: 6, 0, 0.1, 20
-	# text_alpha <- 0.8
-	# slide: 0.8, 0, 0.1, 1
-
-	# ellipse_alpha <- 0.3
-	# slide: 0.3, 0, 0.1, 1
-	# ci_level <- 0.95
-	# slide: 0.95, 0, 0.01, 1
-
-	sci_color_alpha <- 1.00
-	# sci_fill_color <- "Sci_NPG"
-	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
-	if (sci_fill_color == "Default") {
-		sci_color <- NULL
-	} else if (sci_fill_color == "Sci_AAAS") {
-		sci_color <- scale_color_aaas(alpha = sci_color_alpha)
-		# Science and Science Translational Medicine:
-	} else if (sci_fill_color == "Sci_NPG") {
-		sci_color <- scale_color_npg(alpha = sci_color_alpha)
-	} else if (sci_fill_color == "Sci_Simpsons") {
-		sci_color <- scale_color_simpsons(alpha = sci_color_alpha)
-		# The Simpsons
-	} else if (sci_fill_color == "Sci_JAMA") {
-		sci_color <- scale_color_jama(alpha = sci_color_alpha)
-		# The Journal of the American Medical Association
-	} else if (sci_fill_color == "Sci_Lancet") {
-		sci_color <- scale_color_lancet(alpha = sci_color_alpha)
-		#  Lancet Oncology
-	} else if (sci_fill_color == "Sci_Futurama") {
-		sci_color <- scale_color_futurama(alpha = sci_color_alpha)
-		# Futurama
-	} else if (sci_fill_color == "Sci_JCO") {
-		sci_color <- scale_color_jco(alpha = sci_color_alpha)
-		# Journal of Clinical Oncology:
-	} else if (sci_fill_color == "Sci_NEJM") {
-		sci_color <- scale_color_nejm(alpha = sci_color_alpha)
-		# The New England Journal of Medicine
-	} else if (sci_fill_color == "Sci_IGV") {
-		sci_color <- scale_color_igv(alpha = sci_color_alpha)
-		# Integrative Genomics Viewer (IGV)
-	} else if (sci_fill_color == "Sci_UCSC") {
-		sci_color <- scale_color_ucscgb(alpha = sci_color_alpha)
-		# UCSC Genome Browser chromosome sci_color
-	} else if (sci_fill_color == "Sci_D3") {
-		sci_color <- scale_color_d3(alpha = sci_color_alpha)
-		# D3.JS
-	} else if (sci_fill_color == "Sci_Material") {
-		sci_color <- scale_color_material(alpha = sci_color_alpha)
-		# The Material Design color palettes
-	}
-
-	plotTitleFace <- "bold"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	plotTitleSize <- 18
-	# Slider: 18, 0, 50, 1
-
-	plotTitleHjust <- 0.5
-	# Slider: 0.5, 0.0, 1.0, 0.1
-
-	axisTitleFace <- "plain"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	axisTitleSize <- 14
-	# Slider: 16, 0, 50, 1
-
-	axisTextSize <- 10
-	# Slider: 10, 0, 50, 1
-
-	legendTitleSize <- 12
-	# Slider: 12, 0, 50, 1
-
-	# legend_pos <- "right"
-	# ChoiceBox: "none", "left", "right", "bottom", "top"
-
-	# legend_dir <- "vertical"
-	# ChoiceBox: "horizontal", "vertical"
-	# <- 3. Plot parameters
-
-	# # -> 4. Plot
 	labels <- row.names(t_sample_gene)
 
 	if (multi_shape) {
 		p <- ggplot(umap_out,
-								aes_string(x = "UMAP1",
-													 y = "UMAP2",
-													 color = "groups",
-													 shape = "groups",
-													 label = "labels")
+								aes(x = UMAP1,
+									y = UMAP2,
+									color = groups,
+									shape = groups,
+									label = labels)
 		)
 	}else {
 		p <- ggplot(umap_out,
-								aes_string(x = "UMAP1",
-													 y = "UMAP2",
-													 color = "groups",
-													 # shape = "groups",
-													 label = "labels")
+								aes(x = UMAP1,
+									y = UMAP2,
+									color = groups,
+									label = labels)
 		)
 	}
 
@@ -242,7 +133,6 @@ umap_plot <- function(sample_gene,
 											color = rgb(0, 0, 0, border_alpha),
 											alpha = fill_alpha,
 											show.legend = TRUE
-											# level = pca_ellipse_level
 		) +
 		annotate("text",
 						 x = min(umap_out$UMAP1) + ((max(umap_out$UMAP1) - min(umap_out$UMAP1)) * 0.01),
@@ -261,28 +151,22 @@ umap_plot <- function(sample_gene,
 		labs(fill = "Groups", color = "Groups", shape = "Groups") +
 		sci_color +
 		gg_theme +
-		theme(plot.title = element_text(face = plotTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = plotTitleSize,
-																		hjust = plotTitleHjust
+		theme(plot.title = element_text(face = "bold",
+																		size = 18,
+																		hjust = 0.5
 					),
-					axis.title = element_text(face = axisTitleFace,
-																		# "plain", "italic", "bold", "bold.italic"
-																		size = axisTitleSize
+					axis.title = element_text(face = "plain",
+																		size = 14
 					),
 					axis.text = element_text(face = "plain",
-																	 size = axisTextSize
+																	 size = 10
 					),
 					legend.title = element_text(face = "plain",
-																			size = legendTitleSize
+																			size = 12
 					),
 					legend.position = legend_pos,
-					# "none", "left", "right", "bottom", "top"
 					legend.direction = legend_dir
-					# "horizontal" or "vertical"
 		)
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

@@ -17,12 +17,12 @@
 #' @param title Character: plot title. Default: "CT-vs-Trait1".
 #' @param xlab Character: x label. Default: "Log2 mean expression".
 #' @param ylab Character: y label. Default: "Log2 fold change".
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom ggpubr ggmaplot
 #' @export
+#' @note Requires package 'ggpubr' (install via: install.packages("ggpubr"))
 #'
 #' @examples
 #' # 1. Library TOmicsVis package
@@ -55,110 +55,33 @@ ma_plot <- function(data,
 										title = "CT-vs-LT12",
 										xlab = "Log2 mean expression",
 										ylab = "Log2 fold change",
-										ggTheme = "theme_light") {
-	# -> 2. Data Operation
-	# data(diff_express)
-	# # diff_express <- diff_express[diff_express$detection_call == 1,]
-	# write.table(diff_express, file = "MversusA.txt", quote = F, sep = "\t", row.names = T)
-	# <- 2. Data Operation
+										ggTheme = "theme_publication") {
 
-	# -> 3. Plot Parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	validate_is_dataframe_or_matrix(data, "data")
+	validate_numeric_range(ncol(data), "ncol(data)", min = 4)
+	validate_character_options(top_method, "top_method", c("fc", "pvalue"))
+	validate_numeric_range(foldchange, "foldchange", min = 0)
+	validate_numeric_range(fdr_value, "fdr_value", min = 0, max = 1)
+	validate_numeric_range(point_size, "point_size", min = 0)
+	validate_hex_color(color_up, "color_up")
+	validate_hex_color(color_down, "color_down")
+	validate_numeric_range(color_alpha, "color_alpha", min = 0, max = 1)
+	validate_numeric_range(top_num, "top_num", min = 0)
+	validate_numeric_range(label_size, "label_size", min = 0)
+	validate_logical(label_box, "label_box")
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light",
+															 "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
 
-	# ggTheme <- "theme_minimal"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
+	if (!requireNamespace("ggpubr", quietly = TRUE)) {
+		stop("Package 'ggpubr' is required for ma_plot().\n",
+             "Please install: install.packages('ggpubr')",
+             call. = FALSE)
 	}
 
-	# title <- "Group1 -versus- Group2"
-	# TextField
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# xlab <- "Log2 mean expression"
-	# ylab <- "Log2 fold change"
-	# =====
-
-	# fdr_value <- 0.05
-	# Slider: 0.05, 0.00, 1.00, 0.01
-
-	# foldchange <- 2.00
-	# Slider: 2.00, 0.00, 10.00, 0.01
-
-	# point_size <- 0.50
-	# Slider: 0.50, 0.00, 10.00, 0.01
-
-	# label_size <- 8.00
-	# Slider: 8.00, 0.00, 50.00, 1.00
-
-	# labelBox <- "LabelBox_Show"
-	# # ChoiceBox: "LabelBox_Show", "LabelBox_Hidden"
-	# if (labelBox == "LabelBox_Show") {
-	# 	label_box <- TRUE
-	# } else if (labelBox == "LabelBox_Hidden") {
-	# 	label_box <- FALSE
-	# }
-
-	# color_up <- "#FF0000"
-	# ColorPicker:
-
-	# color_down <- "#008800"
-	# ColorPicker:
-
-	# top_num <- 20
-	# Slider: 20, 0, 100, 1
-
-	# top_method <- "fc"
-	# ChoiceBox: "padj", "fc"
-
-	# =====
-	plotTitleFace <- "bold"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	plotTitleSize <- 18
-	# Slider: 18, 0, 50, 1
-
-	plotTitleHjust <- 0.5
-	# Slider: 0.5, 0.0, 1.0, 0.1
-
-	axisTitleFace <- "plain"
-	# ChoiceBox: "plain", "italic", "bold", "bold.italic"
-
-	axisTitleSize <- 16
-	# Slider: 16, 0, 50, 1
-
-	axisTextSize <- 10
-	# Slider: 10, 0, 50, 1
-
-	legendTitleSize <- 12
-	# Slider: 12, 0, 50, 1
-
-	legendPosition <- "right"
-	# ChoiceBox: "none", "left", "right", "bottom", "top"
-
-	legendDirection <- "vertical"
-	# ChoiceBox: "horizontal", "vertical"
-	# <- 3. Plot Parameters
-
-	# # -> 4. Plot
 	p <- ggpubr::ggmaplot(
 		data,
 		fdr = fdr_value,
@@ -173,32 +96,20 @@ ma_plot <- function(data,
 		palette = c(color_up, color_down, "#AAAAAA"),
 		top = top_num,
 		select.top.method = top_method,
-		# "padj", "fc"
 		label.select = NULL,
 		main = title,
 		xlab = xlab,
 		ylab = ylab
 	) +
-		# geom_text_repel(max.overlaps = Inf) +
 		gg_theme +
 		theme(
-			plot.title = element_text(
-				face = plotTitleFace,
-				# "plain", "italic", "bold", "bold.italic"
-				size = plotTitleSize,
-				hjust = plotTitleHjust
-			),
-			axis.title = element_text(face = axisTitleFace, # "plain", "italic", "bold", "bold.italic"
-																size = axisTitleSize),
-			axis.text = element_text(face = "plain", size = axisTextSize),
-			legend.title = element_text(face = "plain", size = legendTitleSize),
-			legend.position = legendPosition,
-			# "none", "left", "right", "bottom", "top"
-			legend.direction = legendDirection
-			# "horizontal" or "vertical"
+			plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+			axis.title = element_text(face = "plain", size = 16),
+			axis.text = element_text(face = "plain", size = 10),
+			legend.title = element_text(face = "plain", size = 12),
+			legend.position = "right",
+			legend.direction = "vertical"
 		)
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

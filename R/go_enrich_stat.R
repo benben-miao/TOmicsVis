@@ -13,12 +13,11 @@
 #' @param xtext_angle Numeric: x axis texts angle. Default: 45, min: 0, max: 360.
 #' @param sci_fill_color Character: ggsci color pallet. Default: "Sci_AAAS", options: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material".
 #' @param sci_fill_alpha Numeric: ggsci fill color alpha. Default: 0.80, min: 0.00, max: 1.00.
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
-#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom tidyr pivot_longer separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
 #' @export
@@ -29,7 +28,7 @@
 #'
 #' # 2. Use example dataset
 #' data(gene_go_kegg)
-#' head(gene_go_kegg)
+#' head(gene_go_kegg, 10)
 #'
 #' # 3. Default parameters
 #' go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
@@ -56,37 +55,31 @@ go_enrich_stat <- function(go_anno,
 										 xtext_angle = 45,
 										 sci_fill_color = "Sci_AAAS",
 										 sci_fill_alpha = 0.80,
-										 ggTheme = "theme_light"
+										 ggTheme = "theme_publication"
 										){
-	# -> 2. Data Parameters
-	# max_item <- 15
-	# Slider: 15, 0, 1, 20
 
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for go_enrich_stat().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
-
-	# -> 3. Data
 	gene_go <- go_anno
 	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
-
-	gene_go1 <- reshape2::melt(gene_go,
-									 na.rm = FALSE,
-									 id.vars = c("Genes"),
-									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
-									 variable.name = "ontology",
-									 value.name = "term",
-									 factorsAsStrings = TRUE
+	gene_go1 <- tidyr::pivot_longer(
+		gene_go,
+		cols = c(biological_process, cellular_component, molecular_function),
+		names_to = "ontology",
+		values_to = "term"
 	)
+
+	gene_go1 <- gene_go1[!is.na(gene_go1$term), ]
 
 	gene_go2 <- tidyr::separate_rows(data = gene_go1,
 														"term",
@@ -96,7 +89,8 @@ go_enrich_stat <- function(go_anno,
 	gene_go3 <- tidyr::separate(gene_go2,
 											 "term",
 											 c("term", "description"),
-											 "\\("
+											 "\\(",
+											 extra = "merge"
 	)
 
 	gene_go4 <- tidyr::drop_na(gene_go3)
@@ -119,8 +113,6 @@ go_enrich_stat <- function(go_anno,
 														 maxGSSize = 1000
 	)
 
-	# head(enrich_results@result)
-	# length(enrich_results@result$ID)
 	enrich_result <- enrich_results@result
 
 	gene_go6 <- data.frame(gene_go5["term"], gene_go5["ontology"])
@@ -133,7 +125,7 @@ go_enrich_stat <- function(go_anno,
 	)
 	colnames(enrich_table)[1] <- "ID"
 
-	GetTop <- function(df, item){
+	GetTop <- function(df, item) {
 		if (nrow(df) > item) {
 			return(df[1:item,])
 		}else{
@@ -157,98 +149,26 @@ go_enrich_stat <- function(go_anno,
 		return(enrich_df)
 	}
 	enrich_df <- GetGoTopEnrich(enrich_table)
-	# <- 3. Data
 
-	# -> 4. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
-
-	# sci_fill_alpha <- 0.92
-	# sci_fill_color <- "Sci_D3"
-	# ChoiceBox: "Sci_AAAS", "Sci_NPG", "Sci_Simpsons", "Sci_JAMA", "Sci_GSEA", "Sci_Lancet", "Sci_Futurama", "Sci_JCO", "Sci_NEJM", "Sci_IGV", "Sci_UCSC", "Sci_D3", "Sci_Material"
 	if (sci_fill_color == "Default") {
 		sci_fill <- NULL
-	} else if (sci_fill_color == "Sci_AAAS") {
-		sci_fill <- scale_fill_aaas(alpha = sci_fill_alpha)
-		# Science and Science Translational Medicine:
-	} else if (sci_fill_color == "Sci_NPG") {
-		sci_fill <- scale_fill_npg(alpha = sci_fill_alpha)
-	} else if (sci_fill_color == "Sci_Simpsons") {
-		sci_fill <- scale_fill_simpsons(alpha = sci_fill_alpha)
-		# The Simpsons
-	} else if (sci_fill_color == "Sci_JAMA") {
-		sci_fill <- scale_fill_jama(alpha = sci_fill_alpha)
-		# The Journal of the American Medical Association
-	} else if (sci_fill_color == "Sci_Lancet") {
-		sci_fill <- scale_fill_lancet(alpha = sci_fill_alpha)
-		#  Lancet Oncology
-	} else if (sci_fill_color == "Sci_Futurama") {
-		sci_fill <- scale_fill_futurama(alpha = sci_fill_alpha)
-		# Futurama
-	} else if (sci_fill_color == "Sci_JCO") {
-		sci_fill <- scale_fill_jco(alpha = sci_fill_alpha)
-		# Journal of Clinical Oncology:
-	} else if (sci_fill_color == "Sci_NEJM") {
-		sci_fill <- scale_fill_nejm(alpha = sci_fill_alpha)
-		# The New England Journal of Medicine
-	} else if (sci_fill_color == "Sci_IGV") {
-		sci_fill <- scale_fill_igv(alpha = sci_fill_alpha)
-		# Integrative Genomics Viewer (IGV)
-	} else if (sci_fill_color == "Sci_UCSC") {
-		sci_fill <- scale_fill_ucscgb(alpha = sci_fill_alpha)
-		# UCSC Genome Browser chromosome sci_fill
-	} else if (sci_fill_color == "Sci_D3") {
-		sci_fill <- scale_fill_d3(alpha = sci_fill_alpha)
-		# D3.JS
-	} else if (sci_fill_color == "Sci_Material") {
-		sci_fill <- scale_fill_material(alpha = sci_fill_alpha)
-		# The Material Design color palettes
+	} else {
+		sci_fill <- get_ggsci_fill(sci_fill_color, alpha = sci_fill_alpha)
 	}
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
+	gg_theme <- get_ggtheme(ggTheme)
 
 	stripPos <- "top"
-	# ChoiceBox: "top", "bottom", "right", "left"
-
-	# strip_fill <- "#ff000033"
-	# ColorPicker:
-
-	# xtext_angle <- 45
-	# Slider: 45, 0, 5, 360
-	# <- 4. Plot parameters
 
 	enrich_df["new_x"] <- reorder(enrich_df$Description, -enrich_df$Count)
 
-	# -> 5. Plot
 	p <- ggplot(data = enrich_df,
-							aes_string(x = "new_x",
-									y = "Count",
-									fill = "Ontology")) +
+							aes(x = new_x,
+								y = Count,
+								fill = Ontology)) +
 		geom_bar(stat = 'identity',
 						 position = 'dodge')  +
-		geom_text(aes_string(label = "Count"),
+		geom_text(aes(label = Count),
 							vjust = -0.3,
 							hjust = 0.5) +
 		facet_wrap(~enrich_df$Ontology,
@@ -260,7 +180,6 @@ go_enrich_stat <- function(go_anno,
 		theme(axis.text.x = element_text(angle = xtext_angle,
 																		 hjust = 1
 		),
-		# text = element_text(family = fonts),
 		axis.text = element_text(colour = "#000000"),
 		strip.text.x = element_text(size = 10,
 																colour = "#333333",
@@ -280,9 +199,5 @@ go_enrich_stat <- function(go_anno,
 		) +
 		sci_fill
 
-	# p
-	# <- 5. Plot
-
 	return(p)
-	invisible()
 }

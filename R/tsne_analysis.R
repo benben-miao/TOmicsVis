@@ -33,10 +33,13 @@
 tsne_analysis <- function(sample_gene,
 											group_sample,
 											seed = 1,
-											tsne_dims = 2
-											){
+											tsne_dims = 2) {
 
-	# -> 2. NA and Duplicated
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+	validate_numeric_range(seed, "seed", min = 1)
+	validate_numeric_range(tsne_dims, "tsne_dims", min = 2, max = 3)
+
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
@@ -44,39 +47,15 @@ tsne_analysis <- function(sample_gene,
 	t_sample_gene <- t(sample_gene)
 	groups <- group_sample[,2]
 
-	tsne_ano <- vegan::anosim(x = t_sample_gene,
-										 grouping = groups)
-	tsne_p <- tsne_ano$signif
-	tsne_r <- round(tsne_ano$statistic,3)
-
 	set.seed(seed)
 	m_sample_gene <- as.matrix(t_sample_gene)
 	tsne_res <- Rtsne::Rtsne(m_sample_gene,
 										dims = tsne_dims,
-										# initial_dims = 50,
 										perplexity = 3,
-										# theta = 0.0,
-										check_duplicates = F,
-										# pca = T,
-										# partial_pca = FALSE,
-										# max_iter = 1000,
-										verbose = getOption("verbose", FALSE)
-										# is_distance = FALSE,
-										# Y_init = NULL,
-										# pca_center = TRUE,
-										# pca_scale = FALSE,
-										# normalize = TRUE,
-										# stop_lying_iter = ifelse(is.null(Y_init), 250L,0L),
-										# mom_switch_iter = ifelse(is.null(Y_init), 250L, 0L),
-										# momentum = 0.5,
-										# final_momentum = 0.8,
-										# eta = 200,
-										# exaggeration_factor = 12,
-										# num_threads = 2
-	)
+										check_duplicates = FALSE,
+										verbose = getOption("verbose", FALSE))
 	tsne_out <- as.data.frame(tsne_res$Y)
 	colnames(tsne_out) <- paste("TSNE", 1:tsne_dims, sep = "")
-	# <- 2. NA and Duplicated
 
 	return(tsne_out)
 }

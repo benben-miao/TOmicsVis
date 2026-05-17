@@ -16,8 +16,7 @@
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
-#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom tidyr pivot_longer separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
 #' @import enrichplot
@@ -30,7 +29,7 @@
 #'
 #' # 2. Use example dataset
 #' data(gene_go_kegg)
-#' head(gene_go_kegg)
+#' head(gene_go_kegg, 10)
 #'
 #' # 3. Default parameters
 #' go_enrich_net(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
@@ -42,49 +41,32 @@ go_enrich_net <- function(go_anno,
 										 qvalue_cutoff = 0.05,
 										 category_num = 20,
 										 net_layout = "circle",
-										 net_circular = TRUE,
 										 low_color = "#ff0000aa",
 										 high_color = "#008800aa"
 										){
-	# -> 2. Data Parameters
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for go_enrich_net().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
-
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
-
-	# -> 3. Data
 	gene_go <- go_anno
 	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
-
-	gene_go1 <- melt(gene_go,
-									 na.rm = FALSE,
-									 id.vars = c("Genes"),
-									 measure.vars = c("biological_process", "cellular_component", "molecular_function"),
-									 variable.name = "ontology",
-									 value.name = "term",
-									 factorsAsStrings = TRUE
+	gene_go1 <- tidyr::pivot_longer(
+		gene_go,
+		cols = c(biological_process, cellular_component, molecular_function),
+		names_to = "ontology",
+		values_to = "term"
 	)
 
-	gene_go2 <- separate_rows(data = gene_go1,
-														"term",
-														sep = ";"
-	)
+	gene_go1 <- gene_go1[!is.na(gene_go1$term), ]
 
-	gene_go3 <- separate(gene_go2,
-											 "term",
-											 c("term", "description"),
-											 "\\("
-	)
+	gene_go2 <- tidyr::separate_rows(data = gene_go1, "term", sep = ";")
 
-	gene_go4 <- drop_na(gene_go3)
+	gene_go3 <- tidyr::separate(gene_go2, "term", c("term", "description"), "\\(", extra = "merge")
+
+	gene_go4 <- tidyr::drop_na(gene_go3)
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
@@ -94,7 +76,7 @@ go_enrich_net <- function(go_anno,
 												 gene_go4["description"]
 	)
 
-	enrich_results <- enricher(gene = degs_list,
+	enrich_results <- clusterProfiler::enricher(gene = degs_list,
 														 TERM2GENE = data.frame(gene_go5[,2],gene_go5[,1]),
 														 TERM2NAME = data.frame(gene_go5[,2],gene_go5[,4]),
 														 pvalueCutoff = pvalue_cutoff,
@@ -116,71 +98,17 @@ go_enrich_net <- function(go_anno,
 	)
 	colnames(enrich_table)[1] <- "ID"
 
-	# write.table(enrich_table,
-	# 						file = "Results.txt",
-	# 						append = FALSE,
-	# 						sep = "\t",
-	# 						quote = TRUE,
-	# 						na = "NA"
-	# )
-	# <- 3. Data
-
-	# -> 4. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
-
-	# category_num <- 30
-	# ChoiceBox: 30, 10, 1, 50
-
-	# low_color <- "#ff0000aa"
-	# ColorPicker
-
-	# high_color <- "#0000ffaa"
-	# ColorPicker
-
-	# net_layout <- "circle"
-	# ChoiceBox: 'star', 'circle', 'gem', 'dh', 'graphopt', 'grid', 'mds', 'randomly', 'fr', 'kk', 'drl' or 'lgl'.
-
-	# isCircular <- "circular"
-	# if (isCircular == "circular") {
-	# 	circular <- TRUE
-	# } else if (isCircular == "scattered") {
-	# 	circular <- FALSE
-	# }
-	# # ChoiceBox: "circular", "scattered"
-
-
-	cateLabelScale <- 0.8
-	# Slider: 0.8, 0.1, 0.1, 2.0
-
-	geneLabelScale <- 0.8
-	# Slider: 0.8, 0.1, 0.1, 2.0
-	# <- 4. Plot parameters
-
-	# -> 5. Plot
 	p <- cnetplot(
 		x = enrich_results,
 		showCategory = category_num,
-		color.params = list(foldChange = NULL,
-												edge = TRUE),
-		# foldChange = deg_list,
-		# colorEdge = TRUE,
-		cex.params = list(category_node = 1,
-											gene_node = 1,
-											category_label = cateLabelScale,
-											gene_label = geneLabelScale),
-		# cex_category = 1,
-		# cex_gene = 1,
-		# cex_label_category = cateLabelScale,
-		# cex_label_gene = geneLabelScale,
-		layout = net_layout, # 'star', 'circle', 'gem', 'dh', 'graphopt', 'grid', 'mds', 'randomly', 'fr', 'kk', 'drl' or 'lgl'.
-		circular = net_circular,
-		node_label = "all",
-		# color_category = "#ff0000",
-		# color_gene = "#008000",
-		shadowtext = "all"
+		layout = net_layout,
+		color_category = "#E5C494",
+		size_category = 1,
+		color_item = "#B3B3B3",
+		size_item = 1,
+		color_edge = "grey",
+		node_label = "all"
 	) +
-		# guides(color = guide_legend(title="New Legend Title")) +
 		labs(color = "Genes") +
 		theme(
 			# text = element_text(family = fonts)
@@ -189,9 +117,5 @@ go_enrich_net <- function(go_anno,
 												 space = "Lab",
 												 guide = "colourbar", aesthetics = "fill")
 
-	# p
-	# <- 5. Plot
-
 	return(p)
-	invisible()
 }

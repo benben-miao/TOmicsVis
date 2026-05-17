@@ -12,12 +12,12 @@
 #' @param color_labels_by_k Logical: labels colored by group. Default: TRUE, options: TRUE or FALSE.
 #' @param horiz Logical: horizontal dendrogram. Default: FALSE, options: TRUE or FALSE.
 #' @param label_size Numeric: tree label size. Default: 0.8, min: 0.
-#' @param line_width Numeric: branches and rectangle line width. Default: 0.7, min: 0.
+#' @param line_width Numeric: branches and rectangle line width. Default: 0.5, min: 0.
 #' @param rect Logical: add a rectangle around groups. Default: TRUE, options: TRUE or FALSE.
 #' @param rect_fill Logical: fill the rectangle. Default: TRUE, options: TRUE or FALSE.
 #' @param xlab Character: title of the xlab. Default: "".
 #' @param ylab Character: title of the ylab. Default: "Height".
-#' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
+#' @param ggTheme Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @importFrom stats dist hclust as.dendrogram
@@ -55,34 +55,37 @@ dendro_plot <- function(data,
 												rect_fill = TRUE,
 												xlab = "Samples",
 												ylab = "Height",
-												ggTheme = "theme_light") {
-	# -> 2. NA and Duplicated
+												ggTheme = "theme_publication") {
+
+	if (!requireNamespace("factoextra", quietly = TRUE)) {
+		stop("Package 'factoextra' is required for dendro_plot().\n",
+				 "Please install: install.packages('factoextra')",
+				 call. = FALSE)
+	}
+
 	data <- as.data.frame(data)
 	data <- data[, -1]
 	data <- data[rowSums(data > 0) > 0, ]
 	data <- as.data.frame(t(data))
-	# data <- data[!is.na(data[, 1]), ]
-	# idx <- duplicated(data[, 1])
-	# data[idx, 1] <- paste0(data[idx, 1], "--dup-", cumsum(idx)[idx])
-	# rownames(data) <- data[, 1]
-	# data <- data[, -1]
-	# <- 2. NA and Duplicated
 
-	# -> 3. Plot parameters
-	# dist_method <- "euclidean"
-	# ChoiceBox: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski"
-
-	# hc_method <- "average"
-	# ChoiceBox: "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
-
-	# tree_type <- "rectangle"
-	# ChoiceBox: "rectangle", "triangle", "circular", "phylogenic"
-
-	# title <- "Cluster Dendrogram"
-	# k_num = 3
-	# label_size = 0.8
-	# line_width = 0.7
-	# <- 3. Plot parameters
+	validate_is_dataframe_or_matrix(data, "data")
+	validate_character_options(dist_method, "dist_method",
+														 c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"))
+	validate_character_options(hc_method, "hc_method",
+														 c("ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
+	validate_character_options(tree_type, "tree_type", c("rectangle", "circular", "phylogenic"))
+	validate_numeric_range(k_num, "k_num", min = 2)
+	validate_character_options(palette, "palette",
+														 c("npg", "aaas", "lancet", "jco", "ucscgb", "uchicago", "simpsons", "rickandmorty"))
+	validate_logical(color_labels_by_k, "color_labels_by_k")
+	validate_logical(horiz, "horiz")
+	validate_numeric_range(label_size, "label_size", min = 0)
+	validate_numeric_range(line_width, "line_width", min = 0)
+	validate_logical(rect, "rect")
+	validate_logical(rect_fill, "rect_fill")
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void", "theme_publication"))
 
 	# Calculate distance matrix，method = "euclidean"
 	# This must be one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski"
@@ -95,29 +98,7 @@ dendro_plot <- function(data,
 	# Create dendrogram object
 	dend <- as.dendrogram(hc)
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
+	gg_theme <- get_ggtheme(ggTheme)
 
 	suppressWarnings(
 		p <- factoextra::fviz_dend(

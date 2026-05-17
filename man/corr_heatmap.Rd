@@ -17,7 +17,7 @@ corr_heatmap(
   color_mid = "white",
   color_high = "red",
   outline_color = "white",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -45,7 +45,7 @@ corr_heatmap(
 
 \item{outline_color}{Character: outline color name or hex value. Default: "white".}
 
-\item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+\item{ggTheme}{Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
 \value{
 Plot: heatmap plot filled with Pearson correlation values and P values.

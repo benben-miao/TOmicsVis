@@ -13,7 +13,7 @@ survival_plot(
   risk_table = TRUE,
   num_censor = TRUE,
   sci_palette = "aaas",
-  ggTheme = "theme_light",
+  ggTheme = "theme_publication",
   x_start = 0,
   y_start = 0,
   y_end = 100,
@@ -37,7 +37,7 @@ survival_plot(
 
 \item{sci_palette}{Character: ggsci color palette. Default: "aaas", options: "aaas", "npg", "lancet", "jco", "ucscgb", "uchicago", "simpsons", "rickandmorty".}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 
 \item{x_start}{Numeric: x-axis start value. Default: 0, min: 0, max: null.}
 

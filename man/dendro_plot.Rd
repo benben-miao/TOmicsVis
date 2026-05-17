@@ -19,7 +19,7 @@ dendro_plot(
   rect_fill = TRUE,
   xlab = "Samples",
   ylab = "Height",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -41,7 +41,7 @@ dendro_plot(
 
 \item{label_size}{Numeric: tree label size. Default: 0.8, min: 0.}
 
-\item{line_width}{Numeric: branches and rectangle line width. Default: 0.7, min: 0.}
+\item{line_width}{Numeric: branches and rectangle line width. Default: 0.5, min: 0.}
 
 \item{rect}{Logical: add a rectangle around groups. Default: TRUE, options: TRUE or FALSE.}
 
@@ -51,7 +51,7 @@ dendro_plot(
 
 \item{ylab}{Character: title of the ylab. Default: "Height".}
 
-\item{ggTheme}{Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+\item{ggTheme}{Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
 \value{
 Plot: dendrogram for multiple samples clustering.

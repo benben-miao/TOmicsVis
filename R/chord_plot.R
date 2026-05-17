@@ -36,6 +36,7 @@
 #' # 3. Default parameters
 #' chord_plot(gene_expression2[1:20,])
 #'
+
 chord_plot <- function(data,
 											 multi_colors = "VividColors",
 											 color_seed = 10,
@@ -49,84 +50,46 @@ chord_plot <- function(data,
 											 label_dir = "Vertical",
 											 dist_label = 0.3,
 											 label_scale = 0.8) {
-	# -> 2. Data
+
+	if (!requireNamespace("randomcoloR", quietly = TRUE)) {
+		stop("Package 'randomcoloR' is required for chord_plot().\n",
+             "Please install: install.packages('randomcoloR')",
+             call. = FALSE)
+	}
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
 	rownames(data) <- data[, 1]
 	data <- data[, -1]
 
-	dataClass <- "matrix"
-	if (dataClass == "matrix") {
-		color_num <- length(union(rownames(data), colnames(data)))
-	} else if (dataClass == "frame") {
-		color_num <- length(union(data[, 1], data[, 2]))
-	}
-	# ChoiceBox: "matrix", "frame"
-
+	color_num <- length(union(rownames(data), colnames(data)))
 	data <- as.matrix(data)
-	# <- 2. Data
 
-	# -> 3. Plot parameters
-	# multi_colors <- "RainbowColors"
 	set.seed(color_seed)
 	if (multi_colors == "VividColors") {
 		grid_col <- randomcoloR::distinctColorPalette(color_num)
 	} else if (multi_colors == "RainbowColors") {
 		grid_col <- grDevices::rainbow(color_num)
+	} else {
+		warning("Unknown multi_colors: ", multi_colors, ", using 'VividColors'")
+		grid_col <- randomcoloR::distinctColorPalette(color_num)
 	}
-	# ChoiceBox: "VividColors", "RainbowColors"
 
-	# color_alpha <- 0.5
-	# Slider: 0.5 0.0,0.1,1.0
+	scale <- (sector_scale == "Scale")
 
-	# link_dir <- 0
-	# Slider: 0 -1,1,2
-
-	# link_type <- "diffHeight"
-	# ChoiceBox: "diffHeight", "arrows"
-
-	# linkVisible <- "ShowLinks"
-	# if (linkVisible == "ShowLinks"){
-	# 	link_visible <- TRUE
-	# } else if(linkVisible == "HindLinks"){
-	# 	link_visible <- FALSE
-	# }
-	# ChoiceBox: "ShowLinks", "HindLinks"
-
-	# sector_scale <- "Origin"
-	if (sector_scale == "Origin") {
-		scale <- FALSE
-	} else if (sector_scale == "Scale") {
-		scale <- TRUE
-	}
-	# ChoiceBox: "Origin", "Scale"
-
-	# width_circle <- 3.0
-	# Slider: 3.0 0.0,0.1,10.0
-
-	# dist_name <- 3.0
-	# Slider: 3.0 0.0,0.1,10.0
-
-	# label_dir <- "Horizontal"
-	# ChoiceBox: "Horizontal", "Vertical"
-
-	# dist_label <- 0.3
-	# Slider: 0.3 0.0,0.1,10.0
-	# <- 3. Plot parameters
-
-	# # -> 4. Plot
 	if (label_dir == "Horizontal") {
 		p <- circlize::chordDiagram(
 			data,
 			grid.col = grid_col,
 			grid.border = NULL,
 			transparency = color_alpha,
-			# col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
 			row.col = NULL,
 			column.col = NULL,
 			order = NULL,
 			directional = link_dir,
-			# 1, -1, 0, 2
 			direction.type = link_type,
-			# diffHeight and arrows
 			diffHeight = circlize::convert_height(2, "mm"),
 			reduce = 1e-5,
 			xmax = NULL,
@@ -135,19 +98,12 @@ chord_plot <- function(data,
 			keep.diagonal = FALSE,
 			preAllocateTracks = NULL,
 			annotationTrack = "grid",
-			# c("name", "grid", "axis")
 			annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
 			link.border = NA,
 			link.lwd = graphics::par("lwd"),
 			link.lty = graphics::par("lty"),
 			link.sort = FALSE,
 			link.decreasing = TRUE,
-			# link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
-			# link.arr.width = link.arr.length/2,
-			# link.arr.type = "triangle",
-			# link.arr.lty = par("lty"),
-			# link.arr.lwd = par("lwd"),
-			# link.arr.col = par("col"),
 			link.largest.ontop = FALSE,
 			link.visible = link_visible,
 			link.rank = NULL,
@@ -157,21 +113,17 @@ chord_plot <- function(data,
 			big.gap = 10,
 			small.gap = 1
 		)
-		# circos.clear()
 	} else if (label_dir == "Vertical") {
 		p <- circlize::chordDiagram(
 			data,
 			grid.col = grid_col,
 			grid.border = NULL,
 			transparency = color_alpha,
-			# col = colorRamp2(c(min(mat),max(mat)),c("green","blue"),transparency = 0.5),
 			row.col = NULL,
 			column.col = NULL,
 			order = NULL,
 			directional = link_dir,
-			# 1, -1, 0, 2
 			direction.type = link_type,
-			# diffHeight and arrows
 			diffHeight = circlize::convert_height(2, "mm"),
 			reduce = 1e-5,
 			xmax = NULL,
@@ -180,19 +132,12 @@ chord_plot <- function(data,
 			keep.diagonal = FALSE,
 			preAllocateTracks = 1,
 			annotationTrack = "grid",
-			# c("name", "grid", "axis")
 			annotationTrackHeight = circlize::convert_height(c(dist_name, width_circle), "mm"),
 			link.border = NA,
 			link.lwd = graphics::par("lwd"),
 			link.lty = graphics::par("lty"),
 			link.sort = FALSE,
 			link.decreasing = TRUE,
-			# link.arr.length = ifelse(link.arr.type == "big.arrow", 0.02, 0.4),
-			# link.arr.width = link.arr.length/2,
-			# link.arr.type = "triangle",
-			# link.arr.lty = par("lty"),
-			# link.arr.lwd = par("lwd"),
-			# link.arr.col = par("col"),
 			link.largest.ontop = FALSE,
 			link.visible = link_visible,
 			link.rank = NULL,
@@ -202,7 +147,7 @@ chord_plot <- function(data,
 			big.gap = 10,
 			small.gap = 1
 		)
-		# circos.clear()
+
 		circlize::circos.trackPlotRegion(
 			track.index = 1,
 			panel.fun = function(x, y) {
@@ -228,9 +173,9 @@ chord_plot <- function(data,
 			},
 			bg.border = NA
 		)
+	} else {
+		warning("Unknown label_dir: ", label_dir, ", using 'Vertical'")
 	}
-	# # <- 4. Plot
 
 	return(head(p))
-	invisible()
 }

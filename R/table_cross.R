@@ -36,11 +36,25 @@
 #' inter_var = "Genes", left_index = FALSE, right_index = TRUE)
 #' head(res)
 #'
+
 table_cross <- function(data1, data2,
 												inter_var = "Genes",
 												left_index = TRUE,
 												right_index = TRUE
 												){
+
+	if (!is.data.frame(data1) && !is.matrix(data1)) {
+		stop("data1 must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (!is.data.frame(data2) && !is.matrix(data2)) {
+		stop("data2 must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (!(inter_var %in% colnames(data1)) || !(inter_var %in% colnames(data2))) {
+		stop("inter_var '", inter_var, "' must exist in both data1 and data2", call. = FALSE)
+	}
+
 	res <- merge(x = data1,
 							 y = data2,
 							 by = inter_var,
@@ -49,5 +63,4 @@ table_cross <- function(data1, data2,
 							 )
 
 	return(res)
-	invisible()
 }

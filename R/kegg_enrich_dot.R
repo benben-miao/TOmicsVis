@@ -13,11 +13,10 @@
 #' @param font_size Numeric: category font size. Default: 12.
 #' @param low_color Character: low value (p-value or q-value) color (color name or hex value).
 #' @param high_color Character: high value (p-value or q-value) color (color name or hex value).
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
 #' @importFrom tidyr separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
@@ -30,7 +29,7 @@
 #'
 #' # 2. Use example dataset
 #' data(gene_go_kegg)
-#' head(gene_go_kegg)
+#' head(gene_go_kegg, 10)
 #'
 #' # 3. Default parameters
 #' kegg_enrich_dot(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])
@@ -46,49 +45,49 @@
 #'
 kegg_enrich_dot <- function(kegg_anno,
 														degs_list,
-													 padjust_method = "fdr",
-													 pvalue_cutoff = 0.05,
-													 qvalue_cutoff = 0.05,
-													 sign_by = "p.adjust",
-													 category_num = 30,
-													 font_size = 12,
-													 low_color = "#ff0000aa",
-													 high_color = "#008800aa",
-													 ggTheme = "theme_light"
-													){
-	# -> 2. Data Parameters
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+														padjust_method = "fdr",
+														pvalue_cutoff = 0.05,
+														qvalue_cutoff = 0.05,
+														sign_by = "p.adjust",
+														category_num = 30,
+														font_size = 12,
+														low_color = "#ff0000aa",
+														high_color = "#008800aa",
+														ggTheme = "theme_publication") {
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
+	validate_is_dataframe(kegg_anno, "kegg_anno")
+	validate_character_options(padjust_method, "padjust_method",
+														 c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"))
+	validate_numeric_range(pvalue_cutoff, "pvalue_cutoff", min = 0)
+	validate_numeric_range(qvalue_cutoff, "qvalue_cutoff", min = 0)
+	validate_character_options(sign_by, "sign_by", c("pvalue", "p.adjust", "qvalue"))
+	validate_numeric_range(category_num, "category_num", min = 1)
+	validate_numeric_range(font_size, "font_size", min = 0)
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
 
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for kegg_enrich_dot().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# -> 3. Data
 	gene_kegg <- kegg_anno
 	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
+	gene_kegg7 <- tidyr::separate_rows(data = gene_kegg, "kegg_pathway", sep = ";")
 
-	gene_kegg7 <- separate_rows(data = gene_kegg,
-															"kegg_pathway",
-															sep = ";"
-	)
-
-	gene_kegg8 <- separate(gene_kegg7,
+	gene_kegg8 <- tidyr::separate(gene_kegg7,
 												 "kegg_pathway",
 												 c("kegg_pathway", "description"),
-												 "\\("
-	)
+												 "\\(")
 
-	gene_kegg9 <- drop_na(gene_kegg8)
+	gene_kegg9 <- tidyr::drop_na(gene_kegg8)
 	gene_kegg9["description"] <- gsub(")", "", gene_kegg9$description)
 
-	enrich_kegg <- enricher(gene = degs_list,
+	enrich_kegg <- clusterProfiler::enricher(gene = degs_list,
 													TERM2GENE = data.frame(gene_kegg9[,2],gene_kegg9[,1]),
 													TERM2NAME = gene_kegg9[,2:3],
 													pvalueCutoff = pvalue_cutoff,
@@ -100,61 +99,8 @@ kegg_enrich_dot <- function(kegg_anno,
 
 	enrich_result <- enrich_kegg@result
 
-	# write.table(enrich_result,
-	# 						file = "Results.txt",
-	# 						append = FALSE,
-	# 						sep = "\t",
-	# 						quote = TRUE,
-	# 						na = "NA"
-	# )
-	# <- 3. Data
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# -> 4. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
-
-	# ggTheme <- "theme_bw"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
-
-	# sign_by <- "p.adjust"
-	# ChoiceBox: "pvalue", "p.adjust", "qvalue"
-
-	# category_num <- 30
-	# ChoiceBox: 30, 10, 1, 50
-
-	# low_color <- "#ff0000aa"
-	# ColorPicker
-
-	# high_color <- "#0000ffaa"
-	# ColorPicker
-
-	# font_size <- 12
-	# Slider: 12, 2, 2, 30
-	# <- 4. Plot parameters
-
-	# -> 5. Plot
-	# -> 5. Plot
 	p <- dotplot(
 		enrich_kegg,
 		x = "GeneRatio",
@@ -167,23 +113,10 @@ kegg_enrich_dot <- function(kegg_anno,
 		orderBy = "x",
 		label_format = 200
 	) +
-		# geom_text(aes(label = Count),
-		#           vjust = 0.3,
-		#           hjust = -0.5,
-		#           size = 3,
-		#           color = "#ffffff") +
 		ylab("KEGG Pathways") +
-		# geom_point(alpha = 0.5) +
 		gg_theme +
-		theme(
-			# text = element_text(family = fonts),
-			axis.text = element_text(colour = "#000000")
-		) +
+		theme(axis.text = element_text(colour = "#000000")) +
 		scale_color_gradient(low = low_color, high = high_color, space = "Lab")
 
-	# p
-	# <- 5. Plot
-
 	return(p)
-	invisible()
 }

@@ -15,7 +15,7 @@ kegg_enrich_bar(
   font_size = 12,
   low_color = "#ff0000aa",
   high_color = "#008800aa",
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -39,7 +39,7 @@ kegg_enrich_bar(
 
 \item{high_color}{Character: high value (p-value or q-value) color (color name or hex value).}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
 \value{
 Plot: KEGG enrichment analysis and bar plot (None/Exist Reference Genome).
@@ -53,7 +53,7 @@ library(TOmicsVis)
 
 # 2. Use example dataset
 data(gene_go_kegg)
-head(gene_go_kegg)
+head(gene_go_kegg, 10)
 
 # 3. Default parameters
 kegg_enrich_bar(gene_go_kegg[,c(1,5)], gene_go_kegg[100:200,1])

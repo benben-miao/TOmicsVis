@@ -25,19 +25,27 @@
 #' head(res)
 #'
 pca_analysis <- function(sample_gene,
-												 group_sample
-												){
-	# -> 2. Data
+												 group_sample) {
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+
 	sample_gene <- as.data.frame(sample_gene)
+	if (ncol(sample_gene) < 2) {
+		stop("sample_gene must have at least 2 columns (Genes + Samples)", call. = FALSE)
+	}
+
+	if (ncol(group_sample) < 2) {
+		stop("group_sample must have at least 2 columns (Samples + Groups)", call. = FALSE)
+	}
+
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
 	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
 	t_sample_gene <- t(sample_gene)
-	groups <- group_sample[,2]
 
 	pca_res <- stats::prcomp(t_sample_gene)
 	pca_out <- as.data.frame(pca_res$x)
-	# <- 2. Data
 
 	return(pca_out)
 }

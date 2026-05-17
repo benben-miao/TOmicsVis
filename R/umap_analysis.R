@@ -29,22 +29,23 @@
 umap_analysis <- function(sample_gene,
 											group_sample,
 											seed = 1,
-											method = "naive"
-											){
-	# -> 2. Data
+											method = "naive") {
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+	validate_numeric_range(seed, "seed", min = 1)
+	validate_character_options(method, "method", c("naive", "umap-learn"))
+
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[,1]
 	sample_gene <- sample_gene[,-1]
 	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
 	t_sample_gene <- t(sample_gene)
-	groups <- group_sample[,2]
 
 	set.seed(seed)
 	umap_res <- umap(t_sample_gene, method = method)
 	umap_out <- as.data.frame(umap_res$layout)
-
 	colnames(umap_out) <- c("UMAP1","UMAP2")
-	# <- 2. Data
 
 	return(umap_out)
 }

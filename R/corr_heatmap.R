@@ -15,7 +15,7 @@
 #' @param color_mid Character: middle value color name or hex value. Default: "white".
 #' @param color_high Character: high value color name or hex value. Default: "red".
 #' @param outline_color Character: outline color name or hex value. Default: "white".
-#' @param ggTheme Character: ggplot2 theme. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
+#' @param ggTheme Character: ggplot2 theme. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".
 #'
 #' @import ggplot2
 #' @importFrom ggcorrplot ggcorrplot
@@ -38,6 +38,7 @@
 #' # 5. Set cell_shape = "circle"
 #' corr_heatmap(gene_expression, cell_shape = "circle")
 #'
+
 corr_heatmap <- function(data,
 												 corr_method = "pearson",
 												 cell_shape = "square",
@@ -50,89 +51,57 @@ corr_heatmap <- function(data,
 												 color_mid = "white",
 												 color_high = "red",
 												 outline_color = "white",
-												 ggTheme = "theme_light") {
-	# -> 2. NA and Duplicated
+												 ggTheme = "theme_publication") {
+
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (ncol(data) < 2) {
+		stop("data must have at least 2 columns for correlation", call. = FALSE)
+	}
+
+	valid_methods <- c("pearson", "spearman", "kendall")
+	if (!corr_method %in% valid_methods) {
+		stop(sprintf("corr_method must be one of: %s", paste(valid_methods, collapse = ", ")), call. = FALSE)
+	}
+
 	data <- as.data.frame(data)
 	data <- data[!is.na(data[, 1]), ]
 	idx <- duplicated(data[, 1])
 	data[idx, 1] <- paste0(data[idx, 1], "--dup-", cumsum(idx)[idx])
 	rownames(data) <- data[, 1]
 	data <- data[, -1]
-	# <- 2. NA and Duplicated
-
-	# -> 3. Plot parameters
-	# corr_method <- "pearson"
-	# ChoiceBox: "pearson", "spearman", "kendall"
 
 	corr <- round(cor(data, use = "na.or.complete", method = corr_method), 3)
-	if (corr_method == "pearson") {
-		legend_title <- "Pearson's\ncorrelation\ncoefficient"
-	} else if (corr_method == "spearman") {
-		legend_title <- "Spearman's\ncorrelation\ncoefficient"
-	} else if (corr_method == "kendall") {
-		legend_title <- "Kendall's\ncorrelation\ncoefficient"
-	}
 
-	# method <- "square"
-	# ChoiceBox: "circle", "square"
+	method_title_map <- c(
+		"pearson" = "Pearson's\ncorrelation\ncoefficient",
+		"spearman" = "Spearman's\ncorrelation\ncoefficient",
+		"kendall" = "Kendall's\ncorrelation\ncoefficient"
+	)
+	legend_title <- method_title_map[corr_method]
 
-	# type <- "full"
-	# ChoiceBox: "upper", "low", "full"
-
-	lab <- TRUE
-	# lab_size <- 3
-
-	# color_low <- "blue"
-	# color_mid <- "white"
-	# color_high <- "red"
-
-	# digits <- 3
-	# Slider: 3, 0, 1, 3
-
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
-	# <- 3. Plot parameters
+	gg_theme <- get_ggtheme(ggTheme)
 
 	p <- ggcorrplot::ggcorrplot(
 		corr,
 		hc.method = "complete",
 		method = cell_shape,
-		# colors = c(color_low, color_mid, color_high),
 		outline.color = outline_color,
 		hc.order = FALSE,
 		type = fill_type,
-		lab = lab,
+		lab = TRUE,
 		lab_size = lable_size,
 		tl.srt = axis_angle,
 		tl.cex = axis_size,
 		ggtheme = gg_theme,
 		digits = lable_digits,
-		# sig.level = 0.05,
-		# insig = "pch",
-		# pch = 4,
-		# pch.col = "black",
-		# pch.cex = 5,
 		show.legend = TRUE,
 		legend.title = legend_title
 	) +
@@ -140,7 +109,6 @@ corr_heatmap <- function(data,
 			low = color_low,
 			mid = color_mid,
 			high = color_high,
-			# limits = c(min(corr), max(corr)),
 			midpoint = median(corr),
 			space = "Lab",
 			guide = "colourbar",

@@ -1,25 +1,24 @@
 Package: TOmicsVis
 Type: Package
 Title: TOmicsVis An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface
-Version: 2.1.1
+Version: 2.7.1
+Date: 2026-05-17
 Authors@R: c(
     person(given = "Benben", family = "Miao", email = "benben.miao@outlook.com", 
     			 role = c("aut", "cre"), comment = c(ORCID = "0000-0002-7307-1331")),
     person(given = 'Wei', family = 'Dong', email = 'dwei1220779@gmail.com', 
            role = c("aut"), comment = c(ORCID = '0000-0003-2201-7164'))
 	)
+Author: Benben Miao [aut, cre] (<benben.miao@outlook.com>), Wei Dong [aut] (<dwei1220779@gmail.com>)
+Maintainer: Benben Miao <benben.miao@outlook.com>
 Description: Transcriptome visualization from sample trait statistics to gene expression analysis. Six categories include "Samples Statistics", "Traits Analysis", "Differential Expression Analysis", "Advanced Analysis", "GO and KEGG Enrichment", "Tables Operations", with complete sample data.
 URL: https://benben-miao.github.io/TOmicsVis/
 BugReports: https://github.com/benben-miao/TOmicsVis/issues/
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
 Encoding: UTF-8
-LazyData: true
 Depends: 
-    R (>= 3.5),
-    Biobase (>= 2.5.5),
-    e1071 (>= 1.7-0)
+    R (>= 4.0)
 Imports: 
     stats,
     utils,
@@ -27,46 +26,45 @@ Imports:
     graphics,
     grDevices,
     ggplot2,
-    ggsci,
-    reshape2,
-    ggpubr,
-    ggcorrplot,
-    ggforce,
-    vegan,
-    venn,
-    UpSetR,
-    circlize,
-    randomcoloR,
-    ComplexHeatmap,
-    EnhancedVolcano,
-    GGally,
-    survival,
-    survminer,
-    Rtsne,
-    umap,
     dplyr,
     tidyr,
-    clusterProfiler,
-    enrichplot,
-    ggnewscale,
-    igraph,
+    shiny,
     WGCNA,
-    stringr,
     pheatmap,
-    RColorBrewer,
-    ggpolypath,
-    factoextra,
+    Rtsne,
+    umap,
+    survival,
+    igraph,
+    circlize,
+    ggsci,
+    ggforce,
+    stringr,
+    vegan,
     ggrepel,
-    cowplot,
-    ggplotify,
-    plotrix,
+    ggnewscale,
+    Biobase,
+    enrichplot,
+    ComplexHeatmap,
+    EnhancedVolcano,
     Mfuzz,
-    shiny
+    clusterProfiler,
+    survminer,
+    GGally,
+    factoextra,
+    venn,
+    UpSetR,
+    randomcoloR,
+    ggcorrplot
 Suggests: 
-	knitr,
+    knitr,
     rmarkdown,
     bs4Dash,
     DT,
     colourpicker,
-    shinyWidgets
+    shinyWidgets,
+    Biostrings,
+    plotrix,
+    ggpubr,
+    ggpolypath
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0

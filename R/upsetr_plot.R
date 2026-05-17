@@ -58,18 +58,32 @@ upsetr_plot <- function(data,
 												shade_alpha = 0.50,
 												setsbar_color = "#000066",
 												setsnum_size = 6,
-												text_scale = 1.2
-											){
-	# -> 2. NA and Duplicated
+												text_scale = 1.2) {
+
+	validate_is_dataframe(data, "data")
+	validate_numeric_range(sets_num, "sets_num", min = 2)
+	validate_logical(keep_order, "keep_order")
+	validate_character_options(order_by, "order_by", c("freq", "degree", "both"))
+	validate_logical(decrease, "decrease")
+	validate_hex_color(mainbar_color, "mainbar_color")
+	validate_numeric_range(number_angle, "number_angle", min = 0, max = 360)
+	validate_hex_color(matrix_color, "matrix_color")
+	validate_numeric_range(point_size, "point_size", min = 0)
+	validate_numeric_range(point_alpha, "point_alpha", min = 0, max = 1)
+	validate_numeric_range(line_size, "line_size", min = 0)
+	validate_hex_color(shade_color, "shade_color")
+	validate_numeric_range(shade_alpha, "shade_alpha", min = 0, max = 1)
+	validate_hex_color(setsbar_color, "setsbar_color")
+	validate_numeric_range(setsnum_size, "setsnum_size", min = 0)
+	validate_numeric_range(text_scale, "text_scale", min = 0.01)
+
 	data_upset <- as.list(data)
 	data_upset <- lapply(data_upset, function(x) {
 		x[is.na(x)] <- ""
 		x <- x[x != ""]
 		return(x)
 	})
-	# <- 2. NA and Duplicated
 
-	# -> 4. Plot
 	p <- UpSetR::upset(data = fromList(data_upset),
 										 nsets = sets_num,
 										 nintersects = NA,
@@ -112,7 +126,6 @@ upsetr_plot <- function(data,
 										 set_size.numbers_size = setsnum_size,
 										 set_size.scale_max = NULL
 				)
-	# <- 4. Plot
 
 	return(p)
 }

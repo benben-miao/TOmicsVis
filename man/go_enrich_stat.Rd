@@ -15,7 +15,7 @@ go_enrich_stat(
   xtext_angle = 45,
   sci_fill_color = "Sci_AAAS",
   sci_fill_alpha = 0.8,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -39,7 +39,7 @@ go_enrich_stat(
 
 \item{sci_fill_alpha}{Numeric: ggsci fill color alpha. Default: 0.80, min: 0.00, max: 1.00.}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"}
 }
 \value{
 Plot: GO enrichment analysis and stat plot (None/Exist Reference Genome).
@@ -53,7 +53,7 @@ library(TOmicsVis)
 
 # 2. Use example dataset
 data(gene_go_kegg)
-head(gene_go_kegg)
+head(gene_go_kegg, 10)
 
 # 3. Default parameters
 go_enrich_stat(gene_go_kegg[,-5], gene_go_kegg[100:200,1])

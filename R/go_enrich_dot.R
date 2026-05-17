@@ -13,12 +13,11 @@
 #' @param font_size Numeric: category font size. Default: 12.
 #' @param low_color Character: low value (p-value or q-value) color (color name or hex value).
 #' @param high_color Character: high value (p-value or q-value) color (color name or hex value).
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
-#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom tidyr pivot_longer separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
 #' @import enrichplot
@@ -30,7 +29,7 @@
 #'
 #' # 2. Use example dataset
 #' data(gene_go_kegg)
-#' head(gene_go_kegg)
+#' head(gene_go_kegg, 10)
 #'
 #' # 3. Default parameters
 #' go_enrich_dot(gene_go_kegg[,-5], gene_go_kegg[100:200,1])
@@ -54,50 +53,50 @@ go_enrich_dot <- function(go_anno,
 													font_size = 12,
 													low_color = "#ff0000aa",
 													high_color = "#008800aa",
-													ggTheme = "theme_light") {
-	# -> 2. Data Parameters
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+													ggTheme = "theme_publication") {
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
+	validate_is_dataframe(go_anno, "go_anno")
+	validate_character_options(padjust_method, "padjust_method",
+														 c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"))
+	validate_numeric_range(pvalue_cutoff, "pvalue_cutoff", min = 0)
+	validate_numeric_range(qvalue_cutoff, "qvalue_cutoff", min = 0)
+	validate_character_options(sign_by, "sign_by", c("pvalue", "p.adjust", "qvalue"))
+	validate_numeric_range(category_num, "category_num", min = 1)
+	validate_numeric_range(font_size, "font_size", min = 0)
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
 
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for go_enrich_dot().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# -> 3. Data
 	gene_go <- go_anno
 	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
-
-	gene_go1 <- melt(
+	gene_go1 <- tidyr::pivot_longer(
 		gene_go,
-		na.rm = FALSE,
-		id.vars = c("Genes"),
-		measure.vars = c(
-			"biological_process",
-			"cellular_component",
-			"molecular_function"
-		),
-		variable.name = "ontology",
-		value.name = "term",
-		factorsAsStrings = TRUE
+		cols = c(biological_process, cellular_component, molecular_function),
+		names_to = "ontology",
+		values_to = "term"
 	)
 
-	gene_go2 <- separate_rows(data = gene_go1, "term", sep = ";")
+	gene_go1 <- gene_go1[!is.na(gene_go1$term), ]
 
-	gene_go3 <- separate(gene_go2, "term", c("term", "description"), "\\(")
+	gene_go2 <- tidyr::separate_rows(data = gene_go1, "term", sep = ";")
 
-	gene_go4 <- drop_na(gene_go3)
+	gene_go3 <- tidyr::separate(gene_go2, "term", c("term", "description"), "\\(", extra = "merge")
+
+	gene_go4 <- tidyr::drop_na(gene_go3)
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
 	gene_go4["ontology"] <- gsub("_", " ", gene_go4$ontology)
 
 	gene_go5 <- data.frame(gene_go4["Genes"], gene_go4["term"], gene_go4["ontology"], gene_go4["description"])
 
-	enrich_results <- enricher(
+	enrich_results <- clusterProfiler::enricher(
 		gene = degs_list,
 		TERM2GENE = data.frame(gene_go5[, 2], gene_go5[, 1]),
 		TERM2NAME = data.frame(gene_go5[, 2], gene_go5[, 4]),
@@ -117,60 +116,8 @@ go_enrich_dot <- function(go_anno,
 	enrich_table <- merge(gene_go6, enrich_result, by.x = "term", by.y = "ID")
 	colnames(enrich_table)[1] <- "ID"
 
-	# write.table(enrich_table,
-	# 						file = "Results.txt",
-	# 						append = FALSE,
-	# 						sep = "\t",
-	# 						quote = TRUE,
-	# 						na = "NA"
-	# )
-	# <- 3. Data
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# -> 4. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
-
-	# ggTheme <- "theme_bw"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
-
-	# sign_by <- "p.adjust"
-	# ChoiceBox: "pvalue", "p.adjust", "qvalue"
-
-	# category_num <- 30
-	# ChoiceBox: 30, 10, 1, 50
-
-	# low_color <- "#ff0000aa"
-	# ColorPicker
-
-	# high_color <- "#0000ffaa"
-	# ColorPicker
-
-	# font_size <- 12
-	# Slider: 12, 2, 2, 30
-	# <- 4. Plot parameters
-
-	# -> 5. Plot
 	p <- dotplot(
 		enrich_results,
 		x = "GeneRatio",
@@ -183,23 +130,12 @@ go_enrich_dot <- function(go_anno,
 		orderBy = "x",
 		label_format = 200
 	) +
-		# geom_text(aes(label = Count),
-		#           vjust = 0.3,
-		#           hjust = -0.5,
-		#           size = 3,
-		#           color = "#ffffff") +
 		ylab("GO terms") +
-		# geom_point(alpha = 0.5) +
 		gg_theme +
-		theme(# text = element_text(family = fonts),
-			axis.text = element_text(colour = "#000000")) +
+		theme(axis.text = element_text(colour = "#000000")) +
 		scale_color_gradient(low = low_color,
 												 high = high_color,
 												 space = "Lab")
 
-	# p
-	# <- 5. Plot
-
 	return(p)
-	invisible()
 }

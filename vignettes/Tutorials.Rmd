@@ -14,11 +14,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# TOmicsVis
+# TOmicsVis (Version 2.7.1)
 
 ## 1. Introduction
 
-**TOmicsVis**: TOmicsVis: An all-in-one transcriptomic analysis and visualization R package with Shinyapp interface.
+**TOmicsVis**: An all-in-one transcriptomic analysis and visualization R package with Shiny app interface.
+
+**Current Version:** 2.7.1 (2026-05-17)
 
 **SourceCode:** <https://github.com/benben-miao/TOmicsVis/>
 
@@ -96,7 +98,9 @@ install.packages("TOmicsVis")
 
 -   [dongwei1220 Github: https://github.com/dongwei1220/](https://github.com/dongwei1220/)
 
-## 2. Libary packages
+## 2. Library packages
+
+### 2.1 Standard loading method
 
 ```{r}
 # 1. Library TOmicsVis package
@@ -105,6 +109,19 @@ library(TOmicsVis)
 # 2. Extra package
 # install.packages("ggplot2")
 library(ggplot2)
+```
+
+### 2.2 Recommended loading method (suppress warnings)
+
+```{r, eval=FALSE}
+# Use load_TOmicsVis() to suppress harmless display warnings from Mfuzz dependency
+load_TOmicsVis()
+# Output: ✓ TOmicsVis v2.7.1 loaded successfully!
+#         All functions ready to use.
+
+# Then use all functions normally
+data(gene_expression)
+volcano_plot(degs_stats)
 ```
 
 ## 3. Usage cases
@@ -241,8 +258,7 @@ survival_plot(
   x_start = 0,
   y_start = 0,
   y_end = 100,
-  x_break = 10,
-  y_break = 10
+  x_break = 10
 )
 ```
 
@@ -433,7 +449,7 @@ Get help using command `?TOmicsVis::tsne_plot` or reference page <https://benben
 data(gene_expression)
 data(samples_groups)
 
-# 2. Run tsne_plot plot function
+# 2. Run umap_analysis function
 res <- umap_analysis(gene_expression, samples_groups)
 head(res)
 ```
@@ -930,8 +946,10 @@ head(gene_expression)
 data(samples_groups)
 head(samples_groups)
 
-# 2. Run wgcna_pipeline plot function
-# wgcna_pipeline(gene_expression[1:3000,], samples_groups)
+# 2. Run wgcna_pipeline function
+# Note: This function requires substantial computation time for large datasets
+# For quick testing, use a subset of genes (e.g., 1000-3000 genes)
+wgcna_pipeline(gene_expression[1:3000,], samples_groups)
 ```
 
 Get help using command `?TOmicsVis::wgcna_pipeline` or reference page <https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
@@ -991,7 +1009,7 @@ Get help using command `?TOmicsVis::network_plot` or reference page <https://ben
 data(gene_expression2)
 head(gene_expression2)
 
-# 2. Run network_plot plot function
+# 2. Run heatmap_cluster function
 heatmap_cluster(
   data = gene_expression2,
   dist_method = "euclidean",
@@ -1167,7 +1185,6 @@ go_enrich_net(
   qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
-  net_circular = TRUE,
   low_color = "#ff0000aa",
   high_color = "#008800aa"
 )
@@ -1294,7 +1311,6 @@ kegg_enrich_net(
   qvalue_cutoff = 0.05,
   category_num = 20,
   net_layout = "circle",
-  net_circular = TRUE,
   low_color = "#ff0000aa",
   high_color = "#008800aa"
 )

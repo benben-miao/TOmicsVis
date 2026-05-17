@@ -15,7 +15,7 @@ quantile_plot(
   legend_dir = "vertical",
   sci_fill_color = "Sci_NPG",
   sci_color_alpha = 0.75,
-  ggTheme = "theme_light"
+  ggTheme = "theme_publication"
 )
 }
 \arguments{
@@ -39,13 +39,16 @@ quantile_plot(
 
 \item{sci_color_alpha}{Numeric: ggsci border color alpha. Default: 0.75, min: 0.00, max: 1.00.}
 
-\item{ggTheme}{Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
+\item{ggTheme}{Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void".}
 }
 \value{
 Plot: quantile plot for visualizing data distribution.
 }
 \description{
 Quantile plot for visualizing data distribution.
+}
+\note{
+Requires package 'ggpubr' (install via: install.packages("ggpubr"))
 }
 \examples{
 # 1. Library TOmicsVis package

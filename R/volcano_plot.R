@@ -62,144 +62,80 @@ volcano_plot <- function(data,
 												 legend_pos = "right"
 												){
 
-	# -> 2. Data
+	if (!requireNamespace("EnhancedVolcano", quietly = TRUE)) {
+		stop("Package 'EnhancedVolcano' is required for volcano_plot().\n",
+				 "Please install: BiocManager::install('EnhancedVolcano')",
+				 call. = FALSE)
+	}
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("Input must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (ncol(data) < 4) {
+		stop("Data must have at least 4 columns: Genes, log2FC, Pvalue, FDR", call. = FALSE)
+	}
+
+	if (!pq_value %in% c("pvalue", "padj")) {
+		stop("pq_value must be 'pvalue' or 'padj'", call. = FALSE)
+	}
+
+	color_params <- list(
+		color_normal = color_normal,
+		color_log2fc = color_log2fc,
+		color_pvalue = color_pvalue,
+		color_Log2fc_p = color_Log2fc_p
+	)
+
+	for (param_name in names(color_params)) {
+		validate_hex_color(color_params[[param_name]], param_name)
+	}
+
+	if (!is.numeric(log2fc_cutoff) || log2fc_cutoff <= 0) {
+		stop("log2fc_cutoff must be a positive number", call. = FALSE)
+	}
+
+	if (!is.numeric(pq_cutoff) || pq_cutoff <= 0 || pq_cutoff >= 1) {
+		stop("pq_cutoff must be between 0 and 1 (exclusive)", call. = FALSE)
+	}
+
+	if (!is.numeric(point_size) || point_size <= 0) {
+		stop("point_size must be a positive number", call. = FALSE)
+	}
+
+	validate_numeric_range(point_alpha, "point_alpha", min_val = 0, max_val = 1)
+
+	if (!is.numeric(label_size) || label_size <= 0) {
+		stop("label_size must be a positive number", call. = FALSE)
+	}
+
+	valid_legend_pos <- c("none", "left", "right", "bottom", "top")
+	if (!legend_pos %in% valid_legend_pos) {
+		stop(sprintf("legend_pos must be one of: %s", paste(valid_legend_pos, collapse = ", ")), call. = FALSE)
+	}
+
 	data <- as.data.frame(data)
 	rownames(data) <- data[,1]
 	data <- data[,-1]
 	colnames(data) <- c("log2FoldChange", "pvalue", "padj")
-	# <- 2. Data
 
-	# -> 3. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	shape_map <- c(
+		"border_square" = 0, "border_circle" = 1, "border_triangle" = 2,
+		"plus" = 3, "times" = 4, "border_diamond" = 5,
+		"border_triangle_down" = 6, "square_times" = 7, "plus_times" = 8,
+		"diamond_plus" = 9, "circle_plus" = 10, "di_triangle" = 11,
+		"square_plus" = 12, "circle_times" = 13, "square_triangle" = 14,
+		"fill_square" = 15, "fill_circle" = 16, "fill_triangle" = 17,
+		"fill_diamond" = 18, "large_circle" = 19, "small_circle" = 20,
+		"fill_border_circle" = 21, "fill_border_square" = 22,
+		"fill_border_diamond" = 23, "fill_border_triangle" = 24
+	)
 
-	# color_normal <- "#888888"
-	# ColorPicker
-
-	# color_log2fc <- "#008000"
-	# ColorPicker
-
-	# color_pvalue <- "#0088ee"
-	# ColorPicker
-
-	# color_Log2fc_p <- "#ff0000"
-	# ColorPicker
-
-	# pq_value <- "pvalue"
-	# ChoiceBox: "pvalue", "padj"
-
-	# pq_cutoff <- 0.005
-	# Slider: 0.005, 0.000, 0.001, 1.000
-
-	# log2fc_cutoff <- 1.0
-	# Slider: 1.0, 0.0, 0.1, 10.0
-
-	# cutoff_line <- "longdash"
-	# ChoiceBox: "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash"
-
-	# point_size <- 1.0
-	# Slider: 1.0, 0.0, 0.1, 5.0
-
-	# label_size <- 3.0
-	# Slider: 3.0, 0.0, 0.1, 10.0
-
-	# boxedLabel <- "OnlyLable"
-	# if (boxedLabel == "BoxLable") {
-	# 	boxedLabels <- TRUE
-	# } else if (boxedLabel == "OnlyLable") {
-	# 	boxedLabels <- FALSE
-	# }
-	# # ChoiceBox: "OnlyLable", "BoxLable"
-
-	# drawConnector <- "OnlyLable"
-	# if (drawConnector == "OnlyLable") {
-	# 	drawConnectors <- FALSE
-	# } else if (drawConnector == "LineLable") {
-	# 	drawConnectors <- TRUE
-	# }
-	# # ChoiceBox: "OnlyLable", "LineLable"
-
-	# pointShape <- 19
-	# Slider: 19, 0, 1, 25
-
-	# point_shape <- "large_circle"
-	# ChoiceBox: "border_square", "border_circle", "border_triangle", "plus", "times", "border_diamond", "border_triangle_down", "square_times", "plus_times", "diamond_plus", "circle_plus", "di_triangle", "square_plus", "circle_times","square_triangle", "fill_square", "fill_circle", "fill_triangle", "fill_diamond", "large_circle", "small_circle", "fill_border_circle", "fill_border_square", "fill_border_diamond", "fill_border_triangle"
-	if (point_shape == "border_square") {
-		shape <- 0
-	} else if (point_shape == "border_circle") {
-		shape <- 1
-	} else if (point_shape == "border_triangle") {
-		shape <- 2
-	} else if (point_shape == "plus") {
-		shape <- 3
-	} else if (point_shape == "times") {
-		shape <- 4
-	} else if (point_shape == "border_diamond") {
-		shape <- 5
-	} else if (point_shape == "border_triangle_down") {
-		shape <- 6
-	} else if (point_shape == "square_times") {
-		shape <- 7
-	} else if (point_shape == "plus_times") {
-		shape <- 8
-	} else if (point_shape == "diamond_plus") {
-		shape <- 9
-	} else if (point_shape == "circle_plus") {
-		shape <- 10
-	} else if (point_shape == "di_triangle") {
-		shape <- 11
-	} else if (point_shape == "square_plus") {
-		shape <- 12
-	} else if (point_shape == "circle_times") {
-		shape <- 13
-	} else if (point_shape == "square_triangle") {
-		shape <- 14
-	} else if (point_shape == "fill_square") {
-		shape <- 15
-	} else if (point_shape == "fill_circle") {
-		shape <- 16
-	} else if (point_shape == "fill_triangle") {
-		shape <- 17
-	} else if (point_shape == "fill_diamond") {
-		shape <- 18
-	} else if (point_shape == "large_circle") {
-		shape <- 19
-	} else if (point_shape == "small_circle") {
-		shape <- 20
-	} else if (point_shape == "fill_border_circle") {
-		shape <- 21
-	} else if (point_shape == "fill_border_square") {
-		shape <- 22
-	} else if (point_shape == "fill_border_diamond") {
-		shape <- 23
-	} else if (point_shape == "fill_border_triangle") {
-		shape <- 24
+	if (!point_shape %in% names(shape_map)) {
+		stop("Invalid point_shape: ", point_shape, call. = FALSE)
 	}
+	shape <- unname(shape_map[point_shape])
 
-	# point_alpha <- 0.5
-	# Slider: 0.5, 0.0, 0.1, 1.0
-
-	# legend_pos <- "right"
-	# ChoiceBox: "right", "left", "top", "bottom"
-
-	majorGrid <- "Show"
-	if (majorGrid == "Show") {
-		majorGrids <- TRUE
-	} else if (majorGrid == "Hidden") {
-		majorGrids <- FALSE
-	}
-	# ChoiceBox: "Show", "Hidden"
-
-	minorGrid <- "Show"
-	if (minorGrid == "Show") {
-		minorGrids <- TRUE
-	} else if (minorGrid == "Hidden") {
-		minorGrids <- FALSE
-	}
-	# ChoiceBox: "Show", "Hidden"
-	# <- 3. Plot parameters
-
-	# # -> 4. Plot
 	p <- EnhancedVolcano::EnhancedVolcano(
 		data,
 		lab = rownames(data),
@@ -214,8 +150,6 @@ volcano_plot <- function(data,
 		title = title,
 		subtitle = NULL,
 		caption = paste0('Total = ', nrow(data), ' variables'),
-		# titleLabSize = 20,
-		# subtitleLabSize = 18,
 		captionLabSize = 16,
 		pCutoff = pq_cutoff,
 		FCcutoff = log2fc_cutoff,
@@ -241,16 +175,17 @@ volcano_plot <- function(data,
 		endsConnectors = 'first',
 		lengthConnectors = unit(0.01, 'npc'),
 		colConnectors = 'grey10',
-		gridlines.major = majorGrids,
-		gridlines.minor = minorGrids,
-		border = "partial",
+		gridlines.major = FALSE,
+		gridlines.minor = FALSE,
+		border = "full",
 		borderWidth = 0.8,
 		borderColour = "black") +
+		theme_publication() +
 		theme(
-			plot.title = element_text(hjust = 0.5)
+			plot.title = element_text(hjust = 0.5, face = "bold", size = 18),
+			axis.title = element_text(face = "plain", size = 14),
+			axis.text = element_text(size = 10)
 		)
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

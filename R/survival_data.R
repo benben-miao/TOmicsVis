@@ -21,10 +21,3 @@
 #' survival_data
 #'
 "survival_data"
-
-# data <- read.table(file = "data-tables/survival_data.txt",
-# 									 header = TRUE,
-# 									 sep = "\t",
-# 									 stringsAsFactors = F)
-# survival_data <- data
-# usethis::use_data(survival_data, overwrite = T)

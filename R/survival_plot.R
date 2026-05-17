@@ -11,7 +11,7 @@
 #' @param risk_table Logical: show cumulative risk table. Default: TRUE, options: TRUE, FALSE.
 #' @param num_censor Logical: show cumulative number of censoring. Default: TRUE, options: TRUE, FALSE.
 #' @param sci_palette Character: ggsci color palette. Default: "aaas", options: "aaas", "npg", "lancet", "jco", "ucscgb", "uchicago", "simpsons", "rickandmorty".
-#' @param ggTheme Character: ggplot2 themes. Default: "theme_light", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
+#' @param ggTheme Character: ggplot2 themes. Default: "theme_publication", options: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
 #' @param x_start Numeric: x-axis start value. Default: 0, min: 0, max: null.
 #' @param y_start Numeric: y-axis start value. Default: 0, min: 0, max: 100.
 #' @param y_end Numeric: y-axis end value. Default: 100, min: 0, max: 100.
@@ -40,6 +40,7 @@
 #' # 5. Set sci_palette = "jco"
 #' survival_plot(survival_data, sci_palette = "jco")
 #'
+
 survival_plot <- function(data,
 													curve_function = "pct",
 													log_rank = "1",
@@ -48,109 +49,47 @@ survival_plot <- function(data,
 													risk_table = TRUE,
 													num_censor = TRUE,
 													sci_palette = "aaas",
-													ggTheme = "theme_light",
+													ggTheme = "theme_publication",
 													x_start = 0,
 													y_start = 0,
 													y_end = 100,
-													x_break = 10
-													# y_break = 10
-													){
-	# -> 2. Data
+													x_break = 10){
+
+	validate_character_options(ggTheme, "ggTheme",
+														 c("theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw",
+															 "theme_dark", "theme_minimal", "theme_classic", "theme_void",
+															 "theme_publication"))
+
+	if (!requireNamespace("survminer", quietly = TRUE)) {
+		stop("Package 'survminer' is required for survival_plot().\n",
+				 "Please install: BiocManager::install('survminer')",
+				 call. = FALSE)
+	}
+
+	if (!is.data.frame(data) && !is.matrix(data)) {
+		stop("data must be a data.frame or matrix", call. = FALSE)
+	}
+
+	if (ncol(data) < 3) {
+		stop("data must have at least 3 columns: Time, Status, Group", call. = FALSE)
+	}
+
 	data <- as.data.frame(data)
 	colnames(data) <- c("Time", "Status", "Group")
 
 	fit <- survival::survfit(survival::Surv(Time, Status == 1) ~ Group, data = data)
 
 	xLimEnd <- max(data$Time)
-	data <- data[data[,1] < xLimEnd,]
-	# <- 2. Data
+	data <- data[data[,1] < xLimEnd, ]
 
-	# -> 3. Plot parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
+	gg_theme <- get_ggtheme(ggTheme)
 
-	# ggTheme <- "theme_light"
-	# ChoiceBox: "theme_default", "theme_bw", "theme_gray", "theme_light", "theme_linedraw", "theme_dark", "theme_minimal", "theme_classic", "theme_void"
-	if (ggTheme == "theme_default") {
-		gg_theme <- theme()
-	} else if (ggTheme == "theme_bw") {
-		gg_theme <- theme_bw()
-	} else if (ggTheme == "theme_gray") {
-		gg_theme <- theme_gray()
-	} else if (ggTheme == "theme_light") {
-		gg_theme <- theme_light()
-	} else if (ggTheme == "theme_linedraw") {
-		gg_theme <- theme_linedraw()
-	} else if (ggTheme == "theme_dark") {
-		gg_theme <- theme_dark()
-	} else if (ggTheme == "theme_minimal") {
-		gg_theme <- theme_minimal()
-	} else if (ggTheme == "theme_classic") {
-		gg_theme <- theme_classic()
-	} else if (ggTheme == "theme_void") {
-		gg_theme <- theme_void()
-	} else if (ggTheme == "theme_test") {
-		gg_theme <- theme_test()
-	}
-
-	# sci_palette <- "aaas"
-	# ChoiceBox: "aaas", "npg", "lancet", "jco", "ucscgb", "uchicago", "simpsons", "rickandmorty"
-
-	# curve_function <- "pct"
-	# ChoiceBox: "pct", "event", "cumhaz"
-
-	# confInterval <- "ShowConfInterval"
-	# if (confInterval == "ShowConfInterval") {
-	# 	conf_int <- TRUE
-	# } else if (confInterval == "HindConfInterval") {
-	# 	conf_int <- FALSE
-	# }
-	# # ChoiceBox: "ShowConfInterval", "HindConfInterval"
-
-	# interval_style <- "ribbon"
-	# ChoiceBox: "ribbon", "step"
-
-	# riskTable <- "ShowRiskTable"
-	# if (riskTable == "ShowRiskTable") {
-	# 	risk_table <- TRUE
-	# } else if (riskTable == "HindRiskTable") {
-	# 	risk_table <- FALSE
-	# }
-	# # ChoiceBox: "ShowRiskTable", "HindRiskTable"
-
-	# numCensor <- "ShowNumCensor"
-	# if (numCensor == "ShowNumCensor") {
-	# 	num_censor <- TRUE
-	# } else if (numCensor == "HindNumCensor") {
-	# 	num_censor <- FALSE
-	# }
-	# # ChoiceBox: "ShowNumCensor", "HindNumCensor"
-
-	# x_start <- 0
-	# Slider: 0 0,1,1000
-
-	# y_start <- 0
-	# Slider: 0 0,1,100
-
-	# y_end <- 100
-	# Slider: 100 0,1,100
-
-	# x_break <- 100
-	# Slider: 100 1,1,1000
-
-	# y_break <- 25
-	# Slider: 25 1,5,100
-
-	# <- 3. Plot parameters
-
-	# # -> 4. Plot
 	p <- survminer::ggsurvplot(
 		fit,
 		data = data,
 		fun = curve_function,
 		conf.int = conf_inter,
 		conf.int.style = interval_style,
-		# conf.int.alpha = 0.50,
 		pval = TRUE,
 		pval.method = TRUE,
 		log.rank.weights = log_rank,
@@ -170,11 +109,7 @@ survival_plot <- function(data,
 		xlim = c(x_start, xLimEnd),
 		ylim = c(y_start, y_end),
 		break.x.by = x_break
-		# break.y.by = y_break
 	)
-	# p
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

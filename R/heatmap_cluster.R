@@ -21,11 +21,8 @@
 #'
 #' @import ggplot2
 #' @import pheatmap
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom grDevices colorRampPalette
-#' @importFrom reshape2 melt
-#' @importFrom ggplotify as.ggplot
-#' @importFrom cowplot plot_grid
+#' @importFrom tidyr pivot_longer
 #' @importFrom stats sd
 #' @export
 #'
@@ -46,6 +43,7 @@
 #' # 5. Set line_color = "#ff0000", summary_color = "#ff0000"
 #' heatmap_cluster(gene_expression2, line_color = "#ff0000", summary_color = "#ff0000")
 #'
+
 heatmap_cluster <- function(data,
 														dist_method = "euclidean",
 														hc_method = "average",
@@ -61,39 +59,67 @@ heatmap_cluster <- function(data,
 														line_alpha = 0.20,
 														summary_color = "#0000cd",
 														summary_alpha = 0.80) {
-	# -> 2. NA and Duplicated
+
+	validate_is_dataframe_or_matrix(data, "data")
+
 	data <- as.data.frame(data)
+
+	if (ncol(data) < 2) {
+		stop("data must have at least 2 columns (1 gene column + 1+ sample columns)", call. = FALSE)
+	}
+
+	if (nrow(data) == 0) {
+		stop("data must have at least one row", call. = FALSE)
+	}
+
+	validate_character_options(dist_method, "dist_method",
+														 c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"))
+	validate_character_options(hc_method, "hc_method",
+														 c("ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
+	validate_numeric_range(k_num, "k_num", min = 2)
+	validate_logical(show_rownames, "show_rownames")
+	validate_character_options(palette, "palette",
+														 c("Spectral", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn"))
+	validate_character_options(cluster_pal, "cluster_pal",
+														 c("Set1", "Set2", "Set3", "Accent", "Dark2", "Paired", "Pastel1", "Pastel2"))
+	validate_hex_color(border_color, "border_color")
+	validate_numeric_range(angle_col, "angle_col", min = 0, max = 360)
+	validate_numeric_range(label_size, "label_size", min = 0)
+	validate_numeric_range(base_size, "base_size", min = 0)
+	validate_hex_color(line_color, "line_color")
+	validate_numeric_range(line_alpha, "line_alpha", min = 0, max = 1)
+	validate_hex_color(summary_color, "summary_color")
+	validate_numeric_range(summary_alpha, "summary_alpha", min = 0, max = 1)
+
 	rownames(data) <- data[, 1]
 	data <- data[, -1]
 
-	# Define ZScore function
-	ZScore <- function(x) {
-		return((x - mean(x)) / sd(x))
+	na_count <- sum(is.na(data))
+	if (na_count > 0) {
+		warning(sprintf("Data contains %d NA values (%.1f%%), these will be excluded from calculations",
+										 na_count, na_count / length(data) * 100))
 	}
 
-	# Row Z-Score normalization
 	data <- t(apply(data, 1, ZScore))
-	# <- 2. NA and Duplicated
 
-	# -> 3. Plot parameters
-	# dist_method <- "euclidean"
-	# ChoiceBox: "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski"
+	palette_map <- list(
+		"Spectral" = c("#9E0142", "#D53E4F", "#F46D43", "#FDAE61", "#FEE08B", "#FFFFBF", "#E6F598", "#ABDDA4", "#66C2A5", "#3288BD", "#5E4FA2"),
+		"BrBG" = c("#543005", "#8C510A", "#BF812D", "#DFC27D", "#F6E8C3", "#F5F5F5", "#C7EAE5", "#80CDC1", "#35978F", "#01665E", "#003C30"),
+		"PiYG" = c("#8E0152", "#C51B7D", "#DE77AE", "#F1B6DA", "#FDE0EF", "#F7F7F7", "#E6F5D0", "#B8E186", "#7FBC41", "#4D9221", "#276419"),
+		"PRGn" = c("#40004B", "#762A83", "#9970AB", "#C2A5CF", "#E7D4E8", "#F7F7F7", "#D9F0D3", "#A6DBA0", "#5AAE61", "#1B7837", "#00441B"),
+		"PuOr" = c("#7F3B08", "#B35806", "#E08214", "#FDB863", "#FEE0B6", "#F7F7F7", "#D8DAEB", "#B2ABD2", "#8073AC", "#542788", "#2D004B"),
+		"RdBu" = c("#67001F", "#B2182B", "#D6604D", "#F4A582", "#FDDBC7", "#F7F7F7", "#D1E5F0", "#92C5DE", "#4393C3", "#2166AC", "#053061"),
+		"RdGy" = c("#67001F", "#B2182B", "#D6604D", "#F4A582", "#FDDBC7", "#FFFFFF", "#E0E0E0", "#BABABA", "#878787", "#4D4D4D", "#1A1A1A"),
+		"RdYlBu" = c("#A50026", "#D73027", "#F46D43", "#FDAE61", "#FEE090", "#FFFFBF", "#E0F3F8", "#ABD9E9", "#74ADD1", "#4575B4", "#313695"),
+		"RdYlGn" = c("#A50026", "#D73027", "#F46D43", "#FDAE61", "#FEE08B", "#FFFFBF", "#D9EF8B", "#A6D96A", "#66BD63", "#1A9850", "#006837")
+	)
 
-	# hc_method <- "average"
-	# ChoiceBox: "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
-
-	# k_num = 5
-	# palette = "Spectral"
-	# cluster_pal = "Set1"
-	# label_size = 10
-	# base_size = 12
-	# angle_col = 45
-
-	# set the color palettes
-	# The diverging palettes are: BrBG PiYG PRGn PuOr RdBu RdGy RdYlBu RdYlGn Spectral
-	palettes <- rev(RColorBrewer::brewer.pal(8, palette))
+	if (palette %in% names(palette_map)) {
+		palettes <- rev(palette_map[[palette]])
+	} else {
+		palettes <- rev(palette_map[["RdBu"]])
+	}
 	colors <- grDevices::colorRampPalette(palettes)(100)
-	# <- 3. Plot parameters
 
 	p <- pheatmap::pheatmap(
 		data,
@@ -104,17 +130,39 @@ heatmap_cluster <- function(data,
 		clustering_method = hc_method
 	)
 
-	row_cluster = stats::cutree(p$tree_row, k = k_num)
-	newOrder = as.data.frame(data[p$tree_row$order, ])
-	newOrder$Cluster = paste0("Cluster", row_cluster[match(rownames(newOrder), names(row_cluster))])
+	row_cluster <- stats::cutree(p$tree_row, k = k_num)
+	newOrder <- as.data.frame(data[p$tree_row$order, ])
+	newOrder$Cluster <- paste0("Cluster", row_cluster[match(rownames(newOrder), names(row_cluster))])
 	row_annot <- data.frame(Cluster = newOrder$Cluster,
 													row.names = rownames(newOrder))
-	# The qualitative palettes are: Accent Dark2 Paired Pastel1 Pastel2 Set1 Set2 Set3
-	cluster_colors <- RColorBrewer::brewer.pal(length(unique(newOrder$Cluster)), cluster_pal)
+	
+	cluster_palette_map <- list(
+		"Set1" = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"),
+		"Set2" = c("#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3"),
+		"Set3" = c("#8DD3C7", "#FFFFB3", "#BEBADA", "#FB8072", "#80B1D3", "#FDB462", "#B3DE69", "#FCCDE5", "#D9D9D9", "#BC80BD", "#CCEBC5", "#FFED6F"),
+		"Accent" = c("#7FC97F", "#BEAED4", "#FDC086", "#FFFF99", "#386CB0", "#F0027F", "#BF5B17", "#666666"),
+		"Dark2" = c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#A6761D", "#666666"),
+		"Paired" = c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#FFFF99", "#B15928"),
+		"Pastel1" = c("#FBB4AE", "#B3CDE3", "#CCEBC5", "#DECBE4", "#FED9A6", "#FFFFCC", "#E5D8BD", "#FDDAEC", "#F2F2F2"),
+		"Pastel2" = c("#B3E2CD", "#FDCDAC", "#CBD5E8", "#F4CAE4", "#E6F5C9", "#FFF2AE", "#F1E2CC", "#CCCCCC")
+	)
+	
+	if (cluster_pal %in% names(cluster_palette_map)) {
+		base_colors <- cluster_palette_map[[cluster_pal]]
+	} else {
+		base_colors <- cluster_palette_map[["Set1"]]
+	}
+	
+	n_clusters <- length(unique(newOrder$Cluster))
+	if (n_clusters <= length(base_colors)) {
+		cluster_colors <- base_colors[seq_len(n_clusters)]
+	} else {
+		cluster_colors <- grDevices::colorRampPalette(base_colors)(n_clusters)
+	}
+	
 	names(cluster_colors) <- unique(newOrder$Cluster)
 	ann_colors <- list(Cluster = cluster_colors)
 
-	# plot heatmap
 	p1 <- pheatmap::pheatmap(
 		data,
 		cluster_cols = F,
@@ -132,12 +180,14 @@ heatmap_cluster <- function(data,
 		border_color = border_color
 	)
 
-	newOrder$gene = rownames(newOrder)
-	data_new = reshape2::melt(newOrder, variable.name = "Sample", value.name = "Expression")
+	newOrder$gene <- rownames(newOrder)
+	data_new <- tidyr::pivot_longer(newOrder,
+																	 cols = -c(gene, Cluster),
+																	 names_to = "Sample",
+																	 values_to = "Expression")
 	data_new$Cluster <- factor(data_new$Cluster, levels = unique(data_new$Cluster))
 
-	# plot line trend
-	p2 <- ggplot2::ggplot(data_new, aes_string("Sample", "Expression", group = "gene")) +
+	p2 <- ggplot2::ggplot(data_new, aes(x = Sample, y = Expression, group = gene)) +
 		geom_line(color = line_color,
 							linewidth = 0.8,
 							alpha = line_alpha) +
@@ -164,14 +214,6 @@ heatmap_cluster <- function(data,
 			)
 		)
 
-	p1 <- ggplotify::as.ggplot(p1)
-	p <- cowplot::plot_grid(
-		p1,
-		p2,
-		align = "hv",
-		rel_widths = c(2, 1),
-		labels = NULL
-	)
-
-	return(p)
+	invisible(p1)
+	return(p2)
 }

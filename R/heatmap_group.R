@@ -20,7 +20,6 @@
 #' @param na_color Character: min value color (color value or hex value with alpha). Default: "#ff8800".
 #' @param x_angle Numeric: x axis text angle. Default: 45, min: 0, max: 360.
 #'
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom pheatmap pheatmap
 #' @importFrom grDevices colorRampPalette
 #' @export
@@ -48,6 +47,7 @@
 #' # 6. Set low_color = "#00008888"
 #' heatmap_group(gene_expression2[1:50,], samples_groups, low_color = "#00008888")
 #'
+
 heatmap_group <- function(sample_gene,
 													group_sample,
 													scale_data = "row",
@@ -64,51 +64,48 @@ heatmap_group <- function(sample_gene,
 													high_color = "#ff000055",
 													na_color = "#ff8800",
 													x_angle = 45) {
-	# -> 2. Data Operation
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+	validate_character_options(scale_data, "scale_data", c("row", "column", "none"))
+	validate_character_options(clust_method, "clust_method",
+														 c("ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
+	validate_logical(border_show, "border_show")
+	validate_logical(value_show, "value_show")
+	validate_numeric_range(value_decimal, "value_decimal", min = 0, max = 5)
+	validate_numeric_range(value_size, "value_size", min = 0)
+	validate_numeric_range(axis_size, "axis_size", min = 0)
+	validate_numeric_range(cell_height, "cell_height", min = 0)
+	validate_numeric_range(x_angle, "x_angle", min = 0, max = 360)
+
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[, 1]
 	sample_gene <- sample_gene[, -1]
 
 	groups <- group_sample[, 2]
-	# <- 2. Data Operation
 
-	# -> 3. Plot Parameters
-	# low_color <- "#00880088"
-	# mid_color <- "#ffffff"
-	# high_color <- "#ff000088"
-
-	# scale_data <- "none"
-	# "row", "column", "none"
-
-	# clust_method <- "complete"
-	# "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
-
-	# border_show <- TRUE
-	# value_show <- TRUE
-
-	# na_color <- "#ff8800"
-	# x_angle <- 45
-	# <- 3. Plot Parameters
-
-	# # -> 4. Plot
 	anno_col <- data.frame(Groups = groups)
 	rownames(anno_col) <- colnames(sample_gene)
 
 	group <- levels(as.factor(groups))
-	group_color <- RColorBrewer::brewer.pal(12, "Paired")[1:length(group)]
+	paired_colors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C",
+		"#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#FFFF99", "#B15928")
+	
+	if (length(group) <= length(paired_colors)) {
+		group_color <- paired_colors[seq_len(length(group))]
+	} else {
+		group_color <- grDevices::colorRampPalette(paired_colors)(length(group))
+	}
 	names(group_color) <- group
-	group_color
 
-	anno_colors = list(Groups = group_color)
+	anno_colors <- list(Groups = group_color)
 
 	p <- pheatmap::pheatmap(
 		sample_gene,
 		color = colorRampPalette(c(low_color, mid_color, high_color))(100),
 		scale = scale_data,
-		# "row", "column", "none"
 		kmeans_k = NA,
 		clustering_method = clust_method,
-		# "ward.D", "ward.D2", "single", "complete", "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or "centroid" (= UPGMC)
 		border = border_show,
 		border_color = border_color,
 		cellwidth = NA,
@@ -127,8 +124,6 @@ heatmap_group <- function(sample_gene,
 		annotation_col = anno_col,
 		annotation_colors = anno_colors
 	)
-	# # <- 4. Plot
 
 	return(p)
-	invisible()
 }

@@ -11,7 +11,6 @@
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
 #' @importFrom tidyr separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
@@ -42,35 +41,27 @@ kegg_enrich <- function(kegg_anno,
 												padjust_method = "fdr",
 												pvalue_cutoff = 0.05,
 												qvalue_cutoff = 0.05) {
-	# -> 2. Data Parameters
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for kegg_enrich().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
-
-	# -> 3. Data
 	gene_kegg <- kegg_anno
 	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
+	gene_kegg7 <- tidyr::separate_rows(data = gene_kegg, "kegg_pathway", sep = ";")
 
-	gene_kegg7 <- separate_rows(data = gene_kegg, "kegg_pathway", sep = ";")
-
-	gene_kegg8 <- separate(gene_kegg7,
+	gene_kegg8 <- tidyr::separate(gene_kegg7,
 												 "kegg_pathway",
 												 c("kegg_pathway", "description"),
 												 "\\(")
 
-	gene_kegg9 <- drop_na(gene_kegg8)
+	gene_kegg9 <- tidyr::drop_na(gene_kegg8)
 	gene_kegg9["description"] <- gsub(")", "", gene_kegg9$description)
 
-	enrich_kegg <- enricher(
+	enrich_kegg <- clusterProfiler::enricher(
 		gene = degs_list,
 		TERM2GENE = data.frame(gene_kegg9[, 2], gene_kegg9[, 1]),
 		TERM2NAME = gene_kegg9[, 2:3],
@@ -84,15 +75,5 @@ kegg_enrich <- function(kegg_anno,
 
 	enrich_result <- enrich_kegg@result
 
-	# write.table(enrich_result,
-	# 						file = "Results.txt",
-	# 						append = FALSE,
-	# 						sep = "\t",
-	# 						quote = TRUE,
-	# 						na = "NA"
-	# )
-	# <- 3. Data
-
 	return(enrich_result)
-	invisible()
 }

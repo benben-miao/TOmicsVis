@@ -11,8 +11,7 @@
 #'
 #' @import ggplot2
 #' @import ggsci
-#' @importFrom reshape2 melt
-#' @importFrom tidyr separate_rows separate drop_na
+#' @importFrom tidyr pivot_longer separate_rows separate drop_na
 #' @importFrom clusterProfiler enricher
 #' @importFrom dplyr distinct
 #' @export
@@ -37,49 +36,42 @@
 #' res <- go_enrich(gene_go_kegg[,-5], gene_go_kegg[100:200,1], pvalue_cutoff = 0.10)
 #' head(res)
 #'
+
 go_enrich <- function(go_anno,
 											degs_list,
 											padjust_method = "fdr",
 											pvalue_cutoff = 0.05,
 											qvalue_cutoff = 0.05) {
-	# -> 2. Data Parameters
-	maxItem <- 15
-	# Slider: 15, 0, 1, 20
 
-	# padjust_method <- "fdr"
-	# ChoiceBox: "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
+	if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+		stop("Package 'clusterProfiler' is required for go_enrich().\n",
+				 "Please install: BiocManager::install('clusterProfiler')",
+				 call. = FALSE)
+	}
 
-	# pvalue_cutoff <- 0.30
-	# Slider: 0.30, 0.00, 0.01, 1.00
+	if (!is.data.frame(go_anno) && !is.matrix(go_anno)) {
+		stop("go_anno must be a data.frame or matrix", call. = FALSE)
+	}
 
-	# qvalue_cutoff <- 0.50
-	# Slider: 0.50, 0.00, 0.01, 1.00
-	# <- 2. Data Parameters
+	valid_methods <- c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
+	if (!padjust_method %in% valid_methods) {
+		stop(sprintf("padjust_method must be one of: %s", paste(valid_methods, collapse = ", ")), call. = FALSE)
+	}
 
-	# -> 3. Data
 	gene_go <- go_anno
-	degs_list <- degs_list
 
-	# deg_fc["log2FC"] <- 2^(deg_fc["log2FC"])
-	# deg_list <- with(deg_fc, setNames(log2FC, id))
-
-	gene_go1 <- reshape2::melt(
+	gene_go1 <- tidyr::pivot_longer(
 		gene_go,
-		na.rm = FALSE,
-		id.vars = c("Genes"),
-		measure.vars = c(
-			"biological_process",
-			"cellular_component",
-			"molecular_function"
-		),
-		variable.name = "ontology",
-		value.name = "term",
-		factorsAsStrings = TRUE
+		cols = c(biological_process, cellular_component, molecular_function),
+		names_to = "ontology",
+		values_to = "term"
 	)
+
+	gene_go1 <- gene_go1[!is.na(gene_go1$term), ]
 
 	gene_go2 <- tidyr::separate_rows(data = gene_go1, "term", sep = ";")
 
-	gene_go3 <- tidyr::separate(gene_go2, "term", c("term", "description"), "\\(")
+	gene_go3 <- tidyr::separate(gene_go2, "term", c("term", "description"), "\\(", extra = "merge")
 
 	gene_go4 <- tidyr::drop_na(gene_go3)
 	gene_go4["description"] <- gsub(")", "", gene_go4$description)
@@ -93,14 +85,11 @@ go_enrich <- function(go_anno,
 		TERM2NAME = data.frame(gene_go5[, 2], gene_go5[, 4]),
 		pvalueCutoff = pvalue_cutoff,
 		pAdjustMethod = padjust_method,
-		# "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"
 		qvalueCutoff = qvalue_cutoff,
 		minGSSize = 1,
 		maxGSSize = 1000
 	)
 
-	# head(enrich_results@result)
-	# length(enrich_results@result$ID)
 	enrich_result <- enrich_results@result
 
 	gene_go6 <- data.frame(gene_go5["term"], gene_go5["ontology"])
@@ -110,5 +99,4 @@ go_enrich <- function(go_anno,
 	colnames(enrich_table)[1] <- "ID"
 
 	return(enrich_table)
-	invisible()
 }

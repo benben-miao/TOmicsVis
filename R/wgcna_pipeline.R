@@ -35,6 +35,24 @@
 #' data(samples_groups)
 #' head(samples_groups)
 #'
+
+save_plot_both <- function(plot_fn, results_dir, filename, width = 10, height = 7) {
+	pdf(file = paste(results_dir, paste0(filename, ".pdf"), sep = "/"),
+			width = width, height = height
+	)
+	plot_fn()
+	dev.off()
+
+	jpeg(filename = paste(results_dir, paste0(filename, ".jpg"), sep = "/"),
+			 width = width,
+			 height = height,
+			 units = "in",
+			 res = 300,
+			 quality = 100)
+	plot_fn()
+	dev.off()
+}
+
 wgcna_pipeline <- function(sample_gene,
 													 group_sample,
 													 R_cutofff = 0.85,
@@ -45,21 +63,28 @@ wgcna_pipeline <- function(sample_gene,
 													 cor_type = "pearson",
 													 na_color = "#cdcdcd",
 													 xlab_angle = 45,
-													 text_size = 0.7
-													){
-	pipeline <- function(){
+													 text_size = 0.7) {
+
+	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
+	validate_is_dataframe_or_matrix(group_sample, "group_sample")
+	validate_numeric_range(R_cutofff, "R_cutofff", min = 0, max = 1)
+	validate_numeric_range(max_block, "max_block", min = 100)
+	validate_numeric_range(min_module, "min_module", min = 10)
+	validate_character_options(network_type, "network_type", c("unsigned", "signed", "signed hybrid"))
+	validate_numeric_range(merge_cutoff, "merge_cutoff", min = 0, max = 1)
+	validate_character_options(cor_type, "cor_type", c("pearson", "bicor"))
+	validate_hex_color(na_color, "na_color")
+	validate_numeric_range(xlab_angle, "xlab_angle", min = 0, max = 360)
+	validate_numeric_range(text_size, "text_size", min = 0)
 
 	results_dir <- tempdir()
 
 	sample_gene <- as.data.frame(sample_gene)
 	rownames(sample_gene) <- sample_gene[,1]
 	expData <- as.data.frame(sample_gene[,-1])
-	# dim(expData)
-	# head(expData, 10)
-	m.mad <- apply(expData,1,mad)
-	expData <- expData[which(m.mad >
-													 	max(quantile(m.mad,
-													 							 probs = seq(0, 1, 0.25))[2],0.01)),]
+
+	m.mad <- apply(expData, 1, mad)
+	expData <- expData[which(m.mad > max(quantile(m.mad, probs = seq(0, 1, 0.25))[2], 0.01)), ]
 	expData <- t(expData)
 
 	group_sample <- as.data.frame(group_sample)
@@ -67,114 +92,47 @@ wgcna_pipeline <- function(sample_gene,
 	groupData <- as.data.frame(group_sample[,-1])
 	colnames(groupData) <- "Groups"
 
-	gsg = WGCNA::goodSamplesGenes(expData, verbose = 3);
-	gsg$allOK
-
-	treeType <- "phylogenic"
-	# ChoiceBox: "rectangle", "circular", "phylogenic"
+	gsg <- WGCNA::goodSamplesGenes(expData, verbose = 3)
 
 	cor <- WGCNA::cor
 
 	powers <- c(seq(1, 10, by = 1), seq(12, 20, by = 2))
-	sft = pickSoftThreshold(expData,
-													dataIsExpr = TRUE,
-													weights = NULL,
-													RsquaredCut = R_cutofff,
-													powerVector = powers,
-													removeFirst = FALSE,
-													corFnc = cor,
-													networkType = "unsigned",
-													moreNetworkConcepts = FALSE,
-													gcInterval = NULL,
-													verbose = 5,
-													indent = 0
+	sft <- pickSoftThreshold(expData,
+													 dataIsExpr = TRUE,
+													 weights = NULL,
+													 RsquaredCut = R_cutofff,
+													 powerVector = powers,
+													 removeFirst = FALSE,
+													 corFnc = cor,
+													 networkType = "unsigned",
+													 moreNetworkConcepts = FALSE,
+													 gcInterval = NULL,
+													 verbose = 5,
+													 indent = 0
 	)
-	# Figure3
-	# sizeGrWindow(9, 5)
-	# par(mfrow = c(1,2))
-	pdf(file = paste(results_dir, "1.SoftPower.pdf", sep = "/"),
-			width = 10, height = 7
-	)
-	plot(sft$fitIndices[,1],
-			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-			 xlab = "Soft Threshold (power)",
-			 ylab = "Scale Free Topology Model Fit,signed R^2",
-			 type = "l",
-			 lwd = 2,
-			 col = "#ff000088",
-			 main = paste("Scale independence")
-	)
-	text(sft$fitIndices[,1],
-			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-			 labels = powers,
-			 cex = 1.2,
-			 col = "red"
-	)
-	abline(h = 0.90,
+
+	save_plot_both(function() {
+		plot(sft$fitIndices[,1],
+				 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
+				 xlab = "Soft Threshold (power)",
+				 ylab = "Scale Free Topology Model Fit,signed R^2",
+				 type = "l",
+				 lwd = 2,
 				 col = "#ff000088",
-				 lwd = 2)
+				 main = paste("Scale independence")
+		)
+		text(sft$fitIndices[,1],
+				 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
+				 labels = powers,
+				 cex = 1.2,
+				 col = "red"
+		)
+		abline(h = 0.90,
+					 col = "#ff000088",
+					 lwd = 2)
+	}, results_dir, "1.SoftPower")
 
-	# plot(sft$fitIndices[,1],
-	#      sft$fitIndices[,5],
-	#      xlab="Soft Threshold (power)",
-	#      ylab="Mean Connectivity",
-	#      type="l",
-	#      lwd=2,
-	#      col="#ff000088",
-	#      main = paste("Mean connectivity")
-	#      )
-	# text(sft$fitIndices[,1],
-	#      sft$fitIndices[,5],
-	#      labels=powers,
-	#      cex=1.2,
-	#      col="red"
-	#      )
-	dev.off()
-
-
-	jpeg(filename = paste(results_dir, "1.SoftPower.jpg", sep = "/"),
-			 width = 10,
-			 height = 7,
-			 units = "in",
-			 res = 300,
-			 quality = 100)
-	plot(sft$fitIndices[,1],
-			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-			 xlab = "Soft Threshold (power)",
-			 ylab = "Scale Free Topology Model Fit,signed R^2",
-			 type = "l",
-			 lwd = 2,
-			 col = "#ff000088",
-			 main = paste("Scale independence")
-	)
-	text(sft$fitIndices[,1],
-			 -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-			 labels = powers,
-			 cex = 1.2,
-			 col = "red"
-	)
-	abline(h = 0.90,
-				 col = "#ff000088",
-				 lwd = 2)
-
-	# plot(sft$fitIndices[,1],
-	#      sft$fitIndices[,5],
-	#      xlab="Soft Threshold (power)",
-	#      ylab="Mean Connectivity",
-	#      type="l",
-	#      lwd=2,
-	#      col="#ff000088",
-	#      main = paste("Mean connectivity")
-	# )
-	# text(sft$fitIndices[,1],
-	#      sft$fitIndices[,5],
-	#      labels=powers,
-	#      cex=1.2,
-	#      col="red"
-	# )
-	dev.off()
-
-	bwnet = blockwiseModules(expData,
+	bwnet <- blockwiseModules(expData,
 													 power = sft$powerEstimate,
 													 maxBlockSize = max_block,
 													 TOMType = "unsigned",
@@ -194,17 +152,15 @@ wgcna_pipeline <- function(sample_gene,
 													 verbose = 5,
 													 randomSeed = 123
 	)
-	# table(bwnet$colors)
 
-	moduleLabels = bwnet$colors
-	moduleColors = labels2colors(moduleLabels,
+	moduleLabels <- bwnet$colors
+	moduleColors <- labels2colors(moduleLabels,
 															 zeroIsGrey = TRUE,
-															 # colorSeq = pal_igv(palette = c("default", "alternating"), alpha = 0.90)(51),
 															 colorSeq = NULL,
 															 naColor = na_color,
 															 commonColorCode = TRUE
 	)
-	# table(moduleColors)
+
 	module_gene <- data.frame(Module = names(table(moduleColors)),
 														Genes = table(moduleColors)[names(table(moduleColors))]
 	)
@@ -215,39 +171,20 @@ wgcna_pipeline <- function(sample_gene,
 							row.names = F
 	)
 
-	# Figure4
-	pdf(file = paste(results_dir, "2.SamplesModules.pdf", sep = "/"),
-			width = 10, height = 7
-	)
-	plotDendroAndColors(bwnet$dendrograms[[1]],
+	save_plot_both(function() {
+		plotDendroAndColors(bwnet$dendrograms[[1]],
 											moduleColors[bwnet$blockGenes[[1]]],
 											"Module colors",
 											dendroLabels = FALSE,
 											hang = 0.03,
 											addGuide = TRUE,
 											guideHang = 0.05
-	)
-	dev.off()
-
-	jpeg(filename = paste(results_dir, "2.SamplesModules.jpg", sep = "/"),
-			 width = 10,
-			 height = 7,
-			 units = "in",
-			 res = 300,
-			 quality = 100)
-	plotDendroAndColors(bwnet$dendrograms[[1]],
-											moduleColors[bwnet$blockGenes[[1]]],
-											"Module colors",
-											dendroLabels = FALSE,
-											hang = 0.03,
-											addGuide = TRUE,
-											guideHang = 0.05
-	)
-	dev.off()
+		)
+	}, results_dir, "2.SamplesModules")
 
 	gene_module <- data.frame(ID = colnames(expData),
 														module = moduleColors)
-	gene_module = gene_module[order(gene_module$module),]
+	gene_module <- gene_module[order(gene_module$module), ]
 	write.table(gene_module,
 							file = paste(results_dir, "2.GeneModule.txt", sep = "/"),
 							sep = "\t",
@@ -255,15 +192,15 @@ wgcna_pipeline <- function(sample_gene,
 							row.names = F
 	)
 
-	MEs = bwnet$MEs
-	MEs_col = MEs
-	colnames(MEs_col) = paste0("ME", labels2colors(
+	MEs <- bwnet$MEs
+	MEs_col <- MEs
+	colnames(MEs_col) <- paste0("ME", labels2colors(
 		as.numeric(str_replace_all(colnames(MEs),"ME","")))
 	)
-	MEs_col = orderMEs(MEs_col)
+	MEs_col <- orderMEs(MEs_col)
 
-	MEs_colt = as.data.frame(t(MEs_col))
-	colnames(MEs_colt) = rownames(expData)
+	MEs_colt <- as.data.frame(t(MEs_col))
+	colnames(MEs_colt) <- rownames(expData)
 	write.table(MEs_colt,
 							file = paste(results_dir, "3.ModuleEipgengene.txt", sep = "/"),
 							sep = "\t",
@@ -271,11 +208,8 @@ wgcna_pipeline <- function(sample_gene,
 							row.names = F
 	)
 
-	# Figure5
-	pdf(file = paste(results_dir, "3.ModulesModules.pdf", sep = "/"),
-			width = 10, height = 7
-	)
-	plotEigengeneNetworks(MEs_col, "Eigengene adjacency heatmap",
+	save_plot_both(function() {
+		plotEigengeneNetworks(MEs_col, "Eigengene adjacency heatmap",
 												marDendro = c(3,3,2,4),
 												marHeatmap = c(3,4,2,2),
 												plotDendrograms = TRUE,
@@ -290,70 +224,31 @@ wgcna_pipeline <- function(sample_gene,
 												coloredBarplot = TRUE,
 												barplotMeans = TRUE,
 												barplotErrors = FALSE,
-												plotPreservation = "standard",
-												zlimPreservation = c(0, 1),
-												printPreservation = FALSE,
-												cex.preservation = 0.9,
 												xLabelsAngle = 90
-	)
-	dev.off()
-
-	jpeg(filename = paste(results_dir, "3.ModulesModules.jpg", sep = "/"),
-			 width = 10,
-			 height = 7,
-			 units = "in",
-			 res = 300,
-			 quality = 100)
-	plotEigengeneNetworks(MEs_col, "Eigengene adjacency heatmap",
-												marDendro = c(3,3,2,4),
-												marHeatmap = c(3,4,2,2),
-												plotDendrograms = TRUE,
-												plotHeatmaps = TRUE,
-												setMargins = TRUE,
-												colorLabels = TRUE,
-												signed = TRUE,
-												heatmapColors = blueWhiteRed(100),
-												plotAdjacency = TRUE,
-												printAdjacency = FALSE,
-												cex.adjacency = 0.9,
-												coloredBarplot = TRUE,
-												barplotMeans = TRUE,
-												barplotErrors = FALSE,
-												plotPreservation = "standard",
-												zlimPreservation = c(0, 1),
-												printPreservation = FALSE,
-												cex.preservation = 0.9,
-												xLabelsAngle = 90
-	)
-	dev.off()
-
+		)
+	}, results_dir, "3.ModulesModules")
 
 	table(groupData$Groups)
-	design = model.matrix(~0 + groupData$Groups)
+	design <- model.matrix(~0 + groupData$Groups)
 	groupData$Groups <- as.factor(groupData$Groups)
-	colnames(design) = levels(groupData$Groups)
+	colnames(design) <- levels(groupData$Groups)
 
-	MEs0 = moduleEigengenes(expData, moduleColors)$eigengenes
-	MEs = orderMEs(MEs0)
+	MEs0 <- moduleEigengenes(expData, moduleColors)$eigengenes
+	MEs <- orderMEs(MEs0)
 
-	moduleTraitCor = cor(MEs, design , use = "p")
-	moduleTraitPvalue = corPvalueStudent(moduleTraitCor,
+	moduleTraitCor <- cor(MEs, design, use = "p")
+	moduleTraitPvalue <- corPvalueStudent(moduleTraitCor,
 																			 nrow(expData)
 	)
 
-	# Figure6
-	# sizeGrWindow(10,6)
-	textMatrix = paste(signif(moduleTraitCor, 2), " (",
+	textMatrix <- paste(signif(moduleTraitCor, 2), " (",
 										 signif(moduleTraitPvalue, 1), ")",
 										 sep = ""
 	)
-	dim(textMatrix) = dim(moduleTraitCor)
-	# par(mar = c(6, 8.5, 3, 3))
-	pdf(file = paste(results_dir, "4.ModulesTraits.pdf", sep = "/"),
-			width = 10, height = 7,
-			bg = "white"
-	)
-	labeledHeatmap(Matrix = moduleTraitCor,
+	dim(textMatrix) <- dim(moduleTraitCor)
+
+	save_plot_both(function() {
+		labeledHeatmap(Matrix = moduleTraitCor,
 								 xLabels = colnames(design),
 								 yLabels = names(MEs),
 								 ySymbols = names(MEs),
@@ -369,7 +264,7 @@ wgcna_pipeline <- function(sample_gene,
 								 xColorOffset = strheight("M")/3,
 								 yColorOffset = strwidth("M")/3,
 								 colorLabels = FALSE,
-								 colors = blueWhiteRed(100), # greenWhiteRed(50)
+								 colors = blueWhiteRed(100),
 								 naColor = na_color,
 								 textMatrix = textMatrix,
 								 cex.text = text_size,
@@ -378,44 +273,8 @@ wgcna_pipeline <- function(sample_gene,
 								 legendLabel = "Pearson's correlation coefficient",
 								 cex.legendLabel = 1,
 								 main = paste("Module-trait relationships")
-	)
-	dev.off()
+		)
+	}, results_dir, "4.ModulesTraits")
 
-	jpeg(filename = paste(results_dir, "4.ModulesTraits.jpg", sep = "/"),
-			 width = 10,
-			 height = 7,
-			 units = "in",
-			 res = 300,
-			 quality = 100)
-	labeledHeatmap(Matrix = moduleTraitCor,
-								 xLabels = colnames(design),
-								 yLabels = names(MEs),
-								 ySymbols = names(MEs),
-								 checkColorsValid = TRUE,
-								 invertColors = FALSE,
-								 setStdMargins = TRUE,
-								 xLabelsPosition = "bottom",
-								 xLabelsAngle = xlab_angle,
-								 xLabelsAdj = 1,
-								 yLabelsPosition = "left",
-								 xColorWidth = 2 * strheight("M"),
-								 yColorWidth = 2 * strwidth("M"),
-								 xColorOffset = strheight("M")/3,
-								 yColorOffset = strwidth("M")/3,
-								 colorLabels = FALSE,
-								 colors = blueWhiteRed(100), # greenWhiteRed(50)
-								 naColor = na_color,
-								 textMatrix = textMatrix,
-								 cex.text = text_size,
-								 zlim = c(-1,1),
-								 plotLegend = TRUE,
-								 legendLabel = "Pearson's correlation coefficient",
-								 cex.legendLabel = 1,
-								 main = paste("Module-trait relationships")
-	)
-	dev.off()
-	}
-
-	return(pipeline())
-	invisible()
+	return(invisible(results_dir))
 }

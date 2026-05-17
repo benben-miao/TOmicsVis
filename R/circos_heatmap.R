@@ -48,52 +48,29 @@ circos_heatmap <- function(data,
 													 track_height = 0.30,
 													 rowname_show = "outside",
 													 rowname_size = 0.80) {
-	# -> 2. Data Operation
+
+	if (!requireNamespace("ComplexHeatmap", quietly = TRUE)) {
+		stop("Package 'ComplexHeatmap' is required for circos_heatmap().\n",
+				 "Please install: BiocManager::install('ComplexHeatmap')",
+				 call. = FALSE)
+	}
+
+	validate_is_dataframe(data, "data")
+	validate_numeric_range(gap_size, "gap_size", min = 0)
+	validate_logical(cluster_run, "cluster_run")
+	validate_character_options(cluster_method, "cluster_method",
+														 c("ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
+	validate_character_options(distance_method, "distance_method",
+														 c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"))
+	validate_character_options(dend_show, "dend_show", c("none", "outside", "inside"))
+	validate_numeric_range(dend_height, "dend_height", min = 0, max = 0.5)
+	validate_numeric_range(track_height, "track_height", min = 0, max = 0.5)
+	validate_character_options(rowname_show, "rowname_show", c("none", "outside", "inside"))
+	validate_numeric_range(rowname_size, "rowname_size", min = 0.1, max = 10)
+
 	data <- as.data.frame(data)
 	rownames(data) <- data[, 1]
 	data <- data[, -1]
-	# mat = rbind(cbind(matrix(rnorm(50*5, mean = 1), nr = 50),
-	# 				   matrix(rnorm(50*5, mean = -1), nr = 50)),
-	# 			 cbind(matrix(rnorm(50*5, mean = -1), nr = 50),
-	# 			 	  matrix(rnorm(50*5, mean = 1), nr = 50))
-	# )
-	# rownames(mat) = paste0("R", 1:100)
-	# colnames(mat) = paste0("C", 1:10)
-	# mat = mat[sample(100, 100), ]
-	#
-	# write.table(mat, file = "CircosHeatmap.txt", quote = FALSE, sep = "\t", row.names = TRUE)
-	# <- 2. Data Operation
-
-	# -> 3. Plot Parameters
-	# fonts <- "Times"
-	# ChoiceBox: "Times", "Palatino", "Bookman", "Courier", "Helvetica", "URWGothic", "NimbusMon", "NimbusSan"
-
-	# low_color <- "#0000ff"
-	# ColorPicker
-
-	# mid_color <- "#ffffff"
-	# ColorPicker
-
-	# high_color <- "#ff0000"
-	# ColorPicker
-
-	# gap_size <- 10
-	# Slider: 10, 0, 90, 1
-
-	# cluster_method <- "complete"
-	# ChoiceBox: "ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"
-
-	# distance_method <- "euclidean"
-	# ChoiceBox: "euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"
-
-	# dend_height <- 0.20
-	# Slider: 0.20, 0.10, 0.50, 0.01
-
-	# rowname_size <- 0.80
-	# Slider: 0.80, 0.00, 5.00, 0.01
-	# <- 3. Plot Parameters
-
-	# # -> 4. Plot
 
 	p <- function() {
 		circlize::circos.clear()
@@ -131,49 +108,31 @@ circos_heatmap <- function(data,
 			track.height = track_height,
 			show.sector.labels = FALSE
 		)
-		# circlize::circos.text(1, 1,
-		# 											cex = 0.5,
-		# 						labels = colnames(data),
-		# 						facing = "inside",
-		# 						niceFacing = TRUE)
 		circlize::circos.track(
 			track.index = circlize::get.current.track.index(),
 			panel.fun = function(x, y) {
-				if (circlize::CELL_META$sector.numeric.index == 1) {
-					# the last sector
-					cn = colnames(data)
-					n = length(cn)
+				sector_name <- circlize::CELL_META$sector.index
+				sector_idx <- which(colnames(data) == sector_name)
+
+				if (length(sector_idx) > 0 && sector_name %in% colnames(data)) {
 					circlize::circos.text(
-						x = rep(circlize::CELL_META$cell.xlim[2], n) + circlize::convert_x(1, "mm"),
-						y = 1:n + n,
-						labels = cn,
+						x = circlize::CELL_META$xcenter,
+						y = circlize::CELL_META$cell.ylim[2] + circlize::convert_y(unit(2, "mm"), "mm"),
+						labels = sector_name,
 						niceFacing = TRUE,
-						cex = 0.5,
-						adj = c(0, 0),
-						facing = "inside"
+						cex = rowname_size,
+						adj = c(0.5, 0),
+						facing = "bending.outside"
 					)
 				}
 			},
 			bg.border = NA
 		)
 
-		# circos.track(track.index = get.current.track.index(),
-		# 			 panel.fun = function(x, y) {
-		# 				if (CELL_META$sector.numeric.index == 1) {
-		# 					cn = colnames(data)
-		# 					n = length(cn)
-		# 					circos.text(rep(CELL_META$cell.xlim[2], n) + convert_x(0.1, "mm"),
-		# 								12 + (1:n)*1.8,
-		# 								cn,
-		# 								cex = 0.5, adj = c(-1, 1), facing = "inside")
-		# 				}
-		# 			}, bg.border = NA)
 		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
 		grid::grid.draw(legend)
 		circlize::circos.clear()
 	}
-	# # <- 4. Plot
 
 	return(p())
-	invisible()
 }

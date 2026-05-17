@@ -12,9 +12,9 @@
 #' @param circle_col Character: set the color for filling the circle. Default: "white".
 #' @param label_text_cex Number: set the label text cex. Default: 1.
 #'
-#' @import plotrix
-#' @import RColorBrewer
+
 #' @export
+#' @note Requires package 'plotrix' (install via: install.packages("plotrix"))
 #'
 #' @examples
 #' # 1. Library TOmicsVis package
@@ -44,6 +44,13 @@ flower_plot <- function(flower_dat,
 												ellipse_col_pal = "Spectral",
 												circle_col = "white",
 												label_text_cex = 1) {
+
+	if (!requireNamespace("plotrix", quietly = TRUE)) {
+		stop("Package 'plotrix' is required for flower_plot().\n",
+             "Please install: install.packages('plotrix')",
+             call. = FALSE)
+	}
+
 	set_name <- colnames(flower_dat)
 	item_id <- unique(flower_dat[, 1])
 	item_id <- item_id[item_id != '']
@@ -70,7 +77,23 @@ flower_plot <- function(flower_dat,
 	# set the angle of degress
 	deg <- 360 / n
 	# set the ellipse filling color
-	colors <- RColorBrewer::brewer.pal(8, ellipse_col_pal)
+	palette_map <- list(
+		"Spectral" = c("#9E0142", "#D53E4F", "#F46D43", "#FDAE61", "#FEE08B", "#FFFFBF", "#E6F598", "#ABDDA4", "#66C2A5", "#3288BD", "#5E4FA2"),
+		"Set1" = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"),
+		"Set2" = c("#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3"),
+		"Set3" = c("#8DD3C7", "#FFFFB3", "#BEBADA", "#FB8072", "#80B1D3", "#FDB462", "#B3DE69", "#FCCDE5", "#D9D9D9", "#BC80BD", "#CCEBC5", "#FFED6F"),
+		"Accent" = c("#7FC97F", "#BEAED4", "#FDC086", "#FFFF99", "#386CB0", "#F0027F", "#BF5B17", "#666666"),
+		"Dark2" = c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#A6761D", "#666666"),
+		"Paired" = c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#FFFF99", "#B15928"),
+		"Pastel1" = c("#FBB4AE", "#B3CDE3", "#CCEBC5", "#DECBE4", "#FED9A6", "#FFFFCC", "#E5D8BD", "#FDDAEC", "#F2F2F2"),
+		"Pastel2" = c("#B3E2CD", "#FDCDAC", "#CBD5E8", "#F4CAE4", "#E6F5C9", "#FFF2AE", "#F1E2CC", "#CCCCCC")
+	)
+	
+	if (ellipse_col_pal %in% names(palette_map)) {
+		colors <- palette_map[[ellipse_col_pal]]
+	} else {
+		colors <- palette_map[["Spectral"]]
+	}
 	ellipse_col <- grDevices::colorRampPalette(colors)(n)
 
 	res <- lapply(1:n, function(t) {

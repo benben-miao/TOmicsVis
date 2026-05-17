@@ -38,6 +38,9 @@ Plot: Flower plot for stat common and unique gene among multiple sets.
 \description{
 Flower plot for stat common and unique gene among multiple sets.
 }
+\note{
+Requires package 'plotrix' (install via: install.packages("plotrix"))
+}
 \examples{
 # 1. Library TOmicsVis package
 library(TOmicsVis)
