@@ -14666,7 +14666,6 @@ server <- shinyServer(function(session, input, output) {
                 res <- tsne_analysis(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_tsne_analysis,
                     tsne_dims = input$tsne_dims_tsne_analysis
                 )
                 return(res)
@@ -14712,7 +14711,6 @@ server <- shinyServer(function(session, input, output) {
                 res <- tsne_analysis(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_tsne_analysis,
                     tsne_dims = input$tsne_dims_tsne_analysis
                 )
 
@@ -14789,7 +14787,6 @@ server <- shinyServer(function(session, input, output) {
                 tsne_plot(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_tsne_plot,
                     multi_shape = input$multi_shape_tsne_plot,
                     point_size = input$point_size_tsne_plot,
                     point_alpha = input$point_alpha_tsne_plot,
@@ -14845,7 +14842,6 @@ server <- shinyServer(function(session, input, output) {
                     tsne_plot(
                         sample_gene = data1,
                         group_sample = data2,
-                        seed = input$seed_tsne_plot,
                         multi_shape = input$multi_shape_tsne_plot,
                         point_size = input$point_size_tsne_plot,
                         point_alpha = input$point_alpha_tsne_plot,
@@ -14939,7 +14935,6 @@ server <- shinyServer(function(session, input, output) {
                 res <- umap_analysis(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_umap_analysis,
                     method = input$method_umap_analysis
                 )
                 return(res)
@@ -14985,7 +14980,6 @@ server <- shinyServer(function(session, input, output) {
                 res <- umap_analysis(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_umap_analysis,
                     method = input$method_umap_analysis
                 )
 
@@ -15062,7 +15056,6 @@ server <- shinyServer(function(session, input, output) {
                 umap_plot(
                     sample_gene = data1,
                     group_sample = data2,
-                    seed = input$seed_umap_plot,
                     multi_shape = input$multi_shape_umap_plot,
                     point_size = input$point_size_umap_plot,
                     point_alpha = input$point_alpha_umap_plot,
@@ -15118,7 +15111,6 @@ server <- shinyServer(function(session, input, output) {
                     umap_plot(
                         sample_gene = data1,
                         group_sample = data2,
-                        seed = input$seed_umap_plot,
                         multi_shape = input$multi_shape_umap_plot,
                         point_size = input$point_size_umap_plot,
                         point_alpha = input$point_alpha_umap_plot,
@@ -16220,7 +16212,6 @@ server <- shinyServer(function(session, input, output) {
             chord_plot(
                 data = data,
                 multi_colors = input$multi_colors_chord,
-                color_seed = input$color_seed_chord,
                 color_alpha = input$color_alpha_chord,
                 link_visible = input$link_visible_chord,
                 link_dir = input$link_dir_chord,
@@ -16266,7 +16257,6 @@ server <- shinyServer(function(session, input, output) {
                     chord_plot(
                         data = data,
                         multi_colors = input$multi_colors_chord,
-                        color_seed = input$color_seed_chord,
                         color_alpha = input$color_alpha_chord,
                         link_visible = input$link_visible_chord,
                         link_dir = input$link_dir_chord,

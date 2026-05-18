@@ -61,7 +61,7 @@ gene_cluster_trend <- function(data,
 	}
 
 	exprs_data <- as.matrix(data)
-	eset <- methods::new("ExpressionSet", exprs = exprs_data)
+	eset <- Biobase::ExpressionSet(exprs_data)
 
 	# Data pre-processing
 	eset <- Mfuzz::filter.NA(eset, thres = thres)
