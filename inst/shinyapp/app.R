@@ -13740,8 +13740,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$quantile_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -13764,8 +13764,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$quantile_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -13808,8 +13808,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$quantile_plot_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -13853,8 +13853,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$box_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -13877,8 +13877,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$box_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -13923,8 +13923,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$box_plot_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -13970,8 +13970,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$violin_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -13994,8 +13994,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$violin_plot_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14041,8 +14041,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$violin_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -14089,8 +14089,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$survival_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -14113,8 +14113,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$survival_plot_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14158,8 +14158,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$survival_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -14224,8 +14224,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$corr_heatmap_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -14248,8 +14248,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$corr_heatmap_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14294,8 +14294,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$corr_heatmap_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -14341,8 +14341,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$pca_analysis_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -14354,8 +14354,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$pca_analysis_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -14378,8 +14378,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$pca_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$pca_analysis_input2)) {
                     data("samples_groups")
@@ -14387,8 +14387,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$pca_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14422,8 +14422,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$pca_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$pca_analysis_input2)) {
                     data("samples_groups")
@@ -14431,8 +14431,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$pca_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14460,8 +14460,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$pca_plot_input1$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -14473,8 +14473,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$pca_plot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -14497,8 +14497,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$pca_plot_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$pca_plot_input2)) {
                     data("samples_groups")
@@ -14506,8 +14506,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$pca_plot_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14553,8 +14553,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$pca_plot_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$pca_plot_input2)) {
                         data("samples_groups")
@@ -14562,8 +14562,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$pca_plot_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -14610,8 +14610,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$tsne_analysis_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -14623,8 +14623,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$tsne_analysis_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -14647,8 +14647,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$tsne_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$tsne_analysis_input2)) {
                     data("samples_groups")
@@ -14656,8 +14656,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$tsne_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14693,8 +14693,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$tsne_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$tsne_analysis_input2)) {
                     data("samples_groups")
@@ -14702,8 +14702,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$tsne_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14733,8 +14733,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$tsne_plot_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -14746,8 +14746,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$tsne_plot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -14770,8 +14770,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$tsne_plot_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$tsne_plot_input2)) {
                     data("samples_groups")
@@ -14779,8 +14779,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$tsne_plot_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14826,8 +14826,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$tsne_plot_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$tsne_plot_input2)) {
                         data("samples_groups")
@@ -14835,8 +14835,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$tsne_plot_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -14883,8 +14883,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$umap_analysis_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -14896,8 +14896,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$umap_analysis_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -14920,8 +14920,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$umap_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$umap_analysis_input2)) {
                     data("samples_groups")
@@ -14929,8 +14929,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$umap_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -14966,8 +14966,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$umap_analysis_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$umap_analysis_input2)) {
                     data("samples_groups")
@@ -14975,8 +14975,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$umap_analysis_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -15006,8 +15006,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$umap_plot_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -15019,8 +15019,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$umap_plot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -15043,8 +15043,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$umap_plot_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$umap_plot_input2)) {
                     data("samples_groups")
@@ -15052,8 +15052,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$umap_plot_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -15099,8 +15099,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$umap_plot_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$umap_plot_input2)) {
                         data("samples_groups")
@@ -15108,8 +15108,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$umap_plot_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15156,8 +15156,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$dendro_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15180,8 +15180,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$dendro_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15228,8 +15228,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$dendro_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15277,8 +15277,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$venn_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15301,8 +15301,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$venn_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15346,8 +15346,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$venn_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15392,8 +15392,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$upsetr_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15416,8 +15416,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$upsetr_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15465,8 +15465,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$upsetr_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15535,8 +15535,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$flower_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15559,8 +15559,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$flower_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15600,8 +15600,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$flower_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15662,8 +15662,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$volcano_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15686,8 +15686,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$volcano_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15736,8 +15736,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$volcano_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15787,8 +15787,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$ma_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -15811,8 +15811,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$ma_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -15859,8 +15859,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$ma_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -15908,8 +15908,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$heatmap_group_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -15921,8 +15921,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$heatmap_group_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -15945,8 +15945,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$heatmap_group_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$heatmap_group_input2)) {
                 data("samples_groups")
@@ -15954,8 +15954,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$heatmap_group_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16003,8 +16003,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$heatmap_group_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$heatmap_group_input2)) {
                         data("samples_groups")
@@ -16012,8 +16012,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$heatmap_group_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16062,8 +16062,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$circos_heatmap_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16086,8 +16086,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$circos_heatmap_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16132,8 +16132,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$circos_heatmap_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16186,8 +16186,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$chord_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16210,8 +16210,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$chord_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16256,8 +16256,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$chord_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16310,8 +16310,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$gene_rank_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16334,8 +16334,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$gene_rank_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16377,8 +16377,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$gene_rank_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16428,8 +16428,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$gene_cluster_trend_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16452,8 +16452,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$gene_cluster_trend_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16490,8 +16490,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$gene_cluster_trend_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16536,8 +16536,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$trend_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16560,8 +16560,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$trend_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16608,8 +16608,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$trend_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16657,8 +16657,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$network_plot_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16681,8 +16681,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$network_plot_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16730,8 +16730,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$network_plot_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16787,8 +16787,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$heatmap_cluster_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -16811,8 +16811,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$heatmap_cluster_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16859,8 +16859,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data <- read.table(input$heatmap_cluster_input$datapath,
                                            sep = "\t",
-                                           header = T,
-                                           stringsAsFactors = F)
+                                           header = TRUE,
+                                           stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -16915,8 +16915,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$go_enrich_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -16928,8 +16928,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -16952,8 +16952,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$go_enrich_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$go_enrich_input2)) {
                 data("gene_go_kegg")
@@ -16961,8 +16961,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -16999,8 +16999,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$go_enrich_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$go_enrich_input2)) {
                     data("gene_go_kegg")
@@ -17008,8 +17008,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$go_enrich_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -17040,8 +17040,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$go_enrich_stat_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17053,8 +17053,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_stat_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17077,8 +17077,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$go_enrich_stat_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$go_enrich_stat_input2)) {
                 data("gene_go_kegg")
@@ -17086,8 +17086,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_stat_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17130,8 +17130,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$go_enrich_stat_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$go_enrich_stat_input2)) {
                         data("gene_go_kegg")
@@ -17139,8 +17139,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$go_enrich_stat_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -17184,8 +17184,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$go_enrich_bar_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17197,8 +17197,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_bar_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17221,8 +17221,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$go_enrich_bar_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$go_enrich_bar_input2)) {
                 data("gene_go_kegg")
@@ -17230,8 +17230,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_bar_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17274,8 +17274,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$go_enrich_bar_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$go_enrich_bar_input2)) {
                         data("gene_go_kegg")
@@ -17283,8 +17283,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$go_enrich_bar_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -17328,8 +17328,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$go_enrich_dot_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17341,8 +17341,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_dot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17365,8 +17365,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$go_enrich_dot_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$go_enrich_dot_input2)) {
                 data("gene_go_kegg")
@@ -17374,8 +17374,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_dot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17418,8 +17418,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$go_enrich_dot_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$go_enrich_dot_input2)) {
                         data("gene_go_kegg")
@@ -17427,8 +17427,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$go_enrich_dot_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -17472,8 +17472,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$go_enrich_net_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17485,8 +17485,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_net_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17509,8 +17509,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$go_enrich_net_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$go_enrich_net_input2)) {
                 data("gene_go_kegg")
@@ -17518,8 +17518,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$go_enrich_net_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17561,8 +17561,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$go_enrich_net_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$go_enrich_net_input2)) {
                         data("gene_go_kegg")
@@ -17570,8 +17570,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$go_enrich_net_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -17614,8 +17614,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$kegg_enrich_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17627,8 +17627,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17651,8 +17651,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$kegg_enrich_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$kegg_enrich_input2)) {
                 data("gene_go_kegg")
@@ -17660,8 +17660,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17698,8 +17698,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$kegg_enrich_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$kegg_enrich_input2)) {
                     data("gene_go_kegg")
@@ -17707,8 +17707,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$kegg_enrich_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -17739,8 +17739,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$kegg_enrich_bar_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17752,8 +17752,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_bar_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17776,8 +17776,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$kegg_enrich_bar_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$kegg_enrich_bar_input2)) {
                 data("gene_go_kegg")
@@ -17785,8 +17785,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_bar_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17829,8 +17829,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$kegg_enrich_bar_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$kegg_enrich_bar_input2)) {
                         data("gene_go_kegg")
@@ -17838,8 +17838,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$kegg_enrich_bar_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -17883,8 +17883,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$kegg_enrich_dot_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -17896,8 +17896,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_dot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -17920,8 +17920,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$kegg_enrich_dot_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$kegg_enrich_dot_input2)) {
                 data("gene_go_kegg")
@@ -17929,8 +17929,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_dot_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -17973,8 +17973,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$kegg_enrich_dot_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$kegg_enrich_dot_input2)) {
                         data("gene_go_kegg")
@@ -17982,8 +17982,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$kegg_enrich_dot_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -18027,8 +18027,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$kegg_enrich_net_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -18040,8 +18040,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_net_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -18064,8 +18064,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$kegg_enrich_net_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$kegg_enrich_net_input2)) {
                 data("gene_go_kegg")
@@ -18073,8 +18073,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$kegg_enrich_net_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -18116,8 +18116,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data1 <- read.table(input$kegg_enrich_net_input1$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
                     if (is.null(input$kegg_enrich_net_input2)) {
                         data("gene_go_kegg")
@@ -18125,8 +18125,8 @@ server <- shinyServer(function(session, input, output) {
                     }else{
                         data2 <- read.table(input$kegg_enrich_net_input2$datapath,
                                             sep = "\t",
-                                            header = T,
-                                            stringsAsFactors = F)
+                                            header = TRUE,
+                                            stringsAsFactors = FALSE)
                     }
 
                     progress$set(value = 100)
@@ -18169,8 +18169,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$table_split_input$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -18193,8 +18193,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$table_split_input$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -18230,8 +18230,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$table_split_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -18261,8 +18261,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data <- read.table(input$table_merge_input$datapath,
                                sep = "\t",
-                               header = T,
-                               stringsAsFactors = F)
+                               header = TRUE,
+                               stringsAsFactors = FALSE)
         }
         return(data)
     }, options = list(scrollX = TRUE))
@@ -18285,8 +18285,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data <- read.table(input$table_merge_input$datapath,
                                    sep = "\t",
-                                   header = T,
-                                   stringsAsFactors = F)
+                                   header = TRUE,
+                                   stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -18323,8 +18323,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data <- read.table(input$table_merge_input$datapath,
                                        sep = "\t",
-                                       header = T,
-                                       stringsAsFactors = F)
+                                       header = TRUE,
+                                       stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -18355,8 +18355,8 @@ server <- shinyServer(function(session, input, output) {
         }else{
             data1 <- read.table(input$table_cross_input1$datapath,
                                 sep = "\t",
-                                header = T,
-                                stringsAsFactors = F)
+                                header = TRUE,
+                                stringsAsFactors = FALSE)
         }
         return(data1)
     }, options = list(scrollX = TRUE))
@@ -18368,8 +18368,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$table_cross_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             return(data2)
         }, options = list(scrollX = TRUE))
@@ -18392,8 +18392,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data1 <- read.table(input$table_cross_input1$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
             if (is.null(input$table_cross_input2)) {
                 data("gene_go_kegg")
@@ -18401,8 +18401,8 @@ server <- shinyServer(function(session, input, output) {
             }else{
                 data2 <- read.table(input$table_cross_input2$datapath,
                                     sep = "\t",
-                                    header = T,
-                                    stringsAsFactors = F)
+                                    header = TRUE,
+                                    stringsAsFactors = FALSE)
             }
 
             progress$set(value = 100)
@@ -18439,8 +18439,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data1 <- read.table(input$table_cross_input1$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
                 if (is.null(input$table_cross_input2)) {
                     data("gene_go_kegg")
@@ -18448,8 +18448,8 @@ server <- shinyServer(function(session, input, output) {
                 }else{
                     data2 <- read.table(input$table_cross_input2$datapath,
                                         sep = "\t",
-                                        header = T,
-                                        stringsAsFactors = F)
+                                        header = TRUE,
+                                        stringsAsFactors = FALSE)
                 }
 
                 progress$set(value = 100)
@@ -18649,11 +18649,11 @@ runApp(list(ui = ui, server = server), port = 6767)
 #     if(is.null(input$input_file)) {
 #         data <- read.table(data_path,
 #                            sep = "\t",
-#                            header = T)
+#                            header = TRUE)
 #     }else{
 #         data <- read.table(input$input_file$datapath,
 #                            sep = "\t",
-#                            header = T)
+#                            header = TRUE)
 #     }
 # })
 

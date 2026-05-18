@@ -1475,3 +1475,9 @@ If you use TOmicsVis in your research, please cite:
 # Get citation information
 citation(package = "TOmicsVis")
 ```
+
+## 6. Session Info
+
+```{r}
+sessionInfo()
+```
