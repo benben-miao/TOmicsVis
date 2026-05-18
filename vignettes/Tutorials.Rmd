@@ -80,7 +80,7 @@ install.packages("TOmicsVis")
 
 ### 2.1 Standard loading method
 
-```{chunk-1}
+```{r chunk-1}
 # 1. Library TOmicsVis package
 library(TOmicsVis)
 
@@ -135,7 +135,7 @@ quantile_plot(
 
 Get help using command `?TOmicsVis::quantile_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/quantile_plot.html>.
 
-```{help_quantile_plot}
+```{r help_quantile_plot}
 # Get help with command in R console.
 # ?TOmicsVis::quantile_plot
 ```
@@ -171,7 +171,7 @@ box_plot(
 
 Get help using command `?TOmicsVis::box_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/box_plot.html>.
 
-```{help_box_plot}
+```{r help_box_plot}
 # Get help with command in R console.
 # ?TOmicsVis::box_plot
 ```
@@ -207,7 +207,7 @@ violin_plot(
 
 Get help using command `?TOmicsVis::violin_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/violin_plot.html>.
 
-```{help_violin_plot}
+```{r help_violin_plot}
 # Get help with command in R console.
 # ?TOmicsVis::violin_plot
 ```
@@ -242,7 +242,7 @@ survival_plot(
 
 Get help using command `?TOmicsVis::survival_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/survival_plot.html>.
 
-```{help_survival_plot}
+```{r help_survival_plot}
 # Get help with command in R console.
 # ?TOmicsVis::survival_plot
 ```
@@ -280,7 +280,7 @@ corr_heatmap(
 
 Get help using command `?TOmicsVis::corr_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/corr_heatmap.html>.
 
-```{help_corr_heatmap}
+```{r help_corr_heatmap}
 # Get help with command in R console.
 # ?TOmicsVis::corr_heatmap
 ```
@@ -307,7 +307,7 @@ head(res)
 
 Get help using command `?TOmicsVis::pca_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/pca_analysis.html>.
 
-```{help_pca_analysis}
+```{r help_pca_analysis}
 # Get help with command in R console.
 # ?TOmicsVis::pca_analysis
 ```
@@ -345,7 +345,7 @@ pca_plot(
 
 Get help using command `?TOmicsVis::pca_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/pca_plot.html>.
 
-```{help_pca_plot}
+```{r help_pca_plot}
 # Get help with command in R console.
 # ?TOmicsVis::pca_plot
 ```
@@ -370,7 +370,7 @@ head(res)
 
 Get help using command `?TOmicsVis::tsne_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/tsne_analysis.html>.
 
-```{help_tsne_analysis}
+```{r help_tsne_analysis}
 # Get help with command in R console.
 # ?TOmicsVis::tsne_analysis
 ```
@@ -409,7 +409,7 @@ tsne_plot(
 
 Get help using command `?TOmicsVis::tsne_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/tsne_plot.html>.
 
-```{help_tsne_plot}
+```{r help_tsne_plot}
 # Get help with command in R console.
 # ?TOmicsVis::tsne_plot
 ```
@@ -434,7 +434,7 @@ head(res)
 
 Get help using command `?TOmicsVis::umap_analysis` or reference page <https://benben-miao.github.io/TOmicsVis/reference/umap_analysis.html>.
 
-```{help_umap_analysis}
+```{r help_umap_analysis}
 # Get help with command in R console.
 # ?TOmicsVis::umap_analysis
 ```
@@ -473,7 +473,7 @@ umap_plot(
 
 Get help using command `?TOmicsVis::umap_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/umap_plot.html>.
 
-```{help_umap_plot}
+```{r help_umap_plot}
 # Get help with command in R console.
 # ?TOmicsVis::umap_plot
 ```
@@ -510,7 +510,7 @@ dendro_plot(
 
 Get help using command `?TOmicsVis::dendro_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/dendro_plot.html>.
 
-```{help_dendro_plot}
+```{r help_dendro_plot}
 # Get help with command in R console.
 # ?TOmicsVis::dendro_plot
 ```
@@ -544,7 +544,7 @@ venn_plot(
 
 Get help using command `?TOmicsVis::venn_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/venn_plot.html>.
 
-```{help_venn_plot}
+```{r help_venn_plot}
 # Get help with command in R console.
 # ?TOmicsVis::venn_plot
 ```
@@ -583,7 +583,7 @@ upsetr_plot(
 
 Get help using command `?TOmicsVis::upsetr_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/upsetr_plot.html>.
 
-```{help_upsetr_plot}
+```{r help_upsetr_plot}
 # Get help with command in R console.
 # ?TOmicsVis::upsetr_plot
 ```
@@ -613,7 +613,7 @@ flower_plot(
 
 Get help using command `?TOmicsVis::flower_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/flower_plot.html>.
 
-```{help_flower_plot}
+```{r help_flower_plot}
 # Get help with command in R console.
 # ?TOmicsVis::flower_plot
 ```
@@ -653,7 +653,7 @@ volcano_plot(
 
 Get help using command `?TOmicsVis::volcano_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/volcano_plot.html>.
 
-```{help_volcano_plot}
+```{r help_volcano_plot}
 # Get help with command in R console.
 # ?TOmicsVis::volcano_plot
 ```
@@ -691,7 +691,7 @@ ma_plot(
 
 Get help using command `?TOmicsVis::ma_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/ma_plot.html>.
 
-```{help_ma_plot}
+```{r help_ma_plot}
 # Get help with command in R console.
 # ?TOmicsVis::ma_plot
 ```
@@ -732,7 +732,7 @@ heatmap_group(
 
 Get help using command `?TOmicsVis::heatmap_group` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_group.html>.
 
-```{help_heatmap_group}
+```{r help_heatmap_group}
 # Get help with command in R console.
 # ?TOmicsVis::heatmap_group
 ```
@@ -768,7 +768,7 @@ circos_heatmap(
 
 Get help using command `?TOmicsVis::circos_heatmap` or reference page <https://benben-miao.github.io/TOmicsVis/reference/circos_heatmap.html>.
 
-```{help_circos_heatmap}
+```{r help_circos_heatmap}
 # Get help with command in R console.
 # ?TOmicsVis::circos_heatmap
 ```
@@ -804,7 +804,7 @@ chord_plot(
 
 Get help using command `?TOmicsVis::chord_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/chord_plot.html>.
 
-```{help_chord_plot}
+```{r help_chord_plot}
 # Get help with command in R console.
 # ?TOmicsVis::chord_plot
 ```
@@ -838,7 +838,7 @@ gene_rank_plot(
 
 Get help using command `?TOmicsVis::gene_rank_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_rank_plot.html>.
 
-```{help_gene_rank_plot}
+```{r help_gene_rank_plot}
 # Get help with command in R console.
 # ?TOmicsVis::gene_rank_plot
 ```
@@ -865,7 +865,7 @@ gene_cluster_trend(
 
 Get help using command `?TOmicsVis::gene_cluster_trend` or reference page <https://benben-miao.github.io/TOmicsVis/reference/gene_cluster_trend.html>.
 
-```{help_gene_cluster_trend}
+```{r help_gene_cluster_trend}
 # Get help with command in R console.
 # ?TOmicsVis::gene_cluster_trend
 ```
@@ -903,7 +903,7 @@ trend_plot(
 
 Get help using command `?TOmicsVis::trend_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/trend_plot.html>.
 
-```{help_trend_plot}
+```{r help_trend_plot}
 # Get help with command in R console.
 # ?TOmicsVis::trend_plot
 ```
@@ -932,7 +932,7 @@ wgcna_pipeline(gene_expression[1:3000,], samples_groups)
 
 Get help using command `?TOmicsVis::wgcna_pipeline` or reference page <https://benben-miao.github.io/TOmicsVis/reference/wgcna_pipeline.html>.
 
-```{help_wgcna_pipeline}
+```{r help_wgcna_pipeline}
 # Get help with command in R console.
 # ?TOmicsVis::wgcna_pipeline
 ```
@@ -971,7 +971,7 @@ network_plot(
 
 Get help using command `?TOmicsVis::network_plot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/network_plot.html>.
 
-```{help_network_plot}
+```{r help_network_plot}
 # Get help with command in R console.
 # ?TOmicsVis::network_plot
 ```
@@ -1009,7 +1009,7 @@ heatmap_cluster(
 
 Get help using command `?TOmicsVis::heatmap_cluster` or reference page <https://benben-miao.github.io/TOmicsVis/reference/heatmap_cluster.html>.
 
-```{help_heatmap_cluster}
+```{r help_heatmap_cluster}
 # Get help with command in R console.
 # ?TOmicsVis::heatmap_cluster
 ```
@@ -1040,7 +1040,7 @@ head(res)
 
 Get help using command `?TOmicsVis::go_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich.html>.
 
-```{help_go_enrich}
+```{r help_go_enrich}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich
 ```
@@ -1073,7 +1073,7 @@ go_enrich_stat(
 
 Get help using command `?TOmicsVis::go_enrich_stat` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_stat.html>.
 
-```{help_go_enrich_stat}
+```{r help_go_enrich_stat}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_stat
 ```
@@ -1106,7 +1106,7 @@ go_enrich_bar(
 
 Get help using command `?TOmicsVis::go_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_bar.html>.
 
-```{help_go_enrich_bar}
+```{r help_go_enrich_bar}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_bar
 ```
@@ -1139,7 +1139,7 @@ go_enrich_dot(
 
 Get help using command `?TOmicsVis::go_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_dot.html>.
 
-```{help_go_enrich_dot}
+```{r help_go_enrich_dot}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_dot
 ```
@@ -1170,7 +1170,7 @@ go_enrich_net(
 
 Get help using command `?TOmicsVis::go_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/go_enrich_net.html>.
 
-```{help_go_enrich_net}
+```{r help_go_enrich_net}
 # Get help with command in R console.
 # ?TOmicsVis::go_enrich_net
 ```
@@ -1199,7 +1199,7 @@ head(res)
 
 Get help using command `?TOmicsVis::kegg_enrich` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich.html>.
 
-```{help_kegg_enrich}
+```{r help_kegg_enrich}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich
 ```
@@ -1232,7 +1232,7 @@ kegg_enrich_bar(
 
 Get help using command `?TOmicsVis::kegg_enrich_bar` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_bar.html>.
 
-```{help_kegg_enrich_bar}
+```{r help_kegg_enrich_bar}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_bar
 ```
@@ -1265,7 +1265,7 @@ kegg_enrich_dot(
 
 Get help using command `?TOmicsVis::kegg_enrich_dot` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_dot.html>.
 
-```{help_kegg_enrich_dot}
+```{r help_kegg_enrich_dot}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_dot
 ```
@@ -1296,7 +1296,7 @@ kegg_enrich_net(
 
 Get help using command `?TOmicsVis::kegg_enrich_net` or reference page <https://benben-miao.github.io/TOmicsVis/reference/kegg_enrich_net.html>.
 
-```{help_kegg_enrich_net}
+```{r help_kegg_enrich_net}
 # Get help with command in R console.
 # ?TOmicsVis::kegg_enrich_net
 ```
@@ -1326,7 +1326,7 @@ head(res)
 
 Get help using command `?TOmicsVis::table_split` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_split.html>.
 
-```{help_table_split}
+```{r help_table_split}
 # Get help with command in R console.
 # ?TOmicsVis::table_split
 ```
@@ -1355,7 +1355,7 @@ head(res)
 
 Get help using command `?TOmicsVis::table_merge` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_merge.html>.
 
-```{help_table_merge}
+```{r help_table_merge}
 # Get help with command in R console.
 # ?TOmicsVis::table_merge
 ```
@@ -1381,7 +1381,7 @@ head(res)
 
 Get help using command `?TOmicsVis::table_filter` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_filter.html>.
 
-```{help_table_filter}
+```{r help_table_filter}
 # Get help with command in R console.
 # ?TOmicsVis::table_filter
 ```
@@ -1415,7 +1415,7 @@ head(res)
 
 Get help using command `?TOmicsVis::table_cross` or reference page <https://benben-miao.github.io/TOmicsVis/reference/table_cross.html>.
 
-```{help_table_cross}
+```{r help_table_cross}
 # Get help with command in R console.
 # ?TOmicsVis::table_cross
 ```
@@ -1471,13 +1471,13 @@ If you use TOmicsVis in your research, please cite:
 
 > Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. "TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface." iMeta e137. https://doi.org/10.1002/imt2.137
 
-```{chunk-2}
+```{r chunk-2}
 # Get citation information
 citation(package = "TOmicsVis")
 ```
 
 ## 6. Session Info
 
-```{chunk-3}
+```{r chunk-3}
 sessionInfo()
 ```
