@@ -390,7 +390,6 @@ data(samples_groups)
 tsne_plot(
   sample_gene = gene_expression,
   group_sample = samples_groups,
-  seed = 1,
   multi_shape = FALSE,
   point_size = 5,
   point_alpha = 0.8,
@@ -454,7 +453,6 @@ data(samples_groups)
 umap_plot(
   sample_gene = gene_expression,
   group_sample = samples_groups,
-  seed = 1,
   multi_shape = TRUE,
   point_size = 5,
   point_alpha = 1,
@@ -786,7 +784,6 @@ head(gene_expression2)
 chord_plot(
   data = gene_expression2[1:30,],
   multi_colors = "VividColors",
-  color_seed = 10,
   color_alpha = 0.3,
   link_visible = TRUE,
   link_dir = -1,
