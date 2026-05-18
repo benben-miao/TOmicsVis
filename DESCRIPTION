@@ -16,10 +16,8 @@ License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 biocViews: Software, Visualization, DifferentialExpression, GeneExpression,
-    GO, KEGG, PathwayAnalysis, Clustering, DimensionReduction,
-    SurvivalAnalysis, Network, HeatMap, VolcanoPlot, MAPlot,
-    PCA, tSNE, UMAP, VennDiagram, ChordDiagram, Circos,
-    shinyApp, DataRepresentation
+    GO, KEGG, Clustering, DimensionReduction, Network,
+    DataRepresentation
 Depends: 
     R (>= 4.0)
 Imports: 

@@ -1,0 +1,30 @@
+name: Check Large Files
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+jobs:
+  check-large-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for files over 5MB
+        run: |
+          MAX_SIZE=5242880
+          LARGE_FILES=$(find . -type f -not -path './.git/*' -size +${MAX_SIZE}c 2>/dev/null)
+          if [ -n "$LARGE_FILES" ]; then
+            echo "ERROR: The following files exceed 5MB limit:"
+            echo "$LARGE_FILES"
+            echo ""
+            echo "File sizes:"
+            echo "$LARGE_FILES" | xargs ls -lh
+            exit 1
+          else
+            echo "All files are under 5MB limit."
+          fi
