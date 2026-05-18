@@ -14,6 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r setup, include=FALSE}
+# Load TOmicsVis (Depends packages auto-loaded: Biobase, Mfuzz, e1071)
+library(TOmicsVis)
+```
+
 # TOmicsVis
 
 ## 1. Introduction

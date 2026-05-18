@@ -37,20 +37,16 @@ gene_cluster_trend <- function(data,
 															 palette = "PiYG",
 															 cluster_num = 4) {
 
-	if (!requireNamespace("Mfuzz", quietly = TRUE)) {
-		stop("Package 'Mfuzz' is required for gene_cluster_trend().\n",
-				 "Please install: BiocManager::install('Mfuzz')",
-				 call. = FALSE)
-	}
-
-	# create ExpressionSet object
-	data <- as.data.frame(data)
-	rownames(data) <- data[, 1]
-	data <- data[, -1]
-
+	# Load required packages into search path (Mfuzz internally calls Biobase::exprs)
 	if (!requireNamespace("Biobase", quietly = TRUE)) {
 		stop("Package 'Biobase' is required for gene_cluster_trend().\n",
 				 "Please install: BiocManager::install('Biobase')",
+				 call. = FALSE)
+	}
+
+	if (!requireNamespace("Mfuzz", quietly = TRUE)) {
+		stop("Package 'Mfuzz' is required for gene_cluster_trend().\n",
+				 "Please install: BiocManager::install('Mfuzz')",
 				 call. = FALSE)
 	}
 
@@ -59,6 +55,16 @@ gene_cluster_trend <- function(data,
 				 "Please install: install.packages('e1071')",
 				 call. = FALSE)
 	}
+
+	# Ensure Biobase is loaded into search path (required by Mfuzz internal functions)
+	if (!is.element("Biobase", loadedNamespaces())) {
+		requireNamespace("Biobase", quietly = TRUE)
+	}
+
+	# create ExpressionSet object
+	data <- as.data.frame(data)
+	rownames(data) <- data[, 1]
+	data <- data[, -1]
 
 	exprs_data <- as.matrix(data)
 	eset <- Biobase::ExpressionSet(exprs_data)

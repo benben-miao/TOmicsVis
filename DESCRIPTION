@@ -19,7 +19,10 @@ biocViews: Software, Visualization, DifferentialExpression, GeneExpression,
     GO, KEGG, Clustering, DimensionReduction, Network,
     DataRepresentation
 Depends: 
-    R (>= 4.0)
+    R (>= 4.0),
+    Biobase,
+    Mfuzz,
+    e1071
 Imports: 
     stats,
     utils,
@@ -43,11 +46,9 @@ Imports:
     vegan,
     ggrepel,
     ggnewscale,
-    Biobase,
     enrichplot,
     ComplexHeatmap,
     EnhancedVolcano,
-    Mfuzz,
     clusterProfiler,
     survminer,
     GGally,
@@ -56,8 +57,7 @@ Imports:
     UpSetR,
     randomcoloR,
     ggcorrplot,
-    tidyselect,
-    e1071
+    tidyselect
 Suggests:
     knitr,
     rmarkdown,
