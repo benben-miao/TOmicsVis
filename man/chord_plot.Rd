@@ -7,7 +7,6 @@
 chord_plot(
   data,
   multi_colors = "VividColors",
-  color_seed = 10,
   color_alpha = 0.3,
   link_visible = TRUE,
   link_dir = -1,
@@ -24,8 +23,6 @@ chord_plot(
 \item{data}{Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{multi_colors}{Character: color palette. Default: "VividColors", options: "VividColors", "RainbowColors".}
-
-\item{color_seed}{Numeric: rand seed for VividColors. Default: 10.}
 
 \item{color_alpha}{Numeric: color alpha. Default: 0.50, min: 0.00, max: 1.00.}
 

@@ -4,14 +4,12 @@
 \alias{tsne_analysis}
 \title{TSNE analysis for analyzing and visualizing TSNE algorithm.}
 \usage{
-tsne_analysis(sample_gene, group_sample, seed = 1, tsne_dims = 2)
+tsne_analysis(sample_gene, group_sample, tsne_dims = 2)
 }
 \arguments{
 \item{sample_gene}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
-
-\item{seed}{Numeric: set seed for robust result. Default: 1.}
 
 \item{tsne_dims}{Numeric: TSNE dimensionality number. Default: 2.}
 }

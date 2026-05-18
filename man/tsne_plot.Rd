@@ -7,7 +7,6 @@
 tsne_plot(
   sample_gene,
   group_sample,
-  seed = 1,
   multi_shape = FALSE,
   point_size = 5,
   point_alpha = 0.8,
@@ -25,8 +24,6 @@ tsne_plot(
 \item{sample_gene}{Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).}
 
 \item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
-
-\item{seed}{Numeric: set seed for robust result. Default: 1.}
 
 \item{multi_shape}{Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.}
 
@@ -70,8 +67,8 @@ head(samples_groups)
 # 3. Default parameters
 tsne_plot(gene_expression, samples_groups)
 
-# 4. Set sci_fill_color = "Sci_NPG", seed = 6
-tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
+# 4. Set sci_fill_color = "Sci_NPG"
+tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG")
 
 # 5. Set multi_shape = TRUE, fill_alpha = 0.00
 tsne_plot(gene_expression, samples_groups, multi_shape = TRUE, fill_alpha = 0.00)

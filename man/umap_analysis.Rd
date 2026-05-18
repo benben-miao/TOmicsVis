@@ -4,14 +4,12 @@
 \alias{umap_analysis}
 \title{UMAP analysis for analyzing RNA-Seq data.}
 \usage{
-umap_analysis(sample_gene, group_sample, seed = 1, method = "naive")
+umap_analysis(sample_gene, group_sample, method = "naive")
 }
 \arguments{
 \item{sample_gene}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
 
 \item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
-
-\item{seed}{Numeric: set seed for robust result. Default: 1.}
 
 \item{method}{Character: 'naive' (an implementation written in pure R) and 'umap-learn' (requires python package 'umap-learn').}
 }

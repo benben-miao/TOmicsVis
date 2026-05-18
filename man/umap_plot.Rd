@@ -7,7 +7,6 @@
 umap_plot(
   sample_gene,
   group_sample,
-  seed = 1,
   multi_shape = TRUE,
   point_size = 5,
   point_alpha = 1,
@@ -25,8 +24,6 @@ umap_plot(
 \item{sample_gene}{Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).}
 
 \item{group_sample}{Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).}
-
-\item{seed}{Numeric: set seed for robust result. Default: 1.}
 
 \item{multi_shape}{Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.}
 
@@ -70,8 +67,8 @@ head(samples_groups)
 # 3. Default parameters
 umap_plot(gene_expression, samples_groups)
 
-# 4. Set sci_fill_color = "Sci_Simpsons", seed = 6
-umap_plot(gene_expression, samples_groups, sci_fill_color = "Sci_Simpsons", seed = 6)
+# 4. Set sci_fill_color = "Sci_Simpsons"
+umap_plot(gene_expression, samples_groups, sci_fill_color = "Sci_Simpsons")
 
 # 5. Set fill_alpha = 0.10
 umap_plot(gene_expression, samples_groups, fill_alpha = 0.10)
