@@ -93,7 +93,7 @@ network_plot <- function(data,
 			v = igraph::V(net),
 			mode = c("all"),
 			loops = TRUE,
-			normalized = T
+			normalized = TRUE
 		)
 
 		vcolor <- rep(normal_color, igraph::vcount(net))
@@ -112,8 +112,8 @@ network_plot <- function(data,
 			net,
 			xlab = "",
 			ylab = "",
-			axes = F,
-			add = F,
+			axes = FALSE,
+			add = FALSE,
 			vertex.color = vcolor,
 			vertex.size = node_size,
 			vertex.shape = vertex_shape,

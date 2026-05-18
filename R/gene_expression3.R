@@ -25,6 +25,6 @@
 # data <- read.table(file = "data-tables/gene_expression3.txt",
 # 									 header = TRUE,
 # 									 sep = "\t",
-# 									 stringsAsFactors = F)
+# 									 stringsAsFactors = FALSE)
 # gene_expression3 <- data
-# usethis::use_data(gene_expression3, overwrite = T)
+# usethis::use_data(gene_expression3, overwrite = TRUE)

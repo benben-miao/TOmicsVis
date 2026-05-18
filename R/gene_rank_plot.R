@@ -106,7 +106,7 @@ gene_rank_plot <- function(data,
 	# ordered by log2FoldChange and pvalue
 	data <- data[order(-data$log2FC, data$pvalue), ]
 	# add the rank column
-	data$rank <- 1:nrow(data)
+	data$rank <- seq_len(nrow(data))
 
 	# get the top n up and down gene for labeling
 	if (!is.null(genes_to_label)) {

@@ -25,6 +25,6 @@
 # data <- read.table(file = "data-tables/traits_sex.txt",
 # 									 header = TRUE,
 # 									 sep = "\t",
-# 									 stringsAsFactors = F)
+# 									 stringsAsFactors = FALSE)
 # traits_sex <- data
 # usethis::use_data(traits_sex)

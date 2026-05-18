@@ -53,14 +53,12 @@ gene_cluster_trend <- function(data,
 				 "Please install: BiocManager::install('Biobase')",
 				 call. = FALSE)
 	}
-	suppressPackageStartupMessages(suppressWarnings(require(Biobase, quietly = TRUE)))
 
 	if (!requireNamespace("e1071", quietly = TRUE)) {
 		stop("Package 'e1071' is required for gene_cluster_trend().\n",
 				 "Please install: install.packages('e1071')",
 				 call. = FALSE)
 	}
-	suppressPackageStartupMessages(suppressWarnings(require(e1071, quietly = TRUE)))
 
 	exprs_data <- as.matrix(data)
 	eset <- methods::new("ExpressionSet", exprs = exprs_data)
@@ -68,7 +66,7 @@ gene_cluster_trend <- function(data,
 	# Data pre-processing
 	eset <- Mfuzz::filter.NA(eset, thres = thres)
 	#eset <- fill.NA(eset,mode="mean",k=10)
-	eset <- Mfuzz::filter.std(eset, min.std = min_std, visu = F)
+	eset <- Mfuzz::filter.std(eset, min.std = min_std, visu = FALSE)
 
 	# data normalization
 	eset <- Mfuzz::standardise(eset)

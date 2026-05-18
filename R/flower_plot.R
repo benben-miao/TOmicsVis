@@ -67,7 +67,7 @@ flower_plot <- function(flower_dat,
 
 	graphics::par(
 		bty = 'n',
-		ann = F,
+		ann = FALSE,
 		xaxt = 'n',
 		yaxt = 'n',
 		mar = c(1, 1, 1, 1)
@@ -96,7 +96,7 @@ flower_plot <- function(flower_dat,
 	}
 	ellipse_col <- grDevices::colorRampPalette(colors)(n)
 
-	res <- lapply(1:n, function(t) {
+	res <- lapply(seq_len(n), function(t) {
 		plotrix::draw.ellipse(
 			x = 5 + cos((angle + deg * (t - 1)) * pi / 180),
 			y = 5 + sin((angle + deg * (t - 1)) * pi / 180),

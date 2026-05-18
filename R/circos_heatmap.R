@@ -75,7 +75,7 @@ circos_heatmap <- function(data,
 	p <- function() {
 		circlize::circos.clear()
 		medians <- apply(data, 2, median)
-		col_fun = circlize::colorRamp2(c(round(min(data)), median(medians), round(max(data))),
+		col_fun <- circlize::colorRamp2(c(round(min(data)), median(medians), round(max(data))),
 																	 c(low_color, mid_color, high_color))
 
 		circlize::circos.par(gap.after = c(gap_size))
@@ -129,7 +129,7 @@ circos_heatmap <- function(data,
 			bg.border = NA
 		)
 
-		legend = ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
+		legend <- ComplexHeatmap::Legend(title = "ColorBar", col_fun = col_fun)
 		grid::grid.draw(legend)
 		circlize::circos.clear()
 	}

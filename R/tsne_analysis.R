@@ -5,7 +5,6 @@
 #' @return Table: TSNE analysis for analyzing and visualizing TSNE algorithm.
 #' @param sample_gene Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
-#' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param tsne_dims Numeric: TSNE dimensionality number. Default: 2.
 #'
 #' @importFrom Rtsne Rtsne
@@ -32,12 +31,10 @@
 #'
 tsne_analysis <- function(sample_gene,
 											group_sample,
-											seed = 1,
 											tsne_dims = 2) {
 
 	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
 	validate_is_dataframe_or_matrix(group_sample, "group_sample")
-	validate_numeric_range(seed, "seed", min = 1)
 	validate_numeric_range(tsne_dims, "tsne_dims", min = 2, max = 3)
 
 	sample_gene <- as.data.frame(sample_gene)
@@ -47,7 +44,6 @@ tsne_analysis <- function(sample_gene,
 	t_sample_gene <- t(sample_gene)
 	groups <- group_sample[,2]
 
-	set.seed(seed)
 	m_sample_gene <- as.matrix(t_sample_gene)
 	tsne_res <- Rtsne::Rtsne(m_sample_gene,
 										dims = tsne_dims,
@@ -55,7 +51,7 @@ tsne_analysis <- function(sample_gene,
 										check_duplicates = FALSE,
 										verbose = getOption("verbose", FALSE))
 	tsne_out <- as.data.frame(tsne_res$Y)
-	colnames(tsne_out) <- paste("TSNE", 1:tsne_dims, sep = "")
+	colnames(tsne_out) <- paste("TSNE", seq_len(tsne_dims), sep = "")
 
 	return(tsne_out)
 }

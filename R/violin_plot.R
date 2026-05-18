@@ -117,7 +117,7 @@ violin_plot <- function(data,
 	xlab <- colnames(data)[2]
 	ylab <- colnames(data)[1]
 
-	violinAlpha = 0.50
+	violinAlpha <- 0.50
 	violinWidth <- 0.8
 	lineType <- "solid"
 	lineSize <- 1.0

@@ -10,12 +10,6 @@
     options(warn = -1L)
   }
   
-  suppressPackageStartupMessages(suppressWarnings({
-    if (requireNamespace("Mfuzz", quietly = TRUE)) {
-      invisible()
-    }
-  }))
-  
   invisible()
 }
 

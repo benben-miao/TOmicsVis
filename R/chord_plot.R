@@ -5,7 +5,6 @@
 #' @return Plot: chord plot is used to visualize complex relationships between samples and genes, as well as between pathways and genes.
 #' @param data Dataframe: Shared DEGs of all paired comparisons in all samples expression dataframe of RNA-Seq. (1st-col: Genes, 2nd-col~: Samples).
 #' @param multi_colors Character: color palette. Default: "VividColors", options: "VividColors", "RainbowColors".
-#' @param color_seed Numeric: rand seed for VividColors. Default: 10.
 #' @param color_alpha Numeric: color alpha. Default: 0.50, min: 0.00, max: 1.00.
 #' @param link_visible Logical: links visible. Default: TRUE, options: TRUE, FALSE.
 #' @param link_dir Numeric: links direction, use with link_type. Default: -1, options: -1, 0, 1, 2.
@@ -39,7 +38,6 @@
 
 chord_plot <- function(data,
 											 multi_colors = "VividColors",
-											 color_seed = 10,
 											 color_alpha = 0.30,
 											 link_visible = TRUE,
 											 link_dir = -1,
@@ -67,7 +65,6 @@ chord_plot <- function(data,
 	color_num <- length(union(rownames(data), colnames(data)))
 	data <- as.matrix(data)
 
-	set.seed(color_seed)
 	if (multi_colors == "VividColors") {
 		grid_col <- randomcoloR::distinctColorPalette(color_num)
 	} else if (multi_colors == "RainbowColors") {

@@ -25,6 +25,6 @@
 # data <- read.table(file = "data-tables/samples_groups.txt",
 # 									 header = TRUE,
 # 									 sep = "\t",
-# 									 stringsAsFactors = F)
+# 									 stringsAsFactors = FALSE)
 # samples_groups <- data
 # # usethis::use_data(samples_groups)

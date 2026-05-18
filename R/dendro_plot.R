@@ -100,27 +100,25 @@ dendro_plot <- function(data,
 
 	gg_theme <- get_ggtheme(ggTheme)
 
-	suppressWarnings(
-		p <- factoextra::fviz_dend(
-			dend,
-			k = k_num,
-			color_labels_by_k = color_labels_by_k,
-			show_labels = TRUE,
-			repel = TRUE,
-			type = tree_type,
-			rect = rect,
-			rect_border = palette,
-			rect_fill = rect_fill,
-			horiz = horiz,
-			cex = label_size,
-			lwd = line_width,
-			main = NULL,
-			xlab = xlab,
-			ylab = ylab,
-			k_colors = palette
-		) +
-			gg_theme
-	)
+	p <- factoextra::fviz_dend(
+		dend,
+		k = k_num,
+		color_labels_by_k = color_labels_by_k,
+		show_labels = TRUE,
+		repel = TRUE,
+		type = tree_type,
+		rect = rect,
+		rect_border = palette,
+		rect_fill = rect_fill,
+		horiz = horiz,
+		cex = label_size,
+		lwd = line_width,
+		main = NULL,
+		xlab = xlab,
+		ylab = ylab,
+		k_colors = palette
+	) +
+		gg_theme
 
 	return(p)
 }

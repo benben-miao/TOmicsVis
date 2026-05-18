@@ -25,6 +25,6 @@
 # data <- read.table(file = "data-tables/degs_lists.txt",
 # 									 header = TRUE,
 # 									 sep = "\t",
-# 									 stringsAsFactors = F)
+# 									 stringsAsFactors = FALSE)
 # degs_lists <- data
 # usethis::use_data(degs_lists)

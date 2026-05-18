@@ -25,8 +25,6 @@ load_TOmicsVis <- function() {
   
   options(warn = -1)
   
-  suppressPackageStartupMessages(suppressWarnings(require(TOmicsVis, quietly = TRUE)))
-  
   message("[OK] TOmicsVis v", utils::packageDescription("TOmicsVis", fields = "Version"), 
           " loaded successfully!")
   message("  All functions ready to use.")

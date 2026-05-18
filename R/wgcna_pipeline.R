@@ -167,8 +167,8 @@ wgcna_pipeline <- function(sample_gene,
 	write.table(module_gene,
 							file = paste(results_dir, "1.ModuleGene.txt", sep = "/"),
 							sep = "\t",
-							quote = F,
-							row.names = F
+							quote = FALSE,
+							row.names = FALSE
 	)
 
 	save_plot_both(function() {
@@ -188,8 +188,8 @@ wgcna_pipeline <- function(sample_gene,
 	write.table(gene_module,
 							file = paste(results_dir, "2.GeneModule.txt", sep = "/"),
 							sep = "\t",
-							quote = F,
-							row.names = F
+							quote = FALSE,
+							row.names = FALSE
 	)
 
 	MEs <- bwnet$MEs
@@ -204,8 +204,8 @@ wgcna_pipeline <- function(sample_gene,
 	write.table(MEs_colt,
 							file = paste(results_dir, "3.ModuleEipgengene.txt", sep = "/"),
 							sep = "\t",
-							quote = F,
-							row.names = F
+							quote = FALSE,
+							row.names = FALSE
 	)
 
 	save_plot_both(function() {

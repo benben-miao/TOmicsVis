@@ -123,7 +123,7 @@ heatmap_cluster <- function(data,
 
 	p <- pheatmap::pheatmap(
 		data,
-		cluster_cols = F,
+		cluster_cols = FALSE,
 		cutree_rows = k_num,
 		show_rownames = show_rownames,
 		clustering_distance_rows = dist_method,
@@ -165,7 +165,7 @@ heatmap_cluster <- function(data,
 
 	p1 <- pheatmap::pheatmap(
 		data,
-		cluster_cols = F,
+		cluster_cols = FALSE,
 		cutree_rows = k_num,
 		gaps_col = NULL,
 		fontsize = label_size,

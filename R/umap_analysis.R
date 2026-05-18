@@ -5,7 +5,6 @@
 #' @return Table: UMAP analysis for analyzing RNA-Seq data.
 #' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
-#' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param method Character: 'naive' (an implementation written in pure R) and 'umap-learn' (requires python package 'umap-learn').
 #'
 #' @importFrom umap umap
@@ -28,12 +27,10 @@
 #'
 umap_analysis <- function(sample_gene,
 											group_sample,
-											seed = 1,
 											method = "naive") {
 
 	validate_is_dataframe_or_matrix(sample_gene, "sample_gene")
 	validate_is_dataframe_or_matrix(group_sample, "group_sample")
-	validate_numeric_range(seed, "seed", min = 1)
 	validate_character_options(method, "method", c("naive", "umap-learn"))
 
 	sample_gene <- as.data.frame(sample_gene)
@@ -42,7 +39,6 @@ umap_analysis <- function(sample_gene,
 	sample_gene <- sample_gene[rowSums(sample_gene > 0) > 0, ]
 	t_sample_gene <- t(sample_gene)
 
-	set.seed(seed)
 	umap_res <- umap(t_sample_gene, method = method)
 	umap_out <- as.data.frame(umap_res$layout)
 	colnames(umap_out) <- c("UMAP1","UMAP2")

@@ -5,7 +5,6 @@
 #' @return Plot: UMAP plot for analyzing and visualizing UMAP algorithm.
 #' @param sample_gene Dataframe: gene expression dataframe (1st-col: Transcripts or Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
-#' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param multi_shape Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.
 #' @param point_size Numeric: point size. Default: 5, min: 0, max: null.
 #' @param point_alpha Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.
@@ -40,15 +39,14 @@
 #' # 3. Default parameters
 #' umap_plot(gene_expression, samples_groups)
 #'
-#' # 4. Set sci_fill_color = "Sci_Simpsons", seed = 6
-#' umap_plot(gene_expression, samples_groups, sci_fill_color = "Sci_Simpsons", seed = 6)
+#' # 4. Set sci_fill_color = "Sci_Simpsons"
+#' umap_plot(gene_expression, samples_groups, sci_fill_color = "Sci_Simpsons")
 #'
 #' # 5. Set fill_alpha = 0.10
 #' umap_plot(gene_expression, samples_groups, fill_alpha = 0.10)
 #'
 umap_plot <- function(sample_gene,
 											group_sample,
-											seed = 1,
 											multi_shape = TRUE,
 											point_size = 5,
 											point_alpha = 1.00,
@@ -82,7 +80,6 @@ umap_plot <- function(sample_gene,
 	umap_p <- umap_ano$signif
 	umap_r <- round(umap_ano$statistic,3)
 
-	set.seed(seed)
 	umap_res <- umap(t_sample_gene)
 	umap_out <- as.data.frame(umap_res$layout[,c(1,2)])
 	colnames(umap_out) <- c("UMAP1","UMAP2")

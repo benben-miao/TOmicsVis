@@ -180,5 +180,5 @@ get_venn_palette <- function(scheme = "Vibrant", n = 4, alpha = 0.55) {
 		)
 	}
 
-	return(colors[1:n])
+	return(colors[seq_len(n)])
 }

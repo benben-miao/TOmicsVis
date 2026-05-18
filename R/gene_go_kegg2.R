@@ -24,4 +24,4 @@
 
 # res <- table_merge(gene_go_kegg)
 # gene_go_kegg2 <- res
-# usethis::use_data(gene_go_kegg2, overwrite = T)
+# usethis::use_data(gene_go_kegg2, overwrite = TRUE)

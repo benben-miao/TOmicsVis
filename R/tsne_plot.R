@@ -5,7 +5,6 @@
 #' @return Plot: TSNE plot for analyzing and visualizing TSNE algorithm.
 #' @param sample_gene Dataframe: All genes in all samples expression dataframe of RNA-Seq (1st-col: Genes, 2nd-col~: Samples).
 #' @param group_sample Dataframe: Samples and groups for gene expression (1st-col: Samples, 2nd-col: Groups).
-#' @param seed Numeric: set seed for robust result. Default: 1.
 #' @param multi_shape Logical: groups as shapes. Default: FALSE, options: TRUE, FALSE.
 #' @param point_size Numeric: point size. Default: 5, min: 0, max: null.
 #' @param point_alpha Numeric: point color alpha. Default: 0.80, min: 0.00, max: 1.00.
@@ -40,15 +39,14 @@
 #' # 3. Default parameters
 #' tsne_plot(gene_expression, samples_groups)
 #'
-#' # 4. Set sci_fill_color = "Sci_NPG", seed = 6
-#' tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG", seed = 6)
+#' # 4. Set sci_fill_color = "Sci_NPG"
+#' tsne_plot(gene_expression, samples_groups, sci_fill_color = "Sci_NPG")
 #'
 #' # 5. Set multi_shape = TRUE, fill_alpha = 0.00
 #' tsne_plot(gene_expression, samples_groups, multi_shape = TRUE, fill_alpha = 0.00)
 #'
 tsne_plot <- function(sample_gene,
 											group_sample,
-											seed = 1,
 											multi_shape = FALSE,
 											point_size = 5,
 											point_alpha = 0.80,
@@ -82,7 +80,6 @@ tsne_plot <- function(sample_gene,
 	tsne_p <- tsne_ano$signif
 	tsne_r <- round(tsne_ano$statistic,3)
 
-	set.seed(seed)
 	m_sample_gene <- as.matrix(t_sample_gene)
 	tsne_res <- Rtsne::Rtsne(m_sample_gene,
 										dims = 2,

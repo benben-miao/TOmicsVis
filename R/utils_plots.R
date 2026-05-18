@@ -142,7 +142,7 @@ get_ggsci_palette <- function(pal_name = "Sci_AAAS", n = 10, alpha = 1) {
 		)
 	}
 
-	return(colors[1:n])
+	return(colors[seq_len(n)])
 }
 
 #' @title Validate hex color code

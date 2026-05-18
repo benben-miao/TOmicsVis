@@ -114,7 +114,6 @@ quantile_plot <- function(data,
 		facet_by <- colnames(data)[2]
 	}
 
-	suppressWarnings(
 	p <- ggpubr::ggqqplot(data,
 														 x = colnames(data)[1],
 														 color = colnames(data)[2],
@@ -144,7 +143,6 @@ quantile_plot <- function(data,
 		strip.background = element_rect(fill = "#cdcdcd", color = "#cdcdcd"),
 		strip.text = element_text(color = "#333333", size = 10, face = "bold")
 		)
-	)
 
 	return(p)
 }
