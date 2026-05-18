@@ -127,16 +127,16 @@ go_enrich_stat <- function(go_anno,
 
 	GetTop <- function(df, item) {
 		if (nrow(df) > item) {
-			return(df[1:item,])
+			return(df[seq_len(item),])
 		}else{
-			return(df[1:nrow(df),])
+			return(df[seq_len(nrow(df)),])
 		}
 	}
 
 	GetGoTopEnrich <- function(df, max_item = max_go_item){
 		go_MF <- GetTop(df[df$ontology == "molecular function",], max_item)
-		go_CC <- GetTop(df[df$ontology == "cellular component",][1:max_item,],max_item)
-		go_BP <- GetTop(df[df$ontology == "biological process",][1:max_item,],max_item)
+		go_CC <- GetTop(df[df$ontology == "cellular component",][seq_len(max_item),],max_item)
+		go_BP <- GetTop(df[df$ontology == "biological process",][seq_len(max_item),],max_item)
 		enrich_df <- data.frame(ID = c(go_BP$ID, go_CC$ID, go_MF$ID),
 														Ontology = factor(c(rep("Biological Process", nrow(go_BP)), rep("Cellular Component", nrow(go_CC)),rep("Molecular Function",nrow(go_MF))),levels = c("Molecular Function", "Cellular Component", "Biological Process")),
 														Description = c(go_BP$Description, go_CC$Description, go_MF$Description),
