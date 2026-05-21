@@ -1,0 +1,5 @@
+theme: jekyll-theme-minimal
+title: TOmicsVis
+description: An all-in-one transcriptomic analysis and visualization R package with Shiny app interface
+show_downloads: true
+google_analytics:

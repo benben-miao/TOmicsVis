@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOmicsVis - Transcriptomic Analysis & Visualization</title>
+    <meta name="description" content="An all-in-one transcriptomic analysis and visualization R package with Shiny app interface">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../pkgdown/favicon/favicon-32x32.png">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo">TOmicsVis</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#documentation">Docs</a></li>
+                <li><a href="https://github.com/benben-miao/TOmicsVis" class="nav-link-github">GitHub</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">v2.7.1</div>
+            <h1 class="hero-title">
+                <span class="gradient-text">TOmicsVis</span>
+            </h1>
+            <p class="hero-subtitle">
+                An all-in-one transcriptomic analysis and visualization<br>
+                R package with Shiny app interface
+            </p>
+            <div class="hero-actions">
+                <a href="#installation" class="btn btn-primary">Get Started</a>
+                <a href="https://shiny.hiplot.cn/tomicsvis-shiny/" class="btn btn-secondary" target="_blank">Cloud Analysis</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Analysis Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Visualization Functions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">CRAN</div>
+                    <div class="stat-label">Published</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-container">
+                <img src="https://benben-miao.github.io/TOmicsVis/TOmicsVis-Shinyapp.png" alt="TOmicsVis Shiny App Interface" class="hero-image">
+                <div class="image-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Complete toolkit for transcriptomic data analysis and visualization</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18"/>
+                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Sample Statistics</h3>
+                    <p class="feature-desc">Quantile plots, box plots, violin plots, and survival analysis for comprehensive sample quality assessment</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m16.36-5.36l-4.24 4.24M6.88 17.12l-4.24 4.24m0-14.72l4.24 4.24m10.12 10.12l4.24 4.24"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Traits Analysis</h3>
+                    <p class="feature-desc">Correlation heatmaps, PCA, t-SNE, UMAP dimensionality reduction, and dendrogram visualization</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Differential Expression</h3>
+                    <p class="feature-desc">Venn diagrams, UpSet plots, volcano plots, MA plots, and interactive heatmaps for DEGs analysis</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Advanced Analysis</h3>
+                    <p class="feature-desc">Gene expression trends, WGCNA co-expression modules, and network analysis for deep insights</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20V10M18 20V4M6 20v-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">GO & KEGG Enrichment</h3>
+                    <p class="feature-desc">Enrichment analysis with bar plots, dot plots, network plots, and statistical summaries</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Table Operations</h3>
+                    <p class="feature-desc">Data filtering, merging, splitting, and cross-tabulation for efficient data manipulation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Visualization Gallery</h2>
+            <p class="section-subtitle">Publication-quality plots for your research</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-volcano_plot-1.png" alt="Volcano Plot">
+                    <div class="gallery-overlay">
+                        <h4>Volcano Plot</h4>
+                        <p>Differential expression visualization</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-heatmap_cluster-1.png" alt="Heatmap">
+                    <div class="gallery-overlay">
+                        <h4>Heatmap</h4>
+                        <p>Gene expression clustering</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-pca_plot-1.png" alt="PCA Plot">
+                    <div class="gallery-overlay">
+                        <h4>PCA Plot</h4>
+                        <p>Dimensionality reduction</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-go_enrich_dot-1.png" alt="GO Enrichment">
+                    <div class="gallery-overlay">
+                        <h4>GO Enrichment</h4>
+                        <p>Functional enrichment analysis</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-corr_heatmap-1.png" alt="Correlation Heatmap">
+                    <div class="gallery-overlay">
+                        <h4>Correlation Heatmap</h4>
+                        <p>Sample correlation analysis</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://benben-miao.github.io/TOmicsVis/reference/figures/README-network_plot-1.png" alt="Network Plot">
+                    <div class="gallery-overlay">
+                        <h4>Network Plot</h4>
+                        <p>Gene interaction network</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="installation" id="installation">
+        <div class="container">
+            <h2 class="section-title">Installation</h2>
+            <p class="section-subtitle">Get started in minutes</p>
+            
+            <div class="install-tabs">
+                <button class="tab-btn active" data-tab="cran">CRAN</button>
+                <button class="tab-btn" data-tab="github">GitHub</button>
+                <button class="tab-btn" data-tab="dependencies">Dependencies</button>
+            </div>
+            
+            <div class="install-content">
+                <div class="install-panel active" id="cran-panel">
+                    <div class="code-block">
+                        <pre><code># Install from CRAN
+install.packages("TOmicsVis")
+
+# Load the package
+library(TOmicsVis)</code></pre>
+                        <button class="copy-btn" data-target="cran-code">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="install-panel" id="github-panel">
+                    <div class="code-block">
+                        <pre><code># Install from GitHub
+install.packages("devtools")
+devtools::install_github("benben-miao/TOmicsVis")
+
+# Load the package
+library(TOmicsVis)</code></pre>
+                        <button class="copy-btn" data-target="github-code">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="install-panel" id="dependencies-panel">
+                    <div class="code-block">
+                        <pre><code># Install required Bioconductor packages
+install.packages("BiocManager")
+BiocManager::install(c(
+  "ComplexHeatmap", 
+  "EnhancedVolcano", 
+  "clusterProfiler", 
+  "enrichplot", 
+  "impute", 
+  "preprocessCore", 
+  "Mfuzz"
+))</code></pre>
+                        <button class="copy-btn" data-target="deps-code">Copy</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-start">
+                <h3>Quick Start</h3>
+                <div class="code-block">
+                    <pre><code># Load example data
+data(gene_expression)
+data(samples_groups)
+
+# Create a volcano plot
+data(degs_stats)
+volcano_plot(degs_stats)
+
+# Launch Shiny app
+TOmicsVis::tomicsvis()</code></pre>
+                    <button class="copy-btn" data-target="quick-code">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="documentation" id="documentation">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <p class="section-subtitle">Comprehensive guides and tutorials</p>
+            
+            <div class="docs-grid">
+                <a href="https://benben-miao.github.io/TOmicsVis/articles/Tutorials.html" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                        </svg>
+                    </div>
+                    <h3>Tutorials</h3>
+                    <p>Complete usage guide with examples for all functions</p>
+                </a>
+                
+                <a href="https://benben-miao.github.io/TOmicsVis/reference/index.html" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3>API Reference</h3>
+                    <p>Detailed documentation for all functions and parameters</p>
+                </a>
+                
+                <a href="https://mp.weixin.qq.com/s/g8sRcK_ExlsOFniMWEJnVQ" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Article Guide</h3>
+                    <p>In-depth article introduction (Chinese)</p>
+                </a>
+                
+                <a href="https://space.bilibili.com/34105515/channel/series" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                    <h3>Video Courses</h3>
+                    <p>Step-by-step video tutorials on BiliBili</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="citation-section">
+        <div class="container">
+            <h2 class="section-title">Citation</h2>
+            <div class="citation-card">
+                <p class="citation-text">
+                    Miao, Ben-Ben, Dong, Wei, Han, Zhao-Fang, Luo, Xuan, Ke, Cai-Huan, and You, Wei-Wei. 2023. 
+                    "TOmicsVis: An All-in-One Transcriptomic Analysis and Visualization R Package with shinyapp Interface." 
+                    <em>iMeta</em> e137. 
+                    <a href="https://doi.org/10.1002/imt2.137" target="_blank">https://doi.org/10.1002/imt2.137</a>
+                </p>
+                <button class="copy-btn" onclick="copyCitation()">Copy Citation</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">TOmicsVis</span>
+                    <p>An all-in-one transcriptomic analysis and visualization R package</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://benben-miao.github.io/TOmicsVis/" target="_blank">Documentation</a></li>
+                            <li><a href="https://benben-miao.github.io/TOmicsVis/articles/Tutorials.html" target="_blank">Tutorials</a></li>
+                            <li><a href="https://cran.r-project.org/package=TOmicsVis" target="_blank">CRAN</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/benben-miao/TOmicsVis" target="_blank">GitHub</a></li>
+                            <li><a href="https://github.com/benben-miao/TOmicsVis/issues" target="_blank">Issues</a></li>
+                            <li><a href="https://shiny.hiplot.cn/tomicsvis-shiny/" target="_blank">Cloud Analysis</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>More</h4>
+                        <ul>
+                            <li><a href="https://github.com/OmicsSuite/" target="_blank">OmicsSuite</a></li>
+                            <li><a href="https://mp.weixin.qq.com/s/mVXJmHPAnC9J1-zMj7eG7g" target="_blank">WeChat Group</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TOmicsVis. MIT License.</p>
+                <p>Made with ❤️ by <a href="https://github.com/benben-miao" target="_blank">Benben Miao</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
